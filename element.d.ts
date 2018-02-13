@@ -4,7 +4,6 @@
 type Var = object;
 //type Player = object;
 
-type element = object;
 type Player = object;
 type Ped = object;
 type Vehicle = object;
@@ -114,6 +113,8 @@ declare function getElementVelocity(theElement: element): [number, number, numbe
 declare function getLowLODElement(theElement: element): element
 
 declare function getRootElement(): element
+
+declare function getResourceRootElement(theResource?: object): element
 
 declare function isElement(theValue: object): boolean
 

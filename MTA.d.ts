@@ -1,8 +1,3 @@
-type table = {
-    [key: number]: any;
-    [key: string]: any;
-};
-
 /**
  * returns a table of resource names containing all export functions
  */
@@ -60,4 +55,18 @@ declare const sourceResource: element;
 /**
  * current timer in callback function.
  */
-declare const sourceTimer: element; 
+declare const sourceTimer: element;
+
+declare function addCommandHandler(commandName: string, handlerFunction: Function, restricted?: false, caseSensitive?: true): boolean
+
+declare function addCommandHandler(commandName: string, handlerFunction: Function, caseSensitive?: true): boolean
+
+/**
+ * **SERVER SIDE**
+ */
+declare function outputChatBox(text: string, visibleTo?: element, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean
+
+/**
+ * **CLIENT SIDE**
+ */
+declare function outputChatBox(text: string, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean

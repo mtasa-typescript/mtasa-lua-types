@@ -1,6 +1,7 @@
 type Material = object;
 type Color = number;
 type Font = object;
+type element = object;
 
 /**
  * This function retrieves the hex number of a specified color, useful for the dx functions. 
@@ -11,7 +12,7 @@ type Font = object;
  * @param alpha The amount of alpha in the color (0-255).
  * @returns Returns a single value representing the color.
  */
-declare function tocolor(red: number, green: number, blue: number, alpha: 255): Color
+declare function tocolor(red: number, green: number, blue: number, alpha?: number): Color
 
 /**
  * Draws an image on the screen for a single frame. In order for the image to stay visible continuously, you need to call this function with the same parameters on each frame update (see onClientRender).
@@ -128,7 +129,7 @@ declare function dxDrawLine3D(startX: number, startY: number, startZ: number, en
  * @param subPixelPositioning subPixelPositioning A bool representing whether the rectangle can be positioned sub-pixel-ly. (FROM VERSION 1.4.0 r6931 ONWARDS)
  * @returns Returns true if the operation was successful, false otherwise.
  */
-declare function dxDrawRectangle(startX: number, startY: number, width: number, height: number, color?: 0, postGUI?: false, subPixelPositioning?: false): boolean;
+declare function dxDrawRectangle(startX: number, startY: number, width: number, height: number, color?: Color, postGUI?: false, subPixelPositioning?: boolean): boolean;
 
 /*
 "default": Tahoma
