@@ -17,6 +17,7 @@ declare const resource: element;
  * returns a resource root element of the resource the snippet was executed in
  */
 declare const resourceRoot: element;
+
 /**
  * returns the root element of the server
  */
