@@ -253,4 +253,4 @@ declare function getVehicleVariant(theVehicle: Vehicle): [number, number];
 
 declare function setVehicleTurnVelocity(theVehicle: Vehicle, rx: number, ry: number, rz: number): boolean;
 
-declare function getVehicleDoorOpenRatio(theVehicle: Vehicle, door: number): number
+declare function getVehicleDoorOpenRatio(theVehicle: Vehicle, door: number): number;
