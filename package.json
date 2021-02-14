@@ -1,0 +1,27 @@
+{
+  "name": "mtasa-lua-types",
+  "version": "0.1.0",
+  "description": "TypeScript types definitions for MTASA Lua",
+  "homepage": "https://gitlab.toliak.ru/mtasa/typescript/mtasa-lua-types",
+  "bugs": "https://gitlab.toliak.ru/mtasa/typescript/mtasa-lua-types/issues",
+  "scripts": {
+    "test": "dtslint .",
+    "prettier": "prettier"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.toliak.ru/mtasa/typescript/mtasa-lua-types.git"
+  },
+  "keywords": [
+    "mtasa",
+    "types",
+    "mtasa-lua"
+  ],
+  "author": "Anatolii Titov <a@toliak.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "dtslint": "^4.0.7",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.5"
+  }
+}

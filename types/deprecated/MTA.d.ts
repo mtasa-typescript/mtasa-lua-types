@@ -48,7 +48,7 @@ declare const client: element;
 declare const sourceResourceRoot: element;
 
 /**
- * the resource that called the event 
+ * the resource that called the event
  */
 declare const sourceResource: element;
 

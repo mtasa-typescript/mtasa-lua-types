@@ -1,11 +1,11 @@
 /**
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 
 declare function createRadarArea(startPosX: number, startPosY: number, sizeX: number, sizeY: number, r?: 255, g?: 0, b?: 0, a?: 255, visibleTo?: element): RadarArea
