@@ -1151,7 +1151,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns two ''ints'' representing the width and height in pixels of the material, or false if an invalid parameter was passed to the function. 
      * * If the material is a volume texture, this function will return three ''ints'' representing the width, height and depth.
      */
-    export function dxGetMaterialSize(material: element, ): LuaMultiReturn<[number,number,[,int]]>;
+    export function dxGetMaterialSize(material: element, ): LuaMultiReturn<[number,number,number?]>;
 
     /**
      * This function gets the color of a single pixel from [[Texture_pixels|pixels]] contained in a string. It only works with ''''plain'''' format pixels.
@@ -2253,7 +2253,7 @@ declare module 'mtasa/client/functions' {
      * * *a table of all CVar values, if CVar was not specified
      * * *''false'' if an invalid CVar was specified
      */
-    export function getChatboxLayout(CVar: string, ): bool|int|table;
+    export function getChatboxLayout(CVar: string, ): boolean|number|table;
 
     /**
      * This function creates a [[GUI font]] element that can be used in [[guiSetFont]]. Successful font creation is not guaranteed, and may fail due to hardware or memory limitations.
@@ -2851,13 +2851,16 @@ declare module 'mtasa/client/functions' {
 
     /**
      * Adds a row to a grid list, and optionally add simple text items with your rows.  Use [[guiGridListSetItemText]] to add row headers.
-     * ATTENTION: Without [[guiGridListSetItemText]] there is no row added to the grid. 
+     * ATTENTION: Without [[guiGridListSetItemText]] there is no row added to the grid.
      * Look at the example, first you give the row a name with '''[[row =]]''' guiGridListAddRow ( playerList ), and then you use [[guiGridListSetItemText]]. }}
      * @see {@link https://wiki.multitheftauto.com/wiki/guiGridListAddRow|MTASA Wiki}
      * @param gridList The grid list you want to add a row to  {{New feature/item|3.0153|1.5.3||
+     * @param itemText1 The text for the first column item in the row. Either a string or a number can be passed (use numbers for sorting purposes).
+     * @param itemText2 The text for the second column item in the row. Either a string or a number can be passed (use numbers for sorting purposes).
+     * @param args Item text for any other columns
      * @return Returns the row id if it has been created, ''false'' otherwise.
      */
-    export function guiGridListAddRow(gridList: element, string?: number, string?: number, ...args: any[], ): number;
+    export function guiGridListAddRow(gridList: element, itemText1?: number|string, itemText2?: number|string, ...args: any[], ): number;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -4084,6 +4087,8 @@ declare module 'mtasa/client/functions' {
      * 
      * @see {@link https://wiki.multitheftauto.com/wiki/setPedEnterVehicle|MTASA Wiki}
      * @param thePed The player or ped to enter the vehicle.  **''Note: The player must be the local player.''  **''Note: The ped must be synced by the client. Use [[isElementSyncer]] clientside to check if the client is syncing. Use [[setElementSyncer]] serverside to change the syncer manually.''
+     * @param passenger If set to true, the ped will enter as passenger in the nearest available seat, otherwise he will enter as driver.
+     * @default false
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      * * When this function returns ''true'', the client will ask server for permission to enter a vehicle. Actually entering can still fail in the following cases
      * * *The function is used on a ped, but another client is not on version '''1.5.8 r20740''' or newer.
@@ -4096,7 +4101,7 @@ declare module 'mtasa/client/functions' {
      * * *[[onClientVehicleStartEnter]] was cancelled by a script.
      * * *The ped has an active TASK_PRIMARY [[task]]. Use [[getPedTask]] to monitor what the ped is doing.
      */
-    export function setPedEnterVehicle(thePed: ped, nil?: vehicle, false?: passenger, ): boolean;
+    export function setPedEnterVehicle(thePed: ped, theVehicle?: vehicle, passenger?: boolean, ): boolean;
 
     /**
      * 
@@ -4650,7 +4655,7 @@ declare module 'mtasa/client/functions' {
      * @param wheelGroup : The group of wheels of the vehicle model to retrieve their size value. If not specified, it defaults to all_wheels. The following values are supported:
      * @return Returns a decimal number or a table, depending on the specified wheel group. If the specified vehicle model ID or wheel group are not valid, an error is raised instead. The meaning of the wheel size values is documented in [[setVehicleModelWheelSize]].
      */
-    export function getVehicleModelWheelSize(vehicleModel: number, wheelGroup?: string, ): float|table;
+    export function getVehicleModelWheelSize(vehicleModel: number, wheelGroup?: string, ): number|table;
 
     /**
      * This function gets the nitro count of the [[vehicle]].
@@ -5058,7 +5063,7 @@ declare module 'mtasa/client/functions' {
      * * **an [[element]] if the weapon is firing an entity.
      * * * Returns ''false'' if the weapon element is not valid.
      */
-    export function getWeaponTarget(theWeapon: weapon, ): nil/element/float;
+    export function getWeaponTarget(theWeapon: weapon, ): null|element|number;
 
     /**
      * This function resets the firing rate of a [[Element/Weapon|custom weapon]] to the default one.
@@ -5365,137 +5370,17 @@ declare module 'mtasa/client/functions' {
      * * *'''worldModelRotationX,Y,Z:''' If worldModelID is set, this will contain the world model rotation.
      * * *'''worldLODModelID:''' If worldModelID is set, this will contain the LOD model ID if applicable.
      */
-    export function processLineOfSight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean, checkVehicles: boolean, checkPlayers: boolean, checkObjects: boolean, checkDummies: boolean, seeThroughStuff: boolean, ignoreSomeObjectsForCamera: boolean, shootThroughStuff: boolean, ignoredElement: element, includeWorldModelInformation: boolean, bIncludeCarTyres: boolean, ): LuaMultiReturn<[boolean,--,hit
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
-float,number,number,--,hitX,hitY,hitZ
-element,--,hitElement
-float,number,number,--,normalX,normalY,normalZ
-int,--,material
-float,--,lighting
-int,--,piece
-int,--,worldModelID
-float,number,number,--,worldModelPositionXYZ
-float,number,number,--,worldModelRotationXYZ
-int,--,worldLODModelID]>;
+    export function processLineOfSight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean, checkVehicles: boolean, checkPlayers: boolean, checkObjects: boolean, checkDummies: boolean, seeThroughStuff: boolean, ignoreSomeObjectsForCamera: boolean, shootThroughStuff: boolean, ignoredElement: element, includeWorldModelInformation: boolean, bIncludeCarTyres: boolean, ): LuaMultiReturn<[boolean,
+number,number,number,
+element,
+number,number,number,
+number,
+number,
+number,
+number,
+number,number,number,
+number,number,number,
+number,]>;
 
     /**
      * This function is used to reset the background sounds to the default setting.

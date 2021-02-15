@@ -17,5 +17,7 @@ and
 (TL;DR: by default, you should not add function definitions manually. Thay can be parsed from MTASA Wiki and then
 edited)
 
+Also, please, apply prettier to the code
+
 
 

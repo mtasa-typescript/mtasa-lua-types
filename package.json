@@ -17,7 +17,10 @@
     "types",
     "mtasa-lua"
   ],
-  "author": "Anatolii Titov <a@toliak.ru>",
+  "contributors": [
+    "Anatolii Titov <a@toliak.ru>",
+    "Dominic Hock <???>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "dtslint": "^4.0.7",

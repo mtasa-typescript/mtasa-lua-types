@@ -4860,7 +4860,7 @@ declare module 'mtasa/shared/functions' {
      * @param index If you only want to retrieve one particular child node, specify its (0-based) index here. For example if you only want the first node, specify 0; the fifth node has index 4, etc.
      * @return If '''index''' isn't specified, returns a table containing all child nodes. If '''index''' is specified, returns the corresponding child node if it exists. If no nodes are found, it returns an empty table. Returns ''false'' in case of failure.
      */
-    export function xmlNodeGetChildren(parent: xmlnode, index: number, ): table/xmlnode;
+    export function xmlNodeGetChildren(parent: xmlnode, index: number, ): table|xmlnode;
 
     /**
      * Gets the tag name of the specified XML node.
