@@ -25,6 +25,25 @@ declare module 'mtasa/client/structures' {
     export type userdata = any;
     export type water = any;
     export type timer = any;
+    export type browser = any;
+    export type progressBar = any;
+    export type light = any;
+    export type effect = any;
+    export type gui = any;
+    export type searchlight = any;
+    export type weapon = any;
+    export type guibrowser = any;
+    export type txd = any;
+    export type dff = any;
+    export type col = any;
+    export type ifp = any;
+    export type primitiveType = any;
+    export type guiscrollbar = any;
+    export type guimemo = any;
+    export type texture = any;
+    export type objectgroup = any;
+    export type projectile = any;
+    export type Matrix = any;
 
     export type HandleFunction = any;
 }
