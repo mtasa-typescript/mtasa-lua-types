@@ -1,4 +1,50 @@
-import {account, acl, aclgroup, player, table, ban, blip,colshape,element,ped,pickup,resource,team,textdisplay,vehicle,xmlnode,textitem,HandleFunction,file,marker,radararea,request,userdata,timer,water,browser,progressBar,light,effect,gui,searchlight,weapon,guibrowser,txd,dff,col,ifp,primitiveType,guiscrollbar,guimemo,texture,objectgroup,projectile,Matrix,} from "mtasa/client/structures";
+import {
+    account,
+    acl,
+    aclgroup,
+    player,
+    table,
+    ban,
+    blip,
+    colshape,
+    element,
+    ped,
+    pickup,
+    resource,
+    team,
+    textdisplay,
+    vehicle,
+    xmlnode,
+    textitem,
+    HandleFunction,
+    file,
+    marker,
+    radararea,
+    request,
+    userdata,
+    timer,
+    water,
+    browser,
+    progressBar,
+    light,
+    effect,
+    gui,
+    searchlight,
+    weapon,
+    guibrowser,
+    txd,
+    dff,
+    col,
+    ifp,
+    primitiveType,
+    guiscrollbar,
+    guimemo,
+    texture,
+    objectgroup,
+    projectile,
+    Matrix,
+} from 'mtasa/client/structures';
+
 declare module 'mtasa/client/functions' {
 
     /**
@@ -15,7 +61,7 @@ declare module 'mtasa/client/functions' {
      * @param id The ID of the radio station you want to get the name of. It is a number from 0 to 12.  {{SoundID}}
      * @return Returns a string containing the station name if successful, ''false'' otherwise.
      */
-    export function getRadioChannelName(id: number, ): string;
+    export function getRadioChannelName(id: number): string;
 
     /**
      * This function checks if a big sound container is available to use or not.
@@ -25,7 +71,7 @@ declare module 'mtasa/client/functions' {
      * @param audioContainer The container name. Possible values are: feet, genrl, pain_a, script, spc_ea, spc_fa, spc_ga, spc_na, spc_pa
      * @return Returns ''true'' if the sound container is available, ''false'' otherwise.
      */
-    export function getSFXStatus(audioContainer: string, ): boolean;
+    export function getSFXStatus(audioContainer: string): boolean;
 
     /**
      * This function gets the beats per minute of a specific [[sound]] element.
@@ -35,17 +81,17 @@ declare module 'mtasa/client/functions' {
      * @param sound a sound element that is created using playSound or playSound3D
      * @return Returns the beats per minute of the given sound.
      */
-    export function getSoundBPM(sound: element, ): number;
+    export function getSoundBPM(sound: element): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getSoundBufferLength|MTASA Wiki}
      * @param theSound the sound element which buffer length you want to get.
      * @return * A [[float]] value indicating the buffer playback length of the [[sound]] in seconds.
      * * * ''false'' if the sound is not a stream.
      * * * ''nil'' if the sound is invalid.
      */
-    export function getSoundBufferLength(theSound: element, ): number;
+    export function getSoundBufferLength(theSound: element): number;
 
     /**
      * Returns the states of all effects of a sound.
@@ -55,7 +101,7 @@ declare module 'mtasa/client/functions' {
      * * '''Sound effect names:'''
      * * {{Sound_Effects}}
      */
-    export function getSoundEffects(sound: element, ): table;
+    export function getSoundEffects(sound: element): table;
 
     /**
      * This function gets the fast fourier transform data for an audio stream which is a table of floats representing the current audio frame. This allows things like visualisations.
@@ -72,7 +118,7 @@ declare module 'mtasa/client/functions' {
      * * Returns ''false'' if the sound is not playing yet or hasn't buffered in the
      * * case of streams.
      */
-    export function getSoundFFTData(sound: element, iSamples: number, iBands?: number, ): table;
+    export function getSoundFFTData(sound: element, iSamples: number, iBands?: number): table;
 
     /**
      * This function is used to return the playback length of the specified [[sound]] element.
@@ -82,7 +128,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element which length you want to return.
      * @return Returns an [[float]] value indicating the playback length of the [[sound]] element in seconds.
      */
-    export function getSoundLength(theSound: element, ): number;
+    export function getSoundLength(theSound: element): number;
 
     /**
      * This function gets the left/right level from a [[sound]] [[element]].
@@ -92,7 +138,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element which level data you want to return.
      * @return Returns a two ''integers'' in range from 0 to 32768.
      */
-    export function getSoundLevelData(theSound: element, ): LuaMultiReturn<[number,number]>;
+    export function getSoundLevelData(theSound: element): LuaMultiReturn<[number, number]>;
 
     /**
      * Gets a custom [[sound]] max distance at which the sound stops.
@@ -100,20 +146,20 @@ declare module 'mtasa/client/functions' {
      * @param sound a sound element.
      * @return Returns an ''integer'' of the max distance, ''false'' if invalid arguments where passed.
      */
-    export function getSoundMaxDistance(sound: element, ): number;
+    export function getSoundMaxDistance(sound: element): number;
 
     /**
      * Used to get the meta tags attached to a sound. These provide information about the sound, for instance the title or the artist.
      * *This function does not work on remote WAV files
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getSoundMetaTags|MTASA Wiki}
-     * @param sound a sound element.  {{OptionalArg}} 
+     * @param sound a sound element.  {{OptionalArg}}
      * @param format a filter string to get a specific meta tag.
      * @default ""
      * @return Returns a [[table]], but only a [[string]] if '''format''' is given, with all data available (keys are listed below) for the sound if successful, ''false'' otherwise. If any data is unavailable then the associated key is not written to the table.
      * * {{Sound_Meta_Tags}}
      */
-    export function getSoundMetaTags(sound: element, format?: string, ): table;
+    export function getSoundMetaTags(sound: element, format?: string): table;
 
     /**
      * Gets a custom [[sound]] Minimum distance at which the sound stops getting louder.
@@ -121,7 +167,7 @@ declare module 'mtasa/client/functions' {
      * @param sound a sound element.
      * @return Returns an ''integer'' of the minimum distance, ''false'' if invalid arguements where passed.
      */
-    export function getSoundMinDistance(sound: element, ): number;
+    export function getSoundMinDistance(sound: element): number;
 
     /**
      * This function is used to get the pan level of the specified [[sound]] element.
@@ -129,7 +175,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element which pan you want to get.
      * @return Returns ''float'' value with range from ''-1.0 (left)'' to ''1.0 (right)'', ''false'' otherwise.
      */
-    export function getSoundPan(theSound: element, ): number;
+    export function getSoundPan(theSound: element): number;
 
     /**
      * This function is used to return the current seek position of the specified [[sound]] element.
@@ -138,7 +184,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound The sound element which seek position you want to return.
      * @return Returns a [[float]] value indicating the seek position of the [[sound]] element in seconds.
      */
-    export function getSoundPosition(theSound: element, ): number;
+    export function getSoundPosition(theSound: element): number;
 
     /**
      * This function gets the properties of a specific [[sound]].
@@ -148,7 +194,7 @@ declare module 'mtasa/client/functions' {
      * @return This function returns 3 [[float|floats]] and a [[boolean]] value:
      * * The first float is the sound's [http://en.wikipedia.org/wiki/Sampling_rate sample rate], the second one the sound's [http://en.wikipedia.org/wiki/Tempo tempo], and the third one the [http://en.wikipedia.org/wiki/Pitch_%28music%29 pitch] of the sound. The boolean representing whether the sound is reversed or not.
      */
-    export function getSoundProperties(sound: element, ): LuaMultiReturn<[number,number,number,boolean]>;
+    export function getSoundProperties(sound: element): LuaMultiReturn<[number, number, number, boolean]>;
 
     /**
      * This function is used to return the playback speed of the specified [[sound]] [[element]].
@@ -156,7 +202,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element which playback speed you want to return.
      * @return Returns an [[float]] value indicating the playback speed of the [[sound]] [[element]]. Default sound playback speed is '''1.0'''.
      */
-    export function getSoundSpeed(theSound: element, ): number;
+    export function getSoundSpeed(theSound: element): number;
 
     /**
      * This function is used to return the volume level of the specified [[sound]] [[element]].
@@ -166,7 +212,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element which volume you want to return.
      * @return Returns a [[float]] representing the volume level of the [[sound]] [[element]], ''false'' if invalid arguments were passed.
      */
-    export function getSoundVolume(theSound: element, ): number;
+    export function getSoundVolume(theSound: element): number;
 
     /**
      * This function gets the wave form data for an audio stream which is a table of floats representing the current audio frame as a wave.
@@ -180,15 +226,15 @@ declare module 'mtasa/client/functions' {
      * * Returns ''false'' if the sound is not playing yet or hasn't buffered in the
      * * case of streams.
      */
-    export function getSoundWaveData(sound: element, iSamples: number, ): table;
+    export function getSoundWaveData(sound: element, iSamples: number): table;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/isSoundLooped|MTASA Wiki}
      * @param theSound The sound element which you want to get the loop state.
      * @return Returns ''true'' if the [[sound]] [[element]] is seted to loop, ''false'' otherwise.
      */
-    export function isSoundLooped(theSound: element, ): boolean;
+    export function isSoundLooped(theSound: element): boolean;
 
     /**
      * This function checks whether panning is enabled in a [[sound]] [[element]] or not.
@@ -196,7 +242,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/isSoundPanningEnabled|MTASA Wiki}
      * @return Returns ''true'' if the sound is valid and it has panning enabled, ''false'' if it does not or is not valid.
      */
-    export function isSoundPanningEnabled(theSound: element, ): boolean;
+    export function isSoundPanningEnabled(theSound: element): boolean;
 
     /**
      * This function is used to return the current pause state of the specified [[sound]] [[element]].
@@ -206,7 +252,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element which pause state you want to return.
      * @return Returns ''true'' if the [[sound]] [[element]] is paused, ''false'' if unpaused or invalid arguments were passed.
      */
-    export function isSoundPaused(theSound: element, ): boolean;
+    export function isSoundPaused(theSound: element): boolean;
 
     /**
      * This function plays a sound from GTA's big sound containers.
@@ -222,7 +268,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns a [[sound]] element if the sound was successfully created, ''false'' otherwise.
      * * {{New feature/item|3.0140|1.4|6443|
      */
-    export function playSFX(containerName: string, bankId: number, soundId: number, looped?: boolean, ): element;
+    export function playSFX(containerName: string, bankId: number, soundId: number, looped?: boolean): element;
 
     /**
      * This function plays a sound in the GTA world from GTA's big sound containers.
@@ -241,7 +287,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns a [[sound]] element if the sound was successfully created, ''false'' otherwise.
      * * {{New feature/item|3.0140|1.4|6443|
      */
-    export function playSFX3D(containerName: string, bankId: number, soundId: number, x: number, y: number, z: number, looped?: boolean, ): element;
+    export function playSFX3D(containerName: string, bankId: number, soundId: number, x: number, y: number, z: number, looped?: boolean): element;
 
     /**
      * Creates a [[sound]] [[element]] and plays it immediately after creation for the local player.<br />
@@ -249,14 +295,14 @@ declare module 'mtasa/client/functions' {
      * *The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT, S3M and PLS (e.g. Webstream).
      * *For performance reasons, when using playSound for effects that will be played lots (i.e. weapon fire), it is recommend that you convert your audio file to a one channel (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the effect can be played e.g. once every 50ms.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/playSound|MTASA Wiki}
-     * @param soundPath Can also be raw sound data.  |20460}}  {{OptionalArg}} 
+     * @param soundPath Can also be raw sound data.  |20460}}  {{OptionalArg}}
      * @param looped a boolean representing whether the sound will be looped. To loop the sound, use true. Loop is not available for streaming sounds, only for sound files.  {{New feature/item|3.0150|1.5||
      * @default false
      * @param throttled a boolean representing whether the sound will be throttled (i.e. given reduced download bandwidth). To throttle the sound, use true. Sounds will be throttled per default and only for URLs.  }}
      * @default true
      * @return Returns a [[sound]] [[element]] if the sound was successfully created, ''false'' otherwise.
      */
-    export function playSound(soundPath: string, looped: boolean, throttled: boolean, ): element;
+    export function playSound(soundPath: string, looped: boolean, throttled: boolean): element;
 
     /**
      * Creates a [[sound]] [[element]] in the GTA world and plays it immediately after creation for the local player. [[setElementPosition]] can be used to move the [[sound]] element around after it has been created. Remember to use [[setElementDimension]] after creating the sound to play it outside of dimension 0.<br />
@@ -267,12 +313,12 @@ declare module 'mtasa/client/functions' {
      * @param soundPath Can also be raw sound data.  |20460}}
      * @param x a floating point number representing the X coordinate on the map.
      * @param y a floating point number representing the Y coordinate on the map.
-     * @param z a floating point number representing the Z coordinate on the map.  {{OptionalArg}} 
+     * @param z a floating point number representing the Z coordinate on the map.  {{OptionalArg}}
      * @param looped a boolean representing whether the sound will be looped. To loop the sound, use true.  {{New feature/item|3.0150|1.5||
      * @default false
      * @return Returns a [[sound]] [[element]] if the sound was successfully created, ''false'' otherwise.
      */
-    export function playSound3D(soundPath: string, x: number, y: number, z: number, looped: boolean, ): element;
+    export function playSound3D(soundPath: string, x: number, y: number, z: number, looped: boolean): element;
 
     /**
      * This function sets the heard radio channel, even while not in a vehicle.
@@ -280,7 +326,7 @@ declare module 'mtasa/client/functions' {
      * @param ID The ID of the radio station you want to play.  {{SoundID}}
      * @return Returns ''true'' if channel was set successfully, ''false'' otherwise.
      */
-    export function setRadioChannel(ID: number, ): boolean;
+    export function setRadioChannel(ID: number): boolean;
 
     /**
      * Used to enable or disable specific [[sound]] effects.
@@ -291,10 +337,10 @@ declare module 'mtasa/client/functions' {
      * @param bEnable true if you want to enable the effect, false if you want to disable it.
      * @return Returns ''true'' if the effect was set successfully, ''false'' otherwise.
      */
-    export function setSoundEffectEnabled(theSound: element, effectName: string, bEnable: boolean, ): boolean;
+    export function setSoundEffectEnabled(theSound: element, effectName: string, bEnable: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setSoundLooped|MTASA Wiki}
      * @param theSound The sound element to set the loop.
      * @return Returns ''true'' if the [[sound]] [[element]] loop was successfully changed, ''false'' otherwise.
@@ -305,7 +351,7 @@ declare module 'mtasa/client/functions' {
      * * end)
      * * </syntaxhighlight>
      */
-    export function setSoundLooped(theSound: element, loop: boolean, ): boolean;
+    export function setSoundLooped(theSound: element, loop: boolean): boolean;
 
     /**
      * Sets a custom [[sound]] max distance at which the sound stops.
@@ -314,7 +360,7 @@ declare module 'mtasa/client/functions' {
      * @param distance the default value for this is 20
      * @return Returns a ''true'' if the max distance was set, ''false'' otherwise.
      */
-    export function setSoundMaxDistance(sound: element, distance: number, ): boolean;
+    export function setSoundMaxDistance(sound: element, distance: number): boolean;
 
     /**
      * Sets a custom [[sound]] Minimum distance at which the sound stops getting louder.
@@ -323,7 +369,7 @@ declare module 'mtasa/client/functions' {
      * @param distance an integer representing the distance the sound stops getting louder. the default value for this is 5
      * @return Returns a ''true'' if the minimum distance was set, ''false'' otherwise.
      */
-    export function setSoundMinDistance(sound: element, distance: number, ): boolean;
+    export function setSoundMinDistance(sound: element, distance: number): boolean;
 
     /**
      * This function is used to change the pan level of the specified [[sound]] element.
@@ -332,7 +378,7 @@ declare module 'mtasa/client/functions' {
      * @param pan A float|floating point number representing the desired pan level. Range is from -1.0 (left) to 1.0 (right)
      * @return Returns ''true'' if the [[sound]] element pan was successfully changed, ''false'' otherwise.
      */
-    export function setSoundPan(theSound: element, pan: number, ): boolean;
+    export function setSoundPan(theSound: element, pan: number): boolean;
 
     /**
      * This function toggles the panning of a sound (hearing it closer to the left or right side of the speakers due to the camera position). By default a sound has its panning enabled.
@@ -342,7 +388,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns ''true'' if the sound is valid and good arguments were passed, ''false'' if not.
      * * If the sound is not 3D, this function will return ''true'' as well, but [[isSoundPanningEnabled]] will always return ''true'' after this (so it has no effect).
      */
-    export function setSoundPanningEnabled(sound: element, enable: boolean, ): boolean;
+    export function setSoundPanningEnabled(sound: element, enable: boolean): boolean;
 
     /**
      * This function is used to either pause or unpause the playback of the specified [[sound]] [[element]].
@@ -353,7 +399,7 @@ declare module 'mtasa/client/functions' {
      * @param paused a boolean value representing whether the sound should be paused or not. To pause the sound, use true.
      * @return Returns ''true'' if the [[sound]] [[element]] was successfully paused, ''false'' otherwise.
      */
-    export function setSoundPaused(theSound: element, paused: boolean, ): boolean;
+    export function setSoundPaused(theSound: element, paused: boolean): boolean;
 
     /**
      * This function is used to change the seek position of the specified [[sound]] element.
@@ -364,7 +410,7 @@ declare module 'mtasa/client/functions' {
      * @param pos a float value representing the new seek position of the sound element in seconds.
      * @return Returns ''true'' if the [[sound]] element's seek position was successfully changed, ''false'' otherwise.
      */
-    export function setSoundPosition(theSound: element, pos: number, ): boolean;
+    export function setSoundPosition(theSound: element, pos: number): boolean;
 
     /**
      * This function edits the properties of a specific [[sound]].
@@ -373,12 +419,12 @@ declare module 'mtasa/client/functions' {
      * @param sound a sound element that is created using playSound or playSound3D
      * @param fSampleRate a float that defines the new sounds http://en.wikipedia.org/wiki/Sampling_rate sample rate
      * @param fTempo a float that defines the new sound http://en.wikipedia.org/wiki/Tempo tempo
-     * @param fPitch a float that defines the new sound http://en.wikipedia.org/wiki/Pitch_%28music%29 pitch  {{OptionalArg}} 
+     * @param fPitch a float that defines the new sound http://en.wikipedia.org/wiki/Pitch_%28music%29 pitch  {{OptionalArg}}
      * @param bReverse a boolean representing whether the sound will be reversed or not.
      * @default false
      * @return Returns ''true'' if the properties sucessfully set, ''false'' otherwise.
      */
-    export function setSoundProperties(sound: element, fSampleRate: number, fTempo: number, fPitch: number, bReverse?: boolean, ): boolean;
+    export function setSoundProperties(sound: element, fSampleRate: number, fTempo: number, fPitch: number, bReverse?: boolean): boolean;
 
     /**
      * This function can be used to change the playback speed of the specified [[sound]] [[element]].
@@ -387,7 +433,7 @@ declare module 'mtasa/client/functions' {
      * @param speed a floating point number representing the desired sound playback speed.
      * @return Returns ''true'' if the [[sound]] element playback speed was successfully changed, ''false'' otherwise.
      */
-    export function setSoundSpeed(theSound: element, speed: number, ): boolean;
+    export function setSoundSpeed(theSound: element, speed: number): boolean;
 
     /**
      * This function is used to change the volume level of the specified [[sound]] [[element]].
@@ -397,7 +443,7 @@ declare module 'mtasa/client/functions' {
      * @param volume A floating point number representing the desired volume level. Range is from 0.0 to 1.0. This can go above 1.0 for amplification.
      * @return Returns ''true'' if the [[sound]] [[element]] volume was successfully changed, ''false'' otherwise.
      */
-    export function setSoundVolume(theSound: element, volume: number, ): boolean;
+    export function setSoundVolume(theSound: element, volume: number): boolean;
 
     /**
      * Stops the sound playback for specified [[sound]] [[element]]. The sound element is also destroyed.
@@ -405,7 +451,7 @@ declare module 'mtasa/client/functions' {
      * @param theSound the sound element you want to stop playing.
      * @return Returns ''true'' if the sound was successfully stopped, ''false'' otherwise.
      */
-    export function stopSound(theSound: element, ): boolean;
+    export function stopSound(theSound: element): boolean;
 
     /**
      * This function checks if the browser can return to the previous page.
@@ -414,7 +460,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser you want to check for a previous page.
      * @return Returns ''true'' if the browser can navigate back, ''false'' otherwise.
      */
-    export function canBrowserNavigateBack(webBrowser: browser, ): boolean;
+    export function canBrowserNavigateBack(webBrowser: browser): boolean;
 
     /**
      * This function checks if the browser can go to the next page.
@@ -423,7 +469,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser you want check for a next page.
      * @return Returns ''true'' if the browser can go to the next page, ''false'' otherwise.
      */
-    export function canBrowserNavigateForward(webBrowser: browser, ): boolean;
+    export function canBrowserNavigateForward(webBrowser: browser): boolean;
 
     /**
      * This function creates a new web [[Element/Browser|browser]] element.
@@ -436,7 +482,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns a [[texture]] of the [[browser]] if it was created successfully, ''false'' otherwise. Returns also ''false'', if the user disabled remote pages and ''isLocal'' was set to ''false''.
      */
-    export function createBrowser(width: number, height: number, isLocal: boolean, transparent?: boolean, ): element;
+    export function createBrowser(width: number, height: number, isLocal: boolean, transparent?: boolean): element;
 
     /**
      * This function executes a Javascript string to the specified [[Element/Browser|browser]]. Works only with local browsers.
@@ -446,7 +492,7 @@ declare module 'mtasa/client/functions' {
      * @param jsCode The Javascript code string
      * @return Returns ''true'' if executing Javascript is allowed in the current context, ''false'' otherwise.
      */
-    export function executeBrowserJavascript(webBrowser: browser, jsCode: string, ): boolean;
+    export function executeBrowserJavascript(webBrowser: browser, jsCode: string): boolean;
 
     /**
      * This function will attempt to focus the [[Element/Browser|browser]] or unfocus all browsers. The browser that is focused will retrieve keyboard input.
@@ -455,7 +501,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The web browser to be focused - if this is nil, it will unfocus all browsers.
      * @return Returns ''true'' if the browser was focused or if nil was passed, ''false'' if it failed to focus or the browser does not exist.
      */
-    export function focusBrowser(webBrowser: browser, ): boolean;
+    export function focusBrowser(webBrowser: browser): boolean;
 
     /**
      * This function gets a given property of a specified browser.
@@ -465,7 +511,7 @@ declare module 'mtasa/client/functions' {
      * @param key The browser property key. It can be:
      * @return Returns the value if the property was successfully found, ''false'' otherwise.
      */
-    export function getBrowserProperty(theBrowser: browser, key: string, ): boolean;
+    export function getBrowserProperty(theBrowser: browser, key: string): boolean;
 
     /**
      * This function returns a table containing the browser settings.
@@ -486,7 +532,7 @@ declare module 'mtasa/client/functions' {
      * @param callback a callback function with syntax as described below
      * @return Returns ''true'' if valid arguments have been passed, ''false'' otherwise.
      */
-    export function getBrowserSource(webBrowser: browser, callback: HandleFunction, ): boolean;
+    export function getBrowserSource(webBrowser: browser, callback: HandleFunction): boolean;
 
     /**
      * This function returns the title of the passed [[Element/Browser|browser]].
@@ -495,7 +541,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser
      * @return Returns the title as a [[string]]. Returns false if invalid arguments were passed.
      */
-    export function getBrowserTitle(webBrowser: browser, ): string;
+    export function getBrowserTitle(webBrowser: browser): string;
 
     /**
      * This function returns the URL of the specified [[Element/Browser|browser]].
@@ -504,7 +550,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser
      * @return Returns the web browser URL.
      */
-    export function getBrowserURL(webBrowser: browser, ): string;
+    export function getBrowserURL(webBrowser: browser): string;
 
     /**
      * This function injects a mouse click (state: down).
@@ -514,7 +560,7 @@ declare module 'mtasa/client/functions' {
      * @param mouseButton The mouse button (Possible values: left, middle, right)
      * @return Returns ''true'' if the click was successfully injected, ''false'' otherwise.
      */
-    export function injectBrowserMouseDown(webBrowser: browser, mouseButton: string, ): boolean;
+    export function injectBrowserMouseDown(webBrowser: browser, mouseButton: string): boolean;
 
     /**
      * This function injects a mouse movement.
@@ -525,20 +571,20 @@ declare module 'mtasa/client/functions' {
      * @param posY Absolute Y screen coordinate
      * @return Returns ''true'' if the movement was injected successfully, ''false'' otherwise.
      */
-    export function injectBrowserMouseMove(webBrowser: browser, posX: number, posY: number, ): boolean;
+    export function injectBrowserMouseMove(webBrowser: browser, posX: number, posY: number): boolean;
 
     /**
-     * This function injects a mouse click (state: up). 
+     * This function injects a mouse click (state: up).
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/injectBrowserMouseUp|MTASA Wiki}
      * @param webBrowser The web browser
      * @param mouseButton The mouse button (Possible values: left, middle, right)
      * @return Returns ''true'' if the click was successfully injected, ''false'' otherwise.
      */
-    export function injectBrowserMouseUp(webBrowser: browser, mouseButton: string, ): boolean;
+    export function injectBrowserMouseUp(webBrowser: browser, mouseButton: string): boolean;
 
     /**
-     * This function injects mouse wheel events. 
+     * This function injects mouse wheel events.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/injectBrowserMouseWheel|MTASA Wiki}
      * @param webBrowser The web browser
@@ -546,7 +592,7 @@ declare module 'mtasa/client/functions' {
      * @param horizontalScroll : Amount of units you want the browser to scroll along the X-axe.
      * @return Returns ''true'' if the mouse action was successfully injected, ''false'' otherwise.
      */
-    export function injectBrowserMouseWheel(webBrowser: browser, verticalScroll: number, horizontalScroll: number, ): boolean;
+    export function injectBrowserMouseWheel(webBrowser: browser, verticalScroll: number, horizontalScroll: number): boolean;
 
     /**
      * This function checks if the specified URL is blocked from being loaded.
@@ -557,7 +603,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''false'' if the URL is able to be loaded, ''true'' if it is blocked and ''nil'' if an invalid domain/URL was passed.
      */
-    export function isBrowserDomainBlocked(address: string, isURL?: boolean, ): boolean;
+    export function isBrowserDomainBlocked(address: string, isURL?: boolean): boolean;
 
     /**
      * This function checks if a browser is focused.
@@ -565,7 +611,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser
      * @return Returns ''true'' if the browser is focused, ''false'' otherwise and ''nil'' if invalid arguments were passed.
      */
-    export function isBrowserFocused(webBrowser: browser, ): boolean;
+    export function isBrowserFocused(webBrowser: browser): boolean;
 
     /**
      * This function checks if a browser is currently loading a website.
@@ -574,7 +620,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser
      * @return Returns ''true'' if the browser is loading a website, ''false'' otherwise and ''nil'' if invalid arguments were passed.
      */
-    export function isBrowserLoading(webBrowser: browser, ): boolean;
+    export function isBrowserLoading(webBrowser: browser): boolean;
 
     /**
      * This function loads the specified URL.
@@ -588,7 +634,7 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Returns ''true'' if the URL was successfully loaded.
      */
-    export function loadBrowserURL(webBrowser: browser, url: string, postData?: string, urlEncoded?: boolean, ): boolean;
+    export function loadBrowserURL(webBrowser: browser, url: string, postData?: string, urlEncoded?: boolean): boolean;
 
     /**
      * Returns the browser to the previous page.
@@ -597,7 +643,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser that you want return to the previous page.
      * @return Returns ''true'' if the browser has returned to the previous page, ''false'' otherwise.
      */
-    export function navigateBrowserBack(webBrowser: browser, ): boolean;
+    export function navigateBrowserBack(webBrowser: browser): boolean;
 
     /**
      * This function takes the browser to the next page.
@@ -606,7 +652,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser that you want to take to the next page.
      * @return Returns ''true'' if the browser has gone to the next page, ''false'' otherwise.
      */
-    export function navigateBrowserForward(webBrowser: browser, ): boolean;
+    export function navigateBrowserForward(webBrowser: browser): boolean;
 
     /**
      * This function reloads the current browser's page.
@@ -615,7 +661,7 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The browser that you want to reload.
      * @return Returns ''true'' if the browser has reloaded, ''false'' otherwise.
      */
-    export function reloadBrowserPage(webBrowser: browser, ): boolean;
+    export function reloadBrowserPage(webBrowser: browser): boolean;
 
     /**
      * This function opens a request window in order to accept the requested remote URLs.
@@ -627,7 +673,7 @@ declare module 'mtasa/client/functions' {
      * @param callback A callback function that is called as soon as the result is available  Syntax:  <syntaxhighlight lang="lua">function(bool wasAccepted, table new_domains)</syntaxhighlight>
      * @return Returns '''true''', if the string was successfully read, '''false''' otherwise.
      */
-    export function requestBrowserDomains(pages: table, parseAsURL?: boolean, callback?: HandleFunction, ): boolean;
+    export function requestBrowserDomains(pages: table, parseAsURL?: boolean, callback?: HandleFunction): boolean;
 
     /**
      * Allows resizing of CEF browsers at runtime.
@@ -638,7 +684,7 @@ declare module 'mtasa/client/functions' {
      * @param height The new height of the browser.
      * @return Returns ''true'' if the browser is resized successfully, ''false'' if there's something wrong.
      */
-    export function resizeBrowser(webBrowser: browser, width: number, height: number, ): boolean;
+    export function resizeBrowser(webBrowser: browser, width: number, height: number): boolean;
 
     /**
      * This function provides a requestable ajax resource for Lua/Javascript communication for a [[Element/Browser|browser]].
@@ -647,9 +693,9 @@ declare module 'mtasa/client/functions' {
      * @param webBrowser The web browser which will execute the Javascript code
      * @param url The URL endpoint to handle  {{Warning|Do not use the same path as an existing file as url parameter. Ajax handlers have a higher priority than regular files, which will lead to inaccesibility of the original file if an ajax handler is attached to the same path. }}
      * @param handler The function to call if the webBrowser attempts to open the ajax endpoint. If this parameter is nil or omitted, the ajax handler for the url will be deleted.
-     * @return 
+     * @return
      */
-    export function setBrowserAjaxHandler(webBrowser: browser, url: string, handler?: HandleFunction, ): boolean;
+    export function setBrowserAjaxHandler(webBrowser: browser, url: string, handler?: HandleFunction): boolean;
 
     /**
      * This function sets a given property of a specified browser.
@@ -660,7 +706,7 @@ declare module 'mtasa/client/functions' {
      * @param value A value indicating whether to enable (1) the property or not (0)
      * @return Returns ''true'' if the property was successfully set, ''false'' otherwise.
      */
-    export function setBrowserProperty(theBrowser: browser, key: string, value: string, ): boolean;
+    export function setBrowserProperty(theBrowser: browser, key: string, value: string): boolean;
 
     /**
      * This function sets the rendering state of a browser.
@@ -670,7 +716,7 @@ declare module 'mtasa/client/functions' {
      * @param paused true to pause rendering, false to continue
      * @return Returns ''true'' if the state was successfully changed
      */
-    export function setBrowserRenderingPaused(webBrowser: browser, paused: boolean, ): boolean;
+    export function setBrowserRenderingPaused(webBrowser: browser, paused: boolean): boolean;
 
     /**
      * This function sets either a specific [[Element/Browser|browser]]'s volume, or the overall volume for browsers.
@@ -678,9 +724,9 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/setBrowserVolume|MTASA Wiki}
      * @param webBrowser A browser element
      * @param volume A float|floating point number representing the desired volume level. Range is from 0.0 to 1.0
-     * @return 
+     * @return
      */
-    export function setBrowserVolume(webBrowser: browser, volume: number, ): boolean;
+    export function setBrowserVolume(webBrowser: browser, volume: number): boolean;
 
     /**
      * This function toggles the visibility of the developer tools pane.
@@ -690,7 +736,7 @@ declare module 'mtasa/client/functions' {
      * @param visible true to show the tools, false to hide
      * @return Returns ''true'' if the visibility was successfully toggled, ''false'' if an error occurred
      */
-    export function toggleBrowserDevTools(webBrowser: browser, visible: boolean, ): boolean;
+    export function toggleBrowserDevTools(webBrowser: browser, visible: boolean): boolean;
 
     /**
      * This function creates a new CEGUI web [[Element/Browser|browser]] element.
@@ -709,7 +755,7 @@ declare module 'mtasa/client/functions' {
      * @default nil
      * @return Returns a [[gui-browser]] element if it was created successfully, ''false'' otherwise. Returns also ''false'', if the user disabled remote pages and ''isLocal'' was set to ''false''.
      */
-    export function guiCreateBrowser(x: number, y: number, width: number, height: number, isLocal: boolean, isTransparent: boolean, isRelative: boolean, parent?: element, ): guibrowser;
+    export function guiCreateBrowser(x: number, y: number, width: number, height: number, isLocal: boolean, isTransparent: boolean, isRelative: boolean, parent?: element): guibrowser;
 
     /**
      * This function gets the browser element behind a gui-browser (a browser that has been created via [[guiCreateBrowser]]).
@@ -717,31 +763,31 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/guiGetBrowser|MTASA Wiki}
      * @return Returns the [[Element/Browser|Browser]] element if a correct [[Element/gui-browser|gui-browser]] has been passed, ''false'' otherwise.
      */
-    export function guiGetBrowser(browser: gui, ): browser;
+    export function guiGetBrowser(browser: gui): browser;
 
     /**
-     * This function returns an [[element]] that corresponds to the game camera 
+     * This function returns an [[element]] that corresponds to the game camera
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getCamera|MTASA Wiki}
-     * @return Returns an [[element]] that corresponds to the game camera 
+     * @return Returns an [[element]] that corresponds to the game camera
      */
     export function getCamera(): element;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getCameraClip|MTASA Wiki}
      * @return *'''objects:''' if you want the camera to clip on objects.
      * * *'''vehicles:''' if you want the camera to clip on vehicles.
      */
-    export function getCameraClip(): LuaMultiReturn<[boolean,boolean]>;
+    export function getCameraClip(): LuaMultiReturn<[boolean, boolean]>;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getCameraFieldOfView|MTASA Wiki}
      * @param cameraMode the camera mode to get the field of view of  ** "player": whilst walking/running  ** "vehicle": whilst in vehicle  ** "vehicle_max": the max the field of view can go to when the vehicle is moving at a high speed (must be higher than "vehicle")
      * @return Returns one float - the field of view angle
      */
-    export function getCameraFieldOfView(cameraMode: string, ): number;
+    export function getCameraFieldOfView(cameraMode: string): number;
 
     /**
      * This function returns what goggle effect is currently affecting the camera.
@@ -775,16 +821,16 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Always returns ''true''.
      */
-    export function setCameraClip(objects: boolean, vehicles: boolean, ): boolean;
+    export function setCameraClip(objects: boolean, vehicles: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setCameraFieldOfView|MTASA Wiki}
      * @param cameraMode the camera mode to get the field of view of  ** "player": whilst walking/running  ** "vehicle": whilst in vehicle  ** "vehicle_max": the max the field of view can go to when the vehicle is moving at a high speed (must be higher than "vehicle")
      * @param fieldOfView The field of view angle, 0 to 179.
      * @return Returns ''true'' if the arguments are valid, ''false'' otherwise.
      */
-    export function setCameraFieldOfView(cameraMode: string, fieldOfView: number, ): boolean;
+    export function setCameraFieldOfView(cameraMode: string, fieldOfView: number): boolean;
 
     /**
      * This function allows you to set the camera's current goggle effect. This means you can activate nightvision or infrared effects by script
@@ -795,7 +841,7 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' if the effect was set correctly.
      * * * ''false'' otherwise.
      */
-    export function setCameraGoggleEffect(goggleEffect: string, noiseEnabled?: boolean, ): boolean;
+    export function setCameraGoggleEffect(goggleEffect: string, noiseEnabled?: boolean): boolean;
 
     /**
      * This function sets the camera shake level (as seen on the ''Are you going to San Fierro?'' singleplayer mission).}}
@@ -803,7 +849,7 @@ declare module 'mtasa/client/functions' {
      * @param shakeLevel : an integer between 0 and 255, which represents the camera shake intensity level.
      * @return Returns ''true'' if the camera shake level was changed, ''false'' if the required argument is incorrect or missing.
      */
-    export function setCameraShakeLevel(shakeLevel: number, ): boolean;
+    export function setCameraShakeLevel(shakeLevel: number): boolean;
 
     /**
      * This function allows you to set the camera's view mode if you are inside a [[vehicle]]. This indicates at what distance the camera will follow the player.
@@ -811,7 +857,7 @@ declare module 'mtasa/client/functions' {
      * @param viewMode : The view mode you wish to use  {{Camera view modes}}
      * @return Returns ''true'' if the view was set correctly, ''false'' otherwise.
      */
-    export function setCameraViewMode(viewMode: number, ): boolean;
+    export function setCameraViewMode(viewMode: number): boolean;
 
     /**
      * This function is used to get alpha (transparency) from the client's cursor.
@@ -825,14 +871,14 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/getCursorPosition|MTASA Wiki}
      * @return Returns 5 values: ''cursorX'', ''cursorY'', ''worldX'', ''worldY'', ''worldZ''. The first two values are the 2D relative screen coordinates of the cursor: ''cursorX'' goes from 0 (left side of the screen) to 1 (right side), ''cursorY'' goes from 0 (top) to 1 (bottom). The 3 values that follow are the 3D world map coordinates that the cursor points at. If the cursor isn't showing, returns ''false'' as the first value.
      */
-    export function getCursorPosition(): LuaMultiReturn<[number,number,number,number,number]>;
+    export function getCursorPosition(): LuaMultiReturn<[number, number, number, number, number]>;
 
     /**
      * This function is used to change alpha (transparency) from the client's cursor.
      * @see {@link https://wiki.multitheftauto.com/wiki/setCursorAlpha|MTASA Wiki}
      * @return Returns ''true'' if the new alpha value was set, or ''false'' otherwise.
      */
-    export function setCursorAlpha(alpha: number, ): boolean;
+    export function setCursorAlpha(alpha: number): boolean;
 
     /**
      * This function sets the current position of the mouse cursor.
@@ -842,14 +888,14 @@ declare module 'mtasa/client/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the position has been successfully set, ''false'' otherwise.
      */
-    export function setCursorPosition(cursorX: number, cursorY: number, ): boolean;
+    export function setCursorPosition(cursorX: number, cursorY: number): boolean;
 
     /**
      * This function converts [[Texture_pixels|pixels]] from one format to another.
      * @see {@link https://wiki.multitheftauto.com/wiki/dxConvertPixels|MTASA Wiki}
      * @return Returns a copy of the pixels in the new format, or ''false'' if invalid arguments were passed to the function.
      */
-    export function dxConvertPixels(pixels: string, newFormat: string, quality?: number, ): string;
+    export function dxConvertPixels(pixels: string, newFormat: string, quality?: number): string;
 
     /**
      * <br/>
@@ -866,7 +912,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns a [[DX font]] element if successful, ''false'' if invalid arguments were passed to the function, or there is insufficient resources available.
      * * '''You should always check to see if this function has returned false.'''
      */
-    export function dxCreateFont(filepath: string, size?: number, bold?: boolean, quality?: string, ): element;
+    export function dxCreateFont(filepath: string, size?: number, bold?: boolean, quality?: string): element;
 
     /**
      * This function creates a render target element, which is a special type of [[texture]] that can be drawn on with the dx functions. Successful render target creation is not guaranteed, and may fail due to hardware or memory limitations.
@@ -877,7 +923,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns a [[texture]] element if successful, ''false'' if the system is unable to create a render target.
      * * '''You should always check to see if this function has returned false.'''
      */
-    export function dxCreateRenderTarget(width: number, height: number, withAlpha?: boolean, ): element;
+    export function dxCreateRenderTarget(width: number, height: number, withAlpha?: boolean): element;
 
     /**
      * This function creates a screen source, which is a special type of [[texture]] that contains the screen as rendered by GTA
@@ -885,7 +931,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/dxCreateScreenSource|MTASA Wiki}
      * @return Returns a [[texture]] [[element]] if successful, ''false'' if invalid arguments were passed to the function.
      */
-    export function dxCreateScreenSource(width: number, height: number, ): element;
+    export function dxCreateScreenSource(width: number, height: number): element;
 
     /**
      * This function creates a [[texture]] element that can be used in the dxDraw functions.
@@ -896,7 +942,7 @@ declare module 'mtasa/client/functions' {
      * @param pixels Texture_pixels|Pixels containing image data. (plain, jpeg or png pixels can be used here)  or
      * @return Returns a [[texture]] if successful, ''false'' if invalid arguments were passed to the function.
      */
-    export function dxCreateTexture(pixels: string, textureFormat?: string, mipmaps?: boolean, textureEdge?: string, ): element;
+    export function dxCreateTexture(pixels: string, textureFormat?: string, mipmaps?: boolean, textureEdge?: string): element;
 
     /**
      * <lowercasetitle/>
@@ -920,7 +966,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''true'' if the creation of the 2D circle was successful, ''false'' otherwise.
      */
-    export function dxDrawCircle(posX: number, posY: number, radius: number, startAngle?: number, stopAngle?: number, theColor?: number, theCenterColor?: number, segments?: number, ratio?: number, postGUI?: boolean, ): boolean;
+    export function dxDrawCircle(posX: number, posY: number, radius: number, startAngle?: number, stopAngle?: number, theColor?: number, theCenterColor?: number, segments?: number, ratio?: number, postGUI?: boolean): boolean;
 
     /**
      * Differing from [[dxDrawImage]], this function only draws a part of an image on the screen for a single frame. In order for the image to stay visible continuously, you need to call this function with the same parameters on each frame update (see [[onClientRender]]).
@@ -946,7 +992,7 @@ declare module 'mtasa/client/functions' {
      * @default white
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function dxDrawImageSection(posX: number, posY: number, width: number, height: number, u: number, v: number, usize: number, vsize: number, image: string, rotation: number, rotationCenterOffsetX: number, rotationCenterOffsetY: number, color: number, postGUI: boolean, ): boolean;
+    export function dxDrawImageSection(posX: number, posY: number, width: number, height: number, u: number, v: number, usize: number, vsize: number, image: string, rotation: number, rotationCenterOffsetX: number, rotationCenterOffsetY: number, color: number, postGUI: boolean): boolean;
 
     /**
      * This function draws a 2D line across the screen - rendered for '''one''' frame.  This should be used in conjunction with [[onClientRender]] in order to display continuously.
@@ -960,9 +1006,9 @@ declare module 'mtasa/client/functions' {
      * @default 1.0
      * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
      * @default false
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function dxDrawLine(startX: number, startY: number, endX: number, endY: number, color: number, width?: number, postGUI?: boolean, ): boolean;
+    export function dxDrawLine(startX: number, startY: number, endX: number, endY: number, color: number, width?: number, postGUI?: boolean): boolean;
 
     /**
      * This function draws a 3D line between two points in the 3D world - rendered for '''one''' frame.  This should be used in conjunction with [[onClientRender]] in order to display continuously.
@@ -981,7 +1027,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawLine3D(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, color?: number, width?: number, postGUI?: boolean, ): boolean;
+    export function dxDrawLine3D(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, color?: number, width?: number, postGUI?: boolean): boolean;
 
     /**
      * This function draws a textured 3D line between two points in the 3D world - rendered for one frame.  This should be used in conjunction with [[onClientPreRender]] in order to display continuously.
@@ -996,7 +1042,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawMaterialLine3D(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, material: element, width: number, color: number, postGUI: boolean, faceTowardX: number, faceTowardY: number, faceTowardZ: number, ): boolean;
+    export function dxDrawMaterialLine3D(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, material: element, width: number, color: number, postGUI: boolean, faceTowardX: number, faceTowardY: number, faceTowardZ: number): boolean;
 
     /**
      * If image file is used, it should ideally have dimensions that are a power of two, to prevent possible blurring.
@@ -1006,7 +1052,7 @@ declare module 'mtasa/client/functions' {
      * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawMaterialPrimitive(pType: primitiveType, material: string, postGUI: boolean, vertice1: table, vertice2?: table, ...args: any[], ): boolean;
+    export function dxDrawMaterialPrimitive(pType: primitiveType, material: string, postGUI: boolean, vertice1: table, vertice2?: table, ...args: any[]): boolean;
 
     /**
      * This function draws a 3D primitive shape with material applied to it in the 3D world - rendered for one frame. This should be used in conjunction with [[onClientRender]] in order to display continuously.
@@ -1017,7 +1063,7 @@ declare module 'mtasa/client/functions' {
      * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawMaterialPrimitive3D(pType: primitiveType, material: string, postGUI: boolean, vertice1: table, vertice2?: table, ...args: any[], ): boolean;
+    export function dxDrawMaterialPrimitive3D(pType: primitiveType, material: string, postGUI: boolean, vertice1: table, vertice2?: table, ...args: any[]): boolean;
 
     /**
      * This function draws a textured 3D line between two points in the 3D world - rendered for one frame.  This should be used in conjunction with [[onClientPreRender]] in order to display continuously.
@@ -1035,16 +1081,16 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawMaterialSectionLine3D(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, u: number, v: number, usize: number, vsize: number, material: element, width: number, color: number, postGUI: boolean, faceTowardX: number, faceTowardY: number, faceTowardZ: number, ): boolean;
+    export function dxDrawMaterialSectionLine3D(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, u: number, v: number, usize: number, vsize: number, material: element, width: number, color: number, postGUI: boolean, faceTowardX: number, faceTowardY: number, faceTowardZ: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/dxDrawPrimitive|MTASA Wiki}
      * @param pType Type of primitive to be drawn.
      * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawPrimitive(pType: string, postGUI: boolean, vertice1: table, vertice2?: table, ...args: any[], ): boolean;
+    export function dxDrawPrimitive(pType: string, postGUI: boolean, vertice1: table, vertice2?: table, ...args: any[]): boolean;
 
     /**
      * This function draws a 3D primitive in the 3D world - rendered for '''one''' frame.  This should be used in conjunction with [[onClientRender]] in order to display continuously.
@@ -1056,10 +1102,10 @@ declare module 'mtasa/client/functions' {
      * @param vertex3 A table with the coordinates of the vertex plus its color.  The vertex should be passed like this:  <syntaxhighlight lang="lua">  {x, y, z, color}  </syntaxhighlight>  {{OptionalArg}}
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawPrimitive3D(primitiveType: string, postGUI: boolean, vertex1: table, vertex2: table, vertex3: table, vertex4?: table, ...args: any[], ): boolean;
+    export function dxDrawPrimitive3D(primitiveType: string, postGUI: boolean, vertex1: table, vertex2: table, vertex3: table, vertex4?: table, ...args: any[]): boolean;
 
     /**
-     * This function draws a 2D rectangle across the screen - rendered for '''one''' frame. This should be used in conjunction with [[onClientRender]] in order to display continuously. 
+     * This function draws a 2D rectangle across the screen - rendered for '''one''' frame. This should be used in conjunction with [[onClientRender]] in order to display continuously.
      * @see {@link https://wiki.multitheftauto.com/wiki/dxDrawRectangle|MTASA Wiki}
      * @param startX An float representing the absolute origin X position of the rectangle, represented by pixels on the screen.
      * @param startY An float representing the absolute origin Y position of the rectangle, represented by pixels on the screen.
@@ -1073,7 +1119,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns true if the operation was successful, false otherwise.
      */
-    export function dxDrawRectangle(startX: number, startY: number, width: number, height: number, color?: number, postGUI?: boolean, subPixelPositioning?: boolean, ): boolean;
+    export function dxDrawRectangle(startX: number, startY: number, width: number, height: number, color?: number, postGUI?: boolean, subPixelPositioning?: boolean): boolean;
 
     /**
      * Draws a string of text on the screen for one frame. In order for the text to stay visible continuously, you need to call this function with the same parameters on each frame update (see [[onClientRender]]).
@@ -1111,7 +1157,7 @@ declare module 'mtasa/client/functions' {
      * @default 0.0
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function dxDrawText(text: string, leftX: number, topY: number, rightX?: number, bottomY?: number, color?: number, scaleXY?: number, scaleY?: number, font?: string, alignX?: string, alignY?: string, clip?: boolean, wordBreak?: boolean, postGUI?: boolean, colorCoded?: boolean, subPixelPositioning?: boolean, fRotation?: number, fRotationCenterX?: number, fRotationCenterY?: number, ): boolean;
+    export function dxDrawText(text: string, leftX: number, topY: number, rightX?: number, bottomY?: number, color?: number, scaleXY?: number, scaleY?: number, font?: string, alignX?: string, alignY?: string, clip?: boolean, wordBreak?: boolean, postGUI?: boolean, colorCoded?: boolean, subPixelPositioning?: boolean, fRotation?: number, fRotationCenterX?: number, fRotationCenterY?: number): boolean;
 
     /**
      * This function drawn same sphere as /showcol. It provides 4 levels of iterations which mean density of sphere. Adjust radius to iterations to get optimum density of mesh. About 50 spheres with iterations = 4 can cause fps drop.
@@ -1121,7 +1167,7 @@ declare module 'mtasa/client/functions' {
      * @param fLineWidth A width of line
      * @return Returns a ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function dxDrawWiredSphere(x: number, y: number, z: number, radius: number, theColor: number, fLineWidth: number, iterations: number, ): boolean;
+    export function dxDrawWiredSphere(x: number, y: number, z: number, radius: number, theColor: number, fLineWidth: number, iterations: number): boolean;
 
     /**
      * This function returns the current blend mode for the dxDraw functions. The blend mode is set using [[dxSetBlendMode]]
@@ -1135,7 +1181,7 @@ declare module 'mtasa/client/functions' {
     export function dxGetBlendMode(): string;
 
     /**
-     * This function retrieves the theoretical height of a certain piece of text, if it were to be drawn using [[dxDrawText]]. 
+     * This function retrieves the theoretical height of a certain piece of text, if it were to be drawn using [[dxDrawText]].
      * @see {@link https://wiki.multitheftauto.com/wiki/dxGetFontHeight|MTASA Wiki}
      * @param scale The size of the text.
      * @default 1
@@ -1143,15 +1189,15 @@ declare module 'mtasa/client/functions' {
      * @default "default"
      * @return Returns an integer of the height of the text.
      */
-    export function dxGetFontHeight(scale: number, font: string, ): number;
+    export function dxGetFontHeight(scale: number, font: string): number;
 
     /**
      * This gets the dimensions of the supplied [[material]] element.
      * @see {@link https://wiki.multitheftauto.com/wiki/dxGetMaterialSize|MTASA Wiki}
-     * @return Returns two ''ints'' representing the width and height in pixels of the material, or false if an invalid parameter was passed to the function. 
+     * @return Returns two ''ints'' representing the width and height in pixels of the material, or false if an invalid parameter was passed to the function.
      * * If the material is a volume texture, this function will return three ''ints'' representing the width, height and depth.
      */
-    export function dxGetMaterialSize(material: element, ): LuaMultiReturn<[number,number,number?]>;
+    export function dxGetMaterialSize(material: element): LuaMultiReturn<[number, number, number?]>;
 
     /**
      * This function gets the color of a single pixel from [[Texture_pixels|pixels]] contained in a string. It only works with ''''plain'''' format pixels.
@@ -1160,7 +1206,7 @@ declare module 'mtasa/client/functions' {
      * @param y The Y coordinate for the pixel
      * @return Returns 4 ''int''s representing the rgba color value of the pixel if succesful, or ''false'' if invalid arguments were passed to the function.
      */
-    export function dxGetPixelColor(pixels: string, x: number, y: number, ): LuaMultiReturn<[number,number,number,number]>;
+    export function dxGetPixelColor(pixels: string, x: number, y: number): LuaMultiReturn<[number, number, number, number]>;
 
     /**
      * This function gets the dimensions of [[Texture_pixels|pixels]] contained in a string. It works with all pixel formats.
@@ -1168,14 +1214,14 @@ declare module 'mtasa/client/functions' {
      * @param pixels The pixels to get the dimensions of
      * @return Returns width and height of the pixels if successful, ''false'' if invalid arguments were passed to the function.
      */
-    export function dxGetPixelsSize(pixels: string, ): LuaMultiReturn<[number,number]>;
+    export function dxGetPixelsSize(pixels: string): LuaMultiReturn<[number, number]>;
 
     /**
      * This function returns the format of [[Texture_pixels|pixels]] contained in a string.
      * @see {@link https://wiki.multitheftauto.com/wiki/dxGetPixelsFormat|MTASA Wiki}
      * @return Returns the format of the pixels if successful (''''plain'''' or ''''png'''' or ''''jpeg''''), ''false'' if invalid arguments were passed to the function.
      */
-    export function dxGetPixelsFormat(pixels: string, ): string;
+    export function dxGetPixelsFormat(pixels: string): string;
 
     /**
      * This function gets information about various internal datum
@@ -1235,7 +1281,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns two floats representing the width and height of the text in pixels.
      */
-    export function dxGetTextSize(text: string, width?: number, scaleX?: number, scaleY?: number, font?: string, wordBreak?: boolean, colorCoded?: boolean, ): LuaMultiReturn<[number,number]>;
+    export function dxGetTextSize(text: string, width?: number, scaleX?: number, scaleY?: number, font?: string, wordBreak?: boolean, colorCoded?: boolean): LuaMultiReturn<[number, number]>;
 
     /**
      * This function retrieves the theoretical width (in pixels) of a certain piece of text, if it were to be drawn using [[dxDrawText]].
@@ -1248,9 +1294,9 @@ declare module 'mtasa/client/functions' {
      * @default "default"
      * @param bColorCoded Should we exclude color codes from the width? (false will include the hex in the length)
      * @default false
-     * @return Returns the float of the width of the text (in pixels). 
+     * @return Returns the float of the width of the text (in pixels).
      */
-    export function dxGetTextWidth(text: string, scale: number, font: string, bColorCoded: boolean, ): number;
+    export function dxGetTextWidth(text: string, scale: number, font: string, bColorCoded: boolean): number;
 
     /**
      * This function fetches the [[Texture_pixels|pixels]] from a [[texture]] element. It can be used with a standard texture, render target or screen source.
@@ -1269,7 +1315,7 @@ declare module 'mtasa/client/functions' {
      * @default 0
      * @return Returns a ''''plain'''' format pixels string if successful, ''false'' if invalid arguments were passed to the function.
      */
-    export function dxGetTexturePixels(surfaceIndex: number, texture: element, x?: number, y?: number, width?: number, height?: number, ): string;
+    export function dxGetTexturePixels(surfaceIndex: number, texture: element, x?: number, y?: number, width?: number, height?: number): string;
 
     /**
      * This function gets the current aspect ratio set by [[dxSetAspectRatioAdjustmentEnabled]].
@@ -1278,7 +1324,7 @@ declare module 'mtasa/client/functions' {
      * @return *'''boolean:''' returns '''true''' when enabled by [[dxSetAspectRatioAdjustmentEnabled]], '''false''' otherwise.
      * * *'''float:''' aspect ratio set by [[dxSetAspectRatioAdjustmentEnabled]]
      */
-    export function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[boolean,number]>;
+    export function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[boolean, number]>;
 
     /**
      * This function allows for the positioning of dxDraw calls to be automatically adjusted according to the client's aspect ratio setting.  This lasts for a single execution of an event handler for one of the following events: [[onClientRender]], [[onClientPreRender]] and [[onClientHUDRender]]. So the function has to be called every frame, just like dxDraws.
@@ -1288,14 +1334,14 @@ declare module 'mtasa/client/functions' {
      * @param bEnabled : Should the adjustment be enabled or disabled.  {{OptionalArg}}
      * @return Returns ''true'' when it was changed successfully, or ''false'' otherwise.
      */
-    export function dxSetAspectRatioAdjustmentEnabled(bEnabled: boolean, sourceRatio?: number, ): boolean;
+    export function dxSetAspectRatioAdjustmentEnabled(bEnabled: boolean, sourceRatio?: number): boolean;
 
     /**
      * This function sets the current blend mode for the dxDraw functions. Changing the blend mode can increase the quality when drawing text or certain other images to a render target. As a general guide use '''modulate_add''' when drawing text to a render target, and '''add''' when drawing the render target to the screen. Don't forget to restore the default '''blend''' at the end - See the example below.
      * @see {@link https://wiki.multitheftauto.com/wiki/dxSetBlendMode|MTASA Wiki}
      * @return Returns true if successful, or ''false'' if invalid arguments were passed to the function.
      */
-    export function dxSetBlendMode(blendMode: string, ): boolean;
+    export function dxSetBlendMode(blendMode: string): boolean;
 
     /**
      * This function sets the color of a single pixel for [[Texture_pixels|pixels]] contained in a string. It only works with ''''plain'''' format pixels.
@@ -1309,7 +1355,7 @@ declare module 'mtasa/client/functions' {
      * @default 255
      * @return Returns true if successful, or ''false'' if invalid arguments were passed to the function.
      */
-    export function dxSetPixelColor(pixels: string, x: number, y: number, r: number, g: number, b: number, a?: number, ): boolean;
+    export function dxSetPixelColor(pixels: string, x: number, y: number, r: number, g: number, b: number, a?: number): boolean;
 
     /**
      * This function changes the drawing destination for the dx functions. It can be used to select a previously created render target, or if called with no arguments, restore drawing directly to the screen.
@@ -1319,7 +1365,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''true'' if the render target was successfully changed, ''false'' otherwise.
      */
-    export function dxSetRenderTarget(renderTarget: element, clear: boolean, ): boolean;
+    export function dxSetRenderTarget(renderTarget: element, clear: boolean): boolean;
 
     /**
      * This sets a named parameter for a [[shader]] element
@@ -1329,7 +1375,7 @@ declare module 'mtasa/client/functions' {
      * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16 floats(numbers))
      * @return Returns ''true'' if the shader element's parameter was successfully changed, ''false'' otherwise.
      */
-    export function dxSetShaderValue(theShader: element, parameterName: string, value: string, ): boolean;
+    export function dxSetShaderValue(theShader: element, parameterName: string, value: string): boolean;
 
     /**
      * This function sets the amount of geometric sub-division to use when drawing a [[shader]] element with [[dxDrawImage]].
@@ -1340,7 +1386,7 @@ declare module 'mtasa/client/functions' {
      * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
      * @return Returns ''true'' if the shader element's tessellation was successfully changed, ''false'' otherwise.
      */
-    export function dxSetShaderTessellation(theShader: element, tessellationX: number, tessellationY: number, ): boolean;
+    export function dxSetShaderTessellation(theShader: element, tessellationX: number, tessellationY: number): boolean;
 
     /**
      * This function applies a 3D transformation to a [[shader]] element when it is drawn with [[dxDrawImage]].
@@ -1351,7 +1397,7 @@ declare module 'mtasa/client/functions' {
      * @param rotationZ Rotation angle in degrees around the Z axis (In,out). This will make the shader rotate in a similar way to the rotation argument in dxDrawImage.  {{OptionalArg}}
      * @return Returns ''true'' if the shader element's transform was successfully changed, ''false'' otherwise.
      */
-    export function dxSetShaderTransform(theShader: element, rotationX: number, rotationY: number, rotationZ: number, rotationCenterOffsetX: number, rotationCenterOffsetY: number, rotationCenterOffsetZ: number, bRotationCenterOffsetOriginIsScreen: boolean, perspectiveCenterOffsetX: number, perspectiveCenterOffsetY: number, bPerspectiveCenterOffsetOriginIsScreen: boolean, ): boolean;
+    export function dxSetShaderTransform(theShader: element, rotationX: number, rotationY: number, rotationZ: number, rotationCenterOffsetX: number, rotationCenterOffsetY: number, rotationCenterOffsetZ: number, bRotationCenterOffsetOriginIsScreen: boolean, perspectiveCenterOffsetX: number, perspectiveCenterOffsetY: number, bPerspectiveCenterOffsetOriginIsScreen: boolean): boolean;
 
     /**
      * This function is used for testing scripts written using [[guiCreateFont]], [[dxCreateFont]], [[dxCreateShader]] and [[dxCreateRenderTarget]].
@@ -1359,7 +1405,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/dxSetTestMode|MTASA Wiki}
      * @return Returns ''true'' if the test mode was successfully set, ''false'' otherwise.
      */
-    export function dxSetTestMode(testMode: string, ): boolean;
+    export function dxSetTestMode(testMode: string): boolean;
 
     /**
      * This functions allows you to change the edge handling after creating the texture.
@@ -1368,9 +1414,9 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/dxSetTextureEdge|MTASA Wiki}
      * @param theTexture The affected texture
      * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
-     * @return 
+     * @return
      */
-    export function dxSetTextureEdge(theTexture: texture, textureEdge: string, border?: number, ): boolean;
+    export function dxSetTextureEdge(theTexture: texture, textureEdge: string, border?: number): boolean;
 
     /**
      * This function sets the [[Texture_pixels|pixels]] of a [[texture]] element. It can be used with a standard texture, render target or screen source. Only ''''plain'''' format pixels please.
@@ -1389,7 +1435,7 @@ declare module 'mtasa/client/functions' {
      * @default 0
      * @return Returns a string if successful, ''false'' if invalid arguments were passed to the function.
      */
-    export function dxSetTexturePixels(surfaceIndex: number, texture: element, pixels: string, x?: number, y?: number, width?: number, height?: number, ): boolean;
+    export function dxSetTexturePixels(surfaceIndex: number, texture: element, pixels: string, x?: number, y?: number, width?: number, height?: number): boolean;
 
     /**
      * This function updates the contents of a screen source [[texture]] with the screen output from GTA
@@ -1399,7 +1445,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''true'' if the screen was successfully captured, ''false'' otherwise.
      */
-    export function dxUpdateScreenSource(screenSource: element, resampleNow?: boolean, ): boolean;
+    export function dxUpdateScreenSource(screenSource: element, resampleNow?: boolean): boolean;
 
     /**
      * Creates an [[Element/Effect|effect]] on specified position.
@@ -1408,7 +1454,7 @@ declare module 'mtasa/client/functions' {
      * @param name A string contains Element/Effect#Effects_list|effect name.
      * @param x A floating point number representing the X coordinate on the map.
      * @param y A floating point number representing the Y coordinate on the map.
-     * @param z A floating point number representing the Z coordinate on the map.  {{OptionalArg}} 
+     * @param z A floating point number representing the Z coordinate on the map.  {{OptionalArg}}
      * @param rX A floating point number representing the rotation about the X axis in degrees.
      * @param rY A floating point number representing the rotation about the Y axis in degrees.
      * @param rZ A floating point number representing the rotation about the Z axis in degrees.
@@ -1416,9 +1462,9 @@ declare module 'mtasa/client/functions' {
      * @default 0
      * @param soundEnable to enable the sound of the effect.  }}
      * @default false
-     * @return 
+     * @return
      */
-    export function createEffect(name: string, x: number, y: number, z: number, rX?: number, rY?: number, rZ?: number, drawDistance?: number, soundEnable?: boolean, ): effect;
+    export function createEffect(name: string, x: number, y: number, z: number, rX?: number, rY?: number, rZ?: number, drawDistance?: number, soundEnable?: boolean): effect;
 
     /**
      * [[Image:Fxblood.png|thumb|200px|Blood splatter]]
@@ -1428,9 +1474,9 @@ declare module 'mtasa/client/functions' {
      * @default 1
      * @param brightness the brightness. Ranges from 0 (almost black) to 1 (normal color).
      * @default 1.0
-     * @return 
+     * @return
      */
-    export function fxAddBlood(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, count?: number, brightness?: number, ): boolean;
+    export function fxAddBlood(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, count?: number, brightness?: number): boolean;
 
     /**
      * [[Image:Fxbulletimpact.png|thumb|200px|Bullet impact]]
@@ -1444,7 +1490,7 @@ declare module 'mtasa/client/functions' {
      * @default 1.0
      * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddBulletImpact(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, smokeSize?: number, sparkCount?: number, smokeIntensity?: number, ): boolean;
+    export function fxAddBulletImpact(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, smokeSize?: number, sparkCount?: number, smokeIntensity?: number): boolean;
 
     /**
      * [[Image:Fxbulletsplash.png|thumb|200px|Bullet splash]]
@@ -1453,9 +1499,9 @@ declare module 'mtasa/client/functions' {
      * @param posX A float representing the x position of the splash
      * @param posY A float representing the y position of the splash
      * @param posZ A float representing the z position of the splash
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddBulletSplash(posX: number, posY: number, posZ: number, ): boolean;
+    export function fxAddBulletSplash(posX: number, posY: number, posZ: number): boolean;
 
     /**
      * [[Image:Fxdebris.png|thumb|200px|Debris]]
@@ -1467,7 +1513,7 @@ declare module 'mtasa/client/functions' {
      * @default 1
      * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddDebris(posX: number, posY: number, posZ: number, colorR?: number, colorG?: number, colorB?: number, colorA?: number, scale?: number, count?: number, ): boolean;
+    export function fxAddDebris(posX: number, posY: number, posZ: number, colorR?: number, colorG?: number, colorB?: number, colorA?: number, scale?: number, count?: number): boolean;
 
     /**
      * [[Image:Fxfootsplash.png|thumb|200px|Foot splash]]
@@ -1476,9 +1522,9 @@ declare module 'mtasa/client/functions' {
      * @param posX A float representing the x position of the splash
      * @param posY A float representing the y position of the splash
      * @param posZ A float representing the z position of the splash
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddFootSplash(posX: number, posY: number, posZ: number, ): boolean;
+    export function fxAddFootSplash(posX: number, posY: number, posZ: number): boolean;
 
     /**
      * [[Image:Fxglass.png|thumb|200px|Glass]]
@@ -1491,9 +1537,9 @@ declare module 'mtasa/client/functions' {
      * @default 1.0
      * @param count The density of the particle effect.
      * @default 1
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddGlass(posX: number, posY: number, posZ: number, colorR?: number, colorG?: number, colorB?: number, colorA?: number, scale?: number, count?: number, ): boolean;
+    export function fxAddGlass(posX: number, posY: number, posZ: number, colorR?: number, colorG?: number, colorB?: number, colorA?: number, scale?: number, count?: number): boolean;
 
     /**
      * [[Image:Fxgunshot.png|thumb|200px|Gunshot]]
@@ -1501,9 +1547,9 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/fxAddGunshot|MTASA Wiki}
      * @param includeSparks A bool representing whether the particle effect will generate sparks.
      * @default true
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddGunshot(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, includeSparks?: boolean, ): boolean;
+    export function fxAddGunshot(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, includeSparks?: boolean): boolean;
 
     /**
      * [[Image:Fxpunchimpact.png|thumb|200px|Punch impact]]
@@ -1511,7 +1557,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/fxAddPunchImpact|MTASA Wiki}
      * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddPunchImpact(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, ): boolean;
+    export function fxAddPunchImpact(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number): boolean;
 
     /**
      * [[Image:Fxsparks.png|thumb|200px|Sparks]]
@@ -1529,15 +1575,15 @@ declare module 'mtasa/client/functions' {
      * @default 1.0
      * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddSparks(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, force?: number, count?: number, acrossLineX?: number, acrossLineY?: number, acrossLineZ?: number, blur?: boolean, spread?: number, life?: number, ): boolean;
+    export function fxAddSparks(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, force?: number, count?: number, acrossLineX?: number, acrossLineY?: number, acrossLineZ?: number, blur?: boolean, spread?: number, life?: number): boolean;
 
     /**
      * [[Image:Fxtankfire.png|thumb|200px|Tank fire]]
      * This function creates a tank firing particle effect.
      * @see {@link https://wiki.multitheftauto.com/wiki/fxAddTankFire|MTASA Wiki}
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddTankFire(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, ): boolean;
+    export function fxAddTankFire(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number): boolean;
 
     /**
      * [[Image:Fxtyreburst.png|thumb|200px|Tyre burst]]
@@ -1545,7 +1591,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/fxAddTyreBurst|MTASA Wiki}
      * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddTyreBurst(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, ): boolean;
+    export function fxAddTyreBurst(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number): boolean;
 
     /**
      * [[Image:Fxwaterhydrant.png|thumb|200px|Water hydrant]]
@@ -1554,9 +1600,9 @@ declare module 'mtasa/client/functions' {
      * @param posX A float representing the x position of the hydrant
      * @param posY A float representing the y position of the hydrant
      * @param posZ A float representing the z position of the hydrant
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddWaterHydrant(posX: number, posY: number, posZ: number, ): boolean;
+    export function fxAddWaterHydrant(posX: number, posY: number, posZ: number): boolean;
 
     /**
      * [[Image:Fxwatersplash.png|thumb|200px|Water splash]]
@@ -1565,9 +1611,9 @@ declare module 'mtasa/client/functions' {
      * @param posX A float representing the x position of the splash
      * @param posY A float representing the y position of the splash
      * @param posZ A float representing the z position of the splash
-     * @return Returns a true if the operation was successful, false otherwise. 
+     * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddWaterSplash(posX: number, posY: number, posZ: number, ): boolean;
+    export function fxAddWaterSplash(posX: number, posY: number, posZ: number): boolean;
 
     /**
      * [[Image:Fxwood.png|thumb|200px|Wood]]
@@ -1579,16 +1625,16 @@ declare module 'mtasa/client/functions' {
      * @default 1.0
      * @return Returns a true if the operation was successful, false otherwise.
      */
-    export function fxAddWood(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, count?: number, brightness?: number, ): boolean;
+    export function fxAddWood(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, count?: number, brightness?: number): boolean;
 
     /**
      * This function gets the density of certain [[effect]].
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getEffectDensity|MTASA Wiki}
      * @param theEffect The effect to get density of.
-     * @return 
+     * @return
      */
-    export function getEffectDensity(theEffect: effect, ): number;
+    export function getEffectDensity(theEffect: effect): number;
 
     /**
      * This function gets the speed of a specified [[effect]].
@@ -1597,7 +1643,7 @@ declare module 'mtasa/client/functions' {
      * @param theEffect The effect to get the speed of.
      * @return Returns [[float]] containing the effect's speed, ''false'' if invalid arguments were specified.
      */
-    export function getEffectSpeed(theEffect: effect, ): number;
+    export function getEffectSpeed(theEffect: effect): number;
 
     /**
      * This function sets the density of a specified [[effect]].
@@ -1608,7 +1654,7 @@ declare module 'mtasa/client/functions' {
      * @param density The level of density (from 0 to 2).
      * @return Returns ''true'' if the density was succesfully changed, ''false'' otherwise.
      */
-    export function setEffectDensity(theEffect: effect, density: number, ): boolean;
+    export function setEffectDensity(theEffect: effect, density: number): boolean;
 
     /**
      * This function sets the speed of a specified [[effect]].
@@ -1618,7 +1664,7 @@ declare module 'mtasa/client/functions' {
      * @param speed The speed to set.
      * @return Returns ''true'' if the effect speed was succesfuly changed, ''false'' otherwise.
      */
-    export function setEffectSpeed(theEffect: effect, speed: number, ): boolean;
+    export function setEffectSpeed(theEffect: effect, speed: number): boolean;
 
     /**
      * * [[Element/Player|Player]]
@@ -1629,7 +1675,7 @@ declare module 'mtasa/client/functions' {
      * @param bone the ID of the bone to get the matrix of. See Bone IDs
      * @return Returns a multi-dimensional array (which can be transformed into a proper [[matrix]] class using ''Matrix.create'' method) containing a 4x4 matrix. Returns ''false'' if invalid arguments were passed.
      */
-    export function getElementBoneMatrix(theElement: element, bone: number, ): table;
+    export function getElementBoneMatrix(theElement: element, bone: number): table;
 
     /**
      * * [[Element/Player|Player]]
@@ -1640,7 +1686,7 @@ declare module 'mtasa/client/functions' {
      * @param bone the ID of the bone to get the position of. See Bone IDs
      * @return Returns the x, y, z world position of the bone.
      */
-    export function getElementBonePosition(theElement: element, bone: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getElementBonePosition(theElement: element, bone: number): LuaMultiReturn<[number, number, number]>;
 
     /**
      * * [[Element/Player|Player]]
@@ -1651,7 +1697,7 @@ declare module 'mtasa/client/functions' {
      * @param bone the ID of the bone to get the rotation of. See Bone IDs
      * @return Returns the yaw, pitch, roll rotation values.
      */
-    export function getElementBoneRotation(theElement: element, bone: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getElementBoneRotation(theElement: element, bone: number): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function returns the minimum and maximum coordinates of an element's bounding box.
@@ -1659,14 +1705,14 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/getElementBoundingBox|MTASA Wiki}
      * @return *Returns ''min x, min y, min z, max x, max y, max z'' if the passed element is valid and streamed in, ''false'' otherwise.
      */
-    export function getElementBoundingBox(theElement: element, ): LuaMultiReturn<[number,number,number,number,number,number]>;
+    export function getElementBoundingBox(theElement: element): LuaMultiReturn<[number, number, number, number, number, number]>;
 
     /**
      * This function is used to retrieve the distance between a [[element]]'s centre of mass to the base of the model. This can be used to calculate the position the [[element]] has to be set to, to have it on ground level.
      * @see {@link https://wiki.multitheftauto.com/wiki/getElementDistanceFromCentreOfMassToBaseOfModel|MTASA Wiki}
      * @return Returns a ''float'' with the distance, or ''false'' if the element is invalid.
      */
-    export function getElementDistanceFromCentreOfMassToBaseOfModel(theElement: element, ): number;
+    export function getElementDistanceFromCentreOfMassToBaseOfModel(theElement: element): number;
 
     /**
      * This function gets the radius of an [[element]]. Normally, sphere or circle-shaped elements tend to return a more accurate and expected radius than others with another shapes.
@@ -1674,7 +1720,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement The element to get the radius of. It can be any entity type, such as:
      * @return Returns a ''float'' containing the radius if the element is valid, ''false'' otherwise.
      */
-    export function getElementRadius(theElement: element, ): number;
+    export function getElementRadius(theElement: element): number;
 
     /**
      * This functions checks if certain element has call propagation enabled.
@@ -1682,7 +1728,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement The element to check
      * @return Returns ''true'' if the propagation is enabled, ''false'' if disabled or invalid arguments have been passed.
      */
-    export function isElementCallPropagationEnabled(theElement: element, ): boolean;
+    export function isElementCallPropagationEnabled(theElement: element): boolean;
 
     /**
      * This function can be used to check whether specified element is collidable with another element.<br>
@@ -1696,7 +1742,7 @@ declare module 'mtasa/client/functions' {
      * @param withElement The other element which colliding with the first entity you want to get
      * @return Returns ''true'' if the elements collide with eachother, ''false'' otherwise.
      */
-    export function isElementCollidableWith(theElement: element, withElement: element, ): boolean;
+    export function isElementCollidableWith(theElement: element, withElement: element): boolean;
 
     /**
      * This function checks whether a clientside [[element]] is local to the client (doesn't exist in the server) or not.
@@ -1704,7 +1750,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement : The element that we want to check.
      * @return Returns ''true'' if the passed element is local, ''false'' if not or if invalid parameters are passed.
      */
-    export function isElementLocal(theElement: element, ): boolean;
+    export function isElementLocal(theElement: element): boolean;
 
     /**
      * This function will check if an element is on the screen. Elements behind objects but still in the camera view count as being on screen.
@@ -1713,7 +1759,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement The element of which you wish to check wether its being rendered on screen.
      * @return Returns ''true'' if element is on screen, ''false'' if not.
      */
-    export function isElementOnScreen(theElement: element, ): boolean;
+    export function isElementOnScreen(theElement: element): boolean;
 
     /**
      * This function checks whether an [[element]] is streamable as set by [[setElementStreamable]] or not.
@@ -1721,7 +1767,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement : The element to check the streamability of.
      * @return Returns ''true'' if the passed element is streamable like normal, ''false'' if this element must always be streamed in.
      */
-    export function isElementStreamable(theElement: element, ): boolean;
+    export function isElementStreamable(theElement: element): boolean;
 
     /**
      * This function checks whether an [[element]] is currently streamed in (not virtualized) and are actual GTA objects in the world. You can force an element to be streamed in using [[setElementStreamable]].<br>
@@ -1731,7 +1777,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement : The element to check whether is streamed in or not.
      * @return Returns ''true'' if the passed element is currently streamed in, ''false'' if it is virtualized.
      */
-    export function isElementStreamedIn(theElement: element, ): boolean;
+    export function isElementStreamedIn(theElement: element): boolean;
 
     /**
      * This function checks whether an [[element]] is synced by the local player or not. Accepted elements are [[ped|peds]] and [[vehicle|vehicles]].
@@ -1739,15 +1785,15 @@ declare module 'mtasa/client/functions' {
      * @param theElement : The element to check.
      * @return Returns ''true'' if the passed element is synced by the local player, ''false'' otherwise.
      */
-    export function isElementSyncer(theElement: element, ): boolean;
+    export function isElementSyncer(theElement: element): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/isElementWaitingForGroundToLoad|MTASA Wiki}
      * @param theElement the element to check its frozen waiting for custom map objects to load status. It can be a vehicle, ped or player.
      * @return Returns ''true'' if the specified [[element]] is frozen waiting for collisions of custom map objects to load. Returns ''false'' if it's not or if the specified [[element]] is invalid.
      */
-    export function isElementWaitingForGroundToLoad(theElement: element, ): boolean;
+    export function isElementWaitingForGroundToLoad(theElement: element): boolean;
 
     /**
      * * [[Element/Player|Player]]
@@ -1759,7 +1805,7 @@ declare module 'mtasa/client/functions' {
      * @param matrix the MTA matrix to set.
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function setElementBoneMatrix(theElement: element, bone: number, matrix: Matrix, ): boolean;
+    export function setElementBoneMatrix(theElement: element, bone: number, matrix: Matrix): boolean;
 
     /**
      * * [[Element/Player|Player]]
@@ -1773,7 +1819,7 @@ declare module 'mtasa/client/functions' {
      * @param z The z coordinate of the destination.
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function setElementBonePosition(theElement: element, bone: number, x: number, y: number, z: number, ): boolean;
+    export function setElementBonePosition(theElement: element, bone: number, x: number, y: number, z: number): boolean;
 
     /**
      * * [[Element/Player|Player]]
@@ -1788,7 +1834,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      * * '''Note:''' [[updateElementRpHAnim]] must be called after this function to apply bone rotation.
      */
-    export function setElementBoneRotation(theElement: element, bone: number, yaw: number, pitch: number, roll: number, ): boolean;
+    export function setElementBoneRotation(theElement: element, bone: number, yaw: number, pitch: number, roll: number): boolean;
 
     /**
      * This function enables/disables call propagation on a certain element. Look at the example for a practical application.
@@ -1797,7 +1843,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled Whether propagation should be enabled or not
      * @return Returns ''true'', if the propagation behaviour has been changed successfully, ''false'' otherwise.
      */
-    export function setElementCallPropagationEnabled(theElement: element, enabled: boolean, ): boolean;
+    export function setElementCallPropagationEnabled(theElement: element, enabled: boolean): boolean;
 
     /**
      * This function can be used to set an element to collide with another element. An element with collisions disabled does not interact physically with the other element.<br>
@@ -1812,7 +1858,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled A boolean to indicate whether elements should be able to collide with eachother (true) or not (false)
      * @return Returns ''true'' if the collisions were set succesfully, ''false'' otherwise.
      */
-    export function setElementCollidableWith(theElement: element, withElement: element, enabled: boolean, ): boolean;
+    export function setElementCollidableWith(theElement: element, withElement: element, enabled: boolean): boolean;
 
     /**
      * This function can be used to disable streaming for an element. This will make sure the element is not virtualized (streamed out from GTA) when the player moves far away from it. This function only works in elements with a physical representation in the world (entities), such as [[player|players]], [[ped|peds]], [[vehicle|vehicles]] and [[object|objects]].
@@ -1823,7 +1869,7 @@ declare module 'mtasa/client/functions' {
      * @param streamable true if this element should stream in/out like normal, false if it should always be streamed in.
      * @return Returns whether the element could be set to be streamable.
      */
-    export function setElementStreamable(theElement: element, streamable: boolean, ): boolean;
+    export function setElementStreamable(theElement: element, streamable: boolean): boolean;
 
     /**
      * * [[Element/Player|Player]]
@@ -1834,7 +1880,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement the element to update.
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function updateElementRpHAnim(theElement: element, ): boolean;
+    export function updateElementRpHAnim(theElement: element): boolean;
 
     /**
      * This function applies a [[shader]] to one or more world textures.
@@ -1853,7 +1899,7 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Returns ''true'' if the shader was successfully applied, ''false'' otherwise.
      */
-    export function engineApplyShaderToWorldTexture(shader: element, textureName: string, targetElement?: element, appendLayers?: boolean, ): boolean;
+    export function engineApplyShaderToWorldTexture(shader: element, textureName: string, targetElement?: element, appendLayers?: boolean): boolean;
 
     /**
      * This function gets the model ID of an object model from object name. This function is the counterpart of [[engineGetModelNameFromID]].
@@ -1861,7 +1907,7 @@ declare module 'mtasa/client/functions' {
      * @param modelName The model name of the object
      * @return Returns an ''int'' with the ID of the object model, false otherwise.
      */
-    export function engineGetModelIDFromName(modelName: string, ): number;
+    export function engineGetModelIDFromName(modelName: string): number;
 
     /**
      * This function gets the LOD distance for any object / model ID.
@@ -1869,7 +1915,7 @@ declare module 'mtasa/client/functions' {
      * @param model The model / object ID number you want to get the LOD distance of.
      * @return Returns a float representing the LOD distance of the model, or ''false'' if the model argument is incorrect.
      */
-    export function engineGetModelLODDistance(model: number, ): number;
+    export function engineGetModelLODDistance(model: number): number;
 
     /**
      * This function gets the model name of an object model from model ID. This function is the counterpart of [[engineGetModelIDFromName]].
@@ -1877,57 +1923,57 @@ declare module 'mtasa/client/functions' {
      * @param modelID The model ID of the object
      * @return Returns a ''string'' with the name of the object model, false otherwise.
      */
-    export function engineGetModelNameFromID(modelID: number, ): string;
+    export function engineGetModelNameFromID(modelID: number): string;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineGetModelPhysicalPropertiesGroup|MTASA Wiki}
      * @param modelID : the id of model which you wish to get physical properties group of.
      * @return Returns '''id''' of physical properties group that requested model uses, in range of ''0-160'', if the object doesn't have a group assigned, ''-1'' is returned. If passed arguments were wrong, error is triggered.
      */
-    export function engineGetModelPhysicalPropertiesGroup(modelID: number, ): number;
+    export function engineGetModelPhysicalPropertiesGroup(modelID: number): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineRestoreModelPhysicalPropertiesGroup|MTASA Wiki}
      * @param modelID : the id of model which you wish to restore original physical properties group of.
      * @return Returns '''true''' if there were no issues, if passed arguments were invalid an error is raised.
      */
-    export function engineRestoreModelPhysicalPropertiesGroup(modelID: number, ): boolean;
+    export function engineRestoreModelPhysicalPropertiesGroup(modelID: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineSetModelPhysicalPropertiesGroup|MTASA Wiki}
      * @param modelID : the id of model which you wish to set physical properties group of.
      * @param groupID : the id of new physical properties group to be used by given model.
      * @return Returns '''true''' if there were no issues with group change, otherwise an error is raised
      */
-    export function engineSetModelPhysicalPropertiesGroup(modelID: number, groupID: number, ): boolean;
+    export function engineSetModelPhysicalPropertiesGroup(modelID: number, groupID: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineGetObjectGroupPhysicalProperty|MTASA Wiki}
      * @param groupID : the id of physical properties group which you wish to get a property from.
      * @return Returns the value contained in given property if everything went well, error is raised otherwise.
      */
-    export function engineGetObjectGroupPhysicalProperty(groupID: number, modifiable: objectgroup, ): any;
+    export function engineGetObjectGroupPhysicalProperty(groupID: number, modifiable: objectgroup): any;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineRestoreObjectGroupPhysicalProperties|MTASA Wiki}
      * @param groupID : the id of physical properties group which you wish to restore a property of.
      * @return Returns '''true''' if everything went well, error is raised otherwise.
      */
-    export function engineRestoreObjectGroupPhysicalProperties(groupID: number, modifiable: objectgroup, ): boolean;
+    export function engineRestoreObjectGroupPhysicalProperties(groupID: number, modifiable: objectgroup): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineSetObjectGroupPhysicalProperty|MTASA Wiki}
      * @param groupID : the id of physical properties group which you wish to set a property of.
      * @param newValue : new value of the property, with proper type as specified in table below
      * @return Returns '''true''' if everything went well, error is raised otherwise.
      */
-    export function engineSetObjectGroupPhysicalProperty(groupID: number, modifiable: objectgroup, newValue: any, ): boolean;
+    export function engineSetObjectGroupPhysicalProperty(groupID: number, modifiable: objectgroup, newValue: any): boolean;
 
     /**
      * *before release 1.5.8-20716 this must be "ped".
@@ -1938,29 +1984,29 @@ declare module 'mtasa/client/functions' {
      * @return {{New feature/item|3.0158|1.5.7|20147| Returns an ''integer'' of the model ID that was available to be assigned to the element type, ''false'' if no free model ID available or invalid element type.}}
      * * Do not rely on the model numbers returned being consistent across multiple clients or multiple runs of resources. There is no guarantee for the order of the numbers or that the same numbers will always correspond to the same element type. Any patterns are coincidental
      */
-    export function engineRequestModel(elementType: string, parentID?: number, ): number;
+    export function engineRequestModel(elementType: string, parentID?: number): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineFreeModel|MTASA Wiki}
      * @param modelID : the model ID you want to have un-assigned.
      * @return Returns ''true'' if the model was successfully freed, ''false'' otherwise.
      */
-    export function engineFreeModel(modelID: number, ): boolean;
+    export function engineFreeModel(modelID: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineGetModelTextures|MTASA Wiki}
      * @return Returns a table of texture elements [textureName, texture], '''false''' otherwise.
      */
-    export function engineGetModelTextures(int: string, table?: string, ): table;
+    export function engineGetModelTextures(int: string, table?: string): table;
 
     /**
      * This function returns a table of the world textures which are applied to the specified model.
      * @see {@link https://wiki.multitheftauto.com/wiki/engineGetModelTextureNames|MTASA Wiki}
      * @return Returns a table if this function succeeds, false if it fails for some reason.
      */
-    export function engineGetModelTextureNames(modelId: string, ): table;
+    export function engineGetModelTextureNames(modelId: string): table;
 
     /**
      * This function returns a list of the world textures which are being used to draw the current scene.
@@ -1969,28 +2015,28 @@ declare module 'mtasa/client/functions' {
      * @default "*"
      * @return Returns a table of texture names.
      */
-    export function engineGetVisibleTextureNames(nameFilter: string, modelId: string, ): table;
+    export function engineGetVisibleTextureNames(nameFilter: string, modelId: string): table;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineGetModelVisibleTime|MTASA Wiki}
      * @param modelID : ID of the model
      * @return Returns '''timeOn''', '''timeOff'''
      */
-    export function engineGetModelVisibleTime(modelID: number, ): LuaMultiReturn<[number,number]>;
+    export function engineGetModelVisibleTime(modelID: number): LuaMultiReturn<[number, number]>;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineSetModelVisibleTime|MTASA Wiki}
      * @param modelID : ID of the model
      * @param timeOn : value between 23 and 0 that states when the model should appear
      * @param timeOff : value between 23 and 0 that states when the model should disappear
      * @return Returns '''true''' if the change was successful, '''false''' otherwise.
      */
-    export function engineSetModelVisibleTime(modelID: number, timeOn: number, timeOff: number, ): boolean;
+    export function engineSetModelVisibleTime(modelID: number, timeOn: number, timeOff: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineRestreamWorld|MTASA Wiki}
      * @return Returns ''true'' if the world was restreamed successfully, ''false'' otherwise.
      */
@@ -2005,7 +2051,7 @@ declare module 'mtasa/client/functions' {
      * @param texture The TXD that was loaded with engineLoadTXD
      * @return Returns ''true'' if the function executed succesfully, ''false'' otherwise.
      */
-    export function engineImportTXD(texture: txd, model: number, ): boolean;
+    export function engineImportTXD(texture: txd, model: number): boolean;
 
     /**
      * This function loads a RenderWare Collision (COL 1/2/3) file into GTA. The collisions can then be used to provide collisions for in-game objects.
@@ -2014,7 +2060,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/engineLoadCOL|MTASA Wiki}
      * @return Returns a [[COL]] if the file was loaded, ''false'' otherwise.
      */
-    export function engineLoadCOL(col: string, ): col;
+    export function engineLoadCOL(col: string): col;
 
     /**
      * This function loads a RenderWare Model (DFF) file into GTA.
@@ -2024,7 +2070,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/engineLoadDFF|MTASA Wiki}
      * @return Returns a [[DFF]] element if the dff file loaded, ''false'' otherwise.
      */
-    export function engineLoadDFF(dff: string, ): dff;
+    export function engineLoadDFF(dff: string): dff;
 
     /**
      * This function loads an animation library (IFP) file into GTA with a custom block name. All three IFP formats are supported ANPK, ANP2, and ANP3. Unfortunately, GTA 3 animations are not supported, however, you can load GTA:VC IFP files using this function. You don't have to replace any animation to play a custom one, to play a custom animation, load the IFP file using this function, then use [[SetPedAnimation|setPedAnimation]].
@@ -2033,7 +2079,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns an [[IFP]] element if the IFP file loaded, ''false'' otherwise.
      * * {{Tip|If you want to synchronize animations, you can check [[https://drive.google.com/open?id=1L2NkQYuLS0YdoHECvxVRMdPBbEgaYUfH ifp_demo]] resource}}
      */
-    export function engineLoadIFP(ifp: string, custom: string, ): ifp;
+    export function engineLoadIFP(ifp: string, custom: string): ifp;
 
     /**
      * This function loads a RenderWare Texture Dictionary (TXD) file into GTA. The texture dictionary can then be used to provide textures.
@@ -2043,7 +2089,7 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Returns a [[TXD]] if the file was loaded, ''false'' otherwise.
      */
-    export function engineLoadTXD(txd: string, filteringEnabled?: boolean, ): txd;
+    export function engineLoadTXD(txd: string, filteringEnabled?: boolean): txd;
 
     /**
      * This function removes a [[shader]] from one or more world textures.
@@ -2054,7 +2100,7 @@ declare module 'mtasa/client/functions' {
      * @default nil
      * @return Returns ''true'' if the shader was successfully removed, ''false'' otherwise.
      */
-    export function engineRemoveShaderFromWorldTexture(shader: element, textureName: string, targetElement?: element, ): boolean;
+    export function engineRemoveShaderFromWorldTexture(shader: element, textureName: string, targetElement?: element): boolean;
 
     /**
      * This function replaces a specific internal (default) animation with a custom one that has been loaded using [[EngineLoadIFP|engineLoadIFP]] function. This function only affects a specific [[player]] or [[ped]], the [[Animations|internal animation]] is not replaced for everyone, for instance, different players and peds are able to have completely different crouching, walking, and fighting etc., animations running simultaneously at the same time. Also, it's not synchronized, you'll need to execute this function on every client in Lua to synchronize it.
@@ -2068,7 +2114,7 @@ declare module 'mtasa/client/functions' {
      * @param CustomAnimName the custom animation name inside the loaded IFP file with CustomBlockName.
      * @return Returns ''true'' on success, ''false'' in case of failure.
      */
-    export function engineReplaceAnimation(thePed: ped, InternalBlockName: string, InternalAnimName: string, CustomBlockName: string, CustomAnimName: string, ): boolean;
+    export function engineReplaceAnimation(thePed: ped, InternalBlockName: string, InternalAnimName: string, CustomBlockName: string, CustomAnimName: string): boolean;
 
     /**
      * This function replaces the collision file of the given model id to the collision file passed. Use [[engineLoadCOL]] to load the collision file first.
@@ -2077,7 +2123,7 @@ declare module 'mtasa/client/functions' {
      * @param modelID The model ID whose collision file you want to replace
      * @return Returns ''true'' if the collision was successfully replaced, ''false'' or ''nil'' if the collision could not be replaced for a reason.
      */
-    export function engineReplaceCOL(theCol: col, modelID: number, ): boolean;
+    export function engineReplaceCOL(theCol: col, modelID: number): boolean;
 
     /**
      * This function replaces the given model ID with the model contained in a DFF file loaded by [[engineLoadDFF]]. This function supports [[vehicle|vehicles]], [[object|objects]], [[ped|peds]] and [[player|players]] but not CJ clothing and body parts.
@@ -2090,19 +2136,19 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''true'' if the model was successfully replaced, ''false'' if it failed for some reason, ie. the DFF or the model ID is not valid.
      */
-    export function engineReplaceModel(theModel: dff, modelID: number, alphaTransparency?: boolean, ): boolean;
+    export function engineReplaceModel(theModel: dff, modelID: number, alphaTransparency?: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineResetModelLODDistance|MTASA Wiki}
      * @param model The model / object ID number you want to reset the LOD distance of.
      * @return Returns ''true'' if the LOD distance was reset to default, or ''false'' if the model argument is incorrect, or the LOD distance hasn't been changed.
      */
-    export function engineResetModelLODDistance(model: number, ): boolean;
+    export function engineResetModelLODDistance(model: number): boolean;
 
     /**
-     * This function restores internal (default) animations that were replaced using [[EngineReplaceAnimation|engineReplaceAnimation]] function. This function only affects a specific [[player]] or [[ped]] just like [[EngineReplaceAnimation|engineReplaceAnimation]]. 
-     * If only 1st parameter ([[Ped|ped]]) is provided to this function, all replaced animations are restored. 
+     * This function restores internal (default) animations that were replaced using [[EngineReplaceAnimation|engineReplaceAnimation]] function. This function only affects a specific [[player]] or [[ped]] just like [[EngineReplaceAnimation|engineReplaceAnimation]].
+     * If only 1st parameter ([[Ped|ped]]) is provided to this function, all replaced animations are restored.
      * If block name is also provided for 2nd parameter, then replaced animations within that block are restored.
      * If 3rd parameter (animation name) is provided, then only that specific animation within that specific block is restored.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/engineRestoreAnimation|MTASA Wiki}
@@ -2111,7 +2157,7 @@ declare module 'mtasa/client/functions' {
      * @param InternalAnimName the Animations|internal animation name inside InternalBlockName.
      * @return Returns ''true'' on success, ''false'' in case of failure.
      */
-    export function engineRestoreAnimation(thePed: ped, InternalBlockName?: string, InternalAnimName?: string, ): boolean;
+    export function engineRestoreAnimation(thePed: ped, InternalBlockName?: string, InternalAnimName?: string): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -2121,7 +2167,7 @@ declare module 'mtasa/client/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if this function succeeds, ''false'' or ''nil'' if it fails for some reason.
      */
-    export function engineRestoreCOL(modelID: number, ): boolean;
+    export function engineRestoreCOL(modelID: number): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -2131,7 +2177,7 @@ declare module 'mtasa/client/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the model was successfully restored, ''false'' or ''nil'' if it failed for some reason.
      */
-    export function engineRestoreModel(modelID: number, ): boolean;
+    export function engineRestoreModel(modelID: number): boolean;
 
     /**
      * This function enables or disables asynchronous model loading. Enabling asynchronous model loading may reduce the small pauses that occur when a new model is displayed for the first time. However, it can cause the new models to appear slightly later than they might have otherwise.
@@ -2140,7 +2186,7 @@ declare module 'mtasa/client/functions' {
      * @param force If set to true, ignores the clients preferences.
      * @return Returns ''true'' if the function executed successfully, ''false'' otherwise.
      */
-    export function engineSetAsynchronousLoading(enable: boolean, force: boolean, ): boolean;
+    export function engineSetAsynchronousLoading(enable: boolean, force: boolean): boolean;
 
     /**
      * This function sets a custom LOD distance for any object / model ID. This is the distance at which objects of that model ID are switched to their LOD model, or (if there is no LOD model) become invisible.
@@ -2160,34 +2206,34 @@ declare module 'mtasa/client/functions' {
      * @param distance New LOD distance value in San Andreas units.
      * @return Returns ''true'' if the function executed succesfully, ''false'' otherwise.
      */
-    export function engineSetModelLODDistance(model: number, distance: number, ): boolean;
+    export function engineSetModelLODDistance(model: number, distance: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineSetSurfaceProperties|MTASA Wiki}
      * @param surfaceID Material IDs|Material ID from 0 to 178
      * @param property Property name
      * @param value New value from table below
      * @return Returns ''true'' if the function executed succesfully, ''false'' otherwise.
      */
-    export function engineSetSurfaceProperties(surfaceID: number, property: string, value: string, ): boolean;
+    export function engineSetSurfaceProperties(surfaceID: number, property: string, value: string): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineGetSurfaceProperties|MTASA Wiki}
      * @param surfaceID Material IDs|Material ID from 0 to 178
      * @param property Property name
      * @return Returns the current property value. See the table below for possible values.
      */
-    export function engineGetSurfaceProperties(surfaceID: number, property: string, ): string;
+    export function engineGetSurfaceProperties(surfaceID: number, property: string): string;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/engineResetSurfaceProperties|MTASA Wiki}
      * @param surfaceID Material IDs|Material ID from 0 to 178
      * @return Returns ''true'' if the function executed succesfully, ''false'' otherwise.
      */
-    export function engineResetSurfaceProperties(surfaceID: number, ): string;
+    export function engineResetSurfaceProperties(surfaceID: number): string;
 
     /**
      * This function is the same as [[triggerServerEvent]] except the transmission rate of the data contained in the arguments can be limited and other network traffic is not blocked while the data is being transferred.
@@ -2200,7 +2246,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement The element that is the Event system#Event handlers|source of the event. This could be another player, or if this isnt relevant, use the root element.
      * @return Returns ''true'' if the event trigger has been sent, ''false'' if invalid arguments were specified.
      */
-    export function triggerLatentServerEvent(event: string, bandwidth: number, persist: boolean, theElement: element, ...args: any[], ): boolean;
+    export function triggerLatentServerEvent(event: string, bandwidth: number, persist: boolean, theElement: element, ...args: any[]): boolean;
 
     /**
      * <!--{{Needs_Checking|Something needs to be said about the steps required to help keep an event inside a resource. i.e. Setting 'theElement' to resourceRoot here, and setting the matching event handler's 'attachedTo' also to resourceRoot.}}-->__NOTOC__
@@ -2213,7 +2259,7 @@ declare module 'mtasa/client/functions' {
      * @param theElement The element that is the Event system#Event handlers|source of the event.  {{Note|To save server CPU, you should avoid setting '''theElement''' to the [[root element]] where possible. Using [[GetThisResource|resourceRoot]] is usually sufficient if the event is handled by the same resource on the server.}}
      * @return Returns ''true'' if the event trigger has been sent, ''false'' if invalid arguments were specified or a client side element was a parameter.
      */
-    export function triggerServerEvent(event: string, theElement: element, ...args: any[], ): boolean;
+    export function triggerServerEvent(event: string, theElement: element, ...args: any[]): boolean;
 
     /**
      * [[Image:Fire.png|thumb|200px|Fire with default size (1.8)]]
@@ -2223,16 +2269,16 @@ declare module 'mtasa/client/functions' {
      * @default 1.8
      * @return Returns ''true'' if successful, ''false'' if bad arguments were passed or the limit of active fires was reached. There can be a maximum of 60 active fires.
      */
-    export function createFire(x: number, y: number, z: number, size?: number, ): boolean;
+    export function createFire(x: number, y: number, z: number, size?: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/extinguishFire|MTASA Wiki}
      * @param radius a float value indicating the radius in which to extinguish fire.
      * @default 1.0
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function extinguishFire(x: number, y: number, z: number, radius?: number, ): boolean;
+    export function extinguishFire(x: number, y: number, z: number, radius?: number): boolean;
 
     /**
      * This function brings a GUI element on top of others.
@@ -2240,7 +2286,7 @@ declare module 'mtasa/client/functions' {
      * @param guiElement the GUI element that you want to move to the front.
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function guiBringToFront(guiElement: element, ): boolean;
+    export function guiBringToFront(guiElement: element): boolean;
 
     /**
      * Returns information about how the chatbox looks.
@@ -2253,7 +2299,7 @@ declare module 'mtasa/client/functions' {
      * * *a table of all CVar values, if CVar was not specified
      * * *''false'' if an invalid CVar was specified
      */
-    export function getChatboxLayout(CVar: string, ): boolean|number|table;
+    export function getChatboxLayout(CVar: string): boolean | number | table;
 
     /**
      * This function creates a [[GUI font]] element that can be used in [[guiSetFont]]. Successful font creation is not guaranteed, and may fail due to hardware or memory limitations.
@@ -2265,23 +2311,23 @@ declare module 'mtasa/client/functions' {
      * @return Returns a [[GUI font]] element if successful, ''false'' if invalid arguments were passed to the function, or there is insufficient resources available.
      * * '''You should always check to see if this function has returned false.'''
      */
-    export function guiCreateFont(filepath: string, size?: number, ): element;
+    export function guiCreateFont(filepath: string, size?: number): element;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiBlur|MTASA Wiki}
      * @param guiElement the GUI element that you want to defocus
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function guiBlur(guiElement: element, ): boolean;
+    export function guiBlur(guiElement: element): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiFocus|MTASA Wiki}
      * @param guiElement the GUI element that you want to focus
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function guiFocus(guiElement: element, ): boolean;
+    export function guiFocus(guiElement: element): boolean;
 
     /**
      * Alpha represents the transparency of a gui element.  This function allows retrieval of a gui element's current alpha.
@@ -2289,7 +2335,7 @@ declare module 'mtasa/client/functions' {
      * @param guiElement The gui element in which you want to retrieve the alpha of.
      * @return This function returns a positive integer in between 0 and 1 of the gui element's current alpha, or false if it could not be retrieved.
      */
-    export function guiGetAlpha(guiElement: element, ): number;
+    export function guiGetAlpha(guiElement: element): number;
 
     /**
      * This function is used to get the type of the current cursor image.
@@ -2316,7 +2362,7 @@ declare module 'mtasa/client/functions' {
      * @param guiElement the GUI element to be checked.
      * @return Returns ''true'' if the element is enabled, ''false'' otherwise.
      */
-    export function guiGetEnabled(guiElement: element, ): boolean;
+    export function guiGetEnabled(guiElement: element): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -2327,7 +2373,7 @@ declare module 'mtasa/client/functions' {
      * * *'''string''' A string containing the name of the element's current font, or false if the gui element passed to the function is invalid.
      * * *'''element ''' The custom [[GUI font]] that is used, or nil otherwise
      */
-    export function guiGetFont(guiElement: element, ): LuaMultiReturn<[string,element]>;
+    export function guiGetFont(guiElement: element): LuaMultiReturn<[string, element]>;
 
     /**
      * This function checks whether user input is focused on the GUI or the game.
@@ -2354,7 +2400,7 @@ declare module 'mtasa/client/functions' {
      * @param relative A boolean representing whether the position should be relative to the elements parent width, or the number of offset pixels from the parents origin.
      * @return Returns floats representing the ''x'' and ''y'' position of the element, or false if the position could not be retrieved.
      */
-    export function guiGetPosition(guiElement: element, relative: boolean, ): LuaMultiReturn<[number,number]>;
+    export function guiGetPosition(guiElement: element, relative: boolean): LuaMultiReturn<[number, number]>;
 
     /**
      * This function gets a list of the CEGUI property names and values of a GUI element. To find out what the different properties mean, check out the [http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page].
@@ -2362,7 +2408,7 @@ declare module 'mtasa/client/functions' {
      * @param guiElement the GUI element you wish to get the properties of.
      * @return If the function succeeds, the return value is a table. Its keys are property names, the corresponding values are the values of the properties (both names and values are always strings). If the function fails, it returns ''false''.
      */
-    export function guiGetProperties(guiElement: element, ): table;
+    export function guiGetProperties(guiElement: element): table;
 
     /**
      * This function gets the value of a specific CEGUI property of a GUI element. For a list of properties and their meaning, see the [http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page].
@@ -2371,14 +2417,14 @@ declare module 'mtasa/client/functions' {
      * @param property the name of of property you want the value of.
      * @return If the function succeeds, it returns a string with the value of the property. If it fails, it returns ''false''.
      */
-    export function guiGetProperty(guiElement: element, property: string, ): string;
+    export function guiGetProperty(guiElement: element, property: string): string;
 
     /**
      * This function retrieves the local screen size according to the resolution they are using.
      * @see {@link https://wiki.multitheftauto.com/wiki/guiGetScreenSize|MTASA Wiki}
      * @return This returns two floats representing the player's screen resolution, ''width'' and ''height''.
      */
-    export function guiGetScreenSize(): LuaMultiReturn<[number,number]>;
+    export function guiGetScreenSize(): LuaMultiReturn<[number, number]>;
 
     /**
      * This function gets the size of a GUI element.
@@ -2387,7 +2433,7 @@ declare module 'mtasa/client/functions' {
      * @param relative A boolean representing whether the size should be relative to the elements parent width, or an absolute size in pixels.
      * @return Returns the GUI element size ''x'' and ''y'' if the function has been successful, ''false'' otherwise.
      */
-    export function guiGetSize(theElement: element, relative: boolean, ): LuaMultiReturn<[number,number]>;
+    export function guiGetSize(theElement: element, relative: boolean): LuaMultiReturn<[number, number]>;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -2397,7 +2443,7 @@ declare module 'mtasa/client/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns a string containing the requested element's text, or false if the gui element passed to the function is invalid.
      */
-    export function guiGetText(guiElement: element, ): string;
+    export function guiGetText(guiElement: element): string;
 
     /**
      * This function determines if a GUI element is visible.
@@ -2405,7 +2451,7 @@ declare module 'mtasa/client/functions' {
      * @param guiElement the GUI element to be checked
      * @return Returns ''true'' if the element is visible, ''false'' otherwise.
      */
-    export function guiGetVisible(guiElement: element, ): boolean;
+    export function guiGetVisible(guiElement: element): boolean;
 
     /**
      * This function moves a GUI element to the very back of all other GUI elements.
@@ -2413,7 +2459,7 @@ declare module 'mtasa/client/functions' {
      * @param guiElement the GUI element that you want to move to the back
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function guiMoveToBack(guiElement: element, ): boolean;
+    export function guiMoveToBack(guiElement: element): boolean;
 
     /**
      * This changes the alpha level (the visibleness/transparency) of a GUI element
@@ -2421,7 +2467,7 @@ declare module 'mtasa/client/functions' {
      * @param alpha The visibility/transparency of the GUI element. Ranges from 0 (fully transparent) to 1 (fully opaque). Default value is 0.80.
      * @return Returns ''true'' if the gui element's alpha was successfully changed, ''false'' otherwise.
      */
-    export function guiSetAlpha(guielement: element, alpha: number, ): boolean;
+    export function guiSetAlpha(guielement: element, alpha: number): boolean;
 
     /**
      * This function enables/disables a GUI element. A disabled GUI element can't be used, gets a gray aspect and doesn't receive any events.
@@ -2430,7 +2476,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled the new state
      * @return If the function succeeds it returns ''true'', if it fails it returns ''false''.
      */
-    export function guiSetEnabled(guiElement: element, enabled: boolean, ): boolean;
+    export function guiSetEnabled(guiElement: element, enabled: boolean): boolean;
 
     /**
      * This function sets the font of a [[GUI_widgets|GUI element]] to be used when drawing text.
@@ -2439,7 +2485,7 @@ declare module 'mtasa/client/functions' {
      * @param font Either a custom GUI font element or the name of a built-in GUI font. See Standard GUI Font Names
      * @return Returns ''true'' if the font has been successfully set on the gui element, ''false'' otherwise.
      */
-    export function guiSetFont(guiElement: element, font: string, ): boolean;
+    export function guiSetFont(guiElement: element, font: string): boolean;
 
     /**
      * This function enables or disables input focus for the GUI.  This means that any keybinds or MTA binds are overidden so that text can be input into an editbox, for example.  In other words, keys such as ''t'' and ''y'' which activate the chatbox are disabled.
@@ -2449,11 +2495,11 @@ declare module 'mtasa/client/functions' {
      * @param enabled true if input should go to GUI, false if it should go to the game.
      * @return Returns ''true'' if input mode could be changed, ''false'' if invalid parameters are passed.
      */
-    export function guiSetInputEnabled(enabled: boolean, ): boolean;
+    export function guiSetInputEnabled(enabled: boolean): boolean;
 
     /**
      * This function controls the input mode to define whether or not (and when) keybinds or MTA binds are overridden (disabled) so that text can be input into an editbox, for example.
-     * The binds can be either: 
+     * The binds can be either:
      * * never disabled (hence using a key such as t in an editbox will still activate the chatbox)
      * * always disabled (hence using a key such as t in an editbox will not activate the chatbox)
      * * only disabled when actually editing an editbox or a memo (binds are always enabled except when an editbox or memo has input focus)
@@ -2461,7 +2507,7 @@ declare module 'mtasa/client/functions' {
      * @param mode a string representing the desired input mode. Accepted values are:
      * @return Returns ''true'' if input mode could be changed, ''false'' if invalid parameters are passed.
      */
-    export function guiSetInputMode(mode: string, ): boolean;
+    export function guiSetInputMode(mode: string): boolean;
 
     /**
      * This function sets the position of a GUI element.
@@ -2473,7 +2519,7 @@ declare module 'mtasa/client/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the position has been successfully set, ''false'' otherwise.
      */
-    export function guiSetPosition(theElement: element, x: number, y: number, relative: boolean, ): boolean;
+    export function guiSetPosition(theElement: element, x: number, y: number, relative: boolean): boolean;
 
     /**
      * This function sets the value of a specific CEGUI property of a GUI element. For a list of properties and their meaning, see the [http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page].
@@ -2483,7 +2529,7 @@ declare module 'mtasa/client/functions' {
      * @param value the new value for the property.
      * @return If the function succeeds it returns ''true'', if it fails it returns ''false''.
      */
-    export function guiSetProperty(guiElement: element, property: string, value: string, ): boolean;
+    export function guiSetProperty(guiElement: element, property: string, value: string): boolean;
 
     /**
      * This function sets the dimensions (size) of a GUI element. It refers to the bounding box size for GUI elements. It does not make GUI elements smaller or larger in appearance.
@@ -2494,7 +2540,7 @@ declare module 'mtasa/client/functions' {
      * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.
      * @return Returns ''true'' if the gui element's size was set successfully, ''false'' otherwise.
      */
-    export function guiSetSize(guiElement: element, width: number, height: number, relative: boolean, ): boolean;
+    export function guiSetSize(guiElement: element, width: number, height: number, relative: boolean): boolean;
 
     /**
      * This function sets the text of a GUI element.
@@ -2503,7 +2549,7 @@ declare module 'mtasa/client/functions' {
      * @param text The new text
      * @return Returns ''true'' if text has been successfully set on the gui element, ''false'' otherwise.
      */
-    export function guiSetText(guiElement: element, text: string, ): boolean;
+    export function guiSetText(guiElement: element, text: string): boolean;
 
     /**
      * This function changes the visibility state of a GUI element.
@@ -2512,7 +2558,7 @@ declare module 'mtasa/client/functions' {
      * @param state the new visibility state
      * @return Returns ''true'' if the element's visibility could be changed, ''false'' otherwise.
      */
-    export function guiSetVisible(guiElement: element, state: boolean, ): boolean;
+    export function guiSetVisible(guiElement: element, state: boolean): boolean;
 
     /**
      * This function returns whether the ingame chatbox is being used (accepting chatbox input) or not.
@@ -2568,7 +2614,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled true if debug window should be visible, false otherwise.
      * @return Returns ''true'', ''false'' if invalid parameters are passed.
      */
-    export function setDebugViewActive(enabled: boolean, ): boolean;
+    export function setDebugViewActive(enabled: boolean): boolean;
 
     /**
      * This function creates a new CEGUI web [[Element/Browser|browser]] element.
@@ -2586,14 +2632,14 @@ declare module 'mtasa/client/functions' {
      * @default nil
      * @return Returns a [[gui-browser]] element if it was created successfully, ''false'' otherwise. Returns also ''false'', if the user disabled remote pages and ''isLocal'' was set to ''false''.
      */
-    export function guiCreateBrowser(x: number, y: number, width: number, height: number, isLocal: boolean, isTransparent: boolean, isRelative: boolean, parent?: element, ): guibrowser;
+    export function guiCreateBrowser(x: number, y: number, width: number, height: number, isLocal: boolean, isTransparent: boolean, isRelative: boolean, parent?: element): guibrowser;
 
     /**
      * This function gets the browser element behind a gui-browser (a browser that has been created via [[guiCreateBrowser]]).
      * }}
      * @return Returns the [[Element/Browser|Browser]] element if a correct [[Element/gui-browser|gui-browser]] has been passed, ''false'' otherwise.
      */
-    export function guiGetBrowser(browser: gui, ): browser;
+    export function guiGetBrowser(browser: gui): browser;
 
     /**
      * This function allows creation of a GUI Button, which is a clickable item as part of GUI.
@@ -2603,19 +2649,19 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the GUI button. This is affected by the relative argument.
      * @param height A float of the height of the GUI button. This is affected by the relative argument.
      * @param text A string of the text that will be displayed as a label on the button.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x, y, width and height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x, y, width and height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the gui button is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns an [[element]] of the created [[Element/GUI/Button|button]] if it was successfully created, false otherwise.
      */
-    export function guiCreateButton(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: element, ): element;
+    export function guiCreateButton(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: element): element;
 
     /**
      * This function gets a checkbox's selection state.
      * @see {@link https://wiki.multitheftauto.com/wiki/guiCheckBoxGetSelected|MTASA Wiki}
      * @return Returns ''true'' if the checkbox is selected, ''false'' if it is not.
      */
-    export function guiCheckBoxGetSelected(theCheckbox: element, ): boolean;
+    export function guiCheckBoxGetSelected(theCheckbox: element): boolean;
 
     /**
      * This function selects (ticks) or unselects a checkbox.
@@ -2624,7 +2670,7 @@ declare module 'mtasa/client/functions' {
      * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
      * @return Returns ''true'' if the checkbox's selection state was successfully set, ''false'' otherwise.
      */
-    export function guiCheckBoxSetSelected(theCheckbox: element, state: boolean, ): boolean;
+    export function guiCheckBoxSetSelected(theCheckbox: element, state: boolean): boolean;
 
     /**
      * This function creates a [[Element/GUI/Checkbox|checkbox]].
@@ -2635,12 +2681,12 @@ declare module 'mtasa/client/functions' {
      * @param height A float of the height of the text field next to the checkbox. This is affected by the relative argument.
      * @param text The text to be displayed next to the checkbox.
      * @param selected A boolean representing whether the checkbox created should be selected by default.
-     * @param relative This is whether sizes and positioning are relative. If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative. If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the checkbox is attached to. If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
-     * @return Returns [[element]] of the checkbox if it was created succesfully, ''false'' otherwise. 
+     * @return Returns [[element]] of the checkbox if it was created succesfully, ''false'' otherwise.
      */
-    export function guiCreateCheckBox(x: number, y: number, width: number, height: number, text: string, selected: boolean, relative: boolean, parent: element, ): element;
+    export function guiCreateCheckBox(x: number, y: number, width: number, height: number, text: string, selected: boolean, relative: boolean, parent: element): element;
 
     /**
      * This function creates a combobox GUI element, which you can compare to a gridlist with a dropdown feature.
@@ -2650,12 +2696,12 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the GUI combobox. This is affected by the relative argument.
      * @param height A float of the height of the GUI combobox. This is affected by the relative argument. Note: height must be enough to fit the drop down menu, else the drop down wont appear.
      * @param caption A string for what the title of your combobox will be. This will be shown if no item is selected.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the GUI combobox is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns an element of the created combobox if it was successfully created, false otherwise.
      */
-    export function guiCreateComboBox(x: number, y: number, width: number, height: number, caption: string, relative: boolean, parent: element, ): element;
+    export function guiCreateComboBox(x: number, y: number, width: number, height: number, caption: string, relative: boolean, parent: element): element;
 
     /**
      * Adds an item to a combobox.
@@ -2664,7 +2710,7 @@ declare module 'mtasa/client/functions' {
      * @param value The text that the item will contain.
      * @return Returns the item ID if it has been created, ''false'' otherwise.
      */
-    export function guiComboBoxAddItem(comboBox: element, value: string, ): number;
+    export function guiComboBoxAddItem(comboBox: element, value: string): number;
 
     /**
      * This function removes all the items from a combobox.
@@ -2672,15 +2718,15 @@ declare module 'mtasa/client/functions' {
      * @param comboBox The combobox element to be cleared
      * @return Returns ''true'' if the combobox element is valid and has been cleared successfully, ''false'' otherwise.
      */
-    export function guiComboBoxClear(comboBox: element, ): boolean;
+    export function guiComboBoxClear(comboBox: element): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiComboBoxGetItemCount|MTASA Wiki}
      * @param comboBox The combo box to get the number of items from.
      * @return Returns the number of items if the function is successful, ''false'' otherwise.
      */
-    export function guiComboBoxGetItemCount(comboBox: element, ): number;
+    export function guiComboBoxGetItemCount(comboBox: element): number;
 
     /**
      * This function retrieves the text from a specific combobox item.
@@ -2689,7 +2735,7 @@ declare module 'mtasa/client/functions' {
      * @param itemId The index of the item
      * @return Returns the text of the item if the arguments are right, ''false'' otherwise.
      */
-    export function guiComboBoxGetItemText(comboBox: element, itemId: number, ): string;
+    export function guiComboBoxGetItemText(comboBox: element, itemId: number): string;
 
     /**
      * This function returns the index of the selected combobox item.
@@ -2697,15 +2743,15 @@ declare module 'mtasa/client/functions' {
      * @param comboBox the combobox you want to know the selected item index of
      * @return Returns the index of the selected item if the specified combobox is valid and has a selected item, ''-1'' if no item is selected, ''nil'' otherwise.
      */
-    export function guiComboBoxGetSelected(comboBox: element, ): number;
+    export function guiComboBoxGetSelected(comboBox: element): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiComboBoxIsOpen|MTASA Wiki}
      * @param comboBox The combo box to get the state.
      * @return Returns ''true'' if combobox is opened, ''false'' if combobox is closed, ''nil'' otherwise.
      */
-    export function guiComboBoxIsOpen(comboBox: element, ): boolean;
+    export function guiComboBoxIsOpen(comboBox: element): boolean;
 
     /**
      * This function removes an item from a combobox.
@@ -2714,7 +2760,7 @@ declare module 'mtasa/client/functions' {
      * @param itemId The index of the item to remove
      * @return Returns ''true'' if the item was removes successfully, ''false'' otherwise.
      */
-    export function guiComboBoxRemoveItem(comboBox: element, itemId: number, ): boolean;
+    export function guiComboBoxRemoveItem(comboBox: element, itemId: number): boolean;
 
     /**
      * This function changes the text of a combobox item.
@@ -2724,16 +2770,16 @@ declare module 'mtasa/client/functions' {
      * @param text The text you want to put in (does NOT accept numbers, use tostring() for that)
      * @return Returns ''true'' if the text was set successfully, ''false'' otherwise.
      */
-    export function guiComboBoxSetItemText(comboBox: element, itemId: number, text: string, ): boolean;
+    export function guiComboBoxSetItemText(comboBox: element, itemId: number, text: string): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiComboBoxSetOpen|MTASA Wiki}
      * @param comboBox The combobox to be opened or closed.
      * @param state The state of combobox. true, if the combobox is to be opened. false if the combobox is to be closed.
      * @return Returns true if is successful, ''false'' otherwise.
      */
-    export function guiComboBoxSetOpen(comboBox: element, state: boolean, ): boolean;
+    export function guiComboBoxSetOpen(comboBox: element, state: boolean): boolean;
 
     /**
      * This function sets the selected item from a combobox.
@@ -2742,7 +2788,7 @@ declare module 'mtasa/client/functions' {
      * @param itemIndex the item you want to select (item 0 is the first item). If -1 is specified, then the combo box text is set to its caption.
      * @return Returns ''true'' if the selected item has been changed successfully, ''false'' otherwise.
      */
-    export function guiComboBoxSetSelected(comboBox: element, itemIndex: number, ): boolean;
+    export function guiComboBoxSetSelected(comboBox: element, itemIndex: number): boolean;
 
     /**
      * [[Image:Gui-edit.png|frame|Example GUI edit field.]]
@@ -2753,12 +2799,12 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the GUI edit box. This is affected by the relative argument.
      * @param height A float of the height of the GUI edit box. This is affected by the relative argument.
      * @param text A string of the text that will be displayed by default in the edit box.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the GUI edit box is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns a gui-edit element of the created edit box if it was successfully created, false otherwise.
      */
-    export function guiCreateEdit(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent?: element, ): element;
+    export function guiCreateEdit(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent?: element): element;
 
     /**
      * This function returns the caret (the text cursor) position within the editbox.
@@ -2767,28 +2813,28 @@ declare module 'mtasa/client/functions' {
      * @param theElement The edit box you want to get the caret position from
      * @return Returns the caret index on success, ''false'' otherwise.
      */
-    export function guiEditGetCaretIndex(theElement: element, ): number;
+    export function guiEditGetCaretIndex(theElement: element): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiEditGetMaxLength|MTASA Wiki}
      * @return Returns the maximum text length on success, ''false'' otherwise.
      */
-    export function guiEditGetMaxLength(edit: gui, ): number;
+    export function guiEditGetMaxLength(edit: gui): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiEditIsMasked|MTASA Wiki}
      * @return Returns ''true'' if the edit box is masked, ''false'' if not, ''nil'' if an invalid edit box was provided.
      */
-    export function guiEditIsMasked(edit: gui, ): boolean;
+    export function guiEditIsMasked(edit: gui): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiEditIsReadOnly|MTASA Wiki}
      * @return Returns ''true'' if the edit box is read-only, ''false'' if not, ''nil'' if an invalid edit box was provided.
      */
-    export function guiEditIsReadOnly(edit: gui, ): boolean;
+    export function guiEditIsReadOnly(edit: gui): boolean;
 
     /**
      * This function sets the current position of the caret (the text cursor) within the edit box.
@@ -2797,7 +2843,7 @@ declare module 'mtasa/client/functions' {
      * @param index An integer referring to the desired position within the box.
      * @return Returns ''true'' if the index was successfully set, ''false'' otherwise.
      */
-    export function guiEditSetCaretIndex(theElement: element, index: number, ): boolean;
+    export function guiEditSetCaretIndex(theElement: element, index: number): boolean;
 
     /**
      * This function sets or removes masking (covering up the text being typed) for password text fields.
@@ -2806,7 +2852,7 @@ declare module 'mtasa/client/functions' {
      * @param status A boolean value indicating whether masking is to be enabled or disabled.
      * @return Returns ''true'' if the function is successful, ''false'' otherwise.
      */
-    export function guiEditSetMasked(theElement: element, status: boolean, ): boolean;
+    export function guiEditSetMasked(theElement: element, status: boolean): boolean;
 
     /**
      * This function sets the maximum text length that can be typed into an edit box.
@@ -2814,7 +2860,7 @@ declare module 'mtasa/client/functions' {
      * @param length An integer indicating the maximum number of characters that can be typed into the box.
      * @return Returns ''true'' if the max length was set successfully, ''false'' otherwise.
      */
-    export function guiEditSetMaxLength(guiEdit: element, length: number, ): boolean;
+    export function guiEditSetMaxLength(guiEdit: element, length: number): boolean;
 
     /**
      * This function allows you to set or remove read-only status for an edit box. If read-only is set to ''true'', the box is not editable.
@@ -2823,7 +2869,7 @@ declare module 'mtasa/client/functions' {
      * @param status A boolean value indicating whether read-only is to be enabled or disabled.
      * @return Returns ''true'' if edit field's read-only status was changed successfully, ''false'' otherwise.
      */
-    export function guiEditSetReadOnly(editField: element, status: boolean, ): boolean;
+    export function guiEditSetReadOnly(editField: element, status: boolean): boolean;
 
     /**
      * This function creates a grid list GUI element.  These are menu's which are designed in lists and can have multiple columns.  A good example of a gridlist element can be found in MTA's settings box, under ''Controls''.
@@ -2832,12 +2878,12 @@ declare module 'mtasa/client/functions' {
      * @param y A float of the 2D y position of the GUI gridlist on a players screen. This is affected by the relative argument.
      * @param width A float of the width of the GUI gridlist. This is affected by the relative argument.
      * @param height A float of the height of the GUI gridlist. This is affected by the relative argument.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the gui gridlist is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns an element of the created gridlist if it was successfully created, false otherwise.
      */
-    export function guiCreateGridList(x: number, y: number, width: number, height: number, relative: boolean, parent: element, ): element;
+    export function guiCreateGridList(x: number, y: number, width: number, height: number, relative: boolean, parent: element): element;
 
     /**
      * This function is used to create columns in grid lists.
@@ -2847,7 +2893,7 @@ declare module 'mtasa/client/functions' {
      * @param width Column width, relative to the grid list width
      * @return Returns the column id if it was created, ''false'' otherwise.
      */
-    export function guiGridListAddColumn(gridList: element, title: string, width: number, ): number;
+    export function guiGridListAddColumn(gridList: element, title: string, width: number): number;
 
     /**
      * Adds a row to a grid list, and optionally add simple text items with your rows.  Use [[guiGridListSetItemText]] to add row headers.
@@ -2860,7 +2906,7 @@ declare module 'mtasa/client/functions' {
      * @param args Item text for any other columns
      * @return Returns the row id if it has been created, ''false'' otherwise.
      */
-    export function guiGridListAddRow(gridList: element, itemText1?: number|string, itemText2?: number|string, ...args: any[], ): number;
+    export function guiGridListAddRow(gridList: element, itemText1?: number | string, itemText2?: number | string, ...args: any[]): number;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -2870,7 +2916,7 @@ declare module 'mtasa/client/functions' {
      * @param columnIndex The ID of the column you want to be auto-sized.
      * @return Returns ''true'' if the column was auto-sized, ''false'' otherwise.
      */
-    export function guiGridListAutoSizeColumn(gridList: element, columnIndex: number, ): boolean;
+    export function guiGridListAutoSizeColumn(gridList: element, columnIndex: number): boolean;
 
     /**
      * This function clears all the data from a grid list.
@@ -2878,7 +2924,7 @@ declare module 'mtasa/client/functions' {
      * @param gridList The grid list element to be cleared
      * @return Returns ''true'' if the grid list element is valid and has been cleared successfully, ''false'' otherwise.
      */
-    export function guiGridListClear(gridList: element, ): boolean;
+    export function guiGridListClear(gridList: element): boolean;
 
     /**
      * This allows you to get the count of existing columns in a gridlist.
@@ -2886,7 +2932,7 @@ declare module 'mtasa/client/functions' {
      * @param gridList The grid list you want to add a column to
      * @return Returns an integer with the amount of columns in the gridlist, false otherwise.
      */
-    export function guiGridListGetColumnCount(gridList: element, ): number;
+    export function guiGridListGetColumnCount(gridList: element): number;
 
     /**
      * This function is used to get the column title of a gridlist column.
@@ -2895,7 +2941,7 @@ declare module 'mtasa/client/functions' {
      * @param columnIndex : Column ID
      * @return Returns a string containing the column title, or ''false'' otherwise.
      */
-    export function guiGridListGetColumnTitle(guiGridlist: element, columnIndex: number, ): string;
+    export function guiGridListGetColumnTitle(guiGridlist: element, columnIndex: number): string;
 
     /**
      * This allows you to get the width of an existing column in a gridlist.
@@ -2905,7 +2951,7 @@ declare module 'mtasa/client/functions' {
      * @param relative A boolean defining whether width measurements will be relative to the Gridlist size, or absolute pixels.
      * @return Returns the width of the gridlist column, ''false'' if bad arguments were given.
      */
-    export function guiGridListGetColumnWidth(gridList: element, columnIndex: number, relative: boolean, ): number;
+    export function guiGridListGetColumnWidth(gridList: element, columnIndex: number, relative: boolean): number;
 
     /**
      * This function is used to get the horizontal scroll position from a grid list
@@ -2913,7 +2959,7 @@ declare module 'mtasa/client/functions' {
      * @param guiGridlist : The grid list you want to get the horizontal scroll position from
      * @return Returns a integer between 0 and 100 indicating the horizontal scroll position, or ''false'' otherwise.
      */
-    export function guiGridListGetHorizontalScrollPosition(guiGridlist: element, ): number;
+    export function guiGridListGetHorizontalScrollPosition(guiGridlist: element): number;
 
     /**
      * This function gets the color of a gridlist item.
@@ -2923,7 +2969,7 @@ declare module 'mtasa/client/functions' {
      * @param columnIndex Column ID
      * @return Returns four ''int'' values, representing the amount of red, green, blue and alpha if successful. ''false'' otherwise.
      */
-    export function guiGridListGetItemColor(gridList: element, rowIndex: number, columnIndex: number, ): LuaMultiReturn<[number,number,number,number]>;
+    export function guiGridListGetItemColor(gridList: element, rowIndex: number, columnIndex: number): LuaMultiReturn<[number, number, number, number]>;
 
     /**
      * With this function you can retrieve the [[string]] data associated with an item in a [[Element/GUI/Gridlist|grid list]]. This is not the text that is displayed on the item, but an internal string that you can use to hold extra information about the item.<br/>
@@ -2934,7 +2980,7 @@ declare module 'mtasa/client/functions' {
      * @param columnIndex the column index of the item
      * @return Returns the item data of the specified item if succesful, ''false'' if one of the arguments was invalid.
      */
-    export function guiGridListGetItemData(gridList: element, rowIndex: number, columnIndex: number, ): any;
+    export function guiGridListGetItemData(gridList: element, rowIndex: number, columnIndex: number): any;
 
     /**
      * This function retrieves the text from a specific grid list item.
@@ -2944,7 +2990,7 @@ declare module 'mtasa/client/functions' {
      * @param columnIndex column id of the item
      * @return Returns the text of the item if the arguments are right, ''false'' otherwise.
      */
-    export function guiGridListGetItemText(gridList: element, rowIndex: number, columnIndex: number, ): string;
+    export function guiGridListGetItemText(gridList: element, rowIndex: number, columnIndex: number): string;
 
     /**
      * This function returns the number of rows in a grid list.
@@ -2952,7 +2998,7 @@ declare module 'mtasa/client/functions' {
      * @param gridList The grid list to get the number of rows from.
      * @return Returns the number of rows if the function is successful, ''false'' otherwise.
      */
-    export function guiGridListGetRowCount(gridList: element, ): number;
+    export function guiGridListGetRowCount(gridList: element): number;
 
     /**
      * This function returns the amount of options selected in the specified [[Element/GUI/Gridlist|grid list]].
@@ -2960,7 +3006,7 @@ declare module 'mtasa/client/functions' {
      * @param gridList The Element/GUI/Gridlist|grid list which amount of selected items you want to retrieve.
      * @return Returns an [[int]]eger representing the amount of selected options if everything was successful or ''false'' if invalid arguments were passed.
      */
-    export function guiGridListGetSelectedCount(gridList: element, ): number;
+    export function guiGridListGetSelectedCount(gridList: element): number;
 
     /**
      * This function returns the row and column indexes of the selected item in a grid list. First selected row and column is (0, 0).
@@ -2968,7 +3014,7 @@ declare module 'mtasa/client/functions' {
      * @param gridList the grid list you want to know the selected row index of
      * @return Returns the row and column indexes of the selected item if the specified grid list is valid and has a selected item, (-1, -1) if no item is selected, ''false'' otherwise.
      */
-    export function guiGridListGetSelectedItem(gridList: element, ): LuaMultiReturn<[number,number]>;
+    export function guiGridListGetSelectedItem(gridList: element): LuaMultiReturn<[number, number]>;
 
     /**
      * This function returns the items selected in the specified [[Element/GUI/Gridlist|grid list]].
@@ -2991,23 +3037,23 @@ declare module 'mtasa/client/functions' {
      * * </syntaxhighlight>
      * * if everything was successful or ''false'' if invalid arguments were passed.
      */
-    export function guiGridListGetSelectedItems(gridList: element, ): table;
+    export function guiGridListGetSelectedItems(gridList: element): table;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiGridListGetSelectionMode|MTASA Wiki}
      * @return Returns the ID of the current gridlist's selection mode.
      * * {{GUI_gridList_selection_modes_IDs}}
      */
-    export function guiGridListGetSelectionMode(Element: gui, ): number;
+    export function guiGridListGetSelectionMode(Element: gui): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiGridListIsSortingEnabled|MTASA Wiki}
      * @param guiGridlist The GUI gridlist you wish to check if sorting is enabled or not.
      * @return Returns ''true'' if sorting is enabled, ''false'' otherwise.
      */
-    export function guiGridListIsSortingEnabled(guiGridlist: element, ): boolean;
+    export function guiGridListIsSortingEnabled(guiGridlist: element): boolean;
 
     /**
      * This function is used to get the vertical scroll position from a grid list
@@ -3015,7 +3061,7 @@ declare module 'mtasa/client/functions' {
      * @param guiGridlist : The grid list you want to get the vertical scroll position from
      * @return Returns a integer between 0 and 100 indicating the vertical scroll position, or ''false'' otherwise.
      */
-    export function guiGridListGetVerticalScrollPosition(guiGridlist: element, ): number;
+    export function guiGridListGetVerticalScrollPosition(guiGridlist: element): number;
 
     /**
      * This allows you to insert a new row after a specified row, and simultaneously set text. Good for inserting new rows in the middle of existing rows. To insert at the top use -1 as row index.
@@ -3024,7 +3070,7 @@ declare module 'mtasa/client/functions' {
      * @param rowIndex Row ID of the row you want to insert the new row after.  {{New feature/item|3.0153|1.5.3||
      * @return Returns ''true'' if the row was successfully added, ''false'' otherwise.
      */
-    export function guiGridListInsertRowAfter(gridList: element, rowIndex: number, ): number;
+    export function guiGridListInsertRowAfter(gridList: element, rowIndex: number): number;
 
     /**
      * This allows you to delete columns that exist in grid lists.
@@ -3033,7 +3079,7 @@ declare module 'mtasa/client/functions' {
      * @param columnIndex Column ID
      * @return Returns ''true'' if the grid list column was successfully removed, ''false'' otherwise.
      */
-    export function guiGridListRemoveColumn(gridList: element, columnIndex: number, ): boolean;
+    export function guiGridListRemoveColumn(gridList: element, columnIndex: number): boolean;
 
     /**
      * This allows you to delete rows that exist in grid lists.
@@ -3042,7 +3088,7 @@ declare module 'mtasa/client/functions' {
      * @param rowIndex The row ID which you want to remove
      * @return Returns ''true'' if the grid list row was successfully removed, ''false'' otherwise.
      */
-    export function guiGridListRemoveRow(gridList: element, rowIndex: number, ): boolean;
+    export function guiGridListRemoveRow(gridList: element, rowIndex: number): boolean;
 
     /**
      * This function is used to change the column title of a gridlist column.
@@ -3052,7 +3098,7 @@ declare module 'mtasa/client/functions' {
      * @param title : The title of the column
      * @return Returns ''true'' if the new title was set, or ''false'' otherwise.
      */
-    export function guiGridListSetColumnTitle(guiGridlist: element, columnIndex: number, title: string, ): boolean;
+    export function guiGridListSetColumnTitle(guiGridlist: element, columnIndex: number, title: string): boolean;
 
     /**
      * This allows you to set the width of an existing column in a gridlist.
@@ -3063,7 +3109,7 @@ declare module 'mtasa/client/functions' {
      * @param relative A boolean defining whether width measurements will be relative to the Gridlist size, or absolute pixels.
      * @return Returns ''true'' if the gridlist column width was successfully set, ''false'' if bad arguments were given.
      */
-    export function guiGridListSetColumnWidth(gridList: element, columnIndex: number, width: number, relative: boolean, ): boolean;
+    export function guiGridListSetColumnWidth(gridList: element, columnIndex: number, width: number, relative: boolean): boolean;
 
     /**
      * This function is used to set the horizontal scroll position from a grid list
@@ -3072,7 +3118,7 @@ declare module 'mtasa/client/functions' {
      * @param fPosition : A float representing the horizontal scroll position (0-100)
      * @return Returns ''true'' if the horizontal scroll position was set, or ''false'' otherwise.
      */
-    export function guiGridListSetHorizontalScrollPosition(guiGridlist: element, fPosition: number, ): boolean;
+    export function guiGridListSetHorizontalScrollPosition(guiGridlist: element, fPosition: number): boolean;
 
     /**
      * This function changes the color of a gridlist item.
@@ -3087,7 +3133,7 @@ declare module 'mtasa/client/functions' {
      * @default 255
      * @return Returns ''true'' if the item color was set successfully, ''false'' otherwise.
      */
-    export function guiGridListSetItemColor(gridList: element, rowIndex: number, columnIndex: number, red: number, green: number, blue: number, alpha?: number, ): boolean;
+    export function guiGridListSetItemColor(gridList: element, rowIndex: number, columnIndex: number, red: number, green: number, blue: number, alpha?: number): boolean;
 
     /**
      * This function sets a Item Data associated to a grid list item.<br/>
@@ -3099,7 +3145,7 @@ declare module 'mtasa/client/functions' {
      * @param data The data you wish to set to the item.
      * @return Returns ''true'' if the data was set successfully, false otherwise
      */
-    export function guiGridListSetItemData(gridList: element, rowIndex: number, columnIndex: number, data: any, ): boolean;
+    export function guiGridListSetItemData(gridList: element, rowIndex: number, columnIndex: number, data: any): boolean;
 
     /**
      * This function changes the text of a gridlist item.
@@ -3113,7 +3159,7 @@ declare module 'mtasa/client/functions' {
      * @param number Tells whether the text item is a number value or not (used for sorting)
      * @return Returns ''true'' if the item text was set successfully, ''false'' otherwise.
      */
-    export function guiGridListSetItemText(gridList: element, rowIndex: number, columnIndex: number, text: string, section: boolean, number: boolean, ): boolean;
+    export function guiGridListSetItemText(gridList: element, rowIndex: number, columnIndex: number, text: string, section: boolean, number: boolean): boolean;
 
     /**
      * This function allows a gridlist's scrollbar to be forced '''on''', or returned to default.
@@ -3123,7 +3169,7 @@ declare module 'mtasa/client/functions' {
      * @param verticalBar A bool where true forces the verical scrollbar on, and false returns them to default.
      * @return Returns ''true'' if the scrollbars were successfully set, ''false'' otherwise.
      */
-    export function guiGridListSetScrollBars(guiGridlist: element, horizontalBar: boolean, verticalBar: boolean, ): boolean;
+    export function guiGridListSetScrollBars(guiGridlist: element, horizontalBar: boolean, verticalBar: boolean): boolean;
 
     /**
      * This function selects an item from a gridlist. If you wish to deselect whatever item is selected, pass ''0'' as both the ''rowIndex'' and  ''columnIndex'' arguments.
@@ -3135,7 +3181,7 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Returns ''true'' if the passed arguments are correct and the item has been selected, ''false'' otherwise.
      */
-    export function guiGridListSetSelectedItem(gridList: element, rowIndex: number, columnIndex: number, bReset?: boolean, ): boolean;
+    export function guiGridListSetSelectedItem(gridList: element, rowIndex: number, columnIndex: number, bReset?: boolean): boolean;
 
     /**
      * This function sets the selection mode of a gui gridlist.  For example, the MTA ''server browser'' selects a whole row, while the ''Controls'' dialog selects a single cell. To select multiple items you must be holding down 'ctrl'.
@@ -3143,7 +3189,7 @@ declare module 'mtasa/client/functions' {
      * @param mode The mode of the selection.  Can be the following values:
      * @return Returns ''true'' if the selection mode was successfully set, false otherwise.
      */
-    export function guiGridListSetSelectionMode(Element: gui, mode: number, ): boolean;
+    export function guiGridListSetSelectionMode(Element: gui, mode: number): boolean;
 
     /**
      * This function allows the disabling or enabling of ''sorting'' within a gridlist.  Sorting is achieved by clicking a column header.  Gridlist items will be sorted according to the clicked column.  By default, gridlists have sorting enabled.  This function will allow you to toggle this.
@@ -3152,7 +3198,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled A boolean representing whether the sorting is enabled, or disabled.
      * @return Returns ''true'' if sorting was successfully toggled., ''false'' otherwise.
      */
-    export function guiGridListSetSortingEnabled(guiGridlist: element, enabled: boolean, ): boolean;
+    export function guiGridListSetSortingEnabled(guiGridlist: element, enabled: boolean): boolean;
 
     /**
      * This function is used to set the vertical scroll position from a grid list
@@ -3161,7 +3207,7 @@ declare module 'mtasa/client/functions' {
      * @param fPosition : A float representing the vertical scroll position (0-100)
      * @return Returns ''true'' if the vertical scroll position was set, or ''false'' otherwise.
      */
-    export function guiGridListSetVerticalScrollPosition(guiGridlist: element, fPosition: number, ): boolean;
+    export function guiGridListSetVerticalScrollPosition(guiGridlist: element, fPosition: number): boolean;
 
     /**
      * This function creates a new GUI memo.  This is a multiline edit box in which the user can input text.
@@ -3171,12 +3217,12 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the GUI memo. This is affected by the relative argument.
      * @param height A float of the height of the GUI memo. This is affected by the relative argument.
      * @param text A string of the text that will be displayed by default in the memo.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the GUI memo is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns a gui-memo element of the created memo if it was successfully created, false otherwise.
      */
-    export function guiCreateMemo(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent?: element, ): guimemo;
+    export function guiCreateMemo(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent?: element): guimemo;
 
     /**
      * This function returns the caret (the text cursor) position within the memo box.
@@ -3185,29 +3231,29 @@ declare module 'mtasa/client/functions' {
      * @param theElement The memo box you want to get the caret position from
      * @return Returns the caret index on success, ''false'' otherwise.
      */
-    export function guiMemoGetCaretIndex(theElement: element, ): number;
+    export function guiMemoGetCaretIndex(theElement: element): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiMemoGetVerticalScrollPosition|MTASA Wiki}
      * @return Returns a [[float]] ranging between 0 and 100, or '''false''' otherwise.
      */
-    export function guiMemoGetVerticalScrollPosition(memo: gui, ): number;
+    export function guiMemoGetVerticalScrollPosition(memo: gui): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiMemoSetVerticalScrollPosition|MTASA Wiki}
      * @param position : a float ranging between 0 and 100.
      * @return Returns '''true''' if the position was set, '''false''' otherwise.
      */
-    export function guiMemoSetVerticalScrollPosition(memo: gui, position: number, ): boolean;
+    export function guiMemoSetVerticalScrollPosition(memo: gui, position: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiMemoIsReadOnly|MTASA Wiki}
      * @return Returns ''true'' if the memo is read only, ''false'' if the memo isn't read only, ''nil'' otherwise.
      */
-    export function guiMemoIsReadOnly(memo: gui, ): boolean;
+    export function guiMemoIsReadOnly(memo: gui): boolean;
 
     /**
      * This function sets the current position of the caret (the text cursor) within the memo.
@@ -3215,7 +3261,7 @@ declare module 'mtasa/client/functions' {
      * @param index An integer referring to the desired character position within the box. 0 would be before the first character in the box, 1 before the second, etc.
      * @return Returns ''true'' if the caret was successfully moved, ''false'' otherwise.
      */
-    export function guiMemoSetCaretIndex(memo: gui, index: number, ): boolean;
+    export function guiMemoSetCaretIndex(memo: gui, index: number): boolean;
 
     /**
      * This function allows you to set or remove read-only status for a GUI memo. If read-only is set to ''true'', the contents are not editable.
@@ -3223,7 +3269,7 @@ declare module 'mtasa/client/functions' {
      * @param status A boolean value indicating whether read-only is to be enabled or disabled.
      * @return Returns ''true'' if the status was successfully changed, ''false'' otherwise.
      */
-    export function guiMemoSetReadOnly(memo: gui, status: boolean, ): boolean;
+    export function guiMemoSetReadOnly(memo: gui, status: boolean): boolean;
 
     /**
      * This function creates a [[Element/GUI/Progress bar|progress bar]].
@@ -3237,7 +3283,7 @@ declare module 'mtasa/client/functions' {
      * @default nil
      * @return Returns [[element]] of the progress bar if it was created succesfully, ''false'' otherwise.
      */
-    export function guiCreateProgressBar(x: number, y: number, width: number, height: number, relative: boolean, parent: element, ): element;
+    export function guiCreateProgressBar(x: number, y: number, width: number, height: number, relative: boolean, parent: element): element;
 
     /**
      * This function gets the progress of a progress bar as a percentage.
@@ -3245,7 +3291,7 @@ declare module 'mtasa/client/functions' {
      * @param theProgressbar : The progressbar you want to check.
      * @return Returns a [[float]] ranging between 0 and 100.
      */
-    export function guiProgressBarGetProgress(theProgressbar: progressBar, ): number;
+    export function guiProgressBarGetProgress(theProgressbar: progressBar): number;
 
     /**
      * This function is used to set the progress of a progressbar as a percentage.
@@ -3254,7 +3300,7 @@ declare module 'mtasa/client/functions' {
      * @param progress : a float ranging from 0 - 100
      * @return Returns true if the progress was set, false otherwise.
      */
-    export function guiProgressBarSetProgress(theProgressbar: progressBar, progress: number, ): boolean;
+    export function guiProgressBarSetProgress(theProgressbar: progressBar, progress: number): boolean;
 
     /**
      * This function creates a [[Element/GUI/Radio button|radio button]].
@@ -3264,12 +3310,12 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the text field next to the radio button. This is affected by the relative argument.
      * @param height A float of the height of the text field next to the radio button. This is affected by the relative argument.
      * @param text The text to be displayed next to the radio button.
-     * @param relative This is whether sizes and positioning are relative. If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative. If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the radio button is attached to. If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.  ''NOTE:'' All radio buttons become grouped together with their parent item.  Only ONE radio button per group/parent will be able to be selected at the same time.
      * @default nil
      * @return Returns [[element]] of the radio button if it was created succesfully, ''false'' otherwise.
      */
-    export function guiCreateRadioButton(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: element, ): element;
+    export function guiCreateRadioButton(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: element): element;
 
     /**
      * This function gets a radio button's selection state.
@@ -3277,7 +3323,7 @@ declare module 'mtasa/client/functions' {
      * @param guiRadioButton The radio button you wish to retrieve the selection state of.
      * @return Returns ''true'' if the radio button is selected, ''false'' if it is not.
      */
-    export function guiRadioButtonGetSelected(guiRadioButton: element, ): boolean;
+    export function guiRadioButtonGetSelected(guiRadioButton: element): boolean;
 
     /**
      * This function selects or unselects a radio button.
@@ -3286,7 +3332,7 @@ declare module 'mtasa/client/functions' {
      * @param state The state of the radio button, where true indicates selected, and false indicates unselected.
      * @return Returns ''true'' if the radio button's selection state was successfully set, ''false'' otherwise.
      */
-    export function guiRadioButtonSetSelected(guiRadioButton: element, state: boolean, ): boolean;
+    export function guiRadioButtonSetSelected(guiRadioButton: element, state: boolean): boolean;
 
     /**
      * This function creates a GUI scrollbar. You can use the functions [[guiScrollPaneSetHorizontalScrollPosition]], [[guiScrollPaneSetVerticalScrollPosition]], [[guiScrollPaneGetHorizontalScrollPosition]] and [[guiScrollPaneGetVerticalScrollPosition]] to read and modify the scrollbar's scroll.
@@ -3299,14 +3345,14 @@ declare module 'mtasa/client/functions' {
      * @param relative whether sizes and positions are relative to their parents.  If this is true, then all measures must be between 0 and 1, representing sizes/positions as a fraction of the parent widgets size.
      * @return Returns a ''gui-scrollbar'' if it was created successfully, ''false'' otherwise.
      */
-    export function guiCreateScrollBar(x: number, y: number, width: number, height: number, horizontal: boolean, relative: boolean, element: gui, ): guiscrollbar;
+    export function guiCreateScrollBar(x: number, y: number, width: number, height: number, horizontal: boolean, relative: boolean, element: gui): guiscrollbar;
 
     /**
      * This function gets the scroll amount of a scrollbar as a percentage.
      * @see {@link https://wiki.multitheftauto.com/wiki/guiScrollBarGetScrollPosition|MTASA Wiki}
      * @return Returns a [[float]] ranging between 0 and 100, representing the amount the scrollbar has been scrolled.
      */
-    export function guiScrollBarGetScrollPosition(scrollBar: gui, ): number;
+    export function guiScrollBarGetScrollPosition(scrollBar: gui): number;
 
     /**
      * This function is used to set the scroll amount of a scrollbar as a percentage.
@@ -3314,7 +3360,7 @@ declare module 'mtasa/client/functions' {
      * @param amount : a float ranging from 0 - 100 representing the amount you wish to set the scroll bar.
      * @return Returns true if the scroll position was successfully set, false otherwise.
      */
-    export function guiScrollBarSetScrollPosition(scrollBar: gui, amount: number, ): boolean;
+    export function guiScrollBarSetScrollPosition(scrollBar: gui, amount: number): boolean;
 
     /**
      * This creates a GUI scroll pane.
@@ -3327,7 +3373,7 @@ declare module 'mtasa/client/functions' {
      * @param relative whether sizes and positions are relative to their parents. If this is true, then all measures must be between 0 and 1, representing sizes/positions as a fraction of the parent widgets size.
      * @return The gui-element if created, otherwise false.
      */
-    export function guiCreateScrollPane(x: number, y: number, width: number, height: number, relative: boolean, element: gui, ): element;
+    export function guiCreateScrollPane(x: number, y: number, width: number, height: number, relative: boolean, element: gui): element;
 
     /**
      * This function is used to get the position of a horizontal scroll pane as a percentage.
@@ -3335,7 +3381,7 @@ declare module 'mtasa/client/functions' {
      * @param horizontalScrollPane : The scroll pane you want to know the position of
      * @return Returns a [[float]] ranging between 0 and 100, or '''false''' otherwise.
      */
-    export function guiScrollPaneGetHorizontalScrollPosition(horizontalScrollPane: element, ): number;
+    export function guiScrollPaneGetHorizontalScrollPosition(horizontalScrollPane: element): number;
 
     /**
      * This function is used to get the position of a vertical scroll pane as a percentage.
@@ -3343,7 +3389,7 @@ declare module 'mtasa/client/functions' {
      * @param verticalScrollPane : The scroll pane you want to know the position of
      * @return Returns a [[float]] ranging between 0 and 100, or '''false''' otherwise.
      */
-    export function guiScrollPaneGetVerticalScrollPosition(verticalScrollPane: element, ): number;
+    export function guiScrollPaneGetVerticalScrollPosition(verticalScrollPane: element): number;
 
     /**
      * This function is used to set the position of a horizontal scroll pane as a percentage.
@@ -3352,7 +3398,7 @@ declare module 'mtasa/client/functions' {
      * @param position : a float ranging from 0 - 100
      * @return Returns '''true''' if the position was set, '''false''' otherwise.
      */
-    export function guiScrollPaneSetHorizontalScrollPosition(horizontalScrollPane: element, position: number, ): boolean;
+    export function guiScrollPaneSetHorizontalScrollPosition(horizontalScrollPane: element, position: number): boolean;
 
     /**
      * This function allows a scrollpane's scrollbars to be forced '''on''', or returned to default.
@@ -3362,7 +3408,7 @@ declare module 'mtasa/client/functions' {
      * @param vertical A bool where true forces the vertical scrollbar on, and false returns them to default.
      * @return Returns ''true'' if the call was successfully, ''false'' otherwise.
      */
-    export function guiScrollPaneSetScrollBars(scrollPane: element, horizontal: boolean, vertical: boolean, ): boolean;
+    export function guiScrollPaneSetScrollBars(scrollPane: element, horizontal: boolean, vertical: boolean): boolean;
 
     /**
      * This function is used to set the position of a vertical scroll pane as a percentage.
@@ -3371,7 +3417,7 @@ declare module 'mtasa/client/functions' {
      * @param position : a float ranging from 0 - 100
      * @return Returns '''true''' if the position was set, '''false''' otherwise.
      */
-    export function guiScrollPaneSetVerticalScrollPosition(verticalScrollPane: element, position: number, ): boolean;
+    export function guiScrollPaneSetVerticalScrollPosition(verticalScrollPane: element, position: number): boolean;
 
     /**
      * This function creates a static image using a .png image in the resource.
@@ -3381,12 +3427,12 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the image. This is affected by the relative argument.
      * @param height A float of the height of the image. This is affected by the relative argument.
      * @param path The filepath of the image file that is being loaded.
-     * @param relative This is whether sizes and positioning are relative. If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative. If this is true, then all x,y,width,height floats must be between 0 and 1, representing measures relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the image is attached to. If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns [[element]] if image was created successfully, ''false'' otherwise.
      */
-    export function guiCreateStaticImage(x: number, y: number, width: number, height: number, path: string, relative: boolean, parent: element, ): element;
+    export function guiCreateStaticImage(x: number, y: number, width: number, height: number, path: string, relative: boolean, parent: element): element;
 
     /**
      * This function gets the native size of image. That means the original size in pixels of the image file.
@@ -3394,7 +3440,7 @@ declare module 'mtasa/client/functions' {
      * @param theImage The static image element to get the original size of.
      * @return Returns two integers where first is the width and second the height of the image in pixels, ''false'' if the image element was invalid.
      */
-    export function guiStaticImageGetNativeSize(theImage: element, ): LuaMultiReturn<[number,number]>;
+    export function guiStaticImageGetNativeSize(theImage: element): LuaMultiReturn<[number, number]>;
 
     /**
      * This function allows you to change the image in GUI static image element to another one. '''Tip''': If you set other images as children you will have to use [[setElementCallPropagationEnabled]] to only affect the parent image.
@@ -3403,7 +3449,7 @@ declare module 'mtasa/client/functions' {
      * @param filename A string specifying the filepath of the image file being loaded in current resource.
      * @return Returns ''true'' if the the image in the static image element was successfully changed, ''false'' otherwise.
      */
-    export function guiStaticImageLoadImage(theElement: element, filename: string, ): boolean;
+    export function guiStaticImageLoadImage(theElement: element, filename: string): boolean;
 
     /**
      * This function creates a Tab Panel, which acts as a template to create Tabs upon.
@@ -3412,12 +3458,12 @@ declare module 'mtasa/client/functions' {
      * @param y A float of the 2D y position of the GUI tab panel on a players screen. This is affected by the relative argument.
      * @param width A float of the width of the GUI tab panel. This is affected by the relative argument.
      * @param height A float of the height of the GUI tab panel. This is affected by the relative argument.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the tab panel is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns a GUI tab panel element if successful, ''false'' otherwise.
      */
-    export function guiCreateTabPanel(x: number, y: number, width: number, height: number, relative: boolean, parent: element, ): element;
+    export function guiCreateTabPanel(x: number, y: number, width: number, height: number, relative: boolean, parent: element): element;
 
     /**
      * This function returns the currently selected tab in the specified [[Element/GUI/Tab panel|tab panel]].
@@ -3425,7 +3471,7 @@ declare module 'mtasa/client/functions' {
      * @param tabPanel The Element/GUI/Tab panel|tab panel which current tab you want to retrieve.
      * @return Returns an [[element]] of the [[Element/GUI/Tab|tab]] if a tab was selected or [[nil]] if no tab was selected. If passed arguments were invalid or something went wrong, the function will return ''false''.
      */
-    export function guiGetSelectedTab(tabPanel: element, ): element;
+    export function guiGetSelectedTab(tabPanel: element): element;
 
     /**
      * This function is used to change the currently selected [[Element/GUI/Tab|tab]] in a [[Element/GUI/Tab panel|tab panel]].
@@ -3434,7 +3480,7 @@ declare module 'mtasa/client/functions' {
      * @param theTab The Element/GUI/Tab|tab which will be the new active tab.
      * @return Returns ''true'' if the selected tab was changed to a new one successfully, ''false'' otherwise.
      */
-    export function guiSetSelectedTab(tabPanel: element, theTab: element, ): boolean;
+    export function guiSetSelectedTab(tabPanel: element, theTab: element): boolean;
 
     /**
      * This function creates a tab on a pre-existing tab panel. A tab is a button as well as a 'dimension' that can be used to switch between information by clicking on the tabs.  Tabs are sorted on a tab panel in the order that they are created.
@@ -3443,7 +3489,7 @@ declare module 'mtasa/client/functions' {
      * @param parent The parent tab panel, as a tab panel element type
      * @return Returns a tab element if successful, ''false'' otherwise.
      */
-    export function guiCreateTab(text: string, parent: element, ): element;
+    export function guiCreateTab(text: string, parent: element): element;
 
     /**
      * This function deletes a tab from a tab panel.
@@ -3452,7 +3498,7 @@ declare module 'mtasa/client/functions' {
      * @param tabPanel This is the guiCreateTabPanel|tab panel parent that the tab is attached to.
      * @return Returns ''true'' the tab was successfully deleted, ''false'' otherwise.
      */
-    export function guiDeleteTab(tabToDelete: element, tabPanel: element, ): boolean;
+    export function guiDeleteTab(tabToDelete: element, tabPanel: element): boolean;
 
     /**
      * [[Image:gui-label.png|frame|Example GUI label.]]
@@ -3465,12 +3511,12 @@ declare module 'mtasa/client/functions' {
      * @param width A float of the width of the GUI label. This is affected by the relative argument.
      * @param height A float of the height of the GUI label. This is affected by the relative argument.
      * @param text A string of the text that will be displayed by the label.
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}} 
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.  {{OptionalArg}}
      * @param parent This is the parent that the gui label is attached to.  If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parents origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
      * @default nil
      * @return Returns an [[GUI_widgets|element]] of the created label if it was successfully created, false otherwise.
      */
-    export function guiCreateLabel(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: element, ): element;
+    export function guiCreateLabel(x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: element): element;
 
     /**
      * This function gets the color of a label.
@@ -3478,7 +3524,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/guiLabelGetColor|MTASA Wiki}
      * @return Returns three ''int'' values, representing the amount of red, green, blue if successful. ''false'' otherwise.
      */
-    export function guiLabelGetColor(element: gui, ): LuaMultiReturn<[number,number,number]>;
+    export function guiLabelGetColor(element: gui): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function returns the height of the font currently used in a GUI text label.
@@ -3486,7 +3532,7 @@ declare module 'mtasa/client/functions' {
      * @param theLabel The text label to get the font height from.
      * @return Returns the absolute height of the font currently used in the text label if the function is successful, ''false'' otherwise.
      */
-    export function guiLabelGetFontHeight(theLabel: element, ): number;
+    export function guiLabelGetFontHeight(theLabel: element): number;
 
     /**
      * This function returns the extent, or width, of the current text inside a GUI text label.
@@ -3494,7 +3540,7 @@ declare module 'mtasa/client/functions' {
      * @param theLabel The text label to get the text extent from.
      * @return Returns the absolute width of the current text inside the text label if the function is successful, ''false'' otherwise.
      */
-    export function guiLabelGetTextExtent(theLabel: element, ): number;
+    export function guiLabelGetTextExtent(theLabel: element): number;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -3507,7 +3553,7 @@ declare module 'mtasa/client/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the the color of the gui label was successfully changed, ''false'' otherwise.
      */
-    export function guiLabelSetColor(theElement: element, red: number, green: number, blue: number, ): boolean;
+    export function guiLabelSetColor(theElement: element, red: number, green: number, blue: number): boolean;
 
     /**
      * This function sets the horizontal alignment of a text label.
@@ -3518,7 +3564,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function guiLabelSetHorizontalAlign(theLabel: element, align: string, wordwrap: boolean, ): boolean;
+    export function guiLabelSetHorizontalAlign(theLabel: element, align: string, wordwrap: boolean): boolean;
 
     /**
      * This function sets the vertical alignment of a text label.
@@ -3527,7 +3573,7 @@ declare module 'mtasa/client/functions' {
      * @param align The alignment type. Valid type strings are:  **"top"  **"center"  **"bottom"
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function guiLabelSetVerticalAlign(theLabel: element, align: string, ): boolean;
+    export function guiLabelSetVerticalAlign(theLabel: element, align: string): boolean;
 
     /**
      * This function is for creating a new GUI window.  This provides a base for other gui elements to be created within.  However, windows do not have a parent and cannot be created in any GUI elements.
@@ -3540,21 +3586,21 @@ declare module 'mtasa/client/functions' {
      * @param relative This is whether sizes and positioning are relative.  If this is true, then all x,y,width,height floats must be between 0 and 1, representing sizes/positions as a fraction of the screen size. If false, then the size and co-ordinates are based on clients resolution, accessible using guiGetScreenSize.
      * @return Returns a gui window element if it was created successfully, false otherwise.
      */
-    export function guiCreateWindow(x: number, y: number, width: number, height: number, titleBarText: string, relative: boolean, ): element;
+    export function guiCreateWindow(x: number, y: number, width: number, height: number, titleBarText: string, relative: boolean): element;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiWindowIsMovable|MTASA Wiki}
      * @return Returns ''true'' if the window is movable, ''false'' if not, ''nil'' if an invalid window was provided.
      */
-    export function guiWindowIsMovable(window: gui, ): boolean;
+    export function guiWindowIsMovable(window: gui): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/guiWindowIsSizable|MTASA Wiki}
      * @return Returns ''true'' if the window is sizable, ''false'' if not, ''nil'' if an invalid window was provided.
      */
-    export function guiWindowIsSizable(window: gui, ): boolean;
+    export function guiWindowIsSizable(window: gui): boolean;
 
     /**
      * This function allows you to specify whether or not a user can move a GUI window.
@@ -3563,7 +3609,7 @@ declare module 'mtasa/client/functions' {
      * @param status A boolean value indicating whether the window is movable or not.
      * @return Returns ''true'' if the function is successful, ''false'' otherwise.
      */
-    export function guiWindowSetMovable(theElement: element, status: boolean, ): boolean;
+    export function guiWindowSetMovable(theElement: element, status: boolean): boolean;
 
     /**
      * This function enables or disables user resizing of a GUI window.
@@ -3572,7 +3618,7 @@ declare module 'mtasa/client/functions' {
      * @param status A boolean value indicating whether user resizing is to be enabled or disabled.
      * @return Returns ''true'' if the function is successful, ''false'' otherwise.
      */
-    export function guiWindowSetSizable(theElement: element, status: boolean, ): boolean;
+    export function guiWindowSetSizable(theElement: element, status: boolean): boolean;
 
     /**
      * This retrieves the analog control state of a control.  This is useful for detecting sensitive controls, such as those used on a joypad.
@@ -3582,14 +3628,14 @@ declare module 'mtasa/client/functions' {
      * @param rawValue A bool indicating if it should return the raw player input value.  }}
      * @return Returns a [[float]] between 0 and 1 indicating the amount the control is pressed.
      */
-    export function getAnalogControlState(control: string, rawValue?: boolean, ): number;
+    export function getAnalogControlState(control: string, rawValue?: boolean): number;
 
     /**
      * Returns a list of key names that are bound to the specified game [[Control names|control]] or console command.
      * @see {@link https://wiki.multitheftauto.com/wiki/getBoundKeys|MTASA Wiki}
      * @return If one or more keys are bound to the specified control or console command, a table is returned indexed by the names of the keys and containing key states as values. If no keys are bound or an invalid name was passed, returns ''false''.
      */
-    export function getBoundKeys(command: string, ): table;
+    export function getBoundKeys(command: string): table;
 
     /**
      * Gets the commands bound to a key.
@@ -3598,7 +3644,7 @@ declare module 'mtasa/client/functions' {
      * @param keyState A string that has one of the following values:
      * @return Returns a table of the commands bound on that key.
      */
-    export function getCommandsBoundToKey(theKey: string, keyState: string, ): table;
+    export function getCommandsBoundToKey(theKey: string, keyState: string): table;
 
     /**
      * This function allow you get first key bound to command.
@@ -3606,7 +3652,7 @@ declare module 'mtasa/client/functions' {
      * @param command command what you need check.
      * @return Returns a string of first key binded to current command.
      */
-    export function getKeyBoundToCommand(command: string, ): string;
+    export function getKeyBoundToCommand(command: string): string;
 
     /**
      * This function determines if a certain key is pressed or not.
@@ -3615,7 +3661,7 @@ declare module 'mtasa/client/functions' {
      * @param keyName The name of the key youre checking state of. See Key names.
      * @return Returns ''true'' if the specified key is pressed, ''false'' if it isn't or if an invalid key name is passed.
      */
-    export function getKeyState(keyName: string, ): boolean;
+    export function getKeyState(keyName: string): boolean;
 
     /**
      * * The direction of the light only has any effect if the light type is ''spot light''.
@@ -3626,7 +3672,7 @@ declare module 'mtasa/client/functions' {
      * @param lightType An integer representing the type of light to create.  {{Light_types}}
      * @param posX A floating point number representing the X coordinate on the map.
      * @param posY A floating point number representing the Y coordinate on the map.
-     * @param posZ A floating point number representing the Z coordinate on the map.  {{OptionalArg}} 
+     * @param posZ A floating point number representing the Z coordinate on the map.  {{OptionalArg}}
      * @param radius A floating point number representing the radius of the light.
      * @default 3
      * @param r An integer number representing the amount of red to use in the colouring of the light (0 - 255).
@@ -3643,70 +3689,70 @@ declare module 'mtasa/client/functions' {
      * @default 0
      * @param createsShadow A boolean representing whether or not does the light cast shadows.
      * @default false
-     * @return 
+     * @return
      */
-    export function createLight(lightType: number, posX: number, posY: number, posZ: number, radius?: number, r?: number, g?: number, b?: number, dirX?: number, dirY?: number, dirZ?: number, createsShadow?: boolean, ): light;
+    export function createLight(lightType: number, posX: number, posY: number, posZ: number, radius?: number, r?: number, g?: number, b?: number, dirX?: number, dirY?: number, dirZ?: number, createsShadow?: boolean): light;
 
     /**
      * This function returns the color for a [[Element/Light|light]] element.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getLightColor|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to retrieve the color of.
-     * @return 
+     * @return
      */
-    export function getLightColor(theLight: light, ): LuaMultiReturn<[number,number,number]>;
+    export function getLightColor(theLight: light): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function returns the direction for a [[Element/Light|light]] element.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getLightDirection|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to retrieve the direction of.
-     * @return 
+     * @return
      */
-    export function getLightDirection(theLight: light, ): LuaMultiReturn<[number,number,number]>;
+    export function getLightDirection(theLight: light): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function returns the radius for a [[Element/Light|light]] element.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getLightRadius|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to retrieve the radius of.
-     * @return 
+     * @return
      */
-    export function getLightRadius(theLight: light, ): number;
+    export function getLightRadius(theLight: light): number;
 
     /**
      * This function returns the type for a [[Element/Light|light]] element.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getLightType|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to retrieve the type of.
-     * @return 
+     * @return
      */
-    export function getLightType(theLight: light, ): number;
+    export function getLightType(theLight: light): number;
 
     /**
      * This function sets the color for a [[Element/Light|light]] element.
      * @see {@link https://wiki.multitheftauto.com/wiki/setLightColor|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to set the color of.
-     * @return 
+     * @return
      */
-    export function setLightColor(theLight: light, r: number, g: number, b: number, ): boolean;
+    export function setLightColor(theLight: light, r: number, g: number, b: number): boolean;
 
     /**
      * This function sets the direction for a [[Element/Light|light]] element.
      * @see {@link https://wiki.multitheftauto.com/wiki/setLightDirection|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to set the direction of.
-     * @return 
+     * @return
      */
-    export function setLightDirection(theLight: light, x: number, y: number, z: number, ): boolean;
+    export function setLightDirection(theLight: light, x: number, y: number, z: number): boolean;
 
     /**
      * This function sets the radius for a [[Element/Light|light]] element.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/setLightRadius|MTASA Wiki}
      * @param theLight The Element/Light|light that you wish to set the radius of.
-     * @return 
+     * @return
      */
-    export function setLightRadius(theLight: Light, radius: number, ): boolean;
+    export function setLightRadius(theLight: Light, radius: number): boolean;
 
     /**
      * This function breaks a specific object.
@@ -3715,7 +3761,7 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' if the object was successfully broken.
      * * * ''false'' if the object is not breakable, or a wrong object was given.
      */
-    export function breakObject(theObject: object, ): boolean;
+    export function breakObject(theObject: object): boolean;
 
     /**
      * This function returns the mass of a specified object.
@@ -3726,7 +3772,7 @@ declare module 'mtasa/client/functions' {
      * * * ''false'' if invalid arguments were passed.
      * * * ''-1'' if object was never streamed in.
      */
-    export function getObjectMass(theObject: object, ): number;
+    export function getObjectMass(theObject: object): number;
 
     /**
      * This function checks if an object / model ID is breakable.
@@ -3734,7 +3780,7 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' if the object is breakable.
      * * * ''false'' if the object is not breakable.
      */
-    export function isObjectBreakable(theObject: object, ): boolean;
+    export function isObjectBreakable(theObject: object): boolean;
 
     /**
      * This function respawns a specific object.
@@ -3743,16 +3789,16 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' if the object was sucessfully respawned.
      * * * ''false'' if the object is not breakable, or a wrong object was given.
      */
-    export function respawnObject(theObject: object, ): boolean;
+    export function respawnObject(theObject: object): boolean;
 
     /**
      * This function sets an object to be breakable/unbreakable.
      * @see {@link https://wiki.multitheftauto.com/wiki/setObjectBreakable|MTASA Wiki}
      * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
      * @return * ''true'' if the object is now breakable.
-     * * * ''false'' if it can't or if invalid arguments are passed. 
+     * * * ''false'' if it can't or if invalid arguments are passed.
      */
-    export function setObjectBreakable(theObject: object, breakable: boolean, ): boolean;
+    export function setObjectBreakable(theObject: object, breakable: boolean): boolean;
 
     /**
      * This function sets the mass of a specified object. Changing the mass leads to a different movement behavior for especially dynamic objects.
@@ -3763,7 +3809,7 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' if the new mass value has been.
      * * * ''false'' otherwise.
      */
-    export function setObjectMass(theObject: object, mass: number, ): boolean;
+    export function setObjectMass(theObject: object, mass: number): boolean;
 
     /**
      * This function is used to toggle if an object should respawn after it got destroyed
@@ -3773,36 +3819,36 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' when the it was changed successfully.
      * * * ''false'' otherwise.
      */
-    export function toggleObjectRespawn(theObject: object, respawn: boolean, ): boolean;
+    export function toggleObjectRespawn(theObject: object, respawn: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getObjectProperty|MTASA Wiki}
      * @param theObject : the object you wish to get a property of.
      * @param property : the property you want to get the value of:  <div style="padding-left:20px">  * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')  </div>  {{Object Properties}}
      * @return On success: [[table]] for '''all''', 3 [[float|floats]] for '''center_of_mass''' or [[float]] for other properties
      * * On failure: ''false''
      */
-    export function getObjectProperty(theObject: object, property: string, ): string;
+    export function getObjectProperty(theObject: object, property: string): string;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setObjectProperty|MTASA Wiki}
      * @param theObject : the object you wish to change a property of.
      * @param property : the property you want to set the value of:  {{Object Properties}}
      * @param value : the new value for the property.
      * @return Returns ''true'' if the property was set successfully, ''false'' otherwise.
      */
-    export function setObjectProperty(theObject: object, property: string, value: any, ): boolean;
+    export function setObjectProperty(theObject: object, property: string, value: any): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/isObjectMoving|MTASA Wiki}
      * @param theObject The object
      * @return * ''true'' if the object is moving.
      * * * ''false'' if the object is not moving.
      */
-    export function isObjectMoving(theObject: object, ): boolean;
+    export function isObjectMoving(theObject: object): boolean;
 
     /**
      * This function checks if player's chat is visible.
@@ -3817,7 +3863,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed the ped you want to check.
      * @return Returns ''true'' if the ped can be knocked off bikes, ''false'' if he cannot or an invalid element was passed.
      */
-    export function canPedBeKnockedOffBike(thePed: ped, ): boolean;
+    export function canPedBeKnockedOffBike(thePed: ped): boolean;
 
     /**
      * This function retrieves the analog control state of a ped, as set by [[setPedAnalogControlState]].
@@ -3848,7 +3894,7 @@ declare module 'mtasa/client/functions' {
      * * <br /><br />
      * * * This example was created by '''Hydra'''.
      */
-    export function getPedAnalogControlState(thePed: ped, controlName: string, rawValue?: boolean, ): number;
+    export function getPedAnalogControlState(thePed: ped, controlName: string, rawValue?: boolean): number;
 
     /**
      * Gets the animation of a player or ped that was set using [[setPedAnimation]].
@@ -3860,7 +3906,7 @@ declare module 'mtasa/client/functions' {
      * * <syntaxhighlight lang="lua">string anim, string block, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime, bool restoreTaskOnAnimEnd</syntaxhighlight>
      * * }}
      */
-    export function getPedAnimation(thePed: ped, ): LuaMultiReturn<[string,string]>;
+    export function getPedAnimation(thePed: ped): LuaMultiReturn<[string, string]>;
 
     /**
      * Returns the 3D world coordinates of a specific bone of a given ped.
@@ -3869,7 +3915,7 @@ declare module 'mtasa/client/functions' {
      * @param bone the number of the bone to get the position of.  [[Image:Bones.jpg|thumb|Bone numbers]]  <div style="border: 3px red solid; margin-bottom:3px; padding-left:5px;">
      * @return Returns the x, y, z world position of the bone.
      */
-    export function getPedBonePosition(thePed: ped, bone: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getPedBonePosition(thePed: ped, bone: number): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets the current camera rotation of a [[ped]].
@@ -3877,7 +3923,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed the ped to retrieve the camera rotation of.
      * @return Returns the camera rotation of the [[ped]] in degrees if successful. Returns ''false'' if an invalid element was passed.
      */
-    export function getPedCameraRotation(thePed: ped, ): number;
+    export function getPedCameraRotation(thePed: ped): number;
 
     /**
      * Checks whether a ped or the localplayer has a certain control pressed.
@@ -3886,7 +3932,7 @@ declare module 'mtasa/client/functions' {
      * @param control the control to get the status of. See control names for a list of valid names.
      * @return Returns ''true'' if the ped is pressing the specified control, ''false'' if not or an invalid argument was passed.
      */
-    export function getPedControlState(thePed: ped, control: string, ): boolean;
+    export function getPedControlState(thePed: ped, control: string): boolean;
 
     /**
      * This function returns the current move state for the specified [[ped]].
@@ -3895,7 +3941,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns a [[string]] indicating the ped's move state, or ''false'' if the ped is not streamed in, the movement type is unknown, the ped is in a vehicle or the ped is invalid.
      * * {{Ped move states}}
      */
-    export function getPedMoveState(thePed: ped, ): string;
+    export function getPedMoveState(thePed: ped): string;
 
     /**
      * This function returns the current oxygen level of the specified [[ped]].
@@ -3903,7 +3949,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed The ped whose oxygen level you want to check
      * @return A ''float'' with the oxygen level, ''false'' if an invalid ped was given.
      */
-    export function getPedOxygenLevel(thePed: ped, ): number;
+    export function getPedOxygenLevel(thePed: ped): number;
 
     /**
      * This function is used to get the name of a specified ped's current simplest [[task]].<br>
@@ -3911,7 +3957,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed : The ped whose task you want to retrieve.
      * @return Returns a string representing the name of the ped's simplest, active [[task]].
      */
-    export function getPedSimplestTask(thePed: ped, ): string;
+    export function getPedSimplestTask(thePed: ped): string;
 
     /**
      * This function allows retrieval of where a ped's target is blocked. It will only be blocked if there is an obstacle within a ped's target range.
@@ -3919,7 +3965,7 @@ declare module 'mtasa/client/functions' {
      * @param targetingPed This is the ped whose target collision you wish to retrieve
      * @return Returns three floats, ''x'',''y'',''z'', representing the position where the ped's target collides, or ''false'' if it was unsuccessful.
      */
-    export function getPedTargetCollision(targetingPed: ped, ): LuaMultiReturn<[number,number,number]>;
+    export function getPedTargetCollision(targetingPed: ped): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function allows retrieval of the position where a ped's target range ends, when he is aiming with a weapon.
@@ -3927,7 +3973,7 @@ declare module 'mtasa/client/functions' {
      * @param targetingPed the ped who is targeting whose target end you wish to retrieve
      * @return Returns three floats, ''x'',''y'',''z'', representing the position where the ped's target ends according to his range, or ''false'' if it was unsuccessful.
      */
-    export function getPedTargetEnd(targetingPed: ped, ): LuaMultiReturn<[number,number,number]>;
+    export function getPedTargetEnd(targetingPed: ped): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function allows retrieval of the position a ped's target range begins, when he is aiming with a weapon.
@@ -3935,7 +3981,7 @@ declare module 'mtasa/client/functions' {
      * @param targetingPed The ped whose target start you wish to retrieve
      * @return Returns three floats, x,y,z, representing the position where the ped's target starts, or ''false'' if it was unsuccessful.
      */
-    export function getPedTargetStart(targetingPed: ped, ): LuaMultiReturn<[number,number,number]>;
+    export function getPedTargetStart(targetingPed: ped): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function is used to get any simple or complex [[task]] of a certain type for a ped.
@@ -3950,7 +3996,7 @@ declare module 'mtasa/client/functions' {
      * * Returns between 1 and 4 strings. The first string contains the name of the most complex task, with simpler sub-tasks being named in the following strings. See [[list of player tasks]] for valid strings. Returns ''false'' if invalid arguments are specified or if there is no task of the type specified.
      * * }}
      */
-    export function getPedTask(thePed: ped, priority: string, taskType: number, ): LuaMultiReturn<[string,string,string,string]>;
+    export function getPedTask(thePed: ped, priority: string, taskType: number): LuaMultiReturn<[string, string, string, string]>;
 
     /**
      * Gets the current voice of a ped.
@@ -3958,7 +4004,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed the ped to get the voice of.
      * @return If successul, returns the current voice type name and the voice name of the ped (see [[ped voices]] for possible names). Returns ''false'' in case of failure.
      */
-    export function getPedVoice(thePed: ped, ): LuaMultiReturn<[string,string]>;
+    export function getPedVoice(thePed: ped): LuaMultiReturn<[string, string]>;
 
     /**
      * Returns the world position of the muzzle of the weapon that a ped is currently carrying. The weapon muzzle is the end of the gun barrel where the bullets/rockets/... come out.
@@ -3967,7 +4013,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed the ped whose weapon muzzle position to retrieve.
      * @return If successful, returns the x/y/z coordinates of the weapon muzzle. Returns ''false'' otherwise.
      */
-    export function getPedWeaponMuzzlePosition(thePed: ped, ): LuaMultiReturn<[number,number,number]>;
+    export function getPedWeaponMuzzlePosition(thePed: ped): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gives the specified weapon to the specified ped. This function can't be used on players, use [[giveWeapon]] for that.
@@ -3987,7 +4033,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns ''true'' if weapon was successfully given to the ped, ''false'' otherwise.
      */
-    export function givePedWeapon(thePed: ped, weapon: number, ammo?: number, setAsCurrent?: boolean, ): boolean;
+    export function givePedWeapon(thePed: ped, weapon: number, ammo?: number, setAsCurrent?: boolean): boolean;
 
     /**
      * This function checks if the specified [[ped]] is dead or not.
@@ -3995,7 +4041,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed : the ped you want to check up on.
      * @return Returns ''true'' if the ped is dead, ''false'' otherwise.
      */
-    export function isPedDead(thePed: ped, ): boolean;
+    export function isPedDead(thePed: ped): boolean;
 
     /**
      * This function checks if the specified ped is carrying out a certain [[List of player tasks|task]].
@@ -4004,7 +4050,7 @@ declare module 'mtasa/client/functions' {
      * @param taskName : A string containing the name of the List of player tasks|task youre checking for.
      * @return Returns ''true'' if the player is currently doing the task, ''false'' otherwise.
      */
-    export function isPedDoingTask(thePed: ped, taskName: string, ): boolean;
+    export function isPedDoingTask(thePed: ped, taskName: string): boolean;
 
     /**
      * This function is used to determine whether or not a ped is currently reloading their weapon. Useful to stop certain quick reload exploits.}}
@@ -4012,7 +4058,7 @@ declare module 'mtasa/client/functions' {
      * @param thePed The ped you are checking.
      * @return Returns ''true'' if the ped is currently reloading a weapon, ''false'' otherwise.
      */
-    export function isPedReloadingWeapon(thePed: ped, ): boolean;
+    export function isPedReloadingWeapon(thePed: ped): boolean;
 
     /**
      * [[Image:Targetingmarker.png|thumb|200px|Targeting marker]]
@@ -4030,10 +4076,10 @@ declare module 'mtasa/client/functions' {
      * @param state A float between 0 and 1 indicating the amount the control is pressed. If no value is provided, the analog control is removed.  <noinclude>{{New feature/item|3.0300|1.5.8|20756|  *'''forceOverrideNextFrame: ''' A [[bool]] indicating if the player input should force fully overriden for the next frame.  }}</noinclude>
      * @return Returns ''true'' if the control state was successfully set, ''false'' otherwise.
      */
-    export function setAnalogControlState(control: string, state?: number, forceOverrideNextFrame?: boolean, ): boolean;
+    export function setAnalogControlState(control: string, state?: number, forceOverrideNextFrame?: boolean): boolean;
 
     /**
-     * This function allows you to set a ped's aim target to a specific point. If a ped is within a certain range defined by [[getPedTargetStart]] and [[getPedTargetEnd]] he will be targeted and shot. 
+     * This function allows you to set a ped's aim target to a specific point. If a ped is within a certain range defined by [[getPedTargetStart]] and [[getPedTargetEnd]] he will be targeted and shot.
      * ''Note: If you wish to make a ped shoot you must use this in conjunction with an equipped weapon and [[setPedControlState]].''
      * @see {@link https://wiki.multitheftauto.com/wiki/setPedAimTarget|MTASA Wiki}
      * @param thePed The ped whose target you want to set. Only peds and remote players will work; this function has no effect on the local player.
@@ -4042,7 +4088,7 @@ declare module 'mtasa/client/functions' {
      * @param z The z coordinate of the aim target point.
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function setPedAimTarget(thePed: ped, x: number, y: number, z: number, ): boolean;
+    export function setPedAimTarget(thePed: ped, x: number, y: number, z: number): boolean;
 
     /**
      * Sets an analog state of a specified [[ped]]'s control, as if they pressed or released it.
@@ -4053,7 +4099,7 @@ declare module 'mtasa/client/functions' {
      * @param state A float between 0 and 1 indicating the amount the control is pressed.
      * @return Returns ''true'' if the control state was successfully set, ''false'' otherwise.
      */
-    export function setPedAnalogControlState(thePed: ped, control: string, state: number, ): boolean;
+    export function setPedAnalogControlState(thePed: ped, control: string, state: number): boolean;
 
     /**
      * This function sets the camera rotation of a ped, e.g. where its camera will look at. Don't confuse this with [[getCameraMatrix]], because that function is designed for fixed (scripted) camera moves.
@@ -4062,16 +4108,16 @@ declare module 'mtasa/client/functions' {
      * @param cameraRotation The new direction that the ped will walk if you set their forwards control state. If the ped is the local player, it will also change where his camera is looking at if it isnt fixed (i.e. camera target is the local player).
      * @return Returns ''true'' if the camera rotation was changed, ''false'' otherwise.
      */
-    export function setPedCameraRotation(thePed: ped, cameraRotation: number, ): boolean;
+    export function setPedCameraRotation(thePed: ped, cameraRotation: number): boolean;
 
     /**
      * This function controls if a ped can fall of his bike by accident - namely by banging into a wall.
      * @see {@link https://wiki.multitheftauto.com/wiki/setPedCanBeKnockedOffBike|MTASA Wiki}
      * @param thePed the ped whose knockoffstatus is being changed
      * @param canBeKnockedOffBike true or false
-     * @return 
+     * @return
      */
-    export function setPedCanBeKnockedOffBike(thePed: ped, canBeKnockedOffBike: boolean, ): boolean;
+    export function setPedCanBeKnockedOffBike(thePed: ped, canBeKnockedOffBike: boolean): boolean;
 
     /**
      * This function makes a [[ped]] or [[player]] press or release a certain control.
@@ -4081,10 +4127,10 @@ declare module 'mtasa/client/functions' {
      * @param state the new control state. true means pressed, false is released.
      * @return Returns ''true'' if successful, ''false'' if otherwise.
      */
-    export function setPedControlState(thePed: ped, control: string, state: boolean, ): boolean;
+    export function setPedControlState(thePed: ped, control: string, state: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setPedEnterVehicle|MTASA Wiki}
      * @param thePed The player or ped to enter the vehicle.  **''Note: The player must be the local player.''  **''Note: The ped must be synced by the client. Use [[isElementSyncer]] clientside to check if the client is syncing. Use [[setElementSyncer]] serverside to change the syncer manually.''
      * @param passenger If set to true, the ped will enter as passenger in the nearest available seat, otherwise he will enter as driver.
@@ -4101,10 +4147,10 @@ declare module 'mtasa/client/functions' {
      * * *[[onClientVehicleStartEnter]] was cancelled by a script.
      * * *The ped has an active TASK_PRIMARY [[task]]. Use [[getPedTask]] to monitor what the ped is doing.
      */
-    export function setPedEnterVehicle(thePed: ped, theVehicle?: vehicle, passenger?: boolean, ): boolean;
+    export function setPedEnterVehicle(thePed: ped, theVehicle?: vehicle, passenger?: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setPedExitVehicle|MTASA Wiki}
      * @param thePed The player or ped to exit the vehicle.
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
@@ -4116,7 +4162,7 @@ declare module 'mtasa/client/functions' {
      * * *Time passed since last enter/exit for this ped is less than 1500 ms.
      * * *The ped is getting jacked.
      */
-    export function setPedExitVehicle(thePed: ped, ): boolean;
+    export function setPedExitVehicle(thePed: ped): boolean;
 
     /**
      * This function makes a players foot prints bloody.
@@ -4125,7 +4171,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled Boolean specifying whether or not to have bloody feet.
      * @return Returns ''true'' if changing the players bloody feet status worked.
      */
-    export function setPedFootBloodEnabled(thePlayer: element, enabled: boolean, ): boolean;
+    export function setPedFootBloodEnabled(thePlayer: element, enabled: boolean): boolean;
 
     /**
      * This function checks if player feets are bleeding.
@@ -4133,7 +4179,7 @@ declare module 'mtasa/client/functions' {
      * @param thePlayer The player to give bloody foot prints to.
      * @return Returns ''true'' if feets are bleeding, '''false''' otherwise
      */
-    export function isPedFootBloodEnabled(thePlayer: element, ): boolean;
+    export function isPedFootBloodEnabled(thePlayer: element): boolean;
 
     /**
      * Makes a ped turn his head and look at a specific world position or element.
@@ -4148,9 +4194,9 @@ declare module 'mtasa/client/functions' {
      * @default 1000
      * @param target if this argument is specified, the position arguments will be ignored and the peds gaze will follow the specified element instead. Can be a player, a vehicle, another ped etc.
      * @default nil
-     * @return 
+     * @return
      */
-    export function setPedLookAt(thePed: ped, x: number, y: number, z: number, time?: number, blend?: number, target?: element, ): boolean;
+    export function setPedLookAt(thePed: ped, x: number, y: number, z: number, time?: number, blend?: number, target?: element): boolean;
 
     /**
      * This function allows you to set the oxygen level of a [[ped]].
@@ -4159,7 +4205,7 @@ declare module 'mtasa/client/functions' {
      * @param oxygen : the amount of oxygen you want to set on the ped. Native values are from 0 to 1000. Each of the stamina (22) and underwater stamina (225) Template:Stats|stat maximum adds a bonus of 1500. So the maximum oxygen level is 4000.
      * @return Returns ''true'' if the oxygen level was changed succesfully. Returns ''false'' if an invalid ped and/or oxygen level was specified.
      */
-    export function setPedOxygenLevel(thePed: ped, oxygen: number, ): boolean;
+    export function setPedOxygenLevel(thePed: ped, oxygen: number): boolean;
 
     /**
      * [[Image:Targetingmarker.png|thumb|200px|Targeting marker]]
@@ -4168,7 +4214,7 @@ declare module 'mtasa/client/functions' {
      * @param enabled A boolean denoting whether we want to enable (true) or disable (false) the markers.
      * @return Returns ''true'' if the markers were enabled, ''false'' if weren't or if invalid arguments are passed.
      */
-    export function setPedTargetingMarkerEnabled(enabled: boolean, ): boolean;
+    export function setPedTargetingMarkerEnabled(enabled: boolean): boolean;
 
     /**
      * Changes the voice of a ped.
@@ -4178,10 +4224,10 @@ declare module 'mtasa/client/functions' {
      * @param voiceName the voice name within the specified type. See ped voices for possible voices.
      * @return Returns ''true'' when the voice was successfully set, ''false'' otherwise.
      */
-    export function setPedVoice(thePed: ped, voiceType: string, voiceName: string, ): boolean;
+    export function setPedVoice(thePed: ped, voiceType: string, voiceName: string): boolean;
 
     /**
-     * This function gets the player element of the client running the current script. 
+     * This function gets the player element of the client running the current script.
      * You can use the predefined variable '''localPlayer''' instead of typing getLocalPlayer()
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getLocalPlayer|MTASA Wiki}
@@ -4198,7 +4244,7 @@ declare module 'mtasa/client/functions' {
      * * ** Negative values may be returned if these coordinates are off screen.
      * * * If the map is not showing, a ''false'' boolean value is returned.
      */
-    export function getPlayerMapBoundingBox(): LuaMultiReturn<[number,number,number,number]>;
+    export function getPlayerMapBoundingBox(): LuaMultiReturn<[number, number, number, number]>;
 
     /**
      * This function can be used to check whether an hud component is visable or not.
@@ -4206,7 +4252,7 @@ declare module 'mtasa/client/functions' {
      * @param component The component you wish to check. Valid values are:
      * @return Returns ''true'' if the component is visable, ''false'' if not.
      */
-    export function isPlayerHudComponentVisible(component: string, ): boolean;
+    export function isPlayerHudComponentVisible(component: string): boolean;
 
     /**
      * [[Image:MTAsa_Default_Map.png|thumb|224px|Screenshot of the default map]]
@@ -4241,7 +4287,7 @@ declare module 'mtasa/client/functions' {
      * @param model : Integer representing the projectiles model, uses default model for weaponType if not specified.
      * @return Returns a ''[[projectile]]'' element if [[projectile]] creation was successful. Returns ''false'' if unable to create a [[projectile]] (wrong weapon ID or projectiles limit was reached).
      */
-    export function createProjectile(creator: element, weaponType: number, posX?: number, posY?: number, posZ?: number, force?: number, target?: element, rotX?: number, rotY?: number, rotZ?: number, velX?: number, velY?: number, velZ?: number, model?: number, ): projectile;
+    export function createProjectile(creator: element, weaponType: number, posX?: number, posY?: number, posZ?: number, force?: number, target?: element, rotX?: number, rotY?: number, rotZ?: number, velX?: number, velY?: number, velZ?: number, model?: number): projectile;
 
     /**
      * Get the time left before a projectile detonates.
@@ -4252,7 +4298,7 @@ declare module 'mtasa/client/functions' {
      * * * Both types of rockets will explode when it hits 0
      * * * Satchels restarts so I do not think it does anything
      */
-    export function getProjectileCounter(projectile: projectile, ): number;
+    export function getProjectileCounter(projectile: projectile): number;
 
     /**
      * This function returns the creator of the specified projectile.
@@ -4260,7 +4306,7 @@ declare module 'mtasa/client/functions' {
      * @param theProjectile The projectiles| projectile element which creator you want to retrieve.
      * @return Returns the element which created the projectile if successful, ''false'' otherwise.
      */
-    export function getProjectileCreator(theProjectile: projectile, ): element;
+    export function getProjectileCreator(theProjectile: projectile): element;
 
     /**
      * This function returns the force of the specified projectile.
@@ -4268,7 +4314,7 @@ declare module 'mtasa/client/functions' {
      * @param theProjectile The projectiles| projectile element which force you want to retrieve.
      * @return Returns a [[float]] if successful, ''false'' otherwise.
      */
-    export function getProjectileForce(theProjectile: projectile, ): number;
+    export function getProjectileForce(theProjectile: projectile): number;
 
     /**
      * This function returns the target of the specified projectile.
@@ -4277,7 +4323,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns the [[element]] which is the projectile's target if the projectile is valid and can have a target (like a heat-seeking rocket), ''false'' otherwise.
      * * {{New feature/item|3.0141|1.4.0|6990|If the projectile is a satchel charge, returns the [[element]] at which it is glued to (or ''nil'' if it isn't glued to any).}}
      */
-    export function getProjectileTarget(theProjectile: projectile, ): element;
+    export function getProjectileTarget(theProjectile: projectile): element;
 
     /**
      * This function returns the type of the specified projectile.
@@ -4286,7 +4332,7 @@ declare module 'mtasa/client/functions' {
      * @return Returns an [[int]]eger over the type of the projectile or ''false'' if invalid arguments were passed.
      * * {{Projectiles}}
      */
-    export function getProjectileType(theProjectile: projectile, ): number;
+    export function getProjectileType(theProjectile: projectile): number;
 
     /**
      * Will change the projectile counter timer which depending on the projectile type will do different things:
@@ -4299,7 +4345,7 @@ declare module 'mtasa/client/functions' {
      * @param timeToDetonate The time in milliseconds to detonation.
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function setProjectileCounter(projectile: projectile, timeToDetonate: number, ): boolean;
+    export function setProjectileCounter(projectile: projectile, timeToDetonate: number): boolean;
 
     /**
      * This function retrieves a resource's GUI element. The resource's GUI element is the element in the element tree which is the default parent of all GUI elements that belong to a particular resource. It has a predefined variable called '''guiRoot''', and each resource has one of these. You can attach event handlers to this element to easily capture events that originate from your resource (and global events that originate from the root element).
@@ -4308,10 +4354,10 @@ declare module 'mtasa/client/functions' {
      * @default getThisResource(
      * @return Returns the root GUI element that contains all the other GUI elements.
      */
-    export function getResourceGUIElement(theResource: resource, ): element;
+    export function getResourceGUIElement(theResource: resource): element;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/createSearchLight|MTASA Wiki}
      * @param startX : the X coordinate where the searchlight light cone will start.
      * @param startY : the Y coordinate where the searchlight light cone will start.
@@ -4325,7 +4371,7 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return If every argument is correct and the limit of 1000 searchlights has not been reached, this function returns a [[Element/Searchlight|searchlight element]]. Otherwise, it returns ''false''.
      */
-    export function createSearchLight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, startRadius: number, endRadius: number, renderSpot?: boolean, ): searchlight;
+    export function createSearchLight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, startRadius: number, endRadius: number, renderSpot?: boolean): searchlight;
 
     /**
      * This function gets the end position of a [[Element/Searchlight|searchlight]] element.
@@ -4333,7 +4379,7 @@ declare module 'mtasa/client/functions' {
      * @param theSearchLight : the searchlight to get the position where the searchlights light cone ends.
      * @return If the specified searchlight element is valid, this function will return three ''float'', which are the three coordinates of searchlight's end position. If not, it will return ''false'' plus an error message.
      */
-    export function getSearchLightEndPosition(theSearchLight: searchlight, ): LuaMultiReturn<[number,number,number]>;
+    export function getSearchLightEndPosition(theSearchLight: searchlight): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets the end radius of a [[Element/Searchlight|searchlight]] element.
@@ -4341,7 +4387,7 @@ declare module 'mtasa/client/functions' {
      * @param theSearchLight : the searchlight to get the radius of the searchlights light cone in its end.
      * @return If the specified searchlight element is valid, this function will return one ''float'', which is the searchlight's end radius. If not, it will return ''false'' plus an error message.
      */
-    export function getSearchLightEndRadius(theSearchLight: searchlight, ): number;
+    export function getSearchLightEndRadius(theSearchLight: searchlight): number;
 
     /**
      * This function gets the start position of a [[Element/Searchlight|searchlight]] element.
@@ -4349,7 +4395,7 @@ declare module 'mtasa/client/functions' {
      * @param theSearchLight : the searchlight to get the position where the searchlights light cone starts.
      * @return If the specified searchlight element is valid, this function will return three ''float'', which are the three coordinates of searchlight's start position. If not, it will return ''false'' plus an error message.
      */
-    export function getSearchLightStartPosition(theSearchLight: searchlight, ): LuaMultiReturn<[number,number,number]>;
+    export function getSearchLightStartPosition(theSearchLight: searchlight): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets the start radius of a [[Element/Searchlight|searchlight]] element.
@@ -4357,10 +4403,10 @@ declare module 'mtasa/client/functions' {
      * @param theSearchLight : the searchlight to get the radius of the searchlights light cone in its beginning.
      * @return If the specified searchlight element is valid, this function will return one ''float'', which is the searchlight's start radius. If not, it will return ''false'' plus an error message.
      */
-    export function getSearchLightStartRadius(theSearchLight: searchlight, ): number;
+    export function getSearchLightStartRadius(theSearchLight: searchlight): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setSearchLightEndPosition|MTASA Wiki}
      * @param theSearchLight : the searchlight to modify the property of.
      * @param endX : the X coordinate where the searchlight light cone will end.
@@ -4368,7 +4414,7 @@ declare module 'mtasa/client/functions' {
      * @param endZ : the Z coordinate where the searchlight light cone will end.
      * @return If every argument is correct, this function returns ''true''. If not, it will return ''false'' plus an error message.
      */
-    export function setSearchLightEndPosition(theSearchLight: searchlight, endX: number, endY: number, endZ: number, ): boolean;
+    export function setSearchLightEndPosition(theSearchLight: searchlight, endX: number, endY: number, endZ: number): boolean;
 
     /**
      * This function sets the end radius of a [[Element/Searchlight|searchlight]] element.
@@ -4376,7 +4422,7 @@ declare module 'mtasa/client/functions' {
      * @param endRadius : the radius of the searchlights light cone in its end.
      * @return If every argument is correct, this function returns ''true''. If not, it will return ''false'' plus an error message.
      */
-    export function setSearchLightEndRadius(theSearchlight: searchlight, endRadius: number, ): boolean;
+    export function setSearchLightEndRadius(theSearchlight: searchlight, endRadius: number): boolean;
 
     /**
      * This function sets the start position of a [[Element/Searchlight|searchlight]] element.
@@ -4387,7 +4433,7 @@ declare module 'mtasa/client/functions' {
      * @param startZ : the Z coordinate where the searchlight light cone will start.
      * @return If every argument is correct, this function returns ''true''. If not, it will return ''false'' plus an error message.
      */
-    export function setSearchLightStartPosition(theSearchLight: searchlight, startX: number, startY: number, startZ: number, ): boolean;
+    export function setSearchLightStartPosition(theSearchLight: searchlight, startX: number, startY: number, startZ: number): boolean;
 
     /**
      * This function sets the start radius of a [[Element/Searchlight|searchlight]] element.
@@ -4395,7 +4441,7 @@ declare module 'mtasa/client/functions' {
      * @param startRadius : the radius of the searchlights light cone in its beginning.
      * @return If every argument is correct, this function returns ''true''. If not, it will return ''false'' plus an error message.
      */
-    export function setSearchLightStartRadius(theSearchlight: searchlight, startRadius: number, ): boolean;
+    export function setSearchLightStartRadius(theSearchlight: searchlight, startRadius: number): boolean;
 
     /**
      * This functions creates a notification ballon on the desktop.
@@ -4407,7 +4453,7 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Returns ''true'' if the notification is correctly created, ''false'' otherwise.
      */
-    export function createTrayNotification(notificationText: string, iconType?: string, useSound?: boolean, ): boolean;
+    export function createTrayNotification(notificationText: string, iconType?: string, useSound?: boolean): boolean;
 
     /**
      * This function ensures the requested resource file is correct and then triggers [[onClientFileDownloadComplete]].  If the file has been previously downloaded and the CRC matches, the file will not be downloaded again but [[onClientFileDownloadComplete]] will still run. The '''file''' should also be included in the resource meta.xml with the '''download''' attribute set to "false", see [[meta.xml]] for more details.
@@ -4416,10 +4462,10 @@ declare module 'mtasa/client/functions' {
      * @param fileName : A string referencing the name of the file to download
      * @return Returns ''true'' if file download has been queued, ''false'' otherwise.
      */
-    export function downloadFile(fileName: string, ): boolean;
+    export function downloadFile(fileName: string): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getKeyboardLayout|MTASA Wiki}
      * @return Returns a ''table'' with keyboard layout properties:
      * * {| class="wikitable" style="cellpadding: 10px;"
@@ -4464,14 +4510,14 @@ declare module 'mtasa/client/functions' {
      * @param theText The new text to be in the players clipboard when the player pastes with CTRL + V.
      * @return Returns ''true'' if the text in the clip board was set correctly.
      */
-    export function setClipboard(theText: string, ): boolean;
+    export function setClipboard(theText: string): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setWindowFlashing|MTASA Wiki}
-     * @return 
+     * @return
      */
-    export function setWindowFlashing(shouldFlash: boolean, count?: number, ): boolean;
+    export function setWindowFlashing(shouldFlash: boolean, count?: number): boolean;
 
     /**
      * This function decrypts given [https://en.wikipedia.org/wiki/Base64 base64] representation of encrypted data using the [https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm Tiny Encryption Algorithm].
@@ -4481,7 +4527,7 @@ declare module 'mtasa/client/functions' {
      * @param key The key that should be used for decryption (Only first 16 characters are used)
      * @return Returns string containing the decrypted data if the decryption process was successfully completed, ''false'' otherwise.
      */
-    export function teaDecode(data: string, key: string, ): string;
+    export function teaDecode(data: string, key: string): string;
 
     /**
      * This functions performs the [https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm Tiny Encryption Algorithm] on the given string and returns the [https://en.wikipedia.org/wiki/Base64 base64] representation of the encrypted string.
@@ -4491,7 +4537,7 @@ declare module 'mtasa/client/functions' {
      * @param key The key that should be used for encryption (Only first 16 characters are used)
      * @return Returns the [https://en.wikipedia.org/wiki/Base64 base64] representation of the encrypted string if the encryption process was successfully completed, ''false'' otherwise.
      */
-    export function teaEncode(text: string, key: string, ): string;
+    export function teaEncode(text: string, key: string): string;
 
     /**
      * *This is different to [[getVehicleOverrideLights]] because this function will return '''true''' if the lights were turned on by natural causes.
@@ -4500,7 +4546,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle : the vehicle you wish to retrieve the lights state of.
      * @return Returns ''true'' if the lights are on, ''false'' otherwise.
      */
-    export function areVehicleLightsOn(theVehicle: vehicle, ): boolean;
+    export function areVehicleLightsOn(theVehicle: vehicle): boolean;
 
     /**
      * This function gets the state of the helicopter blades collisions on the specified vehicle.
@@ -4508,7 +4554,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle that will be checked.
      * @return Returns ''true'' if the collisions are enabled for specified vehicle, ''false'' if the collisions aren't enabled for the specified vehicle, if the vehicle is not a helicopter or if invalid arguments are specified.
      */
-    export function getHeliBladeCollisionsEnabled(theVehicle: vehicle, ): boolean;
+    export function getHeliBladeCollisionsEnabled(theVehicle: vehicle): boolean;
 
     /**
      * Retrieves the speed at which the rotor of a helicopter rotates.
@@ -4516,7 +4562,7 @@ declare module 'mtasa/client/functions' {
      * @param heli the helicopter element to get the rotor speed of.
      * @return Returns the rotor speed if successful. This is 0 when the helicopter is parked, and about 0.2 when it is fully spun up. It can be negative if the rotor rotates counter-clockwise. Returns ''false'' in case of failure (an invalid element or a vehicle element that is not a helicopter was passed).
      */
-    export function getHelicopterRotorSpeed(heli: vehicle, ): number;
+    export function getHelicopterRotorSpeed(heli: vehicle): number;
 
     /**
      * Use this to get the value of a vehicles adjustable property. This property relates to movable parts of a model, for example hydra jets or dump truck tray.
@@ -4524,7 +4570,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle you want to get the adjustable property of.
      * @return Returns a value from 0 upwards representing adjustment. 0 is default position. Maximum varies per vehicle, for example hydra horizontal flight is 5000, while dump truck tray max tilt is 2500. Or returns ''false'' if the vehicle passed to the function is invalid.
      */
-    export function getVehicleAdjustableProperty(theVehicle: vehicle, ): number;
+    export function getVehicleAdjustableProperty(theVehicle: vehicle): number;
 
     /**
      * This function gets the component position of a [[vehicle]]. The vehicle must be streamed in.
@@ -4535,7 +4581,7 @@ declare module 'mtasa/client/functions' {
      * @default "root"
      * @return Returns three ''floats'' indicating the position of the component, ''x'', ''y'' and ''z'' respectively.
      */
-    export function getVehicleComponentPosition(theVehicle: vehicle, theComponent: string, base?: string, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleComponentPosition(theVehicle: vehicle, theComponent: string, base?: string): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets the component rotation of a [[vehicle]].
@@ -4546,7 +4592,7 @@ declare module 'mtasa/client/functions' {
      * @default "parent"
      * @return Returns three ''floats'' indicating the rotation of the component, ''x'', ''y'' and ''z'' respectively.
      */
-    export function getVehicleComponentRotation(theVehicle: vehicle, theComponent: string, base?: string, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleComponentRotation(theVehicle: vehicle, theComponent: string, base?: string): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets the component scale of a [[vehicle]].}}
@@ -4557,7 +4603,7 @@ declare module 'mtasa/client/functions' {
      * @default "root"
      * @return Returns three ''floats'' indicating the scale of the component, ''x'', ''y'' and ''z'' respectively.
      */
-    export function getVehicleComponentScale(theVehicle: vehicle, theComponent: string, base?: string, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleComponentScale(theVehicle: vehicle, theComponent: string, base?: string): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function get component visibility for [[vehicle]].
@@ -4567,7 +4613,7 @@ declare module 'mtasa/client/functions' {
      * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the component you wish to modify)
      * @return Returns a ''bool'' indicating the visible state of the component.
      */
-    export function getVehicleComponentVisible(theVehicle: vehicle, theComponent: string, ): boolean;
+    export function getVehicleComponentVisible(theVehicle: vehicle, theComponent: string): boolean;
 
     /**
      * This function gets a table of the components currently on a [[vehicle]].
@@ -4576,7 +4622,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle you wish to get the Vehicle_Components|components of.
      * @return Returns a ''table'' containing the name of the component as the key and visibility flag of that component as the value
      */
-    export function getVehicleComponents(theVehicle: vehicle, ): table;
+    export function getVehicleComponents(theVehicle: vehicle): table;
 
     /**
      * Gets the specified vehicle's current gear.
@@ -4584,7 +4630,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle the vehicle to get the gear of
      * @return Returns the gear if successful, ''false'' otherwise.
      */
-    export function getVehicleCurrentGear(theVehicle: vehicle, ): number;
+    export function getVehicleCurrentGear(theVehicle: vehicle): number;
 
     /**
      * This function returns the position of the dummy for the given vehicle.}}
@@ -4609,7 +4655,7 @@ declare module 'mtasa/client/functions' {
      * * addCommandHandler("getdummy", getDummyPosition)
      * * </syntaxhighlight>
      */
-    export function getVehicleDummyPosition(theVehicle: vehicle, dummy: string, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleDummyPosition(theVehicle: vehicle, dummy: string): LuaMultiReturn<[number, number, number]>;
 
     /**
      * Retrieves the current gravity vector of a vehicle. This is the direction in which the vehicle falls, also the cameras of any passengers will be rotated to match it.
@@ -4617,7 +4663,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle the vehicle to retrieve the gravity vector of.
      * @return Returns the x, y and z components of the gravity vector if successful, ''false'' otherwise.
      */
-    export function getVehicleGravity(theVehicle: vehicle, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleGravity(theVehicle: vehicle): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets position of the dummies contained in a vehicle model.
@@ -4627,7 +4673,7 @@ declare module 'mtasa/client/functions' {
      * @param dummy : The dummy whose position you want to get
      * @return Returns three floats indicating the position ''x'', ''y'' and ''z'' of given dummy. It returns ''false'' otherwise.
      */
-    export function getVehicleModelDummyPosition(modelID: number, dummy: string, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleModelDummyPosition(modelID: number, dummy: string): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function gets the default position of the dummies contained in a vehicle model.
@@ -4637,7 +4683,7 @@ declare module 'mtasa/client/functions' {
      * @param dummy : The dummy whose position you want to get
      * @return Returns three floats indicating the default position ''x'', ''y'' and ''z'' of the given dummy. It returns ''false'' otherwise.
      */
-    export function getVehicleModelDummyDefaultPosition(modelID: number, dummy: string, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleModelDummyDefaultPosition(modelID: number, dummy: string): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function returns the position of the exhaust fumes the vehicle model emits.
@@ -4646,16 +4692,16 @@ declare module 'mtasa/client/functions' {
      * @param modelID : The vehicle model ID.
      * @return Returns the position of the exhaust fumes if everything went fine or ''false'' otherwise.
      */
-    export function getVehicleModelExhaustFumesPosition(modelID: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleModelExhaustFumesPosition(modelID: number): LuaMultiReturn<[number, number, number]>;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getVehicleModelWheelSize|MTASA Wiki}
      * @param vehicleModel : The Vehicle IDs|vehicle model ID.
      * @param wheelGroup : The group of wheels of the vehicle model to retrieve their size value. If not specified, it defaults to all_wheels. The following values are supported:
      * @return Returns a decimal number or a table, depending on the specified wheel group. If the specified vehicle model ID or wheel group are not valid, an error is raised instead. The meaning of the wheel size values is documented in [[setVehicleModelWheelSize]].
      */
-    export function getVehicleModelWheelSize(vehicleModel: number, wheelGroup?: string, ): number|table;
+    export function getVehicleModelWheelSize(vehicleModel: number, wheelGroup?: string): number | table;
 
     /**
      * This function gets the nitro count of the [[vehicle]].
@@ -4664,7 +4710,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle which you want to get a nitro count.
      * @return Returns ''an integer'' determining the amount of nitro counts of the vehicle, ''false'' if there is no nitro in the vehicle.
      */
-    export function getVehicleNitroCount(theVehicle: vehicle, ): number;
+    export function getVehicleNitroCount(theVehicle: vehicle): number;
 
     /**
      * This function gets the nitro level of the [[vehicle]].
@@ -4673,10 +4719,10 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle, which you want to get a nitro level.
      * @return Returns ''a float'' determining the nitro level (ranges from 0.0001 to 1.0) of the vehicle, ''false'' if there is no nitro in the vehicle.
      */
-    export function getVehicleNitroLevel(theVehicle: vehicle, ): number;
+    export function getVehicleNitroLevel(theVehicle: vehicle): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getVehicleWheelFrictionState|MTASA Wiki}
      * @param theVehicle The vehicle that you wish to get the wheel friction state.
      * @param wheel The wheel you want to check. (0: front left, 1: rear left, 2: front right, 3: rear right)
@@ -4686,15 +4732,15 @@ declare module 'mtasa/client/functions' {
      * * * '''2:''' Slip without acceleration
      * * * '''3:''' Locked wheel (on brake on handbrake).
      */
-    export function getVehicleWheelFrictionState(theVehicle: vehicle, wheel: number, ): number;
+    export function getVehicleWheelFrictionState(theVehicle: vehicle, wheel: number): number;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getVehicleWheelScale|MTASA Wiki}
      * @param theVehicle : The vehicle to get its wheel scale of.
      * @return Returns the wheel scale of the specified vehicle as a decimal number, or an error if the vehicle is invalid. For more information about the returned number, see [[setVehicleWheelScale]].
      */
-    export function getVehicleWheelScale(theVehicle: vehicle, ): number;
+    export function getVehicleWheelScale(theVehicle: vehicle): number;
 
     /**
      * This function checks if a [[Element/Vehicle|train]] is a chain engine (moves the rest of the chain's carriages) or not.
@@ -4704,7 +4750,7 @@ declare module 'mtasa/client/functions' {
      * @return * ''true'' if a [[Element/Vehicle|train]] was passed to the function and if it's a chain engine.
      * * * ''false'' otherwise.
      */
-    export function isTrainChainEngine(theTrain: vehicle, ): boolean;
+    export function isTrainChainEngine(theTrain: vehicle): boolean;
 
     /**
      * This function checks if nitro is activated on the [[vehicle]].
@@ -4713,7 +4759,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle, which you want to check for an activation.
      * @return Returns ''true'' if the nitro is currently activated on the vehicle, ''false'' otherwise.
      */
-    export function isVehicleNitroActivated(theVehicle: vehicle, ): boolean;
+    export function isVehicleNitroActivated(theVehicle: vehicle): boolean;
 
     /**
      * This function checks if nitro is recharging on the [[vehicle]].
@@ -4722,7 +4768,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle, which you want to check for recharging.
      * @return Returns ''true'' if the nitro is currently recharging on the vehicle, ''false'' otherwise.
      */
-    export function isVehicleNitroRecharging(theVehicle: vehicle, ): boolean;
+    export function isVehicleNitroRecharging(theVehicle: vehicle): boolean;
 
     /**
      * This function returns a [[boolean]] whether the [[vehicle]]'s wheel is on ground (true) or in air (false).
@@ -4731,14 +4777,14 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle, which you want to check.
      * @return Returns ''true'' if the vehicle wheel is on ground/collided, ''false'' otherwise.
      */
-    export function isVehicleWheelOnGround(theVehicle: vehicle, int: string, ): boolean;
+    export function isVehicleWheelOnGround(theVehicle: vehicle, int: string): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/isVehicleWindowOpen|MTASA Wiki}
-     * @return 
+     * @return
      */
-    export function isVehicleWindowOpen(theVehicle: vehicle, window: number, ): boolean;
+    export function isVehicleWindowOpen(theVehicle: vehicle, window: number): boolean;
 
     /**
      * This function reset to default component position for [[vehicle]].
@@ -4748,7 +4794,7 @@ declare module 'mtasa/client/functions' {
      * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
      * @return Returns ''true'' if the position of the component was reset, ''false'' otherwise.
      */
-    export function resetVehicleComponentPosition(theVehicle: vehicle, theComponent: string, ): boolean;
+    export function resetVehicleComponentPosition(theVehicle: vehicle, theComponent: string): boolean;
 
     /**
      * This function reset to default component rotation for [[vehicle]].
@@ -4758,7 +4804,7 @@ declare module 'mtasa/client/functions' {
      * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
      * @return Returns ''true'' if the rotation of the component was reset, ''false'' otherwise.
      */
-    export function resetVehicleComponentRotation(theVehicle: vehicle, theComponent: string, ): boolean;
+    export function resetVehicleComponentRotation(theVehicle: vehicle, theComponent: string): boolean;
 
     /**
      * This function reset to default component scale for [[vehicle]].
@@ -4768,7 +4814,7 @@ declare module 'mtasa/client/functions' {
      * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish to modify)
      * @return Returns ''true'' if the scale of the component was reset, ''false'' otherwise.
      */
-    export function resetVehicleComponentScale(theVehicle: vehicle, theComponent: string, ): boolean;
+    export function resetVehicleComponentScale(theVehicle: vehicle, theComponent: string): boolean;
 
     /**
      * This function resets the vehicle dependent dummy positions to the vehicle's current model dummy positions.}}
@@ -4776,7 +4822,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle The vehicle to reset
      * @return Returns ''true'' for success, ''false'' otherwise.
      */
-    export function resetVehicleDummyPositions(theVehicle: vehicle, ): boolean;
+    export function resetVehicleDummyPositions(theVehicle: vehicle): boolean;
 
     /**
      * This function changes the state of the helicopter blades collisions on the specified vehicle.
@@ -4785,7 +4831,7 @@ declare module 'mtasa/client/functions' {
      * @param collisions The state of the helicopter blades collisions.
      * @return Returns ''true'' if the collisions are set for the specified vehicle, ''false'' if the collisions can't be set for the specified vehicle, if the vehicle is not a helicopter or if invalid arguments are specified.
      */
-    export function setHeliBladeCollisionsEnabled(theVehicle: vehicle, collisions: boolean, ): boolean;
+    export function setHeliBladeCollisionsEnabled(theVehicle: vehicle, collisions: boolean): boolean;
 
     /**
      * Sets the rotor speed of a helicopter.
@@ -4794,7 +4840,7 @@ declare module 'mtasa/client/functions' {
      * @param speed the new rotor speed. Usual values are 0 if the helicopter stands still, or 0.2 if the rotor is fully spun up. Higher values than normal will not affect the helicopters handling. Negative values are allowed and will make the rotor spin in the opposite direction (pushing the helicopter down).
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function setHelicopterRotorSpeed(heli: vehicle, speed: number, ): boolean;
+    export function setHelicopterRotorSpeed(heli: vehicle, speed: number): boolean;
 
     /**
      * This function is used for adjusting the movable parts of a model, for example hydra jets or dump truck tray.
@@ -4804,7 +4850,7 @@ declare module 'mtasa/client/functions' {
      * @param value : A value from 0 between ?. (Set the adjustable value between 0 and N. 0 is the default value. It is possible to force the setting beyond default maximum, for example setting above 5000 on the dump truck (normal max 2500) will cause the tray to be fully vertical.)
      * @return Returns true if the adjustable property was set, ''false'' otherwise.
      */
-    export function setVehicleAdjustableProperty(theVehicle: element, value: number, ): boolean;
+    export function setVehicleAdjustableProperty(theVehicle: element, value: number): boolean;
 
     /**
      * This function sets the component position of a [[vehicle]].
@@ -4819,7 +4865,7 @@ declare module 'mtasa/client/functions' {
      * @default "root"
      * @return Returns ''true'' if component position was set successfully, ''false'' otherwise.
      */
-    export function setVehicleComponentPosition(theVehicle: vehicle, theComponent: string, posX: number, posY: number, posZ: number, base?: string, ): boolean;
+    export function setVehicleComponentPosition(theVehicle: vehicle, theComponent: string, posX: number, posY: number, posZ: number, base?: string): boolean;
 
     /**
      * This function sets the component rotation of a [[vehicle]].
@@ -4833,7 +4879,7 @@ declare module 'mtasa/client/functions' {
      * @default "parent"
      * @return Returns ''true'' if the component rotation was set successfully, ''false'' otherwise.
      */
-    export function setVehicleComponentRotation(theVehicle: vehicle, theComponent: string, rotX: number, rotY: number, rotZ: number, base?: string, ): boolean;
+    export function setVehicleComponentRotation(theVehicle: vehicle, theComponent: string, rotX: number, rotY: number, rotZ: number, base?: string): boolean;
 
     /**
      * This function sets the component scale of a [[vehicle]].
@@ -4848,7 +4894,7 @@ declare module 'mtasa/client/functions' {
      * @default "root"
      * @return Returns ''true'' if component scale was set successfully, ''false'' otherwise.
      */
-    export function setVehicleComponentScale(theVehicle: vehicle, theComponent: string, scaleX: number, scaleY: number, scaleZ: number, base?: string, ): boolean;
+    export function setVehicleComponentScale(theVehicle: vehicle, theComponent: string, scaleX: number, scaleY: number, scaleZ: number, base?: string): boolean;
 
     /**
      * This function sets component visibility for [[vehicle]].
@@ -4859,7 +4905,7 @@ declare module 'mtasa/client/functions' {
      * @param visible a bool which determines if the component should be visible
      * @return Returns a ''bool'' indicating if the visiblity was changed successfully.
      */
-    export function setVehicleComponentVisible(theVehicle: vehicle, theComponent: string, visible: boolean, ): boolean;
+    export function setVehicleComponentVisible(theVehicle: vehicle, theComponent: string, visible: boolean): boolean;
 
     /**
      * This function sets the position of the dummy for the given vehicle.}}
@@ -4869,7 +4915,7 @@ declare module 'mtasa/client/functions' {
      * @param x , y, z The new dummy position
      * @return Returns ''true'' for success, ''false'' otherwise.
      */
-    export function setVehicleDummyPosition(theVehicle: vehicle, dummy: string, x: number, y: number, z: number, ): boolean;
+    export function setVehicleDummyPosition(theVehicle: vehicle, dummy: string, x: number, y: number, z: number): boolean;
 
     /**
      * Sets the gravity vector of a vehicle. The vehicle will fall in this direction, and the camera of any occupants will also be rotated to match it. Can be used for e.g. driving on walls or upside down on ceilings.
@@ -4877,7 +4923,7 @@ declare module 'mtasa/client/functions' {
      * @param theVehicle the vehicle of which to change the gravity.
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function setVehicleGravity(theVehicle: vehicle, x: number, y: number, z: number, ): boolean;
+    export function setVehicleGravity(theVehicle: vehicle, x: number, y: number, z: number): boolean;
 
     /**
      * This function sets the position of the dummies contained in a vehicle model. Use [[setVehicleComponentPosition]] to adjust the vehicle component positions.
@@ -4887,7 +4933,7 @@ declare module 'mtasa/client/functions' {
      * @param dummy : The dummy whose position you want to change
      * @return Returns ''true'' if everything went fine, ''false'' otherwise.
      */
-    export function setVehicleModelDummyPosition(modelID: number, dummy: string, x: number, y: number, z: number, ): boolean;
+    export function setVehicleModelDummyPosition(modelID: number, dummy: string, x: number, y: number, z: number): boolean;
 
     /**
      * This function sets the position of the exhaust fumes the vehicle model emits. Use [[setVehicleComponentPosition]] to adjust the exhaust position.
@@ -4897,17 +4943,17 @@ declare module 'mtasa/client/functions' {
      * @param posX , posY, posZ: The desired position
      * @return Returns ''true'' if everything went fine, ''false'' otherwise.
      */
-    export function setVehicleModelExhaustFumesPosition(modelID: number, posX: number, posY: number, posZ: number, ): boolean;
+    export function setVehicleModelExhaustFumesPosition(modelID: number, posX: number, posY: number, posZ: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setVehicleModelWheelSize|MTASA Wiki}
      * @param vehicleModel : The Vehicle IDs|vehicle model ID.
      * @param wheelGroup : The group of wheels of the vehicle model that will have its size set by this function. The following values are supported:
      * @param wheelSize : The wheel size value to set. Default GTA values for automobiles usually are around 0.7. It must be greater than 0.
      * @return Returns ''true'' if the size for the specified wheel group and vehicle model has been set successfully, or an error if some parameter is invalid.
      */
-    export function setVehicleModelWheelSize(vehicleModel: number, wheelGroup: string, wheelSize: number, ): boolean;
+    export function setVehicleModelWheelSize(vehicleModel: number, wheelGroup: string, wheelSize: number): boolean;
 
     /**
      * This function activates or deactivates the nitro on the specified [[vehicle]], like if a player pressed the button for activating nitro.
@@ -4917,7 +4963,7 @@ declare module 'mtasa/client/functions' {
      * @param state true if you want to activate the nitro, false if you want to disable it.
      * @return Returns ''true'' if the nitro activation state was modified successfully, ''false'' otherwise.
      */
-    export function setVehicleNitroActivated(theVehicle: vehicle, state: boolean, ): boolean;
+    export function setVehicleNitroActivated(theVehicle: vehicle, state: boolean): boolean;
 
     /**
      * This function sets how many times a player can activate the nitro on a specified [[vehicle]].
@@ -4927,7 +4973,7 @@ declare module 'mtasa/client/functions' {
      * @param count : how many times should the player be able to use the nitro of this vehicle (from 0-100 times; 0 means that it cant be used and 101 means that it can be used infinite times).
      * @return Returns ''true'' if the nitro count was set successfully to the vehicle, ''false'' otherwise.
      */
-    export function setVehicleNitroCount(theVehicle: vehicle, count: number, ): boolean;
+    export function setVehicleNitroCount(theVehicle: vehicle, count: number): boolean;
 
     /**
      * This function sets the nitro level of the [[vehicle]].
@@ -4937,23 +4983,23 @@ declare module 'mtasa/client/functions' {
      * @param level Nitro level you want to set (ranges from 0.0001 to 1.0).
      * @return Returns ''true'' if the nitro level was set successfully to the vehicle, ''false'' otherwise.
      */
-    export function setVehicleNitroLevel(theVehicle: vehicle, level: number, ): boolean;
+    export function setVehicleNitroLevel(theVehicle: vehicle, level: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setVehicleWheelScale|MTASA Wiki}
      * @param theVehicle : The vehicle whose wheel scale you wish to modify.
      * @param wheelScale : The wheel scale value to set.
      * @return Returns ''true'' if the wheel scale has been set successfully, or an error if some parameter is invalid.
      */
-    export function setVehicleWheelScale(theVehicle: vehicle, wheelScale: number, ): boolean;
+    export function setVehicleWheelScale(theVehicle: vehicle, wheelScale: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setVehicleWindowOpen|MTASA Wiki}
-     * @return 
+     * @return
      */
-    export function setVehicleWindowOpen(theVehicle: vehicle, window: number, open: boolean, ): boolean;
+    export function setVehicleWindowOpen(theVehicle: vehicle, window: number, open: boolean): boolean;
 
     /**
      * This function allows you to retrieve the water level from a certain location. The water level is 0 in most places though it can vary (e.g. it's higher near the dam).
@@ -4962,7 +5008,7 @@ declare module 'mtasa/client/functions' {
      * @default false
      * @return Returns an ''integer'' of the water level if the [[localPlayer]]/position is near the water (-3 to 20 on the Z coordinate) else ''false'' if there's no water near the [[localPlayer]]/position.
      */
-    export function getWaterLevel(posX: number, posY: number, posZ: number, bCheckWaves?: boolean, ): number;
+    export function getWaterLevel(posX: number, posY: number, posZ: number, bCheckWaves?: boolean): number;
 
     /**
      * This function determines whether [[water]] is drawn last in the rendering order.
@@ -4979,7 +5025,7 @@ declare module 'mtasa/client/functions' {
      * @param bEnabled : A boolean value determining whether water should be drawn last.
      * @return Returns ''true'' if the rendering order was changed successfully, ''false'' otherwise.
      */
-    export function setWaterDrawnLast(bEnabled: boolean, ): boolean;
+    export function setWaterDrawnLast(bEnabled: boolean): boolean;
 
     /**
      * Creates a [[Element/Weapon|custom weapon]] that can fire bullets. '''Do not confuse this with player held weapons'''.
@@ -4990,7 +5036,7 @@ declare module 'mtasa/client/functions' {
      * @param z The z position to create the weapon.
      * @return Returns a [[Element/Weapon|custom weapon]] element, which represents a weapon floating at that position.
      */
-    export function createWeapon(theType: string, x: number, y: number, z: number, ): weapon;
+    export function createWeapon(theType: string, x: number, y: number, z: number): weapon;
 
     /**
      * Fires one shot from a [[Element/Weapon|custom weapon]].
@@ -4998,7 +5044,7 @@ declare module 'mtasa/client/functions' {
      * @param theWeapon The weapon to be fired.
      * @return Returns ''true'' if the shot weapon is valid and therefore the shot was fired, ''false'' otherwise.
      */
-    export function fireWeapon(theWeapon: weapon, ): boolean;
+    export function fireWeapon(theWeapon: weapon): boolean;
 
     /**
      * This function gets the total ammo a [[Element/Weapon|custom weapon]] has.
@@ -5006,7 +5052,7 @@ declare module 'mtasa/client/functions' {
      * @param theWeapon : The weapon to get the ammo of.
      * @return Returns an [[int|integer]] containing how many ammo left has the weapon. Returns ''false'' if an error occured.
      */
-    export function getWeaponAmmo(theWeapon: weapon, ): number;
+    export function getWeaponAmmo(theWeapon: weapon): number;
 
     /**
      * This function gets the amount of ammo left in a [[Element/Weapon|custom weapon]]'s magazine/clip.
@@ -5014,7 +5060,7 @@ declare module 'mtasa/client/functions' {
      * @param theWeapon the weapon to get the clip ammo of.
      * @return Returns the amount of ammo in the [[Element/Weapon|custom weapon]]'s clip, ''false'' if an error occured.
      */
-    export function getWeaponClipAmmo(theWeapon: weapon, ): number;
+    export function getWeaponClipAmmo(theWeapon: weapon): number;
 
     /**
      * This gets the firing rate to be used when a [[Element/Weapon|custom weapon]] opens fire.
@@ -5022,7 +5068,7 @@ declare module 'mtasa/client/functions' {
      * @param theWeapon The weapon to modify the firing rate of.
      * @return Returns an ''integer'' with the firing rate of the custom weapon, ''false'' otherwise.
      */
-    export function getWeaponFiringRate(theWeapon: weapon, ): number;
+    export function getWeaponFiringRate(theWeapon: weapon): number;
 
     /**
      * This function gets the flags of a [[Element/Weapon|custom weapon]].
@@ -5031,7 +5077,7 @@ declare module 'mtasa/client/functions' {
      * @param theFlag the weapon flag to get:
      * @return Returns the ''true'' or ''false'' on success (''flags'' flag returns 8 values) if the flag is enabled or not. Returns ''false'' if the weapon element isn't valid or an error occured.
      */
-    export function getWeaponFlags(theWeapon: weapon, theFlag: string, ): boolean;
+    export function getWeaponFlags(theWeapon: weapon, theFlag: string): boolean;
 
     /**
      * This function gets the owner of a [[Element/Weapon|custom weapon]]. Weapon ownership system was, however, disabled, so this function always returns ''false''. Please refer to [[setWeaponOwner]] for details.
@@ -5039,7 +5085,7 @@ declare module 'mtasa/client/functions' {
      * @param theWeapon The weapon to get the owner of.
      * @return This function was intended to return the [[player]] which owns the [[Element/Weapon|custom weapon]], and ''false'' if an error occured. However, at the moment it always returns ''false''.
      */
-    export function getWeaponOwner(theWeapon: weapon, ): boolean;
+    export function getWeaponOwner(theWeapon: weapon): boolean;
 
     /**
      * This function gets the state of a [[Element/Weapon|custom weapon]].
@@ -5051,7 +5097,7 @@ declare module 'mtasa/client/functions' {
      * * ** '''ready''': the weapon is idle.
      * * * ''false'' if an error occured or the [[Element/Weapon|weapon]] is invalid.
      */
-    export function getWeaponState(theWeapon: weapon, ): string;
+    export function getWeaponState(theWeapon: weapon): string;
 
     /**
      * This functions gets the target of a [[Element/Weapon|custom weapon]].
@@ -5063,7 +5109,7 @@ declare module 'mtasa/client/functions' {
      * * **an [[element]] if the weapon is firing an entity.
      * * * Returns ''false'' if the weapon element is not valid.
      */
-    export function getWeaponTarget(theWeapon: weapon, ): null|element|number;
+    export function getWeaponTarget(theWeapon: weapon): null | element | number;
 
     /**
      * This function resets the firing rate of a [[Element/Weapon|custom weapon]] to the default one.
@@ -5071,7 +5117,7 @@ declare module 'mtasa/client/functions' {
      * @param theWeapon the weapon to reset the firing rate of.
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function resetWeaponFiringRate(theWeapon: weapon, ): boolean;
+    export function resetWeaponFiringRate(theWeapon: weapon): boolean;
 
     /**
      * This function sets the ammo left in a [[Element/Weapon|custom weapon]]'s magazine/clip.
@@ -5080,7 +5126,7 @@ declare module 'mtasa/client/functions' {
      * @param clipAmmo The amount of ammo in the clip.
      * @return This function returns ''true'' if the arguments are valid and the weapon clip ammo could be changed; ''false'' otherwise.
      */
-    export function setWeaponClipAmmo(theWeapon: weapon, clipAmmo: number, ): boolean;
+    export function setWeaponClipAmmo(theWeapon: weapon, clipAmmo: number): boolean;
 
     /**
      * This function sets the firing rate to be used when a [[Element/Weapon|custom weapon]] is in ''firing'' state.
@@ -5089,7 +5135,7 @@ declare module 'mtasa/client/functions' {
      * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the quicker the Element/Weapon|custom weapon will shoot.
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function setWeaponFiringRate(theWeapon: weapon, firingRate: number, ): boolean;
+    export function setWeaponFiringRate(theWeapon: weapon, firingRate: number): boolean;
 
     /**
      * This function sets a [[Element/Weapon|custom weapon]] flags, used to change how it behaves or finds a possible target to shoot.
@@ -5099,7 +5145,7 @@ declare module 'mtasa/client/functions' {
      * @param enable : whether to enable or disable the specified flag.
      * @return Returns ''true'' if all arguments are valid and the flags where changed; ''false'' otherwise.
      */
-    export function setWeaponFlags(theWeapon: weapon, theFlag: string, enable: boolean, ): boolean;
+    export function setWeaponFlags(theWeapon: weapon, theFlag: string, enable: boolean): boolean;
 
     /**
      * This function sets a [[Element/Weapon|custom weapon]]'s state.
@@ -5108,7 +5154,7 @@ declare module 'mtasa/client/functions' {
      * @param theState : the state you wish to set:
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function setWeaponState(theWeapon: weapon, theState: string, ): boolean;
+    export function setWeaponState(theWeapon: weapon, theState: string): boolean;
 
     /**
      * This function sets the target of a [[Element/Weapon|custom weapon]]. There are 3 different targeting modes, which are explained below.
@@ -5119,31 +5165,31 @@ declare module 'mtasa/client/functions' {
      * @default 255
      * @return Returns ''true'' on success, ''false'' otherwise.
      */
-    export function setWeaponTarget(theWeapon: weapon, theTarget: element, theComponent?: number, ): boolean;
+    export function setWeaponTarget(theWeapon: weapon, theTarget: element, theComponent?: number): boolean;
 
     /**
      * Creates a SWAT rope like that of the rope in single player used by SWAT Teams abseiling from the Police Maverick.
      * @see {@link https://wiki.multitheftauto.com/wiki/createSWATRope|MTASA Wiki}
      * @param duration the amount in miliseconds the rope will be there before falling to the ground.
-     * @return 
+     * @return
      */
-    export function createSWATRope(fx: number, fy: number, fZ: number, duration: number, ): boolean;
+    export function createSWATRope(fx: number, fy: number, fZ: number, duration: number): boolean;
 
     /**
-     * This function will tell you if the birds are enabled or disabled. 
+     * This function will tell you if the birds are enabled or disabled.
      * @see {@link https://wiki.multitheftauto.com/wiki/getBirdsEnabled|MTASA Wiki}
-     * @return Returns ''true'' if the birds are enabled or ''false'' if the birds are disabled. 
+     * @return Returns ''true'' if the birds are enabled or ''false'' if the birds are disabled.
      */
     export function getBirdsEnabled(): boolean;
 
     /**
-     * This function outputs the bounding box of a garage. 
+     * This function outputs the bounding box of a garage.
      * @see {@link https://wiki.multitheftauto.com/wiki/getGarageBoundingBox|MTASA Wiki}
      * @param garageID The Garage|garage ID that represents the garage door that is being checked.
      * @return Returns four ''float''s indicating the bounding box of the garage.
      * * ''Western X position, Eastern X position, Southern Y position, Northern Y position,, false when invalid garageID was provided.''
      */
-    export function getGarageBoundingBox(garageID: number, ): LuaMultiReturn<[number,number,number,number]>;
+    export function getGarageBoundingBox(garageID: number): LuaMultiReturn<[number, number, number, number]>;
 
     /**
      * This function outputs X, Y and Z position of given garage.
@@ -5151,7 +5197,7 @@ declare module 'mtasa/client/functions' {
      * @param garageID The Garage|garage ID that represents the garage door that is being checked.
      * @return Returns three ''float''s indicating the position of the garage, ''x'', ''y'' and ''z'' respectively, false when garageID was invalid.
      */
-    export function getGaragePosition(garageID: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getGaragePosition(garageID: number): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function outputs the size of garage.
@@ -5159,10 +5205,10 @@ declare module 'mtasa/client/functions' {
      * @param garageID The Garage|garage ID that represents the garage door that is being checked.
      * @return Returns three ''float''s indicating the size of the garage, false if an invalid garageID has been provided
      */
-    export function getGarageSize(garageID: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getGarageSize(garageID: number): LuaMultiReturn<[number, number, number]>;
 
     /**
-     * This function gets the Z level of the highest ground below a point. 
+     * This function gets the Z level of the highest ground below a point.
      * It is required that the point is near enough to the local player so that it's within the area where collision data is loaded. If this is not the case, an incorrect position will be returned.
      * @see {@link https://wiki.multitheftauto.com/wiki/getGroundPosition|MTASA Wiki}
      * @param x A floating point number representing the X world coordinate of the point.
@@ -5170,7 +5216,7 @@ declare module 'mtasa/client/functions' {
      * @param z A floating point number representing the Z world coordinate of the point.
      * @return Returns a float with the highest ground-level Z coord if parameters are valid, ''0'' if the point you tried to test is outside the loaded world map, ''false'' otherwise.
      */
-    export function getGroundPosition(x: number, y: number, z: number, ): number;
+    export function getGroundPosition(x: number, y: number, z: number): number;
 
     /**
      * This function will tell you if interior furniture are enabled or disabled in a specified room ID.
@@ -5178,7 +5224,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/getInteriorFurnitureEnabled|MTASA Wiki}
      * @return Returns ''true'' if interior furniture is enabled or ''false'' if interior furniture is disabled.
      */
-    export function getInteriorFurnitureEnabled(roomID: number, ): boolean;
+    export function getInteriorFurnitureEnabled(roomID: number): boolean;
 
     /**
      * This function checks to see if the music played by default in clubs is disabled or not.
@@ -5188,7 +5234,7 @@ declare module 'mtasa/client/functions' {
     export function getInteriorSoundsEnabled(): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getNearClipDistance|MTASA Wiki}
      * @return This function returns a ''[[float]]'' containing the actual near clip distance.
      */
@@ -5203,7 +5249,7 @@ declare module 'mtasa/client/functions' {
     export function resetNearClipDistance(): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getPedsLODDistance|MTASA Wiki}
      * @return This function returns a ''[[float]]'' containing the peds LOD distance.
      */
@@ -5217,10 +5263,10 @@ declare module 'mtasa/client/functions' {
      * @param distance the new peds LOD distance. It must be between 0 and 500. (Default for high_detail_peds on is 500, when off, it is 60).
      * @return This function returns ''true'' if the argument is valid. Returns ''false'' otherwise.
      */
-    export function setPedsLODDistance(distance: number, ): boolean;
+    export function setPedsLODDistance(distance: number): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/resetPedsLODDistance|MTASA Wiki}
      * @return Returns ''true'' if the peds LOD distance was reset, ''false'' otherwise.
      */
@@ -5235,7 +5281,7 @@ declare module 'mtasa/client/functions' {
      * @param z : A floating point number representing the Z world coordinate of the point.
      * @return Returns a [[float]] with the lowest roof-level Z coord if parameters are valid, ''false'' if the point you tried to test is outside the loaded world map.
      */
-    export function getRoofPosition(x: number, y: number, z: number, ): number;
+    export function getRoofPosition(x: number, y: number, z: number): number;
 
     /**
      * This function gets the screen position of a point in the world. This is useful for attaching 2D gui elements to parts of the world (e.g. players) or detecting if a point is on the screen (though it does not check if it is actually visible, you should use [[processLineOfSight]] for that).
@@ -5249,15 +5295,15 @@ declare module 'mtasa/client/functions' {
      * @default true
      * @return Returns two ''x'', ''y'' [[float]]s indicating the screen position and [[float]] distance between screen and given position if successful, ''false'' otherwise.
      */
-    export function getScreenFromWorldPosition(x: number, y: number, z: number, edgeTolerance?: number, relative?: boolean, ): LuaMultiReturn<[number,number,number]>;
+    export function getScreenFromWorldPosition(x: number, y: number, z: number, edgeTolerance?: number, relative?: boolean): LuaMultiReturn<[number, number, number]>;
 
     /**
      * Returns the distance of vehicles LOD.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/getVehiclesLODDistance|MTASA Wiki}
-     * @return 
+     * @return
      */
-    export function getVehiclesLODDistance(): LuaMultiReturn<[number,number]>;
+    export function getVehiclesLODDistance(): LuaMultiReturn<[number, number]>;
 
     /**
      * This function allows you to retrieve the world position corresponding to a 2D position on the screen, at a certain depth.
@@ -5269,7 +5315,7 @@ declare module 'mtasa/client/functions' {
      * @param depth A float value indicating the distance from the camera of the point whose coordinates we are retrieving, in units.
      * @return Returns three ''x'', ''y'', ''z'' [[float]]s indicating the world position if successful, ''false'' otherwise.
      */
-    export function getWorldFromScreenPosition(x: number, y: number, depth: number, ): LuaMultiReturn<[number,number,number]>;
+    export function getWorldFromScreenPosition(x: number, y: number, depth: number): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function allows you to check if some background sound effects are enabled.
@@ -5277,7 +5323,7 @@ declare module 'mtasa/client/functions' {
      * @param theType The type of ambient sound to test. Can be either gunfire or general.
      * @return Returns ''true'' if the ambient sound is enabled, ''false'' if it is disabled or invalid values were passed.
      */
-    export function isAmbientSoundEnabled(theType: string, ): boolean;
+    export function isAmbientSoundEnabled(theType: string): boolean;
 
     /**
      * This function checks if there are obstacles between two points of the game world, optionally ignoring certain kinds of elements. Use [[processLineOfSight]] if you want more information about what the ray hits.
@@ -5287,7 +5333,7 @@ declare module 'mtasa/client/functions' {
      * @param startZ The first points world Z coordinate.
      * @param endX The second points world X coordinate.
      * @param endY The second points world Y coordinate.
-     * @param endZ The second points world Z coordinate.  {{OptionalArg}} 
+     * @param endZ The second points world Z coordinate.  {{OptionalArg}}
      * @param checkBuildings Allow the line of sight to be blocked by GTAs internally placed buildings, i.e. the world map.
      * @default true
      * @param checkVehicles Allow the line of sight to be blocked by Vehicle|vehicles.
@@ -5306,7 +5352,7 @@ declare module 'mtasa/client/functions' {
      * @default nil
      * @return Returns ''true'' if the line between the specified points is clear, ''false'' if there's an obstacle or if invalid parameters are passed.
      */
-    export function isLineOfSightClear(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean, checkVehicles: boolean, checkPeds: boolean, checkObjects: boolean, checkDummies: boolean, seeThroughStuff: boolean, ignoreSomeObjectsForCamera: boolean, ignoredElement: element, ): boolean;
+    export function isLineOfSightClear(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean, checkVehicles: boolean, checkPeds: boolean, checkObjects: boolean, checkDummies: boolean, seeThroughStuff: boolean, ignoreSomeObjectsForCamera: boolean, ignoredElement: element): boolean;
 
     /**
      * This function allows you to check if certain world sound effects have not been disabled by [[setWorldSoundEnabled]]
@@ -5314,7 +5360,7 @@ declare module 'mtasa/client/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/isWorldSoundEnabled|MTASA Wiki}
      * @return Returns ''true'' if the world sounds are enabled, ''false'' if they are disabled or invalid values were passed.
      */
-    export function isWorldSoundEnabled(group: number, index: number, ): boolean;
+    export function isWorldSoundEnabled(group: number, index: number): boolean;
 
     /**
      * Checks if a special world property (cheat) is enabled or not.
@@ -5322,7 +5368,7 @@ declare module 'mtasa/client/functions' {
      * @param propname the name of the property to retrieve. Possible values are listed on SetWorldSpecialPropertyEnabled.
      * @return Returns ''true'' if the property is enabled, ''false'' if it is disabled or the specified property name is invalid.
      */
-    export function isWorldSpecialPropertyEnabled(propname: string, ): boolean;
+    export function isWorldSpecialPropertyEnabled(propname: string): boolean;
 
     /**
      * This function casts a ray between two points in the world, and tells you information about the point that was hit, if any. The two positions '''must''' be within the local player's draw distance as the collision data is not loaded outside this area, and the call will just fail as if the ray didn't hit.
@@ -5334,7 +5380,7 @@ declare module 'mtasa/client/functions' {
      * @param startZ The start z position
      * @param endX The end x position
      * @param endY The end y position
-     * @param endZ The end z position  {{OptionalArg}} 
+     * @param endZ The end z position  {{OptionalArg}}
      * @param checkBuildings Allow the line of sight to be blocked by GTAs internally placed buildings, i.e. the world map.
      * @default true
      * @param checkVehicles Allow the line of sight to be blocked by Vehicle|vehicles.
@@ -5360,7 +5406,7 @@ declare module 'mtasa/client/functions' {
      * * *'''normalX, normalY, normalZ:''' the normal of the surface hit
      * * *'''material:''' an integer representing the [[Material IDs|GTASA material ID]] of the surface hit when applicable (world, objects)
      * * *'''lighting:''' a float between 0 (fully dark) and 1 (bright) representing the amount of light that the hit building surface will transfer to peds or vehicles that are in contact with it. The value can be affected by the game time of day, usually with a lower (darker) value being returned during the night.
-     * * *'''piece:''' an integer representing the part of the element hit if hitElement is a vehicle or a ped/player, ''0'' otherwise. 
+     * * *'''piece:''' an integer representing the part of the element hit if hitElement is a vehicle or a ped/player, ''0'' otherwise.
      * * **For a ped/player, piece represents the body part hit:
      * * {{BodyParts}}
      * * **For vehicles, piece represents the vehicle part hit:
@@ -5370,17 +5416,17 @@ declare module 'mtasa/client/functions' {
      * * *'''worldModelRotationX,Y,Z:''' If worldModelID is set, this will contain the world model rotation.
      * * *'''worldLODModelID:''' If worldModelID is set, this will contain the LOD model ID if applicable.
      */
-    export function processLineOfSight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean, checkVehicles: boolean, checkPlayers: boolean, checkObjects: boolean, checkDummies: boolean, seeThroughStuff: boolean, ignoreSomeObjectsForCamera: boolean, shootThroughStuff: boolean, ignoredElement: element, includeWorldModelInformation: boolean, bIncludeCarTyres: boolean, ): LuaMultiReturn<[boolean,
-number,number,number,
-element,
-number,number,number,
-number,
-number,
-number,
-number,
-number,number,number,
-number,number,number,
-number,]>;
+    export function processLineOfSight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean, checkVehicles: boolean, checkPlayers: boolean, checkObjects: boolean, checkDummies: boolean, seeThroughStuff: boolean, ignoreSomeObjectsForCamera: boolean, shootThroughStuff: boolean, ignoredElement: element, includeWorldModelInformation: boolean, bIncludeCarTyres: boolean): LuaMultiReturn<[boolean,
+        number, number, number,
+        element,
+        number, number, number,
+        number,
+        number,
+        number,
+        number,
+        number, number, number,
+        number, number, number,
+        number,]>;
 
     /**
      * This function is used to reset the background sounds to the default setting.
@@ -5412,7 +5458,7 @@ number,]>;
     export function resetWorldSounds(): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/resetColorFilter|MTASA Wiki}
      * @return Returns true if the color filtering was reset, false otherwise.
      */
@@ -5424,14 +5470,14 @@ number,]>;
      * @param theType The type of ambient sound to toggle. Can be either gunfire or general.
      * @return Returns ''true'' if the ambient sound was set correctly, ''false'' if invalid values were passed.
      */
-    export function setAmbientSoundEnabled(theType: string, enable: boolean, ): boolean;
+    export function setAmbientSoundEnabled(theType: string, enable: boolean): boolean;
 
     /**
      * This function allows you to disable the flying birds.
      * @see {@link https://wiki.multitheftauto.com/wiki/setBirdsEnabled|MTASA Wiki}
      * @return Returns ''true'' if the birds state was changed succesfully, ''false'' if an invalid argument was specified.
      */
-    export function setBirdsEnabled(enable: boolean, ): boolean;
+    export function setBirdsEnabled(enable: boolean): boolean;
 
     /**
      * This function toggles furniture generation in interiors with the specified room ID.
@@ -5441,15 +5487,15 @@ number,]>;
      * @param enabled : A bool representing whether the interior furniture is enabled or disabled.
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function setInteriorFurnitureEnabled(roomID: number, enabled: boolean, ): boolean;
+    export function setInteriorFurnitureEnabled(roomID: number, enabled: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setNearClipDistance|MTASA Wiki}
      * @param distance the new near clip distance. It must be between 0.1 and 20 for the function to do any effect. Default value is 0.3.
      * @return This function returns ''true'' if the argument is valid. Returns ''false'' otherwise.
      */
-    export function setNearClipDistance(distance: number, ): boolean;
+    export function setNearClipDistance(distance: number): boolean;
 
     /**
      * Sets the distance of vehicles LOD.
@@ -5458,9 +5504,9 @@ number,]>;
      * @param vehiclesDistance general distance used for most vehicles, this value is clamped to 0 – 500
      * @param trainsAndPlanesDistance distance used for trains and planes, this value is clamped to 0 – 500
      * @default vehiclesDistance * 2.14
-     * @return 
+     * @return
      */
-    export function setVehiclesLODDistance(vehiclesDistance: number, trainsAndPlanesDistance: number, ): boolean;
+    export function setVehiclesLODDistance(vehiclesDistance: number, trainsAndPlanesDistance: number): boolean;
 
     /**
      * This function allows you to disable world sounds. A world sound is a sound effect which has '''''not''''' been caused by [[playSound]] or [[playSound3D]].
@@ -5476,7 +5522,7 @@ number,]>;
      * @default false
      * @return Returns ''true'' if the world sound was correctly enabled/disabled, ''false'' if invalid values were passed.
      */
-    export function setWorldSoundEnabled(group: number, index: number, enable: boolean, immediate?: boolean, ): boolean;
+    export function setWorldSoundEnabled(group: number, index: number, enable: boolean, immediate?: boolean): boolean;
 
     /**
      * Enables or disables a special world property.
@@ -5485,10 +5531,10 @@ number,]>;
      * @param enable whether or not to enable the property.
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function setWorldSpecialPropertyEnabled(propname: string, enable: boolean, ): boolean;
+    export function setWorldSpecialPropertyEnabled(propname: string, enable: boolean): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setColorFilter|MTASA Wiki}
      * @param aRed The amount of red (0-255).
      * @param aGreen The amount of green (0-255).
@@ -5500,14 +5546,14 @@ number,]>;
      * @param bAlpha The amount of alpha (0-255).
      * @return Returns true if the color filter was set, false otherwise.
      */
-    export function setColorFilter(aRed: number, aGreen: number, aBlue: number, aAlpha: number, bRed: number, bGreen: number, bBlue: number, bAlpha: number, ): boolean;
+    export function setColorFilter(aRed: number, aGreen: number, aBlue: number, aAlpha: number, bRed: number, bGreen: number, bBlue: number, bAlpha: number): boolean;
 
     /**
      * This function checks to see if a line between two points collides with the water. This is similar to [[processLineOfSight]], but only collides with water. Waves are taken into account when testing the line.
      * @see {@link https://wiki.multitheftauto.com/wiki/testLineAgainstWater|MTASA Wiki}
      * @return Returns ''true'' and the position of the intersection point of the line and the water surface if there is a collision, or ''false'' if there is no collision.
      */
-    export function testLineAgainstWater(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, ): LuaMultiReturn<[boolean,number,number,number]>;
+    export function testLineAgainstWater(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number): LuaMultiReturn<[boolean, number, number, number]>;
 
     /**
      * This function plays a frontend sound for the specified player.
@@ -5515,21 +5561,21 @@ number,]>;
      * @param sound a whole int specifying the sound id to play. Valid values are:  {{Sounds}}
      * @return Returns ''true'' if the sound was successfully played, ''false'' otherwise.
      */
-    export function playSoundFrontEnd(sound: number, ): boolean;
+    export function playSoundFrontEnd(sound: number): boolean;
 
     /**
      * This function creates a [[blip]] [[element]], which is displayed as an icon on the client's radar.
      * @see {@link https://wiki.multitheftauto.com/wiki/createBlip|MTASA Wiki}
      * @return Returns an [[element]] of the [[blip]] if it was created successfully, ''false'' otherwise.
      */
-    export function createBlip(x: number, y: number, z: number, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, ): blip;
+    export function createBlip(x: number, y: number, z: number, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number): blip;
 
     /**
      * This function creates a [[blip]] that is attached to an [[element]]. This blip is displayed as an icon on the client's radar and will 'follow' the element that it is attached to around.
      * @see {@link https://wiki.multitheftauto.com/wiki/createBlipAttachedTo|MTASA Wiki}
      * @return Returns a [[blip]] if the blip was created succesfully, or ''false'' otherwise.
      */
-    export function createBlipAttachedTo(elementToAttachTo: element, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, ): blip;
+    export function createBlipAttachedTo(elementToAttachTo: element, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number): blip;
 
     /**
      * This function will fade a player's camera to a color or back to normal over a specified time period. This will also affect the sound volume for the player (50% faded = 50% volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade outs in a row, but for serverside scripts you must use one then the other.
@@ -5545,7 +5591,7 @@ number,]>;
      * @default 0
      * @return Returns ''true'' if the camera was faded successfully, ''false'' if invalid arguments were passed to the function.
      */
-    export function fadeCamera(fadeIn: boolean, timeToFade: number, red: number, green: number, blue: number, ): boolean;
+    export function fadeCamera(fadeIn: boolean, timeToFade: number, red: number, green: number, blue: number): boolean;
 
     /**
      * Returns the interior of the local camera (independent of the interior of the local player).
@@ -5559,10 +5605,10 @@ number,]>;
      * @see {@link https://wiki.multitheftauto.com/wiki/getCameraMatrix|MTASA Wiki}
      * @return This function returns 8 [[float|floats]] if the argument is valid (when applicable); the first three indicate the position of the camera, the next three indicate the position of the point it's facing, and the last two are the roll and field of view. Returns ''false'' if the argument is invalid.
      */
-    export function getCameraMatrix(): LuaMultiReturn<[number,number,number,number,number,number,number,number]>;
+    export function getCameraMatrix(): LuaMultiReturn<[number, number, number, number, number, number, number, number]>;
 
     /**
-     * This function returns an [[element]] that corresponds to the current target of the specified player's camera (i.e. what it is following). 
+     * This function returns an [[element]] that corresponds to the current target of the specified player's camera (i.e. what it is following).
      * @see {@link https://wiki.multitheftauto.com/wiki/getCameraTarget|MTASA Wiki}
      * @return * Returns an [[element]] of the target if the function was successful, or ''false'' if bad arguments were specified
      * * {{New feature|3|1.0|
@@ -5577,7 +5623,7 @@ number,]>;
      * @param interior the interior to place the camera in.
      * @return Returns ''true'' if the camera's interior was changed successfully, ''false'' otherwise.
      */
-    export function setCameraInterior(interior: number, ): boolean;
+    export function setCameraInterior(interior: number): boolean;
 
     /**
      * This function sets the camera's position and direction. The first three arguments are the point at which the camera lies, the last three are the point the camera faces (or the point it "looks at").
@@ -5594,7 +5640,7 @@ number,]>;
      * @default 70
      * @return Returns ''true'' if the arguments are valid, ''false'' otherwise.
      */
-    export function setCameraMatrix(positionX: number, positionY: number, positionZ: number, lookAtX?: number, lookAtY?: number, lookAtZ?: number, roll?: number, fov?: number, ): boolean;
+    export function setCameraMatrix(positionX: number, positionY: number, positionZ: number, lookAtX?: number, lookAtY?: number, lookAtZ?: number, roll?: number, fov?: number): boolean;
 
     /**
      * This function allows you to set a player's camera to follow other elements instead. Currently supported element type is:
@@ -5603,7 +5649,7 @@ number,]>;
      * @param target The player who you want the local camera to follow.
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function setCameraTarget(target: player, ): boolean;
+    export function setCameraTarget(target: player): boolean;
 
     /**
      * This function is used to determine whether or not a player's cursor is showing.
@@ -5615,19 +5661,19 @@ number,]>;
     /**
      * This function is used to show or hide a [[player]]'s cursor.
      * @see {@link https://wiki.multitheftauto.com/wiki/showCursor|MTASA Wiki}
-     * @param show A boolean value determining whether to show (true) or hide (false) the cursor.  {{OptionalArg}} 
+     * @param show A boolean value determining whether to show (true) or hide (false) the cursor.  {{OptionalArg}}
      * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.  true implies controls are disabled, false implies controls remain enabled.
      * @default true
      * @return Returns ''true'' if the player's cursor was shown or hidden successfully, ''false'' otherwise.
      */
-    export function showCursor(show: boolean, toggleControls: boolean, ): boolean;
+    export function showCursor(show: boolean, toggleControls: boolean): boolean;
 
     /**
      * This function is used to retrieve a list of all elements of the specified type. This can be useful, as it disregards ''where'' in the element tree it is. It can be used with either the built in types (listed below) or with any custom type used in a .map file. For example, if there is an element of type "flag" (e.g. <flag />) in the .map file, the using "flag" as the type argument would find it.
      * @see {@link https://wiki.multitheftauto.com/wiki/getElementsByType|MTASA Wiki}
      * @return Returns a ''table'' containing all the elements of the specified type. Returns an empty ''table'' if there are no elements of the specified type. Returns ''false'' if the string specified is invalid (or not a string).
      */
-    export function getElementsByType(theType: string, startat: element, streamedIn: boolean, ): table;
+    export function getElementsByType(theType: string, startat: element, streamedIn: boolean): table;
 
     /**
      * This function stores [[element data]] under a certain key, attached to an element. Element data set using this is then synced with all clients and the server. The data can contain server created elements, but you should avoid passing data that is not able to be synced such as xmlnodes, acls, aclgroups etc.
@@ -5644,10 +5690,10 @@ number,]>;
      * @return Returns ''true'' if the data was set succesfully, ''false'' otherwise.
      * * {{New items|5.0157|1.5.7-9.20477|
      */
-    export function setElementData(theElement: element, key: string, value: any, synchronize?: boolean, ): boolean;
+    export function setElementData(theElement: element, key: string, value: any, synchronize?: boolean): boolean;
 
     /**
-     * This function is used to stop the automatic internal handling of events, for example this can be used to prevent an item being given to a player when they walk over a pickup, by canceling the [[onPickupUse]] event. 
+     * This function is used to stop the automatic internal handling of events, for example this can be used to prevent an item being given to a player when they walk over a pickup, by canceling the [[onPickupUse]] event.
      * [[cancelEvent]] does not have an effect on all events, see the individual event's pages for information on what happens when the event is canceled. [[cancelEvent]] does not stop further event handlers from being called, as the order of event handlers being called is undefined in many cases. Instead, you can see if the currently active event has been cancelled using [[wasEventCancelled]].
      * The use of cancelEvent outside of an event handler has no effect.
      * If you implement your own custom events and want to handle them being cancelled, you should call [[wasEventCancelled]] to check after your call to [[triggerEvent]].
@@ -5662,7 +5708,7 @@ number,]>;
      * @param handle A handle previous got from getLatentEventHandles.
      * @return Returns a true if the latent event was successfully cancelled, or false if it was not
      */
-    export function cancelLatentEvent(handle: number, ): boolean;
+    export function cancelLatentEvent(handle: number): boolean;
 
     /**
      * Gets the currently queued latent events. The last one in the table is always the latest event queued. Each returned handle can be used with [[getLatentEventStatus]] or [[cancelLatentEvent]]
@@ -5681,7 +5727,7 @@ number,]>;
      * * *'''totalSize:''' A number representing how many bytes in total this transfer will transfer
      * * *'''percentComplete:''' A number between 0-100 saying how much is done
      */
-    export function getLatentEventStatus(handle: number, ): table;
+    export function getLatentEventStatus(handle: number): table;
 
     /**
      * Creates an explosion of a certain type at a specified point in the world. If creator is specified, the explosion will occur only in its dimension.
@@ -5699,7 +5745,7 @@ number,]>;
      * @return *''true'' if the explosion was created.
      * * * ''false'' if invalid parameters were passed.
      */
-    export function createExplosion(x: number, y: number, z: number, theType: number, makeSound?: boolean, camShake?: number, damaging?: boolean, ): boolean;
+    export function createExplosion(x: number, y: number, z: number, theType: number, makeSound?: boolean, camShake?: number, damaging?: boolean): boolean;
 
     /**
      * This function will attach a scripting function (handler) to a console command, so that whenever a player or administrator uses the command the function is called.
@@ -5714,10 +5760,10 @@ number,]>;
      * @default true
      * @return Returns ''true'' if the command handler was added successfully, ''false'' otherwise.
      */
-    export function addCommandHandler(commandName: string, handlerFunction: HandleFunction, caseSensitive?: boolean, ): boolean;
+    export function addCommandHandler(commandName: string, handlerFunction: HandleFunction, caseSensitive?: boolean): boolean;
 
     /**
-     * Binds a player's key to a handler function or command, which will be called when the key is pressed. 
+     * Binds a player's key to a handler function or command, which will be called when the key is pressed.
      * @see {@link https://wiki.multitheftauto.com/wiki/bindKey|MTASA Wiki}
      * @param key The key that was pressed
      * @param keyState The state of the key that was pressed, down if it was pressed, up if it was released.
@@ -5725,17 +5771,17 @@ number,]>;
      * @param arguments The optional arguments you specified when calling bindKey (see below).
      * @return Returns ''true'' if the key was bound, ''false'' otherwise.
      */
-    export function bindKey(key: string, keyState: string, handlerFunction: HandleFunction, arguments: any, ...args: any[], ): boolean;
+    export function bindKey(key: string, keyState: string, handlerFunction: HandleFunction, arguments: any, ...args: any[]): boolean;
 
     /**
      * This function will call all the attached functions of an existing console command, for a specified player.
-     *  
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/executeCommandHandler|MTASA Wiki}
      * @param commandName The name of the command you wish to execute. This is what must be typed into the console to trigger the function.  {{OptionalArg}}
      * @param args Additional parameters that will be passed to the handler function(s) of the command that is called, separated by spaces.
      * @return Returns ''true'' if the command handler was called successfully, ''false'' otherwise.
      */
-    export function executeCommandHandler(commandName: string, args: string, ): boolean;
+    export function executeCommandHandler(commandName: string, args: string): boolean;
 
     /**
      * Gets the functions bound to a key. To bind a function to a key use the [[bindKey]] function
@@ -5743,7 +5789,7 @@ number,]>;
      * @param keyState A string that has one of the following values:
      * @return Returns a table of the key function(s).
      */
-    export function getFunctionsBoundToKey(key: string, keyState: string, ): table;
+    export function getFunctionsBoundToKey(key: string, keyState: string): table;
 
     /**
      * getKeyBoundToFunction allows retrieval of the first key bound to a function.
@@ -5751,7 +5797,7 @@ number,]>;
      * @param theFunction The function in which you would like to check the bound key
      * @return Returns a string of the first key the function was bound to.
      */
-    export function getKeyBoundToFunction(theFunction: HandleFunction, ): string;
+    export function getKeyBoundToFunction(theFunction: HandleFunction): string;
 
     /**
      * Checks whether a GTA control is enabled or disabled for a certain player.
@@ -5759,7 +5805,7 @@ number,]>;
      * @param control The control you wish to check. See control names for a list of possible controls.
      * @return Returns ''true'' if control is enabled, ''false'' otherwise.
      */
-    export function isControlEnabled(control: string, ): boolean;
+    export function isControlEnabled(control: string): boolean;
 
     /**
      * Enables or disables the use of all GTA controls for a specified player.
@@ -5771,7 +5817,7 @@ number,]>;
      * @default true
      * @return This function returns ''true'' if controls were toggled successfully, false otherwise.
      */
-    export function toggleAllControls(enabled: boolean, gtaControls: boolean, mtaControls: boolean, ): boolean;
+    export function toggleAllControls(enabled: boolean, gtaControls: boolean, mtaControls: boolean): boolean;
 
     /**
      * Enables or disables the use of a GTA control for a specific player.
@@ -5780,7 +5826,7 @@ number,]>;
      * @param enabled A boolean value representing whether or not the key will be usable or not.
      * @return This function ''true'' if the control was set successfully, ''false'' otherwise.
      */
-    export function toggleControl(control: string, enabled: boolean, ): boolean;
+    export function toggleControl(control: string, enabled: boolean): boolean;
 
     /**
      * Removes an existing key bind from the specified player.
@@ -5789,7 +5835,7 @@ number,]>;
      * @param keyState is optional in Syntax 2.
      * @return Returns '''true'' if the key was unbound, ''false'' if it was not previously bound or invalid arguments were passed to the function.
      */
-    export function unbindKey(key: string, keyState: string, command: string, ): boolean;
+    export function unbindKey(key: string, keyState: string, command: string): boolean;
 
     /**
      * [[Image:Mtasa_markers.png|thumb|337px|This image shows all the different marker types available using this function.]]
@@ -5817,10 +5863,10 @@ number,]>;
      * @default 255
      * @return Returns the [[marker]] element that was created, or ''false'' if the arguments are incorrect.
      */
-    export function createMarker(x: number, y: number, z: number, theType?: string, size?: number, r?: number, g?: number, b?: number, a?: number, ): marker;
+    export function createMarker(x: number, y: number, z: number, theType?: string, size?: number, r?: number, g?: number, b?: number, a?: number): marker;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/clearChatBox|MTASA Wiki}
      * @return Returns ''true'' if the player's chat was cleared successfully, ''false'' otherwise.
      */
@@ -5828,7 +5874,7 @@ number,]>;
 
     /**
      * This outputs the specified text string to the chatbox. It can be specified as a message to certain player(s) or all players.
-     * It can optionally allow you to embed color changes into the string by setting the colorCoded boolean to true. This allows: 
+     * It can optionally allow you to embed color changes into the string by setting the colorCoded boolean to true. This allows:
      * <syntaxhighlight lang="lua">
      * outputChatBox ( "#FF0000Hello #00FF00World", root, 255, 255, 255, true )
      * </syntaxhighlight>
@@ -5845,15 +5891,15 @@ number,]>;
      * @default false
      * @return Returns ''true'' if the message was displayed successfully. Returns ''false'' if invalid arguments are specified.
      */
-    export function outputChatBox(text: string, r?: number, g?: number, b?: number, colorCoded?: boolean, ): boolean;
+    export function outputChatBox(text: string, r?: number, g?: number, b?: number, colorCoded?: boolean): boolean;
 
     /**
      * This outputs the specified text string to the console window (accessed with F8 or ~ key). It can be specified as a message to certain player(s) or all players.
      * @see {@link https://wiki.multitheftauto.com/wiki/outputConsole|MTASA Wiki}
      * @param text The text string that you wish to send to the console window
-     * @return 
+     * @return
      */
-    export function outputConsole(text: string, ): boolean;
+    export function outputConsole(text: string): boolean;
 
     /**
      * This function is used to show or hide the player's chat.
@@ -5861,7 +5907,7 @@ number,]>;
      * @param show A boolean value determining whether to show (true) or hide (false) the chat.
      * @return Returns ''true'' if the player's chat was shown or hidden successfully, ''false'' otherwise.
      */
-    export function showChat(show: boolean, ): boolean;
+    export function showChat(show: boolean): boolean;
 
     /**
      * Creates a Ped in the GTA world.
@@ -5874,7 +5920,7 @@ number,]>;
      * @default 0.0
      * @return Returns a ped element if it was successfully created.
      */
-    export function createPed(modelid: number, x: number, y: number, z: number, rot?: number, ): ped;
+    export function createPed(modelid: number, x: number, y: number, z: number, rot?: number): ped;
 
     /**
      * This function is used to forcefully show a player's radar map.
@@ -5882,7 +5928,7 @@ number,]>;
      * @param forceOn : A boolean value representing whether or not the players radar map will be forced on
      * @return Returns ''true'' if the player's radar map was forced on, ''false'' otherwise.
      */
-    export function forcePlayerMap(forceOn: boolean, ): boolean;
+    export function forcePlayerMap(forceOn: boolean): boolean;
 
     /**
      * This function allows you to check the current blur level of a specified [[player]].
@@ -5911,7 +5957,7 @@ number,]>;
      * @param amount a positive integer number specifying the amount of money to give to the player.
      * @return Returns ''true'' if the money was added, or ''false'' if invalid parameters were passed.
      */
-    export function givePlayerMoney(amount: number, ): boolean;
+    export function givePlayerMoney(amount: number): boolean;
 
     /**
      * This function checks if the specified player's radar map has been forced on or not.
@@ -5924,18 +5970,18 @@ number,]>;
      * Sets the motion blur level on the clients screen. Accepts a value between 0 and 255.
      * @see {@link https://wiki.multitheftauto.com/wiki/setBlurLevel|MTASA Wiki}
      * @param level The level to set the blur to (default: 36)
-     * @return 
+     * @return
      */
-    export function setBlurLevel(level: number, ): boolean;
+    export function setBlurLevel(level: number): boolean;
 
     /**
-     * This function will show or hide a part of the player's HUD. 
+     * This function will show or hide a part of the player's HUD.
      * @see {@link https://wiki.multitheftauto.com/wiki/setPlayerHudComponentVisible|MTASA Wiki}
      * @param component The component you wish to show or hide. Valid values are:
      * @param show Specify if the component should be shown (true) or hidden (false)
      * @return Returns ''true'' if the component was shown or hidden succesfully, ''false'' if an invalid argument was specified.
      */
-    export function setPlayerHudComponentVisible(component: string, show: boolean, ): boolean;
+    export function setPlayerHudComponentVisible(component: string, show: boolean): boolean;
 
     /**
      * Sets a player's money to a certain value, regardless of current player money. It should be noted that setting negative values does not work and in fact gives the player large amounts of money.
@@ -5945,7 +5991,7 @@ number,]>;
      * @default false
      * @return Returns ''true'' if the money was added, or ''false'' if invalid parameters were passed.
      */
-    export function setPlayerMoney(amount: number, instant?: boolean, ): boolean;
+    export function setPlayerMoney(amount: number, instant?: boolean): boolean;
 
     /**
      * This function subtracts money from a [[player]]'s current money amount.
@@ -5953,7 +5999,7 @@ number,]>;
      * @param amount an integer number specifying the amount of money to take from the player.
      * @return Returns ''true'' if the money was taken, or ''false'' if invalid parameters were passed.
      */
-    export function takePlayerMoney(amount: number, ): boolean;
+    export function takePlayerMoney(amount: number): boolean;
 
     /**
      * This function can be used to detonate a players satchels.
@@ -5986,7 +6032,7 @@ number,]>;
      * @param vehicleToBlow the vehicle that you wish to blow up.
      * @return Returns ''true'' if the vehicle was blown up, ''false'' if invalid arguments were passed to the function.
      */
-    export function blowVehicle(vehicleToBlow: vehicle, ): boolean;
+    export function blowVehicle(vehicleToBlow: vehicle): boolean;
 
     /**
      * <section name="Server" class="server" show="true">
@@ -5997,6 +6043,6 @@ number,]>;
      * @param theValue The value to set the property to.
      * @return Returns ''true'' if the property was set.
      */
-    export function setWeaponProperty(theWeapon: weapon, strProperty: string, theValue: any, ): boolean;
+    export function setWeaponProperty(theWeapon: weapon, strProperty: string, theValue: any): boolean;
 
 }

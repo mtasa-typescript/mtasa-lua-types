@@ -37,7 +37,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns an [[account]] or ''false'' if the account already exists or an error occured.
      */
-    export function addAccount(name: string, pass: string, allowCaseVariations?: boolean, ): account;
+    export function addAccount(name: string, pass: string, allowCaseVariations?: boolean): account;
 
     /**
      * This function copies all of the data from one [[account]] to another.
@@ -46,10 +46,10 @@ declare module 'mtasa/server/functions' {
      * @param fromAccount The account you wish to copy the data from.
      * @return Returns a ''true'' if the accounts were valid, ''false'' otherwise.
      */
-    export function copyAccountData(theAccount: account, fromAccount: account, ): boolean;
+    export function copyAccountData(theAccount: account, fromAccount: account): boolean;
 
     /**
-     * This function returns an [[account]] for a specific user. 
+     * This function returns an [[account]] for a specific user.
      * @see {@link https://wiki.multitheftauto.com/wiki/getAccount|MTASA Wiki}
      * @param username The username of the account you want to retrieve  {{OptionalArg}}
      * @param password The password for the account. If this argument is not specified, you can get the account whatever password it is, otherwise the password must match the accounts.  {{New items|3.0157|1.5.6|
@@ -57,7 +57,7 @@ declare module 'mtasa/server/functions' {
      * @default true
      * @return Returns an [[account]] or ''false'' if an account matching the username specified (and password, if specified) could not be found.
      */
-    export function getAccount(username: string, password?: string, caseSensitive?: boolean, ): account;
+    export function getAccount(username: string, password?: string, caseSensitive?: boolean): account;
 
     /**
      * This function retrieves a string that has been stored using [[setAccountData]]. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
@@ -66,7 +66,7 @@ declare module 'mtasa/server/functions' {
      * @param key The key under which the data is stored
      * @return Returns a [[string]] containing the stored data or ''false'' if no data was stored under that key.
      */
-    export function getAccountData(theAccount: account, key: string, ): string;
+    export function getAccountData(theAccount: account, key: string): string;
 
     /**
      * This function retrieves the name of an [[account]].
@@ -74,7 +74,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you wish to get the name of.
      * @return Returns a string containing the account's name, ''false'' if the account does not exist or an invalid argument was passed to the function.
      */
-    export function getAccountName(theAccount: account, ): string;
+    export function getAccountName(theAccount: account): string;
 
     /**
      * This function returns the [[player]] element that is currently using a specified [[account]], i.e. is logged into it. Only one player can use an account at a time.
@@ -82,7 +82,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you wish to get the player of.
      * @return Returns a [[player]] element if the account is currently in use, ''false'' otherwise.
      */
-    export function getAccountPlayer(theAccount: account, ): player;
+    export function getAccountPlayer(theAccount: account): player;
 
     /**
      * This function returns the last [[serial]] that logged onto the specified [[account]].
@@ -91,7 +91,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account to get serial from
      * @return Returns ''string'' containing the serial, the string is empty if the account was never used. Returns ''false'' if invalid arguments were specified.
      */
-    export function getAccountSerial(theAccount: account, ): string;
+    export function getAccountSerial(theAccount: account): string;
 
     /**
      * This function returns a table over all the [[account]]s that exist in the server internal.db file. (Note: accounts.xml is no longer used after version 1.0.4)
@@ -107,7 +107,7 @@ declare module 'mtasa/server/functions' {
      * @param serial The serial to get accounts from
      * @return Returns ''[[table]]'' containing the accounts associated with specified serial. Returns ''false'' if invalid arguments were specified.
      */
-    export function getAccountsBySerial(serial: string, ): table;
+    export function getAccountsBySerial(serial: string): table;
 
     /**
      * This function returns a table containing all the user data for the [[account]] provided
@@ -115,7 +115,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you wish to retrieve all data from.
      * @return A [[table]] containing all the user data. This table might be empty.
      */
-    export function getAllAccountData(theAccount: account, ): table;
+    export function getAllAccountData(theAccount: account): table;
 
     /**
      * This function returns the specified player's [[account]] object.
@@ -123,7 +123,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player element you want to get the account of.
      * @return Returns the player's account object, or ''false'' if the player passed to the function is invalid.
      */
-    export function getPlayerAccount(thePlayer: player, ): account;
+    export function getPlayerAccount(thePlayer: player): account;
 
     /**
      * This function checks to see if an [[account]] is a guest account. A guest account is an account automatically created for a user when they join the server and deleted when they quit or login to another account. Data stored in a guest account is not stored after the player has left the server. As a consequence, this function will check if a player is logged in or not.
@@ -131,7 +131,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you want to check to see if it is a guest account.
      * @return Returns ''true'' if the account is a guest account, ''false'' otherwise.
      */
-    export function isGuestAccount(theAccount: account, ): boolean;
+    export function isGuestAccount(theAccount: account): boolean;
 
     /**
      * This functions logs the given player in to the given [[account]]. You need to provide the password needed to log into that account.
@@ -141,7 +141,7 @@ declare module 'mtasa/server/functions' {
      * @param thePassword The password needed to sign into this account
      * @return Returns ''true'' if the player was successfully logged into the given account. Returns ''false'' or ''nil'' if the log in failed for some reason, ie. the player was already logged in to some account (use [[logOut]] first), if the account was already in use or if it failed for some other reason.
      */
-    export function logIn(thePlayer: player, theAccount: account, thePassword: string, ): boolean;
+    export function logIn(thePlayer: player, theAccount: account, thePassword: string): boolean;
 
     /**
      * This function logs the given player out of his current [[account]].
@@ -149,7 +149,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player to log out of his current account
      * @return Returns ''true'' if the player was successfully logged out, ''false'' or ''nil'' if it failed for some reason, ie. the player was never logged in.
      */
-    export function logOut(thePlayer: player, ): boolean;
+    export function logOut(thePlayer: player): boolean;
 
     /**
      * This function is used to delete existing player [[account]]s.
@@ -157,7 +157,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you wish to remove
      * @return Returns ''true'' if account was successfully removed, ''false'' if the account does not exist.
      */
-    export function removeAccount(theAccount: account, ): boolean;
+    export function removeAccount(theAccount: account): boolean;
 
     /**
      * This function sets a string to be stored in an [[account]]. This can then be retrieved using [[getAccountData]]. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account. Even if logged into a guest account, account data can be useful as a way to store a reference to your own account system, though it's persistence is equivalent to that of using [[setElementData]] on the player's element.
@@ -167,7 +167,7 @@ declare module 'mtasa/server/functions' {
      * @param value The value you wish to store. Set to false to remove the data. NOTE: you cannot store tables as values, but you can use toJSON strings.
      * @return Returns a ''true'' if the account data was set, ''false'' if an invalid argument was specified.
      */
-    export function setAccountData(theAccount: account, key: string, value: any, ): boolean;
+    export function setAccountData(theAccount: account, key: string, value: any): boolean;
 
     /**
      * This function sets the password of the specified [[account]].
@@ -176,7 +176,7 @@ declare module 'mtasa/server/functions' {
      * @param password the password  {{Note|The password will always be encrypted with '''sha256''', other types are no longer supported. See [https://github.com/multitheftauto/mtasa-blue/wiki/CAccountPassword CAccountPassword] for more information.}}
      * @return Returns ''true'' if the password was set correctly, ''false'' otherwise.
      */
-    export function setAccountPassword(theAccount: account, password: string, ): boolean;
+    export function setAccountPassword(theAccount: account, password: string): boolean;
 
     /**
      * This function returns the account with the specific ID.
@@ -185,7 +185,7 @@ declare module 'mtasa/server/functions' {
      * @param id The ID to get account from
      * @return Returns ''[[account]]'' associated with specified ID. Returns ''false'' if invalid arguments were specified or there is no account with this ID.
      */
-    export function getAccountByID(id: number, ): account;
+    export function getAccountByID(id: number): account;
 
     /**
      * This function retrieves the ID of an [[account]].
@@ -194,7 +194,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you wish to get the ID of.
      * @return Returns a int containing the account's ID, ''false'' if the account does not exist or an invalid argument was passed to the function.
      */
-    export function getAccountID(theAccount: account, ): number;
+    export function getAccountID(theAccount: account): number;
 
     /**
      * This function retrieves the IP address of an [[account]].
@@ -203,7 +203,7 @@ declare module 'mtasa/server/functions' {
      * @param theAccount The account you wish to get the IP of.
      * @return Returns a string containing the account's IP, ''false'' if the account does not exist or an invalid argument was passed to the function.
      */
-    export function getAccountIP(theAccount: account, ): string;
+    export function getAccountIP(theAccount: account): string;
 
     /**
      * This function returns a [[table]] containing all accounts with specified dataName and value (set with setAccountData).
@@ -213,7 +213,7 @@ declare module 'mtasa/server/functions' {
      * @param value The value the dataName should have
      * @return Returns ''[[table]]'' containing the accounts associated with specified value at dataName. Returns ''false'' if invalid arguments were specified.
      */
-    export function getAccountsByData(dataName: string, value: string, ): table;
+    export function getAccountsByData(dataName: string, value: string): table;
 
     /**
      * This function returns a [[table]] containing all accounts that were logged onto from specified IP-address.
@@ -222,7 +222,7 @@ declare module 'mtasa/server/functions' {
      * @param ip The IP to get accounts from
      * @return Returns ''[[table]]'' containing the accounts associated with specified IP-address. Returns ''false'' if invalid arguments were specified.
      */
-    export function getAccountsByIP(ip: string, ): table;
+    export function getAccountsByIP(ip: string): table;
 
     /**
      * This function sets the name of an [[account]].
@@ -234,7 +234,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns a ''true'' if the account name was set, ''false'' if an invalid argument was specified.
      */
-    export function setAccountName(theAccount: account, name: string, allowCaseVariations?: boolean, ): boolean;
+    export function setAccountName(theAccount: account, name: string, allowCaseVariations?: boolean): boolean;
 
     /**
      * This function creates an ACL entry in the Access Control List system with the specified name.
@@ -242,7 +242,7 @@ declare module 'mtasa/server/functions' {
      * @param aclName The name of the ACL entry to add.
      * @return Returns the created ACL object if successful. Returns false if an ACL of the given name could not be created.
      */
-    export function aclCreate(aclName: string, ): acl;
+    export function aclCreate(aclName: string): acl;
 
     /**
      * This function creates a group in the ACL. An ACL group can contain objects like players and resources. They specify who has access to the ACL's in this group.
@@ -250,7 +250,7 @@ declare module 'mtasa/server/functions' {
      * @param groupName The name of the group to create
      * @return Returns the pointer to the created aclgroup if successful. Returns false if failed.
      */
-    export function aclCreateGroup(groupName: string, ): aclgroup;
+    export function aclCreateGroup(groupName: string): aclgroup;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -260,7 +260,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if successfully destroyed and ''false'' if it could not be deleted (ie. it's not valid).
      */
-    export function aclDestroy(theACL: acl, ): boolean;
+    export function aclDestroy(theACL: acl): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -270,7 +270,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the ACL group was successfully deleted, ''false'' if it could not be deleted for some reason (ie. invalid argument).
      */
-    export function aclDestroyGroup(aclGroup: aclgroup, ): boolean;
+    export function aclDestroyGroup(aclGroup: aclgroup): boolean;
 
     /**
      * Get the ACL with the given name. If need to get most of the ACL's, you should consider using [[aclList]] to get a table of them all.
@@ -278,7 +278,7 @@ declare module 'mtasa/server/functions' {
      * @param aclName The name to get the ACL belonging to
      * @return Returns the ACL with that name if it could be retrieved, ''false''/''nil'' if the ACL does not exist or it fails for some other reason.
      */
-    export function aclGet(aclName: string, ): acl;
+    export function aclGet(aclName: string): acl;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -288,14 +288,14 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns the ACL group if it could be found. Returns false/nil if it did not exist or failed for some reason.
      */
-    export function aclGetGroup(groupName: string, ): aclgroup;
+    export function aclGetGroup(groupName: string): aclgroup;
 
     /**
      * Get the name of given ACL.
      * @see {@link https://wiki.multitheftauto.com/wiki/aclGetName|MTASA Wiki}
      * @return Returns the name of the given ACL as a string if successful. Returns ''false''/''nil'' if unsuccessful, ie the ACL is invalid.
      */
-    export function aclGetName(theAcl: acl, ): string;
+    export function aclGetName(theAcl: acl): string;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -306,7 +306,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' or ''false'' if the ACL gives access or not to the given function. Returns ''nil'' if it failed for some reason, e.g. an invalid ACL was specified or the right specified does not exist in the ACL.
      */
-    export function aclGetRight(theAcl: acl, rightName: string, ): boolean;
+    export function aclGetRight(theAcl: acl, rightName: string): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -317,7 +317,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the ACL could be successfully added to the ACL group, ''false''/''nil'' if either of the elements are invalid, the ACL is already in that group or if something else goes wrong.
      */
-    export function aclGroupAddACL(theGroup: aclgroup, theACL: acl, ): boolean;
+    export function aclGroupAddACL(theGroup: aclgroup, theACL: acl): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -332,7 +332,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the object was successfully added to the ACL, ''false'' if it already existed in the list.
      */
-    export function aclGroupAddObject(theGroup: aclgroup, theObjectName: string, ): boolean;
+    export function aclGroupAddObject(theGroup: aclgroup, theObjectName: string): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -342,7 +342,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns the name of the given ACL group as a string if successful, otherwise ''false'' or ''nil'' if the aclGroup is invalid or it fails for some other reason.
      */
-    export function aclGroupGetName(aclGroup: aclgroup, ): string;
+    export function aclGroupGetName(aclGroup: aclgroup): string;
 
     /**
      * This function returns a table of all the ACL groups.
@@ -359,7 +359,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns a table of the ACL elements in the given ACL group. This table might be empty. Returns ''false'' or ''nil'' if theGroup is invalid or it fails for some other reason.
      */
-    export function aclGroupListACL(theGroup: aclgroup, ): table;
+    export function aclGroupListACL(theGroup: aclgroup): table;
 
     /**
      * <!-- Change this to "Client function" or "Server function" appropriately-->
@@ -370,7 +370,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns a table of strings in the given ACL group. This table might be empty. Returns ''false'' or ''nil'' if theGroup is invalid or it fails for some other reason.
      */
-    export function aclGroupListObjects(theGroup: aclgroup, ): table;
+    export function aclGroupListObjects(theGroup: aclgroup): table;
 
     /**
      * This function removes the given ACL from the given ACL group.
@@ -379,7 +379,7 @@ declare module 'mtasa/server/functions' {
      * @param theACL The ACL to remove from the given group
      * @return Returns ''true'' if the ACL was successfully removed from the ACL group, ''false''/''nil'' if it could not be removed for some reason, ie. either of the elements were invalid.
      */
-    export function aclGroupRemoveACL(theGroup: aclgroup, theACL: acl, ): boolean;
+    export function aclGroupRemoveACL(theGroup: aclgroup, theACL: acl): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -390,7 +390,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the object existed in the ACL and could be remoevd, ''false'' if it could not be removed for some reason, ie. it did not exist in the given ACL group.
      */
-    export function aclGroupRemoveObject(theGroup: aclgroup, theObjectString: string, ): boolean;
+    export function aclGroupRemoveObject(theGroup: aclgroup, theObjectString: string): boolean;
 
     /**
      * This function returns a list of all the ACLs.
@@ -406,7 +406,7 @@ declare module 'mtasa/server/functions' {
      * @param allowedType The allowed right type. Possible values are general, function, resource and command
      * @return Returns a table over the rights as strings in the given ACL. This table might be empty. Returns ''false'' or ''nil'' if theACL is invalid or it fails for some other reason.
      */
-    export function aclListRights(theACL: acl, allowedType: string, ): table;
+    export function aclListRights(theACL: acl, allowedType: string): table;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -426,11 +426,11 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the given right was successfully removed from the given ACL, ''false'' or ''nil'' if it could not be removed for some reason, ie. it didn't exist in the ACL.
      */
-    export function aclRemoveRight(theAcl: acl, rightName: string, ): boolean;
+    export function aclRemoveRight(theAcl: acl, rightName: string): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
-     * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic save can be delayed by up to 10 seconds for performance reasons. Calling this function will force an immediate save. 
+     * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic save can be delayed by up to 10 seconds for performance reasons. Calling this function will force an immediate save.
      * @see {@link https://wiki.multitheftauto.com/wiki/aclSave|MTASA Wiki}
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the ACL was successfully changed, ''false'' or ''nil'' if it could not be saved for some reason, ie. file in use.
@@ -445,7 +445,7 @@ declare module 'mtasa/server/functions' {
      * @param hasAccess Whether the access should be set to true or false
      * @return Returns ''true'' if the access was successfully changed, ''false'' or ''nil'' if it failed for some reason, ie. invalid ACL or the rightname is invalid.
      */
-    export function aclSetRight(theAcl: acl, rightName: string, hasAccess: boolean, ): boolean;
+    export function aclSetRight(theAcl: acl, rightName: string, hasAccess: boolean): boolean;
 
     /**
      * This function is used to determine if an object is in a group.
@@ -454,21 +454,21 @@ declare module 'mtasa/server/functions' {
      * @param theGroup the ACL group pointer of the group from which the object should be found.
      * @return Returns ''true'' if the object is in the specified group, ''false'' otherwise.
      */
-    export function isObjectInACLGroup(theObject: string, theGroup: aclgroup, ): boolean;
+    export function isObjectInACLGroup(theObject: string, theGroup: aclgroup): boolean;
 
     /**
      * This function will add a [[ban]] for the specified IP/username/serial to the server.
      * @see {@link https://wiki.multitheftauto.com/wiki/addBan|MTASA Wiki}
      * @param IP The IP to be banned. If you dont want to ban by IP, set this to nil.  '''or'''
      * @param Username The http://community.mtasa.com/ MTA Community username to be banned (now obsolete). If you dont want to ban by username, set this to nil.  '''or'''
-     * @param Serial The serial to be banned. If you dont want to ban by serial, set this to nil.  ''' or any combination.'''  {{OptionalArg}} 
+     * @param Serial The serial to be banned. If you dont want to ban by serial, set this to nil.  ''' or any combination.'''  {{OptionalArg}}
      * @param responsibleElement The element that is responsible for banning the IP/username/serial. This can be a player or the root (getRootElement()).
      * @param reason The reason the IP/username/serial will be banned from the server.
      * @param seconds The amount of seconds the player will be banned from the server for. This can be 0 for an infinite amount of time.
      * @default 0
      * @return Returns the new [[ban]] if the IP/username/serial was banned successfully, ''false'' if invalid arguments are specified.
      */
-    export function addBan(IP: string, Username: string, Serial: string, responsibleElement: player, reason: string, seconds: number, ): ban;
+    export function addBan(IP: string, Username: string, Serial: string, responsibleElement: player, reason: string, seconds: number): ban;
 
     /**
      * This function will ban the specified player by either IP, [[serial]] or username
@@ -489,7 +489,7 @@ declare module 'mtasa/server/functions' {
      * @default 0
      * @return Returns a [[ban]] object if banned successfully, or ''false'' if unsuccessful.
      */
-    export function banPlayer(bannedPlayer: player, IP: boolean, Username: boolean, Serial: boolean, string: player, reason: string, seconds: number, ): ban;
+    export function banPlayer(bannedPlayer: player, IP: boolean, Username: boolean, Serial: boolean, string: player, reason: string, seconds: number): ban;
 
     /**
      * This function will return the responsible admin (nickname of the admin) of the specified [[ban]].
@@ -497,7 +497,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The ban you want to return the admin of.
      * @return Returns a ''string'' of the admin if everything was successful, ''false'' if invalid arguments are specified if there was no admin specified for the [[ban]].
      */
-    export function getBanAdmin(theBan: ban, ): string;
+    export function getBanAdmin(theBan: ban): string;
 
     /**
      * This function will return the IP of the specified [[ban]].
@@ -505,7 +505,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The ban in which you want to return the IP of.
      * @return Returns a ''string'' of the IP if everything was successful, ''false'' if invalid arguments are specified if there was no IP specified for the [[ban]].
      */
-    export function getBanIP(theBan: ban, ): string;
+    export function getBanIP(theBan: ban): string;
 
     /**
      * This function will return the nickname (nickname that the player had when he was banned) of the specified [[ban]].
@@ -513,7 +513,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The ban element which nickname you want to return.
      * @return Returns a ''string'' of the nickname if everything was successfull, ''false'' if invalid arguments are specified if there was no nickname specified for the [[ban]] element.
      */
-    export function getBanNick(theBan: ban, ): string;
+    export function getBanNick(theBan: ban): string;
 
     /**
      * This function will return the ban reason of the specified [[ban]].
@@ -521,7 +521,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The ban in which you want to return the reason of.
      * @return Returns a ''string'' of the reason if everything was successful, ''false'' if invalid arguments are specified if there was no reason specified for the [[ban]].
      */
-    export function getBanReason(theBan: ban, ): string;
+    export function getBanReason(theBan: ban): string;
 
     /**
      * This function will return the [[serial]] of the specified [[ban]].
@@ -529,7 +529,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The ban you want to retrieve the serial of.
      * @return Returns a ''string'' of the serial if everything was successful, ''false'' if invalid arguments are specified or if there was no serial specified for the [[ban]].
      */
-    export function getBanSerial(theBan: ban, ): string;
+    export function getBanSerial(theBan: ban): string;
 
     /**
      * This function will return the time the specified [[ban]] was created, in '''seconds'''.
@@ -538,7 +538,7 @@ declare module 'mtasa/server/functions' {
      * @return * Returns an integer of the banning time in the format of seconds from the year 1970.  Use in conjunction with [[getRealTime]] in order to retrieve detailed information.
      * * * Returns '''false''' if invalid arguments were specified or if there was no banning time specified for the [[ban]].
      */
-    export function getBanTime(theBan: ban, ): number;
+    export function getBanTime(theBan: ban): number;
 
     /**
      * This function will return the username of the specified [[ban]].
@@ -546,7 +546,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The ban in which you wish to retrieve the username of.
      * @return Returns a ''string'' of the username if everything was successful, ''false'' if invalid arguments are specified if there was no username specified for the [[ban]].
      */
-    export function getBanUsername(theBan: ban, ): string;
+    export function getBanUsername(theBan: ban): string;
 
     /**
      * This function will return a table containing all the [[ban]]s present in the server's banlist.xml.
@@ -562,7 +562,7 @@ declare module 'mtasa/server/functions' {
      * @return * Returns an integer of the unbanning time in the format of seconds from the year 1970.  Use in conjunction with [[getRealTime]] in order to retrieve detailed information.
      * * * Returns '''false''' if invalid arguments are specified or if there was no unbanning time specified for the [[ban]].
      */
-    export function getUnbanTime(theBan: ban, ): number;
+    export function getUnbanTime(theBan: ban): number;
 
     /**
      * This function checks whether the passed value is valid [[ban]] or not.
@@ -571,7 +571,7 @@ declare module 'mtasa/server/functions' {
      * @param theBan The value to check
      * @return Returns ''true'' if the value is a ban, ''false'' otherwise.
      */
-    export function isBan(theBan: ban, ): boolean;
+    export function isBan(theBan: ban): boolean;
 
     /**
      * This function will kick the specified player from the server.
@@ -581,7 +581,7 @@ declare module 'mtasa/server/functions' {
      * @default ""
      * @return Returns ''true'' if the player was kicked succesfully, ''false'' if invalid arguments are specified.
      */
-    export function kickPlayer(kickedPlayer: player, string: player, reason: string, ): boolean;
+    export function kickPlayer(kickedPlayer: player, string: player, reason: string): boolean;
 
     /**
      * This function sets a new admin for a [[ban]].
@@ -591,16 +591,16 @@ declare module 'mtasa/server/functions' {
      * @param theAdmin The new admin.
      * @return Returns ''true'' if changed, ''false'' otherwise.
      */
-    export function setBanAdmin(theBan: ban, theAdmin: string, ): boolean;
+    export function setBanAdmin(theBan: ban, theAdmin: string): boolean;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/setBanNick|MTASA Wiki}
      * @param theBan The ban you want to change the nick of.
      * @param theNick A string representing the nick you want to set the ban to.
-     * @return 
+     * @return
      */
-    export function setBanNick(theBan: ban, theNick: string, ): boolean;
+    export function setBanNick(theBan: ban, theNick: string): boolean;
 
     /**
      * This function sets the reason for the specified [[ban]].
@@ -610,7 +610,7 @@ declare module 'mtasa/server/functions' {
      * @param theReason the new reason (max 60 characters).
      * @return Returns ''true'' if the new reason was set successfully, ''false'' otherwise.
      */
-    export function setBanReason(theBan: ban, theReason: string, ): boolean;
+    export function setBanReason(theBan: ban, theReason: string): boolean;
 
     /**
      * This function sets a new unban time of a given [[ban]] using unix timestamp (seconds since Jan 01 1970).
@@ -620,7 +620,7 @@ declare module 'mtasa/server/functions' {
      * @param theTime the new unban time
      * @return Returns ''true'' if changed successfully, ''false'' otherwise.
      */
-    export function setUnbanTime(theBan: ban, theTime: number, ): boolean;
+    export function setUnbanTime(theBan: ban, theTime: number): boolean;
 
     /**
      * This function will reload the server ban list file.
@@ -632,12 +632,12 @@ declare module 'mtasa/server/functions' {
     /**
      * This function will remove a specific [[ban]].
      * @see {@link https://wiki.multitheftauto.com/wiki/removeBan|MTASA Wiki}
-     * @param theBan The ban to be removed.  {{OptionalArg}} 
+     * @param theBan The ban to be removed.  {{OptionalArg}}
      * @param responsibleElement The element that is responsible for removing the ban element. This can be a player or the root (getRootElement()).
      * @default nil
      * @return Returns ''true'' if the [[ban]] was removed succesfully, ''false'' if invalid arguments are specified.
      */
-    export function removeBan(theBan: ban, responsibleElement?: player, ): boolean;
+    export function removeBan(theBan: ban, responsibleElement?: player): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -661,7 +661,7 @@ declare module 'mtasa/server/functions' {
      * @param key The name of the rule
      * @return Returns a string containing the value set for the specified ''key'', ''false'' if invalid arguments were specified.
      */
-    export function getRuleValue(key: string, ): string;
+    export function getRuleValue(key: string): string;
 
     /**
      * This function removes a set rule value that can be viewed by server browsers.
@@ -669,7 +669,7 @@ declare module 'mtasa/server/functions' {
      * @param key The name of the rule you wish to remove
      * @return Returns ''true'' if the rule value was removed, ''false'' if it failed.
      */
-    export function removeRuleValue(key: string, ): boolean;
+    export function removeRuleValue(key: string): boolean;
 
     /**
      * This function sets a string containing a name for the game type. This should be the game-mode that is active, for example "Capture The Flag" or "Deathmatch". This is then displayed in the server browser and external server browsers.
@@ -678,7 +678,7 @@ declare module 'mtasa/server/functions' {
      * @param gameType A string containing a name for the game mode, or false to clear it.
      * @return Returns ''true'' if the game type was set, ''false'' if an invalid argument was passed to the function.
      */
-    export function setGameType(gameType: string, ): boolean;
+    export function setGameType(gameType: string): boolean;
 
     /**
      * This function is used to set a map name that will be visible in the server browser. In practice you should generally rely on the mapmanager to do this for you.
@@ -686,7 +686,7 @@ declare module 'mtasa/server/functions' {
      * @param mapName The name you wish the server browser to show.
      * @return Returns ''true'' if map name was set successfully, ''false'' otherwise.
      */
-    export function setMapName(mapName: string, ): boolean;
+    export function setMapName(mapName: string): boolean;
 
     /**
      * This function sets a rule value that can be viewed by server browsers.
@@ -695,7 +695,7 @@ declare module 'mtasa/server/functions' {
      * @param value The value you wish to set for the rule
      * @return Returns ''true'' if the rule value was set, ''false'' if invalid arguments were specified.
      */
-    export function setRuleValue(key: string, value: string, ): boolean;
+    export function setRuleValue(key: string, value: string): boolean;
 
     /**
      * This function is used together with [[setElementData]] in ''"subscribe"'' mode.
@@ -706,7 +706,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you wish to subscribe.
      * @return Returns ''true'' if the player was subscribed, ''false'' otherwise.
      */
-    export function addElementDataSubscriber(theElement: element, key: string, thePlayer: player, ): boolean;
+    export function addElementDataSubscriber(theElement: element, key: string, thePlayer: player): boolean;
 
     /**
      * This function clears any settings added by setElementVisibleTo and restores an element to its default visibility.  This does not work with all entities - [[vehicle]]s, [[player]]s and [[object]]s are exempt. This is because these objects are required for accurate sync (they're physical objects). This function is particularily useful for changing the visibility of markers, radar blips and radar areas.
@@ -714,7 +714,7 @@ declare module 'mtasa/server/functions' {
      * @param theElement The element in which you wish to restore to its default visibility
      * @return Returns ''true'' if the operation was successful, ''false'' otherwise.
      */
-    export function clearElementVisibleTo(theElement: element, ): boolean;
+    export function clearElementVisibleTo(theElement: element): boolean;
 
     /**
      * This function clones (creates an exact copy of) an already existing element. The root node, and player elements, cannot be cloned. If a player element is a child of an element that is cloned, it will be skipped, along with the elements that exist as a child to the player element.
@@ -732,7 +732,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns the handle of the new cloned element of the parent, ''false'' if invalid arguments were passed.
      */
-    export function cloneElement(theElement: element, xPos: number, yPos: number, zPos: number, cloneChildren: boolean, ): element;
+    export function cloneElement(theElement: element, xPos: number, yPos: number, zPos: number, cloneChildren: boolean): element;
 
     /**
      * Returns a table of all element data of an element.
@@ -740,24 +740,24 @@ declare module 'mtasa/server/functions' {
      * @param theElement the element you want to get the element data of.
      * @return If successful, returns a table with as keys the names of the element data and as values the corresponding element data values. Returns ''false'' in case of failure.
      */
-    export function getAllElementData(theElement: element, ): table;
+    export function getAllElementData(theElement: element): table;
 
     /**
-     * This function returns an element of the specified type with the specified index. 
+     * This function returns an element of the specified type with the specified index.
      * @see {@link https://wiki.multitheftauto.com/wiki/getElementByIndex|MTASA Wiki}
      * @param theType the type of the element to be returned. Examples include player, vehicle, or a custom type.
      * @param index the elements index (0 for the first element, 1 for the second, etc).
      * @return Returns the requested [[element]], or ''false'' if it doesn't exist.
      */
-    export function getElementByIndex(theType: string, index: number, ): element;
+    export function getElementByIndex(theType: string, index: number): element;
 
     /**
-     * This function gets the syncer of an element. The syncer is the player who is in control of the element. 
+     * This function gets the syncer of an element. The syncer is the player who is in control of the element.
      * @see {@link https://wiki.multitheftauto.com/wiki/getElementSyncer|MTASA Wiki}
      * @param theElement : The element to get the syncer of.
      * @return Returns the [[element]] that is the syncer of ''theElement'' or ''false'' if the element does not have a syncer.
      */
-    export function getElementSyncer(theElement: element, ): element;
+    export function getElementSyncer(theElement: element): element;
 
     /**
      * This function allows you to retrieve the zone name of an element (eg. Verdant Bluffs or Ocean Docks)
@@ -768,7 +768,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns the string of the elements zone name.
      */
-    export function getElementZoneName(theElement: element, citiesonly: boolean, ): string;
+    export function getElementZoneName(theElement: element, citiesonly: boolean): string;
 
     /**
      * This function is used together with [[setElementData]] in ''"subscribe"'' mode.
@@ -779,7 +779,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you wish to check.
      * @return Returns ''true'' if the player is subscribed, ''false'' otherwise.
      */
-    export function hasElementDataSubscriber(theElement: element, key: string, thePlayer: player, ): boolean;
+    export function hasElementDataSubscriber(theElement: element, key: string, thePlayer: player): boolean;
 
     /**
      * This functions checks if certain element has call propagation enabled.
@@ -787,7 +787,7 @@ declare module 'mtasa/server/functions' {
      * @param theElement The element to check
      * @return Returns ''true'' if the propagation is enabled, ''false'' if disabled or invalid arguments have been passed.
      */
-    export function isElementCallPropagationEnabled(theElement: element, ): boolean;
+    export function isElementCallPropagationEnabled(theElement: element): boolean;
 
     /**
      * This checks if an element is visible to a player. This does not check if the player can literally see the element, just that they are aware that it exists. Some so-called [[per-player elements]] are able to be visible only to some players, as such this checks if this is the case for a particular element/player combination.
@@ -796,7 +796,7 @@ declare module 'mtasa/server/functions' {
      * @param visibleTo The player you want to check against
      * @return Returns ''true'' if element is visible to the specified player, ''false'' if not or an invalid argument was passed to the function.
      */
-    export function isElementVisibleTo(theElement: element, visibleTo: element, ): boolean;
+    export function isElementVisibleTo(theElement: element, visibleTo: element): boolean;
 
     /**
      * This function removes the [[element data]] with the given key for that element. The element data removal is synced with all the clients.
@@ -805,7 +805,7 @@ declare module 'mtasa/server/functions' {
      * @param key The key string you wish to remove.
      * @return Returns ''true'' if the data was removed succesfully, ''false'' if the given key does not exist in the element or the element is invalid.
      */
-    export function removeElementData(theElement: element, key: string, ): boolean;
+    export function removeElementData(theElement: element, key: string): boolean;
 
     /**
      * This function is used together with [[setElementData]] in ''"subscribe"'' mode.
@@ -816,7 +816,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you wish to unsubscribe.
      * @return Returns ''true'' if the player was unsubscribed, ''false'' otherwise.
      */
-    export function removeElementDataSubscriber(theElement: element, key: string, thePlayer: player, ): boolean;
+    export function removeElementDataSubscriber(theElement: element, key: string, thePlayer: player): boolean;
 
     /**
      * This function enables/disables call propagation on a certain element. Look at the example for a practical application.
@@ -825,7 +825,7 @@ declare module 'mtasa/server/functions' {
      * @param enabled Whether propagation should be enabled or not
      * @return Returns ''true'', if the propagation behaviour has been changed successfully, ''false'' otherwise.
      */
-    export function setElementCallPropagationEnabled(theElement: element, enabled: boolean, ): boolean;
+    export function setElementCallPropagationEnabled(theElement: element, enabled: boolean): boolean;
 
     /**
      * This function can be used to change the syncer ([[player]]) of an element. The syncer is the player who is responsible for informing the server about the state of that element - it's position, orientation and other state information. The function can be also used to remove an element's syncer.
@@ -838,7 +838,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player who should be the new syncer of the element. If set to false, this element will not have a syncer. If set to true, MTA will pick automatically the nearest or most relevant player to that element.
      * @return Returns ''true'' if the syncer was changed successfully, ''false'' if the element passed was not a ped or vehicle.
      */
-    export function setElementSyncer(theElement: element, thePlayer: player, ): boolean;
+    export function setElementSyncer(theElement: element, thePlayer: player): boolean;
 
     /**
      * Does the order of setElementVisibleTo calls really not matter? [[visibility|Visibility]] seems to ''imply'' that the order does matter.
@@ -853,7 +853,7 @@ declare module 'mtasa/server/functions' {
      * @param visible Whether you are making it visible or invisible to the player.
      * @return Returns ''true'' if the element's visibility was changed successfully, ''false'' otherwise, for example if you are trying to change the visibility of a vehicle, player or object.
      */
-    export function setElementVisibleTo(theElement: element, visibleTo: element, visible: boolean, ): boolean;
+    export function setElementVisibleTo(theElement: element, visibleTo: element, visible: boolean): boolean;
 
     /**
      * Gets the reason for cancelling an event.
@@ -865,16 +865,16 @@ declare module 'mtasa/server/functions' {
     /**
      * <!--{{Needs_Checking|Something needs to be said about the steps required to help keep an event inside a resource. i.e. Setting 'theElement' to resourceRoot here, and setting the matching event handler's 'attachedTo' also to resourceRoot.}}
      * -->__NOTOC__
-     * This function triggers an event previously registered on a client. This is the primary means of passing information between the server and the client. Clients have a similar [[triggerServerEvent]] function that can do the reverse. You can treat this function as if it was an asynchronous function call, using [[triggerServerEvent]] to pass back any returned information if necessary. 
+     * This function triggers an event previously registered on a client. This is the primary means of passing information between the server and the client. Clients have a similar [[triggerServerEvent]] function that can do the reverse. You can treat this function as if it was an asynchronous function call, using [[triggerServerEvent]] to pass back any returned information if necessary.
      * Almost any data types can be passed as expected, including [[element]]s and complex nested [[table]]s. Non-element MTA data types like xmlNodes or resource pointers will not be able to be passed as they do not necessarily have a valid representation on the client.
      * Events are sent reliably, so clients will receive them, but there may be (but shouldn't be) a significant delay before they are received. You should take this into account when using them.
      * Keep in mind the bandwidth issues when using events - don't pass a large list of arguments unless you really need to. '''It is marginally more efficient to pass one large event than two smaller ones'''.
      * @see {@link https://wiki.multitheftauto.com/wiki/triggerClientEvent|MTASA Wiki}
      * @param name The name of the event to trigger client side. You should register this event with addEvent and add at least one event handler using addEventHandler.
-     * @param sourceElement The element that is the Event system#Event handlers|source of the event.  {{Note|To save client CPU, you should avoid setting '''sourceElement''' to the [[root element]] where possible. Using [[GetThisResource|resourceRoot]] is usually sufficient if the event is handled by the same resource on the client.}}  {{OptionalArg}} 
+     * @param sourceElement The element that is the Event system#Event handlers|source of the event.  {{Note|To save client CPU, you should avoid setting '''sourceElement''' to the [[root element]] where possible. Using [[GetThisResource|resourceRoot]] is usually sufficient if the event is handled by the same resource on the client.}}  {{OptionalArg}}
      * @return Returns ''true'' if the event trigger has been sent, ''false'' if invalid arguments were specified.
      */
-    export function triggerClientEvent(element: table, name: string, sourceElement: element, ...args: any[], ): boolean;
+    export function triggerClientEvent(element: table, name: string, sourceElement: element, ...args: any[]): boolean;
 
     /**
      * This function is the same as [[triggerClientEvent ]] except the transmission rate of the data contained in the arguments can be limited
@@ -888,7 +888,7 @@ declare module 'mtasa/server/functions' {
      * @param theElement The element that is the Event system#Event handlers|source of the event. This could be another player, or if this isnt relevant, use the root element.
      * @return Returns ''true'' if the event trigger has been sent, ''false'' if invalid arguments were specified.
      */
-    export function triggerLatentClientEvent(element: table, name: string, bandwidth: number, persist: boolean, theElement: element, ...args: any[], ): boolean;
+    export function triggerLatentClientEvent(element: table, name: string, bandwidth: number, persist: boolean, theElement: element, ...args: any[]): boolean;
 
     /**
      * This function will check if a player is pressing a particular control. Controls are those that affect GTA. If you wish to get the state of another key, use [[bindKey]] and a command function.
@@ -898,7 +898,7 @@ declare module 'mtasa/server/functions' {
      * @param controlName The control that you want to get the state of. See control names for a list of possible controls.  '''Note:''' several controls are not synched with the server, therefore the function will always return ''false'' for these controls serverside. These controls are:  *next_weapon  *previous_weapon  *jump  *zoom_in  *zoom_out  *look_behind  *change_camera  *conversation_yes  *conversation_no  *group_control_forwards  *group_control_back  *sub_mission  *radio_next  *radio_previous  *vehicle_look_left  *vehicle_look_right  *vehicle_look_behind  *vehicle_mouse_look  *special_control_*
      * @return Returns the state of the control, ''false'' if the control doesn't exist or if the player is dead.
      */
-    export function getControlState(thePlayer: player, controlName: string, ): boolean;
+    export function getControlState(thePlayer: player, controlName: string): boolean;
 
     /**
      * This function can be used to find out if a key has already been bound. If you do not specify a keyState or handler, any instances of key being bound will cause isKeyBound to return true.
@@ -909,7 +909,7 @@ declare module 'mtasa/server/functions' {
      * @param handler The function youre checking against
      * @return Returns ''true'' if the key is bound, ''false'' otherwise.
      */
-    export function isKeyBound(thePlayer: player, key: string, keyState: string, handler: HandleFunction, ): boolean;
+    export function isKeyBound(thePlayer: player, key: string, keyState: string, handler: HandleFunction): boolean;
 
     /**
      * Sets a state of a specified player's control, as if they pressed or released it.
@@ -919,7 +919,7 @@ declare module 'mtasa/server/functions' {
      * @param state A boolean value representing whether or not the key will be set to pressed or not.
      * @return Returns ''true'' if the control state was successfully set, ''false'' otherwise.
      */
-    export function setControlState(thePlayer: player, control: string, state: boolean, ): boolean;
+    export function setControlState(thePlayer: player, control: string, state: boolean): boolean;
 
     /**
      * This function is intended to load data from a loaded XML file into the element tree. This could be used for loading an external map, or part of another map.
@@ -928,7 +928,7 @@ declare module 'mtasa/server/functions' {
      * @param parent The node you wish to be the parent of the new map data.
      * @return Returns an [[element]] object that corresponds to the root of the new data added, i.e. an element that represents the ''node'' xmlnode passed to the function. Returns ''false'' if the arguments are invalid.
      */
-    export function loadMapData(node: xmlnode, parent: element, ): element;
+    export function loadMapData(node: xmlnode, parent: element): element;
 
     /**
      * This function is used to reset the state of a player.  It is intended to restore a player to his default state as if he had just joined the server, without any scripts affecting him.
@@ -937,7 +937,7 @@ declare module 'mtasa/server/functions' {
      * @default getRootElement(
      * @return Returns ''true'' if the map info was reset successfully, otherwise ''false''.
      */
-    export function resetMapInfo(thePlayer: player, ): boolean;
+    export function resetMapInfo(thePlayer: player): boolean;
 
     /**
      * This converts a set of elements in the element tree into XML. This is a format that can then be loaded as a map file. Each element represents a single XML node.
@@ -946,9 +946,9 @@ declare module 'mtasa/server/functions' {
      * @param baseElement : The first element to output to the XML tree. This element and all its children (and their children, etc) will be output.  {{OptionalArg}}
      * @param childrenOnly : Defines if you want to only save children of the specified element.
      * @default false
-     * @return 
+     * @return
      */
-    export function saveMapData(node: xmlnode, baseElement: element, childrenOnly?: boolean, ): boolean;
+    export function saveMapData(node: xmlnode, baseElement: element, childrenOnly?: boolean): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -969,7 +969,7 @@ declare module 'mtasa/server/functions' {
      * * *'''author''': Module author
      * * If invalid name for module is passed, it will return ''false''.
      */
-    export function getModuleInfo(moduleName: string, ): table;
+    export function getModuleInfo(moduleName: string): table;
 
     /**
      * This outputs a line of text to the server's log. This could be useful for debugging.
@@ -977,7 +977,7 @@ declare module 'mtasa/server/functions' {
      * @param text The text to be output to the log.
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function outputServerLog(text: string, ): boolean;
+    export function outputServerLog(text: string): boolean;
 
     /**
      * This function returns the current gravity for the specified [[ped]]. The default gravity is 0.008.
@@ -985,7 +985,7 @@ declare module 'mtasa/server/functions' {
      * @param thePed The ped whose gravity you want to check.
      * @return Returns a [[float]] indicating the ped's gravity, or ''false'' if the ped is invalid. Default value is 0.008.
      */
-    export function getPedGravity(thePed: ped, ): number;
+    export function getPedGravity(thePed: ped): number;
 
     /**
      * This function checks if the specified [[ped]] is dead or not.
@@ -993,7 +993,7 @@ declare module 'mtasa/server/functions' {
      * @param thePed : the ped you want to check up on.
      * @return Returns ''true'' if the ped is dead, ''false'' otherwise.
      */
-    export function isPedDead(thePed: ped, ): boolean;
+    export function isPedDead(thePed: ped): boolean;
 
     /**
      * This function makes a pedestrian reload their weapon.
@@ -1008,7 +1008,7 @@ declare module 'mtasa/server/functions' {
      * * 4) the ped moved while crouching recently
      * * Due to these circumstances causing problems with this function
      */
-    export function reloadPedWeapon(thePed: ped, ): boolean;
+    export function reloadPedWeapon(thePed: ped): boolean;
 
     /**
      * This function can be used to force the ped to do the choking (coughing) animation until he respawns or toggled off using this function. The animation can not be cancelled by a player it's applied to, and he will not loose health.
@@ -1017,7 +1017,7 @@ declare module 'mtasa/server/functions' {
      * @param choking true to make the ped choke, false to no longer force his choking animation
      * @return Returns ''true'' if successful, ''false'' otherwise (e.g. player handle is invalid)
      */
-    export function setPedChoking(thePed: ped, choking: boolean, ): boolean;
+    export function setPedChoking(thePed: ped, choking: boolean): boolean;
 
     /**
      * This function sets the gravity level of a ped.
@@ -1025,7 +1025,7 @@ declare module 'mtasa/server/functions' {
      * @param thePed : The ped whose gravity to change.
      * @return Returns ''true'' if the gravity was successfully set, ''false'' otherwise
      */
-    export function setPedGravity(thePed: ped, gravity: number, ): boolean;
+    export function setPedGravity(thePed: ped, gravity: number): boolean;
 
     /**
      * This function is used to give or take a jetpack from a ped, it won't work if the ped is in a vehicle.
@@ -1035,7 +1035,7 @@ declare module 'mtasa/server/functions' {
      * @param state A boolean representing whether to give or take the jetpack.
      * @return Returns ''true'' if a jetpack was successfully set for the ped, ''false'' if setting it failed.
      */
-    export function setPedWearingJetpack(thePed: ped, state: boolean, ): boolean;
+    export function setPedWearingJetpack(thePed: ped, state: boolean): boolean;
 
     /**
      * Returns the time it takes before a pickup respawns after a player picked it up. The time is specified in milliseconds.
@@ -1043,7 +1043,7 @@ declare module 'mtasa/server/functions' {
      * @param thePickup the pickup you want the respawn time of
      * @return Returns the respawn time of the pickup if successful, ''false'' in case of failure.
      */
-    export function getPickupRespawnInterval(thePickup: pickup, ): number;
+    export function getPickupRespawnInterval(thePickup: pickup): number;
 
     /**
      * This function checks if a pickup is currently spawned (is visible and can be picked up) or not (a player picked it up recently).
@@ -1051,7 +1051,7 @@ declare module 'mtasa/server/functions' {
      * @param thePickup the pickup you want to check.
      * @return Returns ''true'' if the pickup is spawned, ''false'' if it's not spawned or an invalid pickup was specified.
      */
-    export function isPickupSpawned(thePickup: pickup, ): boolean;
+    export function isPickupSpawned(thePickup: pickup): boolean;
 
     /**
      * Sets the time it takes for a pickup to respawn after a player picked it up.
@@ -1060,7 +1060,7 @@ declare module 'mtasa/server/functions' {
      * @param ms the new respawn time in ms
      * @return Returns ''true'' if the new respawn time was set successfully, ''false'' otherwise.
      */
-    export function setPickupRespawnInterval(thePickup: pickup, ms: number, ): boolean;
+    export function setPickupRespawnInterval(thePickup: pickup, ms: number): boolean;
 
     /**
      * This function returns a table of all the alive players on the server. Opposite function of [[getDeadPlayers]].
@@ -1087,16 +1087,16 @@ declare module 'mtasa/server/functions' {
      * * *'''d3d9SHA256:''' A string containing the SHA256 of any custom d3d9.dll the player may have installed.
      * * <!--
      */
-    export function getPlayerACInfo(thePlayer: element, ): table;
+    export function getPlayerACInfo(thePlayer: element): table;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getPlayerAnnounceValue|MTASA Wiki}
      * @param thePlayer This is the Player whos value you want to retrieve.
      * @param key The name of the key.
      * @return This function returns a ''string'' containing the requested value if a valid key was specified or ''false'' otherwise.
      */
-    export function getPlayerAnnounceValue(thePlayer: element, key: string, ): string;
+    export function getPlayerAnnounceValue(thePlayer: element, key: string): string;
 
     /**
      * This function returns the number of players currently connected to the server.
@@ -1111,7 +1111,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer : The player you wish to get the idle time of.
      * @return Returns the amount of '''time in milliseconds''' that a player has been idle, '''false''' otherwise.
      */
-    export function getPlayerIdleTime(thePlayer: player, ): number;
+    export function getPlayerIdleTime(thePlayer: player): number;
 
     /**
      * This function returns a [[string]] containing the IP address of the [[player]].
@@ -1119,7 +1119,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player element you want to get the IP of.
      * @return Returns a [[string]] containing the requested players's IP, or ''false'' if the player passed to the function is invalid.
      */
-    export function getPlayerIP(thePlayer: player, ): string;
+    export function getPlayerIP(thePlayer: player): string;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -1130,7 +1130,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns an ''int'' with the player debug script level, ''false'' if the player is invalid.
      */
-    export function getPlayerScriptDebugLevel(thePlayer: player, ): number;
+    export function getPlayerScriptDebugLevel(thePlayer: player): number;
 
     /**
      * This function returns the [[serial]] for a specified [[player]].
@@ -1138,7 +1138,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer A player object referencing the specified player.
      * @return Returns the serial as a ''string'' if it was found, ''false'' otherwise.
      */
-    export function getPlayerSerial(thePlayer: player, ): string;
+    export function getPlayerSerial(thePlayer: player): string;
 
     /**
      * This function gets the client version of the specified [[player]] as a sortable string. The string is always 15 characters long and is formatted as follows:
@@ -1161,7 +1161,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player whose client version you wish to get.
      * @return Returns a string containing the client version, or false if the [[player]] is invalid.
      */
-    export function getPlayerVersion(thePlayer: player, ): string;
+    export function getPlayerVersion(thePlayer: player): string;
 
     /**
      * This function returns a random [[player]].
@@ -1176,7 +1176,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you are checking.
      * @return Returns ''true'' if the player is muted and ''false'' otherwise.
      */
-    export function isPlayerMuted(thePlayer: player, ): boolean;
+    export function isPlayerMuted(thePlayer: player): boolean;
 
     /**
      * This function redirects the player to a specified server.
@@ -1190,7 +1190,7 @@ declare module 'mtasa/server/functions' {
      * @default ""
      * @return Returns ''true'' if the player was redirected successfully, ''false'' if bad arguments were passed.
      */
-    export function redirectPlayer(thePlayer: player, serverIP: string, serverPort: number, serverPassword?: string, ): boolean;
+    export function redirectPlayer(thePlayer: player, serverIP: string, serverPort: number, serverPassword?: string): boolean;
 
     /**
      * This function will force the specified player to resend their AC info, triggering the [[onPlayerACInfo]] event again.
@@ -1199,7 +1199,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer : A player object referencing the specified player
      * @return Returns ''true'' if the AC info will be resent, ''false'' otherwise.
      */
-    export function resendPlayerACInfo(thePlayer: player, ): boolean;
+    export function resendPlayerACInfo(thePlayer: player): boolean;
 
     /**
      * This function will force the specified player to resend their mod info, triggering the [[onPlayerModInfo]] event again.
@@ -1207,7 +1207,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer : A player object referencing the specified player
      * @return Returns ''true'' if the mod info will be resent, ''false'' otherwise.
      */
-    export function resendPlayerModInfo(thePlayer: player, ): boolean;
+    export function resendPlayerModInfo(thePlayer: player): boolean;
 
     /**
      * This function allows you to change ASE announce values for any player using a specified key.
@@ -1219,7 +1219,7 @@ declare module 'mtasa/server/functions' {
      * @param value The value you wish to store.
      * @return Returns ''true'' if the value was set succesfully, ''false'' otherwise.
      */
-    export function setPlayerAnnounceValue(thePlayer: element, key: string, value: string, ): boolean;
+    export function setPlayerAnnounceValue(thePlayer: element, key: string, value: string): boolean;
 
     /**
      * Use this function to mute or unmute the player.
@@ -1228,7 +1228,7 @@ declare module 'mtasa/server/functions' {
      * @param state Use true to mute and false to unmute the player.
      * @return Returns ''true'' if the player was successfully muted or unmuted, ''false'' otherwise.
      */
-    export function setPlayerMuted(thePlayer: player, state: boolean, ): boolean;
+    export function setPlayerMuted(thePlayer: player, state: boolean): boolean;
 
     /**
      * This function changes the specified [[player]]'s name. Note that any change made to a players name with this function is not saved in their settings so the name change only lasts till they disconnect.
@@ -1237,7 +1237,7 @@ declare module 'mtasa/server/functions' {
      * @param newName the new name to set for the player.
      * @return Returns ''true'' if the player name was changed succesfully, ''false'' if invalid arguments are specified.
      */
-    export function setPlayerName(thePlayer: player, newName: string, ): boolean;
+    export function setPlayerName(thePlayer: player, newName: string): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -1249,7 +1249,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function setPlayerScriptDebugLevel(thePlayer: player, level: number, ): boolean;
+    export function setPlayerScriptDebugLevel(thePlayer: player, level: number): boolean;
 
     /**
      * This function adds a [[player]] to an existing [[team]]. The player will automatically be removed from his current team if he's on one.
@@ -1258,7 +1258,7 @@ declare module 'mtasa/server/functions' {
      * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his team.
      * @return Returns ''true'' if the player was successfully added to the specified team or removed from his previous one, ''false'' otherwise.
      */
-    export function setPlayerTeam(thePlayer: player, theTeam: team, ): boolean;
+    export function setPlayerTeam(thePlayer: player, theTeam: team): boolean;
 
     /**
      * This function allows you to change who can hear the voice of a player.
@@ -1266,7 +1266,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you wish to change
      * @return Returns ''true'' if the value was set successfully, ''false'' otherwise.
      */
-    export function setPlayerVoiceBroadcastTo(thePlayer: element, broadcastTo: string, ): boolean;
+    export function setPlayerVoiceBroadcastTo(thePlayer: element, broadcastTo: string): boolean;
 
     /**
      * This function allows you to mute voices for a player.
@@ -1275,7 +1275,7 @@ declare module 'mtasa/server/functions' {
      * @param ignoreFrom Element or table of elements which the player should not hear voices from. Use nil if no one should be ignored.
      * @return Returns ''true'' if the value was set successfully, ''false'' otherwise.
      */
-    export function setPlayerVoiceIgnoreFrom(thePlayer: element, ignoreFrom: string, ): boolean;
+    export function setPlayerVoiceIgnoreFrom(thePlayer: element, ignoreFrom: string): boolean;
 
     /**
      * This function is used to set a player's wanted level. The wanted level is indicated by the amount of stars a player has on the GTA HUD.
@@ -1284,7 +1284,7 @@ declare module 'mtasa/server/functions' {
      * @param stars An integer from 0 to 6 representing the wanted level
      * @return Returns ''true'' if the wanted level was set successfully, ''false'' if any of the arguments were invalid.
      */
-    export function setPlayerWantedLevel(thePlayer: player, stars: number, ): boolean;
+    export function setPlayerWantedLevel(thePlayer: player, stars: number): boolean;
 
     /**
      * This function spawns the player at an arbitary point on the map.<br>
@@ -1305,7 +1305,7 @@ declare module 'mtasa/server/functions' {
      * @default getPlayerTeam(thePlayer
      * @return Returns ''true'' if the player was spawned successfully, ''false'' otherwise.
      */
-    export function spawnPlayer(thePlayer: player, x: number, y: number, z: number, rotation: number, skinID: number, interior: number, dimension: number, theTeam: team, ): boolean;
+    export function spawnPlayer(thePlayer: player, x: number, y: number, z: number, rotation: number, skinID: number, interior: number, dimension: number, theTeam: team): boolean;
 
     /**
      * This function forces a client to capture the current screen output and send it back to the server. The image will contain the GTA HUD and the output of any dxDraw functions that are not flagged as 'post GUI'. The image specifically excludes the chat box and all GUI (including the client console). The result is received with the event [[onPlayerScreenShot]].
@@ -1321,27 +1321,27 @@ declare module 'mtasa/server/functions' {
      * @default 5000
      * @return Returns ''true'' if the function was successfully, ''false'' if invalid arguments are specified.
      */
-    export function takePlayerScreenShot(thePlayer: player, width: number, height: number, tag?: string, quality?: number, maxBandwith?: number, maxPacketSize?: number, ): boolean;
+    export function takePlayerScreenShot(thePlayer: player, width: number, height: number, tag?: string, quality?: number, maxBandwith?: number, maxPacketSize?: number): boolean;
 
     /**
      * This function adds a new empty config file to an existing resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/addResourceConfig|MTASA Wiki}
-     * @param filePath The filepath of the file to be created in the following format: :resourceName/path. resourceName is the name of the resource the file is in, and path is the path from the root directory of the resource to the file.  :For example, if you want to create a config named 'settings.xml' in the resource 'ctf', it can be created from another resource this way: ''addResourceConfig(":ctf/settings.xml", "server")''.  :If you want to create the file in the current resource, only the file path is necessary, e.g. ''addResourceConfig("settings.xml", "server")''.  {{OptionalArg}} 
+     * @param filePath The filepath of the file to be created in the following format: :resourceName/path. resourceName is the name of the resource the file is in, and path is the path from the root directory of the resource to the file.  :For example, if you want to create a config named 'settings.xml' in the resource 'ctf', it can be created from another resource this way: ''addResourceConfig(":ctf/settings.xml", "server")''.  :If you want to create the file in the current resource, only the file path is necessary, e.g. ''addResourceConfig("settings.xml", "server")''.  {{OptionalArg}}
      * @param filetype a string indicating whether the file is serverside (server) or clientside (client).
      * @default "server"
      * @return Returns the new config's root [[xmlnode]] if the config was added successfully, ''false'' otherwise.
      */
-    export function addResourceConfig(filePath: string, filetype: string, ): xmlnode;
+    export function addResourceConfig(filePath: string, filetype: string): xmlnode;
 
     /**
      * This function adds a new empty mapfile to an existing resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/addResourceMap|MTASA Wiki}
-     * @param filePath The filepath of the resource map in the following format: :resourceName/path. resourceName is the name of the resource the map file will be in, and path is the path from the root directory of the resource to the file.  :For example, if you want to create a map file named 'manycars.map' in the resource 'cdm', it can be created from another resource this way: ''addResourceMap(":cdm/manycars.map")''.  :If you want to create the map file in the current resource, only the file path is necessary, e.g. ''addResourceMap("manycars.map")''.  {{OptionalArg}} 
+     * @param filePath The filepath of the resource map in the following format: :resourceName/path. resourceName is the name of the resource the map file will be in, and path is the path from the root directory of the resource to the file.  :For example, if you want to create a map file named 'manycars.map' in the resource 'cdm', it can be created from another resource this way: ''addResourceMap(":cdm/manycars.map")''.  :If you want to create the map file in the current resource, only the file path is necessary, e.g. ''addResourceMap("manycars.map")''.  {{OptionalArg}}
      * @param dimension the dimension in which the maps objects will be placed.
      * @default 0
      * @return Returns the new map's root [[xmlnode]] if the map was added successfully, ''false'' otherwise.
      */
-    export function addResourceMap(filePath: string, dimension: number, ): xmlnode;
+    export function addResourceMap(filePath: string, dimension: number): xmlnode;
 
     /**
      * This function allows you to call functions that have been exported with HTTP access by other MTA servers. The calls are asynchronous so you do not get an immediate result from the call, instead a callback function you specify is called when the call returns.
@@ -1362,7 +1362,7 @@ declare module 'mtasa/server/functions' {
      * @param callbackFunction This is the function that should receive the data returned from the remote function call. The argument list should match the format of the data returned. The callback function will be passed a string containing ERROR followed by an integer indicating the error code when an error occurs calling the function. A list of error codes Template:Error_codes_for_callRemote_and_fetchRemote |can be found here.  {{OptionalArg}}   {{New items|4.0153|1.5.3-9.11270|
      * @return Returns ''true'' if the function has been called, ''false'' otherwise.
      */
-    export function callRemote(host: string, queueName?: string, connectionAttempts?: number, connectTimeout?: number, resourceName?: string, functionName?: string, callbackFunction?: HandleFunction, ...args: any[], ): boolean;
+    export function callRemote(host: string, queueName?: string, connectionAttempts?: number, connectTimeout?: number, resourceName?: string, functionName?: string, callbackFunction?: HandleFunction, ...args: any[]): boolean;
 
     /**
      * This function copies a specified [[resource]] with a new name.
@@ -1372,16 +1372,16 @@ declare module 'mtasa/server/functions' {
      * @param organizationalDir : A string containing the path where the resource should be copied to (e.g. gamemodes/amx).
      * @return Returns the [[resource]] element of the copy. Returns ''false'' if the arguments are incorrect.
      */
-    export function copyResource(theResource: resource, newResourceName: string, organizationalDir?: string, ): resource;
+    export function copyResource(theResource: resource, newResourceName: string, organizationalDir?: string): resource;
 
     /**
-     * This function creates an new, empty resource. This creates a directory matching the name you specify on disk, then creates an empty meta.xml file with a <meta> element in it. 
+     * This function creates an new, empty resource. This creates a directory matching the name you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
      * @see {@link https://wiki.multitheftauto.com/wiki/createResource|MTASA Wiki}
      * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you do not have spaces or non-ASCII characters in resource names.  {{OptionalArg}}
      * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
      * @return Returns the [[resource]] element of the new resource if successful, ''false'' otherwise. This could fail if the resource name already is in use, if a directory already exists with the name you've specified (but this isn't a valid resource) or if the name you specify isn't valid. It could also fail if the disk was full or for other similar reasons.
      */
-    export function createResource(resourceName: string, organizationalDir?: string, ): resource;
+    export function createResource(resourceName: string, organizationalDir?: string): resource;
 
     /**
      * This function deletes a resource from the MTA memory and moves it to the '''/resources-cache/trash/''' directory.
@@ -1389,7 +1389,7 @@ declare module 'mtasa/server/functions' {
      * @param resourceName The name of resource to delete.
      * @return Returns ''true'' if the resource has been deleted successfully, ''false'' otherwise.
      */
-    export function deleteResource(resourceName: string, ): boolean;
+    export function deleteResource(resourceName: string): boolean;
 
     /**
      * This function retrieves the ACL request section from the meta.xml file of the given resource.
@@ -1397,7 +1397,7 @@ declare module 'mtasa/server/functions' {
      * @param theResource the resource to get the ACL requests for.
      * @return Returns a ''table'' with the ACL requests for the given resource, or ''false'' if the resource is not valid. A valid resource with no ACL requests will return an empty table.
      */
-    export function getResourceACLRequests(theResource: resource, ): table;
+    export function getResourceACLRequests(theResource: resource): table;
 
     /**
      * This function retrieves the value of any attribute in a resource info tag.
@@ -1406,7 +1406,7 @@ declare module 'mtasa/server/functions' {
      * @param attribute the name of the attribute we want info about.
      * @return Returns a ''string'' with the attribute value if it exists, ''false'' otherwise.
      */
-    export function getResourceInfo(theResource: resource, attribute: string, ): string;
+    export function getResourceInfo(theResource: resource, attribute: string): string;
 
     /**
      * Used to check the last starting time and date of a resource
@@ -1419,7 +1419,7 @@ declare module 'mtasa/server/functions' {
      * * Returns a string with the time and date, or false if the resource does not exist.
      * * }}
      */
-    export function getResourceLastStartTime(theResource: resource, ): number;
+    export function getResourceLastStartTime(theResource: resource): number;
 
     /**
      * This function retrieves the reason why a resource failed to start.
@@ -1427,7 +1427,7 @@ declare module 'mtasa/server/functions' {
      * @param theResource The resource you wish to check.
      * @return If the resource failed to load, returns a string with the failure reason in it. If it loaded successfully, returns an empty string. Returns ''false'' if the resource doesn't exist.
      */
-    export function getResourceLoadFailureReason(theResource: resource, ): string;
+    export function getResourceLoadFailureReason(theResource: resource): string;
 
     /**
      * Gets the date and time at which a resource was last loaded in the server.
@@ -1441,7 +1441,7 @@ declare module 'mtasa/server/functions' {
      * * An example string is "Fri Mar 28 13:51:04 2008".
      * * }}
      */
-    export function getResourceLoadTime(res: resource, ): number;
+    export function getResourceLoadTime(res: resource): number;
 
     /**
      * This function retrieves the root element of a certain [[map]] in a specified [[resource]].
@@ -1450,7 +1450,7 @@ declare module 'mtasa/server/functions' {
      * @param mapName name of the maps which root element we want to retrieve, file extension is required
      * @return Returns an the resource's map root [[element]] if the map exists and resource specified was valid and active (currently running), ''false'' otherwise.
      */
-    export function getResourceMapRootElement(theResource: resource, mapName: string, ): element;
+    export function getResourceMapRootElement(theResource: resource, mapName: string): element;
 
     /**
      * This function returns the organizational file path (e.g. ''[admin]'') of a resource.
@@ -1458,7 +1458,7 @@ declare module 'mtasa/server/functions' {
      * @param theResource the resource of which you want to know the organizational path
      * @return Returns the organizational folder name of the [[resource]]. It returns empty string if the resource is on root ''resources'' folder. It returns '''false''' if the resource could not be found.
      */
-    export function getResourceOrganizationalPath(theResource: resource, ): string;
+    export function getResourceOrganizationalPath(theResource: resource): string;
 
     /**
      * This function retrieves a table of all the resources that exist on the server.
@@ -1473,7 +1473,7 @@ declare module 'mtasa/server/functions' {
      * @see {@link https://wiki.multitheftauto.com/wiki/isResourceArchived|MTASA Wiki}
      * @return Returns ''true'' if a resource is archived, ''false'' if it is not archived, or ''nil'' if there is problem with resource.
      */
-    export function isResourceArchived(resourceElement: resource, ): boolean;
+    export function isResourceArchived(resourceElement: resource): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -1484,7 +1484,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the resource is 'protected', ''false'' otherwise.
      */
-    export function isResourceProtected(theResource: resource, ): boolean;
+    export function isResourceProtected(theResource: resource): boolean;
 
     /**
      * This function finds new resources and checks for changes to the current ones.
@@ -1495,7 +1495,7 @@ declare module 'mtasa/server/functions' {
      * @default nil
      * @return Returns true if refresh was successful, false otherwise.
      */
-    export function refreshResources(refreshAll: boolean, targetResource: resource, ): boolean;
+    export function refreshResources(refreshAll: boolean, targetResource: resource): boolean;
 
     /**
      * This function removes a file from the resource.
@@ -1504,7 +1504,7 @@ declare module 'mtasa/server/functions' {
      * @param fileName The filename what you want to delete.
      * @return Returns ''true'' if file was deleted, otherwise ''false'' if the resource is in use or the file doesn't exist.
      */
-    export function removeResourceFile(theResource: resource, fileName: string, ): boolean;
+    export function removeResourceFile(theResource: resource, fileName: string): boolean;
 
     /**
      * This function renames a resource.
@@ -1513,7 +1513,7 @@ declare module 'mtasa/server/functions' {
      * @param organizationalPath If you want to store the new resource inside a category.
      * @return Returns ''true'' if the resource has been renamed successfully, ''false'' otherwise. This could fail if the resource name already is in use, if a directory already exists with the name you've specified (but this isn't a valid resource) or if the name you specify isn't valid. It could also fail if the disk was full or for other similar reasons. Won't work on a started resource or if the resource is not loaded (not known by MTA (use /refresh))
      */
-    export function renameResource(resource: string, newResourceName: string, organizationalPath: string, ): boolean;
+    export function renameResource(resource: string, newResourceName: string, organizationalPath: string): boolean;
 
     /**
      * This function restarts a running resource. Restarting will destroy all the elements that the resource has created (as stopping the resource does).
@@ -1539,7 +1539,7 @@ declare module 'mtasa/server/functions' {
      * @default true
      * @return Returns ''true'' if the resource was restarted, ''false'' if the resource wasn't running, or an invalid resource was passed.
      */
-    export function restartResource(theResource: resource, persistent?: boolean, configs?: boolean, maps?: boolean, scripts?: boolean, html?: boolean, clientConfigs?: boolean, clientScripts?: boolean, clientFiles?: boolean, ): boolean;
+    export function restartResource(theResource: resource, persistent?: boolean, configs?: boolean, maps?: boolean, scripts?: boolean, html?: boolean, clientConfigs?: boolean, clientScripts?: boolean, clientFiles?: boolean): boolean;
 
     /**
      * This function sets the value of any attribute in a resource info tag.
@@ -1549,13 +1549,13 @@ declare module 'mtasa/server/functions' {
      * @param value the value of this attribute
      * @return Returns ''true'' if the info was successfully set, ''false'' otherwise
      */
-    export function setResourceInfo(theResource: resource, attribute: string, value: string, ): boolean;
+    export function setResourceInfo(theResource: resource, attribute: string, value: string): boolean;
 
     /**
      * This function starts a resource either persistently or as a dependency of the current resource. If you start the resource persistently, the resource will run until stopped either using [[stopResource]] or by the server admin. A resource started as a dependency will stop when your resource stops, if no other resources have it as a depdendency. This is the same effect as using an ''include'' in your [[meta.xml]] file.
      * The function also allows you to specify a number of boolean options. These allow you to disable the loading of various aspects of the resource. This is generally useful for editors rather than for actual gamemodes. It could also be used as a way to preview a resource before enabling the scripting aspects, though this could produce unreliable results. There is no way for a resource to tell if it is being run with any of these booleans set.
      * @see {@link https://wiki.multitheftauto.com/wiki/startResource|MTASA Wiki}
-     * @param resourceToStart The resource that should be started.  {{OptionalArg}} 
+     * @param resourceToStart The resource that should be started.  {{OptionalArg}}
      * @param persistent A boolean specifying if the resource should continue to run even after the current resource has been stopped or not. If this is true then the resource will run until another resource or user terminates it or the server shuts down. If this is false then resourceToStart will stop when thisResource stops.
      * @default false
      * @param startIncludedResources A boolean specifying if the resources included/dependant resources will be started.
@@ -1576,7 +1576,7 @@ declare module 'mtasa/server/functions' {
      * @default true
      * @return Returns ''true'' if the resource has been started successfully, ''false'' otherwise.
      */
-    export function startResource(resourceToStart: resource, persistent: boolean, startIncludedResources: boolean, loadServerConfigs: boolean, loadMaps: boolean, loadServerScripts: boolean, loadHTML: boolean, loadClientConfigs: boolean, loadClientScripts: boolean, loadFiles: boolean, ): boolean;
+    export function startResource(resourceToStart: resource, persistent: boolean, startIncludedResources: boolean, loadServerConfigs: boolean, loadMaps: boolean, loadServerScripts: boolean, loadHTML: boolean, loadClientConfigs: boolean, loadClientScripts: boolean, loadFiles: boolean): boolean;
 
     /**
      * This function stops a running resource.<br>
@@ -1584,7 +1584,7 @@ declare module 'mtasa/server/functions' {
      * @param theResource the resource that should be stopped.
      * @return Returns ''true'' if the resource was stopped, ''false'' if the stopping failed, or an invalid resource was passed.
      */
-    export function stopResource(theResource: resource, ): boolean;
+    export function stopResource(theResource: resource): boolean;
 
     /**
      * This function changes the access for one ACL request of the given resource.
@@ -1596,7 +1596,7 @@ declare module 'mtasa/server/functions' {
      * @default ""
      * @return Returns true if the setting was changed, or ''false'' if no change was required or there was a problem with the arguments.
      */
-    export function updateResourceACLRequest(theResource: resource, rightName: string, access: boolean, byWho?: string, ): boolean;
+    export function updateResourceACLRequest(theResource: resource, rightName: string, access: boolean, byWho?: string): boolean;
 
     /**
      * This function returns the maximum number of player slots on the server.
@@ -1641,17 +1641,17 @@ declare module 'mtasa/server/functions' {
      * @param glitchName the name of the property to set. Possible values are:  {{Glitches}}
      * @return Returns ''true'' if if the glitch was enabled, or ''false'' if it is disabled.
      */
-    export function isGlitchEnabled(glitchName: string, ): boolean;
+    export function isGlitchEnabled(glitchName: string): boolean;
 
     /**
-     * This function enables or disables glitches that are found in the original Single Player game that can be used to gain an advantage in multiplayer. 
-     * Users of the '''fastmove''' glitch may additionally want to install [https://community.mtasa.com/index.php?p=resources&s=details&id=13368 this resource to disable crouchsliding]. 
+     * This function enables or disables glitches that are found in the original Single Player game that can be used to gain an advantage in multiplayer.
+     * Users of the '''fastmove''' glitch may additionally want to install [https://community.mtasa.com/index.php?p=resources&s=details&id=13368 this resource to disable crouchsliding].
      * @see {@link https://wiki.multitheftauto.com/wiki/setGlitchEnabled|MTASA Wiki}
      * @param glitchName the name of the property to set. Possible values are:  {{Glitches}}
      * @param enable whether or not to enable the glitch.
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function setGlitchEnabled(glitchName: string, enable: boolean, ): boolean;
+    export function setGlitchEnabled(glitchName: string, enable: boolean): boolean;
 
     /**
      * This function sets the maximum number of player slots on the server.
@@ -1660,7 +1660,7 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if number of player slots was successfully changed, ''false'' or ''nil'' otherwise.
      */
-    export function setMaxPlayers(slots: number, ): boolean;
+    export function setMaxPlayers(slots: number): boolean;
 
     /**
      * <!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
@@ -1670,16 +1670,16 @@ declare module 'mtasa/server/functions' {
      * @return <!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
      * * Returns ''true'' if the password was successfully changed or removed, ''false'' or ''nil'' otherwise.
      */
-    export function setServerPassword(thePassword: string, ): boolean;
+    export function setServerPassword(thePassword: string): boolean;
 
     /**
-     * This function shuts down the server. 
+     * This function shuts down the server.
      * Make sure your server ACL setup has function.shutdown object protected.
      * @see {@link https://wiki.multitheftauto.com/wiki/shutdown|MTASA Wiki}
      * @param reason the reason why the server has been shut down.
      * @return Returns ''false'' if it was not possible to shut down the server.
      */
-    export function shutdown(reason: string, ): boolean;
+    export function shutdown(reason: string): boolean;
 
     /**
      * This function gets a setting's value, or a group of settings' values, from the [[settings system|settings registry]].
@@ -1690,7 +1690,7 @@ declare module 'mtasa/server/functions' {
      * * *the list of the script's resource settings if an empty string is passed.
      * * It returns ''false'' if the specified setting or settings group doesn't exist, or if the settings group you are trying to retrieve doesn't have any public or protected settings.
      */
-    export function get(settingName: string, ): any;
+    export function get(settingName: string): any;
 
     /**
      * This function is used to save arbitrary data under a certain name on the [[settings system|settings registry]].
@@ -1700,7 +1700,7 @@ declare module 'mtasa/server/functions' {
      * @param value The value to set the setting to. This can be any Lua data type, except for functions, most userdata (only resources cant be stored) and threads.
      * @return Returns ''true'' if the setting has been set, ''false'' if you do not have access to the setting or invalid arguments were passed.
      */
-    export function set(settingName: string, value: any, ): boolean;
+    export function set(settingName: string, value: any): boolean;
 
     /**
      * This function executes an arbitrary SQL query and returns the result rows if there are any. It allows parameter binding for security (SQL injection is rendered impossible).
@@ -1716,7 +1716,7 @@ declare module 'mtasa/server/functions' {
      * * </syntaxhighlight>
      * * A subsequent table represents the next row.
      */
-    export function executeSQLQuery(query: string, param1?: any, ...args: any[], ): table;
+    export function executeSQLQuery(query: string, param1?: any, ...args: any[]): table;
 
     /**
      * This function opens a connection to a database and returns an element that can be used with [[dbQuery]]. To disconnect use [[destroyElement]].
@@ -1729,7 +1729,7 @@ declare module 'mtasa/server/functions' {
      * @default ""
      * @return Returns a database connection element unless there are problems, in which case it return ''false''.
      */
-    export function dbConnect(databaseType: string, host: string, username?: string, password?: string, options?: string, ): element;
+    export function dbConnect(databaseType: string, host: string, username?: string, password?: string, options?: string): element;
 
     /**
      * This function executes a database query using the supplied connection. No result is returned.
@@ -1738,7 +1738,7 @@ declare module 'mtasa/server/functions' {
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @return Returns ''true'' unless the connection is incorrect, in which case it returns ''false''.
      */
-    export function dbExec(databaseConnection: element, query: string, param1?: any, ...args: any[], ): boolean;
+    export function dbExec(databaseConnection: element, query: string, param1?: any, ...args: any[]): boolean;
 
     /**
      * This function frees a database query handle. dbFree only needs to be used if a result has not been obtained with [[dbPoll]]
@@ -1746,7 +1746,7 @@ declare module 'mtasa/server/functions' {
      * @param queryHandle A query handle previously returned from dbQuery
      * @return Returns ''true'' if the handle was successfully freed, ''false'' otherwise.
      */
-    export function dbFree(queryHandle: HandleFunction, ): boolean;
+    export function dbFree(queryHandle: HandleFunction): boolean;
 
     /**
      * This function checks the progress of a database query.
@@ -1775,7 +1775,7 @@ declare module 'mtasa/server/functions' {
      * * A subsequent table represents the next row.
      * * {{Note|If a column contained a number it is returned as a number, this includes things which were stored as string but are numbers such as "1" would be returned as 1.}}
      */
-    export function dbPoll(queryHandle: HandleFunction, timeout: number, multipleResults?: boolean, ): table;
+    export function dbPoll(queryHandle: HandleFunction, timeout: number, multipleResults?: boolean): table;
 
     /**
      * This function escapes arguments in the same way as [[dbQuery]], except dbPrepareString returns the query string instead of processing the query. This allows you to safely build complex query strings from component parts and help prevent (one class of) SQL injection.}}
@@ -1784,7 +1784,7 @@ declare module 'mtasa/server/functions' {
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @return Returns a prepare SQL query string, or ''false'' if an error occurred.
      */
-    export function dbPrepareString(databaseConnection: element, query: string, param1?: any, ...args: any[], ): string;
+    export function dbPrepareString(databaseConnection: element, query: string, param1?: any, ...args: any[]): string;
 
     /**
      * This function starts a database query using the supplied connection. Use the returned query handle with [[dbPoll]] to get the result, or [[dbFree]] if you don't want the result.
@@ -1795,7 +1795,7 @@ declare module 'mtasa/server/functions' {
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @return Returns a query handle unless the connection is incorrect, in which case it return ''false''.
      */
-    export function dbQuery(callbackFunction: HandleFunction, callbackArguments: table, databaseConnection: element, query: string, param1?: any, ...args: any[], ): HandleFunction;
+    export function dbQuery(callbackFunction: HandleFunction, callbackArguments: table, databaseConnection: element, query: string, param1?: any, ...args: any[]): HandleFunction;
 
     /**
      * This function is for creating a new [[team]], which can be used to group players. Players will not join the team until they are respawned.
@@ -1809,7 +1809,7 @@ declare module 'mtasa/server/functions' {
      * @default 255
      * @return Returns a team element if it was successfully created, ''false'' if invalid arguments are passed or a team with that name already exists.
      */
-    export function createTeam(teamName: string, colorR?: number, colorG?: number, colorB?: number, ): team;
+    export function createTeam(teamName: string, colorR?: number, colorG?: number, colorB?: number): team;
 
     /**
      * This function adds a [[player]] to an existing [[team]]. The player will automatically be removed from his current team if he's on one.
@@ -1828,7 +1828,7 @@ declare module 'mtasa/server/functions' {
      * @param colorB An integer representing the blue color value, from 0 to 255.
      * @return Returns ''true'' if the team is valid and the color is different, otherwise ''false''.
      */
-    export function setTeamColor(theTeam: team, colorR: number, colorG: number, colorB: number, ): boolean;
+    export function setTeamColor(theTeam: team, colorR: number, colorG: number, colorB: number): boolean;
 
     /**
      * This function sets the friendly fire value for the specified team.
@@ -1837,7 +1837,7 @@ declare module 'mtasa/server/functions' {
      * @param friendlyFire A boolean denoting whether the players from the same team can kill each other (true) or whether the players cant kill each other (false).
      * @return Returns ''true'' if the friendly fire value is set for the specified team, ''false'' if the friendly fire value can't be set for the specified team or if invalid arguments are specified.
      */
-    export function setTeamFriendlyFire(theTeam: team, friendlyFire: boolean, ): boolean;
+    export function setTeamFriendlyFire(theTeam: team, friendlyFire: boolean): boolean;
 
     /**
      * This function is used to set a team's name.
@@ -1846,12 +1846,12 @@ declare module 'mtasa/server/functions' {
      * @param newName A string representing the name you want the team to be called.
      * @return Returns ''true'' if the team was valid and the name was changed, ''false'' otherwise.
      */
-    export function setTeamName(theTeam: team, newName: string, ): boolean;
+    export function setTeamName(theTeam: team, newName: string): boolean;
 
     /**
      * A [[textdisplay|text display]] is like a canvas that can contain many [[textitem|items of text]]. Each display can be seen by multiple observers (players) and each player can see multiple displays.
      * @see {@link https://wiki.multitheftauto.com/wiki/textCreateDisplay|MTASA Wiki}
-     * @return 
+     * @return
      */
     export function textCreateDisplay(): textdisplay;
 
@@ -1880,41 +1880,41 @@ declare module 'mtasa/server/functions' {
      * @default 0
      * @return Returns a [[textitem]] object.
      */
-    export function textCreateTextItem(text: string, x: number, y: number, priority: string, red: number, green: number, blue: number, alpha: number, scale: number, alignX: string, alignY: string, shadowAlpha: number, ): textitem;
+    export function textCreateTextItem(text: string, x: number, y: number, priority: string, red: number, green: number, blue: number, alpha: number, scale: number, alignX: string, alignY: string, shadowAlpha: number): textitem;
 
     /**
      * This function destroys a text display and will unlink all the [[textitem]]s on it. This does not stop the textitems existing, but anyone who was observing the textitems through this display will stop seeing them.
      * @see {@link https://wiki.multitheftauto.com/wiki/textDestroyDisplay|MTASA Wiki}
      * @param display This is the textdisplay that you wish to have destroyed.
-     * @return 
+     * @return
      */
-    export function textDestroyDisplay(display: textdisplay, ): boolean;
+    export function textDestroyDisplay(display: textdisplay): boolean;
 
     /**
      * This function destroys a [[textitem]] object.
      * @see {@link https://wiki.multitheftauto.com/wiki/textDestroyTextItem|MTASA Wiki}
      * @param theTextitem The text item you wish to destroy.
-     * @return 
+     * @return
      */
-    export function textDestroyTextItem(theTextitem: textitem, ): void;
+    export function textDestroyTextItem(theTextitem: textitem): void;
 
     /**
      * This function adds a [[player]] as an observer of a [[textdisplay]]. This allows the [[player]] to see any [[textitem]]s that the [[textdisplay]] contains.
      * @see {@link https://wiki.multitheftauto.com/wiki/textDisplayAddObserver|MTASA Wiki}
      * @param display : The textdisplay to add the player to as an observer.
      * @param playerToAdd : The player that should observe the textdisplay.
-     * @return 
+     * @return
      */
-    export function textDisplayAddObserver(display: textdisplay, playerToAdd: player, ): void;
+    export function textDisplayAddObserver(display: textdisplay, playerToAdd: player): void;
 
     /**
      * This function adds a [[textitem]] to a [[textdisplay]]. This allows any observers of the [[textdisplay]] to see the [[textitem]].
      * @see {@link https://wiki.multitheftauto.com/wiki/textDisplayAddText|MTASA Wiki}
      * @param displayToAddTo : The textdisplay to add the textitem to.
      * @param itemToAdd : The textitem to add to the display.
-     * @return 
+     * @return
      */
-    export function textDisplayAddText(displayToAddTo: textdisplay, itemToAdd: textitem, ): void;
+    export function textDisplayAddText(displayToAddTo: textdisplay, itemToAdd: textitem): void;
 
     /**
      * This function can be used to retrieve all the [[player]]s  currently observing a specified [[textdisplay]].
@@ -1922,7 +1922,7 @@ declare module 'mtasa/server/functions' {
      * @param theDisplay : The textdisplay of which observers you want to get.
      * @return Returns a [[table]] of players that are observers of the display or ''false'' if invalid textdisplay is passed.
      */
-    export function textDisplayGetObservers(theDisplay: textdisplay, ): table;
+    export function textDisplayGetObservers(theDisplay: textdisplay): table;
 
     /**
      * This function checks if a player can see the specified [[textdisplay]].
@@ -1931,25 +1931,25 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer : The player.
      * @return Return true if [[textdisplay]] is showing, or false if not.
      */
-    export function textDisplayIsObserver(display: textdisplay, thePlayer: player, ): boolean;
+    export function textDisplayIsObserver(display: textdisplay, thePlayer: player): boolean;
 
     /**
      * This function removes a [[player]] observer of a [[textdisplay]]. This stops the [[player]] from being able to see [[textitem]]s that the [[textdisplay]] contains.
      * @see {@link https://wiki.multitheftauto.com/wiki/textDisplayRemoveObserver|MTASA Wiki}
      * @param display : The textdisplay to remove the player from as an observer.
      * @param playerToRemove : The player that should be removed from the textdisplay.
-     * @return 
+     * @return
      */
-    export function textDisplayRemoveObserver(display: textdisplay, playerToRemove: player, ): boolean;
+    export function textDisplayRemoveObserver(display: textdisplay, playerToRemove: player): boolean;
 
     /**
      * This function removes a [[textitem]] from a [[textdisplay]]. This stops any observers of the [[textdisplay]] from being able to see the [[textitem]].
      * @see {@link https://wiki.multitheftauto.com/wiki/textDisplayRemoveText|MTASA Wiki}
      * @param displayToRemoveFrom : The textdisplay to remove the textitem from.
      * @param itemToRemove : The textitem to remove from the display.
-     * @return 
+     * @return
      */
-    export function textDisplayRemoveText(displayToRemoveFrom: textdisplay, itemToRemove: textitem, ): void;
+    export function textDisplayRemoveText(displayToRemoveFrom: textdisplay, itemToRemove: textitem): void;
 
     /**
      * This function allows you to retrieve the color of a text item.
@@ -1957,7 +1957,7 @@ declare module 'mtasa/server/functions' {
      * @param theTextItem The text item you wish to retrieve the color of.
      * @return Returns four integers in RGBA format, with a maximum value of 255 for each. The values are, in order, ''red'', ''green'', ''blue'', and ''alpha''. Alpha decides transparency where 255 is opaque and 0 is transparent. ''false'' is returned if the text item is invalid.
      */
-    export function textItemGetColor(theTextItem: textitem, ): LuaMultiReturn<[number,number,number,number]>;
+    export function textItemGetColor(theTextItem: textitem): LuaMultiReturn<[number, number, number, number]>;
 
     /**
      * This function allows retrieval of the position of a text item.
@@ -1965,7 +1965,7 @@ declare module 'mtasa/server/functions' {
      * @param theTextItem The textitem you wish to retrieve the position of
      * @return Returns two floats of the ''x'' and ''y'' position on the screen, where the maximum value is 1.0.
      */
-    export function textItemGetPosition(theTextItem: textitem, ): LuaMultiReturn<[number,number]>;
+    export function textItemGetPosition(theTextItem: textitem): LuaMultiReturn<[number, number]>;
 
     /**
      * This function retrieves the priority of a text item.  Priority defines the rate at whihc a text item is updated
@@ -1973,7 +1973,7 @@ declare module 'mtasa/server/functions' {
      * @param textitemToCheck The text item you wish to retrieve the priority of.
      * @return Returns a integer of the priority of a text item, 0 = low, 1 = medium, 2 = high.
      */
-    export function textItemGetPriority(textitemToCheck: textitem, ): number;
+    export function textItemGetPriority(textitemToCheck: textitem): number;
 
     /**
      * This function allows retrieval of the scale or size of a text item.
@@ -1981,7 +1981,7 @@ declare module 'mtasa/server/functions' {
      * @param theTextitem The text item you wish to retrieve the scale of
      * @return Returns a floating point of the scale of the text. 1.0 is around 12pt.
      */
-    export function textItemGetScale(theTextitem: textitem, ): number;
+    export function textItemGetScale(theTextitem: textitem): number;
 
     /**
      * This function returns the current text of the specified [[textitem]].
@@ -1989,7 +1989,7 @@ declare module 'mtasa/server/functions' {
      * @param theTextitem A valid textitem.
      * @return Returns a [[string]] containing the text if the function was successful, ''false'' otherwise.
      */
-    export function textItemGetText(theTextitem: textitem, ): string;
+    export function textItemGetText(theTextitem: textitem): string;
 
     /**
      * This function sets the color of a text item.
@@ -1997,7 +1997,7 @@ declare module 'mtasa/server/functions' {
      * @param theTextItem The textitem you wish to set the color of.
      * @return Returns ''true'' if the color was successfully set, ''false'' otherwise.
      */
-    export function textItemSetColor(theTextItem: textitem, r: number, g: number, b: number, a: number, ): boolean;
+    export function textItemSetColor(theTextItem: textitem, r: number, g: number, b: number, a: number): boolean;
 
     /**
      * This function allows the setting of the position of a text item.
@@ -2007,16 +2007,16 @@ declare module 'mtasa/server/functions' {
      * @param y A floating point number between 0.0 and 1.0 indicating how far down the screen the text should be shown, as a percentage of the height, from the top.
      * @return Returns ''true'' if the position was successfully set, ''false'' otherwise.
      */
-    export function textItemSetPosition(theTextItem: textitem, x: number, y: number, ): boolean;
+    export function textItemSetPosition(theTextItem: textitem, x: number, y: number): boolean;
 
     /**
      * This function sets the priority for a text item.  Priority is the importance of sending updated text to the client. The system is implemented as 3 queues, with the ''high'' queue being emptied before the ''medium'' queue is processed, and with one update sent per server frame. Hence, if you set all your text items to ''medium'' priority it has the same effect as if you set them all to ''high'' or ''low''.
      * @see {@link https://wiki.multitheftauto.com/wiki/textItemSetPriority|MTASA Wiki}
      * @param theTextItem The text item you wish to set priority to.
      * @param priority The priority you wish to set to the item, which can be high, medium, or low respective of their priority.
-     * @return 
+     * @return
      */
-    export function textItemSetPriority(theTextItem: textitem, priority: string, ): void;
+    export function textItemSetPriority(theTextItem: textitem, priority: string): void;
 
     /**
      * This function allows the setting of the scale of a text item.
@@ -2025,16 +2025,16 @@ declare module 'mtasa/server/functions' {
      * @param scale A floating point value indicating the scale of the text you wish to set to. 1.0 is around 12pt.
      * @return Returns ''true'' if the scale was successfully set, ''false'' otherwise.
      */
-    export function textItemSetScale(theTextitem: textitem, scale: number, ): boolean;
+    export function textItemSetScale(theTextitem: textitem, scale: number): boolean;
 
     /**
      * Overwrites a previously created text item with the specified text.
      * @see {@link https://wiki.multitheftauto.com/wiki/textItemSetText|MTASA Wiki}
      * @param theTextitem An existing text item that was previously created with textCreateTextItem
      * @param text The new text for the text item
-     * @return 
+     * @return
      */
-    export function textItemSetText(theTextitem: textitem, text: string, ): void;
+    export function textItemSetText(theTextitem: textitem, text: string): void;
 
     /**
      * This function retrieves server settings which are usually stored in the '''mtaserver.conf''' file.
@@ -2044,7 +2044,7 @@ declare module 'mtasa/server/functions' {
      * @return Returns a string containing the current value for the named setting, or ''false'' if the setting does not exist.<br>
      * * If the setting name is ''serverip'', may return the string ''"auto"'' on local servers.
      */
-    export function getServerConfigSetting(name: string, ): string;
+    export function getServerConfigSetting(name: string): string;
 
     /**
      * This function sets server settings which are stored in the [[Server mtaserver.conf|mtaserver.conf]] file.
@@ -2054,7 +2054,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns ''true'' if the setting was successfully set, or ''false'' otherwise.
      */
-    export function setServerConfigSetting(name: string, value: string, bSave?: boolean, ): boolean;
+    export function setServerConfigSetting(name: string, value: string, bSave?: boolean): boolean;
 
     /**
      * This function decrypts given [https://en.wikipedia.org/wiki/Base64 base64] representation of encrypted data using the [https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm Tiny Encryption Algorithm].
@@ -2064,7 +2064,7 @@ declare module 'mtasa/server/functions' {
      * @param key The key that should be used for decryption (Only first 16 characters are used)
      * @return Returns string containing the decrypted data if the decryption process was successfully completed, ''false'' otherwise.
      */
-    export function teaDecode(data: string, key: string, ): string;
+    export function teaDecode(data: string, key: string): string;
 
     /**
      * This functions performs the [https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm Tiny Encryption Algorithm] on the given string and returns the [https://en.wikipedia.org/wiki/Base64 base64] representation of the encrypted string.
@@ -2074,7 +2074,7 @@ declare module 'mtasa/server/functions' {
      * @param key The key that should be used for encryption (Only first 16 characters are used)
      * @return Returns the [https://en.wikipedia.org/wiki/Base64 base64] representation of the encrypted string if the encryption process was successfully completed, ''false'' otherwise.
      */
-    export function teaEncode(text: string, key: string, ): string;
+    export function teaEncode(text: string, key: string): string;
 
     /**
      * This function adds sirens to a vehicle.
@@ -2090,9 +2090,9 @@ declare module 'mtasa/server/functions' {
      * @param useRandomiser Randomise the light order, false for sequential
      * @param silentFlag If you want the siren to be silent set this to true
      * @default false
-     * @return Returns ''true'' if sirens were successfully added to the vehicle, ''false'' otherwise. 
+     * @return Returns ''true'' if sirens were successfully added to the vehicle, ''false'' otherwise.
      */
-    export function addVehicleSirens(theVehicle: vehicle, sirenCount: number, sirenType: number, flag360?: boolean, checkLosFlag?: boolean, useRandomiser?: boolean, silentFlag?: boolean, ): boolean;
+    export function addVehicleSirens(theVehicle: vehicle, sirenCount: number, sirenType: number, flag360?: boolean, checkLosFlag?: boolean, useRandomiser?: boolean, silentFlag?: boolean): boolean;
 
     /**
      * This function returns a table containing the handling data of the specified vehicle model.
@@ -2102,23 +2102,23 @@ declare module 'mtasa/server/functions' {
      * @return Returns a ''table'' containing all the handling data, ''false'' if an invalid vehicle model is specified. Here is a list of valid table properties and what they return:
      * * {{Handling Properties}}
      */
-    export function getModelHandling(modelId: number, ): table;
+    export function getModelHandling(modelId: number): table;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getVehicleRespawnPosition|MTASA Wiki}
      * @param theVehicle The vehicle which youd like to retrieve the respawn coordinates of.
      * @return Returns three [[float|floats]] indicating the respawn coordinates of the [[vehicle]], ''x'', ''y'' and ''z'' respectively.
      */
-    export function getVehicleRespawnPosition(theVehicle: element, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleRespawnPosition(theVehicle: element): LuaMultiReturn<[number, number, number]>;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/getVehicleRespawnRotation|MTASA Wiki}
      * @param theVehicle The vehicle which youd like to retrieve the respawn rotation of.
      * @return Returns three [[float|floats]] indicating the respawn rotation of the [[vehicle]], ''x'', ''y'' and ''z'' respectively.
      */
-    export function getVehicleRespawnRotation(theVehicle: element, ): LuaMultiReturn<[number,number,number]>;
+    export function getVehicleRespawnRotation(theVehicle: element): LuaMultiReturn<[number, number, number]>;
 
     /**
      * This function scans through all the current vehicles and returns the ones matching the given model.
@@ -2126,16 +2126,16 @@ declare module 'mtasa/server/functions' {
      * @param model : The model of vehicles you want.
      * @return Returns a table of existing vehicles matching the specified model.
      */
-    export function getVehiclesOfType(model: number, ): table;
+    export function getVehiclesOfType(model: number): table;
 
     /**
      * This function removes sirens from a vehicle.
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/removeVehicleSirens|MTASA Wiki}
      * @param theVehicle The vehicle to remove the sirens of
-     * @return Returns ''true'' if sirens were successfully removed from the vehicle, ''false'' otherwise. 
+     * @return Returns ''true'' if sirens were successfully removed from the vehicle, ''false'' otherwise.
      */
-    export function removeVehicleSirens(theVehicle: vehicle, ): boolean;
+    export function removeVehicleSirens(theVehicle: vehicle): boolean;
 
     /**
      * Resets the vehicle explosion time. This is the point in time at which the vehicle last exploded: at this time plus the vehicle's respawn delay, the vehicle is respawned. You can use this function to prevent the vehicle from respawning.
@@ -2143,7 +2143,7 @@ declare module 'mtasa/server/functions' {
      * @param theVehicle The vehicle you wish to reset the explosion time from.
      * @return Returns ''true'' if the vehicle explosion time has been reset, ''false'' if it failed to reset the explosion time.
      */
-    export function resetVehicleExplosionTime(theVehicle: vehicle, ): boolean;
+    export function resetVehicleExplosionTime(theVehicle: vehicle): boolean;
 
     /**
      * Resets the vehicle idle time
@@ -2151,7 +2151,7 @@ declare module 'mtasa/server/functions' {
      * @param theVehicle The vehicle you wish to reset the idle time from.
      * @return Returns ''true'' if the vehicle idle time has been reset, ''false'' if it failed to reset the idle time.
      */
-    export function resetVehicleIdleTime(theVehicle: vehicle, ): boolean;
+    export function resetVehicleIdleTime(theVehicle: vehicle): boolean;
 
     /**
      * This function respawns a vehicle according to its set respawn position, set by [[setVehicleRespawnPosition]] or the position and rotation it was created on. To spawn a vehicle to a specific location just once, [[spawnVehicle]] can be used.
@@ -2159,7 +2159,7 @@ declare module 'mtasa/server/functions' {
      * @param theVehicle The vehicle you wish to respawn
      * @return Returns ''true'' if the vehicle respawned successfully, ''false'' if the passed argument does not exist or is not a vehicle.
      */
-    export function respawnVehicle(theVehicle: vehicle, ): boolean;
+    export function respawnVehicle(theVehicle: vehicle): boolean;
 
     /**
      * This function is used to change the handling data of all vehicles of a specified model.
@@ -2169,7 +2169,7 @@ declare module 'mtasa/server/functions' {
      * @param value The value of the modelss handling property you wish to set, or nil if you want to reset the handling property to its default value.
      * @return Returns ''true'' if the handling was set successfully, ''false'' otherwise.
      */
-    export function setModelHandling(modelId: number, property: string, value: any, ): boolean;
+    export function setModelHandling(modelId: number, property: string, value: any): boolean;
 
     /**
      * This function sets the time delay (in milliseconds) the vehicle will remain at its position while empty.
@@ -2178,7 +2178,7 @@ declare module 'mtasa/server/functions' {
      * @param timeDelay : The number of milliseconds the vehicle will be allowed to remain unused until it respawns.
      * @return Returns ''true'' if the vehicle was found and edited.
      */
-    export function setVehicleIdleRespawnDelay(theVehicle: vehicle, timeDelay: number, ): boolean;
+    export function setVehicleIdleRespawnDelay(theVehicle: vehicle, timeDelay: number): boolean;
 
     /**
      * This function sets the time delay (in milliseconds) the vehicle will remain wrecked before respawning.
@@ -2187,7 +2187,7 @@ declare module 'mtasa/server/functions' {
      * @param timeDelay : The amount of milliseconds to delay.
      * @return Returns ''true'' if the vehicle was found and edited.
      */
-    export function setVehicleRespawnDelay(theVehicle: vehicle, timeDelay: number, ): boolean;
+    export function setVehicleRespawnDelay(theVehicle: vehicle, timeDelay: number): boolean;
 
     /**
      * This function sets the position (and rotation) the vehicle will respawn to.
@@ -2201,7 +2201,7 @@ declare module 'mtasa/server/functions' {
      * @param rz : A floating point number representing the rotation about the Z axis in Degrees.
      * @return Returns ''true'' if the vehicle was found and edited, ''false'' otherwise.
      */
-    export function setVehicleRespawnPosition(theVehicle: vehicle, x: number, y: number, z: number, rx?: number, ry?: number, rz?: number, ): boolean;
+    export function setVehicleRespawnPosition(theVehicle: vehicle, x: number, y: number, z: number, rx?: number, ry?: number, rz?: number): boolean;
 
     /**
      * This function sets the rotation the vehicle will respawn to.
@@ -2213,7 +2213,7 @@ declare module 'mtasa/server/functions' {
      * @param rz : A float representing the rotation about the Z axis in degrees.
      * @return Returns ''true'' if the [[vehicle]] respawn rotation was set successfully, ''false'' otherwise.
      */
-    export function setVehicleRespawnRotation(theVehicle: vehicle, rx: number, ry: number, rz: number, ): boolean;
+    export function setVehicleRespawnRotation(theVehicle: vehicle, rx: number, ry: number, rz: number): boolean;
 
     /**
      * Spawns a vehicle at any given position and rotation
@@ -2221,13 +2221,13 @@ declare module 'mtasa/server/functions' {
      * @param theVehicle The vehicle you wish to spawn
      * @param x The x position you wish to spawn the vehicle at
      * @param y The x position you wish to spawn the vehicle at
-     * @param z The x position you wish to spawn the vehicle at  {{OptionalArg}} 
+     * @param z The x position you wish to spawn the vehicle at  {{OptionalArg}}
      * @param rx The x rotation you wish to spawn the vehicle at
      * @param ry The y rotation you wish to spawn the vehicle at
      * @param rz The z rotation you wish to spawn the vehicle at
      * @return Returns ''true'' if the vehicle spawned successfully, ''false'' if the passed argument does not exist or is not a vehicle.
      */
-    export function spawnVehicle(theVehicle: vehicle, x: number, y: number, z: number, rx?: number, ry?: number, rz?: number, ): boolean;
+    export function spawnVehicle(theVehicle: vehicle, x: number, y: number, z: number, rx?: number, ry?: number, rz?: number): boolean;
 
     /**
      * This function toggles whether or not the vehicle will be respawned after blown or idle.
@@ -2236,7 +2236,7 @@ declare module 'mtasa/server/functions' {
      * @param Respawn : A boolean determining if the vehicle will respawn or not.
      * @return Returns ''true'' if the vehicle was found and edited.
      */
-    export function toggleVehicleRespawn(theVehicle: vehicle, Respawn: boolean, ): boolean;
+    export function toggleVehicleRespawn(theVehicle: vehicle, Respawn: boolean): boolean;
 
     /**
      * giveWeapon gives a specified weapon to a certain player or ped. There is an optional argument to specify ammunition. For example, a melee weapon doesn't need an ammo argument.
@@ -2246,14 +2246,14 @@ declare module 'mtasa/server/functions' {
      * }}
      * @see {@link https://wiki.multitheftauto.com/wiki/giveWeapon|MTASA Wiki}
      * @param thePlayer A player or ped object referencing the specified player (or ped)
-     * @param weapon A whole number integer that refers to a Weapon ID. Click Weapon|here for a list of possible weapon IDs.  {{OptionalArg}} 
+     * @param weapon A whole number integer that refers to a Weapon ID. Click Weapon|here for a list of possible weapon IDs.  {{OptionalArg}}
      * @param ammo A whole number integer serving as the ammo amount for the given weapon.  For weapons that do not require ammo, such as melee, this should be at least 1.
      * @default 30
      * @param setAsCurrent A boolean value determining whether or not the weapon will be set as the players current.
      * @default false
      * @return Returns ''true'' if weapon was successfully acquired, ''false'' otherwise.
      */
-    export function giveWeapon(thePlayer: ped, weapon: number, ammo?: number, setAsCurrent?: boolean, ): boolean;
+    export function giveWeapon(thePlayer: ped, weapon: number, ammo?: number, setAsCurrent?: boolean): boolean;
 
     /**
      * This function removes every weapons from a specified [[ped]], rendering it unarmed.
@@ -2261,7 +2261,7 @@ declare module 'mtasa/server/functions' {
      * @param thePed : A ped element referencing the specified ped
      * @return Returns ''true'' if the function succeeded, ''false'' otherwise.
      */
-    export function takeAllWeapons(thePed: ped, ): boolean;
+    export function takeAllWeapons(thePed: ped): boolean;
 
     /**
      * This function removes a specified weapon or ammo from a certain player's inventory.
@@ -2271,7 +2271,7 @@ declare module 'mtasa/server/functions' {
      * @param ammo : If used, this amount of ammo will be taken instead and the weapon will not be removed.
      * @return Returns a ''true'' if the weapon/ammo was removed successfully, ''false'' otherwise.
      */
-    export function takeWeapon(thePlayer: player, weaponId: number, ammo?: number, ): boolean;
+    export function takeWeapon(thePlayer: player, weaponId: number, ammo?: number): boolean;
 
     /**
      * This function checks if a weapon is usable while on a Jetpack.
@@ -2279,7 +2279,7 @@ declare module 'mtasa/server/functions' {
      * @param weapon The weapon thats being checked if its usable on a Jetpack.
      * @return Returns true if the weapon is enabled, else false if the weapon isn't or invalid arguments are passed.
      */
-    export function getJetpackWeaponEnabled(weapon: string, ): boolean;
+    export function getJetpackWeaponEnabled(weapon: string): boolean;
 
     /**
      * This function sets a weapon usable while using the Jetpack.
@@ -2288,7 +2288,7 @@ declare module 'mtasa/server/functions' {
      * @param enabled A bool representing whether the weapon is enabled or disabled.
      * @return Returns true, else false if invalid arguments are passed.
      */
-    export function setJetpackWeaponEnabled(weapon: string, enabled: boolean, ): boolean;
+    export function setJetpackWeaponEnabled(weapon: string, enabled: boolean): boolean;
 
     /**
      * This function plays a frontend sound for the specified player.
@@ -2297,21 +2297,21 @@ declare module 'mtasa/server/functions' {
      * @param sound a whole int specifying the sound id to play. Valid values are:  {{Sounds}}
      * @return Returns ''true'' if the sound was successfully played, ''false'' otherwise.
      */
-    export function playSoundFrontEnd(thePlayer: player, sound: number, ): boolean;
+    export function playSoundFrontEnd(thePlayer: player, sound: number): boolean;
 
     /**
      * This function creates a [[blip]] [[element]], which is displayed as an icon on the client's radar.
      * @see {@link https://wiki.multitheftauto.com/wiki/createBlip|MTASA Wiki}
      * @return Returns an [[element]] of the [[blip]] if it was created successfully, ''false'' otherwise.
      */
-    export function createBlip(x: number, y: number, z: number, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: element, ): blip;
+    export function createBlip(x: number, y: number, z: number, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: element): blip;
 
     /**
      * This function creates a [[blip]] that is attached to an [[element]]. This blip is displayed as an icon on the client's radar and will 'follow' the element that it is attached to around.
      * @see {@link https://wiki.multitheftauto.com/wiki/createBlipAttachedTo|MTASA Wiki}
      * @return Returns a [[blip]] if the blip was created succesfully, or ''false'' otherwise.
      */
-    export function createBlipAttachedTo(elementToAttachTo: element, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: element, ): blip;
+    export function createBlipAttachedTo(elementToAttachTo: element, icon?: number, size?: number, r?: number, g?: number, b?: number, a?: number, ordering?: number, visibleDistance?: number, visibleTo?: element): blip;
 
     /**
      * This function will fade a player's camera to a color or back to normal over a specified time period. This will also affect the sound volume for the player (50% faded = 50% volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade outs in a row, but for serverside scripts you must use one then the other.
@@ -2328,7 +2328,7 @@ declare module 'mtasa/server/functions' {
      * @default 0
      * @return Returns ''true'' if the camera was faded successfully, ''false'' if invalid arguments were passed to the function.
      */
-    export function fadeCamera(thePlayer: player, fadeIn: boolean, timeToFade: number, red: number, green: number, blue: number, ): boolean;
+    export function fadeCamera(thePlayer: player, fadeIn: boolean, timeToFade: number, red: number, green: number, blue: number): boolean;
 
     /**
      * Returns the interior of the local camera (independent of the interior of the local player).
@@ -2336,7 +2336,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer : The player whose camera interior you want to get.
      * @return Returns an ''integer'' indicating the camera's interior, ''false'' if the argument is invalid.
      */
-    export function getCameraInterior(thePlayer: player, ): number;
+    export function getCameraInterior(thePlayer: player): number;
 
     /**
      * This function gets the position of the camera and the position of the point it is facing.
@@ -2344,10 +2344,10 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player whose camera matrix is to be returned.
      * @return This function returns 8 [[float|floats]] if the argument is valid (when applicable); the first three indicate the position of the camera, the next three indicate the position of the point it's facing, and the last two are the roll and field of view. Returns ''false'' if the argument is invalid.
      */
-    export function getCameraMatrix(thePlayer: player, ): LuaMultiReturn<[number,number,number,number,number,number,number,number]>;
+    export function getCameraMatrix(thePlayer: player): LuaMultiReturn<[number, number, number, number, number, number, number, number]>;
 
     /**
-     * This function returns an [[element]] that corresponds to the current target of the specified player's camera (i.e. what it is following). 
+     * This function returns an [[element]] that corresponds to the current target of the specified player's camera (i.e. what it is following).
      * @see {@link https://wiki.multitheftauto.com/wiki/getCameraTarget|MTASA Wiki}
      * @param thePlayer The player whose camera you wish to receive the target of.
      * @return * Returns an [[element]] of the target if the function was successful, or ''false'' if bad arguments were specified
@@ -2355,7 +2355,7 @@ declare module 'mtasa/server/functions' {
      * * * Returns ''false'' if the camera is in Fixed mode and has no target.
      * * }}
      */
-    export function getCameraTarget(thePlayer: player, ): element;
+    export function getCameraTarget(thePlayer: player): element;
 
     /**
      * Sets the interior of the local camera. Only the interior of the camera is changed, the local player stays in the interior he was in.
@@ -2364,7 +2364,7 @@ declare module 'mtasa/server/functions' {
      * @param interior the interior to place the camera in.
      * @return Returns ''true'' if the camera's interior was changed successfully, ''false'' otherwise.
      */
-    export function setCameraInterior(thePlayer: player, interior: number, ): boolean;
+    export function setCameraInterior(thePlayer: player, interior: number): boolean;
 
     /**
      * This function sets the camera's position and direction. The first three arguments are the point at which the camera lies, the last three are the point the camera faces (or the point it "looks at").
@@ -2382,7 +2382,7 @@ declare module 'mtasa/server/functions' {
      * @default 70
      * @return Returns ''true'' if the arguments are valid, ''false'' otherwise.
      */
-    export function setCameraMatrix(thePlayer: player, positionX: number, positionY: number, positionZ: number, lookAtX?: number, lookAtY?: number, lookAtZ?: number, roll?: number, fov?: number, ): boolean;
+    export function setCameraMatrix(thePlayer: player, positionX: number, positionY: number, positionZ: number, lookAtX?: number, lookAtY?: number, lookAtZ?: number, roll?: number, fov?: number): boolean;
 
     /**
      * This function allows you to set a player's camera to follow other elements instead. Currently supported element type is:
@@ -2393,7 +2393,7 @@ declare module 'mtasa/server/functions' {
      * @default nil
      * @return Returns ''true'' if the function was successful, ''false'' otherwise.
      */
-    export function setCameraTarget(thePlayer: player, target?: player, ): boolean;
+    export function setCameraTarget(thePlayer: player, target?: player): boolean;
 
     /**
      * This function is used to determine whether or not a player's cursor is showing.
@@ -2401,25 +2401,25 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you want to get cursor state of.
      * @return Returns ''true'' if the player's cursor is showing, ''false'' if it isn't or if invalid parameters were passed.
      */
-    export function isCursorShowing(thePlayer: player, ): boolean;
+    export function isCursorShowing(thePlayer: player): boolean;
 
     /**
      * This function is used to show or hide a [[player]]'s cursor.
      * @see {@link https://wiki.multitheftauto.com/wiki/showCursor|MTASA Wiki}
      * @param thePlayer The player you want to show or hide the cursor of.
-     * @param show A boolean value determining whether to show (true) or hide (false) the cursor.  {{OptionalArg}} 
+     * @param show A boolean value determining whether to show (true) or hide (false) the cursor.  {{OptionalArg}}
      * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.  true implies controls are disabled, false implies controls remain enabled.
      * @default true
      * @return Returns ''true'' if the player's cursor was shown or hidden successfully, ''false'' otherwise.
      */
-    export function showCursor(thePlayer: player, show: boolean, toggleControls: boolean, ): boolean;
+    export function showCursor(thePlayer: player, show: boolean, toggleControls: boolean): boolean;
 
     /**
      * This function is used to retrieve a list of all elements of the specified type. This can be useful, as it disregards ''where'' in the element tree it is. It can be used with either the built in types (listed below) or with any custom type used in a .map file. For example, if there is an element of type "flag" (e.g. <flag />) in the .map file, the using "flag" as the type argument would find it.
      * @see {@link https://wiki.multitheftauto.com/wiki/getElementsByType|MTASA Wiki}
      * @return Returns a ''table'' containing all the elements of the specified type. Returns an empty ''table'' if there are no elements of the specified type. Returns ''false'' if the string specified is invalid (or not a string).
      */
-    export function getElementsByType(theType: string, startat: element, ): table;
+    export function getElementsByType(theType: string, startat: element): table;
 
     /**
      * This function stores [[element data]] under a certain key, attached to an element. Element data set using this is then synced with all clients and the server. The data can contain server created elements, but you should avoid passing data that is not able to be synced such as xmlnodes, acls, aclgroups etc.
@@ -2436,17 +2436,17 @@ declare module 'mtasa/server/functions' {
      * @return Returns ''true'' if the data was set succesfully, ''false'' otherwise.
      * * {{New items|5.0157|1.5.7-9.20477|
      */
-    export function setElementData(theElement: element, key: string, value: any, syncMode?: any, ): boolean;
+    export function setElementData(theElement: element, key: string, value: any, syncMode?: any): boolean;
 
     /**
-     * This function is used to stop the automatic internal handling of events, for example this can be used to prevent an item being given to a player when they walk over a pickup, by canceling the [[onPickupUse]] event. 
+     * This function is used to stop the automatic internal handling of events, for example this can be used to prevent an item being given to a player when they walk over a pickup, by canceling the [[onPickupUse]] event.
      * [[cancelEvent]] does not have an effect on all events, see the individual event's pages for information on what happens when the event is canceled. [[cancelEvent]] does not stop further event handlers from being called, as the order of event handlers being called is undefined in many cases. Instead, you can see if the currently active event has been cancelled using [[wasEventCancelled]].
      * The use of cancelEvent outside of an event handler has no effect.
      * If you implement your own custom events and want to handle them being cancelled, you should call [[wasEventCancelled]] to check after your call to [[triggerEvent]].
      * @see {@link https://wiki.multitheftauto.com/wiki/cancelEvent|MTASA Wiki}
      * @return Always returns ''true''.
      */
-    export function cancelEvent(cancel: boolean, reason: string, ): boolean;
+    export function cancelEvent(cancel: boolean, reason: string): boolean;
 
     /**
      * Stops a latent event from completing
@@ -2455,7 +2455,7 @@ declare module 'mtasa/server/functions' {
      * @param handle A handle previous got from getLatentEventHandles.
      * @return Returns a true if the latent event was successfully cancelled, or false if it was not
      */
-    export function cancelLatentEvent(thePlayer: player, handle: number, ): boolean;
+    export function cancelLatentEvent(thePlayer: player, handle: number): boolean;
 
     /**
      * Gets the currently queued latent events. The last one in the table is always the latest event queued. Each returned handle can be used with [[getLatentEventStatus]] or [[cancelLatentEvent]]
@@ -2463,7 +2463,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player who is receiving the events.
      * @return Returns a table of handles or false if invalid arguments were passed.
      */
-    export function getLatentEventHandles(thePlayer: player, ): table;
+    export function getLatentEventHandles(thePlayer: player): table;
 
     /**
      * Gets the status of one queued latent event.
@@ -2476,7 +2476,7 @@ declare module 'mtasa/server/functions' {
      * * *'''totalSize:''' A number representing how many bytes in total this transfer will transfer
      * * *'''percentComplete:''' A number between 0-100 saying how much is done
      */
-    export function getLatentEventStatus(thePlayer: player, handle: number, ): table;
+    export function getLatentEventStatus(thePlayer: player, handle: number): table;
 
     /**
      * Creates an explosion of a certain type at a specified point in the world. If creator is specified, the explosion will occur only in its dimension.
@@ -2490,7 +2490,7 @@ declare module 'mtasa/server/functions' {
      * @return *''true'' if the explosion was created.
      * * * ''false'' if invalid parameters were passed.
      */
-    export function createExplosion(x: number, y: number, z: number, theType: number, creator?: player, ): boolean;
+    export function createExplosion(x: number, y: number, z: number, theType: number, creator?: player): boolean;
 
     /**
      * This function will attach a scripting function (handler) to a console command, so that whenever a player or administrator uses the command the function is called.
@@ -2500,17 +2500,17 @@ declare module 'mtasa/server/functions' {
      * This can be triggered from the player's console or directly from the chat box by prefixing the message with a forward slash (''/''). For server side handlers, the server admin is also able to trigger these directly from the server's console in the same way as they are triggered from a player's console.
      * @see {@link https://wiki.multitheftauto.com/wiki/addCommandHandler|MTASA Wiki}
      * @param commandName This is the name of the command you wish to attach a handler to. This is what must be typed into the console to trigger the function.
-     * @param handlerFunction This is the function that you want the command to trigger, which has to be defined before you add the handler. This function can take two parameters, playerSource and commandName, followed by as many parameters as you expect after your command (see below). These are all optional.  {{OptionalArg}} 
+     * @param handlerFunction This is the function that you want the command to trigger, which has to be defined before you add the handler. This function can take two parameters, playerSource and commandName, followed by as many parameters as you expect after your command (see below). These are all optional.  {{OptionalArg}}
      * @param restricted Specify whether or not this command should be restricted by default. Use this on commands that should be inaccessible to everyone as default except special users specified in the ACL (Access Control List). This is to make sure admin commands such as ie. punish wont be available to everyone if a server administrator forgets masking it in ACL. Make sure to add the command to your ACL under the proper group for it to be usefull (i.e <right name=command.killEveryone access=true></right>). This argument defaults to false if nothing is specified.  {{New feature|3|1.0|
      * @default false
      * @param caseSensitive Specifies if the command handler will ignore the case for this command name.  }}
      * @default true
      * @return Returns ''true'' if the command handler was added successfully, ''false'' otherwise.
      */
-    export function addCommandHandler(commandName: string, handlerFunction: HandleFunction, restricted?: boolean, caseSensitive?: boolean, ): boolean;
+    export function addCommandHandler(commandName: string, handlerFunction: HandleFunction, restricted?: boolean, caseSensitive?: boolean): boolean;
 
     /**
-     * Binds a player's key to a handler function or command, which will be called when the key is pressed. 
+     * Binds a player's key to a handler function or command, which will be called when the key is pressed.
      * @see {@link https://wiki.multitheftauto.com/wiki/bindKey|MTASA Wiki}
      * @param thePlayer The player you wish to bind the key of.
      * @param key The key that was pressed
@@ -2519,18 +2519,18 @@ declare module 'mtasa/server/functions' {
      * @param arguments The optional arguments you specified when calling bindKey (see below).
      * @return Returns ''true'' if the key was bound, ''false'' otherwise.
      */
-    export function bindKey(thePlayer: player, key: string, keyState: string, handlerFunction: HandleFunction, arguments: any, ...args: any[], ): boolean;
+    export function bindKey(thePlayer: player, key: string, keyState: string, handlerFunction: HandleFunction, arguments: any, ...args: any[]): boolean;
 
     /**
      * This function will call all the attached functions of an existing console command, for a specified player.
-     *  
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/executeCommandHandler|MTASA Wiki}
      * @param commandName The name of the command you wish to execute. This is what must be typed into the console to trigger the function.
      * @param thePlayer The player that will be presented as executer of the command to the handler function(s) of the command.  {{OptionalArg}}
      * @param args Additional parameters that will be passed to the handler function(s) of the command that is called, separated by spaces.
      * @return Returns ''true'' if the command handler was called successfully, ''false'' otherwise.
      */
-    export function executeCommandHandler(commandName: string, thePlayer: player, args: string, ): boolean;
+    export function executeCommandHandler(commandName: string, thePlayer: player, args: string): boolean;
 
     /**
      * Gets the functions bound to a key. To bind a function to a key use the [[bindKey]] function
@@ -2539,7 +2539,7 @@ declare module 'mtasa/server/functions' {
      * @param keyState A string that has one of the following values:
      * @return Returns a table of the key function(s).
      */
-    export function getFunctionsBoundToKey(thePlayer: player, key: string, keyState: string, ): table;
+    export function getFunctionsBoundToKey(thePlayer: player, key: string, keyState: string): table;
 
     /**
      * getKeyBoundToFunction allows retrieval of the first key bound to a function.
@@ -2548,7 +2548,7 @@ declare module 'mtasa/server/functions' {
      * @param theFunction The function in which you would like to check the bound key
      * @return Returns a string of the first key the function was bound to.
      */
-    export function getKeyBoundToFunction(thePlayer: player, theFunction: HandleFunction, ): string;
+    export function getKeyBoundToFunction(thePlayer: player, theFunction: HandleFunction): string;
 
     /**
      * Checks whether a GTA control is enabled or disabled for a certain player.
@@ -2557,7 +2557,7 @@ declare module 'mtasa/server/functions' {
      * @param control The control you wish to check. See control names for a list of possible controls.
      * @return Returns ''true'' if control is enabled, ''false'' otherwise.
      */
-    export function isControlEnabled(thePlayer: player, control: string, ): boolean;
+    export function isControlEnabled(thePlayer: player, control: string): boolean;
 
     /**
      * Enables or disables the use of all GTA controls for a specified player.
@@ -2570,7 +2570,7 @@ declare module 'mtasa/server/functions' {
      * @default true
      * @return This function returns ''true'' if controls were toggled successfully, false otherwise.
      */
-    export function toggleAllControls(thePlayer: player, enabled: boolean, gtaControls: boolean, mtaControls: boolean, ): boolean;
+    export function toggleAllControls(thePlayer: player, enabled: boolean, gtaControls: boolean, mtaControls: boolean): boolean;
 
     /**
      * Enables or disables the use of a GTA control for a specific player.
@@ -2580,7 +2580,7 @@ declare module 'mtasa/server/functions' {
      * @param enabled A boolean value representing whether or not the key will be usable or not.
      * @return This function ''true'' if the control was set successfully, ''false'' otherwise.
      */
-    export function toggleControl(thePlayer: player, control: string, enabled: boolean, ): boolean;
+    export function toggleControl(thePlayer: player, control: string, enabled: boolean): boolean;
 
     /**
      * Removes an existing key bind from the specified player.
@@ -2590,7 +2590,7 @@ declare module 'mtasa/server/functions' {
      * @param keyState is optional in Syntax 2.
      * @return Returns '''true'' if the key was unbound, ''false'' if it was not previously bound or invalid arguments were passed to the function.
      */
-    export function unbindKey(thePlayer: player, key: string, keyState: string, command: string, ): boolean;
+    export function unbindKey(thePlayer: player, key: string, keyState: string, command: string): boolean;
 
     /**
      * [[Image:Mtasa_markers.png|thumb|337px|This image shows all the different marker types available using this function.]]
@@ -2620,18 +2620,18 @@ declare module 'mtasa/server/functions' {
      * @default getRootElement(
      * @return Returns the [[marker]] element that was created, or ''false'' if the arguments are incorrect.
      */
-    export function createMarker(x: number, y: number, z: number, theType?: string, size?: number, r?: number, g?: number, b?: number, a?: number, visibleTo?: element, ): marker;
+    export function createMarker(x: number, y: number, z: number, theType?: string, size?: number, r?: number, g?: number, b?: number, a?: number, visibleTo?: element): marker;
 
     /**
-     * 
+     *
      * @see {@link https://wiki.multitheftauto.com/wiki/clearChatBox|MTASA Wiki}
      * @return Returns ''true'' if the player's chat was cleared successfully, ''false'' otherwise.
      */
-    export function clearChatBox(clearFor: element, ): boolean;
+    export function clearChatBox(clearFor: element): boolean;
 
     /**
      * This outputs the specified text string to the chatbox. It can be specified as a message to certain player(s) or all players.
-     * It can optionally allow you to embed color changes into the string by setting the colorCoded boolean to true. This allows: 
+     * It can optionally allow you to embed color changes into the string by setting the colorCoded boolean to true. This allows:
      * <syntaxhighlight lang="lua">
      * outputChatBox ( "#FF0000Hello #00FF00World", root, 255, 255, 255, true )
      * </syntaxhighlight>
@@ -2648,7 +2648,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns ''true'' if the message was displayed successfully. Returns ''false'' if invalid arguments are specified.
      */
-    export function outputChatBox(text: string, element?: table, r?: number, g?: number, b?: number, colorCoded?: boolean, ): boolean;
+    export function outputChatBox(text: string, element?: table, r?: number, g?: number, b?: number, colorCoded?: boolean): boolean;
 
     /**
      * This outputs the specified text string to the console window (accessed with F8 or ~ key). It can be specified as a message to certain player(s) or all players.
@@ -2656,9 +2656,9 @@ declare module 'mtasa/server/functions' {
      * @param text The text string that you wish to send to the console window
      * @param visibleTo This specifies who the chat is visible to. Any players in this element will see the chat message. See visibility.  {{Note|'''visibleTo''' can also be a Team object, in this case, the text will be visible to all the players of that team.}}
      * @default getRootElement(
-     * @return 
+     * @return
      */
-    export function outputConsole(text: string, visibleTo: element, ): boolean;
+    export function outputConsole(text: string, visibleTo: element): boolean;
 
     /**
      * This function is used to show or hide the player's chat.
@@ -2667,7 +2667,7 @@ declare module 'mtasa/server/functions' {
      * @param show A boolean value determining whether to show (true) or hide (false) the chat.
      * @return Returns ''true'' if the player's chat was shown or hidden successfully, ''false'' otherwise.
      */
-    export function showChat(thePlayer: player, show: boolean, ): boolean;
+    export function showChat(thePlayer: player, show: boolean): boolean;
 
     /**
      * Creates a Ped in the GTA world.
@@ -2682,7 +2682,7 @@ declare module 'mtasa/server/functions' {
      * @default true
      * @return Returns a ped element if it was successfully created.
      */
-    export function createPed(modelid: number, x: number, y: number, z: number, rot?: number, synced?: boolean, ): ped;
+    export function createPed(modelid: number, x: number, y: number, z: number, rot?: number, synced?: boolean): ped;
 
     /**
      * This function is used to forcefully show a player's radar map.
@@ -2691,7 +2691,7 @@ declare module 'mtasa/server/functions' {
      * @param forceOn : A boolean value representing whether or not the players radar map will be forced on
      * @return Returns ''true'' if the player's radar map was forced on, ''false'' otherwise.
      */
-    export function forcePlayerMap(thePlayer: player, forceOn: boolean, ): boolean;
+    export function forcePlayerMap(thePlayer: player, forceOn: boolean): boolean;
 
     /**
      * This function allows you to check the current blur level of a specified [[player]].
@@ -2699,7 +2699,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player whose blur level you want to check.
      * @return Returns the player's blur level if successful, ''false'' if an invalid player was given.
      */
-    export function getPlayerBlurLevel(thePlayer: player, ): number;
+    export function getPlayerBlurLevel(thePlayer: player): number;
 
     /**
      * Returns the amount of money a player currently has.
@@ -2707,7 +2707,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player you wish the retrieve the amount of money from.
      * @return Returns an integer with the amount of money the specified player has, ''false'' if the player is invalid.
      */
-    export function getPlayerMoney(thePlayer: player, ): number;
+    export function getPlayerMoney(thePlayer: player): number;
 
     /**
      * This function gets a player's current wanted level. The wanted level is indicated by the amount of stars a player has on the GTA HUD.
@@ -2715,7 +2715,7 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer The player whose wanted level you wish to get
      * @return Returns an ''int'' from 0 to 6 representing the player's wanted level, ''false'' if the player does not exist.
      */
-    export function getPlayerWantedLevel(thePlayer: player, ): number;
+    export function getPlayerWantedLevel(thePlayer: player): number;
 
     /**
      * This function adds money to a [[player]]'s current money amount.  To set absolute values, [[setPlayerMoney]] can be used.<br>
@@ -2724,7 +2724,7 @@ declare module 'mtasa/server/functions' {
      * @param amount a positive integer number specifying the amount of money to give to the player.
      * @return Returns ''true'' if the money was added, or ''false'' if invalid parameters were passed.
      */
-    export function givePlayerMoney(thePlayer: player, amount: number, ): boolean;
+    export function givePlayerMoney(thePlayer: player, amount: number): boolean;
 
     /**
      * This function checks if the specified player's radar map has been forced on or not.
@@ -2732,26 +2732,26 @@ declare module 'mtasa/server/functions' {
      * @param thePlayer A player object referencing the specified player
      * @return Returns ''true'' if the player's radar map is forced on, ''false'' otherwise.
      */
-    export function isPlayerMapForced(thePlayer: player, ): boolean;
+    export function isPlayerMapForced(thePlayer: player): boolean;
 
     /**
      * Sets the motion blur level on the clients screen. Accepts a value between 0 and 255.
      * @see {@link https://wiki.multitheftauto.com/wiki/setPlayerBlurLevel|MTASA Wiki}
      * @param thePlayer The player whose blur level will be changed.
      * @param level The level to set the blur to (default: 36)
-     * @return 
+     * @return
      */
-    export function setPlayerBlurLevel(thePlayer: player, level: number, ): boolean;
+    export function setPlayerBlurLevel(thePlayer: player, level: number): boolean;
 
     /**
-     * This function will show or hide a part of the player's HUD. 
+     * This function will show or hide a part of the player's HUD.
      * @see {@link https://wiki.multitheftauto.com/wiki/setPlayerHudComponentVisible|MTASA Wiki}
      * @param thePlayer The player element for which you wish to show/hide a HUD component
      * @param component The component you wish to show or hide. Valid values are:
      * @param show Specify if the component should be shown (true) or hidden (false)
      * @return Returns ''true'' if the component was shown or hidden succesfully, ''false'' if an invalid argument was specified.
      */
-    export function setPlayerHudComponentVisible(thePlayer: player, component: string, show: boolean, ): boolean;
+    export function setPlayerHudComponentVisible(thePlayer: player, component: string, show: boolean): boolean;
 
     /**
      * Sets a player's money to a certain value, regardless of current player money. It should be noted that setting negative values does not work and in fact gives the player large amounts of money.
@@ -2762,7 +2762,7 @@ declare module 'mtasa/server/functions' {
      * @default false
      * @return Returns ''true'' if the money was added, or ''false'' if invalid parameters were passed.
      */
-    export function setPlayerMoney(thePlayer: player, amount: number, instant?: boolean, ): boolean;
+    export function setPlayerMoney(thePlayer: player, amount: number, instant?: boolean): boolean;
 
     /**
      * This function subtracts money from a [[player]]'s current money amount.
@@ -2771,14 +2771,14 @@ declare module 'mtasa/server/functions' {
      * @param amount an integer number specifying the amount of money to take from the player.
      * @return Returns ''true'' if the money was taken, or ''false'' if invalid parameters were passed.
      */
-    export function takePlayerMoney(thePlayer: player, amount: number, ): boolean;
+    export function takePlayerMoney(thePlayer: player, amount: number): boolean;
 
     /**
      * This function can be used to detonate a players satchels.
      * @see {@link https://wiki.multitheftauto.com/wiki/detonateSatchels|MTASA Wiki}
      * @return Returns ''true'' if successful, ''false'' otherwise.
      */
-    export function detonateSatchels(Player: player, ): boolean;
+    export function detonateSatchels(Player: player): boolean;
 
     /**
      * This function returns network status information.
@@ -2796,17 +2796,17 @@ declare module 'mtasa/server/functions' {
      * * * '''isLimitedByOutgoingBandwidthLimit'''
      * * * '''encryptionStatus'''
      */
-    export function getNetworkStats(thePlayer: element, ): table;
+    export function getNetworkStats(thePlayer: element): table;
 
     /**
      * This function will blow up a vehicle. This will cause an explosion and will kill the driver and any passengers inside it.
      * @see {@link https://wiki.multitheftauto.com/wiki/blowVehicle|MTASA Wiki}
-     * @param vehicleToBlow the vehicle that you wish to blow up.  {{OptionalArg}} 
+     * @param vehicleToBlow the vehicle that you wish to blow up.  {{OptionalArg}}
      * @param explode if this argument is true then the vehicle will explode, otherwise it will just be blown up silently.
      * @default true
      * @return Returns ''true'' if the vehicle was blown up, ''false'' if invalid arguments were passed to the function.
      */
-    export function blowVehicle(vehicleToBlow: vehicle, explode: boolean, ): boolean;
+    export function blowVehicle(vehicleToBlow: vehicle, explode: boolean): boolean;
 
     /**
      * <section name="Server" class="server" show="true">
@@ -2820,6 +2820,6 @@ declare module 'mtasa/server/functions' {
      * * On failure:
      * * '''bool:''' Returns false if the weapon property was unable to be set
      */
-    export function setWeaponProperty(weaponID: number, weaponSkill: string, property: string, float: number, ): boolean;
+    export function setWeaponProperty(weaponID: number, weaponSkill: string, property: string, float: number): boolean;
 
 }
