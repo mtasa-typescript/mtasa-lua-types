@@ -31,9 +31,7 @@ declare function getProjectileTarget(theProjectile: Projectile): element;
 
 declare function getProjectileType(theProjectile: Projectile): number;
 
-declare function detonateSatchels(): boolean;
-
-declare function detonateSatchels(player: Player): boolean;
+declare function detonateSatchels(player?: Player): boolean;
 
 declare function getProjectileCounter(theProjectile: Projectile): number;
 

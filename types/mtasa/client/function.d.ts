@@ -887,16 +887,6 @@ export function guiCreateBrowser(
 ): guibrowser;
 
 /**
- * This function gets the browser element behind a gui-browser (a browser that has been created via
- * [[guiCreateBrowser]]).
- * }}
- * @see {@link https://wiki.multitheftauto.com/wiki/guiGetBrowser|MTASA Wiki}
- * @return Returns the [[Element/Browser|Browser]] element if a correct
- * [[Element/gui-browser|gui-browser]] has been passed, ''false'' otherwise.
- */
-export function guiGetBrowser(browser: gui): browser;
-
-/**
  * This function returns an [[element]] that corresponds to the game camera
  * }}
  * @see {@link https://wiki.multitheftauto.com/wiki/getCamera|MTASA Wiki}
@@ -3478,47 +3468,6 @@ export function isTransferBoxActive(): boolean;
 export function setDebugViewActive(enabled: boolean): boolean;
 
 /**
- * This function creates a new CEGUI web [[Element/Browser|browser]] element.
- * The difference between this, and createBrowser is that, this handles inputs internally, and it
- * can be attached to GUI windows. So this one is more suitable for custom dx based interfaces.
- * You can learn more about the differences
- * [https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=737334 here].
- * }}
- * @see {@link https://wiki.multitheftauto.com/wiki/guiCreateBrowser|MTASA Wiki}
- * @param x A float of the 2D x position of the browser on a players screen.  This is affected by
- * the relative argument.
- * @param y A float of the 2D y position of the browser on a players screen. This is affected by
- * the relative argument.
- * @param width The browsers native width. This should be greater than or equal to 1.
- * @param height The browsers native height. This should be greater than or equal to 1.
- * @param isLocal Sets whether the browser can only show local content or content from the internet
- * (see examples over CreateBrowser|here for more information)
- * @param isTransparent true if you want the browser to support transparency, false otherwise
- * @param isRelative This is whether sizes and positioning are relative.  If this is true, then all
- * x,y,width,height floats must be between 0 and 1, representing sizes/positions as a fraction of the
- * screen size. If false, then the size and co-ordinates are based on clients resolution, accessible
- * using guiGetScreenSize.  {{New feature/item|3.0160|1.6||Providing a size of (0,0) will be a hard
- * error.}}
- * @param parent This is the parent that the radio button is attached to. If the relative argument
- * is true, sizes and positioning will be made relative to this parent. If the relative argument is
- * false, positioning will be the number of offset pixels from the parents origin. If no parent is passed,
- * the parent will become the screen - causing positioning and sizing according to screen positioning.
- * @default nil
- * @return Returns a [[gui-browser]] element if it was created successfully, ''false'' otherwise.
- * Returns also ''false'', if the user disabled remote pages and ''isLocal'' was set to ''false''.
- */
-export function guiCreateBrowser(
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    isLocal: boolean,
-    isTransparent: boolean,
-    isRelative: boolean,
-    parent?: element,
-): guibrowser;
-
-/**
  * This function gets the browser element behind a gui-browser (a browser that has been created via
  * [[guiCreateBrowser]]).
  * }}
@@ -5613,13 +5562,6 @@ export function isPlayerHudComponentVisible(component: string): boolean;
  * @return Returns ''true'' if the player has the map visible, ''false'' otherwise.
  */
 export function isPlayerMapVisible(): boolean;
-
-/**
- * Resets the motion blur level on the clients screen to default value (36).
- * @see {@link https://wiki.multitheftauto.com/wiki/resetBlurLevel|MTASA Wiki}
- * @return Returns ''true'' if the blur level was reset successfully. Returns ''false'' otherwise.
- */
-export function resetBlurLevel(): boolean;
 
 /**
  * This function creates a projectile of the specified type on the specified coordinates.

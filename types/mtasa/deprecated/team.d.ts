@@ -16,8 +16,6 @@ declare function getTeamFromName(teamName: string): Team;
 
 declare function getTeamName(theTeam: Team): string;
 
-declare function countPlayersInTeam(theTeam: Team): table;
-
 declare function createTeam(teamName: string, colorR?: 255, colorG?: 255, colorB?: 255): Team;
 
 declare function getPlayerTeam(thePlayer: Player): Team;

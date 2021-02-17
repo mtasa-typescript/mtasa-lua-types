@@ -129,7 +129,6 @@ declare function addVehicleSirens(
 declare function removeVehicleUpgrade(theVehicle: Vehicle, upgrade: number): boolean;
 
 declare function blowVehicle(vehicleToBlow: Vehicle, explode?: true): boolean;
-declare function blowVehicle(vehicleToBlow: Vehicle): boolean;
 
 declare function attachTrailerToVehicle(theVehicle: Vehicle, theTrailer: Vehicle): boolean;
 
@@ -194,8 +193,7 @@ declare function getModelHandling(modelId: number): table;
 
 declare function isVehicleLocked(theVehicle: Vehicle): boolean;
 
-declare function getVehicleMaxPassengers(theVehicle: Vehicle): number;
-declare function getVehicleMaxPassengers(modelID: number): number;
+declare function getVehicleMaxPassengers(theVehicleOrModel: Vehicle | number): number;
 
 declare function getVehicleHeadLightColor(theVehicle: Vehicle): [number, number, number];
 

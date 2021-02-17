@@ -1,8 +1,8 @@
-//https://wiki.multitheftauto.com/wiki/Element
+// https://wiki.multitheftauto.com/wiki/Element
 
-//type Colshape = object;
+// type Colshape = object;
 type Var = object;
-//type Player = object;
+// type Player = object;
 
 type Player = object;
 type Ped = object;
@@ -103,13 +103,9 @@ declare function getElementModel(theElement: element): number;
 
 declare function getElementParent(theElement: element): element;
 
-declare function getElementPosition(theElement: element): [number, number, number];
-
 declare function getElementRotation(theElement: element, rotOrder?: 'default'): [number, number, number];
 
 declare function getElementRadius(theElement: element): number;
-
-declare function getElementsByType(theType: string, startat?: element): table;
 
 declare function getElementsByType(theType: string, startat?: element, streamedIn?: false): table;
 

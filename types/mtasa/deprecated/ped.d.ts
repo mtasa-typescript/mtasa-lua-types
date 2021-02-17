@@ -19,7 +19,6 @@ declare function isPedHeadless(thePed: Ped): boolean;
 declare function getPedContactElement(thePed: Ped): element;
 
 declare function createPed(modelid: number, x: number, y: number, z: number, rot?: 0.0, synced?: true): Ped;
-declare function createPed(modelid: number, x: number, y: number, z: number, rot?: 0.0): Ped;
 
 declare function getPedArmor(thePed: Ped): number;
 

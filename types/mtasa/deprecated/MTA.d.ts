@@ -65,12 +65,16 @@ declare const sourceTimer: element;
 
 declare function addCommandHandler(
     commandName: string,
-    handlerFunction: Function,
+    handlerFunction: (...args: any[]) => void,
     restricted?: false,
     caseSensitive?: true,
 ): boolean;
 
-declare function addCommandHandler(commandName: string, handlerFunction: Function, caseSensitive?: true): boolean;
+declare function addCommandHandler(
+    commandName: string,
+    handlerFunction: (...args: any[]) => void,
+    caseSensitive?: true,
+): boolean;
 
 /**
  * **SERVER SIDE**

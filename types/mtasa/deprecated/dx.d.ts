@@ -15,19 +15,23 @@ type element = object;
 declare function tocolor(red: number, green: number, blue: number, alpha?: number): Color;
 
 /**
- * Draws an image on the screen for a single frame. In order for the image to stay visible continuously, you need to call this function with the same parameters on each frame update (see onClientRender).
+ * Draws an image on the screen for a single frame. In order for the image to stay visible continuously,
+ * you need to call this function with the same parameters on each frame update (see onClientRender).
  * Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
  * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...
  * @param posX the absolute X coordinate of the top left corner of the image
  * @param posY the absolute Y coordinate of the top left corner of the image
  * @param width the absolute width of the image
  * @param height the absolute height of the image
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds images are also supported).Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
+ * @param image Either a material element or a filepath of the image which is going to be drawn.
+ * (.dds images are also supported).Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
  * @param rotation the rotation, in degrees for the image.
  * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
  * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
- * @param color Tints the image with a value produced by tocolor or hexadecimal number in format: 0xAARRGGBB(RR = red, GG = green, BB = blue, AA = alpha).
- * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI(rendered by CEGUI).
+ * @param color Tints the image with a value produced by tocolor or hexadecimal number in format:
+ * 0xAARRGGBB(RR = red, GG = green, BB = blue, AA = alpha).
+ * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame
+ * GUI(rendered by CEGUI).
  * @returns Returns true if successful, false otherwise.
  */
 declare function dxDrawImage(
@@ -35,7 +39,7 @@ declare function dxDrawImage(
     posY: number,
     width: number,
     height: number,
-    image: string,
+    image: string | Material,
     rotation?: 0,
     rotationCenterOffsetX?: 0,
     rotationCenterOffsetY?: 0,
@@ -44,36 +48,9 @@ declare function dxDrawImage(
 ): boolean;
 
 /**
- * Draws an image on the screen for a single frame. In order for the image to stay visible continuously, you need to call this function with the same parameters on each frame update (see onClientRender).
- * Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
- * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...
- * @param posX the absolute X coordinate of the top left corner of the image
- * @param posY the absolute Y coordinate of the top left corner of the image
- * @param width the absolute width of the image
- * @param height the absolute height of the image
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds images are also supported).Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
- * @param rotation the rotation, in degrees for the image.
- * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
- * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
- * @param color Tints the image with a value produced by tocolor or hexadecimal number in format: 0xAARRGGBB(RR = red, GG = green, BB = blue, AA = alpha).
- * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI(rendered by CEGUI).
- * @returns Returns true if successful, false otherwise.
- */
-declare function dxDrawImage(
-    posX: number,
-    posY: number,
-    width: number,
-    height: number,
-    image: Material,
-    rotation?: 0,
-    rotationCenterOffsetX?: 0,
-    rotationCenterOffsetY?: 0,
-    color?: 0,
-    postGUI?: false,
-): boolean;
-
-/**
- * Differing from dxDrawImage, this function only draws a part of an image on the screen for a single frame. In order for the image to stay visible continuously, you need to call this function with the same parameters on each frame update (see onClientRender).
+ * Differing from dxDrawImage, this function only draws a part of an image on the screen for a single frame.
+ * In order for the image to stay visible continuously, you need to call this function with the same parameters
+ * on each frame update (see onClientRender).
  * @param posX the absolute X coordinate of the top left corner of the image
  * @param posY the absolute Y coordinate of the top left corner of the image
  * @param width the absolute width of the image
@@ -82,12 +59,16 @@ declare function dxDrawImage(
  * @param v the absolute Y coordinate of the top left corner of the section which should be drawn from image
  * @param usize the absolute width of the image section
  * @param vsize the absolute height of the image section
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds images are also supported). Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
+ * @param image Either a material element or a filepath of the image which is going to be drawn.
+ * (.dds images are also supported). Image files should ideally have dimensions that are a power of two,
+ * to prevent possible blurring.
  * @param rotation the rotation, in degrees for the image.
  * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
  * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
- * @param color the color of the image, a value produced by tocolor or hexadecimal number in format: 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
- * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
+ * @param color the color of the image, a value produced by tocolor or hexadecimal number in format: 0xAARRGGBB
+ * (AA = alpha, RR = red, GG = green, BB = blue).
+ * @param postGUI A bool representing whether the image should be drawn on top of or behind any
+ * ingame GUI (rendered by CEGUI).
  * @returns Returns true if successful, false otherwise.
  */
 declare function dxDrawImageSection(
@@ -99,7 +80,7 @@ declare function dxDrawImageSection(
     v: number,
     usize: number,
     vsize: number,
-    image: string,
+    image: string | Material,
     rotation?: 0,
     rotationCenterOffsetX?: 0,
     rotationCenterOffsetY?: 0,
@@ -108,49 +89,17 @@ declare function dxDrawImageSection(
 ): boolean;
 
 /**
- * Differing from dxDrawImage, this function only draws a part of an image on the screen for a single frame. In order for the image to stay visible continuously, you need to call this function with the same parameters on each frame update (see onClientRender).
- * @param posX the absolute X coordinate of the top left corner of the image
- * @param posY the absolute Y coordinate of the top left corner of the image
- * @param width the absolute width of the image
- * @param height the absolute height of the image
- * @param u the absolute X coordinate of the top left corner of the section which should be drawn from image
- * @param v the absolute Y coordinate of the top left corner of the section which should be drawn from image
- * @param usize the absolute width of the image section
- * @param vsize the absolute height of the image section
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds images are also supported). Image files should ideally have dimensions that are a power of two, to prevent possible blurring.
- * @param rotation the rotation, in degrees for the image.
- * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
- * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
- * @param color the color of the image, a value produced by tocolor or hexadecimal number in format: 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
- * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
- * @returns Returns true if successful, false otherwise.
- */
-declare function dxDrawImageSection(
-    posX: number,
-    posY: number,
-    width: number,
-    height: number,
-    u: number,
-    v: number,
-    usize: number,
-    vsize: number,
-    image: Material,
-    rotation?: 0,
-    rotationCenterOffsetX?: 0,
-    rotationCenterOffsetY?: 0,
-    color?: 0,
-    postGUI?: false,
-): boolean;
-
-/**
- * This function draws a 2D line across the screen - rendered for one frame. This should be used in conjunction with onClientRender in order to display continuously.
+ * This function draws a 2D line across the screen - rendered for one frame. This should be used in
+ * conjunction with onClientRender in order to display continuously.
  * @param startX An integer representing the absolute start X position of the line, represented by pixels on the screen.
  * @param startY An integer representing the absolute start Y position of the line, represented by pixels on the screen.
  * @param endX An integer representing the absolute end X position of the line, represented by pixels on the screen.
  * @param endY An integer representing the absolute end Y position of the line, represented by pixels on the screen.
- * @param color An integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
+ * @param color An integer of the hex color, produced using tocolor or 0xAARRGGBB
+ * (AA = alpha, RR = red, GG = green, BB = blue).
  * @param width The width/thickness of the line
- * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
+ * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
  * @returns Returns a true if the operation was successful, false otherwise.
  */
 declare function dxDrawLine(
@@ -221,22 +170,30 @@ declare function dxDrawRectangle(
 "beckett": Beckett Regular
 */
 /**
- * Draws a string of text on the screen for one frame. In order for the text to stay visible continuously, you need to call this function with the same parameters on each frame update (see onClientRender).
+ * Draws a string of text on the screen for one frame. In order for the text to stay visible continuously,
+ * you need to call this function with the same parameters on each frame update (see onClientRender).
  * @param text the text to draw
  * @param left the absolute X coordinate of the top left corner of the text
  * @param top the absolute Y coordinate of the top left corner of the text
- * @param right the absolute X coordinate of the right side of the text bounding box. Used for text aligning, clipping and word breaking.
- * @param bottom the absolute Y coordinate of the bottom side of the text bounding box. Used for text aligning, clipping and word breaking.
- * @param color the color of the text, a value produced by tocolor or 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
+ * @param right the absolute X coordinate of the right side of the text bounding box. Used for text aligning,
+ * clipping and word breaking.
+ * @param bottom the absolute Y coordinate of the bottom side of the text bounding box. Used for text aligning,
+ * clipping and word breaking.
+ * @param color the color of the text, a value produced by tocolor or 0xAARRGGBB
+ * (AA = alpha, RR = red, GG = green, BB = blue).
  * @param scale the size of the text.scale: can (optionally) be specified as two floats. i.e. scaleX, scaleY
- * @param font Either a custom DX font element or the name of a built-in DX font: Note: Some fonts are incompatible with certain languages such as Arabic.
+ * @param font Either a custom DX font element or the name of a built-in DX font: Note: Some fonts are incompatible
+ * with certain languages such as Arabic.
  * @param alignX horizontal alignment of the text within the bounding box. Can be "left", "center" or "right".
  * @param alignY vertical alignment of the text within the bounding box. Can be "top", "center" or "bottom".
  * @param clip if set to true, the parts of the text that don't fit within the bounding box will be cut off.
- * @param wordBreak if set to true, the text will wrap to a new line whenever it reaches the right side of the bounding box. If false, the text will always be completely on one line.
+ * @param wordBreak if set to true, the text will wrap to a new line whenever it reaches the right side of the bounding
+ * box. If false, the text will always be completely on one line.
  * @param postGUI A bool representing whether the text should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
- * @param colorCoded Set to true to enable embedded #FFFFFF color codes. Note: clip and wordBreak are forced false if this is set.
- * @param subPixelPositioning A bool representing whether the text can be positioned sub-pixel-ly. Looks nicer for moving/scaling animations.
+ * @param colorCoded Set to true to enable embedded #FFFFFF color codes. Note: clip and wordBreak
+ * are forced false if this is set.
+ * @param subPixelPositioning A bool representing whether the text can be positioned sub-pixel-ly.
+ * Looks nicer for moving/scaling animations.
  * @param fRotation Rotation
  * @param fRotationCenterX Rotation Origin X
  * @param fRotationCenterY Rotation Origin Y
