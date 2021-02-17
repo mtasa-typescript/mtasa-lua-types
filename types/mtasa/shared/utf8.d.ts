@@ -1,32 +1,5 @@
 /// <reference types="typescript-to-lua/language-extensions" />
-import {
-    account,
-    acl,
-    aclgroup,
-    player,
-    table,
-    ban,
-    blip,
-    colshape,
-    element,
-    ped,
-    pickup,
-    resource,
-    team,
-    textdisplay,
-    vehicle,
-    xmlnode,
-    textitem,
-    HandleFunction,
-    file,
-    marker,
-    radararea,
-    request,
-    userdata,
-    timer,
-    water,
-    iterator,
-} from './structure';
+import { iterator } from './structure';
 
 export namespace utf8 {
     /**
