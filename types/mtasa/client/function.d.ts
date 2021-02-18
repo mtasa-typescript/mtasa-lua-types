@@ -4942,7 +4942,7 @@ export function setLightDirection(theLight: light, x: number, y: number, z: numb
  * @param theLight The Element/Light|light that you wish to set the radius of.
  * @return
  */
-export function setLightRadius(theLight: Light, radius: number): boolean;
+export function setLightRadius(theLight: light, radius: number): boolean;
 
 /**
  * This function breaks a specific object.
