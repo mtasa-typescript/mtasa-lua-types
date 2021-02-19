@@ -1,5 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 import { iterator } from './structure';
+/** @noSelfInFile **/
 
 export namespace utf8 {
     /**

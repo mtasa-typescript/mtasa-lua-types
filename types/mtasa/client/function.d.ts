@@ -1,4 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
+/** @noSelfInFile **/
+
 import {
     blip,
     browser,
