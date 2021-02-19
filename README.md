@@ -14,7 +14,7 @@ Please take a look at
 and
 [the stages description](https://gitlab.toliak.ru/mtasa/typescript/wiki-parser-python/docs/FunctionDocPipeline.png)
 
-(TL;DR: by default, you should not add function definitions manually. Thay can be parsed from MTASA Wiki and then
+(TL;DR: by default, you should not add function definitions manually. They can be parsed from MTASA Wiki and then
 edited)
 
 Also, please, apply prettier to the code
