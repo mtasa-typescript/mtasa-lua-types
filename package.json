@@ -1,6 +1,6 @@
 {
     "name": "mtasa-lua-types",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "TypeScript types definitions for MTASA Lua",
     "homepage": "https://github.com/mtasa-typescript/mtasa-lua-types",
     "bugs": "https://github.com/mtasa-typescript/mtasa-lua-types/issues",
@@ -26,6 +26,9 @@
         "Dominic Hock <???>"
     ],
     "license": "MIT",
+    "files": [
+        "types/**/*"
+    ],
     "devDependencies": {
         "dtslint": "^4.0.7",
         "prettier": "^2.2.1",
