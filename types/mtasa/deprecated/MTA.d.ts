@@ -1,4 +1,9 @@
 /**
+ * Workaround...
+ */
+type table = any;
+
+/**
  * returns a table of resource names containing all export functions
  */
 declare const exports: table;
@@ -12,6 +17,7 @@ declare const resource: element;
  * returns a resource root element of the resource the snippet was executed in
  */
 declare const resourceRoot: element;
+
 /**
  * returns the root element of the server
  */
@@ -48,7 +54,7 @@ declare const client: element;
 declare const sourceResourceRoot: element;
 
 /**
- * the resource that called the event 
+ * the resource that called the event
  */
 declare const sourceResource: element;
 
@@ -57,16 +63,32 @@ declare const sourceResource: element;
  */
 declare const sourceTimer: element;
 
-declare function addCommandHandler(commandName: string, handlerFunction: Function, restricted?: false, caseSensitive?: true): boolean
+declare function addCommandHandler(
+    commandName: string,
+    handlerFunction: (...args: any[]) => void,
+    restricted?: false,
+    caseSensitive?: true,
+): boolean;
 
-declare function addCommandHandler(commandName: string, handlerFunction: Function, caseSensitive?: true): boolean
+declare function addCommandHandler(
+    commandName: string,
+    handlerFunction: (...args: any[]) => void,
+    caseSensitive?: true,
+): boolean;
 
 /**
  * **SERVER SIDE**
  */
-declare function outputChatBox(text: string, visibleTo?: element, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean
+declare function outputChatBox(
+    text: string,
+    visibleTo?: element,
+    r?: 231,
+    g?: 217,
+    b?: 176,
+    colorCoded?: false,
+): boolean;
 
 /**
  * **CLIENT SIDE**
  */
-declare function outputChatBox(text: string, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean
+declare function outputChatBox(text: string, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean;
