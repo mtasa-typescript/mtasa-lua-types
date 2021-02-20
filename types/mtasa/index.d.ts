@@ -1,5 +1,6 @@
 // Minimum TypeScript Version: 3.8
+// Useless file...
 
-import * as mtasaServerFunctions from 'types/mtasa/server/function';
+import * as mtasaServerStructures from 'types/mtasa/server/structure';
 
-export { mtasaServerFunctions };
+export { mtasaServerStructures };
