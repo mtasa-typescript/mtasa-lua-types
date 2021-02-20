@@ -3,8 +3,8 @@
 
 import {
     Account,
-    Acl,
-    AclGroup,
+    ACL,
+    ACLGroup,
     Player,
     Table,
     Ban,

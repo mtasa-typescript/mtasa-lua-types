@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Acl, AclGroup, Table } from 'types/mtasa/server/structure';
+import { ACL, ACLGroup, Table } from 'types/mtasa/server/structure';
 
 /**
  * This function creates an ACL entry in the Access Control List system with the specified name.
@@ -10,7 +10,7 @@ import { Acl, AclGroup, Table } from 'types/mtasa/server/structure';
  * @return Returns the created ACL object if successful. Returns false if an ACL of the given name
  * could not be created.
  */
-export function aclCreate(aclName: string): Acl;
+export function aclCreate(aclName: string): ACL;
 
 /**
  * This function creates a group in the ACL. An ACL group can contain objects like players and
@@ -19,7 +19,7 @@ export function aclCreate(aclName: string): Acl;
  * @param groupName The name of the group to create
  * @return Returns the pointer to the created aclgroup if successful. Returns false if failed.
  */
-export function aclCreateGroup(groupName: string): AclGroup;
+export function aclCreateGroup(groupName: string): ACLGroup;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -32,7 +32,7 @@ export function aclCreateGroup(groupName: string): AclGroup;
  * * Returns ''true'' if successfully destroyed and ''false'' if it could not be deleted (ie. it's
  * not valid).
  */
-export function aclDestroy(theACL: Acl): boolean;
+export function aclDestroy(theACL: ACL): boolean;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -45,7 +45,7 @@ export function aclDestroy(theACL: Acl): boolean;
  * * Returns ''true'' if the ACL group was successfully deleted, ''false'' if it could not be
  * deleted for some reason (ie. invalid argument).
  */
-export function aclDestroyGroup(aclGroup: AclGroup): boolean;
+export function aclDestroyGroup(aclGroup: ACLGroup): boolean;
 
 /**
  * Get the ACL with the given name. If need to get most of the ACL's, you should consider using
@@ -55,7 +55,7 @@ export function aclDestroyGroup(aclGroup: AclGroup): boolean;
  * @return Returns the ACL with that name if it could be retrieved, ''false''/''nil'' if the ACL
  * does not exist or it fails for some other reason.
  */
-export function aclGet(aclName: string): Acl;
+export function aclGet(aclName: string): ACL;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -69,7 +69,7 @@ export function aclGet(aclName: string): Acl;
  * * Returns the ACL group if it could be found. Returns false/nil if it did not exist or failed
  * for some reason.
  */
-export function aclGetGroup(groupName: string): AclGroup;
+export function aclGetGroup(groupName: string): ACLGroup;
 
 /**
  * Get the name of given ACL.
@@ -77,7 +77,7 @@ export function aclGetGroup(groupName: string): AclGroup;
  * @return Returns the name of the given ACL as a string if successful. Returns ''false''/''nil''
  * if unsuccessful, ie the ACL is invalid.
  */
-export function aclGetName(theAcl: Acl): string;
+export function aclGetName(theAcl: ACL): string;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -92,7 +92,7 @@ export function aclGetName(theAcl: Acl): string;
  * ''nil'' if it failed for some reason, e.g. an invalid ACL was specified or the right specified does
  * not exist in the ACL.
  */
-export function aclGetRight(theAcl: Acl, rightName: string): boolean;
+export function aclGetRight(theAcl: ACL, rightName: string): boolean;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -110,7 +110,7 @@ export function aclGetRight(theAcl: Acl, rightName: string): boolean;
  * either of the elements are invalid, the ACL is already in that group or if something else goes
  * wrong.
  */
-export function aclGroupAddACL(theGroup: AclGroup, theACL: Acl): boolean;
+export function aclGroupAddACL(theGroup: ACLGroup, theACL: ACL): boolean;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -130,7 +130,7 @@ export function aclGroupAddACL(theGroup: AclGroup, theACL: Acl): boolean;
  * * Returns ''true'' if the object was successfully added to the ACL, ''false'' if it already
  * existed in the list.
  */
-export function aclGroupAddObject(theGroup: AclGroup, theObjectName: string): boolean;
+export function aclGroupAddObject(theGroup: ACLGroup, theObjectName: string): boolean;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -143,7 +143,7 @@ export function aclGroupAddObject(theGroup: AclGroup, theObjectName: string): bo
  * * Returns the name of the given ACL group as a string if successful, otherwise ''false'' or
  * ''nil'' if the aclGroup is invalid or it fails for some other reason.
  */
-export function aclGroupGetName(aclGroup: AclGroup): string;
+export function aclGroupGetName(aclGroup: ACLGroup): string;
 
 /**
  * This function returns a table of all the ACL groups.
@@ -164,7 +164,7 @@ export function aclGroupList(): Table;
  * * Returns a table of the ACL elements in the given ACL group. This table might be empty. Returns
  * ''false'' or ''nil'' if theGroup is invalid or it fails for some other reason.
  */
-export function aclGroupListACL(theGroup: AclGroup): Table;
+export function aclGroupListACL(theGroup: ACLGroup): Table;
 
 /**
  * <!-- Change this to "Client function" or "Server function" appropriately-->
@@ -179,7 +179,7 @@ export function aclGroupListACL(theGroup: AclGroup): Table;
  * * Returns a table of strings in the given ACL group. This table might be empty. Returns
  * ''false'' or ''nil'' if theGroup is invalid or it fails for some other reason.
  */
-export function aclGroupListObjects(theGroup: AclGroup): Table;
+export function aclGroupListObjects(theGroup: ACLGroup): Table;
 
 /**
  * This function removes the given ACL from the given ACL group.
@@ -189,7 +189,7 @@ export function aclGroupListObjects(theGroup: AclGroup): Table;
  * @return Returns ''true'' if the ACL was successfully removed from the ACL group,
  * ''false''/''nil'' if it could not be removed for some reason, ie. either of the elements were invalid.
  */
-export function aclGroupRemoveACL(theGroup: AclGroup, theACL: Acl): boolean;
+export function aclGroupRemoveACL(theGroup: ACLGroup, theACL: ACL): boolean;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -204,7 +204,7 @@ export function aclGroupRemoveACL(theGroup: AclGroup, theACL: Acl): boolean;
  * * Returns ''true'' if the object existed in the ACL and could be remoevd, ''false'' if it could
  * not be removed for some reason, ie. it did not exist in the given ACL group.
  */
-export function aclGroupRemoveObject(theGroup: AclGroup, theObjectString: string): boolean;
+export function aclGroupRemoveObject(theGroup: ACLGroup, theObjectString: string): boolean;
 
 /**
  * This function returns a list of all the ACLs.
@@ -223,7 +223,7 @@ export function aclList(): Table;
  * @return Returns a table over the rights as strings in the given ACL. This table might be empty.
  * Returns ''false'' or ''nil'' if theACL is invalid or it fails for some other reason.
  */
-export function aclListRights(theACL: Acl, allowedType: string): Table;
+export function aclListRights(theACL: ACL, allowedType: string): Table;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -250,7 +250,7 @@ export function aclReload(): boolean;
  * * Returns ''true'' if the given right was successfully removed from the given ACL, ''false'' or
  * ''nil'' if it could not be removed for some reason, ie. it didn't exist in the ACL.
  */
-export function aclRemoveRight(theAcl: Acl, rightName: string): boolean;
+export function aclRemoveRight(theAcl: ACL, rightName: string): boolean;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -276,7 +276,7 @@ export function aclSave(): boolean;
  * @return Returns ''true'' if the access was successfully changed, ''false'' or ''nil'' if it
  * failed for some reason, ie. invalid ACL or the rightname is invalid.
  */
-export function aclSetRight(theAcl: Acl, rightName: string, hasAccess: boolean): boolean;
+export function aclSetRight(theAcl: ACL, rightName: string, hasAccess: boolean): boolean;
 
 /**
  * This function is used to determine if an object is in a group.
@@ -285,4 +285,4 @@ export function aclSetRight(theAcl: Acl, rightName: string, hasAccess: boolean):
  * @param theGroup the ACL group pointer of the group from which the object should be found.
  * @return Returns ''true'' if the object is in the specified group, ''false'' otherwise.
  */
-export function isObjectInACLGroup(theObject: string, theGroup: AclGroup): boolean;
+export function isObjectInACLGroup(theObject: string, theGroup: ACLGroup): boolean;

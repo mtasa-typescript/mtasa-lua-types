@@ -1,52 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    Acl,
-    AclGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
+import { Marker } from 'types/mtasa/client/structure';
 
 /**
  * [[Image:Mtasa_markers.png|thumb|337px|This image shows all the different marker types available
@@ -84,7 +39,17 @@ import {
  * @return Returns the [[marker]] element that was created, or ''false'' if the arguments are
  * incorrect.
  */
-export function createMarker(x: number, y: number, z: number, theType?: string, size?: number, r?: number, g?: number, b?: number, a?: number): Marker;
+export function createMarker(
+    x: number,
+    y: number,
+    z: number,
+    theType?: string,
+    size?: number,
+    r?: number,
+    g?: number,
+    b?: number,
+    a?: number,
+): Marker;
 
 /**
  * This function returns the color and transparency for a marker element. Not all marker types

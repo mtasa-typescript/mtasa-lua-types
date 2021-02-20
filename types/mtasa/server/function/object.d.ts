@@ -1,6 +1,8 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
+import { Object as MtasaObject } from 'types/mtasa/server/structure';
+
 /**
  * Creates an [[object]] [[element]] at a given position and rotation.
  * @see {@link https://wiki.multitheftauto.com/wiki/createObject|MTASA Wiki}
@@ -26,7 +28,7 @@ export function createObject(
     ry: number,
     rz: number,
     isLowLOD: boolean,
-): object;
+): MtasaObject;
 
 /**
  * This function returns the visible size of an object.
@@ -35,7 +37,7 @@ export function createObject(
  * @return * Three [[float]] values indicating the scale of the object on the x, y, and z axis if
  * successful, ''false'' otherwise.
  */
-export function getObjectScale(theObject: object): LuaMultiReturn<[number, number, number]>;
+export function getObjectScale(theObject: MtasaObject): LuaMultiReturn<[number, number, number]>;
 
 /**
  * This function will smoothly move an object from its current position to a specified rotation and
@@ -63,7 +65,7 @@ export function getObjectScale(theObject: object): LuaMultiReturn<[number, numbe
  * * * ''false'' otherwise.
  */
 export function moveObject(
-    theObject: object,
+    theObject: MtasaObject,
     time: number,
     targetx: number,
     targety: number,
@@ -90,7 +92,7 @@ export function moveObject(
  * @return * ''true'' if the scale was set properly.
  * * * ''false'' otherwise.
  */
-export function setObjectScale(theObject: object, scale: number, scaleY?: number, scaleZ?: number): boolean;
+export function setObjectScale(theObject: MtasaObject, scale: number, scaleY?: number, scaleZ?: number): boolean;
 
 /**
  * This will allow you to stop an object that is currently moving.
@@ -99,4 +101,4 @@ export function setObjectScale(theObject: object, scale: number, scaleY?: number
  * @return * ''true'' if successful.
  * * * ''false'' otherwise.
  */
-export function stopObject(theobject: object): boolean;
+export function stopObject(theobject: MtasaObject): boolean;

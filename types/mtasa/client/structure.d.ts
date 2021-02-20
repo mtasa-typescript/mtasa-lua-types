@@ -1,8 +1,8 @@
 // TODO: make something with that
 
 export type Account = any;
-export type Acl = any;
-export type AclGroup = any;
+export type ACL = any;
+export type ACLGroup = any;
 export type Player = any;
 export type Table = any;
 export type Ban = any;

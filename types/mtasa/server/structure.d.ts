@@ -1,28 +1,31 @@
 // TODO: make something with that
 
-export type Account = any;
-export type Acl = any;
-export type AclGroup = any;
-export type Player = any;
 export type Table = any;
-export type Ban = any;
-export type Blip = any;
-export type ColShape = any;
-export type Element = any;
-export type Ped = any;
-export type Pickup = any;
-export type Resource = any;
-export type Team = any;
-export type TextDisplay = any;
-export type Vehicle = any;
-export type XmlNode = any;
-export type TextItem = any;
-export type File = any;
-export type Marker = any;
-export type RadarArea = any;
-export type Request = any;
 export type Userdata = any;
-export type Water = any;
-export type Timer = any;
+export type TextItem = Userdata;
+export type TextDisplay = Userdata;
+export type Pickup = Userdata;
+export type Request = Userdata;
+
+export { Account } from 'types/mtasa/server/oop/Account';
+export { ACL } from 'types/mtasa/server/oop/ACL';
+export { ACLGroup } from 'types/mtasa/server/oop/ACLGroup';
+export { Player } from 'types/mtasa/server/oop/Player';
+export { Ban } from 'types/mtasa/server/oop/Ban';
+export { Blip } from 'types/mtasa/server/oop/Blip';
+export { ColShape } from 'types/mtasa/server/oop/ColShape';
+export { Element } from 'types/mtasa/server/oop/Element';
+export { Ped } from 'types/mtasa/server/oop/Ped';
+export { Resource } from 'types/mtasa/server/oop/Resource';
+export { Team } from 'types/mtasa/server/oop/Team';
+export { Vehicle } from 'types/mtasa/server/oop/Vehicle';
+export { XmlNode } from 'types/mtasa/server/oop/XmlNode';
+export { File } from 'types/mtasa/server/oop/File';
+export { Marker } from 'types/mtasa/server/oop/Marker';
+export { Object } from 'types/mtasa/server/oop/Object';
+export { RadarArea } from 'types/mtasa/server/oop/RadarArea';
+export { Water } from 'types/mtasa/server/oop/Water';
+export { Timer } from 'types/mtasa/server/oop/Timer';
+export { XML } from 'types/mtasa/server/oop/XML';
 
 export type HandleFunction = any;
