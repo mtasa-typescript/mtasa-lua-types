@@ -353,7 +353,7 @@ export function processLineOfSight(
     seeThroughStuff: boolean,
     ignoreSomeObjectsForCamera: boolean,
     shootThroughStuff: boolean,
-    ignoredElement: element,
+    ignoredElement: Element,
     includeWorldModelInformation: boolean,
     bIncludeCarTyres: boolean,
 ): LuaMultiReturn<
@@ -362,7 +362,7 @@ export function processLineOfSight(
         number,
         number,
         number,
-        element,
+        Element,
         number,
         number,
         number,

@@ -7,8 +7,10 @@
  *
  *
  */
+import { RadarArea } from "./element";
+import { element } from "./dx";
 
-declare function createRadarArea(
+export function createRadarArea(
     startPosX: number,
     startPosY: number,
     sizeX: number,
@@ -20,16 +22,16 @@ declare function createRadarArea(
     visibleTo?: element,
 ): RadarArea;
 
-declare function getRadarAreaColor(theRadararea: RadarArea): [number, number, number, number];
+export function getRadarAreaColor(theRadararea: RadarArea): [number, number, number, number];
 
-declare function getRadarAreaSize(theRadararea: RadarArea): [number, number];
+export function getRadarAreaSize(theRadararea: RadarArea): [number, number];
 
-declare function isInsideRadarArea(theArea: any, posX: number, posY: number): boolean;
+export function isInsideRadarArea(theArea: any, posX: number, posY: number): boolean;
 
-declare function isRadarAreaFlashing(theRadararea: RadarArea): boolean;
+export function isRadarAreaFlashing(theRadararea: RadarArea): boolean;
 
-declare function setRadarAreaColor(theRadarArea: RadarArea, r: number, g: number, b: number, a: number): boolean;
+export function setRadarAreaColor(theRadarArea: RadarArea, r: number, g: number, b: number, a: number): boolean;
 
-declare function setRadarAreaFlashing(theRadarArea: RadarArea, flash: boolean): boolean;
+export function setRadarAreaFlashing(theRadarArea: RadarArea, flash: boolean): boolean;
 
-declare function setRadarAreaSize(theRadararea: RadarArea, x: number, y: number): boolean;
+export function setRadarAreaSize(theRadararea: RadarArea, x: number, y: number): boolean;

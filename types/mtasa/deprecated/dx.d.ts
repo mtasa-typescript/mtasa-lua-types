@@ -1,7 +1,7 @@
-type Material = object;
-type Color = number;
-type Font = object;
-type element = object;
+export type Material = object;
+export type Color = number;
+export type Font = object;
+export type element = object;
 
 /**
  * This function retrieves the hex number of a specified color, useful for the dx functions.
@@ -12,7 +12,7 @@ type element = object;
  * @param alpha The amount of alpha in the color (0-255).
  * @returns Returns a single value representing the color.
  */
-declare function tocolor(red: number, green: number, blue: number, alpha?: number): Color;
+export function tocolor(red: number, green: number, blue: number, alpha?: number): Color;
 
 /**
  * Draws an image on the screen for a single frame. In order for the image to stay visible continuously,
@@ -34,7 +34,7 @@ declare function tocolor(red: number, green: number, blue: number, alpha?: numbe
  * GUI(rendered by CEGUI).
  * @returns Returns true if successful, false otherwise.
  */
-declare function dxDrawImage(
+export function dxDrawImage(
     posX: number,
     posY: number,
     width: number,
@@ -71,7 +71,7 @@ declare function dxDrawImage(
  * ingame GUI (rendered by CEGUI).
  * @returns Returns true if successful, false otherwise.
  */
-declare function dxDrawImageSection(
+export function dxDrawImageSection(
     posX: number,
     posY: number,
     width: number,
@@ -102,7 +102,7 @@ declare function dxDrawImageSection(
  * (rendered by CEGUI).
  * @returns Returns a true if the operation was successful, false otherwise.
  */
-declare function dxDrawLine(
+export function dxDrawLine(
     startX: number,
     startY: number,
     endX: number,
@@ -125,7 +125,7 @@ declare function dxDrawLine(
  * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI (rendered by CEGUI).
  * @returns Returns a true if the operation was successful, false otherwise.
  */
-declare function dxDrawLine3D(
+export function dxDrawLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -148,7 +148,7 @@ declare function dxDrawLine3D(
  * @param subPixelPositioning subPixelPositioning A bool representing whether the rectangle can be positioned sub-pixel-ly. (FROM VERSION 1.4.0 r6931 ONWARDS)
  * @returns Returns true if the operation was successful, false otherwise.
  */
-declare function dxDrawRectangle(
+export function dxDrawRectangle(
     startX: number,
     startY: number,
     width: number,
@@ -199,7 +199,7 @@ declare function dxDrawRectangle(
  * @param fRotationCenterY Rotation Origin Y
  * @returns Returns true if successful, false otherwise.
  */
-declare function dxDrawText(
+export function dxDrawText(
     text: string,
     left: number,
     top: number,
@@ -227,7 +227,7 @@ declare function dxDrawText(
  * @param font Either a custom DX font element or the name of a built-in dx font:
  * @returns Returns an integer of the height of the text.
  */
-declare function dxGetFontHeight(scale?: 1, font?: Font): number;
+export function dxGetFontHeight(scale?: 1, font?: Font): number;
 
 /**
  * This function retrieves the theoretical width of a certain piece of text, if it were to be drawn using dxDrawText.
@@ -237,23 +237,23 @@ declare function dxGetFontHeight(scale?: 1, font?: Font): number;
  * @param font Either a custom DX font element or the name of a built-in dx font:
  * @param bColorCoded Should we exclude color codes from the width? (false will include the hex in the length)
  */
-declare function dxGetTextWidth(text: string, scale?: 1, font?: Font, bColorCoded?: false): number;
+export function dxGetTextWidth(text: string, scale?: 1, font?: Font, bColorCoded?: false): number;
 
 /**
  * This function creates a DX font element that can be used in dxDrawText. Successful font creation is not guaranteed, and may fail due to hardware or memory limitations.
  * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is zero, failure is guaranteed.)
  * **It is highly recommended that dxSetTestMode is used when writing and testing scripts using dxCreateFont.**
  */
-declare function dxCreateFont(filepath: string, size?: 9, bold?: false, quality?: 'proof'): element;
+export function dxCreateFont(filepath: string, size?: 9, bold?: false, quality?: 'proof'): element;
 
-declare function dxCreateTexture(
+export function dxCreateTexture(
     filepath: string,
     textureFormat?: 'argb',
     mipmaps?: true,
     textureEdge?: 'wrap',
 ): element;
-declare function dxCreateTexture(pixels: string, textureFormat?: 'argb', mipmaps?: true, textureEdge?: 'wrap'): element;
-declare function dxCreateTexture(
+export function dxCreateTexture(pixels: string, textureFormat?: 'argb', mipmaps?: true, textureEdge?: 'wrap'): element;
+export function dxCreateTexture(
     width: number,
     height: number,
     textureFormat?: 'argb',
@@ -261,7 +261,7 @@ declare function dxCreateTexture(
     textureEdge?: 'wrap',
 ): element;
 
-declare function dxCreateShader(
+export function dxCreateShader(
     filepath: string,
     priority?: 0,
     maxDistance?: 0,
@@ -269,10 +269,10 @@ declare function dxCreateShader(
     elementTypes?: 'world,vehicle,object,other',
 ): [element, string];
 
-declare function dxCreateRenderTarget(width: number, height: number, withAlpha: false): element;
+export function dxCreateRenderTarget(width: number, height: number, withAlpha: false): element;
 
-declare function dxCreateScreenSource(width: number, height: number): element;
+export function dxCreateScreenSource(width: number, height: number): element;
 
-declare function dxGetMaterialSize(material: element): [number, number, number];
+export function dxGetMaterialSize(material: element): [number, number, number];
 
-declare function dxSetShaderValue(theShader: element, parameterName: string, value: object): boolean;
+export function dxSetShaderValue(theShader: element, parameterName: string, value: object): boolean;

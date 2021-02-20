@@ -38,7 +38,9 @@
  * @param ammo An integer representing the amount of ammo a pickup contains. This is only valid when the
  * pickup type is a weapon pickup.
  */
-declare function createPickup(
+import { Pickup, Player } from "./element";
+
+export function createPickup(
     x: number,
     y: number,
     z: number,
@@ -48,20 +50,20 @@ declare function createPickup(
     ammo?: 50,
 ): Pickup;
 
-declare function getPickupAmmo(thePickup: Pickup): number;
+export function getPickupAmmo(thePickup: Pickup): number;
 
-declare function getPickupAmount(thePickup: Pickup): number;
+export function getPickupAmount(thePickup: Pickup): number;
 
-declare function getPickupType(thePickup: Pickup): number;
+export function getPickupType(thePickup: Pickup): number;
 
-declare function getPickupWeapon(thePickup: Pickup): number;
+export function getPickupWeapon(thePickup: Pickup): number;
 
-declare function setPickupType(thePickup: Pickup, theType: number, amount_weapon_model: number, ammo?: number): boolean;
+export function setPickupType(thePickup: Pickup, theType: number, amount_weapon_model: number, ammo?: number): boolean;
 
-declare function getPickupRespawnnumbererval(thePickup: Pickup): number;
+export function getPickupRespawnnumbererval(thePickup: Pickup): number;
 
-declare function isPickupSpawned(thePickup: Pickup): boolean;
+export function isPickupSpawned(thePickup: Pickup): boolean;
 
-declare function setPickupRespawnnumbererval(thePickup: Pickup, ms: number): boolean;
+export function setPickupRespawnnumbererval(thePickup: Pickup, ms: number): boolean;
 
-declare function usePickup(thePickup: Pickup, thePlayer: Player): boolean;
+export function usePickup(thePickup: Pickup, thePlayer: Player): boolean;

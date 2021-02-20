@@ -5,8 +5,10 @@
  *
  *
  */
+import { Player, Projectile } from "./element";
+import { element } from "./dx";
 
-declare function createProjectile(
+export function createProjectile(
     creator: element,
     weaponType: number,
     posX?: number,
@@ -23,16 +25,16 @@ declare function createProjectile(
     model?: number,
 ): Projectile;
 
-declare function getProjectileCreator(theProjectile: Projectile): element;
+export function getProjectileCreator(theProjectile: Projectile): element;
 
-declare function getProjectileForce(theProjectile: Projectile): number;
+export function getProjectileForce(theProjectile: Projectile): number;
 
-declare function getProjectileTarget(theProjectile: Projectile): element;
+export function getProjectileTarget(theProjectile: Projectile): element;
 
-declare function getProjectileType(theProjectile: Projectile): number;
+export function getProjectileType(theProjectile: Projectile): number;
 
-declare function detonateSatchels(player?: Player): boolean;
+export function detonateSatchels(player?: Player): boolean;
 
-declare function getProjectileCounter(theProjectile: Projectile): number;
+export function getProjectileCounter(theProjectile: Projectile): number;
 
-declare function setProjectileCounter(theProjectile: Projectile, timeToDetonate: number): boolean;
+export function setProjectileCounter(theProjectile: Projectile, timeToDetonate: number): boolean;

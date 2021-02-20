@@ -1,52 +1,55 @@
 // https://wiki.multitheftauto.com/wiki/Element
 
 // type Colshape = object;
-type Var = object;
+import { element } from "./dx";
+import { table } from "./MTA";
+
+export type Var = object;
 // type Player = object;
 
-type Player = object;
-type Ped = object;
-type Vehicle = object;
-type _Object = object;
-type Pickup = object;
-type Marker = object;
-type Colshape = object;
-type Blip = object;
-type RadarArea = object;
-type Projectile = object;
-type Team = object;
-type Serverconsole = object;
-type Button = object;
-type Checkbox = object;
-type Combobox = object;
-type Editfield = object;
-type Gridlist = object;
-type Memo = object;
-type Progressbar = object;
-type Radiobutton = object;
-type Scrollbar = object;
-type Scrollpane = object;
-type Staticimage = object;
-type Tabpanel = object;
-type Tab = object;
-type Textlabel = object;
-type _Window = object;
-type TXD = object;
-type DFF = object;
-type COL = object;
-type Sound = object;
-type Texture = object;
-type Shader = object;
-type DXfont = object;
-type GUIfont = object;
-type Weapon = object;
-type Camera = object;
-type Effect = object;
-type Browser = object;
-type Light = object;
-type Searchlight = object;
+export type Player = object;
+export type Ped = object;
+export type Vehicle = object;
+export type _Object = object;
+export type Pickup = object;
+export type Marker = object;
+export type Colshape = object;
+export type Blip = object;
+export type RadarArea = object;
+export type Projectile = object;
+export type Team = object;
+export type Serverconsole = object;
+export type Button = object;
+export type Checkbox = object;
+export type Combobox = object;
+export type Editfield = object;
+export type Gridlist = object;
+export type Memo = object;
+export type Progressbar = object;
+export type Radiobutton = object;
+export type Scrollbar = object;
+export type Scrollpane = object;
+export type Staticimage = object;
+export type Tabpanel = object;
+export type Tab = object;
+export type Textlabel = object;
+export type _Window = object;
+export type TXD = object;
+export type DFF = object;
+export type COL = object;
+export type Sound = object;
+export type Texture = object;
+export type Shader = object;
+export type DXfont = object;
+export type GUIfont = object;
+export type Weapon = object;
+export type Camera = object;
+export type Effect = object;
+export type Browser = object;
+export type Light = object;
+export type Searchlight = object;
 
-declare function attachElements(
+export function attachElements(
     theElement: element,
     theAttachToElement: element,
     xPosOffset?: 0,
@@ -57,105 +60,105 @@ declare function attachElements(
     zRotOffset?: 0,
 ): boolean;
 
-declare function createElement(elementType: string, elementID: string): element;
+export function createElement(elementType: string, elementID: string): element;
 
-declare function destroyElement(elementToDestroy: element): boolean;
+export function destroyElement(elementToDestroy: element): boolean;
 
-declare function detachElements(theElement: element, theAttachToElement: element): boolean;
+export function detachElements(theElement: element, theAttachToElement: element): boolean;
 
-declare function getAttachedElements(theElement: element): table;
+export function getAttachedElements(theElement: element): table;
 
-declare function getElementAttachedOffsets(theElement: element): [number, number, number, number, number, number];
+export function getElementAttachedOffsets(theElement: element): [number, number, number, number, number, number];
 
-declare function getElementAlpha(theElement: element): number;
+export function getElementAlpha(theElement: element): number;
 
-declare function getElementCollisionsEnabled(theElement: element): boolean;
+export function getElementCollisionsEnabled(theElement: element): boolean;
 
-declare function getElementAttachedTo(theElement: element): element;
+export function getElementAttachedTo(theElement: element): element;
 
-declare function getElementBoundingBox(theElement: element): [number, number, number, number, number, number];
+export function getElementBoundingBox(theElement: element): [number, number, number, number, number, number];
 
-declare function getElementByID(id: string, index?: 0): element;
+export function getElementByID(id: string, index?: 0): element;
 
-declare function getElementChild(parent: element, index: number): element;
+export function getElementChild(parent: element, index: number): element;
 
-declare function getElementChildren(parent: element, theType: string): table;
+export function getElementChildren(parent: element, theType: string): table;
 
-declare function getElementChildrenCount(parent: element): number;
+export function getElementChildrenCount(parent: element): number;
 
-declare function getElementColShape(theElement: element): Colshape;
+export function getElementColShape(theElement: element): Colshape;
 
-declare function getElementData(theElement: element, key: string, inherit: true): Var;
+export function getElementData(theElement: element, key: string, inherit: true): Var;
 
-declare function getElementDimension(theElement: element): number;
+export function getElementDimension(theElement: element): number;
 
-declare function getElementDistanceFromCentreOfMassToBaseOfModel(theElement: element): number;
+export function getElementDistanceFromCentreOfMassToBaseOfModel(theElement: element): number;
 
-declare function getElementHealth(theElement: element): number;
+export function getElementHealth(theElement: element): number;
 
-declare function getElementID(theElement: element): string;
+export function getElementID(theElement: element): string;
 
-declare function getElementInterior(theElement: element): number;
+export function getElementInterior(theElement: element): number;
 
-declare function getElementMatrix(theElement: element, legacy: true): table;
+export function getElementMatrix(theElement: element, legacy: true): table;
 
-declare function getElementModel(theElement: element): number;
+export function getElementModel(theElement: element): number;
 
-declare function getElementParent(theElement: element): element;
+export function getElementParent(theElement: element): element;
 
-declare function getElementRotation(theElement: element, rotOrder?: 'default'): [number, number, number];
+export function getElementRotation(theElement: element, rotOrder?: 'default'): [number, number, number];
 
-declare function getElementRadius(theElement: element): number;
+export function getElementRadius(theElement: element): number;
 
-declare function getElementsByType(theType: string, startat?: element, streamedIn?: false): table;
+export function getElementsByType(theType: string, startat?: element, streamedIn?: false): table;
 
-declare function getElementsWithinColShape(shape: Colshape, elemType?: string): table;
+export function getElementsWithinColShape(shape: Colshape, elemType?: string): table;
 
-declare function getElementType(theElement: element): string;
+export function getElementType(theElement: element): string;
 
-declare function getElementVelocity(theElement: element): [number, number, number];
+export function getElementVelocity(theElement: element): [number, number, number];
 
-declare function getLowLODElement(theElement: element): element;
+export function getLowLODElement(theElement: element): element;
 
-declare function getRootElement(): element;
+export function getRootElement(): element;
 
-declare function getResourceRootElement(theResource?: object): element;
+export function getResourceRootElement(theResource?: object): element;
 
-declare function isElement(theValue: object): boolean;
+export function isElement(theValue: object): boolean;
 
-declare function isElementAttached(theElement: element): boolean;
+export function isElementAttached(theElement: element): boolean;
 
-declare function isElementCallPropagationEnabled(theElement: element): boolean;
+export function isElementCallPropagationEnabled(theElement: element): boolean;
 
-declare function isElementCollidableWith(theElement: element, withElement: element): boolean;
+export function isElementCollidableWith(theElement: element, withElement: element): boolean;
 
-declare function isElementDoubleSided(theElement: element): boolean;
+export function isElementDoubleSided(theElement: element): boolean;
 
-declare function isElementFrozen(theElement: element): boolean;
+export function isElementFrozen(theElement: element): boolean;
 
-declare function isElementLocal(theElement: element): boolean;
+export function isElementLocal(theElement: element): boolean;
 
-declare function isElementLowLOD(theElement: element): boolean;
+export function isElementLowLOD(theElement: element): boolean;
 
-declare function isElementInWater(theElement: element): boolean;
+export function isElementInWater(theElement: element): boolean;
 
-declare function isElementOnScreen(theElement: element): boolean;
+export function isElementOnScreen(theElement: element): boolean;
 
-declare function isElementStreamable(theElement: element): boolean;
+export function isElementStreamable(theElement: element): boolean;
 
-declare function isElementStreamedIn(theElement: element): boolean;
+export function isElementStreamedIn(theElement: element): boolean;
 
-declare function isElementSyncer(theElement: element): boolean;
+export function isElementSyncer(theElement: element): boolean;
 
-declare function isElementWaitingForGroundToLoad(theElement: element): boolean;
+export function isElementWaitingForGroundToLoad(theElement: element): boolean;
 
-declare function isElementWithinColShape(theElement: element, theShape: Colshape): boolean;
+export function isElementWithinColShape(theElement: element, theShape: Colshape): boolean;
 
-declare function isElementWithinMarker(theElement: element, theMarker: Marker): boolean;
+export function isElementWithinMarker(theElement: element, theMarker: Marker): boolean;
 
-declare function setElementAlpha(theElement: element, alpha: number): boolean;
+export function setElementAlpha(theElement: element, alpha: number): boolean;
 
-declare function setElementAttachedOffsets(
+export function setElementAttachedOffsets(
     theElement: element,
     xPosOffset?: number,
     yPosOffset?: number,
@@ -165,35 +168,35 @@ declare function setElementAttachedOffsets(
     zRotOffset?: number,
 ): boolean;
 
-declare function setElementCallPropagationEnabled(theElement: element, enabled: boolean): boolean;
+export function setElementCallPropagationEnabled(theElement: element, enabled: boolean): boolean;
 
-declare function setElementCollidableWith(theElement: element, withElement: element, enabled: boolean): boolean;
+export function setElementCollidableWith(theElement: element, withElement: element, enabled: boolean): boolean;
 
-declare function setElementCollisionsEnabled(theElement: element, enabled: boolean): boolean;
+export function setElementCollisionsEnabled(theElement: element, enabled: boolean): boolean;
 
-declare function setElementData(theElement: element, key: string, value: Var, synchronize?: true): boolean;
+export function setElementData(theElement: element, key: string, value: Var, synchronize?: true): boolean;
 
-declare function setElementDimension(theElement: element, dimension: number): boolean;
+export function setElementDimension(theElement: element, dimension: number): boolean;
 
-declare function setElementDoubleSided(theElement: element, enable: boolean): boolean;
+export function setElementDoubleSided(theElement: element, enable: boolean): boolean;
 
-declare function setElementFrozen(theElement: element, freezeStatus: boolean): boolean;
+export function setElementFrozen(theElement: element, freezeStatus: boolean): boolean;
 
-declare function setElementHealth(theElement: element, newHealth: number): boolean;
+export function setElementHealth(theElement: element, newHealth: number): boolean;
 
-declare function setElementID(theElement: element, name: string): boolean;
+export function setElementID(theElement: element, name: string): boolean;
 
-declare function setElementInterior(theElement: element, interior: number, x?: number, y?: number, z?: number): boolean;
+export function setElementInterior(theElement: element, interior: number, x?: number, y?: number, z?: number): boolean;
 
-declare function setElementMatrix(theElement: element, theMatrix: table): boolean;
+export function setElementMatrix(theElement: element, theMatrix: table): boolean;
 
-declare function setElementModel(theElement: element, model: number): boolean;
+export function setElementModel(theElement: element, model: number): boolean;
 
-declare function setElementParent(theElement: element, parent: element): boolean;
+export function setElementParent(theElement: element, parent: element): boolean;
 
-declare function setElementPosition(theElement: element, x: number, y: number, z: number, warp?: true): boolean;
+export function setElementPosition(theElement: element, x: number, y: number, z: number, warp?: true): boolean;
 
-declare function setElementRotation(
+export function setElementRotation(
     theElement: element,
     rotX: number,
     rotY: number,
@@ -202,28 +205,28 @@ declare function setElementRotation(
     conformPedRotation?: false,
 ): boolean;
 
-declare function setElementStreamable(theElement: element, streamable: boolean): boolean;
+export function setElementStreamable(theElement: element, streamable: boolean): boolean;
 
-declare function setElementVelocity(theElement: element, speedX: number, speedY: number, speedZ: number): boolean;
+export function setElementVelocity(theElement: element, speedX: number, speedY: number, speedZ: number): boolean;
 
-declare function setLowLODElement(theElement: element, lowLODElement: element): boolean;
+export function setLowLODElement(theElement: element, lowLODElement: element): boolean;
 
 ////////// SERVER ONLY
 
-declare function clearElementVisibleTo(theElement: element): boolean;
+export function clearElementVisibleTo(theElement: element): boolean;
 
-declare function cloneElement(theElement: element, xPos?: 0, yPos?: 0, zPos?: 0, cloneChildren?: false): element;
+export function cloneElement(theElement: element, xPos?: 0, yPos?: 0, zPos?: 0, cloneChildren?: false): element;
 
-declare function getElementByIndex(theType: string, index: number): element;
+export function getElementByIndex(theType: string, index: number): element;
 
-declare function getElementZoneName(theElement: element, citiesonly?: false): string;
+export function getElementZoneName(theElement: element, citiesonly?: false): string;
 
-declare function isElementVisibleTo(theElement: element, visibleTo: element): boolean;
+export function isElementVisibleTo(theElement: element, visibleTo: element): boolean;
 
-declare function removeElementData(theElement: element, key: string): boolean;
+export function removeElementData(theElement: element, key: string): boolean;
 
-declare function setElementSyncer(theElement: element, thePlayer: Player): boolean;
+export function setElementSyncer(theElement: element, thePlayer: Player): boolean;
 
-declare function setElementVisibleTo(theElement: element, visibleTo: element, visible: boolean): boolean;
+export function setElementVisibleTo(theElement: element, visibleTo: element, visible: boolean): boolean;
 
-declare function getElementSyncer(theElement: element): element;
+export function getElementSyncer(theElement: element): element;

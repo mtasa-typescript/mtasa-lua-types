@@ -1,84 +1,88 @@
-declare function getPedFightingStyle(thePed: Ped): number;
+import { Ped, Vehicle } from "./element";
+import { element } from "./dx";
+import { table } from "./MTA";
 
-declare function getPedAmmoInClip(thePed: Ped, weaponSlot?: number): number;
+export function getPedFightingStyle(thePed: Ped): number;
 
-declare function getPedGravity(thePed: Ped): number;
+export function getPedAmmoInClip(thePed: Ped, weaponSlot?: number): number;
 
-declare function isPedFrozen(thePed: Ped): boolean;
+export function getPedGravity(thePed: Ped): number;
 
-declare function getPedOccupiedVehicle(thePed: Ped): Vehicle;
+export function isPedFrozen(thePed: Ped): boolean;
 
-declare function setPedStat(thePed: Ped, stat: number, value: number): boolean;
+export function getPedOccupiedVehicle(thePed: Ped): Vehicle;
 
-declare function addPedClothes(thePed: Ped, clothesTexture: string, clothesModel: string, clothesType: number): boolean;
+export function setPedStat(thePed: Ped, stat: number, value: number): boolean;
 
-declare function isPedDucked(thePed: Ped): boolean;
+export function addPedClothes(thePed: Ped, clothesTexture: string, clothesModel: string, clothesType: number): boolean;
 
-declare function isPedHeadless(thePed: Ped): boolean;
+export function isPedDucked(thePed: Ped): boolean;
 
-declare function getPedContactElement(thePed: Ped): element;
+export function isPedHeadless(thePed: Ped): boolean;
 
-declare function createPed(modelid: number, x: number, y: number, z: number, rot?: 0.0, synced?: true): Ped;
+export function getPedContactElement(thePed: Ped): element;
 
-declare function getPedArmor(thePed: Ped): number;
+export function createPed(modelid: number, x: number, y: number, z: number, rot?: 0.0, synced?: true): Ped;
 
-declare function setPedOnFire(thePed: Ped, isOnFire: boolean): boolean;
+export function getPedArmor(thePed: Ped): number;
 
-declare function getPedClothes(thePed: Ped, clothesType: number): string;
+export function setPedOnFire(thePed: Ped, isOnFire: boolean): boolean;
 
-declare function isPedInVehicle(thePed: Ped): boolean;
+export function getPedClothes(thePed: Ped, clothesType: number): string;
 
-declare function isPedInWater(thePed: Ped): boolean;
+export function isPedInVehicle(thePed: Ped): boolean;
 
-declare function isPedOnFire(thePed: Ped): boolean;
+export function isPedInWater(thePed: Ped): boolean;
 
-declare function doesPedHaveJetPack(thePed: Ped): boolean;
+export function isPedOnFire(thePed: Ped): boolean;
 
-declare function getValidPedModels(): table;
+export function doesPedHaveJetPack(thePed: Ped): boolean;
 
-declare function getPedWeaponSlot(thePed: Ped): number;
+export function getValidPedModels(): table;
 
-declare function killPed(thePed: Ped, theKiller?: Ped, weapon?: 255, bodyPart?: 255, stealth?: false): boolean;
+export function getPedWeaponSlot(thePed: Ped): number;
 
-declare function reloadPedWeapon(thePed: Ped): boolean;
+export function killPed(thePed: Ped, theKiller?: Ped, weapon?: 255, bodyPart?: 255, stealth?: false): boolean;
 
-declare function isPedOnGround(thePed: Ped): boolean;
+export function reloadPedWeapon(thePed: Ped): boolean;
 
-declare function getPedWeapon(thePed: Ped, weaponSlot?: number): number;
+export function isPedOnGround(thePed: Ped): boolean;
 
-declare function getPedTarget(thePed: Ped): element;
+export function getPedWeapon(thePed: Ped, weaponSlot?: number): number;
 
-declare function isPedDoingGangDriveby(thePed: Ped): boolean;
+export function getPedTarget(thePed: Ped): element;
 
-declare function givePedJetPack(thePed: Ped): boolean;
+export function isPedDoingGangDriveby(thePed: Ped): boolean;
 
-declare function getPedWalkingStyle(thePed: Ped): number;
+export function givePedJetPack(thePed: Ped): boolean;
 
-declare function getPedStat(thePed: Ped, stat: number): number;
+export function getPedWalkingStyle(thePed: Ped): number;
 
-declare function isPedChoking(thePed: Ped): boolean;
+export function getPedStat(thePed: Ped, stat: number): number;
 
-declare function removePedJetPack(thePed: Ped): boolean;
+export function isPedChoking(thePed: Ped): boolean;
 
-declare function getPedOccupiedVehicleSeat(thePed: Ped): number;
+export function removePedJetPack(thePed: Ped): boolean;
 
-declare function isPedDead(thePed: Ped): boolean;
+export function getPedOccupiedVehicleSeat(thePed: Ped): number;
 
-declare function setPedAnalogControlState(thePed: Ped, control: string, state: number): boolean;
+export function isPedDead(thePed: Ped): boolean;
 
-declare function setPedWeaponSlot(thePed: Ped, weaponSlot: number): boolean;
+export function setPedAnalogControlState(thePed: Ped, control: string, state: number): boolean;
 
-declare function setPedDoingGangDriveby(thePed: Ped, state: boolean): boolean;
+export function setPedWeaponSlot(thePed: Ped, weaponSlot: number): boolean;
 
-declare function setPedFightingStyle(thePed: Ped, style: number): boolean;
+export function setPedDoingGangDriveby(thePed: Ped, state: boolean): boolean;
 
-declare function setPedChoking(thePed: Ped, choking: boolean): boolean;
+export function setPedFightingStyle(thePed: Ped, style: number): boolean;
 
-declare function getPedTotalAmmo(thePed: Ped, weaponSlot?: number): number;
+export function setPedChoking(thePed: Ped, choking: boolean): boolean;
 
-declare function setPedArmor(thePed: Ped, armor: number): boolean;
+export function getPedTotalAmmo(thePed: Ped, weaponSlot?: number): number;
 
-declare function setPedAnimation(
+export function setPedArmor(thePed: Ped, armor: number): boolean;
+
+export function setPedAnimation(
     thePed: Ped,
     block?: string,
     anim?: string,
@@ -90,19 +94,19 @@ declare function setPedAnimation(
     blendTime?: 250,
 ): boolean;
 
-declare function removePedFromVehicle(thePed: Ped): boolean;
+export function removePedFromVehicle(thePed: Ped): boolean;
 
-declare function setPedFrozen(thePed: Ped, frozen: boolean): boolean;
+export function setPedFrozen(thePed: Ped, frozen: boolean): boolean;
 
-declare function setPedGravity(thePed: Ped, gravity: number): boolean;
+export function setPedGravity(thePed: Ped, gravity: number): boolean;
 
-declare function setPedHeadless(thePed: Ped, headState: boolean): boolean;
+export function setPedHeadless(thePed: Ped, headState: boolean): boolean;
 
-declare function removePedClothes(
+export function removePedClothes(
     thePed: Ped,
     clothesType: number,
     clothesTexture?: string,
     clothesModel?: string,
 ): boolean;
 
-declare function setPedAnimationProgress(thePed: Ped, anim?: string, progress?: number): boolean;
+export function setPedAnimationProgress(thePed: Ped, anim?: string, progress?: number): boolean;

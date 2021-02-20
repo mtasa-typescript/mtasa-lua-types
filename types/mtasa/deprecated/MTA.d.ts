@@ -1,76 +1,78 @@
 /**
  * Workaround...
  */
-type table = any;
+import { element } from "./dx";
+
+export type table = any;
 
 /**
  * returns a table of resource names containing all export functions
  */
-declare const exports: table;
+export const exports: table;
 
 /**
  * returns a resource element of the resource the snippet was executed in
  */
-declare const resource: element;
+export const resource: element;
 
 /**
  * returns a resource root element of the resource the snippet was executed in
  */
-declare const resourceRoot: element;
+export const resourceRoot: element;
 
 /**
  * returns the root element of the server
  */
-declare const root: element;
+export const root: element;
 
 /**
  * returns the root element of all GUI elements.
  */
-declare const guiRoot: element;
+export const guiRoot: element;
 
 /**
  * returns the player element of the local player.
  */
-declare const localPlayer: element;
+export const localPlayer: element;
 
 /**
  * The player or element the event was attached to
  */
-declare const source: element;
+export const source: element;
 
 /**
  * the name of the event ("onResourceStart", "onPlayerWasted" etc.)
  */
-declare const eventName: string;
+export const eventName: string;
 
 /**
  * the client that called the event
  */
-declare const client: element;
+export const client: element;
 
 /**
  * the root of the resource that called the event
  */
-declare const sourceResourceRoot: element;
+export const sourceResourceRoot: element;
 
 /**
  * the resource that called the event
  */
-declare const sourceResource: element;
+export const sourceResource: element;
 
 /**
  * current timer in callback function.
  */
-declare const sourceTimer: element;
+export const sourceTimer: element;
 
-declare function addCommandHandler(
+export function addCommandHandler(
     commandName: string,
     handlerFunction: (...args: any[]) => void,
     restricted?: false,
     caseSensitive?: true,
 ): boolean;
 
-declare function addCommandHandler(
+export function addCommandHandler(
     commandName: string,
     handlerFunction: (...args: any[]) => void,
     caseSensitive?: true,
@@ -79,7 +81,7 @@ declare function addCommandHandler(
 /**
  * **SERVER SIDE**
  */
-declare function outputChatBox(
+export function outputChatBox(
     text: string,
     visibleTo?: element,
     r?: 231,
@@ -91,4 +93,4 @@ declare function outputChatBox(
 /**
  * **CLIENT SIDE**
  */
-declare function outputChatBox(text: string, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean;
+export function outputChatBox(text: string, r?: 231, g?: 217, b?: 176, colorCoded?: false): boolean;

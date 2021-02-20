@@ -5,8 +5,10 @@
  *
  *
  */
+import { element } from "./dx";
+import { Marker } from "./element";
 
-declare function createMarker(
+export function createMarker(
     x: number,
     y: number,
     z: number,
@@ -19,24 +21,24 @@ declare function createMarker(
     visibleTo?: element,
 ): Marker;
 
-declare function getMarkerColor(theMarker: Marker): [number, number, number, number];
+export function getMarkerColor(theMarker: Marker): [number, number, number, number];
 
-declare function getMarkerCount(): number;
+export function getMarkerCount(): number;
 
-declare function getMarkerIcon(theMarker: Marker): string;
+export function getMarkerIcon(theMarker: Marker): string;
 
-declare function getMarkerSize(theMarker: Marker): number;
+export function getMarkerSize(theMarker: Marker): number;
 
-declare function getMarkerTarget(theMarker: Marker): [number, number, number];
+export function getMarkerTarget(theMarker: Marker): [number, number, number];
 
-declare function getMarkerType(theMarker: Marker): string;
+export function getMarkerType(theMarker: Marker): string;
 
-declare function setMarkerColor(theMarker: Marker, r: number, g: number, b: number, a: number): boolean;
+export function setMarkerColor(theMarker: Marker, r: number, g: number, b: number, a: number): boolean;
 
-declare function setMarkerIcon(theMarker: Marker, icon: string): boolean;
+export function setMarkerIcon(theMarker: Marker, icon: string): boolean;
 
-declare function setMarkerSize(theMarker: Marker, size: number): boolean;
+export function setMarkerSize(theMarker: Marker, size: number): boolean;
 
-declare function setMarkerTarget(theMarker: Marker, x: number, y: number, z: number): boolean;
+export function setMarkerTarget(theMarker: Marker, x: number, y: number, z: number): boolean;
 
-declare function setMarkerType(theMarker: Marker, markerType: string): boolean;
+export function setMarkerType(theMarker: Marker, markerType: string): boolean;

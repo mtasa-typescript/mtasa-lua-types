@@ -556,7 +556,7 @@ export function dxGetFontHeight(scale: number, font: string): number;
  * * If the material is a volume texture, this function will return three ''ints'' representing the
  * width, height and depth.
  */
-export function dxGetMaterialSize(material: element): LuaMultiReturn<[number, number, number?]>;
+export function dxGetMaterialSize(material: Element): LuaMultiReturn<[number, number, number?]>;
 
 /**
  * This function gets the color of a single pixel from [[Texture_pixels|pixels]] contained in a

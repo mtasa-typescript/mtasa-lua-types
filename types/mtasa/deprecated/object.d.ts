@@ -4,8 +4,9 @@
  *
  *
  */
+import { _Object } from "./element";
 
-declare function createObject(
+export function createObject(
     modelid: number,
     x: number,
     y: number,
@@ -16,7 +17,7 @@ declare function createObject(
     isLowLOD?: false,
 ): _Object;
 
-declare function moveObject(
+export function moveObject(
     theObject: _Object,
     time: number,
     targetx: number,
@@ -31,8 +32,8 @@ declare function moveObject(
     fEasingOvershoot?: number,
 ): boolean;
 
-declare function stopObject(theobject: _Object): boolean;
+export function stopObject(theobject: _Object): boolean;
 
-declare function getObjectScale(theObject: _Object): number;
+export function getObjectScale(theObject: _Object): number;
 
-declare function setObjectScale(theObject: _Object, scale: number, scaleY?: number, scaleZ?: number): boolean;
+export function setObjectScale(theObject: _Object, scale: number, scaleY?: number, scaleZ?: number): boolean;
