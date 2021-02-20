@@ -1,5 +1,5 @@
 /// <reference types="typescript-to-lua/language-extensions" />
-/** @noSelfInFile **/
+/** @noSelfInFile */
 
 import {
     account,
