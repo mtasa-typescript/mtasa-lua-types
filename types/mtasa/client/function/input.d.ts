@@ -1,52 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
+import { HandleFunction, Resource, Table } from 'types/mtasa/client/structure';
 
 /**
  * This retrieves the analog control state of a control.  This is useful for detecting sensitive
@@ -121,7 +76,11 @@ export function getKeyState(keyName: string): boolean;
  * @default true
  * @return Returns ''true'' if the command handler was added successfully, ''false'' otherwise.
  */
-export function addCommandHandler(commandName: string, handlerFunction: HandleFunction, caseSensitive?: boolean): boolean;
+export function addCommandHandler(
+    commandName: string,
+    handlerFunction: HandleFunction,
+    caseSensitive?: boolean,
+): boolean;
 
 /**
  * Binds a player's key to a handler function or command, which will be called when the key is
@@ -136,7 +95,13 @@ export function addCommandHandler(commandName: string, handlerFunction: HandleFu
  * @param arguments The optional arguments you specified when calling bindKey (see below).
  * @return Returns ''true'' if the key was bound, ''false'' otherwise.
  */
-export function bindKey(key: string, keyState: string, handlerFunction: HandleFunction, arguments: any, ...args: any[]): boolean;
+export function bindKey(
+    key: string,
+    keyState: string,
+    handlerFunction: HandleFunction,
+    arguments: any,
+    ...args: any[]
+): boolean;
 
 /**
  * This function will call all the attached functions of an existing console command, for a

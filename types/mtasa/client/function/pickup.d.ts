@@ -1,52 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
+import { Pickup, Player } from 'types/mtasa/client/structure';
 
 /**
  * This function creates a pickup element, which is placed in the GTA world and can be picked up to
@@ -68,7 +23,15 @@ import {
  * @return Returns [[pickup]] [[element]] if the pickup was created succesfully, otherwise returns
  * ''false''.
  */
-export function createPickup(x: number, y: number, z: number, theType: number, amount: number, respawnTime: number, ammo: number): Pickup;
+export function createPickup(
+    x: number,
+    y: number,
+    z: number,
+    theType: number,
+    amount: number,
+    respawnTime: number,
+    ammo: number,
+): Pickup;
 
 /**
  * This function retrieves the amount of ammo in a weapon pickup.

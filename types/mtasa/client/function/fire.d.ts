@@ -1,53 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
-
 /**
  * [[Image:Fire.png|thumb|200px|Fire with default size (1.8)]]
  * Creates a patch of fire that will spread a bit and die out after a while. Because it's a client

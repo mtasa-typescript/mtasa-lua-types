@@ -1,52 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
+import { Player, Table, Team } from 'types/mtasa/client/structure';
 
 /**
  * This function is for returning the number of players in the specified team.

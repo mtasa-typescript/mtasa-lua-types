@@ -1,52 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
+import { Searchlight } from 'types/mtasa/client/structure';
 
 /**
  *
@@ -64,7 +19,17 @@ import {
  * @return If every argument is correct and the limit of 1000 searchlights has not been reached,
  * this function returns a [[Element/Searchlight|searchlight element]]. Otherwise, it returns ''false''.
  */
-export function createSearchLight(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, startRadius: number, endRadius: number, renderSpot?: boolean): Searchlight;
+export function createSearchLight(
+    startX: number,
+    startY: number,
+    startZ: number,
+    endX: number,
+    endY: number,
+    endZ: number,
+    startRadius: number,
+    endRadius: number,
+    renderSpot?: boolean,
+): Searchlight;
 
 /**
  * This function gets the end position of a [[Element/Searchlight|searchlight]] element.
@@ -118,7 +83,12 @@ export function getSearchLightStartRadius(theSearchLight: Searchlight): number;
  * @return If every argument is correct, this function returns ''true''. If not, it will return
  * ''false'' plus an error message.
  */
-export function setSearchLightEndPosition(theSearchLight: Searchlight, endX: number, endY: number, endZ: number): boolean;
+export function setSearchLightEndPosition(
+    theSearchLight: Searchlight,
+    endX: number,
+    endY: number,
+    endZ: number,
+): boolean;
 
 /**
  * This function sets the end radius of a [[Element/Searchlight|searchlight]] element.
@@ -139,7 +109,12 @@ export function setSearchLightEndRadius(theSearchlight: Searchlight, endRadius: 
  * @return If every argument is correct, this function returns ''true''. If not, it will return
  * ''false'' plus an error message.
  */
-export function setSearchLightStartPosition(theSearchLight: Searchlight, startX: number, startY: number, startZ: number): boolean;
+export function setSearchLightStartPosition(
+    theSearchLight: Searchlight,
+    startX: number,
+    startY: number,
+    startZ: number,
+): boolean;
 
 /**
  * This function sets the start radius of a [[Element/Searchlight|searchlight]] element.

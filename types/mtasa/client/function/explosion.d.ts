@@ -1,53 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
-
 /**
  * Creates an explosion of a certain type at a specified point in the world. If creator is
  * specified, the explosion will occur only in its dimension.
@@ -65,4 +18,12 @@ import {
  * @return *''true'' if the explosion was created.
  * * * ''false'' if invalid parameters were passed.
  */
-export function createExplosion(x: number, y: number, z: number, theType: number, makeSound?: boolean, camShake?: number, damaging?: boolean): boolean;
+export function createExplosion(
+    x: number,
+    y: number,
+    z: number,
+    theType: number,
+    makeSound?: boolean,
+    camShake?: number,
+    damaging?: boolean,
+): boolean;

@@ -1,52 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import {
-    Account,
-    ACL,
-    ACLGroup,
-    Player,
-    Table,
-    Ban,
-    Blip,
-    ColShape,
-    Element,
-    Ped,
-    Pickup,
-    Resource,
-    Team,
-    TextDisplay,
-    Vehicle,
-    XmlNode,
-    TextItem,
-    HandleFunction,
-    File,
-    Marker,
-    RadarArea,
-    Request,
-    Userdata,
-    Timer,
-    Water,
-    Browser,
-    ProgressBar,
-    Light,
-    Effect,
-    Gui,
-    Searchlight,
-    Weapon,
-    GuiBrowser,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
-    PrimitiveType,
-    GuiScrollBar,
-    GuiMemo,
-    Texture,
-    ObjectGroup,
-    Projectile,
-    Matrix
-} from "types/mtasa/client/structure";
+import { Element, RadarArea } from 'types/mtasa/client/structure';
 
 /**
  * This function can be used to create custom radar areas on the radar.
@@ -69,7 +24,17 @@ import {
  * @default root
  * @return
  */
-export function createRadarArea(startPosX: number, startPosY: number, sizeX: number, sizeY: number, r: number, g: number, b: number, a: number, visibleTo: Element): RadarArea;
+export function createRadarArea(
+    startPosX: number,
+    startPosY: number,
+    sizeX: number,
+    sizeY: number,
+    r: number,
+    g: number,
+    b: number,
+    a: number,
+    visibleTo: Element,
+): RadarArea;
 
 /**
  * This function can be used to retrieve the current color of a [[radararea|radar area]].
