@@ -5,6 +5,7 @@
     "homepage": "https://github.com/mtasa-typescript/mtasa-lua-types",
     "bugs": "https://github.com/mtasa-typescript/mtasa-lua-types/issues",
     "scripts": {
+        "build": "echo No buildable content",
         "test": "dtslint .",
         "prettier": "prettier"
     },
@@ -16,6 +17,7 @@
         "mtasa",
         "types",
         "mtasa-lua",
+        "mtasa-typescript",
         "mta",
         "intellisense",
         "linting",
