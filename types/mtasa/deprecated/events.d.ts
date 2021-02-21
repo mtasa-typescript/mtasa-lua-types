@@ -1,6 +1,10 @@
-declare function addEvent(eventName: string, allowRemoteTrigger?: false): boolean;
+import { element } from "./dx";
+import { table } from "./MTA";
+import { Player } from "./element";
 
-declare function addEventHandler(
+export function addEvent(eventName: string, allowRemoteTrigger?: false): boolean;
+
+export function addEventHandler(
     eventName: string,
     attachedTo: element,
     handlerFunction: (...args: any[]) => void,
@@ -8,31 +12,31 @@ declare function addEventHandler(
     priority?: 'normal',
 ): boolean;
 
-declare function getEventHandlers(eventName: string, attachedTo: element): table;
+export function getEventHandlers(eventName: string, attachedTo: element): table;
 
-declare function cancelEvent(cancel?: true, reason?: string): boolean;
+export function cancelEvent(cancel?: true, reason?: string): boolean;
 
-declare function getCancelReason(): string;
+export function getCancelReason(): string;
 
-declare function removeEventHandler(
+export function removeEventHandler(
     eventName: string,
     attachedTo: element,
     functionVar: (...args: any[]) => void,
 ): boolean;
 
-declare function triggerClientEvent(
+export function triggerClientEvent(
     sendTo: element | table,
     name: string,
     sourceElement: element,
     ...args: any[]
 ): boolean;
-declare function triggerClientEvent(name: string, sourceElement: element, ...args: any[]): boolean;
+export function triggerClientEvent(name: string, sourceElement: element, ...args: any[]): boolean;
 
-declare function triggerEvent(eventName: string, baseElement: element, ...args: any[]): boolean;
+export function triggerEvent(eventName: string, baseElement: element, ...args: any[]): boolean;
 
-declare function wasEventCancelled(): boolean;
+export function wasEventCancelled(): boolean;
 
-declare function triggerLatentClientEvent(
+export function triggerLatentClientEvent(
     sendTo: element | table,
     name: string,
     bandwidth?: 50000,
@@ -40,7 +44,7 @@ declare function triggerLatentClientEvent(
     theElement?: element,
     ...args: any[]
 ): boolean;
-declare function triggerLatentClientEvent(
+export function triggerLatentClientEvent(
     name: string,
     bandwidth?: 50000,
     persist?: false,
@@ -48,12 +52,12 @@ declare function triggerLatentClientEvent(
     ...args: any[]
 ): boolean;
 
-declare function getLatentEventHandles(thePlayer?: Player): table;
+export function getLatentEventHandles(thePlayer?: Player): table;
 
-declare function getLatentEventStatus(thePlayer: Player, handle: number): table;
+export function getLatentEventStatus(thePlayer: Player, handle: number): table;
 
-declare function getLatentEventStatus(handle: number): table;
+export function getLatentEventStatus(handle: number): table;
 
-declare function cancelLatentEvent(thePlayer: Player, handle: number): boolean;
+export function cancelLatentEvent(thePlayer: Player, handle: number): boolean;
 
-declare function cancelLatentEvent(handle: number): boolean;
+export function cancelLatentEvent(handle: number): boolean;

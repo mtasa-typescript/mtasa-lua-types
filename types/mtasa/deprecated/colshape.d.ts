@@ -6,10 +6,11 @@
  *
  *
  */
+import { Colshape } from "./element";
 
-declare function createColCircle(fX: number, fY: number, radius: number): Colshape;
+export function createColCircle(fX: number, fY: number, radius: number): Colshape;
 
-declare function createColCuboid(
+export function createColCuboid(
     fX: number,
     fY: number,
     fZ: number,
@@ -18,13 +19,13 @@ declare function createColCuboid(
     fHeight: number,
 ): Colshape;
 
-declare function createColRectangle(fX: number, fY: number, fWidth: number, fHeight: number): Colshape;
+export function createColRectangle(fX: number, fY: number, fWidth: number, fHeight: number): Colshape;
 
-declare function createColSphere(fX: number, fY: number, fZ: number, fRadius: number): Colshape;
+export function createColSphere(fX: number, fY: number, fZ: number, fRadius: number): Colshape;
 
-declare function createColTube(fX: number, fY: number, fZ: number, fRadius: number, fHeight: number): Colshape;
+export function createColTube(fX: number, fY: number, fZ: number, fRadius: number, fHeight: number): Colshape;
 
-declare function createColPolygon(
+export function createColPolygon(
     fX: number,
     fY: number,
     fX1: number,

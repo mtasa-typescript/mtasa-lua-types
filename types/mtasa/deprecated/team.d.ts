@@ -5,25 +5,26 @@
  *
  *
  */
+import { Player, Team } from "./element";
 
-declare function countPlayersInTeam(theTeam: Team): number;
+export function countPlayersInTeam(theTeam: Team): number;
 
-declare function getTeamColor(theTeam: Team): [number, number, number];
+export function getTeamColor(theTeam: Team): [number, number, number];
 
-declare function getTeamFriendlyFire(theTeam: Team): boolean;
+export function getTeamFriendlyFire(theTeam: Team): boolean;
 
-declare function getTeamFromName(teamName: string): Team;
+export function getTeamFromName(teamName: string): Team;
 
-declare function getTeamName(theTeam: Team): string;
+export function getTeamName(theTeam: Team): string;
 
-declare function createTeam(teamName: string, colorR?: 255, colorG?: 255, colorB?: 255): Team;
+export function createTeam(teamName: string, colorR?: 255, colorG?: 255, colorB?: 255): Team;
 
-declare function getPlayerTeam(thePlayer: Player): Team;
+export function getPlayerTeam(thePlayer: Player): Team;
 
-declare function setPlayerTeam(thePlayer: Player, theTeam: Team): boolean;
+export function setPlayerTeam(thePlayer: Player, theTeam: Team): boolean;
 
-declare function setTeamColor(theTeam: Team, colorR: number, colorG: number, colorB: number): boolean;
+export function setTeamColor(theTeam: Team, colorR: number, colorG: number, colorB: number): boolean;
 
-declare function setTeamFriendlyFire(theTeam: Team, friendlyFire: boolean): boolean;
+export function setTeamFriendlyFire(theTeam: Team, friendlyFire: boolean): boolean;
 
-declare function setTeamName(theTeam: Team, newName: string): boolean;
+export function setTeamName(theTeam: Team, newName: string): boolean;

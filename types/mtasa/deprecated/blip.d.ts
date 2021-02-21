@@ -5,8 +5,10 @@
  *
  *
  */
+import { element } from "./dx";
+import { Blip } from "./element";
 
-declare function createBlip(
+export function createBlip(
     x: number,
     y: number,
     z: number,
@@ -21,7 +23,7 @@ declare function createBlip(
     visibleTo?: element,
 ): Blip;
 
-declare function createBlipAttachedTo(
+export function createBlipAttachedTo(
     elementToAttachTo: element,
     icon?: 0,
     size?: 2,
@@ -34,22 +36,22 @@ declare function createBlipAttachedTo(
     visibleTo?: element,
 ): Blip;
 
-declare function getBlipColor(theBlip: Blip): [number, number, number, number];
+export function getBlipColor(theBlip: Blip): [number, number, number, number];
 
-declare function getBlipIcon(theBlip: Blip): number;
+export function getBlipIcon(theBlip: Blip): number;
 
-declare function getBlipSize(theBlip: Blip): number;
+export function getBlipSize(theBlip: Blip): number;
 
-declare function setBlipColor(theBlip: Blip, red: number, green: number, blue: number, alpha: number): boolean;
+export function setBlipColor(theBlip: Blip, red: number, green: number, blue: number, alpha: number): boolean;
 
-declare function setBlipIcon(theBlip: Blip, icon: number): boolean;
+export function setBlipIcon(theBlip: Blip, icon: number): boolean;
 
-declare function setBlipSize(theBlip: Blip, iconSize: number): boolean;
+export function setBlipSize(theBlip: Blip, iconSize: number): boolean;
 
-declare function getBlipOrdering(theBlip: Blip): number;
+export function getBlipOrdering(theBlip: Blip): number;
 
-declare function setBlipOrdering(theBlip: Blip, ordering: number): boolean;
+export function setBlipOrdering(theBlip: Blip, ordering: number): boolean;
 
-declare function getBlipVisibleDistance(theBlip: Blip): number;
+export function getBlipVisibleDistance(theBlip: Blip): number;
 
-declare function setBlipVisibleDistance(theBlip: Blip, theDistance: number): boolean;
+export function setBlipVisibleDistance(theBlip: Blip, theDistance: number): boolean;
