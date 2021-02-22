@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table, Team } from 'types/mtasa/client/structure';
+import { Player, Table, Team } from '../structure';
 
 /**
  * This function is for returning the number of players in the specified team.

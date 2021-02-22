@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Effect } from 'types/mtasa/client/structure';
+import { Effect } from '../structure';
 
 /**
  * Creates an [[Element/Effect|effect]] on specified position.

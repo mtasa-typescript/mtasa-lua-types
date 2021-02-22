@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Ped, Table, Vehicle } from 'types/mtasa/client/structure';
+import { Element, Ped, Table, Vehicle } from '../structure';
 
 /**
  * This function checks if the given ped can fall off bikes.

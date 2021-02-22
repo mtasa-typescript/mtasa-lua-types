@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table, XmlNode } from 'types/mtasa/server/structure';
+import { Table, XmlNode } from '../structure';
 
 /**
  * This function copies all contents of a certain node in a XML document to a new document file, so

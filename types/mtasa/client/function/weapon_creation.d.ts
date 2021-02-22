@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Weapon } from 'types/mtasa/client/structure';
+import { Element, Weapon } from '../structure';
 
 /**
  * Creates a [[Element/Weapon|custom weapon]] that can fire bullets. '''Do not confuse this with

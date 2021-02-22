@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Pickup, Player } from 'types/mtasa/server/structure';
+import { Pickup, Player } from '../structure';
 
 /**
  * Returns the time it takes before a pickup respawns after a player picked it up. The time is

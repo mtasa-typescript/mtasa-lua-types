@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Water } from 'types/mtasa/client/structure';
+import { Water } from '../structure';
 
 /**
  * This function allows you to retrieve the water level from a certain location. The water level is

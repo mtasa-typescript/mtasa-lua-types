@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table, Team } from 'types/mtasa/server/structure';
+import { Element, Player, Table, Team } from '../structure';
 
 /**
  * This function returns a table of all the alive players on the server. Opposite function of

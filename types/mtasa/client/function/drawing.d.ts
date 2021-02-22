@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, PrimitiveType, Table, Texture } from 'types/mtasa/client/structure';
+import { Element, PrimitiveType, Table, Texture } from '../structure';
 
 /**
  * This function converts [[Texture_pixels|pixels]] from one format to another.

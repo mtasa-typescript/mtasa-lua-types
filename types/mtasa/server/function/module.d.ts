@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from 'types/mtasa/server/structure';
+import { Table } from '../structure';
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an

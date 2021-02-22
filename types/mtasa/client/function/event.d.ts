@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Table } from 'types/mtasa/client/structure';
+import { Element, HandleFunction, Table } from '../structure';
 
 /**
  * This function is the same as [[triggerServerEvent]] except the transmission rate of the data

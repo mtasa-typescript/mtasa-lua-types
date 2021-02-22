@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Request, Resource, Table, XmlNode } from "types/mtasa/server/structure";
+import { Element, HandleFunction, Request, Resource, Table, XmlNode } from "../structure";
 
 /**
  * This function adds a new empty config file to an existing resource.

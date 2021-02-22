@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Gui } from 'types/mtasa/client/structure';
+import { Element, Gui } from '../structure';
 
 export class GuiEdit {
     /**

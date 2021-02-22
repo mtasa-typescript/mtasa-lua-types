@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Request, Resource, Table, XmlNode } from 'types/mtasa/client/structure';
+import { Element, HandleFunction, Request, Resource, Table, XmlNode } from '../structure';
 
 /**
  * This function retrieves a resource's GUI element. The resource's GUI element is the element in

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from 'types/mtasa/client/structure';
+import { Table } from '../structure';
 
 export class ColShape {
     /**

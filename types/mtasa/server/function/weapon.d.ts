@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Ped, Player } from 'types/mtasa/server/structure';
+import { Ped, Player } from '../structure';
 
 /**
  * giveWeapon gives a specified weapon to a certain player or ped. There is an optional argument to

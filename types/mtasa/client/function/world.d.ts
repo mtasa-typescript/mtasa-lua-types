@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element } from 'types/mtasa/client/structure';
+import { Element } from '../structure';
 
 /**
  * Creates a SWAT rope like that of the rope in single player used by SWAT Teams abseiling from the

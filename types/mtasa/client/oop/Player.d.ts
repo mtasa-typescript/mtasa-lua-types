@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Team } from 'types/mtasa/client/structure';
+import { Team } from '../structure';
 
 export class Player {
     /**

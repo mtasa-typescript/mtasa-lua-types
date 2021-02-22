@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from 'types/mtasa/client/structure';
+import { Table } from '../structure';
 
 /**
  * This function gives you various version information about MTA and the operating system.

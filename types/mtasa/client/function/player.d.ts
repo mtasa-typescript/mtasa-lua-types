@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player } from 'types/mtasa/client/structure';
+import { Player } from '../structure';
 
 /**
  * This function gets the player element of the client running the current script.

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Marker } from 'types/mtasa/client/structure';
+import { Marker } from '../structure';
 
 /**
  * [[Image:Mtasa_markers.png|thumb|337px|This image shows all the different marker types available

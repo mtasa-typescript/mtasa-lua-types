@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from 'types/mtasa/server/structure';
+import { Table } from '../structure';
 
 /**
  * This function returns the maximum number of player slots on the server.

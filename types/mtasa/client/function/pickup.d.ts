@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Pickup, Player } from 'types/mtasa/client/structure';
+import { Pickup, Player } from '../structure';
 
 /**
  * This function creates a pickup element, which is placed in the GTA world and can be picked up to

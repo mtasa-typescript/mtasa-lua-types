@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table, Team } from 'types/mtasa/server/structure';
+import { Player, Table, Team } from '../structure';
 
 /**
  * This function is for creating a new [[team]], which can be used to group players. Players will

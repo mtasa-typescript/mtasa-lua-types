@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { XmlNode } from 'types/mtasa/server/structure';
+import { XmlNode } from '../structure';
 
 export class XML {
     /**

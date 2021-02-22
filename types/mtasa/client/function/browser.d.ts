@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Browser, Element, Gui, GuiBrowser, HandleFunction, Table } from 'types/mtasa/client/structure';
+import { Browser, Element, Gui, GuiBrowser, HandleFunction, Table } from '../structure';
 
 /**
  * This function checks if the browser can return to the previous page.

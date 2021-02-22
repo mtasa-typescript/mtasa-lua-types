@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Blip, Element } from 'types/mtasa/server/structure';
+import { Blip, Element } from '../structure';
 
 /**
  * This function creates a [[blip]] [[element]], which is displayed as an icon on the client's

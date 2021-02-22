@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Searchlight } from 'types/mtasa/client/structure';
+import { Searchlight } from '../structure';
 
 /**
  *

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player } from 'types/mtasa/server/structure';
+import { Element, Player } from '../structure';
 
 /**
  * This function will fade a player's camera to a color or back to normal over a specified time

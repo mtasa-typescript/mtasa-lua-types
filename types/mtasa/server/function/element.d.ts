@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ColShape, Element, Marker, Player, Table } from 'types/mtasa/server/structure';
+import { ColShape, Element, Marker, Player, Table } from '../structure';
 
 /**
  * This function is used together with [[setElementData]] in ''"subscribe"'' mode.

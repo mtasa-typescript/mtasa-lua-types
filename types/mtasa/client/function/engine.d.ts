@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Col, Dff, Element, Ifp, ObjectGroup, Ped, Table, Txd } from 'types/mtasa/client/structure';
+import { Col, Dff, Element, Ifp, ObjectGroup, Ped, Table, Txd } from '../structure';
 
 /**
  * This function applies a [[shader]] to one or more world textures.

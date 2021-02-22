@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, XmlNode } from 'types/mtasa/server/structure';
+import { Element, Player, XmlNode } from '../structure';
 
 /**
  * This function is intended to load data from a loaded XML file into the element tree. This could

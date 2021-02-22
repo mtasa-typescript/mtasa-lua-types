@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element } from 'types/mtasa/client/structure';
+import { Element } from '../structure';
 
 export class GuiTabPanel {
     /**

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction } from 'types/mtasa/client/structure';
+import { HandleFunction } from '../structure';
 
 export class Browser {
     /**

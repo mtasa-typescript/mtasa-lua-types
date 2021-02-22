@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Ban, Player, Table } from 'types/mtasa/server/structure';
+import { Ban, Player, Table } from '../structure';
 
 /**
  * This function will add a [[ban]] for the specified IP/username/serial to the server.

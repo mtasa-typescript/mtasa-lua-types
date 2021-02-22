@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction, Table, Timer, Userdata } from 'types/mtasa/client/structure';
+import { HandleFunction, Table, Timer, Userdata } from '../structure';
 
 /**
  * This functions creates a notification ballon on the desktop.

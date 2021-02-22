@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Table } from 'types/mtasa/server/structure';
+import { Element, HandleFunction, Table } from '../structure';
 
 /**
  * This function executes an arbitrary SQL query and returns the result rows if there are any. It

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table, Vehicle } from 'types/mtasa/server/structure';
+import { Element, Player, Table, Vehicle } from '../structure';
 
 /**
  * This function adds sirens to a vehicle.

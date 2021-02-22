@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { File } from 'types/mtasa/server/structure';
+import { File } from '../structure';
 
 /**
  * Closes a file handle obtained by [[fileCreate]] or [[fileOpen]].

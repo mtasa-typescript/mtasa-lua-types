@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Projectile } from 'types/mtasa/client/structure';
+import { Element, Projectile } from '../structure';
 
 /**
  * This function creates a projectile of the specified type on the specified coordinates.

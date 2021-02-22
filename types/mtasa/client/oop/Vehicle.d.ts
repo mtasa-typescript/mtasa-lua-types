@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table } from 'types/mtasa/client/structure';
+import { Element, Player, Table } from '../structure';
 
 export class Vehicle {
     /**

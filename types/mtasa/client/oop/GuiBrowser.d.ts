@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Browser } from 'types/mtasa/client/structure';
+import { Browser } from '../structure';
 
 export class GuiBrowser {
     /**

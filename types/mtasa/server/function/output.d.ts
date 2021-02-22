@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table } from 'types/mtasa/server/structure';
+import { Element, Player, Table } from '../structure';
 
 /**
  * This outputs a line of text to the server's log. This could be useful for debugging.

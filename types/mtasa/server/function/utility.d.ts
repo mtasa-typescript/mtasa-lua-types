@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Table, Timer, Userdata } from 'types/mtasa/server/structure';
+import { Element, HandleFunction, Table, Timer, Userdata } from '../structure';
 
 /**
  * This function retrieves server settings which are usually stored in the '''mtaserver.conf'''

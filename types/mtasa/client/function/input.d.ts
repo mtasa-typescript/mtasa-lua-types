@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction, Resource, Table } from 'types/mtasa/client/structure';
+import { HandleFunction, Resource, Table } from '../structure';
 
 /**
  * This retrieves the analog control state of a control.  This is useful for detecting sensitive

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, RadarArea } from 'types/mtasa/server/structure';
+import { Element, RadarArea } from '../structure';
 
 /**
  * This function can be used to create custom radar areas on the radar.

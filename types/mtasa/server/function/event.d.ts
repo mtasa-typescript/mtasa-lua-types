@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Player, Table } from 'types/mtasa/server/structure';
+import { Element, HandleFunction, Player, Table } from '../structure';
 
 /**
  * Gets the reason for cancelling an event.

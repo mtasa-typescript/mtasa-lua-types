@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Gui, GuiMemo, GuiScrollBar, ProgressBar, Table } from 'types/mtasa/client/structure';
+import { Element, Gui, GuiMemo, GuiScrollBar, ProgressBar, Table } from '../structure';
 
 /**
  * This function brings a GUI element on top of others.

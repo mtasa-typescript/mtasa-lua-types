@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player } from 'types/mtasa/client/structure';
+import { Element, Player } from '../structure';
 
 /**
  * This function returns an [[element]] that corresponds to the game camera

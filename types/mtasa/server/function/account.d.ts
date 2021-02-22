@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Account, Player, Table } from 'types/mtasa/server/structure';
+import { Account, Player, Table } from '../structure';
 
 /**
  * This function adds an account to the list of registered accounts of the current server.

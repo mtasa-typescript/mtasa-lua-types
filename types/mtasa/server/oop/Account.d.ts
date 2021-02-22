@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table } from 'types/mtasa/server/structure';
+import { Player, Table } from '../structure';
 
 export class Account {
     /**

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player } from 'types/mtasa/server/structure';
+import { Player } from '../structure';
 
 /**
  * Creates an explosion of a certain type at a specified point in the world. If creator is

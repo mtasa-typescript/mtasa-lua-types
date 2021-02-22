@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player } from 'types/mtasa/server/structure';
+import { Player } from '../structure';
 
 /**
  * This function plays a frontend sound for the specified player.

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Gui } from 'types/mtasa/client/structure';
+import { Gui } from '../structure';
 
 export class GuiMemo {
     /**

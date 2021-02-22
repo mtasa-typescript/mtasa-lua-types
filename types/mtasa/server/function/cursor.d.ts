@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player } from 'types/mtasa/server/structure';
+import { Player } from '../structure';
 
 /**
  * This function is used to determine whether or not a player's cursor is showing.

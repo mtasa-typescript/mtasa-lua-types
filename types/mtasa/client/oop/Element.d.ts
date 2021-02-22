@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ColShape, Marker, Table } from "types/mtasa/client/structure";
+import { ColShape, Marker, Table } from "../structure";
 
 export class Element {
     /**

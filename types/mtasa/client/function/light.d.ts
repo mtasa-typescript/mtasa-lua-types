@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Light } from 'types/mtasa/client/structure';
+import { Light } from '../structure';
 
 /**
  * * The direction of the light only has any effect if the light type is ''spot light''.

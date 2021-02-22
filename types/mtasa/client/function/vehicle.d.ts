@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table, Vehicle } from "types/mtasa/client/structure";
+import { Element, Player, Table, Vehicle } from "../structure";
 
 /**
  * *This is different to [[getVehicleOverrideLights]] because this function will return '''true'''

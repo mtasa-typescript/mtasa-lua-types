@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction, Player, Resource, Table } from 'types/mtasa/server/structure';
+import { HandleFunction, Player, Resource, Table } from '../structure';
 
 /**
  * This function will check if a player is pressing a particular control. Controls are those that

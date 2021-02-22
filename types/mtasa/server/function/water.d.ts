@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Water } from 'types/mtasa/server/structure';
+import { Water } from '../structure';
 
 /**
  * Creates an area of [[water]].

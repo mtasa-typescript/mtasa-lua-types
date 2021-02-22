@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Weapon } from 'types/mtasa/client/structure';
+import { Weapon } from '../structure';
 
 /**
  * This function gets the original weapon property of the specified weapons specified weapon type.

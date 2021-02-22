@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ACL, Table } from 'types/mtasa/server/structure';
+import { ACL, Table } from '../structure';
 
 export class ACLGroup {
     /**

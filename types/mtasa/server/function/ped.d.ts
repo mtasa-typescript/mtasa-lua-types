@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Ped, Table, Vehicle } from 'types/mtasa/server/structure';
+import { Element, Ped, Table, Vehicle } from '../structure';
 
 /**
  * This function returns the current gravity for the specified [[ped]]. The default gravity is

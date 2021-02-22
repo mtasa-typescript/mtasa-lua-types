@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table, TextDisplay, TextItem } from 'types/mtasa/server/structure';
+import { Player, Table, TextDisplay, TextItem } from '../structure';
 
 /**
  * A [[textdisplay|text display]] is like a canvas that can contain many [[textitem|items of

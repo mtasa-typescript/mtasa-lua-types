@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Object as MtasaObject } from 'types/mtasa/server/structure';
+import { Object as MtasaObject } from '../structure';
 
 /**
  * Creates an [[object]] [[element]] at a given position and rotation.

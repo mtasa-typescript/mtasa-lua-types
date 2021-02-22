@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ACL, ACLGroup, Table } from 'types/mtasa/server/structure';
+import { ACL, ACLGroup, Table } from '../structure';
 
 /**
  * This function creates an ACL entry in the Access Control List system with the specified name.
