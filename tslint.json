@@ -3,10 +3,5 @@
     "rules": {
         "no-redundant-jsdoc": false,
         "no-misused-new": false
-    },
-    "linterOptions": {
-        "exclude": [
-            "types/mtasa/deprecated"
-        ]
     }
 }
