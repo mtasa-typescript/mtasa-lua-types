@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 /**
  * This function gives you various version information about MTA and the operating system.
  * @see {@link https://wiki.multitheftauto.com/wiki/getVersion|MTASA Wiki}
@@ -26,7 +24,7 @@ import { Table } from '../structure';
  * * *'''sortable:''' a 15 character sortable version string (from 1.0.4 onwards). Format of the
  * string is described in [[getPlayerVersion]].
  */
-export function getVersion(): Table;
+export function getVersion(): LuaTable;
 
 /**
  *

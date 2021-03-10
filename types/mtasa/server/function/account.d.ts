@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Account, Player, Table } from '../structure';
+import { Account, Player } from '../structure';
 
 /**
  * This function adds an account to the list of registered accounts of the current server.
@@ -86,7 +86,7 @@ export function getAccountSerial(theAccount: Account): string;
  * @return A [[table]] over the accounts that exist in the server internal.db file. This table
  * might be empty.
  */
-export function getAccounts(): Table;
+export function getAccounts(): LuaTable;
 
 /**
  * This function returns a [[table]] containing all accounts that were logged onto from specified
@@ -97,7 +97,7 @@ export function getAccounts(): Table;
  * @return Returns ''[[table]]'' containing the accounts associated with specified serial. Returns
  * ''false'' if invalid arguments were specified.
  */
-export function getAccountsBySerial(serial: string): Table;
+export function getAccountsBySerial(serial: string): LuaTable;
 
 /**
  * This function returns a table containing all the user data for the [[account]] provided
@@ -105,7 +105,7 @@ export function getAccountsBySerial(serial: string): Table;
  * @param theAccount The account you wish to retrieve all data from.
  * @return A [[table]] containing all the user data. This table might be empty.
  */
-export function getAllAccountData(theAccount: Account): Table;
+export function getAllAccountData(theAccount: Account): LuaTable;
 
 /**
  * This function returns the specified player's [[account]] object.
@@ -226,7 +226,7 @@ export function getAccountIP(theAccount: Account): string;
  * @return Returns ''[[table]]'' containing the accounts associated with specified value at
  * dataName. Returns ''false'' if invalid arguments were specified.
  */
-export function getAccountsByData(dataName: string, value: string): Table;
+export function getAccountsByData(dataName: string, value: string): LuaTable;
 
 /**
  * This function returns a [[table]] containing all accounts that were logged onto from specified
@@ -237,7 +237,7 @@ export function getAccountsByData(dataName: string, value: string): Table;
  * @return Returns ''[[table]]'' containing the accounts associated with specified IP-address.
  * Returns ''false'' if invalid arguments were specified.
  */
-export function getAccountsByIP(ip: string): Table;
+export function getAccountsByIP(ip: string): LuaTable;
 
 /**
  * This function sets the name of an [[account]].

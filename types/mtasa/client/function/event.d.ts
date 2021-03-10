@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Table } from '../structure';
+import { Element, HandleFunction } from '../structure';
 
 /**
  * This function is the same as [[triggerServerEvent]] except the transmission rate of the data
@@ -151,7 +151,7 @@ export function cancelLatentEvent(handle: number): boolean;
  * @param attachedTo The element attached to.
  * @return Returns table with attached functions, empty table otherwise.
  */
-export function getEventHandlers(eventName: string, attachedTo: Element): Table;
+export function getEventHandlers(eventName: string, attachedTo: Element): LuaTable;
 
 /**
  * Gets the currently queued latent events. The last one in the table is always the latest event
@@ -159,7 +159,7 @@ export function getEventHandlers(eventName: string, attachedTo: Element): Table;
  * @see {@link https://wiki.multitheftauto.com/wiki/getLatentEventHandles|MTASA Wiki}
  * @return Returns a table of handles or false if invalid arguments were passed.
  */
-export function getLatentEventHandles(): Table;
+export function getLatentEventHandles(): LuaTable;
 
 /**
  * Gets the status of one queued latent event.
@@ -172,7 +172,7 @@ export function getLatentEventHandles(): Table;
  * * *'''totalSize:''' A number representing how many bytes in total this transfer will transfer
  * * *'''percentComplete:''' A number between 0-100 saying how much is done
  */
-export function getLatentEventStatus(handle: number): Table;
+export function getLatentEventStatus(handle: number): LuaTable;
 
 /**
  * This functions removes a handler function from an [[event]], so that the function is not called

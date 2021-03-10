@@ -1,17 +1,15 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 export class XmlNode {
     /**
      * @see {@link xmlNodeGetAttributes}
      */
-    attributes: Table;
+    attributes: LuaTable;
     /**
      * @see {@link xmlNodeGetChildren}
      */
-    children: Table | XmlNode;
+    children: LuaTable | XmlNode;
     /**
      * @see {@link xmlNodeGetName}
      */
@@ -38,12 +36,12 @@ export class XmlNode {
     /**
      * @see {@link xmlNodeGetAttributes}
      */
-    getAttributes(): Table;
+    getAttributes(): LuaTable;
 
     /**
      * @see {@link xmlNodeGetChildren}
      */
-    getChildren(index: number): Table | XmlNode;
+    getChildren(index: number): LuaTable | XmlNode;
 
     /**
      * @see {@link xmlNodeGetName}

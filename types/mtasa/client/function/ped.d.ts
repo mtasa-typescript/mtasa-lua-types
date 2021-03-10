@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Ped, Table, Vehicle } from '../structure';
+import { Element, Ped, Vehicle } from '../structure';
 
 /**
  * This function checks if the given ped can fall off bikes.
@@ -638,7 +638,7 @@ export function getPedWeaponSlot(thePed: Ped): number;
  * @see {@link https://wiki.multitheftauto.com/wiki/getValidPedModels|MTASA Wiki}
  * @return Returns a [[table]] with all valid ped models.
  */
-export function getValidPedModels(): Table;
+export function getValidPedModels(): LuaTable;
 
 /**
  * This function checks if the specified [[ped]] is choking (coughing) or not. This happens as a

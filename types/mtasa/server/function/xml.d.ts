@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table, XmlNode } from '../structure';
+import { XmlNode } from '../structure';
 
 /**
  * This function copies all contents of a certain node in a XML document to a new document file, so
@@ -112,7 +112,7 @@ export function xmlNodeGetAttribute(node: XmlNode, name: string): string;
  * the corresponding attribute values. If the node has no attributes, returns an empty table. In case of
  * failure, returns ''false''.
  */
-export function xmlNodeGetAttributes(node: XmlNode): Table;
+export function xmlNodeGetAttributes(node: XmlNode): LuaTable;
 
 /**
  * This function returns all children of a particular XML node, or a particular child node.
@@ -124,7 +124,7 @@ export function xmlNodeGetAttributes(node: XmlNode): Table;
  * '''index''' is specified, returns the corresponding child node if it exists. If no nodes are found, it
  * returns an empty table. Returns ''false'' in case of failure.
  */
-export function xmlNodeGetChildren(parent: XmlNode, index: number): Table | XmlNode;
+export function xmlNodeGetChildren(parent: XmlNode, index: number): LuaTable | XmlNode;
 
 /**
  * Gets the tag name of the specified XML node.

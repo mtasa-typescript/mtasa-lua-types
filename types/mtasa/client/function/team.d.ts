@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table, Team } from '../structure';
+import { Player, Team } from '../structure';
 
 /**
  * This function is for returning the number of players in the specified team.
@@ -28,7 +28,7 @@ export function getPlayerTeam(thePlayer: Player): Team;
  * @return Returns a [[table]] of all the players in the team, or an empty one if there are none
  * else false if invalid arguments are passed.
  */
-export function getPlayersInTeam(theTeam: Team): Table;
+export function getPlayersInTeam(theTeam: Team): LuaTable;
 
 /**
  * This function retrieves the color of a team.

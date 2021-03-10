@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table } from '../structure';
+import { Element, Player } from '../structure';
 
 export class Vehicle {
     /**
@@ -39,7 +39,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleCompatibleUpgrades}
      */
-    compatibleUpgrades: Table;
+    compatibleUpgrades: LuaTable;
     /**
      * @see {@link getVehicleController}
      */
@@ -51,7 +51,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleHandling}
      */
-    handling: Table;
+    handling: LuaTable;
     /**
      * @see {@link getVehicleLandingGearDown}
      */
@@ -67,7 +67,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleOccupants}
      */
-    occupants: Table;
+    occupants: LuaTable;
     /**
      * @see {@link getVehicleOverrideLights}
      */
@@ -83,11 +83,11 @@ export class Vehicle {
     /**
      * @see {@link getVehicleSirenParams}
      */
-    sirenParams: Table;
+    sirenParams: LuaTable;
     /**
      * @see {@link getVehicleSirens}
      */
-    sirens: Table;
+    sirens: LuaTable;
     /**
      * @see {@link getVehicleSirensOn}
      */
@@ -111,7 +111,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleUpgrades}
      */
-    upgrades: Table;
+    upgrades: LuaTable;
     /**
      * @see {@link isTrainDerailable}
      */
@@ -174,7 +174,7 @@ export class Vehicle {
     /**
      * @see {@link blowVehicle}
      */
-    blow(vehicleToBlow: Vehicle, explode: boolean): boolean;
+    blow(explode: boolean): boolean;
 
     /**
      * @see {@link detachTrailerFromVehicle}
@@ -194,7 +194,7 @@ export class Vehicle {
     /**
      * @see {@link getTrainSpeed}
      */
-    getSpeed(train: Vehicle): number;
+    getSpeed(): number;
 
     /**
      * @see {@link getVehicleColor}
@@ -206,7 +206,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleCompatibleUpgrades}
      */
-    getCompatibleUpgrades(slot?: number): Table;
+    getCompatibleUpgrades(slot?: number): LuaTable;
 
     /**
      * @see {@link getVehicleController}
@@ -231,7 +231,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleHandling}
      */
-    getHandling(theVehicle: Element): Table;
+    getHandling(theVehicle: Element): LuaTable;
 
     /**
      * @see {@link getVehicleHeadLightColor}
@@ -261,7 +261,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleOccupants}
      */
-    getOccupants(): Table;
+    getOccupants(): LuaTable;
 
     /**
      * @see {@link getVehicleOverrideLights}
@@ -286,12 +286,12 @@ export class Vehicle {
     /**
      * @see {@link getVehicleSirenParams}
      */
-    getSirenParams(): Table;
+    getSirenParams(): LuaTable;
 
     /**
      * @see {@link getVehicleSirens}
      */
-    getSirens(): Table;
+    getSirens(): LuaTable;
 
     /**
      * @see {@link getVehicleSirensOn}
@@ -321,7 +321,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleUpgrades}
      */
-    getUpgrades(): Table;
+    getUpgrades(): LuaTable;
 
     /**
      * @see {@link getVehicleVariant}

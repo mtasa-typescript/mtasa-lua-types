@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 export class GuiGridList {
     /**
      * @see {@link guiGridListGetColumnCount}
@@ -23,7 +21,7 @@ export class GuiGridList {
     /**
      * @see {@link guiGridListGetSelectedItems}
      */
-    selectedItems: Table;
+    selectedItems: LuaTable;
     /**
      * @see {@link guiGridListGetSelectionMode}
      */
@@ -75,7 +73,7 @@ export class GuiGridList {
     /**
      * @see {@link guiGridListGetSelectedItems}
      */
-    getSelectedItems(): Table;
+    getSelectedItems(): LuaTable;
 
     /**
      * @see {@link guiGridListGetSelectionMode}

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Col, Dff, Element, Ifp, ObjectGroup, Ped, Table, Txd } from '../structure';
+import { Col, Dff, Element, Ifp, ObjectGroup, Ped, Txd } from '../structure';
 
 /**
  * This function applies a [[shader]] to one or more world textures.
@@ -153,14 +153,14 @@ export function engineFreeModel(modelID: number): boolean;
  * @see {@link https://wiki.multitheftauto.com/wiki/engineGetModelTextures|MTASA Wiki}
  * @return Returns a table of texture elements [textureName, texture], '''false''' otherwise.
  */
-export function engineGetModelTextures(int: string, table?: string): Table;
+export function engineGetModelTextures(int: string, table?: string): LuaTable;
 
 /**
  * This function returns a table of the world textures which are applied to the specified model.
  * @see {@link https://wiki.multitheftauto.com/wiki/engineGetModelTextureNames|MTASA Wiki}
  * @return Returns a table if this function succeeds, false if it fails for some reason.
  */
-export function engineGetModelTextureNames(modelId: string): Table;
+export function engineGetModelTextureNames(modelId: string): LuaTable;
 
 /**
  * This function returns a list of the world textures which are being used to draw the current
@@ -170,7 +170,7 @@ export function engineGetModelTextureNames(modelId: string): Table;
  * @default "*"
  * @return Returns a table of texture names.
  */
-export function engineGetVisibleTextureNames(nameFilter: string, modelId: string): Table;
+export function engineGetVisibleTextureNames(nameFilter: string, modelId: string): LuaTable;
 
 /**
  *

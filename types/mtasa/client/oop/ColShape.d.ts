@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 export class ColShape {
     /**
      * @see {@link getColShapeType}
@@ -11,7 +9,7 @@ export class ColShape {
     /**
      * @see {@link getElementsWithinColShape}
      */
-    elementsWithin: Table;
+    elementsWithin: LuaTable;
 
     /**
      * @see {@link addColPolygonPoint}
@@ -46,7 +44,7 @@ export class ColShape {
     /**
      * @see {@link getElementsWithinColShape}
      */
-    getElementsWithin(elemType?: string): Table;
+    getElementsWithin(elemType?: string): LuaTable;
 
     /**
      * @see {@link removeColPolygonPoint}

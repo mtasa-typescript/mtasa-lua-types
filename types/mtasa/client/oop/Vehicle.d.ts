@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table } from '../structure';
+import { Element, Player } from '../structure';
 
 export class Vehicle {
     /**
@@ -19,7 +19,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleComponents}
      */
-    components: Table;
+    components: LuaTable;
     /**
      * @see {@link getVehicleWheelScale}
      */
@@ -43,7 +43,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleCompatibleUpgrades}
      */
-    compatibleUpgrades: Table;
+    compatibleUpgrades: LuaTable;
     /**
      * @see {@link getVehicleController}
      */
@@ -55,7 +55,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleHandling}
      */
-    handling: Table;
+    handling: LuaTable;
     /**
      * @see {@link getVehicleLandingGearDown}
      */
@@ -71,7 +71,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleOccupants}
      */
-    occupants: Table;
+    occupants: LuaTable;
     /**
      * @see {@link getVehicleOverrideLights}
      */
@@ -87,11 +87,11 @@ export class Vehicle {
     /**
      * @see {@link getVehicleSirenParams}
      */
-    sirenParams: Table;
+    sirenParams: LuaTable;
     /**
      * @see {@link getVehicleSirens}
      */
-    sirens: Table;
+    sirens: LuaTable;
     /**
      * @see {@link getVehicleSirensOn}
      */
@@ -115,7 +115,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleUpgrades}
      */
-    upgrades: Table;
+    upgrades: LuaTable;
     /**
      * @see {@link isTrainDerailable}
      */
@@ -183,7 +183,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleComponents}
      */
-    getComponents(): Table;
+    getComponents(): LuaTable;
 
     /**
      * @see {@link getVehicleDummyPosition}
@@ -203,7 +203,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleModelWheelSize}
      */
-    getModelWheelSize(vehicleModel: number, wheelGroup?: string): number | Table;
+    getModelWheelSize(vehicleModel: number, wheelGroup?: string): number | LuaTable;
 
     /**
      * @see {@link getVehicleWheelScale}
@@ -305,7 +305,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleCompatibleUpgrades}
      */
-    getCompatibleUpgrades(slot?: number): Table;
+    getCompatibleUpgrades(slot?: number): LuaTable;
 
     /**
      * @see {@link getVehicleController}
@@ -330,7 +330,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleHandling}
      */
-    getHandling(): Table;
+    getHandling(): LuaTable;
 
     /**
      * @see {@link getVehicleHeadLightColor}
@@ -360,7 +360,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleOccupants}
      */
-    getOccupants(): Table;
+    getOccupants(): LuaTable;
 
     /**
      * @see {@link getVehicleOverrideLights}
@@ -385,12 +385,12 @@ export class Vehicle {
     /**
      * @see {@link getVehicleSirenParams}
      */
-    getSirenParams(): Table;
+    getSirenParams(): LuaTable;
 
     /**
      * @see {@link getVehicleSirens}
      */
-    getSirens(): Table;
+    getSirens(): LuaTable;
 
     /**
      * @see {@link getVehicleSirensOn}
@@ -420,7 +420,7 @@ export class Vehicle {
     /**
      * @see {@link getVehicleUpgrades}
      */
-    getUpgrades(): Table;
+    getUpgrades(): LuaTable;
 
     /**
      * @see {@link getVehicleVariant}

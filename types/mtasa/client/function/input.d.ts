@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction, Resource, Table } from '../structure';
+import { HandleFunction, Resource } from '../structure';
 
 /**
  * This retrieves the analog control state of a control.  This is useful for detecting sensitive
@@ -23,7 +23,7 @@ export function getAnalogControlState(control: string, rawValue?: boolean): numb
  * returned indexed by the names of the keys and containing key states as values. If no keys are bound or
  * an invalid name was passed, returns ''false''.
  */
-export function getBoundKeys(command: string): Table;
+export function getBoundKeys(command: string): LuaTable;
 
 /**
  * Gets the commands bound to a key.
@@ -32,7 +32,7 @@ export function getBoundKeys(command: string): Table;
  * @param keyState A string that has one of the following values:
  * @return Returns a table of the commands bound on that key.
  */
-export function getCommandsBoundToKey(theKey: string, keyState: string): Table;
+export function getCommandsBoundToKey(theKey: string, keyState: string): LuaTable;
 
 /**
  * This function allow you get first key bound to command.
@@ -127,7 +127,7 @@ export function executeCommandHandler(commandName: string, args: string): boolea
  * subtables containing the command and theResource pointer ( { "command", theResource } ). See examples
  * below if you don't understand it.
  */
-export function getCommandHandlers(theResource: Resource): Table;
+export function getCommandHandlers(theResource: Resource): LuaTable;
 
 /**
  * Gets the functions bound to a key. To bind a function to a key use the [[bindKey]] function
@@ -135,7 +135,7 @@ export function getCommandHandlers(theResource: Resource): Table;
  * @param keyState A string that has one of the following values:
  * @return Returns a table of the key function(s).
  */
-export function getFunctionsBoundToKey(key: string, keyState: string): Table;
+export function getFunctionsBoundToKey(key: string, keyState: string): LuaTable;
 
 /**
  * getKeyBoundToFunction allows retrieval of the first key bound to a function.

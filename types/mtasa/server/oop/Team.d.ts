@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 export class Team {
     /**
      * @see {@link setTeamFriendlyFire}
@@ -15,7 +13,7 @@ export class Team {
     /**
      * @see {@link getPlayersInTeam}
      */
-    players: Table;
+    players: LuaTable;
     /**
      * @see {@link getTeamName}
      */
@@ -44,7 +42,7 @@ export class Team {
     /**
      * @see {@link getPlayersInTeam}
      */
-    getPlayers(): Table;
+    getPlayers(): LuaTable;
 
     /**
      * @see {@link getTeamColor}

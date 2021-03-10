@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction, Player, Resource, Table } from '../structure';
+import { HandleFunction, Player, Resource } from '../structure';
 
 /**
  * This function will check if a player is pressing a particular control. Controls are those that
@@ -136,7 +136,7 @@ export function executeCommandHandler(commandName: string, thePlayer: Player, ar
  * subtables containing the command and theResource pointer ( { "command", theResource } ). See examples
  * below if you don't understand it.
  */
-export function getCommandHandlers(theResource: Resource): Table;
+export function getCommandHandlers(theResource: Resource): LuaTable;
 
 /**
  * Gets the functions bound to a key. To bind a function to a key use the [[bindKey]] function
@@ -145,7 +145,7 @@ export function getCommandHandlers(theResource: Resource): Table;
  * @param keyState A string that has one of the following values:
  * @return Returns a table of the key function(s).
  */
-export function getFunctionsBoundToKey(thePlayer: Player, key: string, keyState: string): Table;
+export function getFunctionsBoundToKey(thePlayer: Player, key: string, keyState: string): LuaTable;
 
 /**
  * getKeyBoundToFunction allows retrieval of the first key bound to a function.

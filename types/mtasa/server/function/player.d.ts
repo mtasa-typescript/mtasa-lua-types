@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table, Team } from '../structure';
+import { Element, Player, Team } from '../structure';
 
 /**
  * This function returns a table of all the alive players on the server. Opposite function of
@@ -9,14 +9,14 @@ import { Element, Player, Table, Team } from '../structure';
  * @see {@link https://wiki.multitheftauto.com/wiki/getAlivePlayers|MTASA Wiki}
  * @return Returns a table of all the alive players.
  */
-export function getAlivePlayers(): Table;
+export function getAlivePlayers(): LuaTable;
 
 /**
  * This function returns a table of all currently dead players on the server.
  * @see {@link https://wiki.multitheftauto.com/wiki/getDeadPlayers|MTASA Wiki}
  * @return Returns a table of all the dead players.
  */
-export function getDeadPlayers(): Table;
+export function getDeadPlayers(): LuaTable;
 
 /**
  * This function returns anti-cheat info for a player. The info returned by this function can
@@ -34,7 +34,7 @@ export function getDeadPlayers(): Table;
  * installed.
  * * <!--
  */
-export function getPlayerACInfo(thePlayer: Element): Table;
+export function getPlayerACInfo(thePlayer: Element): LuaTable;
 
 /**
  *

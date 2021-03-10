@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ColShape, Marker, Player, Table } from '../structure';
+import { ColShape, Marker, Player } from '../structure';
 
 export class Element {
     /**
@@ -39,7 +39,7 @@ export class Element {
     /**
      * @see {@link getElementMatrix}
      */
-    matrix: Table;
+    matrix: LuaTable;
     /**
      * @see {@link getElementModel}
      */
@@ -112,7 +112,7 @@ export class Element {
     /**
      * @see {@link getAllElementData}
      */
-    getAllData(theElement: Element): Table;
+    getAllData(theElement: Element): LuaTable;
 
     /**
      * @see {@link getElementByIndex}
@@ -181,7 +181,7 @@ export class Element {
     /**
      * @see {@link getAttachedElements}
      */
-    getAttachedElements(theElement: Element): Table;
+    getAttachedElements(theElement: Element): LuaTable;
 
     /**
      * @see {@link getElementAlpha}
@@ -211,7 +211,7 @@ export class Element {
     /**
      * @see {@link getElementChildren}
      */
-    getChildren(parent: Element, theType?: string): Table;
+    getChildren(parent: Element, theType?: string): LuaTable;
 
     /**
      * @see {@link getElementChildrenCount}
@@ -251,7 +251,7 @@ export class Element {
     /**
      * @see {@link getElementMatrix}
      */
-    getMatrix(theElement: Element, legacy?: boolean): Table;
+    getMatrix(theElement: Element, legacy?: boolean): LuaTable;
 
     /**
      * @see {@link getElementModel}

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Ban, Player, Table } from '../structure';
+import { Ban, Player } from '../structure';
 
 /**
  * This function will add a [[ban]] for the specified IP/username/serial to the server.
@@ -132,7 +132,7 @@ export function getBanUsername(theBan: Ban): string;
  * @see {@link https://wiki.multitheftauto.com/wiki/getBans|MTASA Wiki}
  * @return Returns a [[table]] containing all the [[ban]]s.
  */
-export function getBans(): Table;
+export function getBans(): LuaTable;
 
 /**
  * This function will return the unbanning time of the specified [[ban]] in '''seconds'''.

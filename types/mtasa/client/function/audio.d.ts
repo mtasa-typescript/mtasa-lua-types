@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Table } from '../structure';
+import { Element } from '../structure';
 
 /**
  * The function is used to retrieve the ID of the current radio channel.
@@ -60,7 +60,7 @@ export function getSoundBufferLength(theSound: Element): number;
  * * '''Sound effect names:'''
  * * {{Sound_Effects}}
  */
-export function getSoundEffects(sound: Element): Table;
+export function getSoundEffects(sound: Element): LuaTable;
 
 /**
  * This function gets the fast fourier transform data for an audio stream which is a table of
@@ -85,7 +85,7 @@ export function getSoundEffects(sound: Element): Table;
  * * Returns ''false'' if the sound is not playing yet or hasn't buffered in the
  * * case of streams.
  */
-export function getSoundFFTData(sound: Element, iSamples: number, iBands?: number): Table;
+export function getSoundFFTData(sound: Element, iSamples: number, iBands?: number): LuaTable;
 
 /**
  * This function is used to return the playback length of the specified [[sound]] element.
@@ -130,7 +130,7 @@ export function getSoundMaxDistance(sound: Element): number;
  * unavailable then the associated key is not written to the table.
  * * {{Sound_Meta_Tags}}
  */
-export function getSoundMetaTags(sound: Element, format?: string): Table;
+export function getSoundMetaTags(sound: Element, format?: string): LuaTable;
 
 /**
  * Gets a custom [[sound]] Minimum distance at which the sound stops getting louder.
@@ -208,7 +208,7 @@ export function getSoundVolume(theSound: Element): number;
  * * Returns ''false'' if the sound is not playing yet or hasn't buffered in the
  * * case of streams.
  */
-export function getSoundWaveData(sound: Element, iSamples: number): Table;
+export function getSoundWaveData(sound: Element, iSamples: number): LuaTable;
 
 /**
  *

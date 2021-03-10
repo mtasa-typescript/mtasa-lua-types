@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 export class ACL {
     /**
      * @see {@link aclGetName}
@@ -32,12 +30,12 @@ export class ACL {
     /**
      * @see {@link aclList}
      */
-    list(): Table;
+    list(): LuaTable;
 
     /**
      * @see {@link aclListRights}
      */
-    listRights(allowedType: string): Table;
+    listRights(allowedType: string): LuaTable;
 
     /**
      * @see {@link aclReload}

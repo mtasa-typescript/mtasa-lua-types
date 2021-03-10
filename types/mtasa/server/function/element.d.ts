@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ColShape, Element, Marker, Player, Table } from '../structure';
+import { ColShape, Element, Marker, Player } from '../structure';
 
 /**
  * This function is used together with [[setElementData]] in ''"subscribe"'' mode.
@@ -64,7 +64,7 @@ export function cloneElement(
  * @return If successful, returns a table with as keys the names of the element data and as values
  * the corresponding element data values. Returns ''false'' in case of failure.
  */
-export function getAllElementData(theElement: Element): Table;
+export function getAllElementData(theElement: Element): LuaTable;
 
 /**
  * This function returns an element of the specified type with the specified index.
@@ -300,7 +300,7 @@ export function detachElements(theElement: Element, theAttachToElement: Element)
  * @param theElement : The element which you require the information from.
  * @return Returns a table of all the elements attached to the specified element.
  */
-export function getAttachedElements(theElement: Element): Table;
+export function getAttachedElements(theElement: Element): LuaTable;
 
 /**
  * This function returns the alpha (transparency) value for the specified [[element]]. This can be
@@ -378,7 +378,7 @@ export function getElementChild(parent: Element, index: number): Element;
  * If the element has no children, it will return an empy ''table''. It will return ''false'' if the
  * parent element does not exist.
  */
-export function getElementChildren(parent: Element, theType?: string): Table;
+export function getElementChildren(parent: Element, theType?: string): LuaTable;
 
 /**
  * This function returns the number of children an element has. Note that only the direct children
@@ -466,7 +466,7 @@ export function getElementInterior(theElement: Element): number;
  * class using ''Matrix.create'' method) containing a 4x4 matrix. Returns ''false'' if the element is not
  * streamed in, and not a [[vehicle]], [[ped]] or [[object]].
  */
-export function getElementMatrix(theElement: Element, legacy?: boolean): Table;
+export function getElementMatrix(theElement: Element, legacy?: boolean): LuaTable;
 
 /**
  * Returns the model ID of a given element. This can be a player/ped skin, a pickup model, an
@@ -554,7 +554,7 @@ export function getElementVelocity(theElement: Element): LuaMultiReturn<[number,
  * ''table'' if there are no elements of the specified type. Returns ''false'' if the string specified
  * is invalid (or not a string).
  */
-export function getElementsByType(theType: string, startat: Element): Table;
+export function getElementsByType(theType: string, startat: Element): LuaTable;
 
 /**
  * This function return the low LOD element that an element is associated with.

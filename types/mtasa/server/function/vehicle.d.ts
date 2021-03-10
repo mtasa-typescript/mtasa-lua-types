@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table, Vehicle } from '../structure';
+import { Element, Player, Vehicle } from '../structure';
 
 /**
  * This function adds sirens to a vehicle.
@@ -39,7 +39,7 @@ export function addVehicleSirens(
  * model is specified. Here is a list of valid table properties and what they return:
  * * {{Handling Properties}}
  */
-export function getModelHandling(modelId: number): Table;
+export function getModelHandling(modelId: number): LuaTable;
 
 /**
  *
@@ -66,7 +66,7 @@ export function getVehicleRespawnRotation(theVehicle: Element): LuaMultiReturn<[
  * @param model : The model of vehicles you want.
  * @return Returns a table of existing vehicles matching the specified model.
  */
-export function getVehiclesOfType(model: number): Table;
+export function getVehiclesOfType(model: number): LuaTable;
 
 /**
  * This function removes sirens from a vehicle.
@@ -312,7 +312,7 @@ export function fixVehicle(theVehicle: Vehicle): boolean;
  * of valid table properties and what they return:
  * * {{Handling Properties}}
  */
-export function getOriginalHandling(modelID: number): Table;
+export function getOriginalHandling(modelID: number): LuaTable;
 
 /**
  * Gets the direction in which a train is driving (clockwise or counterclockwise).
@@ -369,7 +369,7 @@ export function getVehicleColor(
  * @return Returns a ''table'' with all the compatible upgrades, or ''false'' if invalid arguments
  * are passed.
  */
-export function getVehicleCompatibleUpgrades(theVehicle: Vehicle, slot?: number): Table;
+export function getVehicleCompatibleUpgrades(theVehicle: Vehicle, slot?: number): LuaTable;
 
 /**
  * This function is used to get the player in control of the specified vehicle which includes
@@ -423,7 +423,7 @@ export function getVehicleEngineState(theVehicle: Vehicle): boolean;
  * of valid table properties and what they return:
  * * {{Handling Properties}}
  */
-export function getVehicleHandling(theVehicle: Element): Table;
+export function getVehicleHandling(theVehicle: Element): LuaTable;
 
 /**
  * This function will get the headlight color of a vehicle.
@@ -524,7 +524,7 @@ export function getVehicleOccupant(theVehicle: Vehicle, seat: number): Player;
  * * </syntaxhighlight>
  * * </div>
  */
-export function getVehicleOccupants(theVehicle: Vehicle): Table;
+export function getVehicleOccupants(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function is used to find out the current state of the override-lights setting of a vehicle.
@@ -586,7 +586,7 @@ export function getVehiclePlateText(theVehicle: Vehicle): string;
  * *  [bool] SirenParams.Flags.Silent
  * * </syntaxhighlight>
  */
-export function getVehicleSirenParams(theVehicle: Vehicle): Table;
+export function getVehicleSirenParams(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function gets the properties of a vehicle's sirens.
@@ -606,7 +606,7 @@ export function getVehicleSirenParams(theVehicle: Vehicle): Table;
  * * [int]     SirenData[sirenPoint].Min_Alpha
  * * </syntaxhighlight>
  */
-export function getVehicleSirens(theVehicle: Vehicle): Table;
+export function getVehicleSirens(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function returns whether the sirens are turned on for the specified vehicle.
@@ -684,7 +684,7 @@ export function getVehicleUpgradeSlotName(slot: number): string;
  * @return Returns a ''table'' of all the upgrades on each slot of a vehicle, which may be empty,
  * or ''false'' if a valid vehicle is not passed.
  */
-export function getVehicleUpgrades(theVehicle: Vehicle): Table;
+export function getVehicleUpgrades(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function gets the variant of a specified vehicle. In GTA SA some vehicles are different for

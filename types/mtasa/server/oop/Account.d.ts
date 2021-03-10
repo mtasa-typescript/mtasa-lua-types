@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table } from '../structure';
+import { Player } from '../structure';
 
 export class Account {
     /**
@@ -19,7 +19,7 @@ export class Account {
     /**
      * @see {@link getAllAccountData}
      */
-    data: Table;
+    data: LuaTable;
     /**
      * @see {@link isGuestAccount}
      */
@@ -65,12 +65,12 @@ export class Account {
     /**
      * @see {@link getAccounts}
      */
-    getAll(): Table;
+    getAll(): LuaTable;
 
     /**
      * @see {@link getAllAccountData}
      */
-    getAllData(): Table;
+    getAllData(): LuaTable;
 
     /**
      * @see {@link isGuestAccount}

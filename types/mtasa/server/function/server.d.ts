@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 /**
  * This function returns the maximum number of player slots on the server.
  * @see {@link https://wiki.multitheftauto.com/wiki/getMaxPlayers|MTASA Wiki}
@@ -121,7 +119,7 @@ export function shutdown(reason: string): boolean;
  * * *'''sortable:''' a 15 character sortable version string (from 1.0.4 onwards). Format of the
  * string is described in [[getPlayerVersion]].
  */
-export function getVersion(): Table;
+export function getVersion(): LuaTable;
 
 /**
  *

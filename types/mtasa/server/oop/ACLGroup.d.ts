@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ACL, Table } from '../structure';
+import { ACL } from "./ACL";
 
 export class ACLGroup {
     /**
@@ -11,11 +11,11 @@ export class ACLGroup {
     /**
      * @see {@link aclGroupListACL}
      */
-    aclList: Table;
+    aclList: LuaTable;
     /**
      * @see {@link aclGroupListObjects}
      */
-    objects: Table;
+    objects: LuaTable;
 
     /**
      * @see {@link aclDestroyGroup}
@@ -45,17 +45,17 @@ export class ACLGroup {
     /**
      * @see {@link aclGroupList}
      */
-    list(): Table;
+    list(): LuaTable;
 
     /**
      * @see {@link aclGroupListACL}
      */
-    listACL(): Table;
+    listACL(): LuaTable;
 
     /**
      * @see {@link aclGroupListObjects}
      */
-    listObjects(): Table;
+    listObjects(): LuaTable;
 
     /**
      * @see {@link aclGroupRemoveACL}

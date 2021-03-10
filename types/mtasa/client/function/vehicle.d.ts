@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table, Vehicle } from "../structure";
+import { Element, Player, Vehicle } from "../structure";
 
 /**
  * *This is different to [[getVehicleOverrideLights]] because this function will return '''true'''
@@ -119,7 +119,7 @@ export function getVehicleComponentVisible(theVehicle: Vehicle, theComponent: st
  * @return Returns a ''table'' containing the name of the component as the key and visibility flag
  * of that component as the value
  */
-export function getVehicleComponents(theVehicle: Vehicle): Table;
+export function getVehicleComponents(theVehicle: Vehicle): LuaTable;
 
 /**
  * Gets the specified vehicle's current gear.
@@ -210,7 +210,7 @@ export function getVehicleModelExhaustFumesPosition(modelID: number): LuaMultiRe
  * specified vehicle model ID or wheel group are not valid, an error is raised instead. The meaning of the
  * wheel size values is documented in [[setVehicleModelWheelSize]].
  */
-export function getVehicleModelWheelSize(vehicleModel: number, wheelGroup?: string): number | Table;
+export function getVehicleModelWheelSize(vehicleModel: number, wheelGroup?: string): number | LuaTable;
 
 /**
  * This function gets the nitro count of the [[vehicle]].
@@ -673,7 +673,7 @@ export function fixVehicle(theVehicle: Vehicle): boolean;
  * of valid table properties and what they return:
  * * {{Handling Properties}}
  */
-export function getOriginalHandling(modelID: number): Table;
+export function getOriginalHandling(modelID: number): LuaTable;
 
 /**
  * Gets the direction in which a train is driving (clockwise or counterclockwise).
@@ -730,7 +730,7 @@ export function getVehicleColor(
  * @return Returns a ''table'' with all the compatible upgrades, or ''false'' if invalid arguments
  * are passed.
  */
-export function getVehicleCompatibleUpgrades(theVehicle: Vehicle, slot?: number): Table;
+export function getVehicleCompatibleUpgrades(theVehicle: Vehicle, slot?: number): LuaTable;
 
 /**
  * This function is used to get the player in control of the specified vehicle which includes
@@ -784,7 +784,7 @@ export function getVehicleEngineState(theVehicle: Vehicle): boolean;
  * of valid table properties and what they return:
  * * {{Handling Properties}}
  */
-export function getVehicleHandling(theVehicle: Element): Table;
+export function getVehicleHandling(theVehicle: Element): LuaTable;
 
 /**
  * This function will get the headlight color of a vehicle.
@@ -885,7 +885,7 @@ export function getVehicleOccupant(theVehicle: Vehicle, seat: number): Player;
  * * </syntaxhighlight>
  * * </div>
  */
-export function getVehicleOccupants(theVehicle: Vehicle): Table;
+export function getVehicleOccupants(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function is used to find out the current state of the override-lights setting of a vehicle.
@@ -947,7 +947,7 @@ export function getVehiclePlateText(theVehicle: Vehicle): string;
  * *  [bool] SirenParams.Flags.Silent
  * * </syntaxhighlight>
  */
-export function getVehicleSirenParams(theVehicle: Vehicle): Table;
+export function getVehicleSirenParams(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function gets the properties of a vehicle's sirens.
@@ -967,7 +967,7 @@ export function getVehicleSirenParams(theVehicle: Vehicle): Table;
  * * [int]     SirenData[sirenPoint].Min_Alpha
  * * </syntaxhighlight>
  */
-export function getVehicleSirens(theVehicle: Vehicle): Table;
+export function getVehicleSirens(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function returns whether the sirens are turned on for the specified vehicle.
@@ -1045,7 +1045,7 @@ export function getVehicleUpgradeSlotName(slot: number): string;
  * @return Returns a ''table'' of all the upgrades on each slot of a vehicle, which may be empty,
  * or ''false'' if a valid vehicle is not passed.
  */
-export function getVehicleUpgrades(theVehicle: Vehicle): Table;
+export function getVehicleUpgrades(theVehicle: Vehicle): LuaTable;
 
 /**
  * This function gets the variant of a specified vehicle. In GTA SA some vehicles are different for

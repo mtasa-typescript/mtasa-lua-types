@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Table } from '../structure';
+import { Element, HandleFunction } from '../structure';
 
 /**
  * This function executes an arbitrary SQL query and returns the result rows if there are any. It
@@ -20,7 +20,7 @@ import { Element, HandleFunction, Table } from '../structure';
  * * </syntaxhighlight>
  * * A subsequent table represents the next row.
  */
-export function executeSQLQuery(query: string, param1?: any, ...args: any[]): Table;
+export function executeSQLQuery(query: string, param1?: any, ...args: any[]): LuaTable;
 
 /**
  * This function opens a connection to a database and returns an element that can be used with
@@ -99,7 +99,7 @@ export function dbFree(queryHandle: HandleFunction): boolean;
  * * {{Note|If a column contained a number it is returned as a number, this includes things which
  * were stored as string but are numbers such as "1" would be returned as 1.}}
  */
-export function dbPoll(queryHandle: HandleFunction, timeout: number, multipleResults?: boolean): Table;
+export function dbPoll(queryHandle: HandleFunction, timeout: number, multipleResults?: boolean): LuaTable;
 
 /**
  * This function escapes arguments in the same way as [[dbQuery]], except dbPrepareString returns
@@ -128,7 +128,7 @@ export function dbPrepareString(databaseConnection: Element, query: string, para
  */
 export function dbQuery(
     callbackFunction: HandleFunction,
-    callbackArguments: Table,
+    callbackArguments: LuaTable,
     databaseConnection: Element,
     query: string,
     param1?: any,

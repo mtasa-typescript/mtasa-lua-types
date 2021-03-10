@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Request, Resource, Table, XmlNode } from '../structure';
+import { Element, HandleFunction, Request, Resource, XmlNode } from '../structure';
 
 /**
  * This function retrieves a resource's GUI element. The resource's GUI element is the element in
@@ -96,7 +96,7 @@ export function getResourceDynamicElementRoot(theResource: Resource): Element;
  * @default getThisResource(
  * @return Returns a [[table]] of function names if successful, ''false'' otherwise.
  */
-export function getResourceExportedFunctions(theResource: Resource): Table;
+export function getResourceExportedFunctions(theResource: Resource): LuaTable;
 
 /**
  * This function is used to retrieve a resource from its name. A resource's name is the same as its
@@ -169,7 +169,7 @@ export function getThisResource(): Resource;
  * @default nil
  * @return Returns a table with all requests, false if an invalid resource was provided
  */
-export function getRemoteRequests(theResource: Resource): Table;
+export function getRemoteRequests(theResource: Resource): LuaTable;
 
 /**
  * Gets informations of an [[FetchRemote|fetchRemote]] or [[CallRemote|callRemote]] request info.
@@ -197,7 +197,7 @@ export function getRemoteRequests(theResource: Resource): Table;
  * * *'''postData:''' A string containing the request post data as declared in the fetchRemote call
  * * *'''headers:''' A table containing the request HTTP headers as declared in the fetchRemote call
  */
-export function getRemoteRequestInfo(theRequest: Request, postDataLength?: number, includeHeaders?: boolean): Table;
+export function getRemoteRequestInfo(theRequest: Request, postDataLength?: number, includeHeaders?: boolean): LuaTable;
 
 /**
  * Aborts a [[FetchRemote|fetchRemote]] or [[CallRemote|callRemote]] request.

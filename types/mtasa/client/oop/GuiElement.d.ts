@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Table } from '../structure';
+import { Element } from "./Element";
 
 export class GuiElement {
     /**
@@ -35,7 +35,7 @@ export class GuiElement {
     /**
      * @see {@link guiGetProperties}
      */
-    properties: Table;
+    properties: LuaTable;
     /**
      * @see {@link guiGetText}
      */
@@ -110,7 +110,7 @@ export class GuiElement {
     /**
      * @see {@link guiGetProperties}
      */
-    getProperties(guiElement: Element): Table;
+    getProperties(guiElement: Element): LuaTable;
 
     /**
      * @see {@link guiGetProperty}

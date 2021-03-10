@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, PrimitiveType, Table, Texture } from '../structure';
+import { Element, PrimitiveType, Texture } from '../structure';
 
 /**
  * This function converts [[Texture_pixels|pixels]] from one format to another.
@@ -290,8 +290,8 @@ export function dxDrawMaterialPrimitive(
     pType: PrimitiveType,
     material: string,
     postGUI: boolean,
-    vertice1: Table,
-    vertice2?: Table,
+    vertice1: LuaTable,
+    vertice2?: LuaTable,
     ...args: any[]
 ): boolean;
 
@@ -312,8 +312,8 @@ export function dxDrawMaterialPrimitive3D(
     pType: PrimitiveType,
     material: string,
     postGUI: boolean,
-    vertice1: Table,
-    vertice2?: Table,
+    vertice1: LuaTable,
+    vertice2?: LuaTable,
     ...args: any[]
 ): boolean;
 
@@ -370,8 +370,8 @@ export function dxDrawMaterialSectionLine3D(
 export function dxDrawPrimitive(
     pType: string,
     postGUI: boolean,
-    vertice1: Table,
-    vertice2?: Table,
+    vertice1: LuaTable,
+    vertice2?: LuaTable,
     ...args: any[]
 ): boolean;
 
@@ -393,10 +393,10 @@ export function dxDrawPrimitive(
 export function dxDrawPrimitive3D(
     primitiveType: string,
     postGUI: boolean,
-    vertex1: Table,
-    vertex2: Table,
-    vertex3: Table,
-    vertex4?: Table,
+    vertex1: LuaTable,
+    vertex2: LuaTable,
+    vertex3: LuaTable,
+    vertex4?: LuaTable,
     ...args: any[]
 ): boolean;
 
@@ -633,7 +633,7 @@ export function dxGetPixelsFormat(pixels: string): string;
  * available
  * * *'''UsingDepthBuffer:''' ''true'' if the depth buffer is used, ''false'' otherwise
  */
-export function dxGetStatus(): Table;
+export function dxGetStatus(): LuaTable;
 
 /**
  * '''NOTE:''' This function already takes the client's screen resolution into account.

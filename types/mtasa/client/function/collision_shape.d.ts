@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ColShape, Element, Table } from '../structure';
+import { ColShape, Element } from '../structure';
 
 /**
  *
@@ -144,7 +144,7 @@ export function getColPolygonHeight(shape: ColShape): LuaMultiReturn<[number, nu
  * @return Returns a [[table]] of coordinates, each coordinate being a [[table]] containing the x
  * and y position of a bound point, ''false'' if invalid arguments were passed.
  */
-export function getColPolygonPoints(shape: ColShape): Table;
+export function getColPolygonPoints(shape: ColShape): LuaTable;
 
 /**
  *
@@ -209,7 +209,7 @@ export function getColShapeSize(shape: ColShape): LuaMultiReturn<[number, number
  * type. Returns an empty [[table]] if there are no elements inside. Returns ''false'' if the colshape is
  * invalid.
  */
-export function getElementsWithinColShape(theShape: ColShape, elemType?: string): Table;
+export function getElementsWithinColShape(theShape: ColShape, elemType?: string): LuaTable;
 
 /**
  * This function is used to determine if an element is within a collision shape. Please note that

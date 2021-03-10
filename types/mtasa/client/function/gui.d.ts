@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Gui, GuiMemo, GuiScrollBar, ProgressBar, Table } from '../structure';
+import { Element, Gui, GuiMemo, GuiScrollBar, ProgressBar } from '../structure';
 
 /**
  * This function brings a GUI element on top of others.
@@ -23,7 +23,7 @@ export function guiBringToFront(guiElement: Element): boolean;
  * * *a table of all CVar values, if CVar was not specified
  * * *''false'' if an invalid CVar was specified
  */
-export function getChatboxLayout(CVar: string): boolean | number | Table;
+export function getChatboxLayout(CVar: string): boolean | number | LuaTable;
 
 /**
  * This function creates a [[GUI font]] element that can be used in [[guiSetFont]]. Successful font
@@ -149,7 +149,7 @@ export function guiGetPosition(guiElement: Element, relative: boolean): LuaMulti
  * corresponding values are the values of the properties (both names and values are always strings). If
  * the function fails, it returns ''false''.
  */
-export function guiGetProperties(guiElement: Element): Table;
+export function guiGetProperties(guiElement: Element): LuaTable;
 
 /**
  * This function gets the value of a specific CEGUI property of a GUI element. For a list of
@@ -916,7 +916,7 @@ export function guiGridListGetSelectedItem(gridList: Element): LuaMultiReturn<[n
  * * </syntaxhighlight>
  * * if everything was successful or ''false'' if invalid arguments were passed.
  */
-export function guiGridListGetSelectedItems(gridList: Element): Table;
+export function guiGridListGetSelectedItems(gridList: Element): LuaTable;
 
 /**
  *

@@ -1,8 +1,6 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Table } from '../structure';
-
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
  * overview -->
@@ -13,7 +11,7 @@ import { Table } from '../structure';
  * * Returns a table of all the currently loaded [[modules]]. If no modules are loaded, the table
  * will be empty.
  */
-export function getLoadedModules(): Table;
+export function getLoadedModules(): LuaTable;
 
 /**
  * This function returns information about the specified [[Modules|module]].
@@ -26,4 +24,4 @@ export function getLoadedModules(): Table;
  * * *'''author''': Module author
  * * If invalid name for module is passed, it will return ''false''.
  */
-export function getModuleInfo(moduleName: string): Table;
+export function getModuleInfo(moduleName: string): LuaTable;

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Player, Table, TextDisplay, TextItem } from '../structure';
+import { Player, TextDisplay, TextItem } from '../structure';
 
 /**
  * A [[textdisplay|text display]] is like a canvas that can contain many [[textitem|items of
@@ -105,7 +105,7 @@ export function textDisplayAddText(displayToAddTo: TextDisplay, itemToAdd: TextI
  * @return Returns a [[table]] of players that are observers of the display or ''false'' if invalid
  * textdisplay is passed.
  */
-export function textDisplayGetObservers(theDisplay: TextDisplay): Table;
+export function textDisplayGetObservers(theDisplay: TextDisplay): LuaTable;
 
 /**
  * This function checks if a player can see the specified [[textdisplay]].

@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { HandleFunction, Table, Timer, Userdata } from '../structure';
+import { HandleFunction, Timer, Userdata } from '../structure';
 
 /**
  * This functions creates a notification ballon on the desktop.
@@ -54,7 +54,7 @@ export function downloadFile(fileName: string): boolean;
  * *     |}
  * * |}
  */
-export function getKeyboardLayout(): Table;
+export function getKeyboardLayout(): LuaTable;
 
 /**
  * This function gets the player's localization setting as set in the MTA client.
@@ -65,7 +65,7 @@ export function getKeyboardLayout(): Table;
  * "Arabic")''.
  * * *'''name :''' The name of the language ''(eg. "English (United States)" or "Arabic")''.
  */
-export function getLocalization(): Table;
+export function getLocalization(): LuaTable;
 
 /**
  * This function returns a boolean value whether the client has enabled tray notifications in his
@@ -104,12 +104,12 @@ export function setWindowFlashing(shouldFlash: boolean, count?: number): boolean
  * }}
  * @param callbackFunction The function to call  ** Returning the string "skip" from the callback
  * function will cause the original function/event to be skipped
- * @param nameList Table of strings for restricting which functions and events the hook will be
+ * @param nameList LuaTable of strings for restricting which functions and events the hook will be
  * triggered on  ** addDebugHook and removeDebugHook will only be hooked if they are specified in the name
  * list
  * @return Returns ''true'' if the hook was successfully added, or ''false'' otherwise.
  */
-export function addDebugHook(hookType: string, callbackFunction: HandleFunction, nameList?: Table): boolean;
+export function addDebugHook(hookType: string, callbackFunction: HandleFunction, nameList?: LuaTable): boolean;
 
 /**
  * This function returns the decrypted data from [https://en.wikipedia.org/wiki/Base64 base64]
@@ -293,7 +293,7 @@ export function debugSleep(sleep: number): boolean;
  * @return Returns the decoded string if successful, ''false'' otherwise. If a callback was
  * provided, the decoded string is argument to the callback.
  */
-export function decodeString(algorithm: string, input: string, options: Table, callback?: HandleFunction): string;
+export function decodeString(algorithm: string, input: string, options: LuaTable, callback?: HandleFunction): string;
 
 /**
  * This function will take a reference and returns its Lua element.
@@ -316,7 +316,7 @@ export function deref(reference: number): string;
  * @return Returns the encoded string if successful, ''false'' otherwise. If a callback was
  * provided, ''true'' is returned immediately, and the encoded string is passed as an argument to the callback.
  */
-export function encodeString(algorithm: string, input: string, options: Table, callback?: HandleFunction): string;
+export function encodeString(algorithm: string, input: string, options: LuaTable, callback?: HandleFunction): string;
 
 /**
  * This function parses a [[JSON]] formatted string into variables. You can use [[toJSON]] to
@@ -438,7 +438,7 @@ export function getFPSLimit(): number;
  * * * '''isLimitedByOutgoingBandwidthLimit'''
  * * * '''encryptionStatus'''
  */
-export function getNetworkStats(): Table;
+export function getNetworkStats(): LuaTable;
 
 /**
  * This function returns a [[table]] containing network usage information about inbound and
@@ -448,7 +448,7 @@ export function getNetworkStats(): Table;
  * two fields: "bits" and "count". Each of these contain a table with 256 numeric fields ranging from 0
  * to 255, containing the appropriate network usage data for such packet id.
  */
-export function getNetworkUsageData(): Table;
+export function getNetworkUsageData(): LuaTable;
 
 /**
  * This function returns performance information.
@@ -466,7 +466,7 @@ export function getPerformanceStats(
     category: string,
     options?: string,
     filter?: string,
-): LuaMultiReturn<[Table, Table]>;
+): LuaMultiReturn<[LuaTable, LuaTable]>;
 
 /**
  * This function gets the server or client (if used client sided it returns time as set on client's
@@ -527,7 +527,7 @@ export function getPerformanceStats(
  * * |}
  * * ''* second'' is generally 0-59. Extra range to accommodate for leap seconds in certain systems.
  */
-export function getRealTime(seconds: number, localTime: boolean): Table;
+export function getRealTime(seconds: number, localTime: boolean): LuaTable;
 
 /**
  * This function returns amount of time that your system has been running in milliseconds. By
@@ -563,7 +563,7 @@ export function getTimerDetails(theTimer: Timer): LuaMultiReturn<[number, number
  * @default nil
  * @return Returns a table of all the active timers.
  */
-export function getTimers(theTime: number): Table;
+export function getTimers(theTime: number): LuaTable;
 
 /**
  * This function splits a string using the given separating character and returns one specified
@@ -605,7 +605,7 @@ export function hash(algorithm: string, dataToHash: string): string;
  * @return Always returns a string. The contents can change if we update the inspect library, so it
  * is not expected to be consistent across Lua versions.
  */
-export function inspect(variableValue: string, options?: Table): string;
+export function inspect(variableValue: string, options?: LuaTable): string;
 
 /**
  * Interpolates a 3D Vector between a source value and a target value using either linear
@@ -701,7 +701,7 @@ export function md5(str: string): string;
  * callback was provided, the aforementioned values are arguments to the callback, and this function will
  * always return ''true''.
  */
-export function passwordHash(password: string, algorithm: string, options: Table, callback?: HandleFunction): string;
+export function passwordHash(password: string, algorithm: string, options: LuaTable, callback?: HandleFunction): string;
 
 /**
  * This function verifies whether a password matches a password hash.
@@ -718,7 +718,7 @@ export function passwordHash(password: string, algorithm: string, options: Table
  * match, or if an unknown hash was passed. If a callback was provided, the aforementioned values are
  * arguments to the callback, and this function will always return ''true''.
  */
-export function passwordVerify(password: string, hash: string, options?: Table, callback?: HandleFunction): boolean;
+export function passwordVerify(password: string, hash: string, options?: LuaTable, callback?: HandleFunction): boolean;
 
 /**
  * This function stops at the first occurrence of the pattern in the input string and returns the
@@ -741,7 +741,7 @@ export function pregFind(subject: string, pattern: string, string?: number): boo
  * @default 100000
  * @return Returns a ''[[table]]'' if one or more match is found, ''false'' otherwise.
  */
-export function pregMatch(base: string, pattern: string, string?: number, maxResults?: number): Table;
+export function pregMatch(base: string, pattern: string, string?: number, maxResults?: number): LuaTable;
 
 /**
  * This function performs a regular expression search and replace and returns the replaced string.
@@ -844,7 +844,7 @@ export function sha256(str: string): string;
  * * {{note|You can't use same char twice as a separator. Eg.:  ||, ||| are the same as |.
  * * }}
  */
-export function split(stringToSplit: string, int: string): Table;
+export function split(stringToSplit: string, int: string): LuaTable;
 
 /**
  * This function decrypts given [https://en.wikipedia.org/wiki/Base64 base64] representation of

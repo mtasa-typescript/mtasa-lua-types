@@ -1,6 +1,5 @@
 // TODO: make something with that
 
-export type Table = any;
 export type Userdata = any;
 export type TextItem = Userdata;
 export type TextDisplay = Userdata;

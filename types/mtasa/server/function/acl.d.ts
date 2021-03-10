@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { ACL, ACLGroup, Table } from '../structure';
+import { ACL, ACLGroup, } from '../structure';
 
 /**
  * This function creates an ACL entry in the Access Control List system with the specified name.
@@ -151,7 +151,7 @@ export function aclGroupGetName(aclGroup: ACLGroup): string;
  * @return Returns a table of all the ACL groups if successful, returns an empty table if no ACL
  * groups exist. ''false''/''nil'' can be returned if this function fails for some other reason.
  */
-export function aclGroupList(): Table;
+export function aclGroupList(): LuaTable;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an
@@ -164,7 +164,7 @@ export function aclGroupList(): Table;
  * * Returns a table of the ACL elements in the given ACL group. This table might be empty. Returns
  * ''false'' or ''nil'' if theGroup is invalid or it fails for some other reason.
  */
-export function aclGroupListACL(theGroup: ACLGroup): Table;
+export function aclGroupListACL(theGroup: ACLGroup): LuaTable;
 
 /**
  * <!-- Change this to "Client function" or "Server function" appropriately-->
@@ -179,7 +179,7 @@ export function aclGroupListACL(theGroup: ACLGroup): Table;
  * * Returns a table of strings in the given ACL group. This table might be empty. Returns
  * ''false'' or ''nil'' if theGroup is invalid or it fails for some other reason.
  */
-export function aclGroupListObjects(theGroup: ACLGroup): Table;
+export function aclGroupListObjects(theGroup: ACLGroup): LuaTable;
 
 /**
  * This function removes the given ACL from the given ACL group.
@@ -212,7 +212,7 @@ export function aclGroupRemoveObject(theGroup: ACLGroup, theObjectString: string
  * @return Returns a table of all the ACLs. This table can be empty if no ACLs exist. It can also
  * return ''false''/''nil'' if it failed for some reason.
  */
-export function aclList(): Table;
+export function aclList(): LuaTable;
 
 /**
  * This function returns a table of all the rights that a given ACL has.
@@ -223,7 +223,7 @@ export function aclList(): Table;
  * @return Returns a table over the rights as strings in the given ACL. This table might be empty.
  * Returns ''false'' or ''nil'' if theACL is invalid or it fails for some other reason.
  */
-export function aclListRights(theACL: ACL, allowedType: string): Table;
+export function aclListRights(theACL: ACL, allowedType: string): LuaTable;
 
 /**
  * <!-- Describe in plain english what this function does. Don't go into details, just give an

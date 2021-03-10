@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Player, Table } from '../structure';
+import { Element, Player } from '../structure';
 
 /**
  * This outputs a line of text to the server's log. This could be useful for debugging.
@@ -46,7 +46,7 @@ export function clearChatBox(clearFor: Element): boolean;
  */
 export function outputChatBox(
     text: string,
-    element?: Table,
+    element?: LuaTable,
     r?: number,
     g?: number,
     b?: number,

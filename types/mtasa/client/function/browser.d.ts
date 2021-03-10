@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Browser, Element, Gui, GuiBrowser, HandleFunction, Table } from '../structure';
+import { Browser, Element, Gui, GuiBrowser, HandleFunction } from '../structure';
 
 /**
  * This function checks if the browser can return to the previous page.
@@ -81,7 +81,7 @@ export function getBrowserProperty(theBrowser: Browser, key: string): boolean;
  * * * '''PluginsEnabled''': ''true'' if plugins such as Flash, Silverlight (but not Java) are
  * enabled, ''false'' otherwise. This setting is ''false'' by default.
  */
-export function getBrowserSettings(): Table;
+export function getBrowserSettings(): LuaTable;
 
 /**
  * This function can be used to retrieve the source code of a website (asynchronously). The size of
@@ -241,7 +241,7 @@ export function reloadBrowserPage(webBrowser: Browser): boolean;
  * <syntaxhighlight lang="lua">function(bool wasAccepted, table new_domains)</syntaxhighlight>
  * @return Returns '''true''', if the string was successfully read, '''false''' otherwise.
  */
-export function requestBrowserDomains(pages: Table, parseAsURL?: boolean, callback?: HandleFunction): boolean;
+export function requestBrowserDomains(pages: LuaTable, parseAsURL?: boolean, callback?: HandleFunction): boolean;
 
 /**
  * Allows resizing of CEF browsers at runtime.

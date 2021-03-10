@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Player, Table } from '../structure';
+import { Element, HandleFunction, Player } from '../structure';
 
 /**
  * Gets the reason for cancelling an event.
@@ -37,7 +37,7 @@ export function getCancelReason(): string;
  * @return Returns ''true'' if the event trigger has been sent, ''false'' if invalid arguments were
  * specified.
  */
-export function triggerClientEvent(element: Table, name: string, sourceElement: Element, ...args: any[]): boolean;
+export function triggerClientEvent(element: LuaTable, name: string, sourceElement: Element, ...args: any[]): boolean;
 
 /**
  * This function is the same as [[triggerClientEvent ]] except the transmission rate of the data
@@ -57,7 +57,7 @@ export function triggerClientEvent(element: Table, name: string, sourceElement: 
  * specified.
  */
 export function triggerLatentClientEvent(
-    element: Table,
+    element: LuaTable,
     name: string,
     bandwidth: number,
     persist: boolean,
@@ -160,7 +160,7 @@ export function cancelLatentEvent(thePlayer: Player, handle: number): boolean;
  * @param attachedTo The element attached to.
  * @return Returns table with attached functions, empty table otherwise.
  */
-export function getEventHandlers(eventName: string, attachedTo: Element): Table;
+export function getEventHandlers(eventName: string, attachedTo: Element): LuaTable;
 
 /**
  * Gets the currently queued latent events. The last one in the table is always the latest event
@@ -169,7 +169,7 @@ export function getEventHandlers(eventName: string, attachedTo: Element): Table;
  * @param thePlayer The player who is receiving the events.
  * @return Returns a table of handles or false if invalid arguments were passed.
  */
-export function getLatentEventHandles(thePlayer: Player): Table;
+export function getLatentEventHandles(thePlayer: Player): LuaTable;
 
 /**
  * Gets the status of one queued latent event.
@@ -183,7 +183,7 @@ export function getLatentEventHandles(thePlayer: Player): Table;
  * * *'''totalSize:''' A number representing how many bytes in total this transfer will transfer
  * * *'''percentComplete:''' A number between 0-100 saying how much is done
  */
-export function getLatentEventStatus(thePlayer: Player, handle: number): Table;
+export function getLatentEventStatus(thePlayer: Player, handle: number): LuaTable;
 
 /**
  * This functions removes a handler function from an [[event]], so that the function is not called

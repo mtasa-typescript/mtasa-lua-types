@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Account, Ban, Element, Table, Team } from '../structure';
+import { Account, Ban, Element, Team } from '../structure';
 
 export class Player {
     /**
@@ -11,7 +11,7 @@ export class Player {
     /**
      * @see {@link getPlayerACInfo}
      */
-    ACInfo: Table;
+    ACInfo: LuaTable;
     /**
      * @see {@link getPlayerIdleTime}
      */
@@ -118,22 +118,22 @@ export class Player {
     /**
      * @see {@link triggerClientEvent}
      */
-    triggerEvent(element: Table, name: string, sourceElement: Element, ...args: any[]): boolean;
+    triggerEvent(element: LuaTable, name: string, sourceElement: Element, ...args: any[]): boolean;
 
     /**
      * @see {@link getAlivePlayers}
      */
-    getAllAlive(): Table;
+    getAllAlive(): LuaTable;
 
     /**
      * @see {@link getDeadPlayers}
      */
-    getAllDead(): Table;
+    getAllDead(): LuaTable;
 
     /**
      * @see {@link getPlayerACInfo}
      */
-    getACInfo(thePlayer: Element): Table;
+    getACInfo(thePlayer: Element): LuaTable;
 
     /**
      * @see {@link getPlayerAnnounceValue}
@@ -293,7 +293,7 @@ export class Player {
     /**
      * @see {@link outputChatBox}
      */
-    outputChat(text: string, element?: Table, r?: number, g?: number, b?: number, colorCoded?: boolean): boolean;
+    outputChat(text: string, element?: LuaTable, r?: number, g?: number, b?: number, colorCoded?: boolean): boolean;
 
     /**
      * @see {@link forcePlayerMap}

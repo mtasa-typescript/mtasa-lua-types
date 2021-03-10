@@ -1,7 +1,7 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, HandleFunction, Request, Resource, Table, XmlNode } from "../structure";
+import { Element, HandleFunction, Request, Resource, XmlNode } from "../structure";
 
 /**
  * This function adds a new empty config file to an existing resource.
@@ -130,7 +130,7 @@ export function deleteResource(resourceName: string): boolean;
  * @return Returns a ''table'' with the ACL requests for the given resource, or ''false'' if the
  * resource is not valid. A valid resource with no ACL requests will return an empty table.
  */
-export function getResourceACLRequests(theResource: Resource): Table;
+export function getResourceACLRequests(theResource: Resource): LuaTable;
 
 /**
  * This function retrieves the value of any attribute in a resource info tag.
@@ -208,7 +208,7 @@ export function getResourceOrganizationalPath(theResource: Resource): string;
  * @see {@link https://wiki.multitheftauto.com/wiki/getResources|MTASA Wiki}
  * @return Returns a table of resources.
  */
-export function getResources(): Table;
+export function getResources(): LuaTable;
 
 /**
  * Checks whether a resource is currently archived (running from within a ZIP file).
@@ -486,7 +486,7 @@ export function getResourceDynamicElementRoot(theResource: Resource): Element;
  * @default getThisResource(
  * @return Returns a [[table]] of function names if successful, ''false'' otherwise.
  */
-export function getResourceExportedFunctions(theResource: Resource): Table;
+export function getResourceExportedFunctions(theResource: Resource): LuaTable;
 
 /**
  * This function is used to retrieve a resource from its name. A resource's name is the same as its
@@ -559,7 +559,7 @@ export function getThisResource(): Resource;
  * @default nil
  * @return Returns a table with all requests, false if an invalid resource was provided
  */
-export function getRemoteRequests(theResource: Resource): Table;
+export function getRemoteRequests(theResource: Resource): LuaTable;
 
 /**
  * Gets informations of an [[FetchRemote|fetchRemote]] or [[CallRemote|callRemote]] request info.
@@ -587,7 +587,7 @@ export function getRemoteRequests(theResource: Resource): Table;
  * * *'''postData:''' A string containing the request post data as declared in the fetchRemote call
  * * *'''headers:''' A table containing the request HTTP headers as declared in the fetchRemote call
  */
-export function getRemoteRequestInfo(theRequest: Request, postDataLength?: number, includeHeaders?: boolean): Table;
+export function getRemoteRequestInfo(theRequest: Request, postDataLength?: number, includeHeaders?: boolean): LuaTable;
 
 /**
  * Aborts a [[FetchRemote|fetchRemote]] or [[CallRemote|callRemote]] request.

@@ -1,4 +1,3 @@
-export type Table = any;
 export type Userdata = any;
 export type TextItem = Userdata;
 export type ProgressBar = Userdata;
