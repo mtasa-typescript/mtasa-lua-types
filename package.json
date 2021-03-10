@@ -1,6 +1,6 @@
 {
     "name": "mtasa-lua-types",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "TypeScript types definitions for MTASA Lua",
     "homepage": "https://github.com/mtasa-typescript/mtasa-lua-types",
     "bugs": "https://github.com/mtasa-typescript/mtasa-lua-types/issues",
@@ -23,18 +23,22 @@
         "linting",
         "typescript"
     ],
+    "author": "Anatolii Titov <a@toliak.ru>",
     "contributors": [
-        "Anatolii Titov <a@toliak.ru>",
         "Dominic Hock <???>"
     ],
+    "types": "./index.d.ts",
     "license": "MIT",
     "files": [
         "types/**/*"
     ],
-    "devDependencies": {
-        "dtslint": "^4.0.7",
-        "prettier": "^2.2.1",
+    "dependencies": {
+        "lua-types": "^2.8.0",
         "typescript": "^4.1.5",
         "typescript-to-lua": "^0.39.0"
+    },
+    "devDependencies": {
+        "dtslint": "^4.0.7",
+        "prettier": "^2.2.1"
     }
 }
