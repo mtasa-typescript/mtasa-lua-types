@@ -5,6 +5,14 @@ Declares TypeScripts types for MTASA. They are generated with
 
 # How to use
 
+## You are MTASA Resource developer
+
+If you are resource developer, you should not manually install this package.
+There is a [template](https://github.com/mtasa-typescript/resource-boilerplate)
+you can use for creating MTASA Resources on TypeScript.
+
+## Another way
+
 ```shell
 npm install --save-dev mtasa-lua-types
 ```
