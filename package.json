@@ -25,7 +25,7 @@
     ],
     "author": "Anatolii Titov <a@toliak.ru>",
     "contributors": [
-        "Dominic Hock <???>"
+        "Dominic Hock <admin@subtixx.de>"
     ],
     "types": "./index.d.ts",
     "license": "MIT",
