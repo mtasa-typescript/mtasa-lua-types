@@ -1,7 +1,9 @@
 /// <reference types="typescript-to-lua/language-extensions" />
+import { Element } from "./Element";
+
 /** @noSelfInFile */
 
-export class ColShape {
+export class ColShape extends Element {
     /**
      * @see {@link getColShapeType}
      */

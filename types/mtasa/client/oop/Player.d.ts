@@ -1,9 +1,10 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Team } from '../structure';
+import { Team } from './Team';
+import { Ped } from './Ped';
 
-export class Player {
+export class Player extends Ped {
     /**
      * @see {@link getBlurLevel}
      */

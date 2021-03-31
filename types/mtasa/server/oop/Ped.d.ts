@@ -3,7 +3,7 @@
 
 import { Element, Vehicle } from '../structure';
 
-export class Ped {
+export class Ped extends Element {
     /**
      * @see {@link getPedGravity}
      */

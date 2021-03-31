@@ -1,9 +1,10 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Element, Vehicle } from '../structure';
+import { Element } from './Element';
+import { Vehicle } from './Vehicle';
 
-export class Ped {
+export class Ped extends Element {
     /**
      * @see {@link getPedCameraRotation}
      */

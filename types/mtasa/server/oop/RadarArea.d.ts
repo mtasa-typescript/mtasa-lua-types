@@ -1,7 +1,9 @@
 /// <reference types="typescript-to-lua/language-extensions" />
+import { Element } from "./Element";
+
 /** @noSelfInFile */
 
-export class RadarArea {
+export class RadarArea extends Element {
     /**
      * @see {@link isRadarAreaFlashing}
      */

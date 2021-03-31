@@ -1,7 +1,9 @@
 /// <reference types="typescript-to-lua/language-extensions" />
+import { Element } from "./Element";
+
 /** @noSelfInFile */
 
-export class Blip {
+export class Blip extends Element {
     /**
      * @see {@link getBlipIcon}
      */

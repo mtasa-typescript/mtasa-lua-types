@@ -1,7 +1,9 @@
 /// <reference types="typescript-to-lua/language-extensions" />
+import { Element } from "./Element";
+
 /** @noSelfInFile */
 
-export class Object {
+export class Object extends Element {
     /**
      * @see {@link getObjectMass}
      */

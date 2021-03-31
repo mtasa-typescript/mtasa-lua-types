@@ -3,7 +3,7 @@
 
 import { Element, Player } from '../structure';
 
-export class Vehicle {
+export class Vehicle extends Element {
     /**
      * @see {@link getVehicleRespawnPosition}
      */

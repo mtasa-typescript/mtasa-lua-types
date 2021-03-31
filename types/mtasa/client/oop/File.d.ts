@@ -1,6 +1,14 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
+import {
+    fileGetPos,
+    fileGetSize,
+    fileIsEOF,
+    fileCreate,
+    fileSetPos,
+} from '../function/file';
+
 export class File {
     /**
      * @see {@link fileGetPos}

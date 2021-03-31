@@ -1,9 +1,9 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
-import { Account, Ban, Element, Team } from '../structure';
+import { Account, Ban, Element, Ped, Team } from '../structure';
 
-export class Player {
+export class Player extends Ped {
     /**
      * @see {@link getPlayerAccount}
      */
