@@ -18,7 +18,7 @@ jobs:
                 with:
                     node-version: 12.x
             -   name: Cache Node files
-                uses: actions/cache@v2.1.4
+                uses: actions/cache@v2.1.5
                 env:
                     cache-name: cache-node-modules
                 with:
@@ -44,7 +44,7 @@ jobs:
                 with:
                     node-version: 12.x
             -   name: Cache Node files
-                uses: actions/cache@v2.1.4
+                uses: actions/cache@v2.1.5
                 env:
                     cache-name: cache-node-modules
                 with:
@@ -71,7 +71,7 @@ jobs:
                     node-version: '12.x'
                     registry-url: 'https://registry.npmjs.org'
             -   name: Cache Node files
-                uses: actions/cache@v2.1.4
+                uses: actions/cache@v2.1.5
                 env:
                     cache-name: cache-node-modules
                 with:
