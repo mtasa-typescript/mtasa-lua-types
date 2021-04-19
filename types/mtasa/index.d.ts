@@ -157,4 +157,6 @@ import {} from './server/oop/Water';
 import {} from './server/oop/XML';
 import {} from './server/oop/XmlNode';
 
-import {} from './shared/utf8';
+import * as utf8 from './shared/utf8';
+
+export import utf8 = utf8.utf8;

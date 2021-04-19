@@ -6,10 +6,17 @@ import {
     fileGetSize,
     fileIsEOF,
     fileCreate,
+    fileOpen,
     fileSetPos,
 } from '../function/file';
 
+/** @customConstructor File */
 export class File {
+    /**
+     * @see {@link fileOpen}
+     */
+    constructor(filePath: string);
+
     /**
      * @see {@link fileGetPos}
      */
