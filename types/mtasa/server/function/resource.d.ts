@@ -445,8 +445,8 @@ export function fetchRemote(
     connectionAttempts: number,
     connectTimeout: number,
     callbackFunction: HandleFunction,
-    postData: string,
-    postIsBinary: boolean,
+    postData?: string,
+    postIsBinary?: boolean,
     ...args: any[]
 ): boolean;
 

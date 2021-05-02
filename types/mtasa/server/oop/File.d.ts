@@ -1,7 +1,22 @@
 /// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
+import {
+    fileGetPos,
+    fileGetSize,
+    fileIsEOF,
+    fileCreate,
+    fileOpen,
+    fileSetPos,
+} from '../function/file';
+
+/** @customConstructor File */
 export class File {
+    /**
+     * @see {@link fileOpen}
+     */
+    constructor(filePath: string);
+
     /**
      * @see {@link fileGetPos}
      */
