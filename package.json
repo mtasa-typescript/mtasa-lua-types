@@ -41,6 +41,6 @@
     "devDependencies": {
         "dtslint": "^4.0.7",
         "prettier": "^2.2.1",
-        "ssri": "^6.0.2"
+        "ssri": "^8.0.1"
     }
 }
