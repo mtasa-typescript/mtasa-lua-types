@@ -33,8 +33,12 @@ export { Light } from './oop/Light';
 export { Effect } from './oop/Effect';
 export { Searchlight } from './oop/Searchlight';
 export { Weapon } from './oop/Weapon';
+export { Object } from './oop/Object';
 export { GuiBrowser } from './oop/GuiBrowser';
 export { GuiMemo } from './oop/GuiMemo';
+export { GuiElement } from './oop/GuiElement';
+export { GuiWindow } from './oop/GuiWindow';
+export { GuiEdit } from './oop/GuiEdit';
 export { Projectile } from './oop/Projectile';
 
 export type HandleFunction = any;
