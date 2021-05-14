@@ -289,12 +289,18 @@ export class Sound extends Element {
      * WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the
      * effect can be played e.g. once every 50ms.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/PlaySound Wiki, playSound }
+     * @param soundPath Can also be raw sound data.
+     * |20460}}
+     * @param looped a boolean representing whether the sound will be looped. To loop the sound, use true.
+     * Loop is not available for streaming sounds, only for sound files.
      * @param throttled a boolean representing whether the sound will be throttled (i.e. given reduced download
      * bandwidth). To throttle the sound, use true. Sounds will be throttled per default and
      * only for URLs.
      * @return returns a sound element if the sound was successfully created, false otherwise.
      */
     constructor(
+        soundPath: string,
+        looped?: boolean,
         throttled?: boolean
     );
 

@@ -78,6 +78,8 @@ export class Searchlight extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateSearchLight Wiki, createSearchLight }
+     * @param startX : the X coordinate where the searchlight light cone will start.
+     * @param startY : the Y coordinate where the searchlight light cone will start.
      * @param startZ : the Z coordinate where the searchlight light cone will start.
      * @param endX : the X coordinate of the direction where the searchlight will point to.
      * @param endY : the Y coordinate of the direction where the searchlight will point to.
@@ -90,6 +92,8 @@ export class Searchlight extends Element {
      * false.
      */
     constructor(
+        startX: number,
+        startY: number,
         startZ: number,
         endX: number,
         endY: number,

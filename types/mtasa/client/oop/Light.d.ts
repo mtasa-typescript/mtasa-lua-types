@@ -79,6 +79,8 @@ export class Light {
      * * Two or more lights will apply illumination effects to everything (excluding objects)
      * that is in range of, at least, two of them.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateLight Wiki, createLight }
+     * @param lightType An integer representing the type of light to create.
+     * @param posX A floating point number representing the X coordinate on the map.
      * @param posY A floating point number representing the Y coordinate on the map.
      * @param posZ A floating point number representing the Z coordinate on the map.
      * @param radius A floating point number representing the radius of the light.
@@ -95,6 +97,8 @@ export class Light {
      * @return returns the element/light|light element if creation was successful, false otherwise.
      */
     constructor(
+        lightType: number,
+        posX: number,
         posY: number,
         posZ: number,
         radius?: number,

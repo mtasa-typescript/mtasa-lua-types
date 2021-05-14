@@ -58,6 +58,10 @@ export class GuiTabPanel extends GuiElement {
     /**
      * This function creates a Tab Panel, which acts as a template to create Tabs upon.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateTabPanel Wiki, guiCreateTabPanel }
+     * @param x A float of the 2D x position of the GUI tab panel on a players screen.  This is affected
+     * by the relative argument.
+     * @param y A float of the 2D y position of the GUI tab panel on a players screen. This is affected
+     * by the relative argument.
      * @param width A float of the width of the GUI tab panel. This is affected by the relative argument.
      * @param height A float of the height of the GUI tab panel. This is affected by the relative argument.
      * @param relative This is whether sizes and positioning are relative.  If this is true, then all
@@ -71,6 +75,8 @@ export class GuiTabPanel extends GuiElement {
      * @return returns a gui tab panel element if successful, false otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         relative: boolean,

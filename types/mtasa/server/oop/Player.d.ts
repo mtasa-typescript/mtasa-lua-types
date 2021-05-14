@@ -161,6 +161,11 @@ export class Player extends Ped {
     nametagShowing: boolean;
 
     /**
+     * Sets the motion blur level on the clients screen. Accepts a value between 0 and 255.
+     */
+    blurLevel: boolean;
+
+    /**
      * This function allows you to change who can hear the voice of a player.
      */
     voiceBroadcastTo: boolean;
@@ -435,10 +440,13 @@ export class Player extends Ped {
      * This function returns a player element for the player with the name passed to the
      * function.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerFromName Wiki, getPlayerFromName }
+     * @param playerName : A string containing the name of the player you want to reference
      * @return returns a player element for the player with the nickname provided. if there is no player
      * with that name, false is returned.
      */
-    constructor();
+    constructor(
+        playerName: string
+    );
 
     /**
      * This function gets the amount of time in milliseconds that a players position has not

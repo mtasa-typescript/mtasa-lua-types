@@ -56,6 +56,8 @@ export class DxRenderTarget {
      * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
      * zero, failure is guaranteed.)
      * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateRenderTarget Wiki, dxCreateRenderTarget }
+     * @param width The width of the texture in pixels.
+     * @param height The height of the texture in pixels.
      * @param withAlpha The render target will be created with an alpha channel. false will turn images alpha
      * channels to black color
      * @return returns a texture element if successful, false if the system is unable to create a render
@@ -63,6 +65,8 @@ export class DxRenderTarget {
      * you should always check to see if this function has returned false.
      */
     constructor(
+        width: number,
+        height: number,
         withAlpha?: boolean
     );
 }

@@ -62,7 +62,9 @@ export class EngineDFF {
      * @param dff_file / raw_data The filepath to the DFF file you want to load or whole data buffer of the DFF file.
      * @return returns a dff element if the dff file loaded, false otherwise.
      */
-    constructor();
+    constructor(
+        dff_file: string | string
+    );
 
     /**
      * This function replaces the given model ID with the model contained in a DFF file loaded

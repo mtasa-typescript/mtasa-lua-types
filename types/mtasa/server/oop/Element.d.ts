@@ -277,10 +277,15 @@ export class Element {
      * Elements created using this function are placed in the element tree with their parent as
      * the dynamic map element.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateElement Wiki, createElement }
+     * @param elementType The type of element being created.
+     * @param elementID The ID of the element being created.
      * @return returns the element if it was successfully created. returns false if the arguments are
      * wrong.
      */
-    constructor();
+    constructor(
+        elementType: string,
+        elementID?: string
+    );
 
     /**
      * This function destroys an element and all elements within it in the hierarchy (its

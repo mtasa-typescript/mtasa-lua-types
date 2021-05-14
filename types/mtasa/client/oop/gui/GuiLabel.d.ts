@@ -76,6 +76,10 @@ export class GuiLabel extends GuiElement {
      * its font because font size is not supported.
      * </td></tr></table>
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateLabel Wiki, guiCreateLabel }
+     * @param x A float of the 2D x position of the GUI label on a players screen.  This is affected by
+     * the relative argument.
+     * @param y A float of the 2D y position of the GUI label on a players screen. This is affected by
+     * the relative argument.
      * @param width A float of the width of the GUI label. This is affected by the relative argument.
      * @param height A float of the height of the GUI label. This is affected by the relative argument.
      * @param text A string of the text that will be displayed by the label.
@@ -91,6 +95,8 @@ export class GuiLabel extends GuiElement {
      * otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         text: string,

@@ -49,9 +49,36 @@ import {
 /** @customConstructor Player */
 export class Player extends Ped {
     /**
+     * This function gets the current team a player is on.
+     */
+    team: Team;
+
+    /**
      * This function allows you to check the current blur level of a specified player.
      */
     static blurLevel: number;
+
+    /**
+     * This function returns a string containing the name of the specified player.
+     */
+    name: string;
+
+    /**
+     * This will allow you to retrieve the name tag a player is currently using.
+     */
+    nametagText: string;
+
+    /**
+     * This function returns the ping of a specified player. The ping is the number of
+     * milliseconds that data takes to travel from the players client to the server or vice
+     * versa.
+     */
+    ping: number;
+
+    /**
+     * This function will allow you to determine if a players name tag is currently showing.
+     */
+    nametagShowing: boolean;
 
     /**
      * This function gets the current team a player is on.
@@ -81,10 +108,13 @@ export class Player extends Ped {
      * This function returns a player element for the player with the name passed to the
      * function.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerFromName Wiki, getPlayerFromName }
+     * @param playerName : A string containing the name of the player you want to reference
      * @return returns a player element for the player with the nickname provided. if there is no player
      * with that name, false is returned.
      */
-    constructor();
+    constructor(
+        playerName: string
+    );
 
     /**
      * Returns the amount of money a player currently has.

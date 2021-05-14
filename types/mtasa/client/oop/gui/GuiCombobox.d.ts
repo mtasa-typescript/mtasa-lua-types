@@ -128,6 +128,10 @@ export class GuiCombobox extends GuiElement {
      * This function creates a combobox GUI element, which you can compare to a gridlist with a
      * dropdown feature.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateComboBox Wiki, guiCreateComboBox }
+     * @param x A float of the 2D x position of the GUI combobox on a players screen.  This is affected
+     * by the relative argument.
+     * @param y A float of the 2D y position of the GUI combobox on a players screen. This is affected by
+     * the relative argument.
      * @param width A float of the width of the GUI combobox. This is affected by the relative argument.
      * @param height A float of the height of the GUI combobox. This is affected by the relative argument.
      * Note: height must be enough to fit the drop down menu, else the drop down wont appear.
@@ -145,6 +149,8 @@ export class GuiCombobox extends GuiElement {
      * otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         caption: string,

@@ -49,8 +49,15 @@ import {
 /** @customConstructor RadarArea */
 export class RadarArea extends Element {
     /**
+     * This function allows detection of whether a radar area is flashing or not.
+     */
+    flashing: boolean;
+
+    /**
      * This function can be used to create custom radar areas on the radar.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateRadarArea Wiki, createRadarArea }
+     * @param startPosX A float representing the origin x position of the radar area.
+     * @param startPosY A float representing the origin y position of the radar area.
      * @param sizeX A float representing the width of the radar area.
      * @param sizeY A float representing the height of the radar area.
      * @param r An integer representing the amount of red in the color.  Maximum value is 255
@@ -62,6 +69,8 @@ export class RadarArea extends Element {
      * function only)
      */
     constructor(
+        startPosX: number,
+        startPosY: number,
         sizeX: number,
         sizeY: number,
         r?: number,

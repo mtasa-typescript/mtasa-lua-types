@@ -123,12 +123,18 @@ export class Resource {
      * This function creates an new, empty resource. This creates a directory matching the name
      * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
+     * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
+     * do not have spaces or non-ASCII characters in resource names.
+     * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
      * @return returns the resource element of the new resource if successful, false otherwise. this
      * could fail if the resource name already is in use, if a directory already exists with the
      * name youve specified (but this isnt a valid resource) or if the name you specify isnt
      * valid. it could also fail if the disk was full or for other similar reasons.
      */
-    constructor();
+    constructor(
+        resourceName: string,
+        organizationalDir?: string
+    );
 
     /**
      * This function deletes a resource from the MTA memory and moves it to the

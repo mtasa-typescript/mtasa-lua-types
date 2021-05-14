@@ -52,6 +52,10 @@ export class GuiButton {
     /**
      * This function allows creation of a GUI Button, which is a clickable item as part of GUI.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateButton Wiki, guiCreateButton }
+     * @param x A float of the 2D x position of the GUI button on a players screen.  This is affected by
+     * the relative argument.
+     * @param y A float of the 2D y position of the GUI button on a players screen. This is affected by
+     * the relative argument.
      * @param width A float of the width of the GUI button. This is affected by the relative argument.
      * @param height A float of the height of the GUI button. This is affected by the relative argument.
      * @param text A string of the text that will be displayed as a label on the button.
@@ -67,6 +71,8 @@ export class GuiButton {
      * created, false otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         text: string,

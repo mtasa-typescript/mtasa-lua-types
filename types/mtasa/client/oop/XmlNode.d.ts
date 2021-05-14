@@ -49,6 +49,32 @@ import {
 /** @customConstructor XmlNode */
 export class XmlNode {
     /**
+     * Returns all the attributes of a specific XML node.
+     */
+    attributes: LuaTable;
+
+    /**
+     * This function returns all children of a particular XML node, or a particular child node.
+     */
+    children: LuaTable | XmlNode;
+
+    /**
+     * Gets the tag name of the specified XML node.
+     */
+    name: string;
+
+    /**
+     * Returns the parent node of an xml node.
+     */
+    parent: XmlNode;
+
+    /**
+     * This function is made to be able to read tag values in XML files (eg.
+     * <something>anything</something>).
+     */
+    value: string;
+
+    /**
      * This function copies all contents of a certain node in a XML document to a new document
      * file, so the copied node becomes the new files root node.
      * The new file will not be saved to file system until xmlSaveFile() is called

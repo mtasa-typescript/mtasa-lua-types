@@ -61,8 +61,11 @@ export class Sound3D {
      * (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how
      * often the effect can be played e.g. once every 50ms.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/PlaySound3D Wiki, playSound3D }
+     * @param soundPath Can also be raw sound data.
+     * |20460}}
      * @param soundURL the URL (http://, https:// or ftp://) of the sound file you want to play. (In this
      * version the file does not have to be predefined in the meta.xml)
+     * @param x a floating point number representing the X coordinate on the map.
      * @param y a floating point number representing the Y coordinate on the map.
      * @param z a floating point number representing the Z coordinate on the map.
      * @param looped a boolean representing whether the sound will be looped. To loop the sound, use true.
@@ -71,6 +74,8 @@ export class Sound3D {
      * @return returns a sound element if the sound was successfully created, false otherwise.
      */
     constructor(
+        soundPath: string,
+        x: number,
         y: number,
         z: number,
         looped?: boolean

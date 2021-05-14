@@ -161,10 +161,23 @@ export class File {
     /**
      * Opens an existing file for reading and writing.
      * @see {@link https://wiki.multitheftauto.com/wiki/FileOpen Wiki, fileOpen }
+     * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
+     * name of the resource the file is in, and path is the path from the root directory of the
+     * resource to the file.
+     * :For example, if there is a file named 'coolObjects.txt' in the resource 'objectSearch',
+     * it can be opened from another resource this way:
+     * ''fileOpen(":objectSearch/coolObjects.txt")''.
+     * :If the file is in the current resource, only the file path is necessary, e.g.
+     * ''fileOpen("coolObjects.txt")''.
+     * @param readOnly By default, the file is opened with reading and writing access. You can specify true for
+     * this parameter if you only need reading access.
      * @return if successful, returns a file handle for the file. otherwise returns false (f.e. if the
      * file doesnt exist).
      */
-    constructor();
+    constructor(
+        filePath: string,
+        readOnly?: boolean
+    );
 
     /**
      * Reads the specified number of bytes from the given file starting at its current

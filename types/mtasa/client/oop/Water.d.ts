@@ -49,6 +49,11 @@ import {
 /** @customConstructor Water */
 export class Water extends Element {
     /**
+     * Sets the height of some or all the water in the game world.
+     */
+    level: boolean;
+
+    /**
      * Creates an area of water.
      * The largest possible size of a water area is 5996&#0215;5996. Also be aware that the
      * function will change all x and y coordinates you specify into even integer numbers if
@@ -67,6 +72,8 @@ export class Water extends Element {
      * repositioned with setelementposition and destroyed with destroyelement.
      */
     constructor(
+        x1: number,
+        y1: number,
         z1: number,
         x2: number,
         y2: number,

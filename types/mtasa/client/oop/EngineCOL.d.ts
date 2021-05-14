@@ -60,7 +60,9 @@ export class EngineCOL {
      * @param col_file / raw_data The filepath to the COL file you want to load or whole data buffer of the COL file.
      * @return returns a col if the file was loaded, false otherwise.
      */
-    constructor();
+    constructor(
+        col_file: string | string
+    );
 
     /**
      * This function replaces the collision file of the given model id to the collision file

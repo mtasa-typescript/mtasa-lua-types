@@ -91,6 +91,9 @@ export class Timer {
      * length of the frame (33ms). As with most timers provided by other languages, you shouldnt
      * rely on the timer triggering at an exact point in the future.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTimer Wiki, setTimer }
+     * @param theFunction The function you wish the timer to call.
+     * @param timeInterval The number of milliseconds that should elapse before the function is called. (the minimum
+     * is 50 (0 on 1.5.6 r16715); 1000 milliseconds = 1 second)
      * @param timesToExecute The number of times you want the timer to execute, or 0 for infinite repetitions.
      * @param arguments Any arguments you wish to pass to the function can be listed after the timesToExecute
      * argument. Note that any tables you want to pass will get cloned, whereas metatables and
@@ -100,6 +103,8 @@ export class Timer {
      * invalid or the timer could not be set.
      */
     constructor(
+        theFunction: HandleFunction,
+        timeInterval: number,
         timesToExecute: number,
         ...varargs: any[]
     );

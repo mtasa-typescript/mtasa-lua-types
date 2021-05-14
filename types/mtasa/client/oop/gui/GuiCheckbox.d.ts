@@ -71,6 +71,10 @@ export class GuiCheckbox extends GuiElement {
     /**
      * This function creates a Element/GUI/Checkbox|checkbox.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateCheckBox Wiki, guiCreateCheckBox }
+     * @param x A float of the 2D x position of the checkbox on a players screen. This is affected by the
+     * relative argument.
+     * @param y A float of the 2D y position of the checkbox on a players screen. This is affected by the
+     * relative argument.
      * @param width A float of the width of the text field next to the checkbox. This is affected by the
      * relative argument.
      * @param height A float of the height of the text field next to the checkbox. This is affected by the
@@ -88,6 +92,8 @@ export class GuiCheckbox extends GuiElement {
      * @return returns element of the checkbox if it was created succesfully, false otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         text: string,

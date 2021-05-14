@@ -55,6 +55,8 @@ export class Water extends Element {
      * repositioned with setelementposition and destroyed with destroyelement.
      */
     constructor(
+        x1: number,
+        y1: number,
         z1: number,
         x2: number,
         y2: number,

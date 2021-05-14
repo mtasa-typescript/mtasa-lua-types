@@ -96,6 +96,10 @@ export class GuiGridList extends GuiElement {
      * lists and can have multiple columns.  A good example of a gridlist element can be found
      * in MTAs settings box, under Controls.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateGridList Wiki, guiCreateGridList }
+     * @param x A float of the 2D x position of the GUI gridlist on a players screen.  This is affected
+     * by the relative argument.
+     * @param y A float of the 2D y position of the GUI gridlist on a players screen. This is affected by
+     * the relative argument.
      * @param width A float of the width of the GUI gridlist. This is affected by the relative argument.
      * @param height A float of the height of the GUI gridlist. This is affected by the relative argument.
      * @param relative This is whether sizes and positioning are relative.  If this is true, then all
@@ -110,6 +114,8 @@ export class GuiGridList extends GuiElement {
      * otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         relative: boolean,

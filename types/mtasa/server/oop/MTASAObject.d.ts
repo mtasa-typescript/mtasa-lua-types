@@ -43,6 +43,8 @@ export class MTASAObject {
     /**
      * Creates an object element at a given position and rotation.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateObject Wiki, createObject }
+     * @param modelId A whole integer specifying the GTA:SA object model ID.
+     * @param x A floating point number representing the X coordinate on the map.
      * @param y A floating point number representing the Y coordinate on the map.
      * @param z A floating point number representing the Z coordinate on the map.
      * @param rx A floating point number representing the rotation about the X axis in degrees.
@@ -53,6 +55,8 @@ export class MTASAObject {
      * @return * returns the object element if the creation was successful, false otherwise.
      */
     constructor(
+        modelId: number,
+        x: number,
         y: number,
         z: number,
         rx?: number,

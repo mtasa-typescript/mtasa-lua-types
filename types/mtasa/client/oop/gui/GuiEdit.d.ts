@@ -74,6 +74,10 @@ export class GuiEdit extends GuiElement {
      * can input text. Edit boxes only allow a single line of text. If you want to allow
      * multiple lines of text create a memo box using guiCreateMemo.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateEdit Wiki, guiCreateEdit }
+     * @param x A float of the 2D x position of the GUI edit box on a players screen.  This is affected
+     * by the relative argument.
+     * @param y A float of the 2D y position of the GUI edit box on a players screen. This is affected by
+     * the relative argument.
      * @param width A float of the width of the GUI edit box. This is affected by the relative argument.
      * @param height A float of the height of the GUI edit box. This is affected by the relative argument.
      * @param text A string of the text that will be displayed by default in the edit box.
@@ -89,6 +93,8 @@ export class GuiEdit extends GuiElement {
      * otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         text: string,

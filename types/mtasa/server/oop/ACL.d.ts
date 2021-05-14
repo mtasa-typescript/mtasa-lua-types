@@ -40,10 +40,13 @@ export class ACL {
      * This function creates an ACL entry in the Access Control List system with the specified
      * name.
      * @see {@link https://wiki.multitheftauto.com/wiki/AclCreate Wiki, aclCreate }
+     * @param aclName The name of the ACL entry to add.
      * @return returns the created acl object if successful. returns false if an acl of the given name
      * could not be created.
      */
-    constructor();
+    constructor(
+        aclName: string
+    );
 
     /**
      * This function destroys the ACL passed. The destroyed ACL will no longer be valid.

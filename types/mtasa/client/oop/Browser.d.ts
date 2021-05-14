@@ -82,6 +82,8 @@ export class Browser extends Element {
     /**
      * This function creates a new web Element/Browser|browser element.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateBrowser Wiki, createBrowser }
+     * @param width The browsers native width. This should be greater than or equal to 1.
+     * @param height The browsers native height. This should be greater than or equal to 1.
      * @param isLocal Sets whether the browser can only show local content or content from the internet (see
      * examples for more information)
      * @param transparent true if you want the browser transparent, false for opaque.
@@ -89,6 +91,8 @@ export class Browser extends Element {
      * also false, if the user disabled remote pages and islocal was set to false.
      */
     constructor(
+        width: number,
+        height: number,
         isLocal: boolean,
         transparent?: boolean
     );

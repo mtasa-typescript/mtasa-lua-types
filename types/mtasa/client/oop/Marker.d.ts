@@ -49,6 +49,33 @@ import {
 /** @customConstructor Marker */
 export class Marker extends Element {
     /**
+     * This function returns the icon name for a marker.
+     */
+    icon: string;
+
+    /**
+     * This function returns a float containing the size of the specified marker.
+     */
+    size: number;
+
+    /**
+     * This function returns the position of the specified markers target, the position it
+     * points to. This only works for checkpoint markers and ring markers. For checkpoints it
+     * returns the position the arrow is pointing to, for ring markers it returns the position
+     * the ring is facing. You can set this target with setMarkerTarget.
+     */
+    target: LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function returns a markers type.
+     */
+    markerType: string;
+
+    /**
      * This function creates a marker. A marker is a 3D model in the world that can highlight a
      * particular point or area, often used to instruct players where to go to perform actions
      * such as entering buildings.
@@ -60,6 +87,8 @@ export class Marker extends Element {
      * but the player will only be able to see the nearest ones up to the limit.
      * <br><br><br><br>
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateMarker Wiki, createMarker }
+     * @param x : A floating point number representing the X coordinate on the map.
+     * @param y : A floating point number representing the Y coordinate on the map.
      * @param z : A floating point number representing the Z coordinate on the map.
      * @param theType : The visual type of the marker to be created. Possible values:
      * @param size : The diameter of the marker to be created, in meters.
@@ -73,6 +102,8 @@ export class Marker extends Element {
      * marker (0 - 255 where 0 is transparent and 255 is opaque).
      */
     constructor(
+        x: number,
+        y: number,
         z: number,
         theType?: string,
         size?: number,

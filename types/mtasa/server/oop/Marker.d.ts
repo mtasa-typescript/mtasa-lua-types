@@ -70,6 +70,8 @@ export class Marker extends Element {
      * but the player will only be able to see the nearest ones up to the limit.
      * <br><br><br><br>
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateMarker Wiki, createMarker }
+     * @param x : A floating point number representing the X coordinate on the map.
+     * @param y : A floating point number representing the Y coordinate on the map.
      * @param z : A floating point number representing the Z coordinate on the map.
      * @param theType : The visual type of the marker to be created. Possible values:
      * @param size : The diameter of the marker to be created, in meters.
@@ -85,6 +87,8 @@ export class Marker extends Element {
      * visibility.
      */
     constructor(
+        x: number,
+        y: number,
         z: number,
         theType?: string,
         size?: number,

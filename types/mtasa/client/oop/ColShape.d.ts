@@ -49,6 +49,20 @@ import {
 /** @customConstructor ColShape */
 export class ColShape extends Element {
     /**
+     */
+    shapeType: number;
+
+    /**
+     * This function is used to retrieve a list of all elements in a colshape, of the specified
+     * type.
+     * * For legacy reasons, a colshape created on the client does not collide with elements
+     * already existing at that location until they first move
+     * * This function doesnt verify whether elements are in the same dimension and interior,
+     * additional checks could be implemented manually if they are needed
+     */
+    elementsWithin: LuaTable;
+
+    /**
      * @see {@link https://wiki.multitheftauto.com/wiki/AddColPolygonPoint Wiki, addColPolygonPoint }
      * @param fY The Y position of the new bound point.
      * @param index The index where the new point will be inserted in the polygon. The points are indexed in

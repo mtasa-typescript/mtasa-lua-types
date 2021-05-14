@@ -35,6 +35,8 @@ export class Pickup extends Element {
      * This function creates a pickup element, which is placed in the GTA world and can be
      * picked up to retrieve a health, armour or a weapon.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreatePickup Wiki, createPickup }
+     * @param x : A floating point number representing the X coordinate on the map.
+     * @param y : A floating point number representing the Y coordinate on the map.
      * @param z : A floating point number representing the Z coordinate on the map.
      * @param theType : This is an integer representing the type of pickup, representing the following types:
      * @param 0 : Health Pickup
@@ -80,6 +82,8 @@ export class Pickup extends Element {
      * @return returns pickup element if the pickup was created succesfully, otherwise returns false.
      */
     constructor(
+        x: number,
+        y: number,
         z: number,
         theType: number,
         amount_weapon_model: number,

@@ -51,9 +51,12 @@ export class ACLGroup {
      * This function creates a group in the ACL. An ACL group can contain objects like players
      * and resources. They specify who has access to the ACLs in this group.
      * @see {@link https://wiki.multitheftauto.com/wiki/AclCreateGroup Wiki, aclCreateGroup }
+     * @param groupName The name of the group to create
      * @return returns the pointer to the created aclgroup if successful. returns false if failed.
      */
-    constructor();
+    constructor(
+        groupName: string
+    );
 
     /**
      * This function destroys the given ACL group. The destroyed ACL group will no longer be

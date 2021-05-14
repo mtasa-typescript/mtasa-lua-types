@@ -61,6 +61,8 @@ export class Effect extends Element {
     /**
      * Creates an Element/Effect|effect on specified position.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateEffect Wiki, createEffect }
+     * @param name A string contains Element/Effect#Effects_list|effect name.
+     * @param x A floating point number representing the X coordinate on the map.
      * @param y A floating point number representing the Y coordinate on the map.
      * @param z A floating point number representing the Z coordinate on the map.
      * @param rX A floating point number representing the rotation about the X axis in degrees.
@@ -72,6 +74,8 @@ export class Effect extends Element {
      * @return returns the element/effect|effect element if creation was successful, false otherwise.
      */
     constructor(
+        name: string,
+        x: number,
         y: number,
         z: number,
         rX?: number,

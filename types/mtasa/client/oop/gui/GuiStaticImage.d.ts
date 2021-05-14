@@ -59,6 +59,10 @@ export class GuiStaticImage extends GuiElement {
     /**
      * This function creates a static image using a .png image in the resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateStaticImage Wiki, guiCreateStaticImage }
+     * @param x A float of the 2D x position of the image on a players screen. This is affected by the
+     * relative argument.
+     * @param y A float of the 2D y position of the image on a players screen. This is affected by the
+     * relative argument.
      * @param width A float of the width of the image. This is affected by the relative argument.
      * @param height A float of the height of the image. This is affected by the relative argument.
      * @param path The filepath of the image file that is being loaded.
@@ -73,6 +77,8 @@ export class GuiStaticImage extends GuiElement {
      * @return returns element if image was created successfully, false otherwise.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         path: string,

@@ -50,6 +50,26 @@ import {
 export class Team extends Element {
     /**
      * This function is for returning the number of players in the specified team.
+     */
+    playerCount: number;
+
+    /**
+     * This function retrieves all the players of the specified team.
+     */
+    players: LuaTable;
+
+    /**
+     * This function tells you if friendly fire is turned on for the specified team.
+     */
+    friendlyFire: boolean;
+
+    /**
+     * This function gets the team name of a team object.
+     */
+    name: string;
+
+    /**
+     * This function is for returning the number of players in the specified team.
      * @see {@link https://wiki.multitheftauto.com/wiki/CountPlayersInTeam Wiki, countPlayersInTeam }
      * @return returns an integer containing the number of players in the team, false if it could not be
      * retrieved.

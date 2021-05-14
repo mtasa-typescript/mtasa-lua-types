@@ -49,6 +49,28 @@ import {
 /** @customConstructor Blip */
 export class Blip extends Element {
     /**
+     * This function returns the icon a blip currently has.
+     */
+    icon: number;
+
+    /**
+     * This function gets the Z ordering value of a blip. The Z ordering determines if a blip
+     * appears on top of or below other blips. Blips with a higher Z ordering value appear on
+     * top of blips with a lower value. The default value for all blips is 0.
+     */
+    ordering: number;
+
+    /**
+     * This function gets the size of a blip..
+     */
+    size: number;
+
+    /**
+     * This function will tell you what visible distance a blip has.
+     */
+    visibleDistance: number;
+
+    /**
      * This function will tell you what color a blip is. This color is only applicable to the
      * default blip icon (Image:Blipid0s.png|12px, Image:Blipid0u.png|12px or
      * Image:Blipid0d.png|12px). All other icons will ignore this.

@@ -49,6 +49,22 @@ import {
 /** @customConstructor Resource */
 export class Resource {
     /**
+     * This function gets the name of the specified resource.
+     */
+    name: string;
+
+    /**
+     * This function retrieves a resources root element. The resources root element is the
+     * element in the element tree which is the parent of all elements that belong to a
+     * particular resource (except for elements specifically created elsewhere). You can attach
+     * event handlers to this element to easily capture events that originate from your resource
+     * (and global events that originate from the root element).
+     * Note: every resource has a Predefined_variables_list|predefined global variable called
+     * resourceRoot whose value is the root element of that resource.
+     */
+    rootElement: Element;
+
+    /**
      * This function is used to call a function from another resource (which must be running).
      * The function which you wish to call must first be exported within the resources meta.
      * For example:

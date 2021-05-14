@@ -272,6 +272,8 @@ export class Vehicle extends Element {
      * getElementDistanceFromCentreOfMassToBaseOfModel, or you can estimate it yourself and just
      * spawn the vehicle so it drops to the ground.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateVehicle Wiki, createVehicle }
+     * @param model : The Vehicle IDs|vehicle ID of the vehicle being created.
+     * @param x : A floating point number representing the X coordinate on the map.
      * @param y : A floating point number representing the Y coordinate on the map.
      * @param z : A floating point number representing the Z coordinate on the map.
      * @param rx : A floating point number representing the rotation about the X axis in degrees.
@@ -287,6 +289,8 @@ export class Vehicle extends Element {
      * incorrect, or if the vehicle limit of 65535 is exceeded.
      */
     constructor(
+        model: number,
+        x: number,
         y: number,
         z: number,
         rx?: number,

@@ -49,6 +49,39 @@ import {
 /** @customConstructor Element */
 export class Element {
     /**
+     * This function returns the alpha (transparency) value for the specified element. This can
+     * be a player, ped, object, vehicle or Element/Weapon|weapon.
+     */
+    alpha: number;
+
+    /**
+     */
+    angularVelocity: LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function indicates if a specific element is set to have collisions disabled. An
+     * element without collisions does not interact with the physical environment and remains
+     * static.
+     */
+    collisions: boolean;
+
+    /**
+     * Some elements have an associated colshape, for example Marker and Pickup. This function
+     * is used to get the associated colshape.
+     */
+    colShape: ColShape;
+
+    /**
+     * This function allows you to retrieve the dimension of any element. The dimension
+     * determines what/who the element is visible to.
+     */
+    dimension: number;
+
+    /**
      * This function is used to retrieve the distance between a elements centre of mass to the
      * base of the model. This can be used to calculate the position the element has to be set
      * to, to have it on ground level.
@@ -56,10 +89,116 @@ export class Element {
     distanceFromCentreOfMassToBaseOfModel: number;
 
     /**
+     * This function returns the current health for the specified element. This can be a player,
+     * a ped, a vehicle, or an object.
+     */
+    health: number;
+
+    /**
+     * This function gets the ID of an element. This is the id attribute of the element and is a
+     * string, NOT a number like a model ID, weapons ID or similar.
+     */
+    id: string;
+
+    /**
+     * This function allows you to retrieve the interior of any element. An interior is the
+     * current loaded place, 0 being outside.
+     */
+    interior: number;
+
+    /**
+     * This function gets an elements transform matrix. This contains 16 float values that
+     * multiplied to a point will give you the point transformed. It is most useful for matrix
+     * calculations such as calculating offsets. For further information, please refer to a
+     * tutorial of matrices in computer graphics programming.
+     */
+    matrix: LuaTable;
+
+    /**
+     * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
+     * an object model or a vehicle model.
+     */
+    model: number;
+
+    /**
+     * This function is used to determine the parent of an element.
+     */
+    parent: Element;
+
+    /**
+     * The getElementPosition function allows you to retrieve the position coordinates of an
+     * element.  This can be any real world element, including:
+     * * Element/Player|Players
+     * * Element/Vehicle|Vehicles
+     * * Element/Object|Objects
+     * * Element/Pickup|Pickups
+     * * Element/Marker|Markers
+     * * Element/Collision shape|Collision shapes
+     * * Element/Blip|Blips
+     * * Element/Radar area|Radar areas
+     */
+    position: LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
      * This function gets the radius of an element. Normally, sphere or circle-shaped elements
      * tend to return a more accurate and expected radius than others with another shapes.
      */
     radius: number;
+
+    /**
+     * Retrieve the rotation of elements.
+     */
+    rotation: LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function is used to retrieve the type of an element.
+     */
+    type: string;
+
+    /**
+     * This function returns three floats containing the velocity (movement speeds) along the X,
+     * Y, and Z axis respectively. This means that velocity values can be positive and negative
+     * for each axis.
+     */
+    velocity: LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function return the low LOD element that an element is associated with.
+     */
+    lowLOD: Element;
+
+    /**
+     * This functions checks whether or not an element is attached to another element.
+     */
+    attached: boolean;
+
+    /**
+     * This function checks whether an element is double-sided as set by setElementDoubleSided
+     * or not.
+     */
+    doubleSided: boolean;
+
+    /**
+     * This function checks if element has been frozen.
+     */
+    frozen: boolean;
+
+    /**
+     * This function checks whether an element is submerged in water.
+     */
+    inWater: boolean;
 
     /**
      * This function checks whether a clientside element is local to the client (doesnt exist in
@@ -147,10 +286,15 @@ export class Element {
      * Elements created using this function are placed in the element tree with their parent as
      * the dynamic map element.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateElement Wiki, createElement }
+     * @param elementType The type of element being created.
+     * @param elementID The ID of the element being created.
      * @return returns the element if it was successfully created. returns false if the arguments are
      * wrong.
      */
-    constructor();
+    constructor(
+        elementType: string,
+        elementID?: string
+    );
 
     /**
      * This function destroys an element and all elements within it in the hierarchy (its

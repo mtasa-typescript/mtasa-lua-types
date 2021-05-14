@@ -61,8 +61,11 @@ export class DxTexture {
      * files should ideally have dimensions that are a power of two, to prevent possible
      * blurring.
      * or
+     * @param pixels Texture_pixels|Pixels containing image data. (plain, jpeg or png pixels can be used here)
+     * or
      * @param width Desired width, preferably power of two (16, 32, 64 etc.), maximum is 16384
      * @param height Desired height, preferably power of two (16, 32, 64 etc.), maximum is 16384
+     * @param textureFormat A string representing the desired texture format, which can be one of:
      * @param argb : ARGB uncompressed 32 bit color (default).
      * @param dxt1 : DXT1 compressed - Can take a fraction of a second longer to load (unless the file is
      * already a DXT1 .dds). Uses 8 times less video memory than ARGB and can speed up drawing.
@@ -87,6 +90,8 @@ export class DxTexture {
      * @return returns a texture if successful, false if invalid arguments were passed to the function.
      */
     constructor(
+        pixels: string | string,
+        textureFormat?: string,
         mipmaps?: boolean,
         textureEdge?: string
     );

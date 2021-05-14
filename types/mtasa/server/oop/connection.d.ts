@@ -36,6 +36,8 @@ export class connection {
      * This function opens a connection to a database and returns an element that can be used
      * with dbQuery. To disconnect use destroyElement.
      * @see {@link https://wiki.multitheftauto.com/wiki/DbConnect Wiki, dbConnect }
+     * @param databaseType The type of database. This can be either sqlite or mysql
+     * @param host : Host address e.g. host=127.0.0.1
      * @param dbname : Name of the database to use e.g. dbname=test
      * @param port : Host port e.g. port=1234 (optional, defaults to standard MySQL port if not used)
      * @param unix_socket : Unix socket or named pipe to use (optional)
@@ -75,6 +77,8 @@ export class connection {
      * false.
      */
     constructor(
+        databaseType: string,
+        host: string,
         username?: string,
         password?: string,
         options?: string

@@ -63,6 +63,10 @@ export class GuiBrowser extends GuiElement {
      * https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=7373
      * 34 here.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateBrowser Wiki, guiCreateBrowser }
+     * @param x A float of the 2D x position of the browser on a players screen.  This is affected by the
+     * relative argument.
+     * @param y A float of the 2D y position of the browser on a players screen. This is affected by the
+     * relative argument.
      * @param width The browsers native width. This should be greater than or equal to 1.
      * @param height The browsers native height. This should be greater than or equal to 1.
      * @param isLocal Sets whether the browser can only show local content or content from the internet (see
@@ -81,6 +85,8 @@ export class GuiBrowser extends GuiElement {
      * also false, if the user disabled remote pages and islocal was set to false.
      */
     constructor(
+        x: number,
+        y: number,
         width: number,
         height: number,
         isLocal: boolean,

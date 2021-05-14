@@ -49,9 +49,41 @@ import {
 /** @customConstructor Ped */
 export class Ped extends Element {
     /**
+     * This function returns an integer that contains the ammo in a specified peds weapon. See
+     * weapon|Weapon Info
+     */
+    ammoInClip: number;
+
+    /**
+     * This function returns the current armor of the specified ped.
+     */
+    armor: number;
+
+    /**
      * This function gets the current camera rotation of a ped.
      */
     cameraRotation: number;
+
+    /**
+     * This function detects the element a ped is standing on. This can be a vehicle or an
+     * object.
+     */
+    contactElement: Element;
+
+    /**
+     * Retrieves the fighting style a player/ped is currently using.
+     */
+    fightingStyle: number;
+
+    /**
+     * This function gets the vehicle that the ped is currently in or is trying to enter, if any.
+     */
+    vehicle: Vehicle;
+
+    /**
+     * This function gets the seat that a specific ped is sitting in in a vehicle.
+     */
+    vehicleSeat: number;
 
     /**
      * This function returns the current oxygen level of the specified ped.
@@ -59,10 +91,66 @@ export class Ped extends Element {
     oxygenLevel: number;
 
     /**
+     */
+    walkingStyle: number;
+
+    /**
+     * This function gets a peds selected weapon slot.
+     */
+    weaponSlot: number;
+
+    /**
+     * This function checks if the specified ped is choking (coughing) or not. This happens as a
+     * result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray
+     * can.
+     */
+    choking: boolean;
+
+    /**
+     * This function checks if the specified ped is dead or not.
+     */
+    dead: boolean;
+
+    /**
+     * This function checks if the ped is in the driveby state.
+     */
+    doingGangDriveby: boolean;
+
+    /**
+     * This function checks if the specified ped is ducked (crouched) or not.
+     */
+    ducked: boolean;
+
+    /**
+     * Checks whether or not a given ped is currently in a vehicle.
+     */
+    inVehicle: boolean;
+
+    /**
+     * This function checks if the specified ped is on fire or not.
+     */
+    onFire: boolean;
+
+    /**
+     * This function is used to determine whether or not a ped is on the ground. This is for
+     * on-foot usage only.
+     */
+    onGround: boolean;
+
+    /**
      * This function is used to determine whether or not a ped is currently reloading their
      * weapon. Useful to stop certain quick reload exploits.}}
      */
     reloadingWeapon: boolean;
+
+    /**
+     */
+    jetpack: boolean;
+
+    /**
+     * With this function, you can set if a ped has a head or not.
+     */
+    headless: boolean;
 
     /**
      * This function is used to set the current clothes on a ped.

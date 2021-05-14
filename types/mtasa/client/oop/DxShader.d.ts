@@ -121,6 +121,8 @@ export class DxShader {
      * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateShader Wiki, dxCreateShader }
      */
     constructor(
+        filepath: string | string,
+        priority?: number,
         maxDistance?: number,
         layered?: boolean,
         elementTypes?: string

@@ -70,7 +70,11 @@ export class EngineTXD {
      * meta file.
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadTXD Wiki, engineLoadTXD }
      * @param txd_file / raw_data The filepath to the TXD file you want to load or whole data buffer of the TXD file.
+     * @param filteringEnabled Whether to enable texture filtering.
      * @return returns a txd if the file was loaded, false otherwise.
      */
-    constructor();
+    constructor(
+        txd_file: string | string,
+        filteringEnabled?: boolean
+    );
 }

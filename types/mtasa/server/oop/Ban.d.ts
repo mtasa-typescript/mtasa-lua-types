@@ -71,6 +71,11 @@ export class Ban {
     /**
      * This function will add a ban for the specified IP/username/serial to the server.
      * @see {@link https://wiki.multitheftauto.com/wiki/AddBan Wiki, addBan }
+     * @param IP The IP to be banned. If you dont want to ban by IP, set this to nil.
+     * '''or'''
+     * @param Username The http://community.mtasa.com/ MTA Community username to be banned (now obsolete). If
+     * you dont want to ban by username, set this to nil.
+     * '''or'''
      * @param Serial The serial to be banned. If you dont want to ban by serial, set this to nil.
      * ''' or any combination.'''
      * @param responsibleElement The element that is responsible for banning the IP/username/serial. This can be a player
@@ -82,6 +87,8 @@ export class Ban {
      * arguments are specified.
      */
     constructor(
+        IP?: string,
+        Username?: string,
         Serial?: string,
         responsibleElement?: Player,
         reason?: string,

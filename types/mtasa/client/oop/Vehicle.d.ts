@@ -67,9 +67,132 @@ export class Vehicle extends Element {
     helicopterRotorSpeed: number;
 
     /**
+     * Gets the direction in which a train is driving (clockwise or counterclockwise).
+     */
+    direction: boolean;
+
+    /**
+     * Gets the position the train is currently on the track
+     */
+    trainPosition: number;
+
+    /**
+     * Gets the speed at which a train is traveling on the rails.
+     */
+    trainSpeed: number;
+
+    /**
+     * Gets the track of a train
+     */
+    track: number;
+
+    /**
+     * This function returns a table of all the compatible upgrades (or all for a specified
+     * slot, optionally) for a specified vehicle.
+     */
+    compatibleUpgrades: LuaTable;
+
+    /**
      * This function gets a table of the components currently on a vehicle.
      */
     components: LuaTable;
+
+    /**
+     * This function is used to get the player in control of the specified vehicle which
+     * includes somebody who is trying to enter the drivers seat.
+     */
+    controller: Player;
+
+    /**
+     */
+    engineState: boolean;
+
+    /**
+     * This function returns a table of the current vehicle handling data.
+     */
+    handling: LuaTable;
+
+    /**
+     * This function is used to check whether a vehicles landing gear is down or not. Only
+     * planes can be used with this function.
+     */
+    landingGearDown: boolean;
+
+    /**
+     * This function returns the maximum number of passengers that a specified vehicle can hold.
+     * Only passenger seats are counted, the driver seat is excluded.
+     */
+    maxPassengers: number;
+
+    /**
+     * This function returns a string containing the name of the vehicle
+     */
+    name: string;
+
+    /**
+     * This function gets all peds sitting in the specified vehicle.
+     */
+    occupants: LuaTable;
+
+    /**
+     * This function is used to find out the current state of the override-lights setting of a
+     * vehicle.
+     */
+    overrideLights: number;
+
+    /**
+     * This function gets the current paintjob on the specified vehicle. <br />
+     */
+    paintjob: number;
+
+    /**
+     * This function is used to retrieve the text on the number plate of a specified vehicle.
+     */
+    plateText: string;
+
+    /**
+     * This function get the parameters of a vehicles siren.
+     */
+    sirenParams: LuaTable;
+
+    /**
+     * This function gets the properties of a vehicles sirens.
+     */
+    sirens: LuaTable;
+
+    /**
+     * This function returns whether the sirens are turned on for the specified vehicle.
+     */
+    sirensOn: boolean;
+
+    /**
+     * This function is used to get the vehicle being towed by another.
+     */
+    towedByVehicle: Vehicle;
+
+    /**
+     * This function is used to get the vehicle that is towing another.
+     */
+    towingVehicle: Vehicle;
+
+    /**
+     * This function gets the position of a vehicles turret, if it has one. Vehicles with
+     * turrets include firetrucks and tanks.
+     */
+    turretPosition: LuaMultiReturn<[
+        number,
+        number
+    ]>;
+
+    /**
+     * This function retrieves the type of a vehicle (such as if it is a car or a boat).
+     */
+    vehicleType: string;
+
+    /**
+     * This function returns a table of all the upgrades on a specifed vehicle.
+     */
+    upgrades: LuaTable;
 
     /**
      */
@@ -80,6 +203,48 @@ export class Vehicle extends Element {
      * chains carriages) or not.
      */
     chainEngine: boolean;
+
+    /**
+     * This function will check if a train or tram is derailable.
+     */
+    derailable: boolean;
+
+    /**
+     * This function will check if a train or tram is derailed.
+     */
+    derailed: boolean;
+
+    /**
+     * This function allows you to determine whether a vehicle is blown or still intact.
+     */
+    blown: boolean;
+
+    /**
+     * This function checks if a vehicle is damage proof (set with setVehicleDamageProof).
+     */
+    damageProof: boolean;
+
+    /**
+     * This will tell you if a vehicle is locked.
+     */
+    locked: boolean;
+
+    /**
+     * Checks to see if a vehicle has contact with the ground.
+     */
+    onGround: boolean;
+
+    /**
+     * This function will get the taxi light state of a taxi (vehicle IDs 420 and 438)
+     */
+    taxiLightOn: boolean;
+
+    /**
+     * This function makes a vehicles doors undamageable, so they wont fall off when theyre hit.
+     * Note that the vehicle has to be locked using setVehicleLocked for this setting to have
+     * any effect.
+     */
+    doorsUndamageable: boolean;
 
     /**
      * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
@@ -120,6 +285,8 @@ export class Vehicle extends Element {
      * getElementDistanceFromCentreOfMassToBaseOfModel, or you can estimate it yourself and just
      * spawn the vehicle so it drops to the ground.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateVehicle Wiki, createVehicle }
+     * @param model : The Vehicle IDs|vehicle ID of the vehicle being created.
+     * @param x : A floating point number representing the X coordinate on the map.
      * @param y : A floating point number representing the Y coordinate on the map.
      * @param z : A floating point number representing the Z coordinate on the map.
      * @param rx : A floating point number representing the rotation about the X axis in degrees.
@@ -135,6 +302,8 @@ export class Vehicle extends Element {
      * incorrect, or if the vehicle limit of 65535 is exceeded.
      */
     constructor(
+        model: number,
+        x: number,
         y: number,
         z: number,
         rx?: number,

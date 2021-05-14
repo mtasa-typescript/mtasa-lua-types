@@ -55,9 +55,14 @@ export class GuiFont {
      * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
      * zero, failure is guaranteed.)
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateFont Wiki, guiCreateFont }
+     * @param filepath the name of the file containing the font
+     * @param size size of the font
      * @return returns a gui font element if successful, false if invalid arguments were passed to the
      * function, or there is insufficient resources available.
      * you should always check to see if this function has returned false.
      */
-    constructor();
+    constructor(
+        filepath: string,
+        size?: number
+    );
 }

@@ -135,12 +135,16 @@ export class Weapon extends Element {
      * Creates a Element/Weapon|custom weapon that can fire bullets. Do not confuse this with
      * player held weapons.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateWeapon Wiki, createWeapon }
+     * @param theType The weapon type which can be:
+     * @param x The x position to create the weapon.
      * @param y The y position to create the weapon.
      * @param z The z position to create the weapon.
      * @return returns a element/weapon|custom weapon element, which represents a weapon floating at
      * that position.
      */
     constructor(
+        theType: string,
+        x: number,
         y: number,
         z: number
     );

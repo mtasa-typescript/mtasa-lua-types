@@ -56,10 +56,15 @@ export class DxScreenSource {
      * hardware or memory limitations. You should always check to see if this function has
      * returned false.
      * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateScreenSource Wiki, dxCreateScreenSource }
+     * @param width The width of the texture in pixels.
+     * @param height The height of the texture  in pixels.
      * @return returns a texture element if successful, false if invalid arguments were passed to the
      * function.
      */
-    constructor();
+    constructor(
+        width: number,
+        height: number
+    );
 
     /**
      * This function updates the contents of a screen source texture with the screen output from

@@ -56,6 +56,8 @@ export class DxFont {
      * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
      * zero, failure is guaranteed.)
      * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateFont Wiki, dxCreateFont }
+     * @param filepath the name of the file containing the font
+     * @param size size of the font
      * @param bold flag to indicate if the font should be bold
      * @param quality the font quality
      * ** "default": not the actual default
@@ -70,6 +72,8 @@ export class DxFont {
      * you should always check to see if this function has returned false.
      */
     constructor(
+        filepath: string,
+        size?: number,
         bold?: boolean,
         quality?: string
     );
