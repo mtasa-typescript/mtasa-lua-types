@@ -33,10 +33,7 @@ jobs:
             -   run: npm ci
             -   run: npm run build
     test:
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os: [ ubuntu-latest, windows-latest, macos-latest ]
+        runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v2
             -   name: Setup node 12
@@ -85,6 +82,8 @@ jobs:
                         ${{ runner.os }}-
             -   run: npm ci
             -   run: npm run build
-            -   run: npm publish
+            -   run: |
+                   if [ "${GITHUB_REF#refs/heads/}" == "master" ]; then export TAG="latest"; else export TAG="beta"; fi
+                   npm publish --tag "$TAG"
                 env:
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
