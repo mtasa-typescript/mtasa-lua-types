@@ -4,10 +4,10 @@
 import {
     ProgressBar,
     Gui,
-    Txd,
-    Dff,
-    Col,
-    Ifp,
+    EngineTXD,
+    EngineDFF,
+    EngineCOL,
+    EngineIFP,
     PrimitiveType,
     Texture,
     ObjectGroup,
@@ -24,6 +24,7 @@ import {
     GuiScrollBar,
     GuiWindow,
     Projectile,
+    Material,
     Userdata,
     TextItem,
     Pickup,
@@ -39,7 +40,7 @@ import {
     XmlNode,
     File,
     Marker,
-    Object as MTASAObject,
+    MTASAObject,
     RadarArea,
     Water,
     Timer,
@@ -218,7 +219,7 @@ export function engineGetVisibleTextureNames(
  * @return returns true if the function executed succesfully, false otherwise.
  */
 export function engineImportTXD(
-    texture: Txd,
+    texture: EngineTXD,
     model_id: number
 ): boolean;
 
@@ -236,7 +237,7 @@ export function engineImportTXD(
  */
 export function engineLoadCOL(
     col_file: string | string
-): Col;
+): EngineCOL;
 
 /**
  * This function loads a RenderWare Model (DFF) file into GTA.
@@ -254,7 +255,7 @@ export function engineLoadCOL(
  */
 export function engineLoadDFF(
     dff_file: string | string
-): Dff;
+): EngineDFF;
 
 /**
  * This function loads an animation library (IFP) file into GTA with a custom block name.
@@ -276,7 +277,7 @@ export function engineLoadDFF(
 export function engineLoadIFP(
     ifp_file: string | string,
     custom_block_name: string
-): Ifp;
+): EngineIFP;
 
 /**
  * This function loads a RenderWare Texture Dictionary (TXD) file into GTA. The texture
@@ -291,7 +292,7 @@ export function engineLoadIFP(
 export function engineLoadTXD(
     txd_file: string | string,
     filteringEnabled?: boolean
-): Txd;
+): EngineTXD;
 
 /**
  * This function removes a shader from one or more world textures.
@@ -351,7 +352,7 @@ export function engineReplaceAnimation(
  * could not be replaced for a reason.
  */
 export function engineReplaceCOL(
-    theCol: Col,
+    theCol: EngineCOL,
     modelID: number
 ): boolean;
 
@@ -374,7 +375,7 @@ export function engineReplaceCOL(
  * ie. the dff or the model id is not valid.
  */
 export function engineReplaceModel(
-    theModel: Dff,
+    theModel: EngineDFF,
     modelID: number,
     alphaTransparency?: boolean
 ): boolean;

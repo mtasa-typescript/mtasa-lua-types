@@ -2,6 +2,7 @@
     "extends": "dtslint/dtslint.json",
     "rules": {
         "no-redundant-jsdoc": false,
-        "no-misused-new": false
+        "no-misused-new": false,
+        "no-unnecessary-class": false
     }
 }

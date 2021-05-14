@@ -21,7 +21,7 @@ export { Vehicle } from './oop/Vehicle';
 export { XmlNode } from './oop/XmlNode';
 export { File } from './oop/File';
 export { Marker } from './oop/Marker';
-export { Object } from './oop/Object';
+export { MTASAObject } from './oop/MTASAObject';
 export { RadarArea } from './oop/RadarArea';
 export { Water } from './oop/Water';
 export { Timer } from './oop/Timer';

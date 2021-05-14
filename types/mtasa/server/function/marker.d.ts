@@ -23,7 +23,7 @@ import {
     XmlNode,
     File,
     Marker,
-    Object as MTASAObject,
+    MTASAObject,
     RadarArea,
     Water,
     Timer,
