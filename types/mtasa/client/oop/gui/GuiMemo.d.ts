@@ -58,7 +58,10 @@ export class GuiMemo extends GuiElement {
      * This function allows you to set or remove read-only status for a GUI memo. If read-only
      * is set to true, the contents are not editable.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoSetReadOnly Wiki, guiMemoSetReadOnly }
+     * @param status A boolean value indicating whether read-only is to be enabled or disabled.
      * @return returns true if the status was successfully changed, false otherwise.
      */
-    setReadOnly(): boolean;
+    setReadOnly(
+        status: boolean
+    ): boolean;
 }

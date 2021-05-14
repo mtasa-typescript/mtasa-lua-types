@@ -55,6 +55,7 @@ export class Texture extends Material {
      * *It is slower when reading pixels from a render target or screen source.
      * *And is very slow indeed if the texture format is not  argb .
      * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+     * @param texture The texture element to get the pixels from
      * @param x Rectangle left position
      * @param y Rectangle top position
      * @param width Rectangle width
@@ -63,6 +64,7 @@ export class Texture extends Material {
      * passed to the function.
      */
     getPixels(
+        texture: Element,
         x?: number,
         y?: number,
         width?: number,
@@ -72,9 +74,11 @@ export class Texture extends Material {
     /**
      * This functions allows you to change the edge handling after creating the texture.
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
+     * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
      * @param border-color If textureEdge is set to border, you are able to define a border color here
      */
     setEdge(
+        textureEdge: string,
         border_color?: number
     ): boolean;
 
@@ -85,6 +89,7 @@ export class Texture extends Material {
      * * It is very slow when setting pixels to a render target or screen source.
      * * And is very slow indeed if the texture format is not argb.
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+     * @param texture The texture element to set the pixels of
      * @param pixels The plain format pixels to use
      * @param x Rectangle left position
      * @param y Rectangle top position
@@ -93,6 +98,7 @@ export class Texture extends Material {
      * @return returns a string if successful, false if invalid arguments were passed to the function.
      */
     setPixels(
+        texture: Element,
         pixels: string,
         x?: number,
         y?: number,

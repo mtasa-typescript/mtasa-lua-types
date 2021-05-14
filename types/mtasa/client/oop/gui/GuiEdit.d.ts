@@ -119,31 +119,43 @@ export class GuiEdit extends GuiElement {
      * This function sets the current position of the caret (the text cursor) within the edit
      * box.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetCaretIndex Wiki, guiEditSetCaretIndex }
+     * @param index An integer referring to the desired position within the box.
      * @return returns true if the index was successfully set, false otherwise.
      */
-    setCaretIndex(): boolean;
+    setCaretIndex(
+        index: number
+    ): boolean;
 
     /**
      * This function sets or removes masking (covering up the text being typed) for password
      * text fields.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMasked Wiki, guiEditSetMasked }
+     * @param status A boolean value indicating whether masking is to be enabled or disabled.
      * @return returns true if the function is successful, false otherwise.
      */
-    setMasked(): boolean;
+    setMasked(
+        status: boolean
+    ): boolean;
 
     /**
      * This function sets the maximum text length that can be typed into an edit box.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMaxLength Wiki, guiEditSetMaxLength }
      * @param theElement The edit box to be changed.
+     * @param length An integer indicating the maximum number of characters that can be typed into the box.
      * @return returns true if the max length was set successfully, false otherwise.
      */
-    setMaxLength(): boolean;
+    setMaxLength(
+        length: number
+    ): boolean;
 
     /**
      * This function allows you to set or remove read-only status for an edit box. If read-only
      * is set to true, the box is not editable.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly Wiki, guiEditSetReadOnly }
+     * @param status A boolean value indicating whether read-only is to be enabled or disabled.
      * @return returns true if edit fields read-only status was changed successfully, false otherwise.
      */
-    setReadOnly(): boolean;
+    setReadOnly(
+        status: boolean
+    ): boolean;
 }

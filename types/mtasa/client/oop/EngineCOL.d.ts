@@ -68,8 +68,11 @@ export class EngineCOL {
      * This function replaces the collision file of the given model id to the collision file
      * passed. Use engineLoadCOL to load the collision file first.
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceCOL Wiki, engineReplaceCOL }
+     * @param modelID The model ID whose collision file you want to replace
      * @return returns true if the collision was successfully replaced, false or nil if the collision
      * could not be replaced for a reason.
      */
-    replace(): boolean;
+    replace(
+        modelID: number
+    ): boolean;
 }

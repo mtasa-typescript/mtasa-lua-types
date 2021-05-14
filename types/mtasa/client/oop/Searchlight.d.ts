@@ -147,12 +147,14 @@ export class Searchlight extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition Wiki, setSearchLightEndPosition }
+     * @param endX : the X coordinate where the searchlight light cone will end.
      * @param endY : the Y coordinate where the searchlight light cone will end.
      * @param endZ : the Z coordinate where the searchlight light cone will end.
      * @return if every argument is correct, this function returns true. if not, it will return false
      * plus an error message.
      */
     setEndPosition(
+        endX: number,
         endY: number,
         endZ: number
     ): boolean;
@@ -161,20 +163,25 @@ export class Searchlight extends Element {
      * This function sets the end radius of a Element/Searchlight|searchlight element.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndRadius Wiki, setSearchLightEndRadius }
      * @param theSearchLight : the searchlight to modify the property of.
+     * @param endRadius : the radius of the searchlights light cone in its end.
      * @return if every argument is correct, this function returns true. if not, it will return false
      * plus an error message.
      */
-    setEndRadius(): boolean;
+    setEndRadius(
+        endRadius: number
+    ): boolean;
 
     /**
      * This function sets the start position of a Element/Searchlight|searchlight element.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightStartPosition Wiki, setSearchLightStartPosition }
+     * @param startX : the X coordinate where the searchlight light cone will start.
      * @param startY : the Y coordinate where the searchlight light cone will start.
      * @param startZ : the Z coordinate where the searchlight light cone will start.
      * @return if every argument is correct, this function returns true. if not, it will return false
      * plus an error message.
      */
     setStartPosition(
+        startX: number,
         startY: number,
         startZ: number
     ): boolean;
@@ -183,8 +190,11 @@ export class Searchlight extends Element {
      * This function sets the start radius of a Element/Searchlight|searchlight element.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightStartRadius Wiki, setSearchLightStartRadius }
      * @param theSearchLight : the searchlight to modify the property of.
+     * @param startRadius : the radius of the searchlights light cone in its beginning.
      * @return if every argument is correct, this function returns true. if not, it will return false
      * plus an error message.
      */
-    setStartRadius(): boolean;
+    setStartRadius(
+        startRadius: number
+    ): boolean;
 }

@@ -127,11 +127,13 @@ export class Team extends Element {
      * This function is for setting the color of a specified team. This color is shown, for
      * example, in the team players nametags.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTeamColor Wiki, setTeamColor }
+     * @param colorR An integer representing the red color value, from 0 to 255.
      * @param colorG An integer representing the green color value, from 0 to 255.
      * @param colorB An integer representing the blue color value, from 0 to 255.
      * @return returns true if the team is valid and the color is different, otherwise false.
      */
     setColor(
+        colorR: number,
         colorG: number,
         colorB: number
     ): boolean;
@@ -139,16 +141,23 @@ export class Team extends Element {
     /**
      * This function sets the friendly fire value for the specified team.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTeamFriendlyFire Wiki, setTeamFriendlyFire }
+     * @param friendlyFire A boolean denoting whether the players from the same team can kill each other (true) or
+     * whether the players cant kill each other (false).
      * @return returns true if the friendly fire value is set for the specified team, false if the
      * friendly fire value cant be set for the specified team or if invalid arguments are
      * specified.
      */
-    setFriendlyFire(): boolean;
+    setFriendlyFire(
+        friendlyFire: boolean
+    ): boolean;
 
     /**
      * This function is used to set a teams name.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTeamName Wiki, setTeamName }
+     * @param newName A string representing the name you want the team to be called.
      * @return returns true if the team was valid and the name was changed, false otherwise.
      */
-    setName(): boolean;
+    setName(
+        newName: string
+    ): boolean;
 }

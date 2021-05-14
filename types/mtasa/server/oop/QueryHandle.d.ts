@@ -43,6 +43,9 @@ export class QueryHandle {
     /**
      * This function checks the progress of a database query.
      * @see {@link https://wiki.multitheftauto.com/wiki/DbPoll Wiki, dbPoll }
+     * @param timeout How many milliseconds to wait for a result. Use 0 for an instant response (which may
+     * return nil). Use -1 to wait until a result is ready. Note: A wait here will freeze the
+     * entire server just like executeSQLQuery
      * @param multipleResults Set to true to enable the return values from multiple queries
      * |7972}}
      * @return *nil: returns nil if the query results are not yet ready. you should try again in a
@@ -71,6 +74,7 @@ export class QueryHandle {
      * a subsequent table represents the next row.
      */
     poll(
+        timeout: number,
         multipleResults?: boolean
     ): LuaTable;
 }

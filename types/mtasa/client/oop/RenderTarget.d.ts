@@ -51,7 +51,10 @@ import {
 export class RenderTarget {
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetRenderTarget Wiki, dxSetRenderTarget }
+     * @param clear If set to true, the render target will also be cleared.
      * @return returns true if the render target was successfully changed, false otherwise.
      */
-    setAsTarget(): boolean;
+    setAsTarget(
+        clear?: boolean
+    ): boolean;
 }

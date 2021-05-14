@@ -368,14 +368,20 @@ export class Effect extends Element {
      * This function sets the density of a specified effect.
      * The limit is 1 for Low, 1.5 for Medium, and 2 for High/Very high.|true}}
      * @see {@link https://wiki.multitheftauto.com/wiki/SetEffectDensity Wiki, setEffectDensity }
+     * @param density The level of density (from 0 to 2).
      * @return returns true if the density was succesfully changed, false otherwise.
      */
-    setDensity(): boolean;
+    setDensity(
+        density: number
+    ): boolean;
 
     /**
      * This function sets the speed of a specified effect.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetEffectSpeed Wiki, setEffectSpeed }
+     * @param speed The speed to set.
      * @return returns true if the effect speed was succesfuly changed, false otherwise.
      */
-    setSpeed(): boolean;
+    setSpeed(
+        speed: number
+    ): boolean;
 }

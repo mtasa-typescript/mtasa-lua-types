@@ -106,6 +106,7 @@ export class Blip extends Element {
      * the default blip icon (Image:Blipid0s.png|12px, Image:Blipid0u.png|12px or
      * Image:Blipid0d.png|12px). All other icons will ignore this.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBlipColor Wiki, setBlipColor }
+     * @param red The amount of red in the blips color (0 - 255).
      * @param green The amount of green in the blips color (0 - 255).
      * @param blue The amount of blue in the blips color (0 - 255).
      * @param alpha The amount of alpha in the blips color (0 - 255).  Alpha decides transparancy where 255
@@ -114,6 +115,7 @@ export class Blip extends Element {
      * the function is invalid, or any of the colors are out of the valid range.
      */
     setColor(
+        red: number,
         green: number,
         blue: number,
         alpha: number
@@ -122,31 +124,46 @@ export class Blip extends Element {
     /**
      * This function sets the icon for an existing blip element.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBlipIcon Wiki, setBlipIcon }
+     * @param icon A number indicating the icon you wish to change it do. Valid values are listed on the
+     * Radar Blips page.
      * @return returns true if the icon was successfully set, false if the element passed was not a
      * valid blip or the icon value was not a valid icon number.
      */
-    setIcon(): boolean;
+    setIcon(
+        icon: number
+    ): boolean;
 
     /**
      * This function sets the Z ordering of a blip. It allows you to make a blip appear on top
      * of or below other blips.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBlipOrdering Wiki, setBlipOrdering }
+     * @param ordering the new Z ordering value. Blips with higher values will appear on top of blips with lower
+     * values. Possible range: -32767 to 32767. Default: 0.
      * @return returns true if the blip ordering was changed successfully, false otherwise.
      */
-    setOrdering(): boolean;
+    setOrdering(
+        ordering: number
+    ): boolean;
 
     /**
      * This function sets the size of a blips icon.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBlipSize Wiki, setBlipSize }
+     * @param iconSize The size you wish the icon to be. 2 is the default value. 25 is the maximum value. Value
+     * gets clamped between 0 and 25.
      * @return returns an true if the blips size was set successfully. returns false if the element
      * passed was not a blip or if the icon size passed was invalid.
      */
-    setSize(): boolean;
+    setSize(
+        iconSize: number
+    ): boolean;
 
     /**
      * This function will set the visible distance of a blip.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBlipVisibleDistance Wiki, setBlipVisibleDistance }
+     * @param theDistance The distance you want the blip to be visible for. Value gets clamped between 0 and 65535.
      * @return returns true if successful, false otherwise.
      */
-    setVisibleDistance(): boolean;
+    setVisibleDistance(
+        theDistance: number
+    ): boolean;
 }

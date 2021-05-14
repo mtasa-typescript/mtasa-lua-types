@@ -88,14 +88,20 @@ export class GuiWindow extends GuiElement {
     /**
      * This function allows you to specify whether or not a user can move a GUI window.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowSetMovable Wiki, guiWindowSetMovable }
+     * @param status A boolean value indicating whether the window is movable or not.
      * @return returns true if the function is successful, false otherwise.
      */
-    setMovable(): boolean;
+    setMovable(
+        status: boolean
+    ): boolean;
 
     /**
      * This function enables or disables user resizing of a GUI window.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowSetSizable Wiki, guiWindowSetSizable }
+     * @param status A boolean value indicating whether user resizing is to be enabled or disabled.
      * @return returns true if the function is successful, false otherwise.
      */
-    setSizable(): boolean;
+    setSizable(
+        status: boolean
+    ): boolean;
 }

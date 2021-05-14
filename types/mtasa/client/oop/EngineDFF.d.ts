@@ -76,6 +76,7 @@ export class EngineDFF {
      * want to replace models in the original GTA map, use one of the EngineReplaceModel
      * notes|methods shown here.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceModel Wiki, engineReplaceModel }
+     * @param modelID The model it to replace the model of
      * @param alphaTransparency Set to true if model uses semi-transparent textures, e.g. windows. This will ensure other
      * objects behind the semi-transparent textures are rendered correctly. (Can slightly impact
      * performance, so only set when required)
@@ -83,6 +84,7 @@ export class EngineDFF {
      * ie. the dff or the model id is not valid.
      */
     replace(
+        modelID: number,
         alphaTransparency?: boolean
     ): boolean;
 }

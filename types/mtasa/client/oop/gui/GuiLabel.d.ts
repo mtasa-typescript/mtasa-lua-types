@@ -135,11 +135,13 @@ export class GuiLabel extends GuiElement {
     /**
      * This function allows you to set the color of a GUI label.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetColor Wiki, guiLabelSetColor }
+     * @param red An integer specifying the amount of red (0 to 255).
      * @param green An integer specifying the amount of green (0 to 255).
      * @param blue An integer specifying the amount of blue (0 to 255).
      * @return returns true if the the color of the gui label was successfully changed, false otherwise.
      */
     setColor(
+        red: number,
         green: number,
         blue: number
     ): boolean;
@@ -147,17 +149,28 @@ export class GuiLabel extends GuiElement {
     /**
      * This function sets the horizontal alignment of a text label.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetHorizontalAlign Wiki, guiLabelSetHorizontalAlign }
+     * @param align The alignment type. Valid type strings are:
+     * **"left"
+     * **"center"
+     * **"right"
      * @param wordwrap Whether or not to enable wordwrap for the gui-label.
      * @return returns true on success, false otherwise.
      */
     setHorizontalAlign(
+        align: string,
         wordwrap?: boolean
     ): boolean;
 
     /**
      * This function sets the vertical alignment of a text label.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetVerticalAlign Wiki, guiLabelSetVerticalAlign }
+     * @param align The alignment type. Valid type strings are:
+     * **"top"
+     * **"center"
+     * **"bottom"
      * @return returns true on success, false otherwise.
      */
-    setVerticalAlign(): boolean;
+    setVerticalAlign(
+        align: string
+    ): boolean;
 }

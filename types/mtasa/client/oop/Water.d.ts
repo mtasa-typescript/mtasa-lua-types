@@ -104,9 +104,13 @@ export class Water extends Element {
      * Gets the world position of a vertex (i.e. corner) of a water area. Each water area is
      * either a triangle or quad (rectangle) so each has 3 or 4 corners.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterVertexPosition Wiki, getWaterVertexPosition }
+     * @param vertexIndex the index of the vertex whose position to get. Values range from 1 to 4 for a water quad,
+     * or 1 to 3 for a triangle.
      * @return returns the x, y and z coordinates of the specified vertex if successful, false otherwise.
      */
-    getVertexPosition(): LuaMultiReturn<[
+    getVertexPosition(
+        vertexIndex: number
+    ): LuaMultiReturn<[
         number,
         number,
         number
@@ -137,11 +141,13 @@ export class Water extends Element {
     /**
      * This function changes the water color of the GTA world.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterColor Wiki, setWaterColor }
+     * @param green The green value of the water, from 0 to 255.
      * @param blue The blue value of the water, from 0 to 255.
      * @param alpha The alpha (visibility) value of the water, from 0 to 255. Defaults to 200 if not declared.
      * @return returns true if water color was set correctly, false if invalid values were passed.
      */
     setColor(
+        green: number,
         blue: number,
         alpha?: number
     ): boolean;
@@ -149,6 +155,8 @@ export class Water extends Element {
     /**
      * Sets the height of some or all the water in the game world.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterLevel Wiki, setWaterLevel }
+     * @param level the new Z coordinate of the water surface. All water in the game world is set to this
+     * height.
      * @param includeWaterFeatures a boolean indicating whether to also set the level of water features such as ponds and
      * pools.
      * @param includeWaterElements a boolean indicating whether to also set the level of all water elements.
@@ -157,17 +165,22 @@ export class Water extends Element {
      * ie. outside -3000, 3000.
      * @return returns true if successful, false in case of failure.
      */
-    setLevel(): boolean;
+    setLevel(
+        level: number
+    ): boolean;
 
     /**
      * Sets the world position of a corner point of a water area.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterVertexPosition Wiki, setWaterVertexPosition }
+     * @param vertexIndex the index of the vertex to move. Values range from 1 to 4 for water quads, and 1 to 3 for
+     * triangles.
      * @param x the X coordinate to set for the vertex.
      * @param y the Y coordinate to set for the vertex.
      * @param z the Z coordinate to set for the vertex.
      * @return returns true if successful, false otherwise.
      */
     setVertexPosition(
+        vertexIndex: number,
         x: number,
         y: number,
         z: number

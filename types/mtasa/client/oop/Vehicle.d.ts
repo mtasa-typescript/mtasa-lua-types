@@ -249,9 +249,16 @@ export class Vehicle extends Element {
     /**
      * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
      * @see {@link https://wiki.multitheftauto.com/wiki/AddVehicleUpgrade Wiki, addVehicleUpgrade }
+     * @param upgrade : The id of the upgrade you wish to add: 1000 to 1193 (see Vehicle Upgrades) or all to
+     * add all upgrades.
+     * '''Note:''' setCameraTarget will behave strangely if you use hydraulics (upgrade id:
+     * 1087) server sided and when your camera target is the player inside the vehicle with
+     * hydraulics and if the player is not you.
      * @return returns true if the upgrade was successfully added to the vehicle, otherwise false.
      */
-    addUpgrade(): boolean;
+    addUpgrade(
+        upgrade: string | number
+    ): boolean;
 
     /**
      * *This is different to getVehicleOverrideLights because this function will return true if
@@ -266,9 +273,12 @@ export class Vehicle extends Element {
     /**
      * This function attaches a trailer type vehicle to a trailer-towing-type vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/AttachTrailerToVehicle Wiki, attachTrailerToVehicle }
+     * @param theTrailer : the trailer you wish to be attached.
      * @return returns true if the vehicles were successfully attached, false otherwise.
      */
-    attachTrailer(): boolean;
+    attachTrailer(
+        theTrailer: Vehicle
+    ): boolean;
 
     /**
      * This function will blow up a vehicle. This will cause an explosion and will kill the
@@ -318,9 +328,12 @@ export class Vehicle extends Element {
     /**
      * This function detaches an already attached trailer from a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/DetachTrailerFromVehicle Wiki, detachTrailerFromVehicle }
+     * @param theTrailer : The trailer you wish to be detached.
      * @return returns true if the vehicles were successfully detached, false otherwise.
      */
-    detachTrailer(): boolean;
+    detachTrailer(
+        theTrailer?: Vehicle
+    ): boolean;
 
     /**
      * This function will set a vehicles health to full and fix its damage model. If you wish to
@@ -384,6 +397,8 @@ export class Vehicle extends Element {
      * This function returns the color of the specified vehicle. A vehicle can have up to four
      * colors.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleColor Wiki, getVehicleColor }
+     * @param bRGB A boolean specifying whether to return RGB values. A setting of false will result in the
+     * function returning color ids instead.
      * @return *returns 12 int|ints (if brgb is true) indicating the red, green and blue components of
      * each of the 4 vehicle colors.
      * *returns 4 int|ints (if brgb is false) indicating the color ids of each of the 4 vehicle
@@ -392,7 +407,9 @@ export class Vehicle extends Element {
      * valid color ids if brgb is set to false:
      * <br>
      */
-    getColor(): LuaMultiReturn<[
+    getColor(
+        bRGB: boolean
+    ): LuaMultiReturn<[
         number,
         number,
         number,
@@ -411,14 +428,20 @@ export class Vehicle extends Element {
      * This function returns a table of all the compatible upgrades (or all for a specified
      * slot, optionally) for a specified vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleCompatibleUpgrades Wiki, getVehicleCompatibleUpgrades }
+     * @param slot the upgrade slot number for which youre getting the list (from 0 to 16). Compatible
+     * upgrades for all slots are listed if this is not specified.
      * @return returns a table with all the compatible upgrades, or false if invalid arguments are
      * passed.
      */
-    getCompatibleUpgrades(): LuaTable;
+    getCompatibleUpgrades(
+        slot?: number
+    ): LuaTable;
 
     /**
      * This function gets the component position of a vehicle. The vehicle must be streamed in.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentPosition Wiki, getVehicleComponentPosition }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @param base A string representing what the returned position is relative to. It can be one of the
      * following values:
      * @param parent The position is relative to the parent component.
@@ -427,6 +450,7 @@ export class Vehicle extends Element {
      * @return returns three floats indicating the position of the component, x, y and z respectively.
      */
     getComponentPosition(
+        theComponent: string,
         base?: string
     ): LuaMultiReturn<[
         number,
@@ -437,6 +461,8 @@ export class Vehicle extends Element {
     /**
      * This function gets the component rotation of a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentRotation Wiki, getVehicleComponentRotation }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @param base A string representing what the returned rotation is relative to. It can be one of the
      * following values:
      * @param parent (default if not specified): The rotation is relative to the parent component.
@@ -445,6 +471,7 @@ export class Vehicle extends Element {
      * @return returns three floats indicating the rotation of the component, x, y and z respectively.
      */
     getComponentRotation(
+        theComponent: string,
         base?: string
     ): LuaMultiReturn<[
         number,
@@ -463,6 +490,8 @@ export class Vehicle extends Element {
     /**
      * This function gets the component scale of a vehicle.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentScale Wiki, getVehicleComponentScale }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @param base A string representing what the returned scale is relative to. It can be one of the
      * following values:
      * @param parent The scale is relative to the parent component.
@@ -471,6 +500,7 @@ export class Vehicle extends Element {
      * @return returns three floats indicating the scale of the component, x, y and z respectively.
      */
     getComponentScale(
+        theComponent: string,
         base?: string
     ): LuaMultiReturn<[
         number,
@@ -481,9 +511,13 @@ export class Vehicle extends Element {
     /**
      * This function get component visibility for vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentVisible Wiki, getVehicleComponentVisible }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @return returns a bool indicating the visible state of the component.
      */
-    getComponentVisible(): boolean;
+    getComponentVisible(
+        theComponent: string
+    ): boolean;
 
     /**
      * This function is used to get the player in control of the specified vehicle which
@@ -498,14 +532,19 @@ export class Vehicle extends Element {
      * This function tells you how open a door is (the open ratio). Doors include boots/trunks
      * and bonnets on vehicles that have them.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDoorOpenRatio Wiki, getVehicleDoorOpenRatio }
+     * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
+     * (rear right)
      * @return returns a number between 0 and 1 that indicates how open the door is. 0 is closed, and 1
      * is fully open. returns false if invalid arguments are passed.
      */
-    getDoorOpenRatio(): number;
+    getDoorOpenRatio(
+        door: number
+    ): number;
 
     /**
      * This function returns the current state of the specifed door on the vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDoorState Wiki, getVehicleDoorState }
+     * @param door a whole number representing which door to get the status of. Valid values are:
      * @param 0 Hood
      * @param 1 Trunk
      * @param 2 Front left
@@ -519,11 +558,14 @@ export class Vehicle extends Element {
      * * 3: ajar, damaged
      * * 4: missing
      */
-    getDoorState(): number;
+    getDoorState(
+        door: number
+    ): number;
 
     /**
      * This function returns the position of the dummy for the given vehicle.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDummyPosition Wiki, getVehicleDummyPosition }
+     * @param dummy The dummy whose position you want to get
      * @return returns three floats indicating the position x, y and z of the vehicles dummy. it returns
      * false otherwise.
      * this is a command to get the position of the players vehicle dummy position specified as
@@ -544,7 +586,9 @@ export class Vehicle extends Element {
      * addcommandhandler(getdummy, getdummyposition)
      * </syntaxhighlight>
      */
-    getDummyPosition(): LuaMultiReturn<[
+    getDummyPosition(
+        dummy: string
+    ): LuaMultiReturn<[
         number,
         number,
         number
@@ -588,13 +632,16 @@ export class Vehicle extends Element {
     /**
      * This function returns the current state of the specified light on the vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleLightState Wiki, getVehicleLightState }
+     * @param light A whole number determining the individual light:
      * @param 0 Front left
      * @param 1 Front right
      * @param 2 Rear right
      * @param 3 Rear left
      * @return returns 0 (working) or 1 (broken)
      */
-    getLightState(): number;
+    getLightState(
+        light: number
+    ): number;
 
     /**
      * This function returns the maximum number of passengers that a specified vehicle can hold.
@@ -704,10 +751,13 @@ export class Vehicle extends Element {
     /**
      * This function gets the player sitting/trying to enter the specified vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupant Wiki, getVehicleOccupant }
+     * @param seat the seat where the player is sitting (0 for driver, 1+ for passengers).
      * @return returns the player sitting in the vehicle, or false if the seat is unoccupied or doesnt
      * exist.
      */
-    getOccupant(): Player;
+    getOccupant(
+        seat?: number
+    ): Player;
 
     /**
      * This function gets all peds sitting in the specified vehicle.
@@ -756,6 +806,8 @@ export class Vehicle extends Element {
      * This function returns the current state of a specifed panel on the vehicle. A vehicle can
      * have up to 7 panels.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePanelState Wiki, getVehiclePanelState }
+     * @param panel an integer specifying the panel you want to know the state of. Not every vehicle has
+     * every panel. Possible values are:
      * @param 0 Front-left panel
      * @param 1 Front-right panel
      * @param 2 Rear-left panel
@@ -766,7 +818,9 @@ export class Vehicle extends Element {
      * @return returns an int indicating the state of the specified the panel. this is a value between 0
      * and 3, with 0 indicating the panel is undamaged and 3 indicating it is very damaged.
      */
-    getPanelState(): number;
+    getPanelState(
+        panel: number
+    ): number;
 
     /**
      * This function is used to retrieve the text on the number plate of a specified vehicle.
@@ -863,10 +917,13 @@ export class Vehicle extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot Wiki, getVehicleUpgradeOnSlot }
+     * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
      * @return returns an integer with the upgrade on the slot if correct arguments were passed, false
      * otherwise.
      */
-    getUpgradeOnSlot(): number;
+    getUpgradeOnSlot(
+        slot: number
+    ): number;
 
     /**
      * This function returns a table of all the upgrades on a specifed vehicle.
@@ -894,13 +951,16 @@ export class Vehicle extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelFrictionState Wiki, getVehicleWheelFrictionState }
+     * @param wheel The wheel you want to check. (0: front left, 1: rear left, 2: front right, 3: rear right)
      * @return returns a int indicating the wheel friction state. this value can be:
      * * 0: normal friction
      * * 1: slip with acceleration (only for driving wheels)
      * * 2: slip without acceleration
      * * 3: locked wheel (on brake or handbrake).
      */
-    getWheelFrictionState(): number;
+    getWheelFrictionState(
+        wheel: number
+    ): number;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelScale Wiki, getVehicleWheelScale }
@@ -994,30 +1054,49 @@ export class Vehicle extends Element {
      * This function returns a boolean whether the vehicles wheel is on ground (true) or in air
      * (false).
      * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleWheelOnGround Wiki, isVehicleWheelOnGround }
+     * @param wheel The wheel name or number, see list below:
+     * ** <code>"front_left"</code> or 0
+     * ** <code>"rear_left"</code> or 1
+     * ** <code>"front_right"</code> or 2
+     * ** <code>"rear_right"</code> or 3
      * @return returns true if the vehicle wheel is on ground/collided, false otherwise.
      */
-    isWheelOnGround(): boolean;
+    isWheelOnGround(
+        wheel: string | number
+    ): boolean;
 
     /**
      * This function reset to default component position for vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleComponentPosition Wiki, resetVehicleComponentPosition }
+     * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish
+     * to modify)
      * @return returns true if the position of the component was reset, false otherwise.
      */
-    resetComponentPosition(): boolean;
+    resetComponentPosition(
+        theComponent: string
+    ): boolean;
 
     /**
      * This function reset to default component rotation for vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleComponentRotation Wiki, resetVehicleComponentRotation }
+     * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish
+     * to modify)
      * @return returns true if the rotation of the component was reset, false otherwise.
      */
-    resetComponentRotation(): boolean;
+    resetComponentRotation(
+        theComponent: string
+    ): boolean;
 
     /**
      * This function reset to default component scale for vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleComponentScale Wiki, resetVehicleComponentScale }
+     * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish
+     * to modify)
      * @return returns true if the scale of the component was reset, false otherwise.
      */
-    resetComponentScale(): boolean;
+    resetComponentScale(
+        theComponent: string
+    ): boolean;
 
     /**
      * This function resets the vehicle dependent dummy positions to the vehicles current model
@@ -1031,62 +1110,90 @@ export class Vehicle extends Element {
      * This function changes the state of the helicopter blades collisions on the specified
      * vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetHeliBladeCollisionsEnabled Wiki, setHeliBladeCollisionsEnabled }
+     * @param collisions The state of the helicopter blades collisions.
      * @return returns true if the collisions are set for the specified vehicle, false if the collisions
      * cant be set for the specified vehicle, if the vehicle is not a helicopter or if invalid
      * arguments are specified.
      */
-    setHeliBladeCollisionsEnabled(): boolean;
+    setHeliBladeCollisionsEnabled(
+        collisions: boolean
+    ): boolean;
 
     /**
      * Sets the rotor speed of a helicopter.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetHelicopterRotorSpeed Wiki, setHelicopterRotorSpeed }
+     * @param speed the new rotor speed. Usual values are 0 if the helicopter stands still, or 0.2 if the
+     * rotor is fully spun up. Higher values than normal will not affect the helicopters
+     * handling. Negative values are allowed and will make the rotor spin in the opposite
+     * direction (pushing the helicopter down).
      * @return returns true if successful, false otherwise.
      */
-    setHelicopterRotorSpeed(): boolean;
+    setHelicopterRotorSpeed(
+        speed: number
+    ): boolean;
 
     /**
      * This function will set a train or tram as derailable. This is, if it can derail when it
      * goes above the maximum speed.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDerailable Wiki, setTrainDerailable }
+     * @param derailable whether the train or tram is derailable. True as derailable, False as non-derailable.
      * @return returns true if the state was successfully set, false otherwise.
      */
-    setDerailable(): boolean;
+    setDerailable(
+        derailable: boolean
+    ): boolean;
 
     /**
      * This function will set a train or tram as derailed.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDerailed Wiki, setTrainDerailed }
+     * @param derailed whether the train is derailed.
      * @return returns true if the state was successfully set
      */
-    setDerailed(): boolean;
+    setDerailed(
+        derailed: boolean
+    ): boolean;
 
     /**
      * Sets the direction in which a train or tram drives over the rails (clockwise or
      * counterclockwise).
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDirection Wiki, setTrainDirection }
+     * @param clockwise if true, will make the train go clockwise. If false, makes it go counterclockwise.
      * @return returns true if successful, false otherwise.
      */
-    setDirection(): boolean;
+    setDirection(
+        clockwise: boolean
+    ): boolean;
 
     /**
      * Sets the position the train is currently on the track
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainPosition Wiki, setTrainPosition }
+     * @param position the position along the track (0 - 18107 a complete way round)
      * @return returns true if the train position was set, false otherwise.
      */
-    setTrainPosition(): boolean;
+    setTrainPosition(
+        position: number
+    ): boolean;
 
     /**
      * Sets the on-track speed of a train.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainSpeed Wiki, setTrainSpeed }
+     * @param speed the new on-track speed of the train. A positive value will make it go clockwise, a
+     * negative value counter clockwise.
      * @return returns true if successful, false otherwise.
      */
-    setSpeed(): boolean;
+    setSpeed(
+        speed: number
+    ): boolean;
 
     /**
      * Sets the track of a train
      * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainTrack Wiki, setTrainTrack }
+     * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
      * @return returns true if the track was set to the train, false otherwise.
      */
-    setTrack(): boolean;
+    setTrack(
+        track: number
+    ): boolean;
 
     /**
      * This function will set the color of a vehicle using either a RGB format, or the Vehicle
@@ -1118,6 +1225,7 @@ export class Vehicle extends Element {
      * were specified.
      */
     setColor(
+        r1: number,
         g1: number,
         b1: number,
         r2?: number,
@@ -1134,6 +1242,8 @@ export class Vehicle extends Element {
     /**
      * This function sets the component position of a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentPosition Wiki, setVehicleComponentPosition }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @param posX The new x position of this component.
      * @param posY The new y position of this component.
      * @param posZ The new z position of this component.
@@ -1145,6 +1255,7 @@ export class Vehicle extends Element {
      * @return returns true if component position was set successfully, false otherwise.
      */
     setComponentPosition(
+        theComponent: string,
         posX: number,
         posY: number,
         posZ: number,
@@ -1154,6 +1265,8 @@ export class Vehicle extends Element {
     /**
      * This function sets the component rotation of a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentRotation Wiki, setVehicleComponentRotation }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @param rotX The components rotation around the x axis in degrees.
      * @param rotY The components rotation around the y axis in degrees.
      * @param rotZ The components rotation around the z axis in degrees.
@@ -1165,6 +1278,7 @@ export class Vehicle extends Element {
      * @return returns true if the component rotation was set successfully, false otherwise.
      */
     setComponentRotation(
+        theComponent: string,
         rotX: number,
         rotY: number,
         rotZ: number,
@@ -1174,6 +1288,8 @@ export class Vehicle extends Element {
     /**
      * This function sets the component scale of a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentScale Wiki, setVehicleComponentScale }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
+     * component you wish to modify)
      * @param scaleX The new x scale of this component.
      * @param scaleY The new y scale of this component.
      * @param scaleZ The new z scale of this component.
@@ -1185,6 +1301,7 @@ export class Vehicle extends Element {
      * @return returns true if component scale was set successfully, false otherwise.
      */
     setComponentScale(
+        theComponent: string,
         scaleX: number,
         scaleY: number,
         scaleZ: number,
@@ -1194,10 +1311,13 @@ export class Vehicle extends Element {
     /**
      * This function sets component visibility for vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentVisible Wiki, setVehicleComponentVisible }
+     * @param theComponent A Vehicle_Components|vehicle component (this is the components frame name (also called
+     * dummy) from the vehicle models DFF file of which you want to manipulate components)
      * @param visible a bool which determines if the component should be visible
      * @return returns a bool indicating if the visiblity was changed successfully.
      */
     setComponentVisible(
+        theComponent: string,
         visible: boolean
     ): boolean;
 
@@ -1205,15 +1325,20 @@ export class Vehicle extends Element {
      * This functions makes a vehicle damage proof, so it wont take damage from bullets, hits,
      * explosions or fire. A damage proofs vehicle health can still be changed via script.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDamageProof Wiki, setVehicleDamageProof }
+     * @param damageProof true is damage proof, false is damageable.
      * @return returns true if the vehicle was set damage proof succesfully, false if the arguments are
      * invalid or it failed.
      */
-    setDamageProof(): boolean;
+    setDamageProof(
+        damageProof: boolean
+    ): boolean;
 
     /**
      * This function sets how much a vehicles door is open. Doors include the boot/trunk and the
      * bonnet of the vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorOpenRatio Wiki, setVehicleDoorOpenRatio }
+     * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
+     * (rear right)
      * @param ratio The ratio value, ranging from 0 (fully closed) to 1 (fully open).
      * @param time The number of milliseconds the door should take to reach the value you have specified. A
      * value of 0 will change the door open ratio instantly.
@@ -1221,6 +1346,7 @@ export class Vehicle extends Element {
      * passed.
      */
     setDoorOpenRatio(
+        door: number,
         ratio: number,
         time?: number
     ): boolean;
@@ -1228,6 +1354,7 @@ export class Vehicle extends Element {
     /**
      * This function sets the state of the specified door on a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorState Wiki, setVehicleDoorState }
+     * @param door An integer representing which door to set the state of. Valid values are:
      * @param 0 Shut, intact (aka Closed, undamaged)
      * @param 1 Ajar, intact (aka Slightly open, undamaged)
      * @param 2 Shut, damaged (aka Closed, damaged)
@@ -1240,6 +1367,7 @@ export class Vehicle extends Element {
      * @return returns true if the door state was successfully set, false otherwise.
      */
     setDoorState(
+        door: number,
         state: number
     ): boolean;
 
@@ -1248,18 +1376,24 @@ export class Vehicle extends Element {
      * Note that the vehicle has to be locked using setVehicleLocked for this setting to have
      * any effect.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorsUndamageable Wiki, setVehicleDoorsUndamageable }
+     * @param state A boolean denoting whether the vehicles doors are undamageable (true) or damageable
+     * (false).
      * @return returns true if the damageability state was successfully changed, false if invalid
      * arguments were passed.
      */
-    setDoorsUndamageable(): boolean;
+    setDoorsUndamageable(
+        state: boolean
+    ): boolean;
 
     /**
      * This function sets the position of the dummy for the given vehicle.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDummyPosition Wiki, setVehicleDummyPosition }
+     * @param dummy The dummy whose position you want to set
      * @param x , y, z The new dummy position
      * @return returns true for success, false otherwise.
      */
     setDummyPosition(
+        dummy: string,
         x: number,
         y: number,
         z: number
@@ -1270,20 +1404,25 @@ export class Vehicle extends Element {
      * turned on when someone enters the driver seat, unless you override that behaviour with
      * scripts.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleEngineState Wiki, setVehicleEngineState }
+     * @param engineState : A boolean value representing whether the engine will be turned on (true) or off (false).
      * @return returns true if the vehicles engine state was successfully changed, false otherwise.
      */
-    setEngineState(): boolean;
+    setEngineState(
+        engineState: boolean
+    ): boolean;
 
     /**
      * This function will set the headlight color of a vehicle. valid Red Green and Blue
      * arguments range from 0-255
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleHeadLightColor Wiki, setVehicleHeadLightColor }
+     * @param red An integer indicating the amount of red for the vehicles headlights
      * @param green An integer indicating the amount of green for the vehicles headlights
      * @param blue An integer indicating the amount of blue for the vehicles headlights
      * @return returns true if vehicles headlight color was set, false if an invalid vehicle or invalid
      * color ranges were specified for red,green or blue.
      */
     setHeadLightColor(
+        red: number,
         green: number,
         blue: number
     ): boolean;
@@ -1291,6 +1430,7 @@ export class Vehicle extends Element {
     /**
      * This function sets the state of the light on the vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLightState Wiki, setVehicleLightState }
+     * @param light A whole number determining the individual light:
      * @param 0 Front left
      * @param 1 Front right
      * @param 2 Rear right
@@ -1303,6 +1443,7 @@ export class Vehicle extends Element {
      * passed to the function.
      */
     setLightState(
+        light: number,
         state: number
     ): boolean;
 
@@ -1310,9 +1451,12 @@ export class Vehicle extends Element {
      * This function can be used to set the vehicles doors to be locked or unlocked.  Locking a
      * vehicle restricts access to the vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLocked Wiki, setVehicleLocked }
+     * @param locked Boolean for the status you wish to set. Set true to lock, false to unlock
      * @return returns true if the operation was successful, false otherwise.
      */
-    setLocked(): boolean;
+    setLocked(
+        locked: boolean
+    ): boolean;
 
     /**
      * This function sets the position of the dummies contained in a vehicle model. Use
@@ -1370,18 +1514,22 @@ export class Vehicle extends Element {
     /**
      * This function changes the light overriding setting on a vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleOverrideLights Wiki, setVehicleOverrideLights }
+     * @param value : A whole number representing the state of the lights:
      * @param 0 : No override, lights are set to default.
      * @param 1 : Lights are forced off.
      * @param 2 : Lights are forced on.
      * @return returns true if the vehicles lights setting was changed. otherwise false.
      */
-    setOverrideLights(): boolean;
+    setOverrideLights(
+        value: number
+    ): boolean;
 
     /**
      * This function allows you to change the state of one of the six panels vehicles can have.
      * When executed on the server-side resources, the damage will be synched for all players,
      * whereas the change is only client-side if the function is used in a client resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePanelState Wiki, setVehiclePanelState }
+     * @param panelID An ID specifying the part of the vehicle. Possible values are:
      * @param Cars
      * @param 0 Engine Smoke (left engine for a Nevada or a Beagle)
      * @param 1 Engine Smoke (right engine for a Nevada or a Beagle)
@@ -1398,6 +1546,7 @@ export class Vehicle extends Element {
      * @return returns true if the panel state has been updated, false otherwise
      */
     setPanelState(
+        panelID: number,
         state: number
     ): boolean;
 
@@ -1405,14 +1554,18 @@ export class Vehicle extends Element {
      * This function can be used to set the numberplate text of a car.
      * It now also changes the numberplate text of any vehicle that has visual numberplates.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePlateText Wiki, setVehiclePlateText }
+     * @param numberplate a string that will go on the number plate of the car (max 8 characters).
      * @return returns true if the numberplate was changed successfully, or false if invalid arguments
      * were passed
      */
-    setPlateText(): boolean;
+    setPlateText(
+        numberplate: string
+    ): boolean;
 
     /**
      * This function changes the properties of a vehicles siren point.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirens Wiki, setVehicleSirens }
+     * @param sirenPoint The siren point to modify
      * @param posX The x position of this siren point from the center of the vehicle
      * @param posY The y position of this siren point from the center of the vehicle
      * @param posZ The z position of this siren point from the center of the vehicle
@@ -1424,6 +1577,7 @@ export class Vehicle extends Element {
      * @return returns true if the siren point was successfully changed on the vehicle, false otherwise.
      */
     setSirens(
+        sirenPoint: number,
         posX: number,
         posY: number,
         posZ: number,
@@ -1437,29 +1591,37 @@ export class Vehicle extends Element {
     /**
      * This function changes the state of the sirens on the specified vehicle.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirensOn Wiki, setVehicleSirensOn }
+     * @param sirensOn The state to set the sirens to
      * @return returns true if the sirens are set for the specified vehicle, false if the sirens cant be
      * set for the specified vehicle, if the vehicle doesnt have sirens or if invalid arguments
      * are specified.
      */
-    setSirensOn(): boolean;
+    setSirensOn(
+        sirensOn: boolean
+    ): boolean;
 
     /**
      * This function will set the taxi light on in a taxi (vehicle IDs 420 and 438)
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTaxiLightOn Wiki, setVehicleTaxiLightOn }
+     * @param LightState whether the light is on. True for on, False for off.
      * @return returns true if the state was successfully set, false otherwise.
      */
-    setTaxiLightOn(): boolean;
+    setTaxiLightOn(
+        LightState: boolean
+    ): boolean;
 
     /**
      * This function sets the position of a vehicles turret, if it has one. This can be used to
      * influence the turrets rotation, so it doesnt follow the camera. Vehicles with turrets
      * include firetrucks and tanks.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTurretPosition Wiki, setVehicleTurretPosition }
+     * @param positionX : The horizontal position of the turret. In radians
      * @param positionY : The vertical position of the turret. In radians
      * @return returns a true if a valid vehicle element and valid positions were passed, false
      * otherwise.
      */
     setTurretPosition(
+        positionX: number,
         positionY: number
     ): boolean;
 
@@ -1468,6 +1630,7 @@ export class Vehicle extends Element {
      * different for example the labelling on trucks or the contents of a pick-up truck and the
      * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleVariant Wiki, setVehicleVariant }
+     * @param variant1 : An integer for the first variant see Vehicle variants
      * @param variant2 : An integer for the second variant see Vehicle variants
      * @return on success:
      * * bool: returns true as the vehicle variants were successfully set.
@@ -1476,27 +1639,33 @@ export class Vehicle extends Element {
      * invalid.
      */
     setVariant(
+        variant1?: number,
         variant2?: number
     ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWheelScale Wiki, setVehicleWheelScale }
+     * @param wheelScale : The wheel scale value to set.
      * @return returns true if the wheel scale has been set successfully, or an error if some parameter
      * is invalid.
      */
-    setWheelScale(): boolean;
+    setWheelScale(
+        wheelScale: number
+    ): boolean;
 
     /**
      * This function sets the state of wheels on the vehicle.
      * Internally, no vehicles have more than 4 wheels. If they appear to, they will be
      * duplicating other wheels.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWheelStates Wiki, setVehicleWheelStates }
+     * @param frontLeft A whole number representing the wheel state (-1 for no change)
      * @param rearLeft A whole number representing the wheel state (-1 for no change)
      * @param frontRight A whole number representing the wheel state (-1 for no change)
      * @param rearRight A whole number representing the wheel state (-1 for no change)
      * @return returns a boolean value true or false that tells you if it was successful or not.
      */
     setWheelStates(
+        frontLeft: number,
         rearLeft?: number,
         frontRight?: number,
         rearRight?: number

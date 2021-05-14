@@ -160,7 +160,10 @@ export class Projectile {
      * * Satchels restart (we currently assume it doesnt cause an effect)
      * * Molotov will explode with search ground level when it hits 0
      * @see {@link https://wiki.multitheftauto.com/wiki/SetProjectileCounter Wiki, setProjectileCounter }
+     * @param timeToDetonate The time in milliseconds to detonation.
      * @return returns true on success, false otherwise.
      */
-    setCounter(): boolean;
+    setCounter(
+        timeToDetonate: number
+    ): boolean;
 }

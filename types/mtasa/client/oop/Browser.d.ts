@@ -101,9 +101,12 @@ export class Browser extends Element {
      * This function executes a Javascript string to the specified Element/Browser|browser.
      * Works only with local browsers.
      * @see {@link https://wiki.multitheftauto.com/wiki/ExecuteBrowserJavascript Wiki, executeBrowserJavascript }
+     * @param jsCode The Javascript code string
      * @return returns true if executing javascript is allowed in the current context, false otherwise.
      */
-    executeJavascript(): boolean;
+    executeJavascript(
+        jsCode: string
+    ): boolean;
 
     /**
      * This function will attempt to focus the Element/Browser|browser or unfocus all browsers.
@@ -117,10 +120,13 @@ export class Browser extends Element {
     /**
      * This function gets a given property of a specified browser.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserProperty Wiki, getBrowserProperty }
+     * @param key The browser property key. It can be:
      * @param mobile Surfing the web as mobile
      * @return returns the value if the property was successfully found, false otherwise.
      */
-    getProperty(): boolean;
+    getProperty(
+        key: string
+    ): boolean;
 
     /**
      * This function returns a table containing the browser settings.
@@ -137,9 +143,15 @@ export class Browser extends Element {
      * This function can be used to retrieve the source code of a website (asynchronously). The
      * size of the source code is limited to 2 MiB (remaining bytes are cut).
      * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSource Wiki, getBrowserSource }
+     * @param callback a callback function with syntax as described below
+     * <syntaxhighlight lang="lua">
+     * function ( string code )
+     * </syntaxhighlight>
      * @return returns true if valid arguments have been passed, false otherwise.
      */
-    getSource(): boolean;
+    getSource(
+        callback: HandleFunction
+    ): boolean;
 
     /**
      * This function returns the title of the passed Element/Browser|browser.
@@ -158,34 +170,44 @@ export class Browser extends Element {
     /**
      * This function injects a mouse click (state: down).
      * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseDown Wiki, injectBrowserMouseDown }
+     * @param mouseButton The mouse button (Possible values: left, middle, right)
      * @return returns true if the click was successfully injected, false otherwise.
      */
-    injectMouseDown(): boolean;
+    injectMouseDown(
+        mouseButton: string
+    ): boolean;
 
     /**
      * This function injects a mouse movement.
      * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseMove Wiki, injectBrowserMouseMove }
+     * @param posX Absolute X screen coordinate
      * @param posY Absolute Y screen coordinate
      * @return returns true if the movement was injected successfully, false otherwise.
      */
     injectMouseMove(
+        posX: number,
         posY: number
     ): boolean;
 
     /**
      * This function injects a mouse click (state: up).
      * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp Wiki, injectBrowserMouseUp }
+     * @param mouseButton The mouse button (Possible values: left, middle, right)
      * @return returns true if the click was successfully injected, false otherwise.
      */
-    injectMouseUp(): boolean;
+    injectMouseUp(
+        mouseButton: string
+    ): boolean;
 
     /**
      * This function injects mouse wheel events.
      * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseWheel Wiki, injectBrowserMouseWheel }
+     * @param verticalScroll : Amount of units you want the browser to scroll along the Y-axe.
      * @param horizontalScroll : Amount of units you want the browser to scroll along the X-axe.
      * @return returns true if the mouse action was successfully injected, false otherwise.
      */
     injectMouseWheel(
+        verticalScroll: number,
         horizontalScroll: number
     ): boolean;
 
@@ -221,6 +243,9 @@ export class Browser extends Element {
     /**
      * This function loads the specified URL.
      * @see {@link https://wiki.multitheftauto.com/wiki/LoadBrowserURL Wiki, loadBrowserURL }
+     * @param url The url you want to load. It can either contain a remote website (http:// prefix) or a
+     * website stored within a local resource (http://mta/local/gui.html for example, see
+     * Local_Scheme_Handler|Local Scheme Handler for details).
      * @param postData The post data passed to the website. Its content type can be any type (e.g. JSON) if
      * urlEncoded is set to false
      * @param urlEncoded If set to true, it will be available f.e. in PHPs $_POST variable (the content type is:
@@ -228,6 +253,7 @@ export class Browser extends Element {
      * @return returns true if the url was successfully loaded.
      */
     loadURL(
+        url: string,
         postData?: string,
         urlEncoded?: boolean
     ): boolean;
@@ -253,42 +279,56 @@ export class Browser extends Element {
      * This function provides a requestable ajax resource for Lua/Javascript communication for a
      * Element/Browser|browser.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserAjaxHandler Wiki, setBrowserAjaxHandler }
+     * @param url The URL endpoint to handle
      * @param handler The function to call if the webBrowser attempts to open the ajax endpoint. If this
      * parameter is nil or omitted, the ajax handler for the url will be deleted.
      */
     setAjaxHandler(
+        url: string,
         handler?: HandleFunction
     ): boolean;
 
     /**
      * This function sets a given property of a specified browser.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserProperty Wiki, setBrowserProperty }
+     * @param key The browser property key. It can be:
      * @param mobile Surfing the web as mobile
      * @param value A value indicating whether to enable (1) the property or not (0)
      * @return returns true if the property was successfully set, false otherwise.
      */
     setProperty(
+        key: string,
         value: string
     ): boolean;
 
     /**
      * This function sets the rendering state of a browser.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused Wiki, setBrowserRenderingPaused }
+     * @param paused true to pause rendering, false to continue
      * @return returns true if the state was successfully changed
      */
-    setRenderingPaused(): boolean;
+    setRenderingPaused(
+        paused: boolean
+    ): boolean;
 
     /**
      * This function sets either a specific Element/Browser|browsers volume, or the overall
      * volume for browsers.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserVolume Wiki, setBrowserVolume }
+     * @param volume A float|floating point number representing the desired volume level. Range is from 0.0 to
+     * 1.0
      */
-    setVolume(): boolean;
+    setVolume(
+        volume: number
+    ): boolean;
 
     /**
      * This function toggles the visibility of the developer tools pane.
      * @see {@link https://wiki.multitheftauto.com/wiki/ToggleBrowserDevTools Wiki, toggleBrowserDevTools }
+     * @param visible true to show the tools, false to hide
      * @return returns true if the visibility was successfully toggled, false if an error occurred
      */
-    toggleDevTools(): boolean;
+    toggleDevTools(
+        visible: boolean
+    ): boolean;
 }

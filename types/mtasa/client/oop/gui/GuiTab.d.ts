@@ -66,7 +66,10 @@ export class GuiTab extends GuiElement {
     /**
      * This function deletes a tab from a tab panel.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiDeleteTab Wiki, guiDeleteTab }
+     * @param tabPanel This is the guiCreateTabPanel|tab panel parent that the tab is attached to.
      * @return returns true the tab was successfully deleted, false otherwise.
      */
-    delete(): boolean;
+    delete(
+        tabPanel: Element
+    ): boolean;
 }

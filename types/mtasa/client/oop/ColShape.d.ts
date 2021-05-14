@@ -64,6 +64,7 @@ export class ColShape extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/AddColPolygonPoint Wiki, addColPolygonPoint }
+     * @param fX The X position of the new bound point.
      * @param fY The Y position of the new bound point.
      * @param index The index where the new point will be inserted in the polygon. The points are indexed in
      * order, with 1 being the first bound point. Passing 0 will insert the point as the last
@@ -72,6 +73,7 @@ export class ColShape extends Element {
      * @return returns true if the polygon was changed, false if invalid arguments were passed.
      */
     addPoint(
+        fX: number,
         fY: number,
         index?: number
     ): boolean;
@@ -222,10 +224,14 @@ export class ColShape extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GetColPolygonPointPosition Wiki, getColPolygonPointPosition }
+     * @param index The index of the point you wish to retrieve. The points are indexed in order, with 1
+     * being the first bound point.
      * @return returns two floats, x and y, indicating the position of the point, false if invalid
      * arguments were passed.
      */
-    getPointPosition(): LuaMultiReturn<[
+    getPointPosition(
+        index: number
+    ): LuaMultiReturn<[
         number,
         number
     ]>;
@@ -273,57 +279,73 @@ export class ColShape extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/IsInsideColShape Wiki, isInsideColShape }
+     * @param posX The X coordinate of the position youre checking.
      * @param posY The Y coordinate of the position youre checking.
      * @param posZ The Z coordinate of the position youre checking.
      * @return returns true if the position is inside the colshape, false if it isnt or if any
      * parameters are invalid.
      */
     isInside(
+        posX: number,
         posY: number,
         posZ: number
     ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/RemoveColPolygonPoint Wiki, removeColPolygonPoint }
+     * @param index The index of the point you wish to remove. The points are indexed in order, with 1 being
+     * the first bound point. You cant remove the last 3 points.
      * @return returns true if the polygon was changed, false if invalid arguments were passed.
      */
-    removePoint(): boolean;
+    removePoint(
+        index: number
+    ): boolean;
 
     /**
      * By default, a colshape polygon is infinitely tall.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/SetColPolygonHeight Wiki, setColPolygonHeight }
+     * @param floor The polygon floor (lowest Z coordinate). Parse false to reset this value to 0.
      * @param ceil The polygon ceiling (highest Z coordinate). Parse false to reset this value to infinitely
      * tall.
      * @return returns true if the polygon was changed, false if invalid arguments were passed.
      */
     setHeight(
+        floor: number,
         ceil: number
     ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetColPolygonPointPosition Wiki, setColPolygonPointPosition }
+     * @param index The index of the point you wish to change. The points are indexed in order, with 1 being
+     * the first bound point.
      * @param fX The new X position of the bound point.
      * @param fY The new Y position of the bound point.
      * @return returns true if the polygon was changed, false if invalid arguments were passed.
      */
     setPointPosition(
+        index: number,
         fX: number,
         fY: number
     ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetColShapeRadius Wiki, setColShapeRadius }
+     * @param radius The radius you want to set.
      * @return returns true if the radius was changed, or false if invalid arguments were passed.
      */
-    setRadius(): boolean;
+    setRadius(
+        radius: number
+    ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetColShapeSize Wiki, setColShapeSize }
+     * @param width The collision rectangles width.
      * @param depth The collision cuboids depth.
      * @param height The collision tubess height.
      * @return returns true if the size was changed, false if invalid arguments were passed.
      */
     setSize(
+        width: number,
         depth: number,
         height: number
     ): boolean;
@@ -336,6 +358,8 @@ export class ColShape extends Element {
      * * This function doesnt verify whether elements are in the same dimension and interior,
      * additional checks could be implemented manually if they are needed
      * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape Wiki, getElementsWithinColShape }
+     * @param elemType The type of element you want a list of. This can be any element type, the common ones
+     * being:
      * @param player A player connected to the server
      * @param ped A ped
      * @param vehicle A vehicle
@@ -347,5 +371,7 @@ export class ColShape extends Element {
      * returns an empty table if there are no elements inside. returns false if the colshape is
      * invalid.
      */
-    getElementsWithin(): LuaTable;
+    getElementsWithin(
+        elemType?: string
+    ): LuaTable;
 }

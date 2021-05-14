@@ -86,6 +86,7 @@ export class Weapon extends Element {
      * (clientside only) or specified Weapons|player-held weapon (both client and server).
      * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
      * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
+     * @param weaponSkill Either: pro, std or poor
      * @param property The property you want to get the value of:
      * The following properties are get only:
      * @return on success:
@@ -94,6 +95,7 @@ export class Weapon extends Element {
      * bool: false if the passed arguments were invalid
      */
     getProperty(
+        weaponSkill: string,
         property: string
     ): number;
 
@@ -124,10 +126,12 @@ export class Weapon extends Element {
      * Returns true if the property was set.
      * </section>
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
+     * @param strProperty the property to edit:
      * @param theValue The value to set the property to.
      * @return returns true if the property was set.
      */
     setProperty(
+        strProperty: string,
         theValue: unknown
     ): boolean;
 
@@ -184,6 +188,7 @@ export class Weapon extends Element {
     /**
      * This function gets the flags of a Element/Weapon|custom weapon.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFlags Wiki, getWeaponFlags }
+     * @param theFlag the weapon flag to get:
      * @param disable_model : makes the weapon and muzzle effect invisible or not.
      * @param flags : returns the flags used to get where the gun shoots at. These flags are (by order):
      * @param checkBuildings : allows the shoot to be blocked by GTAs internally placed buildings, i.e. the world map.
@@ -202,7 +207,9 @@ export class Weapon extends Element {
      * @return returns the true or false on success (flags flag returns 8 values) if the flag is enabled
      * or not. returns false if the weapon element isnt valid or an error occured.
      */
-    getFlags(): boolean;
+    getFlags(
+        theFlag: string
+    ): boolean;
 
     /**
      * This function gets the owner of a Element/Weapon|custom weapon. Weapon ownership system
@@ -248,23 +255,31 @@ export class Weapon extends Element {
     /**
      * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
+     * @param clipAmmo The amount of ammo in the clip.
      * @return this function returns true if the arguments are valid and the weapon clip ammo could be
      * changed; false otherwise.
      */
-    setClipAmmo(): boolean;
+    setClipAmmo(
+        clipAmmo: number
+    ): boolean;
 
     /**
      * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
      * firing state.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
+     * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
+     * quicker the Element/Weapon|custom weapon will shoot.
      * @return returns true on success, false otherwise.
      */
-    setFiringRate(): boolean;
+    setFiringRate(
+        firingRate: number
+    ): boolean;
 
     /**
      * This function sets a Element/Weapon|custom weapon flags, used to change how it behaves or
      * finds a possible target to shoot.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFlags Wiki, setWeaponFlags }
+     * @param theFlag the weapon flag to change (all of them can be true or false):
      * @param disable_model : makes the weapon and muzzle effect invisible or not.
      * @param flags : configures the flags used to get where the gun shoots at. They are based on
      * processLineOfSights. You have to specify all the eight flags for the function to succeed.
@@ -286,17 +301,21 @@ export class Weapon extends Element {
      * @return returns true if all arguments are valid and the flags where changed; false otherwise.
      */
     setFlags(
+        theFlag: string,
         enable: boolean
     ): boolean;
 
     /**
      * This function sets a Element/Weapon|custom weapons state.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponState Wiki, setWeaponState }
+     * @param theState : the state you wish to set:
      * @param reloading : makes the weapon reload.
      * @param firing : makes the weapon constantly fire its target (unless any shooting blocking flags are
      * set) according to its assigned firing rate.
      * @param ready : makes the weapon stop reloading or firing.
      * @return returns true on success, false otherwise.
      */
-    setState(): boolean;
+    setState(
+        theState: string
+    ): boolean;
 }

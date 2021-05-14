@@ -225,6 +225,7 @@ export class Player extends Ped {
     /**
      * This allows you to change the RGB color mixture in the name tags of players.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagColor Wiki, setPlayerNametagColor }
+     * @param r The amount of red you want in the mixture of RGB (0-255 is valid)
      * @param g The amount of green you want in the mixture of RGB (0-255 is valid)
      * @param b The amount of blue you want in the mixture of RGB (0-255 is valid)
      * @param false If false is specified instead of the colors, the nametag color will reset to defaulting
@@ -232,6 +233,7 @@ export class Player extends Ped {
      * @return returns true if the function was successful, false otherwise.
      */
     setNametagColor(
+        r: number,
         g: number,
         b: number
     ): boolean;
@@ -239,9 +241,12 @@ export class Player extends Ped {
     /**
      * Use this to define whether the players name tag is visible or invisible.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagShowing Wiki, setPlayerNametagShowing }
+     * @param showing Use true or false to show/hide the tag
      * @return returns true if successful, false otherwise
      */
-    setNametagShowing(): boolean;
+    setNametagShowing(
+        showing: boolean
+    ): boolean;
 
     /**
      * This will change the text of a players nickname in the world to something besides the
@@ -249,9 +254,12 @@ export class Player extends Ped {
      * visible aspect inside the world (you will see his original nickname in the scoreboard and
      * will refer to his original name in scripts).
      * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagText Wiki, setPlayerNametagText }
+     * @param text The new nickname text that will be displayed
      * @return returns true if successful, false otherwise.
      */
-    setNametagText(): boolean;
+    setNametagText(
+        text: string
+    ): boolean;
 
     /**
      * This function subtracts money from a players current money amount.

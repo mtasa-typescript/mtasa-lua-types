@@ -200,10 +200,13 @@ export class File {
      * Reads the specified number of bytes from the given file starting at its current
      * read/write position, and returns them as a string.
      * @see {@link https://wiki.multitheftauto.com/wiki/FileRead Wiki, fileRead }
+     * @param count The number of bytes you wish to read.
      * @return returns the bytes that were read in a string. note that this string might not contain as
      * many bytes as you specified if an error occured, i.e. end of file.
      */
-    read(): string;
+    read(
+        count: number
+    ): string;
 
     /**
      * Renames the specified file.
@@ -223,20 +226,26 @@ export class File {
     /**
      * Sets the current read/write position in the file.
      * @see {@link https://wiki.multitheftauto.com/wiki/FileSetPos Wiki, fileSetPos }
+     * @param offset The new position. This is the number of bytes from the beginning of the file. If this
+     * value is larger than the file size, it is limited to 52,428,800 bytes (50 MB).
      * @return returns where the offset was actually set at. i.e. if offset was past the end of the
      * file, it will be set at the end of the file, and this position will be returned. returns
      * false in case of failure (e.g. the specified file handle is invalid).
      */
-    setPos(): number;
+    setPos(
+        offset: number
+    ): number;
 
     /**
      * Writes one or more strings to a given file, starting at the current read/write position.
      * Advances the position over the number of bytes that were written.
      * @see {@link https://wiki.multitheftauto.com/wiki/FileWrite Wiki, fileWrite }
+     * @param string1 The string to write.
      * @return returns the number of bytes successfully written to the file, returns false if invalid
      * arguments were specified.
      */
     write(
+        string1: string,
         string2?: string,
         string3?: string,
         ...varargs: any[]

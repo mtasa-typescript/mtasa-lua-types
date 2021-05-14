@@ -157,6 +157,7 @@ export class Light {
      * @return returns true if the function was successful, false otherwise.
      */
     setColor(
+        r: number,
         g: number,
         b: number
     ): boolean;
@@ -167,6 +168,7 @@ export class Light {
      * @return returns true if the function was successful, false otherwise.
      */
     setDirection(
+        x: number,
         y: number,
         z: number
     ): boolean;
@@ -176,5 +178,7 @@ export class Light {
      * @see {@link https://wiki.multitheftauto.com/wiki/SetLightRadius Wiki, setLightRadius }
      * @return returns true if the function was successful, false otherwise.
      */
-    setRadius(): boolean;
+    setRadius(
+        radius: number
+    ): boolean;
 }

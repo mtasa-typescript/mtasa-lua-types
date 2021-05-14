@@ -70,7 +70,12 @@ export class DxScreenSource {
      * This function updates the contents of a screen source texture with the screen output from
      * GTA
      * @see {@link https://wiki.multitheftauto.com/wiki/DxUpdateScreenSource Wiki, dxUpdateScreenSource }
+     * @param resampleNow A bool to indicate if the screen should be captured immediately. The default is false
+     * which means the screen from the end of the previous frame is used (better for performance
+     * and consistency). Use true for layering fullscreen effects.
      * @return returns true if the screen was successfully captured, false otherwise.
      */
-    update(): boolean;
+    update(
+        resampleNow?: boolean
+    ): boolean;
 }

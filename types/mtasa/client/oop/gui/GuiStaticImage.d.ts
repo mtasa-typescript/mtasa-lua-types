@@ -91,8 +91,11 @@ export class GuiStaticImage extends GuiElement {
      * Tip: If you set other images as children you will have to use
      * setElementCallPropagationEnabled to only affect the parent image.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage Wiki, guiStaticImageLoadImage }
+     * @param filename A string specifying the filepath of the image file being loaded in current resource.
      * @return returns true if the the image in the static image element was successfully changed, false
      * otherwise.
      */
-    loadImage(): boolean;
+    loadImage(
+        filename: string
+    ): boolean;
 }

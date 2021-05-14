@@ -64,9 +64,12 @@ export class GuiCheckbox extends GuiElement {
     /**
      * This function selects (ticks) or unselects a checkbox.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected Wiki, guiCheckBoxSetSelected }
+     * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
      * @return returns true if the checkboxs selection state was successfully set, false otherwise.
      */
-    setSelected(): boolean;
+    setSelected(
+        state: boolean
+    ): boolean;
 
     /**
      * This function creates a Element/GUI/Checkbox|checkbox.

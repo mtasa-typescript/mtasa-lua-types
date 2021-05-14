@@ -171,11 +171,13 @@ export class Marker extends Element {
      * This function sets the color of the specified marker by modifying the values for red,
      * green, blue and alpha.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerColor Wiki, setMarkerColor }
+     * @param r The amount of red in the final color (0 to 255).
      * @param g The amount of green in the final color (0 to 255).
      * @param b The amount of blue in the final color (0 to 255).
      * @param a The amount of alpha in the final color (0 to 255).
      */
     setColor(
+        r: number,
         g: number,
         b: number,
         a: number
@@ -183,11 +185,14 @@ export class Marker extends Element {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerIcon Wiki, setMarkerIcon }
+     * @param icon A string referring to the type of icon, acceptable values are:
      * @param none : No icon
      * @param arrow : Arrow icon
      * @param finish : Finish icon (at end of race)
      */
-    setIcon(): boolean;
+    setIcon(
+        icon: string
+    ): boolean;
 
     /**
      * This function sets the size of the specified marker.
@@ -197,9 +202,12 @@ export class Marker extends Element {
      * * checkpoint: disappear
      * * corona: bigger
      * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerSize Wiki, setMarkerSize }
+     * @param size A float representing new size of the marker.
      * @return returns true if successful, false if failed.
      */
-    setSize(): boolean;
+    setSize(
+        size: number
+    ): boolean;
 
     /**
      * This function sets the target for a marker. Only the checkpoint and ring marker types can
@@ -211,11 +219,13 @@ export class Marker extends Element {
      * to the next ones position.
      * (This is mostly used in races!)
      * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerTarget Wiki, setMarkerTarget }
+     * @param x The x axis of the coordinate to target the marker at
      * @param y The y axis of the coordinate to target the marker at
      * @param z The z axis of the coordinate to target the marker at
      * @return returns true if target was set, false otherwise.
      */
     setTarget(
+        x: number,
         y: number,
         z: number
     ): boolean;
@@ -226,8 +236,11 @@ export class Marker extends Element {
      * player game. For example, checkpoints are used in races, rings are used for aircraft
      * races, arrows are used for entering buildings etc.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerType Wiki, setMarkerType }
+     * @param markerType : A string denoting the marker type. Valid values are:
      * @return returns true if the marker type was changed, false if it wasnt or marker values were
      * invalid.
      */
-    setMarkerType(): boolean;
+    setMarkerType(
+        markerType: string
+    ): boolean;
 }

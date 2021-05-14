@@ -55,11 +55,13 @@ export class Shader extends Material {
      * Using tessellation allows a shader to manipulate the shape of the rendered image at each
      * sub-division boundary.
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
+     * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
      * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
      * @return returns true if the shader elements tessellation was successfully changed, false
      * otherwise.
      */
     setTessellation(
+        tessellationX: number,
         tessellationY: number
     ): boolean;
 
@@ -67,6 +69,8 @@ export class Shader extends Material {
      * This function applies a 3D transformation to a shader element when it is drawn with
      * dxDrawImage.
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
+     * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
+     * rotate along its width.
      * @param rotationY Rotation angle in degrees around the Y axis (Up,down). This will make the shader rotate
      * along its height.
      * @param rotationZ Rotation angle in degrees around the Z axis (In,out). This will make the shader rotate in
@@ -86,6 +90,7 @@ export class Shader extends Material {
      * @return returns true if the shader elements transform was successfully changed, false otherwise.
      */
     setTransform(
+        rotationX: number,
         rotationY: number,
         rotationZ: number,
         rotationCenterOffsetX?: number,
@@ -100,11 +105,13 @@ export class Shader extends Material {
     /**
      * This sets a named parameter for a shader element
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
+     * @param parameterName The name of parameter
      * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
      * floats(numbers))
      * @return returns true if the shader elements parameter was successfully changed, false otherwise.
      */
     setValue(
+        parameterName: string,
         value: any
     ): boolean;
 
@@ -123,6 +130,8 @@ export class Shader extends Material {
      * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
      * show what is being used.
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
+     * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
+     * be used to apply to more than one texture at a time.
      * @param targetElement The element to restrict applying the shader to. If this is not set the shader will be
      * applied to everything using the texture name. Valid element types for targetElement are
      * vehicle|vehicles, Object|objects and Ped|peds.
@@ -131,6 +140,7 @@ export class Shader extends Material {
      * @return returns true if the shader was successfully applied, false otherwise.
      */
     applyToWorldTexture(
+        textureName: string,
         targetElement?: Element,
         appendLayers?: boolean
     ): boolean;
@@ -138,11 +148,14 @@ export class Shader extends Material {
     /**
      * This function removes a shader from one or more world textures.
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture Wiki, engineRemoveShaderFromWorldTexture }
+     * @param textureName The name of the world texture to remove the shader from. It should be exactly the same
+     * string as used with engineApplyShaderToWorldTexture when the shader was initially applied.
      * @param targetElement The element to remove the shader from. It should be the same element as used with
      * engineApplyShaderToWorldTexture when the shader was initially applied.
      * @return returns true if the shader was successfully removed, false otherwise.
      */
     removeFromWorldTexture(
+        textureName: string,
         targetElement?: Element
     ): boolean;
 }

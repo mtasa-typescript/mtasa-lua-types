@@ -220,10 +220,14 @@ export class GuiElement {
     /**
      * This function allows retrieval of a GUI elements current position, relative to its parent.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetPosition Wiki, guiGetPosition }
+     * @param relative A boolean representing whether the position should be relative to the elements parent
+     * width, or the number of offset pixels from the parents origin.
      * @return returns floats representing the x and y position of the element, or false if the position
      * could not be retrieved.
      */
-    getPosition(): LuaMultiReturn<[
+    getPosition(
+        relative: boolean
+    ): LuaMultiReturn<[
         number,
         number
     ]>;
@@ -244,10 +248,13 @@ export class GuiElement {
      * properties and their meaning, see the
      * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperty Wiki, guiGetProperty }
+     * @param property the name of of property you want the value of.
      * @return if the function succeeds, it returns a string with the value of the property. if it
      * fails, it returns false.
      */
-    getProperty(): string;
+    getProperty(
+        property: string
+    ): string;
 
     /**
      * This function retrieves the local screen size according to the resolution they are using.
@@ -262,9 +269,13 @@ export class GuiElement {
     /**
      * This function gets the size of a GUI element.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetSize Wiki, guiGetSize }
+     * @param relative A boolean representing whether the size should be relative to the elements parent width,
+     * or an absolute size in pixels.
      * @return returns the gui element size x and y if the function has been successful, false otherwise.
      */
-    getSize(): LuaMultiReturn<[
+    getSize(
+        relative: boolean
+    ): LuaMultiReturn<[
         number,
         number
     ]>;
@@ -296,24 +307,35 @@ export class GuiElement {
      * This changes the alpha level (the visibleness/transparency) of a GUI element
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetAlpha Wiki, guiSetAlpha }
      * @param guiElement the GUI element whose visibility is to be changed
+     * @param alpha The visibility/transparency of the GUI element. Ranges from 0 (fully transparent) to 1
+     * (fully opaque). Default value is 0.80.
      * @return returns true if the gui elements alpha was successfully changed, false otherwise.
      */
-    setAlpha(): boolean;
+    setAlpha(
+        alpha: number
+    ): boolean;
 
     /**
      * This function enables/disables a GUI element. A disabled GUI element cant be used, gets a
      * gray aspect and doesnt receive any events.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetEnabled Wiki, guiSetEnabled }
+     * @param enabled the new state
      * @return if the function succeeds it returns true, if it fails it returns false.
      */
-    setEnabled(): boolean;
+    setEnabled(
+        enabled: boolean
+    ): boolean;
 
     /**
      * This function sets the font of a GUI_widgets|GUI element to be used when drawing text.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetFont Wiki, guiSetFont }
+     * @param font Either a custom GUI font element or the name of a built-in GUI font. See Standard GUI
+     * Font Names
      * @return returns true if the font has been successfully set on the gui element, false otherwise.
      */
-    setFont(): boolean;
+    setFont(
+        font: any
+    ): boolean;
 
     /**
      * This function enables or disables input focus for the GUI.  This means that any keybinds
@@ -355,11 +377,13 @@ export class GuiElement {
     /**
      * This function sets the position of a GUI element.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetPosition Wiki, guiSetPosition }
+     * @param x Position over the X axis
      * @param y Position over the Y axis
      * @param relative Bool that indicates if the x/y positions are relative to the elements parent element.
      * @return returns true if the position has been successfully set, false otherwise.
      */
     setPosition(
+        x: number,
         y: number,
         relative: boolean
     ): boolean;
@@ -369,10 +393,12 @@ export class GuiElement {
      * properties and their meaning, see the
      * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetProperty Wiki, guiSetProperty }
+     * @param property the name of of property you want the value of.
      * @param value the new value for the property.
      * @return if the function succeeds it returns true, if it fails it returns false.
      */
     setProperty(
+        property: string,
         value: string
     ): boolean;
 
@@ -380,6 +406,7 @@ export class GuiElement {
      * This function sets the dimensions (size) of a GUI element. It refers to the bounding box
      * size for GUI elements. It does not make GUI elements smaller or larger in appearance.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetSize Wiki, guiSetSize }
+     * @param width The desired width setting for the gui element
      * @param height The desired height setting for the gui element
      * @param relative This is whether sizes and positioning are relative.  If this is true, then all
      * x,y,width,height floats must be between 0 and 1, representing sizes relative to the
@@ -387,6 +414,7 @@ export class GuiElement {
      * @return returns true if the gui elements size was set successfully, false otherwise.
      */
     setSize(
+        width: number,
         height: number,
         relative: boolean
     ): boolean;
@@ -394,16 +422,22 @@ export class GuiElement {
     /**
      * This function sets the text of a GUI element.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetText Wiki, guiSetText }
+     * @param text The new text
      * @return returns true if text has been successfully set on the gui element, false otherwise.
      */
-    setText(): boolean;
+    setText(
+        text: string
+    ): boolean;
 
     /**
      * This function changes the visibility state of a GUI element.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetVisible Wiki, guiSetVisible }
+     * @param state the new visibility state
      * @return returns true if the elements visibility could be changed, false otherwise.
      */
-    setVisible(): boolean;
+    setVisible(
+        state: boolean
+    ): boolean;
 
     /**
      * This function returns whether the ingame chatbox is being used (accepting chatbox input)

@@ -88,6 +88,7 @@ export class connection {
      * This function executes a database query using the supplied connection. No result is
      * returned.
      * @see {@link https://wiki.multitheftauto.com/wiki/DbExec Wiki, dbExec }
+     * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
      * make sure they are of the correct type. Also, the number of parameters passed must be
      * equal to the number of ? characters in the query string.
@@ -97,6 +98,7 @@ export class connection {
      * @return returns true unless the connection is incorrect, in which case it returns false.
      */
     exec(
+        query: string,
         param1?: unknown,
         ...varargs: any[]
     ): boolean;
@@ -107,6 +109,7 @@ export class connection {
      * complex query strings from component parts and help prevent (one class of) SQL
      * injection.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/DbPrepareString Wiki, dbPrepareString }
+     * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
      * make sure they are of the correct type. Also, the number of parameters passed must be
      * equal to the number of ? characters in the query string.
@@ -115,6 +118,7 @@ export class connection {
      * @return returns a prepare sql query string, or false if an error occurred.
      */
     prepareString(
+        query: string,
         param1?: unknown,
         ...varargs: any[]
     ): string;
@@ -125,6 +129,7 @@ export class connection {
      * @see {@link https://wiki.multitheftauto.com/wiki/DbQuery Wiki, dbQuery }
      * @param databaseConnection A database connection element previously returned from dbConnect
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
+     * @param callbackArguments An optional table containing extra arguments to be sent to the callback function.
      * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
      * make sure they are of the correct type. Also, the number of parameters passed must be
      * equal to the number of ? characters in the query string.
@@ -133,6 +138,7 @@ export class connection {
      * @return returns a query handle unless the connection is incorrect, in which case it return false.
      */
     query(
+        callbackArguments: LuaTable,
         databaseConnection: Element,
         query: string,
         param1?: unknown,

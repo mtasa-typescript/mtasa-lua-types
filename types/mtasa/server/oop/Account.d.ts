@@ -94,9 +94,12 @@ export class Account {
     /**
      * This function copies all of the data from one account to another.
      * @see {@link https://wiki.multitheftauto.com/wiki/CopyAccountData Wiki, copyAccountData }
+     * @param fromAccount The account you wish to copy the data from.
      * @return returns a true if the accounts were valid, false otherwise.
      */
-    copyDataTo(): boolean;
+    copyDataTo(
+        fromAccount: Account
+    ): boolean;
 
     /**
      * This function returns an account for a specific user.
@@ -120,9 +123,12 @@ export class Account {
      * as account data is persistent across users sessions and maps, unless they are logged into
      * a guest account.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountData Wiki, getAccountData }
+     * @param key The key under which the data is stored
      * @return returns a string containing the stored data or false if no data was stored under that key.
      */
-    getData(): string;
+    getData(
+        key: string
+    ): string;
 
     /**
      * This function retrieves the ID of an account.
@@ -244,29 +250,36 @@ export class Account {
      * data can be useful as a way to store a reference to your own account system, though its
      * persistence is equivalent to that of using setElementData on the players element.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetAccountData Wiki, setAccountData }
+     * @param key The key under which you wish to store the data
      * @param value The value you wish to store. Set to false to remove the data. NOTE: you cannot store
      * tables as values, but you can use toJSON strings.
      * @return returns a true if the account data was set, false if an invalid argument was specified.
      */
     setData(
+        key: string,
         value: unknown
     ): boolean;
 
     /**
      * This function sets the name of an account.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetAccountName Wiki, setAccountName }
+     * @param name The new name.
      * @param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames Bob and bob
      * will refer to different accounts)
      * @return returns a true if the account name was set, false if an invalid argument was specified.
      */
     setName(
+        name: string,
         allowCaseVariations?: boolean
     ): boolean;
 
     /**
      * This function sets the password of the specified account.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetAccountPassword Wiki, setAccountPassword }
+     * @param password the password
      * @return returns true if the password was set correctly, false otherwise.
      */
-    setPassword(): boolean;
+    setPassword(
+        password: string
+    ): boolean;
 }

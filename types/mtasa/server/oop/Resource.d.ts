@@ -91,6 +91,7 @@ export class Resource {
      * * sourceResourceRoot - The resource root element of the resource which called the
      * exported function.
      * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+     * @param theFunction This is a string with the name of the function which you want to call.
      * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
      * arguments of can be specified, each being passed to the designated function.
      * @param resource_name Resource name
@@ -103,6 +104,7 @@ export class Resource {
      * not successful it will return false.
      */
     call(
+        theFunction: string,
         ...varargs: any[]
     ): LuaMultiReturn<[
         ...any[]
@@ -111,11 +113,13 @@ export class Resource {
     /**
      * This function copies a specified resource with a new name.
      * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
+     * @param newResourceName the name that the copied resource will receive
      * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
      * gamemodes/amx).
      * @return returns the resource element of the copy. returns false if the arguments are incorrect.
      */
     copy(
+        newResourceName: string,
         organizationalDir?: string
     ): Resource;
 
@@ -163,17 +167,23 @@ export class Resource {
     /**
      * This function retrieves the value of any attribute in a resource info tag.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
+     * @param attribute the name of the attribute we want info about.
      * @return returns a string with the attribute value if it exists, false otherwise.
      */
-    getInfo(): string;
+    getInfo(
+        attribute: string
+    ): string;
 
     /**
      * This function retrieves the root element of a certain map in a specified resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
+     * @param mapName name of the maps which root element we want to retrieve, file extension is required
      * @return returns an the resources map root element if the map exists and resource specified was
      * valid and active (currently running), false otherwise.
      */
-    getMapRootElement(): Element;
+    getMapRootElement(
+        mapName: string
+    ): Element;
 
     /**
      * This function gets the name of the specified resource.
@@ -231,14 +241,18 @@ export class Resource {
     /**
      * This function removes a file from the resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/RemoveResourceFile Wiki, removeResourceFile }
+     * @param fileName The filename what you want to delete.
      * @return returns true if file was deleted, otherwise false if the resource is in use or the file
      * doesnt exist.
      */
-    removeFile(): boolean;
+    removeFile(
+        fileName: string
+    ): boolean;
 
     /**
      * This function renames a resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/RenameResource Wiki, renameResource }
+     * @param newResourceName The name of what the resource should be renamed to.
      * @param organizationalPath If you want to store the new resource inside a category.
      * @return returns true if the resource has been renamed successfully, false otherwise. this could
      * fail if the resource name already is in use, if a directory already exists with the name
@@ -247,6 +261,7 @@ export class Resource {
      * started resource or if the resource is not loaded (not known by mta (use /refresh))
      */
     rename(
+        newResourceName: string,
         organizationalPath?: string
     ): boolean;
 
@@ -262,6 +277,7 @@ export class Resource {
      * onResourceStart event. Remember that the element and resource variables will be
      * invalidated during the restart, though of course, the resources name will not.}}
      * @see {@link https://wiki.multitheftauto.com/wiki/RestartResource Wiki, restartResource }
+     * @param persistent Unused
      * @param configs Reload configs?
      * @param maps Reload maps?
      * @param scripts Reload (server) scripts?
@@ -273,6 +289,7 @@ export class Resource {
      * invalid resource was passed.
      */
     restart(
+        persistent?: boolean,
         configs?: boolean,
         maps?: boolean,
         scripts?: boolean,
@@ -285,10 +302,12 @@ export class Resource {
     /**
      * This function sets the value of any attribute in a resource info tag.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetResourceInfo Wiki, setResourceInfo }
+     * @param attribute the name of the attribute that is to be set.
      * @param value the value of this attribute
      * @return returns true if the info was successfully set, false otherwise
      */
     setInfo(
+        attribute: string,
         value: string
     ): boolean;
 
@@ -305,6 +324,10 @@ export class Resource {
      * results. There is no way for a resource to tell if it is being run with any of these
      * booleans set.
      * @see {@link https://wiki.multitheftauto.com/wiki/StartResource Wiki, startResource }
+     * @param persistent A boolean specifying if the resource should continue to run even after the current
+     * resource has been stopped or not. If this is true then the resource will run until
+     * another resource or user terminates it or the server shuts down. If this is false then
+     * resourceToStart will stop when thisResource stops.
      * @param startIncludedResources A boolean specifying if the resources included/dependant resources will be started.
      * @param loadServerConfigs A boolean specifying if server side config (XML) files should be loaded with the resource.
      * @param loadMaps A boolean specifying if any .map files will be started with the resource.
@@ -317,6 +340,7 @@ export class Resource {
      * @return returns true if the resource has been started successfully, false otherwise.
      */
     start(
+        persistent?: boolean,
         startIncludedResources?: boolean,
         loadServerConfigs?: boolean,
         loadMaps?: boolean,

@@ -97,6 +97,7 @@ export class Resource {
      * * sourceResourceRoot - The resource root element of the resource which called the
      * exported function.
      * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+     * @param theFunction This is a string with the name of the function which you want to call.
      * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
      * arguments of can be specified, each being passed to the designated function.
      * @param resource_name Resource name
@@ -109,6 +110,7 @@ export class Resource {
      * not successful it will return false.
      */
     call(
+        theFunction: string,
         ...varargs: any[]
     ): LuaMultiReturn<[
         ...any[]

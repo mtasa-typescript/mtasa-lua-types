@@ -81,11 +81,14 @@ export class ACL {
      * This function returns whether the access for the given right is set to true or false in
      * the ACL.
      * @see {@link https://wiki.multitheftauto.com/wiki/AclGetRight Wiki, aclGetRight }
+     * @param rightName The right name to return the access value of.
      * @return returns true or false if the acl gives access or not to the given function. returns nil
      * if it failed for some reason, e.g. an invalid acl was specified or the right specified
      * does not exist in the acl.
      */
-    getRight(): boolean;
+    getRight(
+        rightName: string
+    ): boolean;
 
     /**
      * This function returns a list of all the ACLs.
@@ -98,10 +101,13 @@ export class ACL {
     /**
      * This function returns a table of all the rights that a given ACL has.
      * @see {@link https://wiki.multitheftauto.com/wiki/AclListRights Wiki, aclListRights }
+     * @param allowedType The allowed right type. Possible values are general, function, resource and command
      * @return returns a table over the rights as strings in the given acl. this table might be empty.
      * returns false or nil if theacl is invalid or it fails for some other reason.
      */
-    listRights(): LuaTable;
+    listRights(
+        allowedType: string
+    ): LuaTable;
 
     /**
      * This function reloads the ACLs and the ACL groups from the ACL XML file. All ACL and ACL
@@ -115,10 +121,13 @@ export class ACL {
     /**
      * This function removes the given right (string) from the given ACL.
      * @see {@link https://wiki.multitheftauto.com/wiki/AclRemoveRight Wiki, aclRemoveRight }
+     * @param rightName The ACL name to remove from the right from
      * @return returns true if the given right was successfully removed from the given acl, false or nil
      * if it could not be removed for some reason, ie. it didnt exist in the acl.
      */
-    removeRight(): boolean;
+    removeRight(
+        rightName: string
+    ): boolean;
 
     /**
      * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic
@@ -134,11 +143,13 @@ export class ACL {
      * This functions changes or adds the given right in the given ACL. The access can be true
      * or false and specifies whether the ACL gives access to the right or not.
      * @see {@link https://wiki.multitheftauto.com/wiki/AclSetRight Wiki, aclSetRight }
+     * @param rightName The right to add/change the access property of
      * @param hasAccess Whether the access should be set to true or false
      * @return returns true if the access was successfully changed, false or nil if it failed for some
      * reason, ie. invalid acl or the rightname is invalid.
      */
     setRight(
+        rightName: string,
         hasAccess: boolean
     ): boolean;
 

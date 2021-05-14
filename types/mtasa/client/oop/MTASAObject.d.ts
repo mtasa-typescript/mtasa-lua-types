@@ -111,10 +111,16 @@ export class MTASAObject {
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectProperty Wiki, getObjectProperty }
+     * @param property : the property you want to get the value of:
+     * <div style="padding-left:20px">
+     * * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
+     * </div>
      * @return on success: table for all, 3 float|floats for center_of_mass or float for other properties
      * on failure: false
      */
-    getProperty(): any;
+    getProperty(
+        property: string
+    ): any;
 
     /**
      * This function returns the visible size of an object.
@@ -141,6 +147,7 @@ export class MTASAObject {
      * This function will smoothly move an object from its current position to a specified
      * rotation and position.
      * @see {@link https://wiki.multitheftauto.com/wiki/MoveObject Wiki, moveObject }
+     * @param time the time in milliseconds the object will arrive at the destination.
      * @param targetx the X value of the target position
      * @param targety the Y value of the target position
      * @param targetz the Z value of the target position
@@ -160,6 +167,7 @@ export class MTASAObject {
      * * false otherwise.
      */
     move(
+        time: number,
         targetx: number,
         targety: number,
         targetz: number,
@@ -184,38 +192,49 @@ export class MTASAObject {
      * This function sets an object to be breakable/unbreakable.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectBreakable Wiki, setObjectBreakable }
      * @param object the object thats being set.
+     * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
      * @return * true if the object is now breakable.
      * * false if it cant or if invalid arguments are passed.
      */
-    setBreakable(): boolean;
+    setBreakable(
+        breakable: boolean
+    ): boolean;
 
     /**
      * This function sets the mass of a specified object. Changing the mass leads to a different
      * movement behavior for especially dynamic objects.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectMass Wiki, setObjectMass }
+     * @param mass the new mass.
      * @return * true if the new mass value has been.
      * * false otherwise.
      */
-    setMass(): boolean;
+    setMass(
+        mass: number
+    ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectProperty Wiki, setObjectProperty }
+     * @param property : the property you want to set the value of:
      * @param value : the new value for the property.
      * @return returns true if the property was set successfully, false otherwise.
      */
     setProperty(
+        property: string,
         value: unknown
     ): boolean;
 
     /**
      * This function changes the visible size of an object.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
+     * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
+     * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
      * @param scaleY : a float containing the new scale on the Y axis
      * @param scaleZ : a float containing the new scale on the Z axis
      * @return * true if the scale was set properly.
      * * false otherwise.
      */
     setScale(
+        scale: number,
         scaleY?: number,
         scaleZ?: number
     ): boolean;
@@ -231,8 +250,11 @@ export class MTASAObject {
     /**
      * This function is used to toggle if an object should respawn after it got destroyed
      * @see {@link https://wiki.multitheftauto.com/wiki/ToggleObjectRespawn Wiki, toggleObjectRespawn }
+     * @param respawn : a bool denoting whether we want to enable (true) or disable (false) respawning
      * @return * true when the it was changed successfully.
      * * false otherwise.
      */
-    toggleObjectRespawn(): boolean;
+    toggleObjectRespawn(
+        respawn: boolean
+    ): boolean;
 }

@@ -59,9 +59,12 @@ export class EngineTXD {
      * * CJ clothing component textures can be replaced by using the ids listed on Clothing
      * Component IDs|this page
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineImportTXD Wiki, engineImportTXD }
+     * @param model_id The model id to import the TXD into
      * @return returns true if the function executed succesfully, false otherwise.
      */
-    import(): boolean;
+    import(
+        model_id: number
+    ): boolean;
 
     /**
      * This function loads a RenderWare Texture Dictionary (TXD) file into GTA. The texture

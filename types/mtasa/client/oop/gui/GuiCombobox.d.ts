@@ -61,9 +61,12 @@ export class GuiCombobox extends GuiElement {
     /**
      * Adds an item to a combobox.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxAddItem Wiki, guiComboBoxAddItem }
+     * @param value The text that the item will contain.
      * @return returns the item id if it has been created, false otherwise.
      */
-    addItem(): number;
+    addItem(
+        value: string
+    ): number;
 
     /**
      * This function removes all the items from a combobox.
@@ -76,9 +79,12 @@ export class GuiCombobox extends GuiElement {
     /**
      * This function retrieves the text from a specific combobox item.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxGetItemText Wiki, guiComboBoxGetItemText }
+     * @param itemId The index of the item
      * @return returns the text of the item if the arguments are right, false otherwise.
      */
-    getItemText(): string;
+    getItemText(
+        itemId: number
+    ): string;
 
     /**
      * This function returns the index of the selected combobox item.
@@ -97,32 +103,45 @@ export class GuiCombobox extends GuiElement {
     /**
      * This function removes an item from a combobox.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxRemoveItem Wiki, guiComboBoxRemoveItem }
+     * @param itemId The index of the item to remove
      * @return returns true if the item was removes successfully, false otherwise.
      */
-    removeItem(): boolean;
+    removeItem(
+        itemId: number
+    ): boolean;
 
     /**
      * This function changes the text of a combobox item.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxSetItemText Wiki, guiComboBoxSetItemText }
+     * @param itemId The index of the item
      * @param text The text you want to put in (does NOT accept numbers, use tostring() for that)
      * @return returns true if the text was set successfully, false otherwise.
      */
     setItemText(
+        itemId: number,
         text: string
     ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxSetOpen Wiki, guiComboBoxSetOpen }
+     * @param state The state of combobox. true, if the combobox is to be opened. false if the combobox is to
+     * be closed.
      * @return returns true if is successful, false otherwise.
      */
-    setOpen(): boolean;
+    setOpen(
+        state: boolean
+    ): boolean;
 
     /**
      * This function sets the selected item from a combobox.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxSetSelected Wiki, guiComboBoxSetSelected }
+     * @param itemIndex the item you want to select (item 0 is the first item). If -1 is specified, then the
+     * combo box text is set to its caption.
      * @return returns true if the selected item has been changed successfully, false otherwise.
      */
-    setSelected(): boolean;
+    setSelected(
+        itemIndex: number
+    ): boolean;
 
     /**
      * This function creates a combobox GUI element, which you can compare to a gridlist with a
