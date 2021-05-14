@@ -85,6 +85,8 @@ jobs:
                         ${{ runner.os }}-
             -   run: npm ci
             -   run: npm run build
-            -   run: npm publish
+            -   run: |
+                    if [ "${GITHUB_REF#refs/heads/}" == "master" ]; then export TAG="latest"; else export TAG="beta"; fi
+            -   run: npm publish --tag "$TAG"
                 env:
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
