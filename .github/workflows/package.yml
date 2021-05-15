@@ -14,7 +14,7 @@ jobs:
         steps:
             -   uses: actions/checkout@v2
             -   name: Setup node 12
-                uses: actions/setup-node@v2
+                uses: actions/setup-node@v2.1.5
                 with:
                     node-version: 12.x
             -   name: Cache Node files
@@ -37,7 +37,7 @@ jobs:
         steps:
             -   uses: actions/checkout@v2
             -   name: Setup node 12
-                uses: actions/setup-node@v2
+                uses: actions/setup-node@v2.1.5
                 with:
                     node-version: 12.x
             -   name: Cache Node files
@@ -63,7 +63,7 @@ jobs:
             - test
         steps:
             -   uses: actions/checkout@v2
-            -   uses: actions/setup-node@v2
+            -   uses: actions/setup-node@v2.1.5
                 with:
                     node-version: '12.x'
                     registry-url: 'https://registry.npmjs.org'
@@ -83,7 +83,7 @@ jobs:
             -   run: npm ci
             -   run: npm run build
             -   run: |
-                   if [ "${GITHUB_REF#refs/heads/}" == "master" ]; then export TAG="latest"; else export TAG="beta"; fi
+                   export TAG="latest"
                    npm publish --tag "$TAG"
                 env:
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
