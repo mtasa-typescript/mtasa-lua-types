@@ -79,8 +79,9 @@ import {
  * @param ammo : An integer representing the amount of ammo a pickup contains.  This is only valid when
  * the pickup type is a weapon pickup.
  * @return returns pickup element if the pickup was created succesfully, otherwise returns false.
+ * @noSelf
  */
-export function createPickup(
+export declare function createPickup(
     x: number,
     y: number,
     z: number,
@@ -96,8 +97,9 @@ export function createPickup(
  * @param thePickup The pickup in which you wish to retrieve the ammo of
  * @return returns an integer of the amount of ammo in the pickup, false if the pickup element is
  * invalid, 0 if its no weapon pickup.
+ * @noSelf
  */
-export function getPickupAmmo(
+export declare function getPickupAmmo(
     thePickup: Pickup
 ): number;
 
@@ -107,8 +109,9 @@ export function getPickupAmmo(
  * @param thePickup The pickup you wish to retrieve the amount from.
  * @return returns an integer of the amount the pickup is set to, false if its invalid, 0 if its no
  * health or amor pickup.
+ * @noSelf
  */
-export function getPickupAmount(
+export declare function getPickupAmount(
     thePickup: Pickup
 ): number;
 
@@ -118,8 +121,9 @@ export function getPickupAmount(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupRespawnInterval Wiki, getPickupRespawnInterval }
  * @param thePickup the pickup you want the respawn time of
  * @return returns the respawn time of the pickup if successful, false in case of failure.
+ * @noSelf
  */
-export function getPickupRespawnInterval(
+export declare function getPickupRespawnInterval(
     thePickup: Pickup
 ): number;
 
@@ -133,8 +137,9 @@ export function getPickupRespawnInterval(
  * *1: armour pickup
  * *2: weapon pickup
  * *3: custom pickup
+ * @noSelf
  */
-export function getPickupType(
+export declare function getPickupType(
     thePickup: Pickup
 ): number;
 
@@ -143,8 +148,9 @@ export function getPickupType(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupWeapon Wiki, getPickupWeapon }
  * @param thePickup The pickup of which you wish to retrieve the weapon
  * @return returns the weapons|weapon id of the pickup, or false if the pickup is invalid.
+ * @noSelf
  */
-export function getPickupWeapon(
+export declare function getPickupWeapon(
     thePickup: Pickup
 ): number;
 
@@ -155,8 +161,9 @@ export function getPickupWeapon(
  * @param thePickup the pickup you want to check.
  * @return returns true if the pickup is spawned, false if its not spawned or an invalid pickup was
  * specified.
+ * @noSelf
  */
-export function isPickupSpawned(
+export declare function isPickupSpawned(
     thePickup: Pickup
 ): boolean;
 
@@ -166,8 +173,9 @@ export function isPickupSpawned(
  * @param thePickup the pickup to set the respawn time of
  * @param ms the new respawn time in ms
  * @return returns true if the new respawn time was set successfully, false otherwise.
+ * @noSelf
  */
-export function setPickupRespawnInterval(
+export declare function setPickupRespawnInterval(
     thePickup: Pickup,
     ms: number
 ): boolean;
@@ -201,8 +209,9 @@ export function setPickupRespawnInterval(
  * @param ammo : An integer representing the amount of ammo a pickup contains. This argument is only
  * valid when the pickup type is a Weapon Pickup, and must be specified in that case.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPickupType(
+export declare function setPickupType(
     thePickup: Pickup,
     theType: number,
     amount_weapon_model: number,
@@ -214,8 +223,9 @@ export function setPickupType(
  * @see {@link https://wiki.multitheftauto.com/wiki/UsePickup Wiki, usePickup }
  * @param thePickup : The pickup element to be picked up/used.
  * @param thePlayer : The player to use the pickup.
+ * @noSelf
  */
-export function usePickup(
+export declare function usePickup(
     thePickup: Pickup,
     thePlayer: Player
 ): boolean;

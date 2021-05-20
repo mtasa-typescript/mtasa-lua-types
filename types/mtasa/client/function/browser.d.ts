@@ -52,8 +52,9 @@ import {
  * @see {@link https://wiki.multitheftauto.com/wiki/CanBrowserNavigateBack Wiki, canBrowserNavigateBack }
  * @param webBrowser The browser you want to check for a previous page.
  * @return returns true if the browser can navigate back, false otherwise.
+ * @noSelf
  */
-export function canBrowserNavigateBack(
+export declare function canBrowserNavigateBack(
     webBrowser: Browser
 ): boolean;
 
@@ -62,8 +63,9 @@ export function canBrowserNavigateBack(
  * @see {@link https://wiki.multitheftauto.com/wiki/CanBrowserNavigateForward Wiki, canBrowserNavigateForward }
  * @param webBrowser The browser you want check for a next page.
  * @return returns true if the browser can go to the next page, false otherwise.
+ * @noSelf
  */
-export function canBrowserNavigateForward(
+export declare function canBrowserNavigateForward(
     webBrowser: Browser
 ): boolean;
 
@@ -77,8 +79,9 @@ export function canBrowserNavigateForward(
  * @param transparent true if you want the browser transparent, false for opaque.
  * @return returns a texture of the browser if it was created successfully, false otherwise. returns
  * also false, if the user disabled remote pages and islocal was set to false.
+ * @noSelf
  */
-export function createBrowser(
+export declare function createBrowser(
     width: number,
     height: number,
     isLocal: boolean,
@@ -92,8 +95,9 @@ export function createBrowser(
  * @param webBrowser The web browser which will execute the Javascript code
  * @param jsCode The Javascript code string
  * @return returns true if executing javascript is allowed in the current context, false otherwise.
+ * @noSelf
  */
-export function executeBrowserJavascript(
+export declare function executeBrowserJavascript(
     webBrowser: Browser,
     jsCode: string
 ): boolean;
@@ -105,8 +109,9 @@ export function executeBrowserJavascript(
  * @param webBrowser The web browser to be focused - if this is nil, it will unfocus all browsers.
  * @return returns true if the browser was focused or if nil was passed, false if it failed to focus
  * or the browser does not exist.
+ * @noSelf
  */
-export function focusBrowser(
+export declare function focusBrowser(
     webBrowser: Browser
 ): boolean;
 
@@ -117,8 +122,9 @@ export function focusBrowser(
  * @param key The browser property key. It can be:
  * @param mobile Surfing the web as mobile
  * @return returns the value if the property was successfully found, false otherwise.
+ * @noSelf
  */
-export function getBrowserProperty(
+export declare function getBrowserProperty(
     theBrowser: Browser,
     key: string
 ): boolean;
@@ -131,8 +137,9 @@ export function getBrowserProperty(
  * * remotejavascript: true if javascript is enabled on remote websites, false otherwise
  * * pluginsenabled: true if plugins such as flash, silverlight (but not java) are enabled,
  * false otherwise. this setting is false by default.
+ * @noSelf
  */
-export function getBrowserSettings(): LuaTable;
+export declare function getBrowserSettings(): LuaTable;
 
 /**
  * This function can be used to retrieve the source code of a website (asynchronously). The
@@ -144,8 +151,9 @@ export function getBrowserSettings(): LuaTable;
  * function ( string code )
  * </syntaxhighlight>
  * @return returns true if valid arguments have been passed, false otherwise.
+ * @noSelf
  */
-export function getBrowserSource(
+export declare function getBrowserSource(
     webBrowser: Browser,
     callback: HandleFunction
 ): boolean;
@@ -155,8 +163,9 @@ export function getBrowserSource(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserTitle Wiki, getBrowserTitle }
  * @param webBrowser The browser
  * @return returns the title as a string. returns false if invalid arguments were passed.
+ * @noSelf
  */
-export function getBrowserTitle(
+export declare function getBrowserTitle(
     webBrowser: Browser
 ): string;
 
@@ -165,8 +174,9 @@ export function getBrowserTitle(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserURL Wiki, getBrowserURL }
  * @param webBrowser The browser
  * @return returns the web browser url.
+ * @noSelf
  */
-export function getBrowserURL(
+export declare function getBrowserURL(
     webBrowser: Browser
 ): string;
 
@@ -176,8 +186,9 @@ export function getBrowserURL(
  * @param webBrowser The web browser
  * @param mouseButton The mouse button (Possible values: left, middle, right)
  * @return returns true if the click was successfully injected, false otherwise.
+ * @noSelf
  */
-export function injectBrowserMouseDown(
+export declare function injectBrowserMouseDown(
     webBrowser: Browser,
     mouseButton: string
 ): boolean;
@@ -189,8 +200,9 @@ export function injectBrowserMouseDown(
  * @param posX Absolute X screen coordinate
  * @param posY Absolute Y screen coordinate
  * @return returns true if the movement was injected successfully, false otherwise.
+ * @noSelf
  */
-export function injectBrowserMouseMove(
+export declare function injectBrowserMouseMove(
     webBrowser: Browser,
     posX: number,
     posY: number
@@ -202,8 +214,9 @@ export function injectBrowserMouseMove(
  * @param webBrowser The web browser
  * @param mouseButton The mouse button (Possible values: left, middle, right)
  * @return returns true if the click was successfully injected, false otherwise.
+ * @noSelf
  */
-export function injectBrowserMouseUp(
+export declare function injectBrowserMouseUp(
     webBrowser: Browser,
     mouseButton: string
 ): boolean;
@@ -215,8 +228,9 @@ export function injectBrowserMouseUp(
  * @param verticalScroll : Amount of units you want the browser to scroll along the Y-axe.
  * @param horizontalScroll : Amount of units you want the browser to scroll along the X-axe.
  * @return returns true if the mouse action was successfully injected, false otherwise.
+ * @noSelf
  */
-export function injectBrowserMouseWheel(
+export declare function injectBrowserMouseWheel(
     webBrowser: Browser,
     verticalScroll: number,
     horizontalScroll: number
@@ -229,8 +243,9 @@ export function injectBrowserMouseWheel(
  * @param isURL true if address should be parsed as URL, false otherwise.
  * @return returns false if the url is able to be loaded, true if it is blocked and nil if an
  * invalid domain/url was passed.
+ * @noSelf
  */
-export function isBrowserDomainBlocked(
+export declare function isBrowserDomainBlocked(
     address: string,
     isURL?: boolean
 ): boolean;
@@ -241,8 +256,9 @@ export function isBrowserDomainBlocked(
  * @param webBrowser The browser
  * @return returns true if the browser is focused, false otherwise and nil if invalid arguments were
  * passed.
+ * @noSelf
  */
-export function isBrowserFocused(
+export declare function isBrowserFocused(
     webBrowser: Browser
 ): boolean;
 
@@ -252,8 +268,9 @@ export function isBrowserFocused(
  * @param webBrowser The browser
  * @return returns true if the browser is loading a website, false otherwise and nil if invalid
  * arguments were passed.
+ * @noSelf
  */
-export function isBrowserLoading(
+export declare function isBrowserLoading(
     webBrowser: Browser
 ): boolean;
 
@@ -269,8 +286,9 @@ export function isBrowserLoading(
  * @param urlEncoded If set to true, it will be available f.e. in PHPs $_POST variable (the content type is:
  * application/x-www-form-urlencoded)
  * @return returns true if the url was successfully loaded.
+ * @noSelf
  */
-export function loadBrowserURL(
+export declare function loadBrowserURL(
     webBrowser: Browser,
     url: string,
     postData?: string,
@@ -282,8 +300,9 @@ export function loadBrowserURL(
  * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserBack Wiki, navigateBrowserBack }
  * @param webBrowser The browser that you want return to the previous page.
  * @return returns true if the browser has returned to the previous page, false otherwise.
+ * @noSelf
  */
-export function navigateBrowserBack(
+export declare function navigateBrowserBack(
     webBrowser: Browser
 ): boolean;
 
@@ -292,8 +311,9 @@ export function navigateBrowserBack(
  * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserForward Wiki, navigateBrowserForward }
  * @param webBrowser The browser that you want to take to the next page.
  * @return returns true if the browser has gone to the next page, false otherwise.
+ * @noSelf
  */
-export function navigateBrowserForward(
+export declare function navigateBrowserForward(
     webBrowser: Browser
 ): boolean;
 
@@ -302,8 +322,9 @@ export function navigateBrowserForward(
  * @see {@link https://wiki.multitheftauto.com/wiki/ReloadBrowserPage Wiki, reloadBrowserPage }
  * @param webBrowser The browser that you want to reload.
  * @return returns true if the browser has reloaded, false otherwise.
+ * @noSelf
  */
-export function reloadBrowserPage(
+export declare function reloadBrowserPage(
     webBrowser: Browser
 ): boolean;
 
@@ -317,8 +338,9 @@ export function reloadBrowserPage(
  * <syntaxhighlight lang="lua">function(bool wasAccepted, table
  * new_domains)</syntaxhighlight>
  * @return returns true, if the string was successfully read, false otherwise.
+ * @noSelf
  */
-export function requestBrowserDomains(
+export declare function requestBrowserDomains(
     pages: LuaTable,
     parseAsURL?: boolean,
     callback?: HandleFunction
@@ -331,8 +353,9 @@ export function requestBrowserDomains(
  * @param width The new width of the browser.
  * @param height The new height of the browser.
  * @return returns true if the browser is resized successfully, false if theres something wrong.
+ * @noSelf
  */
-export function resizeBrowser(
+export declare function resizeBrowser(
     webBrowser: Browser,
     width: number,
     height: number
@@ -346,8 +369,9 @@ export function resizeBrowser(
  * @param url The URL endpoint to handle
  * @param handler The function to call if the webBrowser attempts to open the ajax endpoint. If this
  * parameter is nil or omitted, the ajax handler for the url will be deleted.
+ * @noSelf
  */
-export function setBrowserAjaxHandler(
+export declare function setBrowserAjaxHandler(
     webBrowser: Browser,
     url: string,
     handler?: HandleFunction
@@ -361,8 +385,9 @@ export function setBrowserAjaxHandler(
  * @param mobile Surfing the web as mobile
  * @param value A value indicating whether to enable (1) the property or not (0)
  * @return returns true if the property was successfully set, false otherwise.
+ * @noSelf
  */
-export function setBrowserProperty(
+export declare function setBrowserProperty(
     theBrowser: Browser,
     key: string,
     value: string
@@ -374,8 +399,9 @@ export function setBrowserProperty(
  * @param webBrowser The browser
  * @param paused true to pause rendering, false to continue
  * @return returns true if the state was successfully changed
+ * @noSelf
  */
-export function setBrowserRenderingPaused(
+export declare function setBrowserRenderingPaused(
     webBrowser: Browser,
     paused: boolean
 ): boolean;
@@ -387,16 +413,18 @@ export function setBrowserRenderingPaused(
  * @param volume A float|floating point number representing the desired volume level. Range is from 0.0 to
  * 1.0
  * @param webBrowser A browser element
+ * @noSelf
  */
-export function setBrowserVolume(
+export declare function setBrowserVolume(
     webBrowser: Browser,
     volume: number
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserVolume Wiki, setBrowserVolume }
+ * @noSelf
  */
-export function setBrowserVolume(
+export declare function setBrowserVolume(
     volume: number
 ): boolean;
 
@@ -406,8 +434,9 @@ export function setBrowserVolume(
  * @param webBrowser The browser
  * @param visible true to show the tools, false to hide
  * @return returns true if the visibility was successfully toggled, false if an error occurred
+ * @noSelf
  */
-export function toggleBrowserDevTools(
+export declare function toggleBrowserDevTools(
     webBrowser: Browser,
     visible: boolean
 ): boolean;

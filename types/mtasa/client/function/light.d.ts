@@ -71,8 +71,9 @@ import {
  * @param dirZ A floating point number representing the light directions Z coordinate on the map.
  * @param createsShadow A boolean representing whether or not does the light cast shadows.
  * @return returns the element/light|light element if creation was successful, false otherwise.
+ * @noSelf
  */
-export function createLight(
+export declare function createLight(
     lightType: number,
     posX: number,
     posY: number,
@@ -93,8 +94,9 @@ export function createLight(
  * @param theLight The Element/Light|light that you wish to retrieve the color of.
  * @return returns three ints corresponding to the amount of red, green and blue (respectively) of
  * the light, false if invalid arguments were passed.
+ * @noSelf
  */
-export function getLightColor(
+export declare function getLightColor(
     theLight: Light
 ): LuaMultiReturn<[
     number,
@@ -108,8 +110,9 @@ export function getLightColor(
  * @param theLight The Element/Light|light that you wish to retrieve the direction of.
  * @return returns three ints corresponding to the x, y and z coordinates (respectively) of the
  * light direction, false if invalid arguments were passed.
+ * @noSelf
  */
-export function getLightDirection(
+export declare function getLightDirection(
     theLight: Light
 ): LuaMultiReturn<[
     number,
@@ -123,8 +126,9 @@ export function getLightDirection(
  * @param theLight The Element/Light|light that you wish to retrieve the radius of.
  * @return returns a float containing the radius of the specified light, false if invalid arguments
  * were passed.
+ * @noSelf
  */
-export function getLightRadius(
+export declare function getLightRadius(
     theLight: Light
 ): number;
 
@@ -134,8 +138,9 @@ export function getLightRadius(
  * @param theLight The Element/Light|light that you wish to retrieve the type of.
  * @return returns an int containing the type of the specified light, false if invalid arguments
  * were passed.
+ * @noSelf
  */
-export function getLightType(
+export declare function getLightType(
     theLight: Light
 ): number;
 
@@ -144,8 +149,9 @@ export function getLightType(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetLightColor Wiki, setLightColor }
  * @param theLight The Element/Light|light that you wish to set the color of.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function setLightColor(
+export declare function setLightColor(
     theLight: Light,
     r: number,
     g: number,
@@ -157,8 +163,9 @@ export function setLightColor(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetLightDirection Wiki, setLightDirection }
  * @param theLight The Element/Light|light that you wish to set the direction of.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function setLightDirection(
+export declare function setLightDirection(
     theLight: Light,
     x: number,
     y: number,
@@ -170,8 +177,9 @@ export function setLightDirection(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetLightRadius Wiki, setLightRadius }
  * @param theLight The Element/Light|light that you wish to set the radius of.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function setLightRadius(
+export declare function setLightRadius(
     theLight: Light,
     radius: number
 ): boolean;

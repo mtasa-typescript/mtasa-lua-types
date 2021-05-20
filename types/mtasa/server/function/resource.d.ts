@@ -36,8 +36,9 @@ import {
  * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
  * GetRemoteRequests|getRemoteRequests
  * @return returns true on success, false when invalid request was provided
+ * @noSelf
  */
-export function abortRemoteRequest(
+export declare function abortRemoteRequest(
     theRequest: Request
 ): boolean;
 
@@ -55,8 +56,9 @@ export function abortRemoteRequest(
  * @param filetype a string indicating whether the file is serverside (server) or clientside (client).
  * @return returns the new configs root xmlnode if the config was added successfully, false
  * otherwise.
+ * @noSelf
  */
-export function addResourceConfig(
+export declare function addResourceConfig(
     filePath: string,
     filetype?: string
 ): XmlNode;
@@ -74,8 +76,9 @@ export function addResourceConfig(
  * necessary, e.g. ''addResourceMap("manycars.map")''.
  * @param dimension the dimension in which the maps objects will be placed.
  * @return returns the new maps root xmlnode if the map was added successfully, false otherwise.
+ * @noSelf
  */
-export function addResourceMap(
+export declare function addResourceMap(
     filePath: string,
     dimension?: number
 ): XmlNode;
@@ -125,8 +128,9 @@ export function addResourceMap(
  * returns anything that the designated function has returned, if the function has no
  * return, nil is returned. if the function does not exist, is not exported, or the call was
  * not successful it will return false.
+ * @noSelf
  */
-export function call(
+export declare function call(
     theResource: Resource,
     theFunction: string,
     ...varargs: any[]
@@ -176,8 +180,9 @@ export function call(
  * values such as xmlnodes - elements and resources can be passed though may be
  * misinterpreted on other game servers (or cause warnings).
  * @return returns true if the function has been called, false otherwise.
+ * @noSelf
  */
-export function callRemote(
+export declare function callRemote(
     host: string,
     queueName: string,
     connectionAttempts: number,
@@ -190,8 +195,9 @@ export function callRemote(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/CallRemote Wiki, callRemote }
+ * @noSelf
  */
-export function callRemote(
+export declare function callRemote(
     host: string,
     resourceName: string,
     functionName: string,
@@ -207,8 +213,9 @@ export function callRemote(
  * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
  * gamemodes/amx).
  * @return returns the resource element of the copy. returns false if the arguments are incorrect.
+ * @noSelf
  */
-export function copyResource(
+export declare function copyResource(
     theResource: Resource,
     newResourceName: string,
     organizationalDir?: string
@@ -225,8 +232,9 @@ export function copyResource(
  * could fail if the resource name already is in use, if a directory already exists with the
  * name youve specified (but this isnt a valid resource) or if the name you specify isnt
  * valid. it could also fail if the disk was full or for other similar reasons.
+ * @noSelf
  */
-export function createResource(
+export declare function createResource(
     resourceName: string,
     organizationalDir?: string
 ): Resource;
@@ -237,8 +245,9 @@ export function createResource(
  * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
  * @param resourceName The name of resource to delete.
  * @return returns true if the resource has been deleted successfully, false otherwise.
+ * @noSelf
  */
-export function deleteResource(
+export declare function deleteResource(
     resourceName: string
 ): boolean;
 
@@ -284,8 +293,9 @@ export function deleteResource(
  * email&#61;bob@example.com }
  * @return returns a request value which can be used with getremoterequestinfo|getremoterequestinfo
  * or abortremoterequest|abortremoterequest
+ * @noSelf
  */
-export function fetchRemote(
+export declare function fetchRemote(
     URL: string,
     queueName: string,
     connectionAttempts: number,
@@ -298,8 +308,9 @@ export function fetchRemote(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
+ * @noSelf
  */
-export function fetchRemote(
+export declare function fetchRemote(
     URL: string,
     callbackFunction: HandleFunction,
     postData: string,
@@ -309,8 +320,9 @@ export function fetchRemote(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
+ * @noSelf
  */
-export function fetchRemote(
+export declare function fetchRemote(
     URL: string,
     queueName: string,
     connectionAttempts: number,
@@ -343,8 +355,9 @@ export function fetchRemote(
  * fetchremote call
  * *postdata: a string containing the request post data as declared in the fetchremote call
  * *headers: a table containing the request http headers as declared in the fetchremote call
+ * @noSelf
  */
-export function getRemoteRequestInfo(
+export declare function getRemoteRequestInfo(
     theRequest: Request,
     postDataLength?: number,
     includeHeaders?: boolean
@@ -355,8 +368,9 @@ export function getRemoteRequestInfo(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
  * @param theResource : the resource to get all requests from
  * @return returns a table with all requests, false if an invalid resource was provided
+ * @noSelf
  */
-export function getRemoteRequests(
+export declare function getRemoteRequests(
     theResource?: Resource
 ): LuaTable;
 
@@ -367,8 +381,9 @@ export function getRemoteRequests(
  * @param theResource the resource to get the ACL requests for.
  * @return returns a table with the acl requests for the given resource, or false if the resource is
  * not valid. a valid resource with no acl requests will return an empty table.
+ * @noSelf
  */
-export function getResourceACLRequests(
+export declare function getResourceACLRequests(
     theResource: Resource
 ): LuaTable;
 
@@ -386,8 +401,9 @@ export function getResourceACLRequests(
  * ''getResourceConfig("settings.xml")''.
  * @return returns the root node of the specified configuration file. if the file is corrupted, not
  * defined in the meta file or doesnt exist, returns false.
+ * @noSelf
  */
-export function getResourceConfig(
+export declare function getResourceConfig(
     filePath: string
 ): XmlNode;
 
@@ -399,8 +415,9 @@ export function getResourceConfig(
  * @param theResource the resource of which dynamic element root we want.
  * @return returns an element of the resources dynamic element root if the resource specified was
  * valid and active (currently running), false otherwise.
+ * @noSelf
  */
-export function getResourceDynamicElementRoot(
+export declare function getResourceDynamicElementRoot(
     theResource: Resource
 ): Element;
 
@@ -410,8 +427,9 @@ export function getResourceDynamicElementRoot(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
  * @param theResource the resource of which you want to know the call|exported functions.
  * @return returns a table of function names if successful, false otherwise.
+ * @noSelf
  */
-export function getResourceExportedFunctions(
+export declare function getResourceExportedFunctions(
     theResource?: Resource
 ): LuaTable;
 
@@ -423,8 +441,9 @@ export function getResourceExportedFunctions(
  * @return returns the resource with the specified name, or false if no resource of that name
  * exists. note that clientside this will also return false for resources that are in the
  * loaded state, since the client is unaware of resources that have not been started.
+ * @noSelf
  */
-export function getResourceFromName(
+export declare function getResourceFromName(
     resourceName: string
 ): Resource;
 
@@ -434,8 +453,9 @@ export function getResourceFromName(
  * @param theResource the resource we are getting the info from.
  * @param attribute the name of the attribute we want info about.
  * @return returns a string with the attribute value if it exists, false otherwise.
+ * @noSelf
  */
-export function getResourceInfo(
+export declare function getResourceInfo(
     theResource: Resource,
     attribute: string
 ): string;
@@ -448,8 +468,9 @@ export function getResourceInfo(
  * string never if the resource has not been started yet, otherwise false. use in
  * conjunction with getrealtime in order to retrieve detailed information.
  * returns a string with the time and date, or false if the resource does not exist.
+ * @noSelf
  */
-export function getResourceLastStartTime(
+export declare function getResourceLastStartTime(
     theResource: Resource
 ): number;
 
@@ -459,8 +480,9 @@ export function getResourceLastStartTime(
  * @param theResource The resource you wish to check.
  * @return if the resource failed to load, returns a string with the failure reason in it. if it
  * loaded successfully, returns an empty string. returns false if the resource doesnt exist.
+ * @noSelf
  */
-export function getResourceLoadFailureReason(
+export declare function getResourceLoadFailureReason(
     theResource: Resource
 ): string;
 
@@ -474,8 +496,9 @@ export function getResourceLoadFailureReason(
  * into memory (for example when the server started, or when the resource was changed and
  * reloaded). returns false on failure.
  * an example string is fri mar 28 13:51:04 2008.
+ * @noSelf
  */
-export function getResourceLoadTime(
+export declare function getResourceLoadTime(
     res: Resource
 ): number;
 
@@ -486,8 +509,9 @@ export function getResourceLoadTime(
  * @param mapName name of the maps which root element we want to retrieve, file extension is required
  * @return returns an the resources map root element if the map exists and resource specified was
  * valid and active (currently running), false otherwise.
+ * @noSelf
  */
-export function getResourceMapRootElement(
+export declare function getResourceMapRootElement(
     theResource: Resource,
     mapName: string
 ): Element;
@@ -497,8 +521,9 @@ export function getResourceMapRootElement(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
  * @param res The resource you wish to get the name of.
  * @return returns a string with the resource name in it, or false if the resource does not exist.
+ * @noSelf
  */
-export function getResourceName(
+export declare function getResourceName(
     res: Resource
 ): string;
 
@@ -508,8 +533,9 @@ export function getResourceName(
  * @param theResource the resource of which you want to know the organizational path
  * @return returns the organizational folder name of the resource. it returns empty string if the
  * resource is on root resources folder. it returns false if the resource could not be found.
+ * @noSelf
  */
-export function getResourceOrganizationalPath(
+export declare function getResourceOrganizationalPath(
     theResource: Resource
 ): string;
 
@@ -526,8 +552,9 @@ export function getResourceOrganizationalPath(
  * resource. (the resource returned from getThisResource)
  * @return returns an element representing the resources root, false if the specified resource
  * doesnt exist.
+ * @noSelf
  */
-export function getResourceRootElement(
+export declare function getResourceRootElement(
     theResource?: Resource
 ): Element;
 
@@ -535,8 +562,9 @@ export function getResourceRootElement(
  * This function retrieves a table of all the resources that exist on the server.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
  * @return returns a table of resources.
+ * @noSelf
  */
-export function getResources(): LuaTable;
+export declare function getResources(): LuaTable;
 
 /**
  * This function returns the state of a given resource
@@ -549,8 +577,9 @@ export function getResources(): LuaTable;
  * *starting
  * *stopping
  * *failed to load - use getresourceloadfailurereason to find out why it failed.
+ * @noSelf
  */
-export function getResourceState(
+export declare function getResourceState(
     theResource: Resource
 ): string;
 
@@ -558,8 +587,9 @@ export function getResourceState(
  * This function retrieves the resource from which the function call was made.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
  * @return returns the resource in which the current script is.
+ * @noSelf
  */
-export function getThisResource(): Resource;
+export declare function getThisResource(): Resource;
 
 /**
  * Checks whether a resource is currently archived (running from within a ZIP file).
@@ -567,8 +597,9 @@ export function getThisResource(): Resource;
  * @param resource the resource to check
  * @return returns true if a resource is archived, false if it is not archived, or nil if there is
  * problem with resource.
+ * @noSelf
  */
-export function isResourceArchived(
+export declare function isResourceArchived(
     resourceElement: Resource
 ): boolean;
 
@@ -578,8 +609,9 @@ export function isResourceArchived(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
  * @param theResource the resource to check
  * @return returns true if the resource is protected, false otherwise.
+ * @noSelf
  */
-export function isResourceProtected(
+export declare function isResourceProtected(
     theResource: Resource
 ): boolean;
 
@@ -592,8 +624,9 @@ export function isResourceProtected(
  * '''Note:''' Checking for changes in all resources can result in lag for a short period of
  * time. It should generally be avoided to set refreshAll to ''true''.
  * @return returns true if refresh was successful, false otherwise.
+ * @noSelf
  */
-export function refreshResources(
+export declare function refreshResources(
     refreshAll?: boolean,
     targetResource?: Resource
 ): boolean;
@@ -605,8 +638,9 @@ export function refreshResources(
  * @param fileName The filename what you want to delete.
  * @return returns true if file was deleted, otherwise false if the resource is in use or the file
  * doesnt exist.
+ * @noSelf
  */
-export function removeResourceFile(
+export declare function removeResourceFile(
     theResource: Resource,
     fileName: string
 ): boolean;
@@ -622,8 +656,9 @@ export function removeResourceFile(
  * youve specified (but this isnt a valid resource) or if the name you specify isnt valid.
  * it could also fail if the disk was full or for other similar reasons. wont work on a
  * started resource or if the resource is not loaded (not known by mta (use /refresh))
+ * @noSelf
  */
-export function renameResource(
+export declare function renameResource(
     theResource: string | Resource,
     newResourceName: string,
     organizationalPath?: string
@@ -652,8 +687,9 @@ export function renameResource(
  * @param clientFiles Reload files?
  * @return returns true if the resource was restarted, false if the resource wasnt running, or an
  * invalid resource was passed.
+ * @noSelf
  */
-export function restartResource(
+export declare function restartResource(
     theResource: Resource,
     persistent?: boolean,
     configs?: boolean,
@@ -672,8 +708,9 @@ export function restartResource(
  * @param attribute the name of the attribute that is to be set.
  * @param value the value of this attribute
  * @return returns true if the info was successfully set, false otherwise
+ * @noSelf
  */
-export function setResourceInfo(
+export declare function setResourceInfo(
     theResource: Resource,
     attribute: string,
     value: string
@@ -707,8 +744,9 @@ export function setResourceInfo(
  * resource.
  * @param loadFiles A boolean specifying if client-side files should be loaded alongside the resource.
  * @return returns true if the resource has been started successfully, false otherwise.
+ * @noSelf
  */
-export function startResource(
+export declare function startResource(
     resourceToStart: Resource,
     persistent?: boolean,
     startIncludedResources?: boolean,
@@ -727,8 +765,9 @@ export function startResource(
  * @param theResource the resource that should be stopped.
  * @return returns true if the resource was stopped, false if the stopping failed, or an invalid
  * resource was passed.
+ * @noSelf
  */
-export function stopResource(
+export declare function stopResource(
     theResource: Resource
 ): boolean;
 
@@ -742,8 +781,9 @@ export function stopResource(
  * @param byWho a string value to identity who is changing the setting.
  * @return returns true if the setting was changed, or false if no change was required or there was
  * a problem with the arguments.
+ * @noSelf
  */
-export function updateResourceACLRequest(
+export declare function updateResourceACLRequest(
     theResource: Resource,
     rightName: string,
     access: boolean,

@@ -57,8 +57,9 @@ import {
  * fire to stay alive more or less time.
  * @return returns true if successful, false if bad arguments were passed or the limit of active
  * fires was reached. there can be a maximum of 60 active fires.
+ * @noSelf
  */
-export function createFire(
+export declare function createFire(
     x: number,
     y: number,
     z: number,
@@ -70,8 +71,9 @@ export function createFire(
  * @param x, y, z the coordinates at which any fire will be extinguished.
  * @param radius a float value indicating the radius in which to extinguish fire.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function extinguishFire(
+export declare function extinguishFire(
     x?: number,
     y?: number,
     z?: number,

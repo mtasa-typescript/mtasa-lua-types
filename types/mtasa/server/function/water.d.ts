@@ -47,8 +47,9 @@ import {
  * @param bShallow gives the water a shallow water effect.
  * @return returns a water element if successful, false otherwise. the water element can be
  * repositioned with setelementposition and destroyed with destroyelement.
+ * @noSelf
  */
-export function createWater(
+export declare function createWater(
     x1: number,
     y1: number,
     z1: number,
@@ -69,8 +70,9 @@ export function createWater(
  * Note: The server can only return the water color, if it has actually been set by script.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterColor Wiki, getWaterColor }
  * @return returns 4 int|ints, indicating the color of the water. (rgba)
+ * @noSelf
  */
-export function getWaterColor(): LuaMultiReturn<[
+export declare function getWaterColor(): LuaMultiReturn<[
     number,
     number,
     number,
@@ -85,8 +87,9 @@ export function getWaterColor(): LuaMultiReturn<[
  * @param vertexIndex the index of the vertex whose position to get. Values range from 1 to 4 for a water quad,
  * or 1 to 3 for a triangle.
  * @return returns the x, y and z coordinates of the specified vertex if successful, false otherwise.
+ * @noSelf
  */
-export function getWaterVertexPosition(
+export declare function getWaterVertexPosition(
     theWater: Water,
     vertexIndex: number
 ): LuaMultiReturn<[
@@ -99,23 +102,26 @@ export function getWaterVertexPosition(
  * This function returns the current wave height.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetWaveHeight Wiki, getWaveHeight }
  * @return returns the height as a float, false otherwise.
+ * @noSelf
  */
-export function getWaveHeight(): number;
+export declare function getWaveHeight(): number;
 
 /**
  * This function reset the water color of the GTA world to default.
  * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterColor Wiki, resetWaterColor }
  * @return returns true if water color was reset correctly, false otherwise.
+ * @noSelf
  */
-export function resetWaterColor(): boolean;
+export declare function resetWaterColor(): boolean;
 
 /**
  * This function resets the water of the GTA world back to its default level. water|Water
  * elements are not affected.
  * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterLevel Wiki, resetWaterLevel }
  * @return returns true if water level was reset correctly, false otherwise.
+ * @noSelf
  */
-export function resetWaterLevel(): boolean;
+export declare function resetWaterLevel(): boolean;
 
 /**
  * This function changes the water color of the GTA world.
@@ -125,8 +131,9 @@ export function resetWaterLevel(): boolean;
  * @param blue The blue value of the water, from 0 to 255.
  * @param alpha The alpha (visibility) value of the water, from 0 to 255. Defaults to 200 if not declared.
  * @return returns true if water color was set correctly, false if invalid values were passed.
+ * @noSelf
  */
-export function setWaterColor(
+export declare function setWaterColor(
     red: number,
     green: number,
     blue: number,
@@ -147,16 +154,18 @@ export function setWaterColor(
  * @param includeOutsideWorldSea a boolean indicating whether to also set the level of sea water outside the world area,
  * ie. outside -3000, 3000.
  * @return returns true if successful, false in case of failure.
+ * @noSelf
  */
-export function setWaterLevel(
+export declare function setWaterLevel(
     theWater: Water,
     level: number
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterLevel Wiki, setWaterLevel }
+ * @noSelf
  */
-export function setWaterLevel(
+export declare function setWaterLevel(
     level: number
 ): boolean;
 
@@ -170,8 +179,9 @@ export function setWaterLevel(
  * @param y the Y coordinate to set for the vertex.
  * @param z the Z coordinate to set for the vertex.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setWaterVertexPosition(
+export declare function setWaterVertexPosition(
     theWater: Water,
     vertexIndex: number,
     x: number,
@@ -184,7 +194,8 @@ export function setWaterVertexPosition(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetWaveHeight Wiki, setWaveHeight }
  * @param height A float between 0 and 100.
  * @return returns a boolean value true or false that tells you if it was successful or not.
+ * @noSelf
  */
-export function setWaveHeight(
+export declare function setWaveHeight(
     height: number
 ): boolean;

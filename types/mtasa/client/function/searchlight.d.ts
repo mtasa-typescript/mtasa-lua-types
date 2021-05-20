@@ -61,8 +61,9 @@ import {
  * @return if every argument is correct and the limit of 1000 searchlights has not been reached,
  * this function returns a element/searchlight|searchlight element. otherwise, it returns
  * false.
+ * @noSelf
  */
-export function createSearchLight(
+export declare function createSearchLight(
     startX: number,
     startY: number,
     startZ: number,
@@ -81,8 +82,9 @@ export function createSearchLight(
  * @return if the specified searchlight element is valid, this function will return three float,
  * which are the three coordinates of searchlights end position. if not, it will return
  * false plus an error message.
+ * @noSelf
  */
-export function getSearchLightEndPosition(
+export declare function getSearchLightEndPosition(
     theSearchLight: Searchlight
 ): LuaMultiReturn<[
     number,
@@ -96,8 +98,9 @@ export function getSearchLightEndPosition(
  * @param theSearchLight : the searchlight to get the radius of the searchlights light cone in its end.
  * @return if the specified searchlight element is valid, this function will return one float, which
  * is the searchlights end radius. if not, it will return false plus an error message.
+ * @noSelf
  */
-export function getSearchLightEndRadius(
+export declare function getSearchLightEndRadius(
     theSearchLight: Searchlight
 ): number;
 
@@ -108,8 +111,9 @@ export function getSearchLightEndRadius(
  * @return if the specified searchlight element is valid, this function will return three float,
  * which are the three coordinates of searchlights start position. if not, it will return
  * false plus an error message.
+ * @noSelf
  */
-export function getSearchLightStartPosition(
+export declare function getSearchLightStartPosition(
     theSearchLight: Searchlight
 ): LuaMultiReturn<[
     number,
@@ -123,8 +127,9 @@ export function getSearchLightStartPosition(
  * @param theSearchLight : the searchlight to get the radius of the searchlights light cone in its beginning.
  * @return if the specified searchlight element is valid, this function will return one float, which
  * is the searchlights start radius. if not, it will return false plus an error message.
+ * @noSelf
  */
-export function getSearchLightStartRadius(
+export declare function getSearchLightStartRadius(
     theSearchLight: Searchlight
 ): number;
 
@@ -136,8 +141,9 @@ export function getSearchLightStartRadius(
  * @param endZ : the Z coordinate where the searchlight light cone will end.
  * @return if every argument is correct, this function returns true. if not, it will return false
  * plus an error message.
+ * @noSelf
  */
-export function setSearchLightEndPosition(
+export declare function setSearchLightEndPosition(
     theSearchLight: Searchlight,
     endX: number,
     endY: number,
@@ -151,8 +157,9 @@ export function setSearchLightEndPosition(
  * @param endRadius : the radius of the searchlights light cone in its end.
  * @return if every argument is correct, this function returns true. if not, it will return false
  * plus an error message.
+ * @noSelf
  */
-export function setSearchLightEndRadius(
+export declare function setSearchLightEndRadius(
     theSearchlight: Searchlight,
     endRadius: number
 ): boolean;
@@ -166,8 +173,9 @@ export function setSearchLightEndRadius(
  * @param startZ : the Z coordinate where the searchlight light cone will start.
  * @return if every argument is correct, this function returns true. if not, it will return false
  * plus an error message.
+ * @noSelf
  */
-export function setSearchLightStartPosition(
+export declare function setSearchLightStartPosition(
     theSearchLight: Searchlight,
     startX: number,
     startY: number,
@@ -181,8 +189,9 @@ export function setSearchLightStartPosition(
  * @param startRadius : the radius of the searchlights light cone in its beginning.
  * @return if every argument is correct, this function returns true. if not, it will return false
  * plus an error message.
+ * @noSelf
  */
-export function setSearchLightStartRadius(
+export declare function setSearchLightStartRadius(
     theSearchlight: Searchlight,
     startRadius: number
 ): boolean;

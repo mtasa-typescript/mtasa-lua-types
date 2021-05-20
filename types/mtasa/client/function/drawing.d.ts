@@ -55,8 +55,9 @@ import {
  * @param quality The quality of the returned pixels if the new format is jpeg
  * @return returns a copy of the pixels in the new format, or false if invalid arguments were passed
  * to the function.
+ * @noSelf
  */
-export function dxConvertPixels(
+export declare function dxConvertPixels(
     pixels: string,
     newFormat: string,
     quality?: number
@@ -83,8 +84,9 @@ export function dxConvertPixels(
  * @return returns a dx font element if successful, false if invalid arguments were passed to the
  * function, or there is insufficient resources available.
  * you should always check to see if this function has returned false.
+ * @noSelf
  */
-export function dxCreateFont(
+export declare function dxCreateFont(
     filepath: string,
     size?: number,
     bold?: boolean,
@@ -105,8 +107,9 @@ export function dxCreateFont(
  * @return returns a texture element if successful, false if the system is unable to create a render
  * target.
  * you should always check to see if this function has returned false.
+ * @noSelf
  */
-export function dxCreateRenderTarget(
+export declare function dxCreateRenderTarget(
     width: number,
     height: number,
     withAlpha?: boolean
@@ -123,8 +126,9 @@ export function dxCreateRenderTarget(
  * @param height The height of the texture  in pixels.
  * @return returns a texture element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function dxCreateScreenSource(
+export declare function dxCreateScreenSource(
     width: number,
     height: number
 ): Element;
@@ -199,8 +203,9 @@ export function dxCreateScreenSource(
  * *string: The name of the technique that will be used.
  * |20688}}
  * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateShader Wiki, dxCreateShader }
+ * @noSelf
  */
-export function dxCreateShader(
+export declare function dxCreateShader(
     filepath: string | string,
     priority?: number,
     maxDistance?: number,
@@ -250,8 +255,9 @@ export function dxCreateShader(
  * @param cube : Cube map
  * @param depth Desired number of slices when creating a volume texture
  * @return returns a texture if successful, false if invalid arguments were passed to the function.
+ * @noSelf
  */
-export function dxCreateTexture(
+export declare function dxCreateTexture(
     pixels: string | string,
     textureFormat?: string,
     mipmaps?: boolean,
@@ -279,8 +285,9 @@ export function dxCreateTexture(
  * @param postGUI : A bool representing whether the circle should be drawn on top of or behind any ingame
  * GUI (rendered by CEGUI).
  * @return returns true if the creation of the 2d circle was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawCircle(
+export declare function dxDrawCircle(
     posX: number,
     posY: number,
     radius: number,
@@ -317,8 +324,9 @@ export function dxDrawCircle(
  * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI
  * (rendered by CEGUI).
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawImage(
+export declare function dxDrawImage(
     posX: number,
     posY: number,
     width: number,
@@ -361,8 +369,9 @@ export function dxDrawImage(
  * @param postgui A bool representing whether the image should be drawn on top of or behind any ingame GUI
  * (rendered by CEGUI).
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawImageSection(
+export declare function dxDrawImageSection(
     posX: number,
     posY: number,
     width: number,
@@ -398,8 +407,9 @@ export function dxDrawImageSection(
  * (rendered by CEGUI).
  * Returns a true if the operation was successful, false otherwise.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawLine(
+export declare function dxDrawLine(
     startX: number,
     startY: number,
     endX: number,
@@ -427,8 +437,9 @@ export function dxDrawLine(
  * (rendered by CEGUI).
  * Returns a ''true'' if the operation was successful, ''false'' otherwise.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawLine3D(
+export declare function dxDrawLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -465,8 +476,9 @@ export function dxDrawLine3D(
  * position is used, so the front of the line faces toward the camera.
  * Returns a ''true'' if the operation was successful, ''false'' otherwise.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawMaterialLine3D(
+export declare function dxDrawMaterialLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -485,8 +497,9 @@ export function dxDrawMaterialLine3D(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
+ * @noSelf
  */
-export function dxDrawMaterialLine3D(
+export declare function dxDrawMaterialLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -504,8 +517,9 @@ export function dxDrawMaterialLine3D(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
+ * @noSelf
  */
-export function dxDrawMaterialLine3D(
+export declare function dxDrawMaterialLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -535,8 +549,9 @@ export function dxDrawMaterialLine3D(
  * @param vertices Tables representing each primitive vertice, required amount of them is determined by
  * primitive type.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawMaterialPrimitive(
+export declare function dxDrawMaterialPrimitive(
     pType: PrimitiveType,
     material: any,
     postGUI: boolean,
@@ -563,8 +578,9 @@ export function dxDrawMaterialPrimitive(
  * @param vertices Tables representing each primitive vertice, required amount of them is determined by
  * primitive type.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawMaterialPrimitive3D(
+export declare function dxDrawMaterialPrimitive3D(
     pType: PrimitiveType,
     material: any,
     postGUI: boolean,
@@ -599,8 +615,9 @@ export function dxDrawMaterialPrimitive3D(
  * the line always faces toward the camera.
  * Returns a ''true'' if the operation was successful, ''false'' otherwise.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawMaterialSectionLine3D(
+export declare function dxDrawMaterialSectionLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -623,8 +640,9 @@ export function dxDrawMaterialSectionLine3D(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
+ * @noSelf
  */
-export function dxDrawMaterialSectionLine3D(
+export declare function dxDrawMaterialSectionLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -646,8 +664,9 @@ export function dxDrawMaterialSectionLine3D(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
+ * @noSelf
  */
-export function dxDrawMaterialSectionLine3D(
+export declare function dxDrawMaterialSectionLine3D(
     startX: number,
     startY: number,
     startZ: number,
@@ -674,8 +693,9 @@ export function dxDrawMaterialSectionLine3D(
  * @param vertices Tables representing each primitive vertice, required amount of them is determined by
  * primitive type.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawPrimitive(
+export declare function dxDrawPrimitive(
     pType: string,
     postGUI: boolean,
     vertice1: LuaTable,
@@ -707,8 +727,9 @@ export function dxDrawPrimitive(
  * want.
  * Returns a ''true'' if the operation was successful, ''false'' otherwise.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawPrimitive3D(
+export declare function dxDrawPrimitive3D(
     primitiveType: string,
     postGUI: boolean,
     vertex1: LuaTable,
@@ -735,8 +756,9 @@ export function dxDrawPrimitive3D(
  * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI.
  * @param subPixelPositioning A bool representing whether the rectangle can be positioned sub-pixel-ly.
  * @return returns true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawRectangle(
+export declare function dxDrawRectangle(
     startX: number,
     startY: number,
     width: number,
@@ -780,8 +802,9 @@ export function dxDrawRectangle(
  * @param fRotationCenterX Rotation Origin X
  * @param fRotationCenterY Rotation Origin Y
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawText(
+export declare function dxDrawText(
     text: string,
     leftX: number,
     topY: number,
@@ -805,8 +828,9 @@ export function dxDrawText(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawText Wiki, dxDrawText }
+ * @noSelf
  */
-export function dxDrawText(
+export declare function dxDrawText(
     text: string,
     leftX: number,
     topY: number,
@@ -834,8 +858,9 @@ export function dxDrawText(
  * @param fLineWidth A width of line
  * @param iterations Number 1, 2, 3 or 4. 1 mean low density, 4 mean high.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function dxDrawWiredSphere(
+export declare function dxDrawWiredSphere(
     x: number,
     y: number,
     z: number,
@@ -854,8 +879,9 @@ export function dxDrawWiredSphere(
  * *add
  * *modulate_add
  * *overwrite
+ * @noSelf
  */
-export function dxGetBlendMode(): string;
+export declare function dxGetBlendMode(): string;
 
 /**
  * This function retrieves the theoretical height of a certain piece of text, if it were to
@@ -864,8 +890,9 @@ export function dxGetBlendMode(): string;
  * @param scale The size of the text.
  * @param font Either a custom DX font element or the name of a built-in dx font:
  * @return returns an integer of the height of the text.
+ * @noSelf
  */
-export function dxGetFontHeight(
+export declare function dxGetFontHeight(
     scale?: number,
     font?: any
 ): number;
@@ -878,8 +905,9 @@ export function dxGetFontHeight(
  * an invalid parameter was passed to the function.
  * if the material is a volume texture, this function will return three ints representing
  * the width, height and depth.
+ * @noSelf
  */
-export function dxGetMaterialSize(
+export declare function dxGetMaterialSize(
     material: Element
 ): LuaMultiReturn<[
     number,
@@ -896,8 +924,9 @@ export function dxGetMaterialSize(
  * @param y The Y coordinate for the pixel
  * @return returns 4 ints representing the rgba color value of the pixel if succesful, or false if
  * invalid arguments were passed to the function.
+ * @noSelf
  */
-export function dxGetPixelColor(
+export declare function dxGetPixelColor(
     pixels: string,
     x: number,
     y: number
@@ -914,8 +943,9 @@ export function dxGetPixelColor(
  * @param pixels The pixels to get the format of
  * @return returns the format of the pixels if successful (plain or png or jpeg), false if invalid
  * arguments were passed to the function.
+ * @noSelf
  */
-export function dxGetPixelsFormat(
+export declare function dxGetPixelsFormat(
     pixels: string
 ): string;
 
@@ -926,8 +956,9 @@ export function dxGetPixelsFormat(
  * @param pixels The pixels to get the dimensions of
  * @return returns width and height of the pixels if successful, false if invalid arguments were
  * passed to the function.
+ * @noSelf
  */
-export function dxGetPixelsSize(
+export declare function dxGetPixelsSize(
     pixels: string
 ): LuaMultiReturn<[
     number,
@@ -975,8 +1006,9 @@ export function dxGetPixelsSize(
  * *depthbufferformat: the format of the shader readable depth buffer, or unknown if not
  * available
  * *usingdepthbuffer: true if the depth buffer is used, false otherwise
+ * @noSelf
  */
-export function dxGetStatus(): LuaTable;
+export declare function dxGetStatus(): LuaTable;
 
 /**
  * NOTE: This function already takes the clients screen resolution into account.
@@ -991,8 +1023,9 @@ export function dxGetStatus(): LuaTable;
  * @param colorCoded Should we exclude color codes from the width? False will include the hex in the length.
  * Returns two floats representing the width and height of the text in pixels.
  * @return returns two floats representing the width and height of the text in pixels.
+ * @noSelf
  */
-export function dxGetTextSize(
+export declare function dxGetTextSize(
     text: string,
     width?: number,
     scaleX?: number,
@@ -1023,8 +1056,9 @@ export function dxGetTextSize(
  * @param height Rectangle height
  * @return returns a plain format pixels string if successful, false if invalid arguments were
  * passed to the function.
+ * @noSelf
  */
-export function dxGetTexturePixels(
+export declare function dxGetTexturePixels(
     surfaceIndex: number,
     texture: Element,
     x?: number,
@@ -1035,8 +1069,9 @@ export function dxGetTexturePixels(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+ * @noSelf
  */
-export function dxGetTexturePixels(
+export declare function dxGetTexturePixels(
     texture: Element,
     x?: number,
     y?: number,
@@ -1055,8 +1090,9 @@ export function dxGetTexturePixels(
  * @param bColorCoded Should we exclude color codes from the width? (false will include the hex in the length)
  * Returns the float of the width of the text (in pixels).
  * @return returns the float of the width of the text (in pixels).
+ * @noSelf
  */
-export function dxGetTextWidth(
+export declare function dxGetTextWidth(
     text: string,
     scale?: number,
     font?: any,
@@ -1068,8 +1104,9 @@ export function dxGetTextWidth(
  * @see {@link https://wiki.multitheftauto.com/wiki/DxIsAspectRatioAdjustmentEnabled Wiki, dxIsAspectRatioAdjustmentEnabled }
  * @return *boolean: returns true when enabled by dxsetaspectratioadjustmentenabled, false otherwise.
  * *float: aspect ratio set by dxsetaspectratioadjustmentenabled
+ * @noSelf
  */
-export function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[
+export declare function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[
     boolean,
     number
 ]>;
@@ -1085,8 +1122,9 @@ export function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[
  * @param bEnabled : Should the adjustment be enabled or disabled.
  * @param sourceRatio This should be set to the aspect ratio the dxDraws were originally designed in.
  * @return returns true when it was changed successfully, or false otherwise.
+ * @noSelf
  */
-export function dxSetAspectRatioAdjustmentEnabled(
+export declare function dxSetAspectRatioAdjustmentEnabled(
     bEnabled: boolean,
     sourceRatio?: number
 ): boolean;
@@ -1106,8 +1144,9 @@ export function dxSetAspectRatioAdjustmentEnabled(
  * target.
  * @param overwrite The source textures are overwritten. This can be useful for clearing render targets.
  * @return returns true if successful, or false if invalid arguments were passed to the function.
+ * @noSelf
  */
-export function dxSetBlendMode(
+export declare function dxSetBlendMode(
     blendMode: string
 ): boolean;
 
@@ -1123,8 +1162,9 @@ export function dxSetBlendMode(
  * @param b The blue channel for the color (0-255)
  * @param a The alpha channel for the color (0-255)
  * @return returns true if successful, or false if invalid arguments were passed to the function.
+ * @noSelf
  */
-export function dxSetPixelColor(
+export declare function dxSetPixelColor(
     pixels: string,
     x: number,
     y: number,
@@ -1139,8 +1179,9 @@ export function dxSetPixelColor(
  * @param renderTarget The render target element whose pixels we want to draw on.
  * @param clear If set to true, the render target will also be cleared.
  * @return returns true if the render target was successfully changed, false otherwise.
+ * @noSelf
  */
-export function dxSetRenderTarget(
+export declare function dxSetRenderTarget(
     renderTarget?: Element,
     clear?: boolean
 ): boolean;
@@ -1156,8 +1197,9 @@ export function dxSetRenderTarget(
  * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
  * @return returns true if the shader elements tessellation was successfully changed, false
  * otherwise.
+ * @noSelf
  */
-export function dxSetShaderTessellation(
+export declare function dxSetShaderTessellation(
     theShader: Element,
     tessellationX: number,
     tessellationY: number
@@ -1187,8 +1229,9 @@ export function dxSetShaderTessellation(
  * screen size. Conversely, to convert screen pixel coordinates to screen relative units,
  * '''''divide''''' by the screen size.
  * @return returns true if the shader elements transform was successfully changed, false otherwise.
+ * @noSelf
  */
-export function dxSetShaderTransform(
+export declare function dxSetShaderTransform(
     theShader: Element,
     rotationX: number,
     rotationY: number,
@@ -1210,8 +1253,9 @@ export function dxSetShaderTransform(
  * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
  * floats(numbers))
  * @return returns true if the shader elements parameter was successfully changed, false otherwise.
+ * @noSelf
  */
-export function dxSetShaderValue(
+export declare function dxSetShaderValue(
     theShader: Element,
     parameterName: string,
     value: any
@@ -1229,8 +1273,9 @@ export function dxSetShaderValue(
  * @param low_mem Simulate little free video memory available for MTA.
  * @param no_shader Simulate shaders failing validation.
  * @return returns true if the test mode was successfully set, false otherwise.
+ * @noSelf
  */
-export function dxSetTestMode(
+export declare function dxSetTestMode(
     testMode: string
 ): boolean;
 
@@ -1240,8 +1285,9 @@ export function dxSetTestMode(
  * @param theTexture The affected texture
  * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
  * @param border-color If textureEdge is set to border, you are able to define a border color here
+ * @noSelf
  */
-export function dxSetTextureEdge(
+export declare function dxSetTextureEdge(
     theTexture: Texture,
     textureEdge: string,
     border_color?: number
@@ -1265,8 +1311,9 @@ export function dxSetTextureEdge(
  * @param width Rectangle width
  * @param height Rectangle height
  * @return returns a string if successful, false if invalid arguments were passed to the function.
+ * @noSelf
  */
-export function dxSetTexturePixels(
+export declare function dxSetTexturePixels(
     surfaceIndex: number,
     texture: Element,
     pixels: string,
@@ -1278,8 +1325,9 @@ export function dxSetTexturePixels(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+ * @noSelf
  */
-export function dxSetTexturePixels(
+export declare function dxSetTexturePixels(
     texture: Element,
     pixels: string,
     x?: number,
@@ -1297,8 +1345,9 @@ export function dxSetTexturePixels(
  * which means the screen from the end of the previous frame is used (better for performance
  * and consistency). Use true for layering fullscreen effects.
  * @return returns true if the screen was successfully captured, false otherwise.
+ * @noSelf
  */
-export function dxUpdateScreenSource(
+export declare function dxUpdateScreenSource(
     screenSource: Element,
     resampleNow?: boolean
 ): boolean;

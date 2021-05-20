@@ -35,8 +35,9 @@ import {
  * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
  * @param thePlayer the player you want the sound to play for.
  * @param sound a whole int specifying the sound id to play. Valid values are:
+ * @noSelf
  */
-export function playSoundFrontEnd(
+export declare function playSoundFrontEnd(
     thePlayer: Player,
     sound: number
 ): boolean;

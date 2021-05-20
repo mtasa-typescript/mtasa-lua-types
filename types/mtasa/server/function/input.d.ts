@@ -57,8 +57,9 @@ import {
  * name=command.killEveryone access=true></right>). This argument defaults to false if
  * nothing is specified.
  * @param caseSensitive Specifies if the command handler will ignore the case for this command name.
+ * @noSelf
  */
-export function addCommandHandler(
+export declare function addCommandHandler(
     commandName: string,
     handlerFunction: HandleFunction,
     restricted?: boolean,
@@ -82,8 +83,9 @@ export function addCommandHandler(
  * :The values passed to this function are:
  * @param keyPresser The player who pressed the key
  * @param arguments The optional arguments you specified when calling bindKey (see below).
+ * @noSelf
  */
-export function bindKey(
+export declare function bindKey(
     thePlayer: Player,
     key: string,
     keyState: string,
@@ -101,8 +103,9 @@ export function bindKey(
  * of the command.
  * @param args Additional parameters that will be passed to the handler function(s) of the command that
  * is called, separated by spaces.
+ * @noSelf
  */
-export function executeCommandHandler(
+export declare function executeCommandHandler(
     commandName: string,
     thePlayer: Player,
     args?: string
@@ -117,8 +120,9 @@ export function executeCommandHandler(
  * @return returns a table containing all the commands of the given resource or a table with
  * subtables containing the command and theresource pointer ( { command, theresource } ).
  * see examples below if you dont understand it.
+ * @noSelf
  */
-export function getCommandHandlers(
+export declare function getCommandHandlers(
     theResource?: Resource
 ): LuaTable;
 
@@ -158,8 +162,9 @@ export function getCommandHandlers(
  * *special_control_*
  * @return returns the state of the control, false if the control doesnt exist or if the player is
  * dead.
+ * @noSelf
  */
-export function getControlState(
+export declare function getControlState(
     thePlayer: Player,
     controlName: string
 ): boolean;
@@ -173,8 +178,9 @@ export function getControlState(
  * @param up If the bound key should trigger the function when the key is released
  * @param down If the bound key should trigger the function when the key is pressed
  * @param both If the bound key should trigger the function when the key is pressed or released
+ * @noSelf
  */
-export function getFunctionsBoundToKey(
+export declare function getFunctionsBoundToKey(
     thePlayer: Player,
     key: string,
     keyState: string
@@ -186,8 +192,9 @@ export function getFunctionsBoundToKey(
  * @param thePlayer The player you are checking the function bound to a key
  * @param theFunction The function in which you would like to check the bound key
  * @return returns a string of the first key the function was bound to.
+ * @noSelf
  */
-export function getKeyBoundToFunction(
+export declare function getKeyBoundToFunction(
     thePlayer: Player,
     theFunction: HandleFunction
 ): string;
@@ -197,8 +204,9 @@ export function getKeyBoundToFunction(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsControlEnabled Wiki, isControlEnabled }
  * @param thePlayer The player you wish the control status of.
  * @param control The control you wish to check. See control names for a list of possible controls.
+ * @noSelf
  */
-export function isControlEnabled(
+export declare function isControlEnabled(
     thePlayer: Player,
     control: string
 ): boolean;
@@ -215,8 +223,9 @@ export function isControlEnabled(
  * @param down when the key is pressed
  * @param handler The function youre checking against
  * @return returns true if the key is bound, false otherwise.
+ * @noSelf
  */
-export function isKeyBound(
+export declare function isKeyBound(
     thePlayer: Player,
     key: string,
     keyState?: string,
@@ -234,8 +243,9 @@ export function isKeyBound(
  * the server.
  * @return returns true if the command handler was removed successfully, false if the command doesnt
  * exist.
+ * @noSelf
  */
-export function removeCommandHandler(
+export declare function removeCommandHandler(
     commandName: string,
     handler?: HandleFunction
 ): boolean;
@@ -248,8 +258,9 @@ export function removeCommandHandler(
  * controls.
  * @param state A boolean value representing whether or not the key will be set to pressed or not.
  * @return returns true if the control state was successfully set, false otherwise.
+ * @noSelf
  */
-export function setControlState(
+export declare function setControlState(
     thePlayer: Player,
     control: string,
     state: boolean
@@ -263,8 +274,9 @@ export function setControlState(
  * @param gtaControls A boolean deciding whether the enabled parameter will affect GTAs internal controls.
  * @param mtaControls A boolean deciding whether the enabled parameter will affect MTAs own controls., e.g.
  * chatbox.
+ * @noSelf
  */
-export function toggleAllControls(
+export declare function toggleAllControls(
     thePlayer: Player,
     enabled: boolean,
     gtaControls?: boolean,
@@ -278,8 +290,9 @@ export function toggleAllControls(
  * @param control The control that you want to toggle the ability of. See control names for a list of
  * possible controls.
  * @param enabled A boolean value representing whether or not the key will be usable or not.
+ * @noSelf
  */
-export function toggleControl(
+export declare function toggleControl(
     thePlayer: Player,
     control: string,
     enabled: boolean
@@ -300,8 +313,9 @@ export function toggleControl(
  * unbound, whatever function they are bound to.
  * @return returns true if the key was unbound, false if it was not previously bound or invalid
  * arguments were passed to the function.
+ * @noSelf
  */
-export function unbindKey(
+export declare function unbindKey(
     thePlayer: Player,
     key: string,
     keyState: string,

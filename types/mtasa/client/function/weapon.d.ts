@@ -59,8 +59,9 @@ import {
  * int: the weapon property
  * on failure:
  * bool: false if the passed arguments were invalid
+ * @noSelf
  */
-export function getOriginalWeaponProperty(
+export declare function getOriginalWeaponProperty(
     weaponID: number | string,
     weaponSkill: string,
     property: string
@@ -72,8 +73,9 @@ export function getOriginalWeaponProperty(
  * @param weaponid Weapon to find the weapon slot of.
  * @return returns an integer representing the given weapon ids associated weapon slot, false if the
  * id was invalid.
+ * @noSelf
  */
-export function getSlotFromWeapon(
+export declare function getSlotFromWeapon(
     weaponid: number
 ): number;
 
@@ -82,8 +84,9 @@ export function getSlotFromWeapon(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName Wiki, getWeaponIDFromName }
  * @param name A string containing the name of the weapon. Names can be: (Case is ignored)
  * @return returns an int if the name matches that of a weapon, false otherwise.
+ * @noSelf
  */
-export function getWeaponIDFromName(
+export declare function getWeaponIDFromName(
     name: string
 ): number;
 
@@ -93,8 +96,9 @@ export function getWeaponIDFromName(
  * @param id The ID you wish to retrieve the name of
  * @return returns a string of the name of the weapon or death type, false otherwise. names will be
  * like these: (ignoring case)
+ * @noSelf
  */
-export function getWeaponNameFromID(
+export declare function getWeaponNameFromID(
     id: number
 ): string;
 
@@ -110,8 +114,9 @@ export function getWeaponNameFromID(
  * int: the weapon property
  * on failure:
  * bool: false if the passed arguments were invalid
+ * @noSelf
  */
-export function getWeaponProperty(
+export declare function getWeaponProperty(
     weaponID: number | string,
     weaponSkill: string,
     property: string
@@ -129,8 +134,9 @@ export function getWeaponProperty(
  * @param ammoInClip The amount of ammo to set in the players clip.  This will be taken from the main ammo.
  * If left unspecified or set to 0, the current clip will remain.
  * @return returns a boolean value true or false that tells you if it was successful or not.
+ * @noSelf
  */
-export function setWeaponAmmo(
+export declare function setWeaponAmmo(
     thePlayer: Player,
     weapon: number,
     totalAmmo: number,
@@ -168,8 +174,9 @@ export function setWeaponAmmo(
  * @param strProperty the property to edit:
  * @param theValue The value to set the property to.
  * @return returns true if the property was set.
+ * @noSelf
  */
-export function setWeaponProperty(
+export declare function setWeaponProperty(
     theWeapon: Weapon,
     strProperty: string,
     theValue: unknown
@@ -185,8 +192,9 @@ export function setWeaponProperty(
  * @param z The z position to create the weapon.
  * @return returns a element/weapon|custom weapon element, which represents a weapon floating at
  * that position.
+ * @noSelf
  */
-export function createWeapon(
+export declare function createWeapon(
     theType: string,
     x: number,
     y: number,
@@ -199,8 +207,9 @@ export function createWeapon(
  * @param theWeapon The weapon to be fired.
  * @return returns true if the shot weapon is valid and therefore the shot was fired, false
  * otherwise.
+ * @noSelf
  */
-export function fireWeapon(
+export declare function fireWeapon(
     theWeapon: Weapon
 ): boolean;
 
@@ -210,8 +219,9 @@ export function fireWeapon(
  * @param theWeapon : The weapon to get the ammo of.
  * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
  * error occured.
+ * @noSelf
  */
-export function getWeaponAmmo(
+export declare function getWeaponAmmo(
     theWeapon: Weapon
 ): number;
 
@@ -222,8 +232,9 @@ export function getWeaponAmmo(
  * @param theWeapon the weapon to get the clip ammo of.
  * @return returns the amount of ammo in the element/weapon|custom weapons clip, false if an error
  * occured.
+ * @noSelf
  */
-export function getWeaponClipAmmo(
+export declare function getWeaponClipAmmo(
     theWeapon: Weapon
 ): number;
 
@@ -232,8 +243,9 @@ export function getWeaponClipAmmo(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
  * @param theWeapon The weapon to modify the firing rate of.
  * @return returns an integer with the firing rate of the custom weapon, false otherwise.
+ * @noSelf
  */
-export function getWeaponFiringRate(
+export declare function getWeaponFiringRate(
     theWeapon: Weapon
 ): number;
 
@@ -259,8 +271,9 @@ export function getWeaponFiringRate(
  * @param shoot_if_blocked : if enabled, the weapon still fires its target even if its blocked by something.
  * @return returns the true or false on success (flags flag returns 8 values) if the flag is enabled
  * or not. returns false if the weapon element isnt valid or an error occured.
+ * @noSelf
  */
-export function getWeaponFlags(
+export declare function getWeaponFlags(
     theWeapon: Weapon,
     theFlag: string
 ): boolean;
@@ -273,8 +286,9 @@ export function getWeaponFlags(
  * @param theWeapon The weapon to get the owner of.
  * @return this function was intended to return the player which owns the element/weapon|custom
  * weapon, and false if an error occured. however, at the moment it always returns false.
+ * @noSelf
  */
-export function getWeaponOwner(
+export declare function getWeaponOwner(
     theWeapon: Weapon
 ): boolean;
 
@@ -289,8 +303,9 @@ export function getWeaponOwner(
  * according to its assigned firing rate.
  * ** ready: the weapon is idle.
  * * false if an error occured or the element/weapon|weapon is invalid.
+ * @noSelf
  */
-export function getWeaponState(
+export declare function getWeaponState(
     theWeapon: Weapon
 ): string;
 
@@ -303,8 +318,9 @@ export function getWeaponState(
  * **3 float|floats if the weapon is firing at a fixed point.
  * **an element if the weapon is firing an entity.
  * * returns false if the weapon element is not valid.
+ * @noSelf
  */
-export function getWeaponTarget(
+export declare function getWeaponTarget(
     theWeapon: Weapon
 ): null | Element | number;
 
@@ -313,8 +329,9 @@ export function getWeaponTarget(
  * @see {@link https://wiki.multitheftauto.com/wiki/ResetWeaponFiringRate Wiki, resetWeaponFiringRate }
  * @param theWeapon the weapon to reset the firing rate of.
  * @return returns true on success, false otherwise.
+ * @noSelf
  */
-export function resetWeaponFiringRate(
+export declare function resetWeaponFiringRate(
     theWeapon: Weapon
 ): boolean;
 
@@ -325,8 +342,9 @@ export function resetWeaponFiringRate(
  * @param clipAmmo The amount of ammo in the clip.
  * @return this function returns true if the arguments are valid and the weapon clip ammo could be
  * changed; false otherwise.
+ * @noSelf
  */
-export function setWeaponClipAmmo(
+export declare function setWeaponClipAmmo(
     theWeapon: Weapon,
     clipAmmo: number
 ): boolean;
@@ -339,8 +357,9 @@ export function setWeaponClipAmmo(
  * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
  * quicker the Element/Weapon|custom weapon will shoot.
  * @return returns true on success, false otherwise.
+ * @noSelf
  */
-export function setWeaponFiringRate(
+export declare function setWeaponFiringRate(
     theWeapon: Weapon,
     firingRate: number
 ): boolean;
@@ -370,8 +389,9 @@ export function setWeaponFiringRate(
  * @param shoot_if_blocked : if enabled, the weapon will still fire its target even if its blocked by something.
  * @param enable : whether to enable or disable the specified flag.
  * @return returns true if all arguments are valid and the flags where changed; false otherwise.
+ * @noSelf
  */
-export function setWeaponFlags(
+export declare function setWeaponFlags(
     theWeapon: Weapon,
     theFlag: string,
     enable: boolean
@@ -387,8 +407,9 @@ export function setWeaponFlags(
  * set) according to its assigned firing rate.
  * @param ready : makes the weapon stop reloading or firing.
  * @return returns true on success, false otherwise.
+ * @noSelf
  */
-export function setWeaponState(
+export declare function setWeaponState(
     theWeapon: Weapon,
     theState: string
 ): boolean;
@@ -439,8 +460,9 @@ export function setWeaponState(
  * @return returns true on success, false otherwise.
  * returns true on success, false otherwise.
  * returns true on success, false otherwise.
+ * @noSelf
  */
-export function setWeaponTarget(
+export declare function setWeaponTarget(
     theWeapon: Weapon,
     theTarget: Element,
     theComponent?: number

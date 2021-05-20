@@ -66,8 +66,9 @@ import {
  * specified.
  * @return returns a projectile element if projectile creation was successful. returns false if
  * unable to create a projectile (wrong weapon id or projectiles limit was reached).
+ * @noSelf
  */
-export function createProjectile(
+export declare function createProjectile(
     creator: Element,
     weaponType: number,
     posX?: number,
@@ -87,8 +88,9 @@ export function createProjectile(
 /**
  * This function can be used to detonate a players satchels.
  * @see {@link https://wiki.multitheftauto.com/wiki/DetonateSatchels Wiki, detonateSatchels }
+ * @noSelf
  */
-export function detonateSatchels(): boolean;
+export declare function detonateSatchels(): boolean;
 
 /**
  * Get the time left before a projectile detonates.
@@ -100,8 +102,9 @@ export function detonateSatchels(): boolean;
  * * teargas may be a duration timer
  * * both types of rockets will explode when it hits 0
  * * satchels restarts so i do not think it does anything
+ * @noSelf
  */
-export function getProjectileCounter(
+export declare function getProjectileCounter(
     projectile: Projectile
 ): number;
 
@@ -110,8 +113,9 @@ export function getProjectileCounter(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCreator Wiki, getProjectileCreator }
  * @param theProjectile The projectiles| projectile element which creator you want to retrieve.
  * @return returns the element which created the projectile if successful, false otherwise.
+ * @noSelf
  */
-export function getProjectileCreator(
+export declare function getProjectileCreator(
     theProjectile: Projectile
 ): Element;
 
@@ -120,8 +124,9 @@ export function getProjectileCreator(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileForce Wiki, getProjectileForce }
  * @param theProjectile The projectiles| projectile element which force you want to retrieve.
  * @return returns a float if successful, false otherwise.
+ * @noSelf
  */
-export function getProjectileForce(
+export declare function getProjectileForce(
     theProjectile: Projectile
 ): number;
 
@@ -131,8 +136,9 @@ export function getProjectileForce(
  * @param theProjectile The projectiles| projectile element which target you want to retrieve.
  * @return returns the element which is the projectiles target if the projectile is valid and can
  * have a target (like a heat-seeking rocket), false otherwise.
+ * @noSelf
  */
-export function getProjectileTarget(
+export declare function getProjectileTarget(
     theProjectile: Projectile
 ): Element;
 
@@ -142,8 +148,9 @@ export function getProjectileTarget(
  * @param theProjectile The Element/Projectile|projectile element which type you want to retrieve.
  * @return returns an integer over the type of the projectile or false if invalid arguments were
  * passed.
+ * @noSelf
  */
-export function getProjectileType(
+export declare function getProjectileType(
     theProjectile: Projectile
 ): number;
 
@@ -158,8 +165,9 @@ export function getProjectileType(
  * @param projectile The projectile to edit the timer of.
  * @param timeToDetonate The time in milliseconds to detonation.
  * @return returns true on success, false otherwise.
+ * @noSelf
  */
-export function setProjectileCounter(
+export declare function setProjectileCounter(
     projectile: Projectile,
     timeToDetonate: number
 ): boolean;

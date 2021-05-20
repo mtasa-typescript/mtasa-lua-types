@@ -53,8 +53,9 @@ import {
  * @param theTeam The team you wish to retrieve the player count of.
  * @return returns an integer containing the number of players in the team, false if it could not be
  * retrieved.
+ * @noSelf
  */
-export function countPlayersInTeam(
+export declare function countPlayersInTeam(
     theTeam: Team
 ): number;
 
@@ -64,8 +65,9 @@ export function countPlayersInTeam(
  * @param theTeam The team you wish to retrieve all the players from.
  * @return returns a table of all the players in the team, or an empty one if there are none else
  * false if invalid arguments are passed.
+ * @noSelf
  */
-export function getPlayersInTeam(
+export declare function getPlayersInTeam(
     theTeam: Team
 ): LuaTable;
 
@@ -75,8 +77,9 @@ export function getPlayersInTeam(
  * @param thePlayer : The player whose team you want to find out.
  * @return returns a team element representing the team the player is on, false if the player is not
  * part of a team.
+ * @noSelf
  */
-export function getPlayerTeam(
+export declare function getPlayerTeam(
     thePlayer: Player
 ): Team;
 
@@ -86,8 +89,9 @@ export function getPlayerTeam(
  * @param theTeam The team you want to get the color of.
  * @return returns 3 integers representing the red, green, and blue color components of the team if
  * its valid, false otherwise.
+ * @noSelf
  */
-export function getTeamColor(
+export declare function getTeamColor(
     theTeam: Team
 ): LuaMultiReturn<[
     number,
@@ -101,8 +105,9 @@ export function getTeamColor(
  * @param theTeam The team object that will be checked
  * @return returns true if friendly fire is on for the specified team, false if it is turned off or
  * if invalid arguments are specified.
+ * @noSelf
  */
-export function getTeamFriendlyFire(
+export declare function getTeamFriendlyFire(
     theTeam: Team
 ): boolean;
 
@@ -111,8 +116,9 @@ export function getTeamFriendlyFire(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
  * @param teamName A string determining the name of the team you wish to find.
  * @return returns the team element if it was found, false otherwise.
+ * @noSelf
  */
-export function getTeamFromName(
+export declare function getTeamFromName(
     teamName: string
 ): Team;
 
@@ -122,7 +128,8 @@ export function getTeamFromName(
  * @param theTeam The team you want to retrieve the name of.
  * @return returns a string representing the teams name if the team object was valid, false
  * otherwise.
+ * @noSelf
  */
-export function getTeamName(
+export declare function getTeamName(
     theTeam: Team
 ): string;

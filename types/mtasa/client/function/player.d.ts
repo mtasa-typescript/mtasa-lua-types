@@ -51,8 +51,9 @@ import {
  * This function is used to forcefully show a players radar map.
  * @see {@link https://wiki.multitheftauto.com/wiki/ForcePlayerMap Wiki, forcePlayerMap }
  * @param forceOn : A boolean value representing whether or not the players radar map will be forced on
+ * @noSelf
  */
-export function forcePlayerMap(
+export declare function forcePlayerMap(
     forceOn: boolean
 ): boolean;
 
@@ -61,15 +62,17 @@ export function forcePlayerMap(
  * You can use the predefined variable localPlayer instead of typing getLocalPlayer()
  * @see {@link https://wiki.multitheftauto.com/wiki/GetLocalPlayer Wiki, getLocalPlayer }
  * @return returns the local player element.
+ * @noSelf
  */
-export function getLocalPlayer(): Player;
+export declare function getLocalPlayer(): Player;
 
 /**
  * This function allows you to check the current blur level of a specified player.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerBlurLevel Wiki, getPlayerBlurLevel }
  * @return returns the local blur level.
+ * @noSelf
  */
-export function getPlayerBlurLevel(): number;
+export declare function getPlayerBlurLevel(): number;
 
 /**
  * This function returns a player element for the player with the name passed to the
@@ -78,8 +81,9 @@ export function getPlayerBlurLevel(): number;
  * @param playerName : A string containing the name of the player you want to reference
  * @return returns a player element for the player with the nickname provided. if there is no player
  * with that name, false is returned.
+ * @noSelf
  */
-export function getPlayerFromName(
+export declare function getPlayerFromName(
     playerName: string
 ): Player;
 
@@ -94,8 +98,9 @@ export function getPlayerFromName(
  * world map).
  * ** negative values may be returned if these coordinates are off screen.
  * * if the map is not showing, a false boolean value is returned.
+ * @noSelf
  */
-export function getPlayerMapBoundingBox(): LuaMultiReturn<[
+export declare function getPlayerMapBoundingBox(): LuaMultiReturn<[
     number,
     number,
     number,
@@ -106,8 +111,9 @@ export function getPlayerMapBoundingBox(): LuaMultiReturn<[
  * Returns the amount of money a player currently has.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerMoney Wiki, getPlayerMoney }
  * @return returns an integer with the amount of money the local player has.
+ * @noSelf
  */
-export function getPlayerMoney(): number;
+export declare function getPlayerMoney(): number;
 
 /**
  * This function returns a string containing the name of the specified player.
@@ -115,8 +121,9 @@ export function getPlayerMoney(): number;
  * @param thePlayer the player you want to get the name of
  * @return returns a string containing the requested players name, or false if the player passed to
  * the function is invalid.
+ * @noSelf
  */
-export function getPlayerName(
+export declare function getPlayerName(
     thePlayer: Player
 ): string;
 
@@ -126,8 +133,9 @@ export function getPlayerName(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagColor Wiki, getPlayerNametagColor }
  * @param thePlayer The player whose name tag RGB color values you wish to retrieve.
  * @return returns red, green and blue values if an existent player was specified, false otherwise.
+ * @noSelf
  */
-export function getPlayerNametagColor(
+export declare function getPlayerNametagColor(
     thePlayer: Player
 ): LuaMultiReturn<[
     number,
@@ -140,8 +148,9 @@ export function getPlayerNametagColor(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagText Wiki, getPlayerNametagText }
  * @param thePlayer The person whose name tag you want to retrieve
  * @return returns a string with the nametag text, false if the player is invalid.
+ * @noSelf
  */
-export function getPlayerNametagText(
+export declare function getPlayerNametagText(
     thePlayer: Player
 ): string;
 
@@ -152,8 +161,9 @@ export function getPlayerNametagText(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerPing Wiki, getPlayerPing }
  * @param thePlayer : The player whose ping you want to determine.
  * @return returns the ping as an int, or false if the player is invalid.
+ * @noSelf
  */
-export function getPlayerPing(
+export declare function getPlayerPing(
     thePlayer: Player
 ): number;
 
@@ -161,16 +171,18 @@ export function getPlayerPing(
  * This function gets a players current wanted level. The wanted level is indicated by the
  * amount of stars a player has on the GTA HUD.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerWantedLevel Wiki, getPlayerWantedLevel }
+ * @noSelf
  */
-export function getPlayerWantedLevel(): number;
+export declare function getPlayerWantedLevel(): number;
 
 /**
  * This function adds money to a players current money amount.  To set absolute values,
  * setPlayerMoney can be used.<br>
  * @see {@link https://wiki.multitheftauto.com/wiki/GivePlayerMoney Wiki, givePlayerMoney }
  * @param amount a positive integer number specifying the amount of money to give to the player.
+ * @noSelf
  */
-export function givePlayerMoney(
+export declare function givePlayerMoney(
     amount: number
 ): boolean;
 
@@ -192,8 +204,9 @@ export function givePlayerMoney(
  * @param wanted The display showing the players wanted level
  * @param crosshair The weapon crosshair and sniper scope
  * @return returns true if the component is visable, false if not.
+ * @noSelf
  */
-export function isPlayerHudComponentVisible(
+export declare function isPlayerHudComponentVisible(
     component: string
 ): boolean;
 
@@ -201,23 +214,26 @@ export function isPlayerHudComponentVisible(
  * This function checks if the specified players radar map has been forced on or not.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMapForced Wiki, isPlayerMapForced }
  * @return returns true if the local players radar map is forced on, false otherwise.
+ * @noSelf
  */
-export function isPlayerMapForced(): boolean;
+export declare function isPlayerMapForced(): boolean;
 
 /**
  * This function checks if the local player has their map showing.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMapVisible Wiki, isPlayerMapVisible }
  * @return returns true if the player has the map visible, false otherwise.
+ * @noSelf
  */
-export function isPlayerMapVisible(): boolean;
+export declare function isPlayerMapVisible(): boolean;
 
 /**
  * This function will allow you to determine if a players name tag is currently showing.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerNametagShowing Wiki, isPlayerNametagShowing }
  * @param thePlayer The player whose current name tag condition you want to check
  * @return returns true if the players name tag is being shown, false otherwise.
+ * @noSelf
  */
-export function isPlayerNametagShowing(
+export declare function isPlayerNametagShowing(
     thePlayer: Player
 ): boolean;
 
@@ -227,15 +243,17 @@ export function isPlayerNametagShowing(
  * enabled.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsVoiceEnabled Wiki, isVoiceEnabled }
  * @return returns true if the voice is enabled on the server, false otherwise.
+ * @noSelf
  */
-export function isVoiceEnabled(): boolean;
+export declare function isVoiceEnabled(): boolean;
 
 /**
  * Sets the motion blur level on the clients screen. Accepts a value between 0 and 255.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerBlurLevel Wiki, setPlayerBlurLevel }
  * @param level The level to set the blur to (default: 36)
+ * @noSelf
  */
-export function setPlayerBlurLevel(
+export declare function setPlayerBlurLevel(
     level: number
 ): boolean;
 
@@ -258,8 +276,9 @@ export function setPlayerBlurLevel(
  * @param wanted The display showing the players wanted level
  * @param crosshair The weapon crosshair and sniper scope
  * @param show Specify if the component should be shown (true) or hidden (false)
+ * @noSelf
  */
-export function setPlayerHudComponentVisible(
+export declare function setPlayerHudComponentVisible(
     component: string,
     show: boolean
 ): boolean;
@@ -272,8 +291,9 @@ export function setPlayerHudComponentVisible(
  * @param amount A whole integer specifying the new amount of money the local player will have.
  * @param instant If set to true money will be set instantly without counting up/down like in
  * singleplayer.}}
+ * @noSelf
  */
-export function setPlayerMoney(
+export declare function setPlayerMoney(
     amount: number,
     instant?: boolean
 ): boolean;
@@ -288,8 +308,9 @@ export function setPlayerMoney(
  * @param false If false is specified instead of the colors, the nametag color will reset to defaulting
  * to your team color.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function setPlayerNametagColor(
+export declare function setPlayerNametagColor(
     thePlayer: Player,
     r: number,
     g: number,
@@ -302,8 +323,9 @@ export function setPlayerNametagColor(
  * @param thePlayer Define the player whos tag visiblity status you want to change
  * @param showing Use true or false to show/hide the tag
  * @return returns true if successful, false otherwise
+ * @noSelf
  */
-export function setPlayerNametagShowing(
+export declare function setPlayerNametagShowing(
     thePlayer: Player,
     showing: boolean
 ): boolean;
@@ -317,8 +339,9 @@ export function setPlayerNametagShowing(
  * @param thePlayer The player whose nickname text you wish to change
  * @param text The new nickname text that will be displayed
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPlayerNametagText(
+export declare function setPlayerNametagText(
     thePlayer: Player,
     text: string
 ): boolean;
@@ -327,7 +350,8 @@ export function setPlayerNametagText(
  * This function subtracts money from a players current money amount.
  * @see {@link https://wiki.multitheftauto.com/wiki/TakePlayerMoney Wiki, takePlayerMoney }
  * @param amount an integer number specifying the amount of money to take from the player.
+ * @noSelf
  */
-export function takePlayerMoney(
+export declare function takePlayerMoney(
     amount: number
 ): boolean;

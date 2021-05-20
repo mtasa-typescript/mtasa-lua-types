@@ -71,8 +71,9 @@ import {
  * @param appendLayers allows two or more layered shaders to be applied in the same texture. You may want to
  * modify the DepthBias in the technique pass to avoid Z-fighting artifacts when using this.
  * @return returns true if the shader was successfully applied, false otherwise.
+ * @noSelf
  */
-export function engineApplyShaderToWorldTexture(
+export declare function engineApplyShaderToWorldTexture(
     shader: Element,
     textureName: string,
     targetElement?: Element,
@@ -83,8 +84,9 @@ export function engineApplyShaderToWorldTexture(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineFreeModel Wiki, engineFreeModel }
  * @param modelID : the model ID you want to have un-assigned.
  * @return returns true if the model was successfully freed, false otherwise.
+ * @noSelf
  */
-export function engineFreeModel(
+export declare function engineFreeModel(
     modelID: number
 ): boolean;
 
@@ -94,8 +96,9 @@ export function engineFreeModel(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
  * @param modelName The model name of the object
  * @return returns an int with the id of the object model, false otherwise.
+ * @noSelf
  */
-export function engineGetModelIDFromName(
+export declare function engineGetModelIDFromName(
     modelName: string
 ): number;
 
@@ -105,8 +108,9 @@ export function engineGetModelIDFromName(
  * @param model The model / object ID number you want to get the LOD distance of.
  * @return returns a float representing the lod distance of the model, or false if the model
  * argument is incorrect.
+ * @noSelf
  */
-export function engineGetModelLODDistance(
+export declare function engineGetModelLODDistance(
     model: number
 ): number;
 
@@ -116,8 +120,9 @@ export function engineGetModelLODDistance(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID Wiki, engineGetModelNameFromID }
  * @param modelID The model ID of the object
  * @return returns a string with the name of the object model, false otherwise.
+ * @noSelf
  */
-export function engineGetModelNameFromID(
+export declare function engineGetModelNameFromID(
     modelID: number
 ): string;
 
@@ -127,8 +132,9 @@ export function engineGetModelNameFromID(
  * @return returns id of physical properties group that requested model uses, in range of 0-160, if
  * the object doesnt have a group assigned, -1 is returned. if passed arguments were wrong,
  * error is triggered.
+ * @noSelf
  */
-export function engineGetModelPhysicalPropertiesGroup(
+export declare function engineGetModelPhysicalPropertiesGroup(
     modelID: number
 ): number;
 
@@ -138,8 +144,9 @@ export function engineGetModelPhysicalPropertiesGroup(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
  * @param modelId You can either use the model id or the model name.
  * @return returns a table if this function succeeds, false if it fails for some reason.
+ * @noSelf
  */
-export function engineGetModelTextureNames(
+export declare function engineGetModelTextureNames(
     modelId: string
 ): LuaTable;
 
@@ -149,8 +156,9 @@ export function engineGetModelTextureNames(
  * @param textureNames : Only return textures with specified name(s). You can provide a single string or a table
  * of strings. Wildcard matching e.g. ro?ds* can be used.
  * @return returns a table of texture elements texturename, texture, false otherwise.
+ * @noSelf
  */
-export function engineGetModelTextures(
+export declare function engineGetModelTextures(
     modelName_modelID: string | number,
     textureNames?: string | LuaTable
 ): LuaTable;
@@ -159,8 +167,9 @@ export function engineGetModelTextures(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelVisibleTime Wiki, engineGetModelVisibleTime }
  * @param modelID : ID of the model
  * @return returns timeon, timeoff
+ * @noSelf
  */
-export function engineGetModelVisibleTime(
+export declare function engineGetModelVisibleTime(
     modelID: number
 ): LuaMultiReturn<[
     number,
@@ -173,8 +182,9 @@ export function engineGetModelVisibleTime(
  * @param objectgroup-modifiable : the property which you wish to get, as per table below.
  * @return returns the value contained in given property if everything went well, error is raised
  * otherwise.
+ * @noSelf
  */
-export function engineGetObjectGroupPhysicalProperty(
+export declare function engineGetObjectGroupPhysicalProperty(
     groupID: number,
     property: string
 ): unknown;
@@ -184,8 +194,9 @@ export function engineGetObjectGroupPhysicalProperty(
  * @param surfaceID Material IDs|Material ID from 0 to 178
  * @param property Property name
  * @return returns the current property value. see the table below for possible values.
+ * @noSelf
  */
-export function engineGetSurfaceProperties(
+export declare function engineGetSurfaceProperties(
     surfaceID: number,
     property: string
 ): any;
@@ -197,8 +208,9 @@ export function engineGetSurfaceProperties(
  * @param nameFilter Only include textures that match the wildcard string.
  * @param modelId Only include textures that are used by the model id (or model name)
  * @return returns a table of texture names.
+ * @noSelf
  */
-export function engineGetVisibleTextureNames(
+export declare function engineGetVisibleTextureNames(
     nameFilter?: string,
     modelId?: string
 ): LuaTable;
@@ -217,8 +229,9 @@ export function engineGetVisibleTextureNames(
  * @param texture The TXD that was loaded with engineLoadTXD
  * @param model_id The model id to import the TXD into
  * @return returns true if the function executed succesfully, false otherwise.
+ * @noSelf
  */
-export function engineImportTXD(
+export declare function engineImportTXD(
     texture: EngineTXD,
     model_id: number
 ): boolean;
@@ -234,8 +247,9 @@ export function engineImportTXD(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadCOL Wiki, engineLoadCOL }
  * @param col_file / raw_data The filepath to the COL file you want to load or whole data buffer of the COL file.
  * @return returns a col if the file was loaded, false otherwise.
+ * @noSelf
  */
-export function engineLoadCOL(
+export declare function engineLoadCOL(
     col_file: string | string
 ): EngineCOL;
 
@@ -252,8 +266,9 @@ export function engineLoadCOL(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadDFF Wiki, engineLoadDFF }
  * @param dff_file / raw_data The filepath to the DFF file you want to load or whole data buffer of the DFF file.
  * @return returns a dff element if the dff file loaded, false otherwise.
+ * @noSelf
  */
-export function engineLoadDFF(
+export declare function engineLoadDFF(
     dff_file: string | string
 ): EngineDFF;
 
@@ -273,8 +288,9 @@ export function engineLoadDFF(
  * @param custom_block_name the new block name for the IFP file. You cannot use the GTA default Animations|internal
  * block names. You should namespace this name using a string like resource.blockname
  * @return returns an ifp element if the ifp file loaded, false otherwise.
+ * @noSelf
  */
-export function engineLoadIFP(
+export declare function engineLoadIFP(
     ifp_file: string | string,
     custom_block_name: string
 ): EngineIFP;
@@ -288,8 +304,9 @@ export function engineLoadIFP(
  * @param txd_file / raw_data The filepath to the TXD file you want to load or whole data buffer of the TXD file.
  * @param filteringEnabled Whether to enable texture filtering.
  * @return returns a txd if the file was loaded, false otherwise.
+ * @noSelf
  */
-export function engineLoadTXD(
+export declare function engineLoadTXD(
     txd_file: string | string,
     filteringEnabled?: boolean
 ): EngineTXD;
@@ -303,8 +320,9 @@ export function engineLoadTXD(
  * @param targetElement The element to remove the shader from. It should be the same element as used with
  * engineApplyShaderToWorldTexture when the shader was initially applied.
  * @return returns true if the shader was successfully removed, false otherwise.
+ * @noSelf
  */
-export function engineRemoveShaderFromWorldTexture(
+export declare function engineRemoveShaderFromWorldTexture(
     shader: Element,
     textureName: string,
     targetElement?: Element
@@ -333,8 +351,9 @@ export function engineRemoveShaderFromWorldTexture(
  * EngineLoadIFP|engineLoadIFP as second parameter.
  * @param CustomAnimName the custom animation name inside the loaded IFP file with CustomBlockName.
  * @return returns true on success, false in case of failure.
+ * @noSelf
  */
-export function engineReplaceAnimation(
+export declare function engineReplaceAnimation(
     thePed: Ped,
     InternalBlockName: string,
     InternalAnimName: string,
@@ -350,8 +369,9 @@ export function engineReplaceAnimation(
  * @param modelID The model ID whose collision file you want to replace
  * @return returns true if the collision was successfully replaced, false or nil if the collision
  * could not be replaced for a reason.
+ * @noSelf
  */
-export function engineReplaceCOL(
+export declare function engineReplaceCOL(
     theCol: EngineCOL,
     modelID: number
 ): boolean;
@@ -373,8 +393,9 @@ export function engineReplaceCOL(
  * performance, so only set when required)
  * @return returns true if the model was successfully replaced, false if it failed for some reason,
  * ie. the dff or the model id is not valid.
+ * @noSelf
  */
-export function engineReplaceModel(
+export declare function engineReplaceModel(
     theModel: EngineDFF,
     modelID: number,
     alphaTransparency?: boolean
@@ -390,8 +411,9 @@ export function engineReplaceModel(
  * multiple runs of resources. there is no guarantee for the order of the numbers or that
  * the same numbers will always correspond to the same element type. any patterns are
  * coincidental
+ * @noSelf
  */
-export function engineRequestModel(
+export declare function engineRequestModel(
     elementType: string,
     parentID?: number
 ): number;
@@ -401,8 +423,9 @@ export function engineRequestModel(
  * @param model The model / object ID number you want to reset the LOD distance of.
  * @return returns true if the lod distance was reset to default, or false if the model argument is
  * incorrect, or the lod distance hasnt been changed.
+ * @noSelf
  */
-export function engineResetModelLODDistance(
+export declare function engineResetModelLODDistance(
     model: number
 ): boolean;
 
@@ -410,8 +433,9 @@ export function engineResetModelLODDistance(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetSurfaceProperties Wiki, engineResetSurfaceProperties }
  * @param surfaceID Material IDs|Material ID from 0 to 178
  * @return returns true if the function executed succesfully, false otherwise.
+ * @noSelf
  */
-export function engineResetSurfaceProperties(
+export declare function engineResetSurfaceProperties(
     surfaceID?: number
 ): any;
 
@@ -430,8 +454,9 @@ export function engineResetSurfaceProperties(
  * @param InternalBlockName the Animations|internal block name.
  * @param InternalAnimName the Animations|internal animation name inside InternalBlockName.
  * @return returns true on success, false in case of failure.
+ * @noSelf
  */
-export function engineRestoreAnimation(
+export declare function engineRestoreAnimation(
     thePed: Ped,
     InternalBlockName?: string,
     InternalAnimName?: string
@@ -443,8 +468,9 @@ export function engineRestoreAnimation(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreCOL Wiki, engineRestoreCOL }
  * @param modelID The ID of the model to restore the model of
  * @return returns true if this function succeeds, false or nil if it fails for some reason.
+ * @noSelf
  */
-export function engineRestoreCOL(
+export declare function engineRestoreCOL(
     modelID: number
 ): boolean;
 
@@ -455,8 +481,9 @@ export function engineRestoreCOL(
  * @param modelID The model ID to restore the visuals of
  * @return returns true if the model was successfully restored, false or nil if it failed for some
  * reason.
+ * @noSelf
  */
-export function engineRestoreModel(
+export declare function engineRestoreModel(
     modelID: number
 ): boolean;
 
@@ -464,8 +491,9 @@ export function engineRestoreModel(
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreModelPhysicalPropertiesGroup Wiki, engineRestoreModelPhysicalPropertiesGroup }
  * @param modelID : the id of model which you wish to restore original physical properties group of.
  * @return returns true if there were no issues, if passed arguments were invalid an error is raised.
+ * @noSelf
  */
-export function engineRestoreModelPhysicalPropertiesGroup(
+export declare function engineRestoreModelPhysicalPropertiesGroup(
     modelID: number
 ): boolean;
 
@@ -474,8 +502,9 @@ export function engineRestoreModelPhysicalPropertiesGroup(
  * @param groupID : the id of physical properties group which you wish to restore a property of.
  * @param objectgroup-modifiable : the property which you wish to restore, as per table below.
  * @return returns true if everything went well, error is raised otherwise.
+ * @noSelf
  */
-export function engineRestoreObjectGroupPhysicalProperties(
+export declare function engineRestoreObjectGroupPhysicalProperties(
     groupID: number,
     property: string
 ): boolean;
@@ -483,8 +512,9 @@ export function engineRestoreObjectGroupPhysicalProperties(
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestreamWorld Wiki, engineRestreamWorld }
  * @return returns true if the world was restreamed successfully, false otherwise.
+ * @noSelf
  */
-export function engineRestreamWorld(): boolean;
+export declare function engineRestreamWorld(): boolean;
 
 /**
  * This function enables or disables asynchronous model loading. Enabling asynchronous model
@@ -496,8 +526,9 @@ export function engineRestreamWorld(): boolean;
  * preferences has Asynchronous Loading set to Auto.
  * @param force If set to true, ignores the clients preferences.
  * @return returns true if the function executed successfully, false otherwise.
+ * @noSelf
  */
-export function engineSetAsynchronousLoading(
+export declare function engineSetAsynchronousLoading(
     enable: boolean,
     force: boolean
 ): boolean;
@@ -533,8 +564,9 @@ export function engineSetAsynchronousLoading(
  * @param model The model / object ID number you want to change the LOD distance of.
  * @param distance New LOD distance value in San Andreas units.
  * @return returns true if the function executed succesfully, false otherwise.
+ * @noSelf
  */
-export function engineSetModelLODDistance(
+export declare function engineSetModelLODDistance(
     model: number,
     distance: number
 ): boolean;
@@ -544,8 +576,9 @@ export function engineSetModelLODDistance(
  * @param modelID : the id of model which you wish to set physical properties group of.
  * @param groupID : the id of new physical properties group to be used by given model.
  * @return returns true if there were no issues with group change, otherwise an error is raised
+ * @noSelf
  */
-export function engineSetModelPhysicalPropertiesGroup(
+export declare function engineSetModelPhysicalPropertiesGroup(
     modelID: number,
     groupID: number
 ): boolean;
@@ -556,8 +589,9 @@ export function engineSetModelPhysicalPropertiesGroup(
  * @param timeOn : value between 0 and 24 that states when the model should appear
  * @param timeOff : value between 0 and 24 that states when the model should disappear
  * @return returns true if the change was successful, false otherwise.
+ * @noSelf
  */
-export function engineSetModelVisibleTime(
+export declare function engineSetModelVisibleTime(
     modelID: number,
     timeOn: number,
     timeOff: number
@@ -569,8 +603,9 @@ export function engineSetModelVisibleTime(
  * @param objectgroup-modifiable : the property which you wish to set, as per table below.
  * @param newValue : new value of the property, with proper type as specified in table below
  * @return returns true if everything went well, error is raised otherwise.
+ * @noSelf
  */
-export function engineSetObjectGroupPhysicalProperty(
+export declare function engineSetObjectGroupPhysicalProperty(
     groupID: number,
     property: string,
     newValue: unknown
@@ -582,8 +617,9 @@ export function engineSetObjectGroupPhysicalProperty(
  * @param property Property name
  * @param value New value from table below
  * @return returns true if the function executed succesfully, false otherwise.
+ * @noSelf
  */
-export function engineSetSurfaceProperties(
+export declare function engineSetSurfaceProperties(
     surfaceID: number,
     property: string,
     value: any

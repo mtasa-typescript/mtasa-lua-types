@@ -39,8 +39,9 @@ import {
  * @param z a float value that specifies the Z world coordinate where the explosion is created at.
  * @param theType an integer specifying the explosion type. Valid types are:
  * @param creator the explosions simulated creator, the player responsible for it.
+ * @noSelf
  */
-export function createExplosion(
+export declare function createExplosion(
     x: number,
     y: number,
     z: number,

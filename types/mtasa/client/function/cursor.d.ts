@@ -51,8 +51,9 @@ import {
  * This function is used to get alpha (transparency) from the clients cursor.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCursorAlpha Wiki, getCursorAlpha }
  * @return returns a int, 0-255, where 255 is fully opaque and 0 is fully transparent.
+ * @noSelf
  */
-export function getCursorAlpha(): number;
+export declare function getCursorAlpha(): number;
 
 /**
  * This function gets the current position of the mouse cursor. Note that for performance
@@ -65,8 +66,9 @@ export function getCursorAlpha(): number;
  * screen) to 1 (right side), cursory goes from 0 (top) to 1 (bottom). the 3 values that
  * follow are the 3d world map coordinates that the cursor points at. if the cursor isnt
  * showing, returns false as the first value.
+ * @noSelf
  */
-export function getCursorPosition(): LuaMultiReturn<[
+export declare function getCursorPosition(): LuaMultiReturn<[
     number,
     number,
     number,
@@ -78,8 +80,9 @@ export function getCursorPosition(): LuaMultiReturn<[
  * This function is used to determine whether or not a players cursor is showing.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsCursorShowing Wiki, isCursorShowing }
  * @return returns true if the players cursor is showing, false if it isnt.
+ * @noSelf
  */
-export function isCursorShowing(): boolean;
+export declare function isCursorShowing(): boolean;
 
 /**
  * This function is used to change alpha (transparency) from the clients cursor.
@@ -87,8 +90,9 @@ export function isCursorShowing(): boolean;
  * @param alpha : The alpha value to set. Value can be 0-255, where 255 is fully opaque and 0 is fully
  * transparent.
  * @return returns true if the new alpha value was set, or false otherwise.
+ * @noSelf
  */
-export function setCursorAlpha(
+export declare function setCursorAlpha(
     alpha: number
 ): boolean;
 
@@ -98,8 +102,9 @@ export function setCursorAlpha(
  * @param cursorX Position over the X axis
  * @param cursorY Position over the Y axis
  * @return returns true if the position has been successfully set, false otherwise.
+ * @noSelf
  */
-export function setCursorPosition(
+export declare function setCursorPosition(
     cursorX: number,
     cursorY: number
 ): boolean;
@@ -110,8 +115,9 @@ export function setCursorPosition(
  * @param show A boolean value determining whether to show (true) or hide (false) the cursor.
  * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.
  * true implies controls are disabled, false implies controls remain enabled.
+ * @noSelf
  */
-export function showCursor(
+export declare function showCursor(
     show: boolean,
     toggleControls?: boolean
 ): boolean;

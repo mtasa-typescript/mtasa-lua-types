@@ -52,8 +52,9 @@ import {
  * @see {@link https://wiki.multitheftauto.com/wiki/FileClose Wiki, fileClose }
  * @param theFile The file handle to close.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function fileClose(
+export declare function fileClose(
     theFile: File
 ): boolean;
 
@@ -65,8 +66,9 @@ export function fileClose(
  * @param copyToFilePath : Where to copy the specified file to.
  * @param overwrite : If set to true it will overwrite a file that already exists at copyToFilePath.
  * @return return true if the file was copied, else false if the filepath doesnt exist.
+ * @noSelf
  */
-export function fileCopy(
+export declare function fileCopy(
     filePath: string,
     copyToFilePath: string,
     overwrite?: boolean
@@ -86,8 +88,9 @@ export function fileCopy(
  * ''fileCreate("myfile.txt")''.
  * @return if successful, returns a file handle which can be used with other file functions
  * (filewrite, fileclose...). returns false if an error occured.
+ * @noSelf
  */
-export function fileCreate(
+export declare function fileCreate(
     filePath: string
 ): File;
 
@@ -103,8 +106,9 @@ export function fileCreate(
  * ''fileDelete("myFile.txt")''.
  * @return returns true if successful, false otherwise (for example if there exists no file with the
  * given name, or it does exist but is in use).
+ * @noSelf
  */
-export function fileDelete(
+export declare function fileDelete(
     filePath: string
 ): boolean;
 
@@ -121,8 +125,9 @@ export function fileDelete(
  * the file path is necessary, e.g. ''fileExists("myfile.txt")''. Note that you must use
  * forward slashes '/' for the folders, backslashes '' will return false.
  * @return returns true if the file exists, false otherwise.
+ * @noSelf
  */
-export function fileExists(
+export declare function fileExists(
     filePath: string
 ): boolean;
 
@@ -136,8 +141,9 @@ export function fileExists(
  * @see {@link https://wiki.multitheftauto.com/wiki/FileFlush Wiki, fileFlush }
  * @param theFile The file handle of the file you wish to flush.
  * @return returns true if succeeded, false in case of failure (e.g. the file handle is invalid).
+ * @noSelf
  */
-export function fileFlush(
+export declare function fileFlush(
     theFile: File
 ): boolean;
 
@@ -146,8 +152,9 @@ export function fileFlush(
  * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPath Wiki, fileGetPath }
  * @param theFile The file you want to get the path.
  * @return returns a string representing the file path, false if invalid file was provided.
+ * @noSelf
  */
-export function fileGetPath(
+export declare function fileGetPath(
     theFile: File
 ): string;
 
@@ -157,8 +164,9 @@ export function fileGetPath(
  * @param theFile the file handle you wish to get the position of.
  * @return returns the file position if successful, or false if an error occured (e.g. an invalid
  * handle was passed).
+ * @noSelf
  */
-export function fileGetPos(
+export declare function fileGetPos(
     theFile: File
 ): number;
 
@@ -168,8 +176,9 @@ export function fileGetPos(
  * @param theFile the file handle you wish to get the size of.
  * @return returns the file size if successful, or false if an error occured (e.g. an invalid file
  * handle was passed).
+ * @noSelf
  */
-export function fileGetSize(
+export declare function fileGetSize(
     theFile: File
 ): number;
 
@@ -179,8 +188,9 @@ export function fileGetSize(
  * @param theFile A handle to the file you wish to check.
  * @return returns true if the file position of the specified file is at the end of the file, false
  * otherwise.
+ * @noSelf
  */
-export function fileIsEOF(
+export declare function fileIsEOF(
     theFile: File
 ): boolean;
 
@@ -199,8 +209,9 @@ export function fileIsEOF(
  * this parameter if you only need reading access.
  * @return if successful, returns a file handle for the file. otherwise returns false (f.e. if the
  * file doesnt exist).
+ * @noSelf
  */
-export function fileOpen(
+export declare function fileOpen(
     filePath: string,
     readOnly?: boolean
 ): File;
@@ -213,8 +224,9 @@ export function fileOpen(
  * @param count The number of bytes you wish to read.
  * @return returns the bytes that were read in a string. note that this string might not contain as
  * many bytes as you specified if an error occured, i.e. end of file.
+ * @noSelf
  */
-export function fileRead(
+export declare function fileRead(
     theFile: File,
     count: number
 ): string;
@@ -228,8 +240,9 @@ export function fileRead(
  * is necessary.
  * @param newFilePath Destination filepath for the specified source file in the same format.
  * @return if successful, returns true. otherwise returns false.
+ * @noSelf
  */
-export function fileRename(
+export declare function fileRename(
     filePath: string,
     newFilePath: string
 ): boolean;
@@ -243,8 +256,9 @@ export function fileRename(
  * @return returns where the offset was actually set at. i.e. if offset was past the end of the
  * file, it will be set at the end of the file, and this position will be returned. returns
  * false in case of failure (e.g. the specified file handle is invalid).
+ * @noSelf
  */
-export function fileSetPos(
+export declare function fileSetPos(
     theFile: File,
     offset: number
 ): number;
@@ -259,8 +273,9 @@ export function fileSetPos(
  * @param string1 The string to write.
  * @return returns the number of bytes successfully written to the file, returns false if invalid
  * arguments were specified.
+ * @noSelf
  */
-export function fileWrite(
+export declare function fileWrite(
     theFile: File,
     string1: string,
     string2?: string,

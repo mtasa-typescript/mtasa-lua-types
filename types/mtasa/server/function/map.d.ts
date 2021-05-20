@@ -39,8 +39,9 @@ import {
  * @return returns an element object that corresponds to the root of the new data added, i.e. an
  * element that represents the node xmlnode passed to the function. returns false if the
  * arguments are invalid.
+ * @noSelf
  */
-export function loadMapData(
+export declare function loadMapData(
     node: XmlNode,
     parent: Element
 ): Element;
@@ -53,8 +54,9 @@ export function loadMapData(
  * @param thePlayer The specific player you wish to restore the state of.  Not specifying this will result in
  * all players map info being reset.
  * @return returns true if the map info was reset successfully, otherwise false.
+ * @noSelf
  */
-export function resetMapInfo(
+export declare function resetMapInfo(
     thePlayer?: Player
 ): boolean;
 
@@ -66,8 +68,9 @@ export function resetMapInfo(
  * @param baseElement : The first element to output to the XML tree. This element and all its children (and
  * their children, etc) will be output.
  * @param childrenOnly : Defines if you want to only save children of the specified element.
+ * @noSelf
  */
-export function saveMapData(
+export declare function saveMapData(
     node: XmlNode,
     baseElement: Element,
     childrenOnly?: boolean

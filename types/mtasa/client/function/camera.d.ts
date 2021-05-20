@@ -62,8 +62,9 @@ import {
  * fading in.
  * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
  * fading in.
+ * @noSelf
  */
-export function fadeCamera(
+export declare function fadeCamera(
     fadeIn: boolean,
     timeToFade?: number,
     red?: number,
@@ -75,15 +76,17 @@ export function fadeCamera(
  * This function returns an element that corresponds to the game camera
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCamera Wiki, getCamera }
  * @return returns an element that corresponds to the game camera
+ * @noSelf
  */
-export function getCamera(): Element;
+export declare function getCamera(): Element;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraClip Wiki, getCameraClip }
  * @return *objects: if you want the camera to clip on objects.
  * *vehicles: if you want the camera to clip on vehicles.
+ * @noSelf
  */
-export function getCameraClip(): LuaMultiReturn<[
+export declare function getCameraClip(): LuaMultiReturn<[
     boolean,
     boolean
 ]>;
@@ -96,8 +99,9 @@ export function getCameraClip(): LuaMultiReturn<[
  * ** "vehicle_max": the max the field of view can go to when the vehicle is moving at a
  * high speed (must be higher than "vehicle")
  * @return returns one float - the field of view angle
+ * @noSelf
  */
-export function getCameraFieldOfView(
+export declare function getCameraFieldOfView(
     cameraMode: string
 ): number;
 
@@ -105,21 +109,24 @@ export function getCameraFieldOfView(
  * This function returns what goggle effect is currently affecting the camera.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraGoggleEffect Wiki, getCameraGoggleEffect }
  * @return * string indicating the current camera goggle effect. their meanings can be seen below.
+ * @noSelf
  */
-export function getCameraGoggleEffect(): string;
+export declare function getCameraGoggleEffect(): string;
 
 /**
  * Returns the interior of the local camera (independent of the interior of the local
  * player).
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
+ * @noSelf
  */
-export function getCameraInterior(): number;
+export declare function getCameraInterior(): number;
 
 /**
  * This function gets the position of the camera and the position of the point it is facing.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraMatrix Wiki, getCameraMatrix }
+ * @noSelf
  */
-export function getCameraMatrix(): LuaMultiReturn<[
+export declare function getCameraMatrix(): LuaMultiReturn<[
     number,
     number,
     number,
@@ -135,22 +142,25 @@ export function getCameraMatrix(): LuaMultiReturn<[
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraShakeLevel Wiki, getCameraShakeLevel }
  * @return returns an integer representing the camera shake level, from 0 (no shaking effect) to 255
  * (maximum shaking effect). by default, the camera has no shaking effect.
+ * @noSelf
  */
-export function getCameraShakeLevel(): number;
+export declare function getCameraShakeLevel(): number;
 
 /**
  * This function returns an element that corresponds to the current target of the specified
  * players camera (i.e. what it is following).
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraTarget Wiki, getCameraTarget }
+ * @noSelf
  */
-export function getCameraTarget(): Element;
+export declare function getCameraTarget(): Element;
 
 /**
  * This function allows you to get the active camera view modes. This indicates at what
  * distance the camera will follow the player or vehicle.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraViewMode Wiki, getCameraViewMode }
+ * @noSelf
  */
-export function getCameraViewMode(): LuaMultiReturn<[
+export declare function getCameraViewMode(): LuaMultiReturn<[
     number,
     number
 ]>;
@@ -164,8 +174,9 @@ export function getCameraViewMode(): LuaMultiReturn<[
  * @param objects Sets if you want the camera to clip on objects.
  * @param vehicles Sets if you want the camera to clip on vehicles.
  * @return always returns true.
+ * @noSelf
  */
-export function setCameraClip(
+export declare function setCameraClip(
     objects?: boolean,
     vehicles?: boolean
 ): boolean;
@@ -179,8 +190,9 @@ export function setCameraClip(
  * high speed (must be higher than "vehicle")
  * @param fieldOfView The field of view angle, 0 to 179.
  * @return returns true if the arguments are valid, false otherwise.
+ * @noSelf
  */
-export function setCameraFieldOfView(
+export declare function setCameraFieldOfView(
     cameraMode: string,
     fieldOfView: number
 ): boolean;
@@ -193,8 +205,9 @@ export function setCameraFieldOfView(
  * @param noiseEnabled : whether or not there should be a fuzzy noise effect
  * @return * true if the effect was set correctly.
  * * false otherwise.
+ * @noSelf
  */
-export function setCameraGoggleEffect(
+export declare function setCameraGoggleEffect(
     goggleEffect: string,
     noiseEnabled?: boolean
 ): boolean;
@@ -204,8 +217,9 @@ export function setCameraGoggleEffect(
  * local player stays in the interior he was in.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
  * @param interior the interior to place the camera in.
+ * @noSelf
  */
-export function setCameraInterior(
+export declare function setCameraInterior(
     interior: number
 ): boolean;
 
@@ -226,8 +240,9 @@ export function setCameraInterior(
  * 180 means the camera is upside down.
  * @param fov the field of view angle, 0.01 to 180. The higher this value is, the more you will be able
  * to see what is to your sides.
+ * @noSelf
  */
-export function setCameraMatrix(
+export declare function setCameraMatrix(
     positionX: number,
     positionY: number,
     positionZ: number,
@@ -245,8 +260,9 @@ export function setCameraMatrix(
  * @param shakeLevel : an integer between 0 and 255, which represents the camera shake intensity level.
  * @return returns true if the camera shake level was changed, false if the required argument is
  * incorrect or missing.
+ * @noSelf
  */
-export function setCameraShakeLevel(
+export declare function setCameraShakeLevel(
     shakeLevel: number
 ): boolean;
 
@@ -256,8 +272,9 @@ export function setCameraShakeLevel(
  * *Players
  * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
  * @param target The player who you want the local camera to follow.
+ * @noSelf
  */
-export function setCameraTarget(
+export declare function setCameraTarget(
     target: Player
 ): boolean;
 
@@ -268,8 +285,9 @@ export function setCameraTarget(
  * @param vehicleCameraMode : The view mode you wish to use when inside vehicles.
  * @param pedCameraMode : The view mode you wish to use when you are not inside vehicles.
  * @return returns true if the view(s) were set correctly, false otherwise.
+ * @noSelf
  */
-export function setCameraViewMode(
+export declare function setCameraViewMode(
     vehicleCameraMode: number,
     pedCameraMode?: number
 ): boolean;

@@ -37,8 +37,9 @@ import {
  * @param aclName The name of the ACL entry to add.
  * @return returns the created acl object if successful. returns false if an acl of the given name
  * could not be created.
+ * @noSelf
  */
-export function aclCreate(
+export declare function aclCreate(
     aclName: string
 ): ACL;
 
@@ -48,8 +49,9 @@ export function aclCreate(
  * @see {@link https://wiki.multitheftauto.com/wiki/AclCreateGroup Wiki, aclCreateGroup }
  * @param groupName The name of the group to create
  * @return returns the pointer to the created aclgroup if successful. returns false if failed.
+ * @noSelf
  */
-export function aclCreateGroup(
+export declare function aclCreateGroup(
     groupName: string
 ): ACLGroup;
 
@@ -59,8 +61,9 @@ export function aclCreateGroup(
  * @param theACL The ACL to destroy
  * @return returns true if successfully destroyed and false if it could not be deleted (ie. its not
  * valid).
+ * @noSelf
  */
-export function aclDestroy(
+export declare function aclDestroy(
     theACL: ACL
 ): boolean;
 
@@ -71,8 +74,9 @@ export function aclDestroy(
  * @param aclGroup The aclgroup element to destroy
  * @return returns true if the acl group was successfully deleted, false if it could not be deleted
  * for some reason (ie. invalid argument).
+ * @noSelf
  */
-export function aclDestroyGroup(
+export declare function aclDestroyGroup(
     aclGroup: ACLGroup
 ): boolean;
 
@@ -83,8 +87,9 @@ export function aclDestroyGroup(
  * @param aclName The name to get the ACL belonging to
  * @return returns the acl with that name if it could be retrieved, false/nil if the acl does not
  * exist or it fails for some other reason.
+ * @noSelf
  */
-export function aclGet(
+export declare function aclGet(
     aclName: string
 ): ACL;
 
@@ -95,8 +100,9 @@ export function aclGet(
  * @param groupName The name to get the ACL group from
  * @return returns the acl group if it could be found. returns false/nil if it did not exist or
  * failed for some reason.
+ * @noSelf
  */
-export function aclGetGroup(
+export declare function aclGetGroup(
     groupName: string
 ): ACLGroup;
 
@@ -106,8 +112,9 @@ export function aclGetGroup(
  * @param theACL The ACL to get the name of
  * @return returns the name of the given acl as a string if successful. returns false/nil if
  * unsuccessful, ie the acl is invalid.
+ * @noSelf
  */
-export function aclGetName(
+export declare function aclGetName(
     theAcl: ACL
 ): string;
 
@@ -120,8 +127,9 @@ export function aclGetName(
  * @return returns true or false if the acl gives access or not to the given function. returns nil
  * if it failed for some reason, e.g. an invalid acl was specified or the right specified
  * does not exist in the acl.
+ * @noSelf
  */
-export function aclGetRight(
+export declare function aclGetRight(
     theAcl: ACL,
     rightName: string
 ): boolean;
@@ -137,8 +145,9 @@ export function aclGetRight(
  * @return returns true if the acl could be successfully added to the acl group, false/nil if either
  * of the elements are invalid, the acl is already in that group or if something else goes
  * wrong.
+ * @noSelf
  */
-export function aclGroupAddACL(
+export declare function aclGroupAddACL(
     theGroup: ACLGroup,
     theACL: ACL
 ): boolean;
@@ -156,8 +165,9 @@ export function aclGroupAddACL(
  * @param theObjectName The object string to add to the given ACL.
  * @return returns true if the object was successfully added to the acl, false if it already existed
  * in the list.
+ * @noSelf
  */
-export function aclGroupAddObject(
+export declare function aclGroupAddObject(
     theGroup: ACLGroup,
     theObjectName: string
 ): boolean;
@@ -168,8 +178,9 @@ export function aclGroupAddObject(
  * @param aclGroup The ACL group to get the name of
  * @return returns the name of the given acl group as a string if successful, otherwise false or nil
  * if the aclgroup is invalid or it fails for some other reason.
+ * @noSelf
  */
-export function aclGroupGetName(
+export declare function aclGroupGetName(
     aclGroup: ACLGroup
 ): string;
 
@@ -178,8 +189,9 @@ export function aclGroupGetName(
  * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupList Wiki, aclGroupList }
  * @return returns a table of all the acl groups if successful, returns an empty table if no acl
  * groups exist. false/nil can be returned if this function fails for some other reason.
+ * @noSelf
  */
-export function aclGroupList(): LuaTable;
+export declare function aclGroupList(): LuaTable;
 
 /**
  * This function returns a table over all the ACLs that exist in a given ACL group.
@@ -187,8 +199,9 @@ export function aclGroupList(): LuaTable;
  * @param theGroup The ACL group to get the ACL elements from
  * @return returns a table of the acl elements in the given acl group. this table might be empty.
  * returns false or nil if thegroup is invalid or it fails for some other reason.
+ * @noSelf
  */
-export function aclGroupListACL(
+export declare function aclGroupListACL(
     theGroup: ACLGroup
 ): LuaTable;
 
@@ -199,8 +212,9 @@ export function aclGroupListACL(
  * @param theGroup The ACL group to get the objects from
  * @return returns a table of strings in the given acl group. this table might be empty. returns
  * false or nil if thegroup is invalid or it fails for some other reason.
+ * @noSelf
  */
-export function aclGroupListObjects(
+export declare function aclGroupListObjects(
     theGroup: ACLGroup
 ): LuaTable;
 
@@ -211,8 +225,9 @@ export function aclGroupListObjects(
  * @param theACL The ACL to remove from the given group
  * @return returns true if the acl was successfully removed from the acl group, false/nil if it
  * could not be removed for some reason, ie. either of the elements were invalid.
+ * @noSelf
  */
-export function aclGroupRemoveACL(
+export declare function aclGroupRemoveACL(
     theGroup: ACLGroup,
     theACL: ACL
 ): boolean;
@@ -225,8 +240,9 @@ export function aclGroupRemoveACL(
  * @param theObjectString The object to remove from the ACL group
  * @return returns true if the object existed in the acl and could be remoevd, false if it could not
  * be removed for some reason, ie. it did not exist in the given acl group.
+ * @noSelf
  */
-export function aclGroupRemoveObject(
+export declare function aclGroupRemoveObject(
     theGroup: ACLGroup,
     theObjectString: string
 ): boolean;
@@ -236,8 +252,9 @@ export function aclGroupRemoveObject(
  * @see {@link https://wiki.multitheftauto.com/wiki/AclList Wiki, aclList }
  * @return returns a table of all the acls. this table can be empty if no acls exist. it can also
  * return false/nil if it failed for some reason.
+ * @noSelf
  */
-export function aclList(): LuaTable;
+export declare function aclList(): LuaTable;
 
 /**
  * This function returns a table of all the rights that a given ACL has.
@@ -246,8 +263,9 @@ export function aclList(): LuaTable;
  * @param allowedType The allowed right type. Possible values are general, function, resource and command
  * @return returns a table over the rights as strings in the given acl. this table might be empty.
  * returns false or nil if theacl is invalid or it fails for some other reason.
+ * @noSelf
  */
-export function aclListRights(
+export declare function aclListRights(
     theACL: ACL,
     allowedType: string
 ): LuaTable;
@@ -258,8 +276,9 @@ export function aclListRights(
  * @see {@link https://wiki.multitheftauto.com/wiki/AclReload Wiki, aclReload }
  * @return returns true if the xml was successfully reloaded from the file, false or nil if the xml
  * was invalid, didnt exist or could not be loaded for some other reason.
+ * @noSelf
  */
-export function aclReload(): boolean;
+export declare function aclReload(): boolean;
 
 /**
  * This function removes the given right (string) from the given ACL.
@@ -268,8 +287,9 @@ export function aclReload(): boolean;
  * @param rightName The ACL name to remove from the right from
  * @return returns true if the given right was successfully removed from the given acl, false or nil
  * if it could not be removed for some reason, ie. it didnt exist in the acl.
+ * @noSelf
  */
-export function aclRemoveRight(
+export declare function aclRemoveRight(
     theAcl: ACL,
     rightName: string
 ): boolean;
@@ -281,8 +301,9 @@ export function aclRemoveRight(
  * @see {@link https://wiki.multitheftauto.com/wiki/AclSave Wiki, aclSave }
  * @return returns true if the acl was successfully changed, false or nil if it could not be saved
  * for some reason, ie. file in use.
+ * @noSelf
  */
-export function aclSave(): boolean;
+export declare function aclSave(): boolean;
 
 /**
  * This functions changes or adds the given right in the given ACL. The access can be true
@@ -293,8 +314,9 @@ export function aclSave(): boolean;
  * @param hasAccess Whether the access should be set to true or false
  * @return returns true if the access was successfully changed, false or nil if it failed for some
  * reason, ie. invalid acl or the rightname is invalid.
+ * @noSelf
  */
-export function aclSetRight(
+export declare function aclSetRight(
     theAcl: ACL,
     rightName: string,
     hasAccess: boolean
@@ -342,8 +364,9 @@ export function aclSetRight(
  * be denied by default unless explicitly approved by the Access Control List.
  * @return returns true if the given object has permission to perform the given action, false
  * otherwise. returns nil if the function failed because of bad arguments.
+ * @noSelf
  */
-export function hasObjectPermissionTo(
+export declare function hasObjectPermissionTo(
     theObject: string | Element,
     theAction: string,
     defaultPermission?: boolean
@@ -355,8 +378,9 @@ export function hasObjectPermissionTo(
  * @param theObject the name of the object to check. Examples: resource.ctf, user.Jim.
  * @param theGroup the ACL group pointer of the group from which the object should be found.
  * @return returns true if the object is in the specified group, false otherwise.
+ * @noSelf
  */
-export function isObjectInACLGroup(
+export declare function isObjectInACLGroup(
     theObject: string,
     theGroup: ACLGroup
 ): boolean;

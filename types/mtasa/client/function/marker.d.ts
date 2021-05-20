@@ -72,8 +72,9 @@ import {
  * (0 - 255).
  * @param a : An integer number representing the amount of alpha to use in the colouring of the
  * marker (0 - 255 where 0 is transparent and 255 is opaque).
+ * @noSelf
  */
-export function createMarker(
+export declare function createMarker(
     x: number,
     y: number,
     z: number,
@@ -92,8 +93,9 @@ export function createMarker(
  * @param theMarker : The marker that you wish to retrieve the color of.
  * @return returns four ints corresponding to the amount of red, green, blue and alpha
  * (respectively) of the marker, false if invalid arguments were passed.
+ * @noSelf
  */
-export function getMarkerColor(
+export declare function getMarkerColor(
     theMarker: Marker
 ): LuaMultiReturn<[
     number,
@@ -106,8 +108,9 @@ export function getMarkerColor(
  * Returns the number of markers that currently exist in the world.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerCount Wiki, getMarkerCount }
  * @return returns the number of markers that currently exist.
+ * @noSelf
  */
-export function getMarkerCount(): number;
+export declare function getMarkerCount(): number;
 
 /**
  * This function returns the icon name for a marker.
@@ -117,8 +120,9 @@ export function getMarkerCount(): number;
  * * none: no icon
  * * arrow: arrow icon
  * * finish: finish (end-race) icon
+ * @noSelf
  */
-export function getMarkerIcon(
+export declare function getMarkerIcon(
     theMarker: Marker
 ): string;
 
@@ -127,8 +131,9 @@ export function getMarkerIcon(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerSize Wiki, getMarkerSize }
  * @param myMarker : The marker that you wish to retrieve the size of.
  * @return returns a float containing the size of the specified marker.
+ * @noSelf
  */
-export function getMarkerSize(
+export declare function getMarkerSize(
     myMarker: Marker
 ): number;
 
@@ -141,8 +146,9 @@ export function getMarkerSize(
  * @param theMarker The marker you wish to retrieve the target position of.
  * @return returns three floats if a target is set, or false in the first variable and nil in the
  * two others if the marker is invalid or no target is set.
+ * @noSelf
  */
-export function getMarkerTarget(
+export declare function getMarkerTarget(
     theMarker: Marker
 ): LuaMultiReturn<[
     number,
@@ -156,8 +162,9 @@ export function getMarkerTarget(
  * @param theMarker : A marker element referencing the specified marker.
  * @return * returns one of the following strings:
  * if an invalid marker is specified, false is returned.
+ * @noSelf
  */
-export function getMarkerType(
+export declare function getMarkerType(
     theMarker: Marker
 ): string;
 
@@ -170,8 +177,9 @@ export function getMarkerType(
  * @param g The amount of green in the final color (0 to 255).
  * @param b The amount of blue in the final color (0 to 255).
  * @param a The amount of alpha in the final color (0 to 255).
+ * @noSelf
  */
-export function setMarkerColor(
+export declare function setMarkerColor(
     theMarker: Marker,
     r: number,
     g: number,
@@ -186,8 +194,9 @@ export function setMarkerColor(
  * @param none : No icon
  * @param arrow : Arrow icon
  * @param finish : Finish icon (at end of race)
+ * @noSelf
  */
-export function setMarkerIcon(
+export declare function setMarkerIcon(
     theMarker: Marker,
     icon: string
 ): boolean;
@@ -203,8 +212,9 @@ export function setMarkerIcon(
  * @param theMarker The marker that you wish to set the size of.
  * @param size A float representing new size of the marker.
  * @return returns true if successful, false if failed.
+ * @noSelf
  */
-export function setMarkerSize(
+export declare function setMarkerSize(
     theMarker: Marker,
     size: number
 ): boolean;
@@ -224,8 +234,9 @@ export function setMarkerSize(
  * @param y The y axis of the coordinate to target the marker at
  * @param z The z axis of the coordinate to target the marker at
  * @return returns true if target was set, false otherwise.
+ * @noSelf
  */
-export function setMarkerTarget(
+export declare function setMarkerTarget(
     theMarker: Marker,
     x: number,
     y: number,
@@ -242,8 +253,9 @@ export function setMarkerTarget(
  * @param markerType : A string denoting the marker type. Valid values are:
  * @return returns true if the marker type was changed, false if it wasnt or marker values were
  * invalid.
+ * @noSelf
  */
-export function setMarkerType(
+export declare function setMarkerType(
     theMarker: Marker,
     markerType: string
 ): boolean;

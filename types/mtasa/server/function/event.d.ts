@@ -38,8 +38,9 @@ import {
  * @param allowRemoteTrigger A boolean specifying whether this event can be called remotely using triggerClientEvent /
  * triggerServerEvent or not.
  * @return returns true if the event was added successfully, false if the event was already added.
+ * @noSelf
  */
-export function addEvent(
+export declare function addEvent(
     eventName: string,
     allowRemoteTrigger?: boolean
 ): boolean;
@@ -90,8 +91,9 @@ export function addEvent(
  * "high" "high-1" "normal-6" "normal-7" "low+1" "low" "low-1"''
  * @return returns true if the event handler was attached successfully. returns false if the
  * specified event could not be found or any parameters were invalid.
+ * @noSelf
  */
-export function addEventHandler(
+export declare function addEventHandler(
     eventName: string,
     attachedTo: Element,
     handlerFunction: HandleFunction,
@@ -112,8 +114,9 @@ export function addEventHandler(
  * If you implement your own custom events and want to handle them being cancelled, you
  * should call wasEventCancelled to check after your call to triggerEvent.
  * @see {@link https://wiki.multitheftauto.com/wiki/CancelEvent Wiki, cancelEvent }
+ * @noSelf
  */
-export function cancelEvent(
+export declare function cancelEvent(
     cancel?: boolean,
     reason?: string
 ): boolean;
@@ -123,8 +126,9 @@ export function cancelEvent(
  * @see {@link https://wiki.multitheftauto.com/wiki/CancelLatentEvent Wiki, cancelLatentEvent }
  * @param thePlayer The player who is receiving the event.
  * @param handle A handle previous got from getLatentEventHandles.
+ * @noSelf
  */
-export function cancelLatentEvent(
+export declare function cancelLatentEvent(
     thePlayer: Player,
     handle: number
 ): boolean;
@@ -133,8 +137,9 @@ export function cancelLatentEvent(
  * Gets the reason for cancelling an event.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCancelReason Wiki, getCancelReason }
  * @return returns the reason that was given with cancelevent
+ * @noSelf
  */
-export function getCancelReason(): string;
+export declare function getCancelReason(): string;
 
 /**
  * This function gets the attached functions from the event and attached element from
@@ -143,8 +148,9 @@ export function getCancelReason(): string;
  * @param eventName The name of the event. For example ( onPlayerWasted ).
  * @param attachedTo The element attached to.
  * @return returns table with attached functions, empty table otherwise.
+ * @noSelf
  */
-export function getEventHandlers(
+export declare function getEventHandlers(
     eventName: string,
     attachedTo: Element
 ): LuaTable;
@@ -155,8 +161,9 @@ export function getEventHandlers(
  * cancelLatentEvent
  * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventHandles Wiki, getLatentEventHandles }
  * @param thePlayer The player who is receiving the events.
+ * @noSelf
  */
-export function getLatentEventHandles(
+export declare function getLatentEventHandles(
     thePlayer: Player
 ): LuaTable;
 
@@ -165,8 +172,9 @@ export function getLatentEventHandles(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventStatus Wiki, getLatentEventStatus }
  * @param thePlayer The player who is receiving the event.
  * @param handle A handle previous got from getLatentEventHandles.
+ * @noSelf
  */
-export function getLatentEventStatus(
+export declare function getLatentEventStatus(
     thePlayer: Player,
     handle: number
 ): LuaTable;
@@ -181,8 +189,9 @@ export function getLatentEventStatus(
  * @param functionVar The handler function that was attached.
  * @return returns true if the event handler was removed successfully. returns false if the
  * specified event handler could not be found or invalid parameters were passed.
+ * @noSelf
  */
-export function removeEventHandler(
+export declare function removeEventHandler(
     eventName: string,
     attachedTo: Element,
     functionVar: HandleFunction
@@ -215,8 +224,9 @@ export function removeEventHandler(
  * functions). You can also pass elements.
  * @return returns true if the event trigger has been sent, false if invalid arguments were
  * specified.
+ * @noSelf
  */
-export function triggerClientEvent(
+export declare function triggerClientEvent(
     sendTo: LuaTable | Element,
     name: string,
     sourceElement: Element,
@@ -225,8 +235,9 @@ export function triggerClientEvent(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
+ * @noSelf
  */
-export function triggerClientEvent(
+export declare function triggerClientEvent(
     name: string,
     sourceElement: Element,
     ...varargs: any[]
@@ -256,8 +267,9 @@ export function triggerClientEvent(
  * cancelevent.
  * * returns false if the event was triggered successfully, and was cancelled using
  * cancelevent.
+ * @noSelf
  */
-export function triggerEvent(
+export declare function triggerEvent(
     eventName: string,
     baseElement: Element,
     ...varargs: any[]
@@ -283,8 +295,9 @@ export function triggerEvent(
  * functions). You can also pass elements. The total amount of data should not exceed 100MB.
  * @return returns true if the event trigger has been sent, false if invalid arguments were
  * specified.
+ * @noSelf
  */
-export function triggerLatentClientEvent(
+export declare function triggerLatentClientEvent(
     sendTo: LuaTable | Element,
     name: string,
     bandwidth: number,
@@ -295,8 +308,9 @@ export function triggerLatentClientEvent(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
+ * @noSelf
  */
-export function triggerLatentClientEvent(
+export declare function triggerLatentClientEvent(
     name: string,
     bandwidth: number,
     persist: boolean,
@@ -306,8 +320,9 @@ export function triggerLatentClientEvent(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
+ * @noSelf
  */
-export function triggerLatentClientEvent(
+export declare function triggerLatentClientEvent(
     sendTo: LuaTable | Element,
     name: string,
     theElement: Element,
@@ -322,5 +337,6 @@ export function triggerLatentClientEvent(
  * caused the event. See triggerEvent for a more detailed explanation of this.
  * @see {@link https://wiki.multitheftauto.com/wiki/WasEventCancelled Wiki, wasEventCancelled }
  * @return returns true if the event was cancelled, false if it wasnt or doesnt exist.
+ * @noSelf
  */
-export function wasEventCancelled(): boolean;
+export declare function wasEventCancelled(): boolean;

@@ -53,14 +53,16 @@ import {
  * downloads or not.
  * on client this returns a boolean, whether the transfer box should be visible or not at
  * the time of invocation.
+ * @noSelf
  */
-export function isTransferBoxVisible(): boolean;
+export declare function isTransferBoxVisible(): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible Wiki, setTransferBoxVisible }
  * @param visible The new visibility state.
  * @return returns true if the visibility was set successfully, false otherwise.
+ * @noSelf
  */
-export function setTransferBoxVisible(
+export declare function setTransferBoxVisible(
     visible: boolean
 ): boolean;

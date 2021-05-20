@@ -35,8 +35,9 @@ import {
  * @see {@link https://wiki.multitheftauto.com/wiki/ForcePlayerMap Wiki, forcePlayerMap }
  * @param thePlayer : A player object referencing the specified player
  * @param forceOn : A boolean value representing whether or not the players radar map will be forced on
+ * @noSelf
  */
-export function forcePlayerMap(
+export declare function forcePlayerMap(
     thePlayer: Player,
     forceOn: boolean
 ): boolean;
@@ -46,15 +47,17 @@ export function forcePlayerMap(
  * of getDeadPlayers.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetAlivePlayers Wiki, getAlivePlayers }
  * @return returns a table of all the alive players.
+ * @noSelf
  */
-export function getAlivePlayers(): LuaTable;
+export declare function getAlivePlayers(): LuaTable;
 
 /**
  * This function returns a table of all currently dead players on the server.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetDeadPlayers Wiki, getDeadPlayers }
  * @return returns a table of all the dead players.
+ * @noSelf
  */
-export function getDeadPlayers(): LuaTable;
+export declare function getDeadPlayers(): LuaTable;
 
 /**
  * This function returns anti-cheat info for a player. The info returned by this function
@@ -70,8 +73,9 @@ export function getDeadPlayers(): LuaTable;
  * installed.
  * *d3d9sha256: a string containing the sha256 of any custom d3d9.dll the player may have
  * installed.
+ * @noSelf
  */
-export function getPlayerACInfo(
+export declare function getPlayerACInfo(
     thePlayer: Element
 ): LuaTable;
 
@@ -81,8 +85,9 @@ export function getPlayerACInfo(
  * @param key The name of the key.
  * @return this function returns a string containing the requested value if a valid key was
  * specified or false otherwise.
+ * @noSelf
  */
-export function getPlayerAnnounceValue(
+export declare function getPlayerAnnounceValue(
     thePlayer: Element,
     key: string
 ): string;
@@ -92,8 +97,9 @@ export function getPlayerAnnounceValue(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerBlurLevel Wiki, getPlayerBlurLevel }
  * @param thePlayer The player whose blur level you want to check.
  * @return returns the players blur level if successful, false if an invalid player was given.
+ * @noSelf
  */
-export function getPlayerBlurLevel(
+export declare function getPlayerBlurLevel(
     thePlayer: Player
 ): number;
 
@@ -101,8 +107,9 @@ export function getPlayerBlurLevel(
  * This function returns the number of players currently connected to the server.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerCount Wiki, getPlayerCount }
  * @return returns the number of players connected to the server as an int.
+ * @noSelf
  */
-export function getPlayerCount(): number;
+export declare function getPlayerCount(): number;
 
 /**
  * This function returns a player element for the player with the name passed to the
@@ -111,8 +118,9 @@ export function getPlayerCount(): number;
  * @param playerName : A string containing the name of the player you want to reference
  * @return returns a player element for the player with the nickname provided. if there is no player
  * with that name, false is returned.
+ * @noSelf
  */
-export function getPlayerFromName(
+export declare function getPlayerFromName(
     playerName: string
 ): Player;
 
@@ -122,8 +130,9 @@ export function getPlayerFromName(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerIdleTime Wiki, getPlayerIdleTime }
  * @param thePlayer : The player you wish to get the idle time of.
  * @return returns the amount of time in milliseconds that a player has been idle, false otherwise.
+ * @noSelf
  */
-export function getPlayerIdleTime(
+export declare function getPlayerIdleTime(
     thePlayer: Player
 ): number;
 
@@ -133,8 +142,9 @@ export function getPlayerIdleTime(
  * @param thePlayer The player element you want to get the IP of.
  * @return returns a string containing the requested playerss ip, or false if the player passed to
  * the function is invalid.
+ * @noSelf
  */
-export function getPlayerIP(
+export declare function getPlayerIP(
     thePlayer: Player
 ): string;
 
@@ -144,8 +154,9 @@ export function getPlayerIP(
  * @param thePlayer The player you wish the retrieve the amount of money from.
  * @return returns an integer with the amount of money the specified player has, false if the player
  * is invalid.
+ * @noSelf
  */
-export function getPlayerMoney(
+export declare function getPlayerMoney(
     thePlayer: Player
 ): number;
 
@@ -155,8 +166,9 @@ export function getPlayerMoney(
  * @param thePlayer the player you want to get the name of
  * @return returns a string containing the requested players name, or false if the player passed to
  * the function is invalid.
+ * @noSelf
  */
-export function getPlayerName(
+export declare function getPlayerName(
     thePlayer: Player
 ): string;
 
@@ -166,8 +178,9 @@ export function getPlayerName(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagColor Wiki, getPlayerNametagColor }
  * @param thePlayer The player whose name tag RGB color values you wish to retrieve.
  * @return returns red, green and blue values if an existent player was specified, false otherwise.
+ * @noSelf
  */
-export function getPlayerNametagColor(
+export declare function getPlayerNametagColor(
     thePlayer: Player
 ): LuaMultiReturn<[
     number,
@@ -180,8 +193,9 @@ export function getPlayerNametagColor(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagText Wiki, getPlayerNametagText }
  * @param thePlayer The person whose name tag you want to retrieve
  * @return returns a string with the nametag text, false if the player is invalid.
+ * @noSelf
  */
-export function getPlayerNametagText(
+export declare function getPlayerNametagText(
     thePlayer: Player
 ): string;
 
@@ -192,8 +206,9 @@ export function getPlayerNametagText(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerPing Wiki, getPlayerPing }
  * @param thePlayer : The player whose ping you want to determine.
  * @return returns the ping as an int, or false if the player is invalid.
+ * @noSelf
  */
-export function getPlayerPing(
+export declare function getPlayerPing(
     thePlayer: Player
 ): number;
 
@@ -202,8 +217,9 @@ export function getPlayerPing(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerScriptDebugLevel Wiki, getPlayerScriptDebugLevel }
  * @param thePlayer The person whose debug script level you want
  * @return returns an int with the player debug script level, false if the player is invalid.
+ * @noSelf
  */
-export function getPlayerScriptDebugLevel(
+export declare function getPlayerScriptDebugLevel(
     thePlayer: Player
 ): number;
 
@@ -212,8 +228,9 @@ export function getPlayerScriptDebugLevel(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerSerial Wiki, getPlayerSerial }
  * @param thePlayer A player object referencing the specified player.
  * @return returns the serial as a string if it was found, false otherwise.
+ * @noSelf
  */
-export function getPlayerSerial(
+export declare function getPlayerSerial(
     thePlayer: Player
 ): string;
 
@@ -240,8 +257,9 @@ export function getPlayerSerial(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerVersion Wiki, getPlayerVersion }
  * @param thePlayer The player whose client version you wish to get.
  * @return returns a string containing the client version, or false if the player is invalid.
+ * @noSelf
  */
-export function getPlayerVersion(
+export declare function getPlayerVersion(
     thePlayer: Player
 ): string;
 
@@ -250,8 +268,9 @@ export function getPlayerVersion(
  * amount of stars a player has on the GTA HUD.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerWantedLevel Wiki, getPlayerWantedLevel }
  * @param thePlayer The player whose wanted level you wish to get
+ * @noSelf
  */
-export function getPlayerWantedLevel(
+export declare function getPlayerWantedLevel(
     thePlayer: Player
 ): number;
 
@@ -259,8 +278,9 @@ export function getPlayerWantedLevel(
  * This function returns a random player.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetRandomPlayer Wiki, getRandomPlayer }
  * @return returns a random player, false if the server is empty.
+ * @noSelf
  */
-export function getRandomPlayer(): Player;
+export declare function getRandomPlayer(): Player;
 
 /**
  * This function adds money to a players current money amount.  To set absolute values,
@@ -268,8 +288,9 @@ export function getRandomPlayer(): Player;
  * @see {@link https://wiki.multitheftauto.com/wiki/GivePlayerMoney Wiki, givePlayerMoney }
  * @param thePlayer the player you are giving the money to.
  * @param amount a positive integer number specifying the amount of money to give to the player.
+ * @noSelf
  */
-export function givePlayerMoney(
+export declare function givePlayerMoney(
     thePlayer: Player,
     amount: number
 ): boolean;
@@ -279,8 +300,9 @@ export function givePlayerMoney(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMapForced Wiki, isPlayerMapForced }
  * @param thePlayer A player object referencing the specified player
  * @return returns true if the players radar map is forced on, false otherwise.
+ * @noSelf
  */
-export function isPlayerMapForced(
+export declare function isPlayerMapForced(
     thePlayer: Player
 ): boolean;
 
@@ -289,8 +311,9 @@ export function isPlayerMapForced(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMuted Wiki, isPlayerMuted }
  * @param thePlayer The player you are checking.
  * @return returns true if the player is muted and false otherwise.
+ * @noSelf
  */
-export function isPlayerMuted(
+export declare function isPlayerMuted(
     thePlayer: Player
 ): boolean;
 
@@ -299,8 +322,9 @@ export function isPlayerMuted(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerNametagShowing Wiki, isPlayerNametagShowing }
  * @param thePlayer The player whose current name tag condition you want to check
  * @return returns true if the players name tag is being shown, false otherwise.
+ * @noSelf
  */
-export function isPlayerNametagShowing(
+export declare function isPlayerNametagShowing(
     thePlayer: Player
 ): boolean;
 
@@ -310,8 +334,9 @@ export function isPlayerNametagShowing(
  * enabled.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsVoiceEnabled Wiki, isVoiceEnabled }
  * @return returns true if the voice is enabled on the server, false otherwise.
+ * @noSelf
  */
-export function isVoiceEnabled(): boolean;
+export declare function isVoiceEnabled(): boolean;
 
 /**
  * This function redirects the player to a specified server.
@@ -324,8 +349,9 @@ export function isVoiceEnabled(): boolean;
  * @param serverPassword The password for the server if its protected
  * @return returns true if the player was redirected successfully, false if bad arguments were
  * passed.
+ * @noSelf
  */
-export function redirectPlayer(
+export declare function redirectPlayer(
     thePlayer: Player,
     serverIP: string,
     serverPort: number,
@@ -338,8 +364,9 @@ export function redirectPlayer(
  * @see {@link https://wiki.multitheftauto.com/wiki/ResendPlayerACInfo Wiki, resendPlayerACInfo }
  * @param thePlayer : A player object referencing the specified player
  * @return returns true if the ac info will be resent, false otherwise.
+ * @noSelf
  */
-export function resendPlayerACInfo(
+export declare function resendPlayerACInfo(
     thePlayer: Player
 ): boolean;
 
@@ -349,8 +376,9 @@ export function resendPlayerACInfo(
  * @see {@link https://wiki.multitheftauto.com/wiki/ResendPlayerModInfo Wiki, resendPlayerModInfo }
  * @param thePlayer : A player object referencing the specified player
  * @return returns true if the mod info will be resent, false otherwise.
+ * @noSelf
  */
-export function resendPlayerModInfo(
+export declare function resendPlayerModInfo(
     thePlayer: Player
 ): boolean;
 
@@ -365,8 +393,9 @@ export function resendPlayerModInfo(
  * @param key The key which the value will be stored at.
  * @param value The value you wish to store.
  * @return returns true if the value was set succesfully, false otherwise.
+ * @noSelf
  */
-export function setPlayerAnnounceValue(
+export declare function setPlayerAnnounceValue(
     thePlayer: Element,
     key: string,
     value: string
@@ -377,8 +406,9 @@ export function setPlayerAnnounceValue(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerBlurLevel Wiki, setPlayerBlurLevel }
  * @param thePlayer The player whose blur level will be changed.
  * @param level The level to set the blur to (default: 36)
+ * @noSelf
  */
-export function setPlayerBlurLevel(
+export declare function setPlayerBlurLevel(
     thePlayer: Player,
     level: number
 ): boolean;
@@ -403,8 +433,9 @@ export function setPlayerBlurLevel(
  * @param wanted The display showing the players wanted level
  * @param crosshair The weapon crosshair and sniper scope
  * @param show Specify if the component should be shown (true) or hidden (false)
+ * @noSelf
  */
-export function setPlayerHudComponentVisible(
+export declare function setPlayerHudComponentVisible(
     thePlayer: Player,
     component: string,
     show: boolean
@@ -419,8 +450,9 @@ export function setPlayerHudComponentVisible(
  * @param amount A whole integer specifying the new amount of money the player will have.
  * @param instant If set to true money will be set instantly without counting up/down like in
  * singleplayer.}}
+ * @noSelf
  */
-export function setPlayerMoney(
+export declare function setPlayerMoney(
     thePlayer: Player,
     amount: number,
     instant?: boolean
@@ -432,8 +464,9 @@ export function setPlayerMoney(
  * @param thePlayer The player you are muting or unmuting.
  * @param state Use true to mute and false to unmute the player.
  * @return returns true if the player was successfully muted or unmuted, false otherwise.
+ * @noSelf
  */
-export function setPlayerMuted(
+export declare function setPlayerMuted(
     thePlayer: Player,
     state: boolean
 ): boolean;
@@ -447,8 +480,9 @@ export function setPlayerMuted(
  * @param newName the new name to set for the player.
  * @return returns true if the player name was changed succesfully, false if invalid arguments are
  * specified.
+ * @noSelf
  */
-export function setPlayerName(
+export declare function setPlayerName(
     thePlayer: Player,
     newName: string
 ): boolean;
@@ -463,8 +497,9 @@ export function setPlayerName(
  * @param false If false is specified instead of the colors, the nametag color will reset to defaulting
  * to your team color.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function setPlayerNametagColor(
+export declare function setPlayerNametagColor(
     thePlayer: Player,
     r: number,
     g: number,
@@ -477,8 +512,9 @@ export function setPlayerNametagColor(
  * @param thePlayer Define the player whos tag visiblity status you want to change
  * @param showing Use true or false to show/hide the tag
  * @return returns true if successful, false otherwise
+ * @noSelf
  */
-export function setPlayerNametagShowing(
+export declare function setPlayerNametagShowing(
     thePlayer: Player,
     showing: boolean
 ): boolean;
@@ -492,8 +528,9 @@ export function setPlayerNametagShowing(
  * @param thePlayer The player whose nickname text you wish to change
  * @param text The new nickname text that will be displayed
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPlayerNametagText(
+export declare function setPlayerNametagText(
     thePlayer: Player,
     text: string
 ): boolean;
@@ -505,8 +542,9 @@ export function setPlayerNametagText(
  * @param level 0: close debug console, 1: only errors, 2: errors and warnings, 3: errors, warnings and
  * info messages
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPlayerScriptDebugLevel(
+export declare function setPlayerScriptDebugLevel(
     thePlayer: Player,
     level: number
 ): boolean;
@@ -517,8 +555,9 @@ export function setPlayerScriptDebugLevel(
  * @param thePlayer The player you wish to change
  * @param broadcastTo Element or table of elements who should hear the voice from this player
  * @return returns true if the value was set successfully, false otherwise.
+ * @noSelf
  */
-export function setPlayerVoiceBroadcastTo(
+export declare function setPlayerVoiceBroadcastTo(
     thePlayer: Element,
     broadcastTo: any
 ): boolean;
@@ -530,8 +569,9 @@ export function setPlayerVoiceBroadcastTo(
  * @param ignoreFrom Element or table of elements which the player should not hear voices from. Use nil if no
  * one should be ignored.
  * @return returns true if the value was set successfully, false otherwise.
+ * @noSelf
  */
-export function setPlayerVoiceIgnoreFrom(
+export declare function setPlayerVoiceIgnoreFrom(
     thePlayer: Element,
     ignoreFrom: any
 ): boolean;
@@ -544,8 +584,9 @@ export function setPlayerVoiceIgnoreFrom(
  * @param stars An integer from 0 to 6 representing the wanted level
  * @return returns true if the wanted level was set successfully, false if any of the arguments were
  * invalid.
+ * @noSelf
  */
-export function setPlayerWantedLevel(
+export declare function setPlayerWantedLevel(
     thePlayer: Player,
     stars: number
 ): boolean;
@@ -563,8 +604,9 @@ export function setPlayerWantedLevel(
  * @param dimension The ID of the dimension that the player should be in.
  * @param theTeam the team the player will join.
  * @return returns true if the player was spawned successfully, false otherwise.
+ * @noSelf
  */
-export function spawnPlayer(
+export declare function spawnPlayer(
     thePlayer: Player,
     x: number,
     y: number,
@@ -581,8 +623,9 @@ export function spawnPlayer(
  * @see {@link https://wiki.multitheftauto.com/wiki/TakePlayerMoney Wiki, takePlayerMoney }
  * @param thePlayer the player you are taking the money from.
  * @param amount an integer number specifying the amount of money to take from the player.
+ * @noSelf
  */
-export function takePlayerMoney(
+export declare function takePlayerMoney(
     thePlayer: Player,
     amount: number
 ): boolean;
@@ -604,8 +647,9 @@ export function takePlayerMoney(
  * @param maxBandwith The amount of client upload bandwidth to use (in bytes per second) when sending the image.
  * *'''maxPacketSize: ''' The maximum size of one packet.
  * @return returns true if the function was successfully, false if invalid arguments are specified.
+ * @noSelf
  */
-export function takePlayerScreenShot(
+export declare function takePlayerScreenShot(
     thePlayer: Player,
     width: number,
     height: number,

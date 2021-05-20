@@ -42,8 +42,9 @@ import {
  * Clothes|clothes catalog.
  * @return this function returns true if the clothes were successfully added to the ped, false
  * otherwise.
+ * @noSelf
  */
-export function addPedClothes(
+export declare function addPedClothes(
     thePed: Ped,
     clothesTexture: string,
     clothesModel: string,
@@ -60,8 +61,9 @@ export function addPedClothes(
  * @param rot A floating point number representing the rotation in degrees.
  * @param synced A boolean value representing whether or not the ped will be synced. Disabling the sync
  * might be useful for frozen or static peds to increase the server performance.
+ * @noSelf
  */
-export function createPed(
+export declare function createPed(
     modelid: number,
     x: number,
     y: number,
@@ -79,8 +81,9 @@ export function createPed(
  * specified).
  * @return returns an int containing the amount of ammo in the specified peds currently selected or
  * specified clip, or 0 if the ped specified is invalid.
+ * @noSelf
  */
-export function getPedAmmoInClip(
+export declare function getPedAmmoInClip(
     thePed: Ped,
     weaponSlot?: number
 ): number;
@@ -90,8 +93,9 @@ export function getPedAmmoInClip(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPedArmor Wiki, getPedArmor }
  * @param thePed The ped whose armor you want to check
  * @return a float with the armor, false if an invalid ped was given.
+ * @noSelf
  */
-export function getPedArmor(
+export declare function getPedArmor(
     thePed: Ped
 ): number;
 
@@ -104,8 +108,9 @@ export function getPedArmor(
  * @return this function returns 2 string|strings, the clothes texture and model. the first return
  * value will be false if this players clothes type is empty or an invalid player was
  * specified.
+ * @noSelf
  */
-export function getPedClothes(
+export declare function getPedClothes(
     thePed: Ped,
     clothesType: number
 ): LuaMultiReturn<[
@@ -120,8 +125,9 @@ export function getPedClothes(
  * @param thePed The ped of which you want to get the element he is standing on.
  * @return returns an object or a vehicle if the ped is standing on one, false if he is touching
  * none or an invalid element was passed.
+ * @noSelf
  */
-export function getPedContactElement(
+export declare function getPedContactElement(
     thePed: Ped
 ): Element;
 
@@ -131,8 +137,9 @@ export function getPedContactElement(
  * @param thePed the ped whose current fighting style ID you wish to retrieve.
  * @return returns the peds current fighting style as an integer id, false if it fails to retrieve a
  * value.
+ * @noSelf
  */
-export function getPedFightingStyle(
+export declare function getPedFightingStyle(
     thePed: Ped
 ): number;
 
@@ -143,8 +150,9 @@ export function getPedFightingStyle(
  * @param thePed The ped whose gravity you want to check.
  * @return returns a float indicating the peds gravity, or false if the ped is invalid. default
  * value is 0.008.
+ * @noSelf
  */
-export function getPedGravity(
+export declare function getPedGravity(
     thePed: Ped
 ): number;
 
@@ -154,8 +162,9 @@ export function getPedGravity(
  * @param thePed : The ped whose vehicle youre looking up.
  * @return returns the vehicle that the specified ped is in, or false if the ped is not in a vehicle
  * or is an invalid ped.
+ * @noSelf
  */
-export function getPedOccupiedVehicle(
+export declare function getPedOccupiedVehicle(
     thePed: Ped
 ): Vehicle;
 
@@ -169,8 +178,9 @@ export function getPedOccupiedVehicle(
  * ** 2: rear-left
  * ** 3: rear-right
  * returns false if the ped is on foot, or the ped doesnt exist.
+ * @noSelf
  */
-export function getPedOccupiedVehicleSeat(
+export declare function getPedOccupiedVehicleSeat(
     thePed: Ped
 ): number;
 
@@ -180,8 +190,9 @@ export function getPedOccupiedVehicleSeat(
  * @param thePed : The ped whose stat you want to retrieve.
  * @param stat : A whole number determining the stat ID.
  * @return returns the value of the requested statistic.
+ * @noSelf
  */
-export function getPedStat(
+export declare function getPedStat(
     thePed: Ped,
     stat: number
 ): number;
@@ -196,8 +207,9 @@ export function getPedStat(
  * * peds
  * * vehicles
  * * objects
+ * @noSelf
  */
-export function getPedTarget(
+export declare function getPedTarget(
     thePed: Ped
 ): Element;
 
@@ -209,8 +221,9 @@ export function getPedTarget(
  * @param weaponSlot : an integer representing the weapon slot (set to the peds current slot if not given)
  * @return returns an int containing the total amount of ammo for the specified peds weapon, or 0 if
  * the ped specified is invalid.
+ * @noSelf
  */
-export function getPedTotalAmmo(
+export declare function getPedTotalAmmo(
     thePed: Ped,
     weaponSlot?: number
 ): number;
@@ -220,8 +233,9 @@ export function getPedTotalAmmo(
  * @param thePed the ped whose walking style to retrieve.
  * @return returns the walking style id if successful, false otherwise. the possible walking styles
  * are as follows:
+ * @noSelf
  */
-export function getPedWalkingStyle(
+export declare function getPedWalkingStyle(
     thePed: Ped
 ): number;
 
@@ -237,8 +251,9 @@ export function getPedWalkingStyle(
  * id of that weapon in the slot (even if it appears as if the ped does not have a weapon at
  * all), though getpedtotalammo will return 0.  therefore, getpedtotalammo should be used in
  * conjunction with getpedweapon in order to check if a ped has a weapon.
+ * @noSelf
  */
-export function getPedWeapon(
+export declare function getPedWeapon(
     thePed: Ped,
     weaponSlot?: number
 ): number;
@@ -248,8 +263,9 @@ export function getPedWeapon(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWeaponSlot Wiki, getPedWeaponSlot }
  * @param thePed the ped to get the current weapon slot of.
  * @return returns the selected weapon slot id on success, false otherwise.
+ * @noSelf
  */
-export function getPedWeaponSlot(
+export declare function getPedWeaponSlot(
     thePed: Ped
 ): number;
 
@@ -257,8 +273,9 @@ export function getPedWeaponSlot(
  * This function returns all valid ped models.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetValidPedModels Wiki, getValidPedModels }
  * @return returns a table with all valid ped models.
+ * @noSelf
  */
-export function getValidPedModels(): LuaTable;
+export declare function getValidPedModels(): LuaTable;
 
 /**
  * This function checks if the specified ped is choking (coughing) or not. This happens as a
@@ -267,8 +284,9 @@ export function getValidPedModels(): LuaTable;
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPedChoking Wiki, isPedChoking }
  * @param thePed : The ped you wish to check
  * @return returns true if the ped is choking, false otherwise.
+ * @noSelf
  */
-export function isPedChoking(
+export declare function isPedChoking(
     thePed: Ped
 ): boolean;
 
@@ -277,8 +295,9 @@ export function isPedChoking(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDead Wiki, isPedDead }
  * @param thePed : the ped you want to check up on.
  * @return returns true if the ped is dead, false otherwise.
+ * @noSelf
  */
-export function isPedDead(
+export declare function isPedDead(
     thePed: Ped
 ): boolean;
 
@@ -287,8 +306,9 @@ export function isPedDead(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDoingGangDriveby Wiki, isPedDoingGangDriveby }
  * @param thePed The ped element whose state is to be checked.
  * @return returns true if the driveby state is enabled, false otherwise.
+ * @noSelf
  */
-export function isPedDoingGangDriveby(
+export declare function isPedDoingGangDriveby(
     thePed: Ped
 ): boolean;
 
@@ -297,8 +317,9 @@ export function isPedDoingGangDriveby(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDucked Wiki, isPedDucked }
  * @param thePed : The ped to check.
  * @return returns true if the ped is ducked, false otherwise.
+ * @noSelf
  */
-export function isPedDucked(
+export declare function isPedDucked(
     thePed: Ped
 ): boolean;
 
@@ -307,8 +328,9 @@ export function isPedDucked(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPedHeadless Wiki, isPedHeadless }
  * @param thePed : The ped to check.
  * @return returns true if the ped is headless, false otherwise.
+ * @noSelf
  */
-export function isPedHeadless(
+export declare function isPedHeadless(
     thePed: Ped
 ): boolean;
 
@@ -318,8 +340,9 @@ export function isPedHeadless(
  * @param thePed the ped you want to check.
  * @return returns true if the ped is in a vehicle, false if he is on foot or an invalid element was
  * passed.
+ * @noSelf
  */
-export function isPedInVehicle(
+export declare function isPedInVehicle(
     thePed: Ped
 ): boolean;
 
@@ -328,8 +351,9 @@ export function isPedInVehicle(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsPedOnFire Wiki, isPedOnFire }
  * @param thePed : The ped to check.
  * @return returns true if the ped is on fire, false otherwise.
+ * @noSelf
  */
-export function isPedOnFire(
+export declare function isPedOnFire(
     thePed: Ped
 ): boolean;
 
@@ -340,8 +364,9 @@ export function isPedOnFire(
  * @param thePed The ped you are checking.
  * @return returns true if the ped is on foot and on the ground, false otherwise, even if he is in a
  * car that stands still or on object outside world map.
+ * @noSelf
  */
-export function isPedOnGround(
+export declare function isPedOnGround(
     thePed: Ped
 ): boolean;
 
@@ -350,8 +375,9 @@ export function isPedOnGround(
  * @param thePed the ped you want to check
  * @return returns true if the ped is carrying a jetpack, false if he is not or an invalid element
  * was passed.
+ * @noSelf
  */
-export function isPedWearingJetpack(
+export declare function isPedWearingJetpack(
     thePed: Ped
 ): boolean;
 
@@ -369,8 +395,9 @@ export function isPedWearingJetpack(
  * @param stealth Boolean value, representing whether or not this a stealth kill
  * @return returns true if the ped was killed, false if the ped specified could not be killed or is
  * invalid.
+ * @noSelf
  */
-export function killPed(
+export declare function killPed(
     thePed: Ped,
     theKiller?: Ped,
     weapon?: number,
@@ -391,8 +418,9 @@ export function killPed(
  * 3) the ped is using his weapon (shooting/aiming)
  * 4) the ped moved while crouching recently
  * due to these circumstances causing problems with this function
+ * @noSelf
  */
-export function reloadPedWeapon(
+export declare function reloadPedWeapon(
     thePed: Ped
 ): boolean;
 
@@ -409,8 +437,9 @@ export function reloadPedWeapon(
  * Clothes|clothes catalog.
  * @return this function returns true if the clothes were successfully removed from the ped, false
  * otherwise.
+ * @noSelf
  */
-export function removePedClothes(
+export declare function removePedClothes(
     thePed: Ped,
     clothesType: number,
     clothesTexture?: string,
@@ -426,8 +455,9 @@ export function removePedClothes(
  * @param thePed The ped you wish to remove from a vehicle
  * @return returns true if the operation was successful, false if the specified ped is not valid or
  * if it isnt in a vehicle.
+ * @noSelf
  */
-export function removePedFromVehicle(
+export declare function removePedFromVehicle(
     thePed: Ped
 ): boolean;
 
@@ -453,8 +483,9 @@ export function removePedFromVehicle(
  * support other states/tasks.
  * |16632}}
  * @return returns true if succesful, false otherwise.
+ * @noSelf
  */
-export function setPedAnimation(
+export declare function setPedAnimation(
     thePed: Ped,
     block?: string,
     anim?: string,
@@ -475,8 +506,9 @@ export function setPedAnimation(
  * @param progress current animation progress you want to apply, value from 0.0 to 1.0, if not supplied will
  * default to 0.0
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPedAnimationProgress(
+export declare function setPedAnimationProgress(
     thePed: Ped,
     anim?: string,
     progress?: number
@@ -492,8 +524,9 @@ export function setPedAnimationProgress(
  * {{New feature/item|3.0158|1.5.7|20395|The limit is now 0.0 to 10.0.}} {{Warning|Setting
  * speed higher than 1 can cause issues with some animations.}}
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPedAnimationSpeed(
+export declare function setPedAnimationSpeed(
     thePed: Ped,
     anim?: string,
     speed?: number
@@ -506,8 +539,9 @@ export function setPedAnimationSpeed(
  * @param armor : the amount of armor you want to set on the ped. Valid values are from 0 to 100.
  * @return returns true if the armor was changed succesfully. returns false if an invalid ped was
  * specified, or the armor value specified is out of acceptable range.
+ * @noSelf
  */
-export function setPedArmor(
+export declare function setPedArmor(
     thePed: Ped,
     armor: number
 ): boolean;
@@ -520,8 +554,9 @@ export function setPedArmor(
  * @param thePed The ped whose choking status to toggle
  * @param choking true to make the ped choke, false to no longer force his choking animation
  * @return returns true if successful, false otherwise (e.g. player handle is invalid)
+ * @noSelf
  */
-export function setPedChoking(
+export declare function setPedChoking(
     thePed: Ped,
     choking: boolean
 ): boolean;
@@ -532,8 +567,9 @@ export function setPedChoking(
  * @param thePed The ped element whose state is to be changed.
  * @param state A boolean value representing the drive-by state, true meaning enabled and false disabled.
  * @return returns true if the driveby state could be changed, false otherwise.
+ * @noSelf
  */
-export function setPedDoingGangDriveby(
+export declare function setPedDoingGangDriveby(
     thePed: Ped,
     state: boolean
 ): boolean;
@@ -545,8 +581,9 @@ export function setPedDoingGangDriveby(
  * @param thePed The ped whose fighting style to change.
  * @param style The fighting style ID to apply.
  * @return returns true in case of success, false otherwise.
+ * @noSelf
  */
-export function setPedFightingStyle(
+export declare function setPedFightingStyle(
     thePed: Ped,
     style: number
 ): boolean;
@@ -557,8 +594,9 @@ export function setPedFightingStyle(
  * @param thePed : The ped whose gravity to change.
  * @param level : The level of gravity (default is 0.008).
  * @return returns true if the gravity was successfully set, false otherwise
+ * @noSelf
  */
-export function setPedGravity(
+export declare function setPedGravity(
     thePed: Ped,
     gravity: number
 ): boolean;
@@ -569,8 +607,9 @@ export function setPedGravity(
  * @param thePed : The ped to check.
  * @param headState : head state, use true if you want the ped be headless, use false to give back the head.
  * @return returns true if successful, false otherwise
+ * @noSelf
  */
-export function setPedHeadless(
+export declare function setPedHeadless(
     thePed: Ped,
     headState: boolean
 ): boolean;
@@ -581,8 +620,9 @@ export function setPedHeadless(
  * @param thePed The ped that we want to set/unset
  * @param isOnFire true to set the ped on fire, false to extinguish any fire on him
  * @return returns true if successful, false otherwise
+ * @noSelf
  */
-export function setPedOnFire(
+export declare function setPedOnFire(
     thePed: Ped,
     isOnFire: boolean
 ): boolean;
@@ -600,8 +640,9 @@ export function setPedOnFire(
  * @return returns true if the statistic was changed succesfully. returns false if an invalid player
  * is specified, if the stat-id/value is out of acceptable range or if the fat or
  * body_muscle stats are used on non-cj players.
+ * @noSelf
  */
-export function setPedStat(
+export declare function setPedStat(
     thePed: Ped,
     stat: number,
     value: number
@@ -615,8 +656,9 @@ export function setPedStat(
  * @param style the walking style to set.
  * The possible walking styles are:
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setPedWalkingStyle(
+export declare function setPedWalkingStyle(
     thePed: Ped,
     style: number
 ): boolean;
@@ -628,8 +670,9 @@ export function setPedWalkingStyle(
  * remote players.
  * @param weaponSlot the weapon slot to set.
  * @return returns true if successful in setting the peds equipped weapon slot, false otherwise.
+ * @noSelf
  */
-export function setPedWeaponSlot(
+export declare function setPedWeaponSlot(
     thePed: Ped,
     weaponSlot: number
 ): boolean;
@@ -645,8 +688,9 @@ export function setPedWeaponSlot(
  * @param thePed The ped you want to give a jetpack to.
  * @param state A boolean representing whether to give or take the jetpack.
  * @return returns true if a jetpack was successfully set for the ped, false if setting it failed.
+ * @noSelf
  */
-export function setPedWearingJetpack(
+export declare function setPedWearingJetpack(
     thePed: Ped,
     state: boolean
 ): boolean;
@@ -664,8 +708,9 @@ export function setPedWearingJetpack(
  * @param 2 Rear-left
  * @param 3 Rear-right
  * @return returns true if the operation is successful, false otherwise.
+ * @noSelf
  */
-export function warpPedIntoVehicle(
+export declare function warpPedIntoVehicle(
     thePed: Ped,
     theVehicle: Vehicle,
     seat?: number

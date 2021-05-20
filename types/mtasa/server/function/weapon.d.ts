@@ -42,8 +42,9 @@ import {
  * int: the weapon property
  * on failure:
  * bool: false if the passed arguments were invalid
+ * @noSelf
  */
-export function getOriginalWeaponProperty(
+export declare function getOriginalWeaponProperty(
     weaponID: number | string,
     weaponSkill: string,
     property: string
@@ -55,8 +56,9 @@ export function getOriginalWeaponProperty(
  * @param weaponid Weapon to find the weapon slot of.
  * @return returns an integer representing the given weapon ids associated weapon slot, false if the
  * id was invalid.
+ * @noSelf
  */
-export function getSlotFromWeapon(
+export declare function getSlotFromWeapon(
     weaponid: number
 ): number;
 
@@ -65,8 +67,9 @@ export function getSlotFromWeapon(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName Wiki, getWeaponIDFromName }
  * @param name A string containing the name of the weapon. Names can be: (Case is ignored)
  * @return returns an int if the name matches that of a weapon, false otherwise.
+ * @noSelf
  */
-export function getWeaponIDFromName(
+export declare function getWeaponIDFromName(
     name: string
 ): number;
 
@@ -76,8 +79,9 @@ export function getWeaponIDFromName(
  * @param id The ID you wish to retrieve the name of
  * @return returns a string of the name of the weapon or death type, false otherwise. names will be
  * like these: (ignoring case)
+ * @noSelf
  */
-export function getWeaponNameFromID(
+export declare function getWeaponNameFromID(
     id: number
 ): string;
 
@@ -93,8 +97,9 @@ export function getWeaponNameFromID(
  * int: the weapon property
  * on failure:
  * bool: false if the passed arguments were invalid
+ * @noSelf
  */
-export function getWeaponProperty(
+export declare function getWeaponProperty(
     weaponID: number | string,
     weaponSkill: string,
     property: string
@@ -115,8 +120,9 @@ export function getWeaponProperty(
  * do not require ammo, such as melee, this should be at least 1.
  * @param setAsCurrent A boolean value determining whether or not the weapon will be set as the players current.
  * @return returns true if weapon was successfully acquired, false otherwise.
+ * @noSelf
  */
-export function giveWeapon(
+export declare function giveWeapon(
     thePlayer: Ped,
     weapon: number,
     ammo?: number,
@@ -135,8 +141,9 @@ export function giveWeapon(
  * @param ammoInClip The amount of ammo to set in the players clip.  This will be taken from the main ammo.
  * If left unspecified or set to 0, the current clip will remain.
  * @return returns a boolean value true or false that tells you if it was successful or not.
+ * @noSelf
  */
-export function setWeaponAmmo(
+export declare function setWeaponAmmo(
     thePlayer: Player,
     weapon: number,
     totalAmmo: number,
@@ -178,8 +185,9 @@ export function setWeaponAmmo(
  * bool: returns true if the weapon property was successfully set
  * on failure:
  * bool: returns false if the weapon property was unable to be set
+ * @noSelf
  */
-export function setWeaponProperty(
+export declare function setWeaponProperty(
     weaponID: number | string,
     weaponSkill: string,
     property: string,
@@ -191,8 +199,9 @@ export function setWeaponProperty(
  * @see {@link https://wiki.multitheftauto.com/wiki/TakeAllWeapons Wiki, takeAllWeapons }
  * @param thePed : A ped element referencing the specified ped
  * @return returns true if the function succeeded, false otherwise.
+ * @noSelf
  */
-export function takeAllWeapons(
+export declare function takeAllWeapons(
     thePed: Ped
 ): boolean;
 
@@ -203,8 +212,9 @@ export function takeAllWeapons(
  * @param weaponId : An integer that refers to a weapon that you wish to remove.
  * @param ammo : If used, this amount of ammo will be taken instead and the weapon will not be removed.
  * @return returns a true if the weapon/ammo was removed successfully, false otherwise.
+ * @noSelf
  */
-export function takeWeapon(
+export declare function takeWeapon(
     thePlayer: Player,
     weaponId: number,
     ammo?: number

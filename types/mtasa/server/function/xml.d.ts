@@ -46,8 +46,9 @@ import {
  * ''xmlCopyFile(myNode, "newfile.xml")''.
  * @return returns the xmlnode of the copy if the node was successfully copied, false if invalid
  * arguments were passed.
+ * @noSelf
  */
-export function xmlCopyFile(
+export declare function xmlCopyFile(
     nodeToCopy: XmlNode,
     newFilePath: string
 ): XmlNode;
@@ -58,8 +59,9 @@ export function xmlCopyFile(
  * @param parentNode the xmlnode you want to create a new child node under.
  * @param tagName the type of the child node that will be created.
  * @return returns the created xmlnode if successful, false otherwise.
+ * @noSelf
  */
-export function xmlCreateChild(
+export declare function xmlCreateChild(
     parentNode: XmlNode,
     tagName: string
 ): XmlNode;
@@ -79,8 +81,9 @@ export function xmlCreateChild(
  * needs access to general.ModifyOtherObjects in the [[ACL]].
  * @param rootNodeName the name of the root node in the XML document.
  * @return returns the root xmlnode object of the new xml file if successful, or false otherwise.
+ * @noSelf
  */
-export function xmlCreateFile(
+export declare function xmlCreateFile(
     filePath: string,
     rootNodeName: string
 ): XmlNode;
@@ -90,8 +93,9 @@ export function xmlCreateFile(
  * @see {@link https://wiki.multitheftauto.com/wiki/XmlDestroyNode Wiki, xmlDestroyNode }
  * @param theXMLNode The xml node you want to destroy.
  * @return returns true if the xml node was successfully destroyed, false otherwise.
+ * @noSelf
  */
-export function xmlDestroyNode(
+export declare function xmlDestroyNode(
     theXMLNode: XmlNode
 ): boolean;
 
@@ -104,8 +108,9 @@ export function xmlDestroyNode(
  * subnode with a particular name, you would use 4 as the index value. To find the first
  * occurence, use 0.
  * @return returns an xmlnode if the node was found, false otherwise.
+ * @noSelf
  */
-export function xmlFindChild(
+export declare function xmlFindChild(
     parent: XmlNode,
     tagName: string,
     index: number
@@ -128,8 +133,9 @@ export function xmlFindChild(
  * @return returns the root xmlnode object of an xml file if successful, or false otherwise.
  * print error if something wrong with xml.
  * |7485}}
+ * @noSelf
  */
-export function xmlLoadFile(
+export declare function xmlLoadFile(
     filePath: string,
     readOnly?: boolean
 ): XmlNode;
@@ -139,8 +145,9 @@ export function xmlLoadFile(
  * @param xmlString A string containing XML data
  * @return returns the root xmlnode object of an xml string if successful, or false otherwise
  * (invalid xml string).
+ * @noSelf
  */
-export function xmlLoadString(
+export declare function xmlLoadString(
     xmlString: string
 ): XmlNode;
 
@@ -150,8 +157,9 @@ export function xmlLoadString(
  * @param node The node from which you wish to return the attribute
  * @param name The name of the attribute.
  * @return returns the attribute in string form or false, if the attribute is not defined.
+ * @noSelf
  */
-export function xmlNodeGetAttribute(
+export declare function xmlNodeGetAttribute(
     node: XmlNode,
     name: string
 ): string;
@@ -163,8 +171,9 @@ export function xmlNodeGetAttribute(
  * @return if successful, returns a table with as keys the names of the attributes and as values the
  * corresponding attribute values. if the node has no attributes, returns an empty table. in
  * case of failure, returns false.
+ * @noSelf
  */
-export function xmlNodeGetAttributes(
+export declare function xmlNodeGetAttributes(
     node: XmlNode
 ): LuaTable;
 
@@ -177,8 +186,9 @@ export function xmlNodeGetAttributes(
  * @return if index isnt specified, returns a table containing all child nodes. if index is
  * specified, returns the corresponding child node if it exists. if no nodes are found, it
  * returns an empty table. returns false in case of failure.
+ * @noSelf
  */
-export function xmlNodeGetChildren(
+export declare function xmlNodeGetChildren(
     parent: XmlNode,
     index?: number
 ): LuaTable | XmlNode;
@@ -188,8 +198,9 @@ export function xmlNodeGetChildren(
  * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetName Wiki, xmlNodeGetName }
  * @param node the node to get the tag name of.
  * @return returns the tag name of the node if successful, false otherwise.
+ * @noSelf
  */
-export function xmlNodeGetName(
+export declare function xmlNodeGetName(
     node: XmlNode
 ): string;
 
@@ -199,8 +210,9 @@ export function xmlNodeGetName(
  * @param node the node of which you want to know the parent.
  * @return returns the parent node of the specified node if successful. returns false if the
  * specified node is the root node or an invalid node was passed.
+ * @noSelf
  */
-export function xmlNodeGetParent(
+export declare function xmlNodeGetParent(
     node: XmlNode
 ): XmlNode;
 
@@ -211,8 +223,9 @@ export function xmlNodeGetParent(
  * @param theXMLNode The xml node of which you need to know the value.
  * @return returns the value of the node as a string if it was received successfully, false
  * otherwise.
+ * @noSelf
  */
-export function xmlNodeGetValue(
+export declare function xmlNodeGetValue(
     theXMLNode: XmlNode
 ): string;
 
@@ -224,8 +237,9 @@ export function xmlNodeGetValue(
  * @param value The value which you wish to change the attribute to. (Note: nil will delete the attribute)
  * @return returns true if the attribute was set successfully, false if the node and/or attribute do
  * not exist, or if theyre faulty.
+ * @noSelf
  */
-export function xmlNodeSetAttribute(
+export declare function xmlNodeSetAttribute(
     node: XmlNode,
     name: string,
     value: string | number
@@ -237,8 +251,9 @@ export function xmlNodeSetAttribute(
  * @param node the node to change the tag name of.
  * @param name the new tag name to set.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function xmlNodeSetName(
+export declare function xmlNodeSetName(
     node: XmlNode,
     name: string
 ): boolean;
@@ -251,8 +266,9 @@ export function xmlNodeSetName(
  * @param value The string value you want the node to have.
  * @param setCDATA A boolean indicating if you want the value to be enclosed inside CDATA tags.
  * @return returns true if value was successfully set, false otherwise.
+ * @noSelf
  */
-export function xmlNodeSetValue(
+export declare function xmlNodeSetValue(
     theXMLNode: XmlNode,
     value: string,
     setCDATA?: boolean
@@ -263,8 +279,9 @@ export function xmlNodeSetValue(
  * @see {@link https://wiki.multitheftauto.com/wiki/XmlSaveFile Wiki, xmlSaveFile }
  * @param rootNode the root xmlnode of the loaded XML file.
  * @return returns true if save was successful, false if the xml file does not exist.
+ * @noSelf
  */
-export function xmlSaveFile(
+export declare function xmlSaveFile(
     rootNode: XmlNode
 ): boolean;
 
@@ -273,7 +290,8 @@ export function xmlSaveFile(
  * @see {@link https://wiki.multitheftauto.com/wiki/XmlUnloadFile Wiki, xmlUnloadFile }
  * @param node root of the XML document to unload
  * @return returns true if the document was unloaded successfully, false otherwise.
+ * @noSelf
  */
-export function xmlUnloadFile(
+export declare function xmlUnloadFile(
     node: XmlNode
 ): boolean;
