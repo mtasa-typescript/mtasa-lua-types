@@ -90,3 +90,4 @@ export * from './oop/Element';
 export * from './oop/XmlNode';
 export * from './oop/Blip';
 export * from './oop/RenderTarget';
+export * from './variables';
