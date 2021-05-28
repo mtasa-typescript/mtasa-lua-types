@@ -9,7 +9,6 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
     ObjectGroup,
     Matrix,
     Browser,

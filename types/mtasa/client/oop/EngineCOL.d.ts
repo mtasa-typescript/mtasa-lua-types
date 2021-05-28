@@ -8,7 +8,7 @@ import {
     EngineDFF,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,

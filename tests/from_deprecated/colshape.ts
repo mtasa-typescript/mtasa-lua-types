@@ -1,4 +1,4 @@
-import { mtasa } from '../../types/mtasa/client';
+import { mtasa } from 'types/mtasa/client';
 
 const colCircle: mtasa.ColShape = mtasa.createColCircle(1, 1, 1);
 const colCuboid: mtasa.ColShape = mtasa.createColCuboid(13, 14, 15, 16, 17, 18);
