@@ -176,13 +176,9 @@ export declare function dxCreateScreenSource(
  * </syntaxhighlight>
  * *filepath / raw_data: The filepath of the shader|shader  Effect File (.fx) file or whole
  * data buffer of the shader file
- *
  * All the following optional arguments are only relevant when the shader is used with
- *
  * engineApplyShaderToWorldTexture
- *
  * *macros: A table contains macros in an ordered and/or unordered way. See example below.
- *
  * *priority: If more than one shader is matched to a world texture, the shader with the
  * highest priority will be used. If there is more than one shader with the same highest
  * priority, the most recently created shader is used.
