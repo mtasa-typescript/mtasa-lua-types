@@ -26,11 +26,22 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /** @customConstructor ColShape */
 export class ColShape extends Element {
+    /**
+     * This function is used to retrieve a list of all elements in a colshape, of the specified
+     * type.
+     * * For legacy reasons, a colshape created on the client does not collide with elements
+     * already existing at that location until they first move
+     * * This function doesnt verify whether elements are in the same dimension and interior,
+     * additional checks could be implemented manually if they are needed
+     */
+    elementsWithin: LuaTable;
+
     /**
      */
     shapeType: number;
@@ -42,8 +53,23 @@ export class ColShape extends Element {
      * already existing at that location until they first move
      * * This function doesnt verify whether elements are in the same dimension and interior,
      * additional checks could be implemented manually if they are needed
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape Wiki, getElementsWithinColShape }
+     * @param elemType The type of element you want a list of. This can be any element type, the common ones
+     * being:
+     * @param player A player connected to the server
+     * @param ped A ped
+     * @param vehicle A vehicle
+     * @param object An object
+     * @param pickup A pickup
+     * @param marker A marker
+     * @param remoteclient A remote client connected to the server
+     * @return returns a table containing all the elements inside the colshape, of the specified type.
+     * returns an empty table if there are no elements inside. returns false if the colshape is
+     * invalid.
      */
-    elementsWithin: LuaTable;
+    getElementsWithin(
+        elemType?: string
+    ): LuaTable;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/AddColPolygonPoint Wiki, addColPolygonPoint }
@@ -332,29 +358,4 @@ export class ColShape extends Element {
         depth: number,
         height: number
     ): boolean;
-
-    /**
-     * This function is used to retrieve a list of all elements in a colshape, of the specified
-     * type.
-     * * For legacy reasons, a colshape created on the client does not collide with elements
-     * already existing at that location until they first move
-     * * This function doesnt verify whether elements are in the same dimension and interior,
-     * additional checks could be implemented manually if they are needed
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape Wiki, getElementsWithinColShape }
-     * @param elemType The type of element you want a list of. This can be any element type, the common ones
-     * being:
-     * @param player A player connected to the server
-     * @param ped A ped
-     * @param vehicle A vehicle
-     * @param object An object
-     * @param pickup A pickup
-     * @param marker A marker
-     * @param remoteclient A remote client connected to the server
-     * @return returns a table containing all the elements inside the colshape, of the specified type.
-     * returns an empty table if there are no elements inside. returns false if the colshape is
-     * invalid.
-     */
-    getElementsWithin(
-        elemType?: string
-    ): LuaTable;
 }

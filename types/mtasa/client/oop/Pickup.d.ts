@@ -43,7 +43,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /** @customConstructor Pickup */

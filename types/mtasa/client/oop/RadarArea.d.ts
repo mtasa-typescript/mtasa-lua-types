@@ -43,7 +43,8 @@ import {
     MTASAObject,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /** @customConstructor RadarArea */

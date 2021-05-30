@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -163,9 +164,9 @@ export declare function fetchRemote(
     queueName: string,
     connectionAttempts: number,
     connectTimeout: number,
-    callbackFunction: HandleFunction,
-    postData: string,
-    postIsBinary: boolean,
+    callbackFunction: FetchRemoteCallback,
+    postData?: string,
+    postIsBinary?: boolean,
     ...varargs: any[]
 ): boolean;
 
@@ -175,22 +176,9 @@ export declare function fetchRemote(
  */
 export declare function fetchRemote(
     URL: string,
-    callbackFunction: HandleFunction,
-    postData: string,
-    postIsBinary: boolean,
-    ...varargs: any[]
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
- * @noSelf
- */
-export declare function fetchRemote(
-    URL: string,
-    queueName: string,
-    connectionAttempts: number,
-    connectTimeout: number,
-    callbackFunction: HandleFunction,
+    callbackFunction: FetchRemoteCallback,
+    postData?: string,
+    postIsBinary?: boolean,
     ...varargs: any[]
 ): boolean;
 

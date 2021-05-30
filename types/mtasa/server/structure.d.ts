@@ -1,5 +1,7 @@
 // TODO: make something with that
 
+import { FetchRemoteCallback } from '../shared/utils/callback';
+
 export type Userdata = any;
 export type TextItem = Userdata;
 export type TextDisplay = Userdata;
@@ -26,5 +28,6 @@ export { RadarArea } from './oop/RadarArea';
 export { Water } from './oop/Water';
 export { Timer } from './oop/Timer';
 export { XML } from './oop/XML';
+export { FetchRemoteCallback } from '../shared/utils/callback';
 
 export type HandleFunction = any;
