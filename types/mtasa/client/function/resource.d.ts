@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -53,8 +54,9 @@ import {
  * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
  * GetRemoteRequests|getRemoteRequests
  * @return returns true on success, false when invalid request was provided
+ * @noSelf
  */
-export function abortRemoteRequest(
+export declare function abortRemoteRequest(
     theRequest: Request
 ): boolean;
 
@@ -103,8 +105,9 @@ export function abortRemoteRequest(
  * returns anything that the designated function has returned, if the function has no
  * return, nil is returned. if the function does not exist, is not exported, or the call was
  * not successful it will return false.
+ * @noSelf
  */
-export function call(
+export declare function call(
     theResource: Resource,
     theFunction: string,
     ...varargs: any[]
@@ -154,38 +157,28 @@ export function call(
  * email&#61;bob@example.com }
  * @return returns a request value which can be used with getremoterequestinfo|getremoterequestinfo
  * or abortremoterequest|abortremoterequest
+ * @noSelf
  */
-export function fetchRemote(
+export declare function fetchRemote(
     URL: string,
     queueName: string,
     connectionAttempts: number,
     connectTimeout: number,
-    callbackFunction: HandleFunction,
-    postData: string,
-    postIsBinary: boolean,
+    callbackFunction: FetchRemoteCallback,
+    postData?: string,
+    postIsBinary?: boolean,
     ...varargs: any[]
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
+ * @noSelf
  */
-export function fetchRemote(
+export declare function fetchRemote(
     URL: string,
-    callbackFunction: HandleFunction,
-    postData: string,
-    postIsBinary: boolean,
-    ...varargs: any[]
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
- */
-export function fetchRemote(
-    URL: string,
-    queueName: string,
-    connectionAttempts: number,
-    connectTimeout: number,
-    callbackFunction: HandleFunction,
+    callbackFunction: FetchRemoteCallback,
+    postData?: string,
+    postIsBinary?: boolean,
     ...varargs: any[]
 ): boolean;
 
@@ -213,8 +206,9 @@ export function fetchRemote(
  * fetchremote call
  * *postdata: a string containing the request post data as declared in the fetchremote call
  * *headers: a table containing the request http headers as declared in the fetchremote call
+ * @noSelf
  */
-export function getRemoteRequestInfo(
+export declare function getRemoteRequestInfo(
     theRequest: Request,
     postDataLength?: number,
     includeHeaders?: boolean
@@ -225,8 +219,9 @@ export function getRemoteRequestInfo(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
  * @param theResource : the resource to get all requests from
  * @return returns a table with all requests, false if an invalid resource was provided
+ * @noSelf
  */
-export function getRemoteRequests(
+export declare function getRemoteRequests(
     theResource?: Resource
 ): LuaTable;
 
@@ -244,8 +239,9 @@ export function getRemoteRequests(
  * ''getResourceConfig("settings.xml")''.
  * @return returns the root node of the specified configuration file. if the file is corrupted, not
  * defined in the meta file or doesnt exist, returns false.
+ * @noSelf
  */
-export function getResourceConfig(
+export declare function getResourceConfig(
     filePath: string
 ): XmlNode;
 
@@ -257,8 +253,9 @@ export function getResourceConfig(
  * @param theResource the resource of which dynamic element root we want.
  * @return returns an element of the resources dynamic element root if the resource specified was
  * valid and active (currently running), false otherwise.
+ * @noSelf
  */
-export function getResourceDynamicElementRoot(
+export declare function getResourceDynamicElementRoot(
     theResource: Resource
 ): Element;
 
@@ -268,8 +265,9 @@ export function getResourceDynamicElementRoot(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
  * @param theResource the resource of which you want to know the call|exported functions.
  * @return returns a table of function names if successful, false otherwise.
+ * @noSelf
  */
-export function getResourceExportedFunctions(
+export declare function getResourceExportedFunctions(
     theResource?: Resource
 ): LuaTable;
 
@@ -281,8 +279,9 @@ export function getResourceExportedFunctions(
  * @return returns the resource with the specified name, or false if no resource of that name
  * exists. note that clientside this will also return false for resources that are in the
  * loaded state, since the client is unaware of resources that have not been started.
+ * @noSelf
  */
-export function getResourceFromName(
+export declare function getResourceFromName(
     resourceName: string
 ): Resource;
 
@@ -296,8 +295,9 @@ export function getResourceFromName(
  * @param theResource the resource whose GUI element we are getting. If not specified, assumes the current
  * resource.
  * @return returns the root gui element that contains all the other gui elements.
+ * @noSelf
  */
-export function getResourceGUIElement(
+export declare function getResourceGUIElement(
     theResource?: Resource
 ): Element;
 
@@ -306,8 +306,9 @@ export function getResourceGUIElement(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
  * @param res The resource you wish to get the name of.
  * @return returns a string with the resource name in it, or false if the resource does not exist.
+ * @noSelf
  */
-export function getResourceName(
+export declare function getResourceName(
     res: Resource
 ): string;
 
@@ -324,8 +325,9 @@ export function getResourceName(
  * resource. (the resource returned from getThisResource)
  * @return returns an element representing the resources root, false if the specified resource
  * doesnt exist.
+ * @noSelf
  */
-export function getResourceRootElement(
+export declare function getResourceRootElement(
     theResource?: Resource
 ): Element;
 
@@ -340,8 +342,9 @@ export function getResourceRootElement(
  * *starting
  * *stopping
  * *failed to load - use getresourceloadfailurereason to find out why it failed.
+ * @noSelf
  */
-export function getResourceState(
+export declare function getResourceState(
     theResource: Resource
 ): string;
 
@@ -349,5 +352,6 @@ export function getResourceState(
  * This function retrieves the resource from which the function call was made.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
  * @return returns the resource in which the current script is.
+ * @noSelf
  */
-export function getThisResource(): Resource;
+export declare function getThisResource(): Resource;

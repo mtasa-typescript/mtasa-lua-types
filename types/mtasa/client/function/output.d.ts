@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,21 +44,24 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/ClearChatBox Wiki, clearChatBox }
  * @return returns true if the players chat was cleared successfully, false otherwise.
+ * @noSelf
  */
-export function clearChatBox(): boolean;
+export declare function clearChatBox(): boolean;
 
 /**
  * This function checks if players chat is visible.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsChatVisible Wiki, isChatVisible }
  * @return returns true if the chat is visible, false otherwise.
+ * @noSelf
  */
-export function isChatVisible(): boolean;
+export declare function isChatVisible(): boolean;
 
 /**
  * This outputs the specified text string to the chatbox. It can be specified as a message
@@ -79,8 +82,9 @@ export function isChatVisible(): boolean;
  * @param colorCoded A boolean value determining whether or not #RRGGBB tags should be used.
  * Note: The #RRGGBB format must contain capital letters a-f is not acceptable but A-F is.
  * Default RGB values in this format are: '#E7D9B0'.
+ * @noSelf
  */
-export function outputChatBox(
+export declare function outputChatBox(
     text: string,
     r?: number,
     g?: number,
@@ -93,8 +97,9 @@ export function outputChatBox(
  * It can be specified as a message to certain player(s) or all players.
  * @see {@link https://wiki.multitheftauto.com/wiki/OutputConsole Wiki, outputConsole }
  * @param text The text string that you wish to send to the console window
+ * @noSelf
  */
-export function outputConsole(
+export declare function outputConsole(
     text: string
 ): boolean;
 
@@ -115,8 +120,9 @@ export function outputConsole(
  * @param blue The amount of blue in the color of the text. Default value is 255.
  * @return returns true if the debug message was successfully output, false if invalid arguments are
  * specified.
+ * @noSelf
  */
-export function outputDebugString(
+export declare function outputDebugString(
     text: string,
     level?: number,
     red?: number,
@@ -129,7 +135,8 @@ export function outputDebugString(
  * @see {@link https://wiki.multitheftauto.com/wiki/ShowChat Wiki, showChat }
  * @param show A boolean value determining whether to show (true) or hide (false) the chat.
  * @return returns true if the players chat was shown or hidden successfully, false otherwise.
+ * @noSelf
  */
-export function showChat(
+export declare function showChat(
     show: boolean
 ): boolean;

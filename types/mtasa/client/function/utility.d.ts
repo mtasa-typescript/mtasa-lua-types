@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -67,8 +68,9 @@ import {
  * ** addDebugHook and removeDebugHook will only be hooked if they are specified in the name
  * list
  * @return returns true if the hook was successfully added, or false otherwise.
+ * @noSelf
  */
-export function addDebugHook(
+export declare function addDebugHook(
     hookType: string,
     callbackFunction: HandleFunction,
     nameList?: LuaTable
@@ -82,8 +84,9 @@ export function addDebugHook(
  * @return returns the decrypted data from https://en.wikipedia.org/wiki/base64 base64
  * representation of the encrypted block if the decryption process was successfully
  * completed, false otherwise.
+ * @noSelf
  */
-export function base64Decode(
+export declare function base64Decode(
     data: string
 ): string;
 
@@ -94,8 +97,9 @@ export function base64Decode(
  * @param data The block of data you want to encode
  * @return returns the https://en.wikipedia.org/wiki/base64 base64 representation of the encoded
  * data if the encoding process was successfully completed, false otherwise.
+ * @noSelf
  */
-export function base64Encode(
+export declare function base64Encode(
     data: string
 ): string;
 
@@ -106,8 +110,9 @@ export function base64Encode(
  * @see {@link https://wiki.multitheftauto.com/wiki/BitAnd Wiki, bitAnd }
  * @param varN The value you want to perform an AND-conjunction on
  * @return returns the conjuncted value.
+ * @noSelf
  */
-export function bitAnd(
+export declare function bitAnd(
     var1: number,
     var2: number,
     ...varargs: any[]
@@ -124,8 +129,9 @@ export function bitAnd(
  * @param value The value you want to perform the arithmetic shift on.
  * @param n The amount of positions to shift the value by.
  * @return returns the arithmetic shifted value as integer.
+ * @noSelf
  */
-export function bitArShift(
+export declare function bitArShift(
     value: number,
     n: number
 ): number;
@@ -138,8 +144,9 @@ export function bitArShift(
  * @param field The field number
  * @param width Number of bits to extract
  * @return returns the extracted value/bit sequence.
+ * @noSelf
  */
-export function bitExtract(
+export declare function bitExtract(
     variable: number,
     field: number,
     width?: number
@@ -154,8 +161,9 @@ export function bitExtract(
  * @param value The value you want to perform the rotation on.
  * @param n The amount of positions to rotate the value by.
  * @return returns the circular left-rotated value as integer.
+ * @noSelf
  */
-export function bitLRotate(
+export declare function bitLRotate(
     value: number,
     n: number
 ): number;
@@ -169,8 +177,9 @@ export function bitLRotate(
  * @param value The value you want to perform the shift on.
  * @param n The amount of positions to shift the value by.
  * @return returns the logical left shifted value as integer.
+ * @noSelf
  */
-export function bitLShift(
+export declare function bitLShift(
     value: number,
     n: number
 ): number;
@@ -181,8 +190,9 @@ export function bitLShift(
  * @see {@link https://wiki.multitheftauto.com/wiki/BitNot Wiki, bitNot }
  * @param var The value you want to perform a bitwise NOT on
  * @return returns the value on which the operation has been performed.
+ * @noSelf
  */
-export function bitNot(
+export declare function bitNot(
     variable: number
 ): number;
 
@@ -193,8 +203,9 @@ export function bitNot(
  * @see {@link https://wiki.multitheftauto.com/wiki/BitOr Wiki, bitOr }
  * @param varN The value you want to perform an OR-conjunction on
  * @return returns the conjuncted value.
+ * @noSelf
  */
-export function bitOr(
+export declare function bitOr(
     var1: number,
     var2: number,
     ...varargs: any[]
@@ -209,8 +220,9 @@ export function bitOr(
  * @param field The field number
  * @param width Number of bits to extract
  * @return returns the replaced value/bit sequence.
+ * @noSelf
  */
-export function bitReplace(
+export declare function bitReplace(
     variable: number,
     replaceValue: number,
     field: number,
@@ -226,8 +238,9 @@ export function bitReplace(
  * @param value The value you want to perform the rotation on.
  * @param n The amount of positions to rotate the value by.
  * @return returns the circular right-rotated value as integer.
+ * @noSelf
  */
-export function bitRRotate(
+export declare function bitRRotate(
     value: number,
     n: number
 ): number;
@@ -241,8 +254,9 @@ export function bitRRotate(
  * @param value The value you want to perform the shift on.
  * @param n The amount of positions to shift the value by.
  * @return returns the logical right shifted value as integer.
+ * @noSelf
  */
-export function bitRShift(
+export declare function bitRShift(
     value: number,
     n: number
 ): number;
@@ -255,8 +269,9 @@ export function bitRShift(
  * @param varN The value you want to perform the operation on (see above)
  * @return returns true if the conjuncted value is not zero, false otherwise. if a bad argument was
  * passed to bittest, youll get nil.
+ * @noSelf
  */
-export function bitTest(
+export declare function bitTest(
     var1: number,
     var2: number,
     ...varargs: any[]
@@ -269,8 +284,9 @@ export function bitTest(
  * @see {@link https://wiki.multitheftauto.com/wiki/BitXor Wiki, bitXor }
  * @param varN The value you want to perform a XOR-conjunction on
  * @return returns the conjuncted value.
+ * @noSelf
  */
-export function bitXor(
+export declare function bitXor(
     var1: number,
     var2: number,
     ...varargs: any[]
@@ -284,8 +300,9 @@ export function bitXor(
  * error
  * @param useSound A boolean value indicating whether or not to play a sound when receiving the notification.
  * @return returns true if the notification is correctly created, false otherwise.
+ * @noSelf
  */
-export function createTrayNotification(
+export declare function createTrayNotification(
     notificationText: string,
     iconType?: string,
     useSound?: boolean
@@ -301,8 +318,9 @@ export function createTrayNotification(
  * @param sleep : An integer value in milliseconds.
  * @return returns true if the development mode is enabled and arguments are correct, false
  * otherwise.
+ * @noSelf
  */
-export function debugSleep(
+export declare function debugSleep(
     sleep: number
 ): boolean;
 
@@ -317,8 +335,9 @@ export function debugSleep(
  * are the same as the returned values below.
  * @return returns the decoded string if successful, false otherwise. if a callback was provided,
  * the decoded string is argument to the callback.
+ * @noSelf
  */
-export function decodeString(
+export declare function decodeString(
     algorithm: string,
     input: string,
     options: LuaTable,
@@ -330,8 +349,9 @@ export function decodeString(
  * @see {@link https://wiki.multitheftauto.com/wiki/Deref Wiki, deref }
  * @param reference The valid reference, which you want to dereference
  * @return returns mixed if the reference were valid. returns false if the reference were invalid.
+ * @noSelf
  */
-export function deref(
+export declare function deref(
     reference: number
 ): any;
 
@@ -344,8 +364,9 @@ export function deref(
  * @see {@link https://wiki.multitheftauto.com/wiki/DownloadFile Wiki, downloadFile }
  * @param fileName : A string referencing the name of the file to download
  * @return returns true if file download has been queued, false otherwise.
+ * @noSelf
  */
-export function downloadFile(
+export declare function downloadFile(
     fileName: string
 ): boolean;
 
@@ -361,8 +382,9 @@ export function downloadFile(
  * @return returns the encoded string if successful, false otherwise. if a callback was provided,
  * true is returned immediately, and the encoded string is passed as an argument to the
  * callback.
+ * @noSelf
  */
-export function encodeString(
+export declare function encodeString(
     algorithm: string,
     input: string,
     options: LuaTable,
@@ -377,8 +399,9 @@ export function encodeString(
  * @return returns variables read from the json string.
  * note: indices of a json object such as 1: cat are being returned as string, not as
  * integer.
+ * @noSelf
  */
-export function fromJSON(
+export declare function fromJSON(
     json: string
 ): unknown;
 
@@ -403,8 +426,9 @@ export function fromJSON(
  * for red, green, blue, and alpha.  alpha decides transparancy where 255 is opaque and 0 is
  * transparent.  false is returned if the string passed is invalid (for example, is missing
  * the preceeding # sign).
+ * @noSelf
  */
-export function getColorFromString(
+export declare function getColorFromString(
     theColor: string
 ): LuaMultiReturn<[
     number,
@@ -418,8 +442,9 @@ export function getColorFromString(
  * setDevelopmentMode
  * @see {@link https://wiki.multitheftauto.com/wiki/GetDevelopmentMode Wiki, getDevelopmentMode }
  * @return returns true if the development mode is on, false if off.
+ * @noSelf
  */
-export function getDevelopmentMode(): boolean;
+export declare function getDevelopmentMode(): boolean;
 
 /**
  * This function returns the distance between two 2 dimensional points using the pythagorean
@@ -431,8 +456,9 @@ export function getDevelopmentMode(): boolean;
  * @param y2 : The Y position of the second point
  * @return returns a float containing the 2d distance between the two points. returns false if
  * invalid parameters are passed.
+ * @noSelf
  */
-export function getDistanceBetweenPoints2D(
+export declare function getDistanceBetweenPoints2D(
     x1: number,
     y1: number,
     x2: number,
@@ -451,8 +477,9 @@ export function getDistanceBetweenPoints2D(
  * @param z2 : The Z position of the second point
  * @return returns a float containing the distance between the two points as a float. returns false
  * if an argument passed was invalid.
+ * @noSelf
  */
-export function getDistanceBetweenPoints3D(
+export declare function getDistanceBetweenPoints3D(
     x1: number,
     y1: number,
     z1: number,
@@ -478,8 +505,9 @@ export function getDistanceBetweenPoints3D(
  * @return returns fanimationtime  the animation time given by the easing function (can be < 0 or >
  * 1 since some easing|easing functions have overshoot or bounce/spring effects, false
  * otherwise (error in parameters).
+ * @noSelf
  */
-export function getEasingValue(
+export declare function getEasingValue(
     fProgress: number,
     strEasingType: string,
     fEasingPeriod?: number,
@@ -493,8 +521,9 @@ export function getEasingValue(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetFPSLimit Wiki, getFPSLimit }
  * @return returns an integer between 25 and 100 of the maximum fps that players can run their game
  * at.
+ * @noSelf
  */
-export function getFPSLimit(): number;
+export declare function getFPSLimit(): number;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/GetKeyboardLayout Wiki, getKeyboardLayout }
@@ -518,8 +547,9 @@ export function getFPSLimit(): number;
  * to right, as for the mongolian (mongolian) locale.
  * |}
  * |}
+ * @noSelf
  */
-export function getKeyboardLayout(): LuaTable;
+export declare function getKeyboardLayout(): LuaTable;
 
 /**
  * This function gets the players localization setting as set in the MTA client.
@@ -527,14 +557,16 @@ export function getKeyboardLayout(): LuaTable;
  * @return returns a table with the following entries:
  * *code : the language code (eg. en_us for english (united states) or ar for arabic).
  * *name : the name of the language (eg. english (united states) or arabic).
+ * @noSelf
  */
-export function getLocalization(): LuaTable;
+export declare function getLocalization(): LuaTable;
 
 /**
  * This function returns network status information.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetNetworkStats Wiki, getNetworkStats }
+ * @noSelf
  */
-export function getNetworkStats(): LuaTable;
+export declare function getNetworkStats(): LuaTable;
 
 /**
  * This function returns a table containing network usage information about inbound and
@@ -543,8 +575,9 @@ export function getNetworkStats(): LuaTable;
  * @return returns a table with two fields: in and out. each of these contain a table with two
  * fields: bits and count. each of these contain a table with 256 numeric fields ranging
  * from 0 to 255, containing the appropriate network usage data for such packet id.
+ * @noSelf
  */
-export function getNetworkUsageData(): LuaTable;
+export declare function getNetworkUsageData(): LuaTable;
 
 /**
  * This function returns performance information.
@@ -555,8 +588,9 @@ export function getNetworkUsageData(): LuaTable;
  * @param filter Case-sensitive filter used to select returned rows. Only name column is filtered.
  * @return returns two tables. first contains column names. the second contains result rows. each
  * row is table of cells.
+ * @noSelf
  */
-export function getPerformanceStats(
+export declare function getPerformanceStats(
     category: string,
     options?: string,
     filter?: string
@@ -622,8 +656,9 @@ export function getPerformanceStats(
  * |}
  * * second is generally 0-59. extra range to accommodate for leap seconds in certain
  * systems.
+ * @noSelf
  */
-export function getRealTime(
+export declare function getRealTime(
     seconds?: number,
     localTime?: boolean
 ): LuaTable;
@@ -636,8 +671,9 @@ export function getRealTime(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetTickCount Wiki, getTickCount }
  * @return returns an integer containing the number of milliseconds since the system the server is
  * running on started. this has the potential to wrap-around.
+ * @noSelf
  */
-export function getTickCount(): number;
+export declare function getTickCount(): number;
 
 /**
  * This function is for getting the details of a running timer.
@@ -650,8 +686,9 @@ export function getTickCount(): number;
  * * returns false if the timer doesnt exist or stopped running. also, debugscript will say
  * bad argument @ gettimerdetails. to prevent this, you can check if the timer exists with
  * istimer().
+ * @noSelf
  */
-export function getTimerDetails(
+export declare function getTimerDetails(
     theTimer: Timer
 ): LuaMultiReturn<[
     number,
@@ -666,8 +703,9 @@ export function getTimerDetails(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetTimers Wiki, getTimers }
  * @param theTime The maximum time left (in milliseconds) on the timers you wish to retrieve.
  * @return returns a table of all the active timers.
+ * @noSelf
  */
-export function getTimers(
+export declare function getTimers(
     theTime?: number
 ): LuaTable;
 
@@ -681,8 +719,9 @@ export function getTimers(
  * You can easily retrieve this by running string.byte on a string containing the separating
  * character.
  * @return returns a string containing the token if it exists, false otherwise.
+ * @noSelf
  */
-export function gettok(
+export declare function gettok(
     text: string,
     tokenNumber: number,
     separatingCharacter: string | number
@@ -714,8 +753,9 @@ export function gettok(
  * @param weapon : a Weapon|custom weapon.
  * @return returns a string containing the specified userdatas type, or false plus an error message
  * if the given value is not userdata.
+ * @noSelf
  */
-export function getUserdataType(
+export declare function getUserdataType(
     value: Userdata
 ): string;
 
@@ -740,8 +780,9 @@ export function getUserdataType(
  * be confirmed by using the console command ver.)
  * *sortable: a 15 character sortable version string (from 1.0.4 onwards). format of the
  * string is described in getplayerversion.
+ * @noSelf
  */
-export function getVersion(): LuaTable;
+export declare function getVersion(): LuaTable;
 
 /**
  * This function returns a hash of the specified string in the specified algorithm.
@@ -749,8 +790,9 @@ export function getVersion(): LuaTable;
  * @param algorithm : A string which must be one of these: md5, sha1, sha224, sha256, sha384, sha512
  * @param dataToHash : A string of the data to hash.
  * @return returns the hash of the data, false if an invalid argument was used.
+ * @noSelf
  */
-export function hash(
+export declare function hash(
     algorithm: string,
     dataToHash: string
 ): string;
@@ -765,8 +807,9 @@ export function hash(
  * page.
  * @return always returns a string. the contents can change if we update the inspect library, so it
  * is not expected to be consistent across lua versions.
+ * @noSelf
  */
-export function inspect(
+export declare function inspect(
     variable: any,
     options?: LuaTable
 ): string;
@@ -792,8 +835,9 @@ export function inspect(
  * as mentioned before, interpolatebetween can be used on 2d vectors or scalars in which
  * case only some (x, y or just x) of the returned values are to be used (cf. alpha
  * interpolation in marker example or size interpolation in window example).
+ * @noSelf
  */
-export function interpolateBetween(
+export declare function interpolateBetween(
     x1: number,
     y1: number,
     z1: number,
@@ -820,8 +864,9 @@ export function interpolateBetween(
  * @param var1 A variable of any type to print intelligent information for.
  * @param var2+ Another variable to be output.  An unlimited number of arguments can be supplied
  * @return always returns nil.
+ * @noSelf
  */
-export function iprint(
+export declare function iprint(
     var1: any,
     var2?: any,
     var3?: any,
@@ -831,16 +876,18 @@ export function iprint(
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/IsOOPEnabled Wiki, isOOPEnabled }
  * @return returns true or false if oop is enabled or not. returns nil if an error arised.
+ * @noSelf
  */
-export function isOOPEnabled(): boolean;
+export declare function isOOPEnabled(): boolean;
 
 /**
  * This function checks if a variable is a timer.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsTimer Wiki, isTimer }
  * @param theTimer : The variable that we want to check.
  * @return returns true if the passed value is a timer, false otherwise.
+ * @noSelf
  */
-export function isTimer(
+export declare function isTimer(
     theTimer: Timer
 ): boolean;
 
@@ -849,16 +896,18 @@ export function isTimer(
  * in his settings or not.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsTrayNotificationEnabled Wiki, isTrayNotificationEnabled }
  * @return returns true if the tray notifications are enabled in the settings, false otherwise.
+ * @noSelf
  */
-export function isTrayNotificationEnabled(): boolean;
+export declare function isTrayNotificationEnabled(): boolean;
 
 /**
  * This function allows you to kill/halt existing timers.
  * @see {@link https://wiki.multitheftauto.com/wiki/KillTimer Wiki, killTimer }
  * @param theTimer The timer you wish to halt.
  * @return returns true if the timer was successfully killed, false if no such timer existed.
+ * @noSelf
  */
-export function killTimer(
+export declare function killTimer(
     theTimer: Timer
 ): boolean;
 
@@ -868,8 +917,9 @@ export function killTimer(
  * @see {@link https://wiki.multitheftauto.com/wiki/Md5 Wiki, md5 }
  * @param str the string to hash.
  * @return returns the md5 hash of the input string if successful, false otherwise.
+ * @noSelf
  */
-export function md5(
+export declare function md5(
     str: string
 ): string;
 
@@ -887,8 +937,9 @@ export function md5(
  * @return returns the hash as a string if hashing was successful, false otherwise. if a callback
  * was provided, the aforementioned values are arguments to the callback, and this function
  * will always return true.
+ * @noSelf
  */
-export function passwordHash(
+export declare function passwordHash(
     password: string,
     algorithm: string,
     options: LuaTable,
@@ -910,8 +961,9 @@ export function passwordHash(
  * @return returns true if the password matches the hash. returns false if the password does not
  * match, or if an unknown hash was passed. if a callback was provided, the aforementioned
  * values are arguments to the callback, and this function will always return true.
+ * @noSelf
  */
-export function passwordVerify(
+export declare function passwordVerify(
     password: string,
     hash: string,
     options?: LuaTable,
@@ -928,8 +980,9 @@ export function passwordVerify(
  * extended, 16 - unicode ) or ( i - Ignore case, m - Multiline, d - Dotall, e - Extended, u
  * - Unicode )
  * @return returns true if the pattern was found in the input string, false otherwise.
+ * @noSelf
  */
-export function pregFind(
+export declare function pregFind(
     subject: string,
     pattern: string,
     flags?: number | string
@@ -945,8 +998,9 @@ export function pregFind(
  * - Unicode )
  * @param maxResults Maximum number of results to return
  * @return returns a table if one or more match is found, false otherwise.
+ * @noSelf
  */
-export function pregMatch(
+export declare function pregMatch(
     base: string,
     pattern: string,
     flags?: number | string,
@@ -964,8 +1018,9 @@ export function pregMatch(
  * extended, 16 - unicode ) or ( i - Ignore case, m - Multiline, d - Dotall, e - Extended, u
  * - Unicode )
  * @return returns the replaced string, or bool false otherwise.
+ * @noSelf
  */
-export function pregReplace(
+export declare function pregReplace(
     subject: string,
     pattern: string,
     replacement: string,
@@ -978,8 +1033,9 @@ export function pregReplace(
  * @param objectToReference The Lua element, which you want to reference
  * @return returns an int if the reference were successfully created. returns false if the parameter
  * were invalid.
+ * @noSelf
  */
-export function ref(
+export declare function ref(
     objectToReference: any
 ): number;
 
@@ -993,8 +1049,9 @@ export function ref(
  * ** postFunction
  * @param callbackFunction The callback function to remove
  * @return returns true if the hook was successfully removed, or false otherwise.
+ * @noSelf
  */
-export function removeDebugHook(
+export declare function removeDebugHook(
     hookType: string,
     callbackFunction: HandleFunction
 ): boolean;
@@ -1006,8 +1063,9 @@ export function removeDebugHook(
  * @see {@link https://wiki.multitheftauto.com/wiki/ResetTimer Wiki, resetTimer }
  * @param theTimer The timer whose elapsed time you wish to reset.
  * @return returns true if the timer was successfully reset, false otherwise.
+ * @noSelf
  */
-export function resetTimer(
+export declare function resetTimer(
     theTimer: Timer
 ): boolean;
 
@@ -1017,8 +1075,9 @@ export function resetTimer(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetClipboard Wiki, setClipboard }
  * @param theText The new text to be in the players clipboard when the player pastes with CTRL + V.
  * @return returns true if the text in the clip board was set correctly.
+ * @noSelf
  */
-export function setClipboard(
+export declare function setClipboard(
     theText: string
 ): boolean;
 
@@ -1036,8 +1095,9 @@ export function setClipboard(
  * @param enableWeb : A boolean to indicate whether browser debug messages will be filtered (false) or not
  * (true)
  * @return returns true if the mode was set correctly, false otherwise.
+ * @noSelf
  */
-export function setDevelopmentMode(
+export declare function setDevelopmentMode(
     enable: boolean,
     enableWeb?: boolean
 ): boolean;
@@ -1052,8 +1112,9 @@ export function setDevelopmentMode(
  * changed via fps_limit=0 in console or MTA San Andreas 1.5\MTA\config\coreconfig.xml).
  * @return returns true if successful, or false if it was not possible to set the limit or an
  * invalid value was passed.
+ * @noSelf
  */
-export function setFPSLimit(
+export declare function setFPSLimit(
     fpsLimit: number
 ): boolean;
 
@@ -1082,8 +1143,9 @@ export function setFPSLimit(
  * in the original table before the function gets called wont get transferred.
  * @return returns a timer pointer if the timer was set successfully, false if the arguments are
  * invalid or the timer could not be set.
+ * @noSelf
  */
-export function setTimer(
+export declare function setTimer(
     theFunction: HandleFunction,
     timeInterval: number,
     timesToExecute: number,
@@ -1098,8 +1160,9 @@ export function setTimer(
  * * the window is already in focus
  * * the client has disabled this feature
  * returns true otherwise
+ * @noSelf
  */
-export function setWindowFlashing(
+export declare function setWindowFlashing(
     shouldFlash: boolean,
     count?: number
 ): boolean;
@@ -1113,8 +1176,9 @@ export function setWindowFlashing(
  * @see {@link https://wiki.multitheftauto.com/wiki/Sha256 Wiki, sha256 }
  * @param str the string to hash.
  * @return returns the sha256 hash of the input string if successful, false otherwise.
+ * @noSelf
  */
-export function sha256(
+export declare function sha256(
     str: string
 ): string;
 
@@ -1132,8 +1196,9 @@ export function sha256(
  * character you want to use to split.
  * @return returns a table of substrings split from the original string if successful, false
  * otherwise.
+ * @noSelf
  */
-export function split(
+export declare function split(
     stringToSplit: string,
     separatingChar: string | number
 ): LuaTable;
@@ -1147,8 +1212,9 @@ export function split(
  * @param key The key that should be used for decryption (Only first 16 characters are used)
  * @return returns string containing the decrypted data if the decryption process was successfully
  * completed, false otherwise.
+ * @noSelf
  */
-export function teaDecode(
+export declare function teaDecode(
     data: string,
     key: string
 ): string;
@@ -1162,8 +1228,9 @@ export function teaDecode(
  * @param key The key that should be used for encryption (Only first 16 characters are used)
  * @return returns the https://en.wikipedia.org/wiki/base64 base64 representation of the encrypted
  * string if the encryption process was successfully completed, false otherwise.
+ * @noSelf
  */
-export function teaEncode(
+export declare function teaEncode(
     text: string,
     key: string
 ): string;
@@ -1176,8 +1243,9 @@ export function teaEncode(
  * @param blue The amount of http://en.wikipedia.org/wiki/RGBA_color_space blue in the color (0-255).
  * @param alpha The amount of http://en.wikipedia.org/wiki/RGBA_color_space alpha in the color (0-255).
  * @return returns a single value representing the color.
+ * @noSelf
  */
-export function tocolor(
+export declare function tocolor(
     red: number,
     green: number,
     blue: number,
@@ -1197,8 +1265,9 @@ export function tocolor(
  * ** spaces
  * ** tabs
  * @return returns a json formatted string.
+ * @noSelf
  */
-export function toJSON(
+export declare function toJSON(
     value: unknown,
     compact?: boolean,
     prettyType?: string
@@ -1209,8 +1278,9 @@ export function toJSON(
  * @see {@link https://wiki.multitheftauto.com/wiki/UtfChar Wiki, utfChar }
  * @param characterCode The UTF code, to get the string of.
  * @return returns a string if the function was successful, false otherwise.
+ * @noSelf
  */
-export function utfChar(
+export declare function utfChar(
     characterCode: number
 ): string;
 
@@ -1219,8 +1289,9 @@ export function utfChar(
  * @see {@link https://wiki.multitheftauto.com/wiki/UtfCode Wiki, utfCode }
  * @param theString The string to get the UTF code of.
  * @return returns an int if the function was successful, false otherwise.
+ * @noSelf
  */
-export function utfCode(
+export declare function utfCode(
     theString: string
 ): number;
 
@@ -1229,8 +1300,9 @@ export function utfCode(
  * @see {@link https://wiki.multitheftauto.com/wiki/UtfLen Wiki, utfLen }
  * @param theString The string to get the length of.
  * @return returns an int if the function was successful, false otherwise.
+ * @noSelf
  */
-export function utfLen(
+export declare function utfLen(
     theString: string
 ): number;
 
@@ -1240,8 +1312,9 @@ export function utfLen(
  * @param theString The string.
  * @param position An int with the specified charachter position.
  * @return returns an int if the function was successful, false otherwise.
+ * @noSelf
  */
-export function utfSeek(
+export declare function utfSeek(
     theString: string,
     position: number
 ): number;
@@ -1253,8 +1326,9 @@ export function utfSeek(
  * @param Start An int with the start position.
  * @param End An int with the end position.
  * @return returns a string if the function was successful, false otherwise.
+ * @noSelf
  */
-export function utfSub(
+export declare function utfSub(
     theString: string,
     Start: number,
     End: number

@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -44,8 +45,9 @@ import {
  * transparency of the radar area.  255 is opaque and 0 is transparent.
  * @param visibleTo An element that you wish to restrict the visibility of the radar area to. (Server
  * function only)
+ * @noSelf
  */
-export function createRadarArea(
+export declare function createRadarArea(
     startPosX: number,
     startPosY: number,
     sizeX: number,
@@ -64,8 +66,9 @@ export function createRadarArea(
  * @return returns four integers in rgba format (red, green, blue, alpha), with a maximum value of
  * 255 for each.  alpha decides transparency where 255 is opaque and 0 is transparent.
  * returns false if the radararea is invalid.
+ * @noSelf
  */
-export function getRadarAreaColor(
+export declare function getRadarAreaColor(
     theRadararea: RadarArea
 ): LuaMultiReturn<[
     number,
@@ -80,8 +83,9 @@ export function getRadarAreaColor(
  * @param theRadararea The radararea|radar area element whose size you wish to get.
  * @return returns two floats indicating the x and y length of the radar area respectively, false if
  * the radar area is invalid.
+ * @noSelf
  */
-export function getRadarAreaSize(
+export declare function getRadarAreaSize(
     theRadararea: RadarArea
 ): LuaMultiReturn<[
     number,
@@ -96,8 +100,9 @@ export function getRadarAreaSize(
  * @param posY The Y coordinate of the position youre checking.
  * @return returns true if the position is inside the radar area, false if it isnt or if any
  * parameters are invalid.
+ * @noSelf
  */
-export function isInsideRadarArea(
+export declare function isInsideRadarArea(
     theArea: RadarArea,
     posX: number,
     posY: number
@@ -108,8 +113,9 @@ export function isInsideRadarArea(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing Wiki, isRadarAreaFlashing }
  * @param theRadararea The radar area you wish to check the state of flashing
  * @return returns true if the radar area is flashing, false if it is not or if it doesnt exist.
+ * @noSelf
  */
-export function isRadarAreaFlashing(
+export declare function isRadarAreaFlashing(
     theRadararea: RadarArea
 ): boolean;
 
@@ -125,8 +131,9 @@ export function isRadarAreaFlashing(
  * @param a an integer representing the colors alpha (0 for transparent, 255 for opaque)
  * @return returns true if the color was set successfully, false if the radar area doesnt exist or
  * the color arguments are improper.
+ * @noSelf
  */
-export function setRadarAreaColor(
+export declare function setRadarAreaColor(
     theRadarArea: RadarArea,
     r: number,
     g: number,
@@ -141,8 +148,9 @@ export function setRadarAreaColor(
  * @param flash a bool indicating whether the radar area should flash (true to flash, false to not flash).
  * @return returns true if the new flash state was successfully set, false if the radar area doesnt
  * exist or invalid arguments were passed.
+ * @noSelf
  */
-export function setRadarAreaFlashing(
+export declare function setRadarAreaFlashing(
     theRadarArea: RadarArea,
     flash: boolean
 ): boolean;
@@ -154,8 +162,9 @@ export function setRadarAreaFlashing(
  * @param x the x length of the radar area.
  * @param y the y length of the radar area.
  * @return returns true if the size was set successfully, false if invalid arguments are passed.
+ * @noSelf
  */
-export function setRadarAreaSize(
+export declare function setRadarAreaSize(
     theRadararea: RadarArea,
     x: number,
     y: number

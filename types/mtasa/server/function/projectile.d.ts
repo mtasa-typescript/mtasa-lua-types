@@ -27,13 +27,15 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
  * This function can be used to detonate a players satchels.
  * @see {@link https://wiki.multitheftauto.com/wiki/DetonateSatchels Wiki, detonateSatchels }
+ * @noSelf
  */
-export function detonateSatchels(
+export declare function detonateSatchels(
     Player: Player
 ): boolean;

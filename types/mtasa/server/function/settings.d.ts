@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -41,8 +42,9 @@ import {
  * *the list of the scripts resource settings if an empty string is passed.
  * it returns false if the specified setting or settings group doesnt exist, or if the
  * settings group you are trying to retrieve doesnt have any public or protected settings.
+ * @noSelf
  */
-export function get(
+export declare function get(
     settingName: string
 ): unknown;
 
@@ -61,8 +63,9 @@ export function get(
  * most userdata (only resources cant be stored) and threads.
  * @return returns true if the setting has been set, false if you do not have access to the setting
  * or invalid arguments were passed.
+ * @noSelf
  */
-export function set(
+export declare function set(
     settingName: string,
     value: unknown
 ): boolean;

@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,23 +44,26 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
  * The function is used to retrieve the ID of the current radio channel.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetRadioChannel Wiki, getRadioChannel }
  * @return returns the id of the radio channel.
+ * @noSelf
  */
-export function getRadioChannel(): number;
+export declare function getRadioChannel(): number;
 
 /**
  * This function gets the given radio channel name.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetRadioChannelName Wiki, getRadioChannelName }
  * @param id The ID of the radio station you want to get the name of. It is a number from 0 to 12.
  * @return returns a string containing the station name if successful, false otherwise.
+ * @noSelf
  */
-export function getRadioChannelName(
+export declare function getRadioChannelName(
     id: number
 ): string;
 
@@ -71,8 +74,9 @@ export function getRadioChannelName(
  * @param audioContainer The container name. Possible values are: feet, genrl, pain_a, script, spc_ea, spc_fa,
  * spc_ga, spc_na, spc_pa
  * @return returns true if the sound container is available, false otherwise.
+ * @noSelf
  */
-export function getSFXStatus(
+export declare function getSFXStatus(
     audioContainer: string
 ): boolean;
 
@@ -82,8 +86,9 @@ export function getSFXStatus(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundBPM Wiki, getSoundBPM }
  * @param sound a sound element that is created using playSound or playSound3D
  * @return returns the beats per minute of the given sound.
+ * @noSelf
  */
-export function getSoundBPM(
+export declare function getSoundBPM(
     sound: Element
 ): number;
 
@@ -93,8 +98,9 @@ export function getSoundBPM(
  * @return * a float value indicating the buffer playback length of the sound in seconds.
  * * false if the sound is not a stream.
  * * nil if the sound is invalid.
+ * @noSelf
  */
-export function getSoundBufferLength(
+export declare function getSoundBufferLength(
     theSound: Element
 ): number;
 
@@ -105,8 +111,9 @@ export function getSoundBufferLength(
  * @return returns a table with the effect names as the keys, and their states as the values if
  * successful. otherwise, it returns false.
  * sound effect names:
+ * @noSelf
  */
-export function getSoundEffects(
+export declare function getSoundEffects(
     sound: Element
 ): LuaTable;
 
@@ -131,8 +138,9 @@ export function getSoundEffects(
  * current audio frame.
  * returns false if the sound is not playing yet or hasnt buffered in the
  * case of streams.
+ * @noSelf
  */
-export function getSoundFFTData(
+export declare function getSoundFFTData(
     sound: Element,
     iSamples: number,
     iBands?: number
@@ -144,8 +152,9 @@ export function getSoundFFTData(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundLength Wiki, getSoundLength }
  * @param theSound the sound element which length you want to return.
  * @return returns an float value indicating the playback length of the sound element in seconds.
+ * @noSelf
  */
-export function getSoundLength(
+export declare function getSoundLength(
     theSound: Element
 ): number;
 
@@ -155,8 +164,9 @@ export function getSoundLength(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundLevelData Wiki, getSoundLevelData }
  * @param theSound the sound element which level data you want to return.
  * @return returns a two integers in range from 0 to 32768.
+ * @noSelf
  */
-export function getSoundLevelData(
+export declare function getSoundLevelData(
     theSound: Element
 ): LuaMultiReturn<[
     number,
@@ -168,8 +178,9 @@ export function getSoundLevelData(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundMaxDistance Wiki, getSoundMaxDistance }
  * @param sound a sound element.
  * @return returns an integer of the max distance, false if invalid arguments where passed.
+ * @noSelf
  */
-export function getSoundMaxDistance(
+export declare function getSoundMaxDistance(
     sound: Element
 ): number;
 
@@ -183,8 +194,9 @@ export function getSoundMaxDistance(
  * @return returns a table, but only a string if format is given, with all data available (keys are
  * listed below) for the sound if successful, false otherwise. if any data is unavailable
  * then the associated key is not written to the table.
+ * @noSelf
  */
-export function getSoundMetaTags(
+export declare function getSoundMetaTags(
     sound: Element,
     format?: string
 ): LuaTable;
@@ -194,8 +206,9 @@ export function getSoundMetaTags(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundMinDistance Wiki, getSoundMinDistance }
  * @param sound a sound element.
  * @return returns an integer of the minimum distance, false if invalid arguements where passed.
+ * @noSelf
  */
-export function getSoundMinDistance(
+export declare function getSoundMinDistance(
     sound: Element
 ): number;
 
@@ -204,8 +217,9 @@ export function getSoundMinDistance(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundPan Wiki, getSoundPan }
  * @param theSound the sound element which pan you want to get.
  * @return returns float value with range from -1.0 (left) to 1.0 (right), false otherwise.
+ * @noSelf
  */
-export function getSoundPan(
+export declare function getSoundPan(
     theSound: Element
 ): number;
 
@@ -215,8 +229,9 @@ export function getSoundPan(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundPosition Wiki, getSoundPosition }
  * @param theSound The sound element which seek position you want to return.
  * @return returns a float value indicating the seek position of the sound element in seconds.
+ * @noSelf
  */
-export function getSoundPosition(
+export declare function getSoundPosition(
     theSound: Element
 ): number;
 
@@ -229,8 +244,9 @@ export function getSoundPosition(
  * second one the sounds http://en.wikipedia.org/wiki/tempo tempo, and the third one the
  * http://en.wikipedia.org/wiki/pitch_%28music%29 pitch of the sound. the boolean
  * representing whether the sound is reversed or not.
+ * @noSelf
  */
-export function getSoundProperties(
+export declare function getSoundProperties(
     sound: Element
 ): LuaMultiReturn<[
     number,
@@ -245,8 +261,9 @@ export function getSoundProperties(
  * @param theSound the sound element which playback speed you want to return.
  * @return returns an float value indicating the playback speed of the sound element. default sound
  * playback speed is 1.0.
+ * @noSelf
  */
-export function getSoundSpeed(
+export declare function getSoundSpeed(
     theSound: Element
 ): number;
 
@@ -257,8 +274,9 @@ export function getSoundSpeed(
  * @param theSound the sound element which volume you want to return.
  * @return returns a float representing the volume level of the sound element, false if invalid
  * arguments were passed.
+ * @noSelf
  */
-export function getSoundVolume(
+export declare function getSoundVolume(
     theSound: Element
 ): number;
 
@@ -273,8 +291,9 @@ export function getSoundVolume(
  * @return returns a table of isamples floats representing the current audio frame waveform.
  * returns false if the sound is not playing yet or hasnt buffered in the
  * case of streams.
+ * @noSelf
  */
-export function getSoundWaveData(
+export declare function getSoundWaveData(
     sound: Element,
     iSamples: number
 ): LuaTable;
@@ -283,8 +302,9 @@ export function getSoundWaveData(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsSoundLooped Wiki, isSoundLooped }
  * @param theSound The sound element which you want to get the loop state.
  * @return returns true if the sound element is seted to loop, false otherwise.
+ * @noSelf
  */
-export function isSoundLooped(
+export declare function isSoundLooped(
     theSound: Element
 ): boolean;
 
@@ -294,8 +314,9 @@ export function isSoundLooped(
  * @param theSound A valid sound element.
  * @return returns true if the sound is valid and it has panning enabled, false if it does not or is
  * not valid.
+ * @noSelf
  */
-export function isSoundPanningEnabled(
+export declare function isSoundPanningEnabled(
     theSound: Element
 ): boolean;
 
@@ -306,8 +327,9 @@ export function isSoundPanningEnabled(
  * @param theSound the sound element which pause state you want to return.
  * @return returns true if the sound element is paused, false if unpaused or invalid arguments were
  * passed.
+ * @noSelf
  */
-export function isSoundPaused(
+export declare function isSoundPaused(
     theSound: Element
 ): boolean;
 
@@ -333,8 +355,9 @@ export function isSoundPaused(
  * *trackid : the radio track id within the radio station audio file
  * *looped: a boolean representing whether the sound will be looped
  * returns a sound element if the sound was successfully created, false otherwise.
+ * @noSelf
  */
-export function playSFX(
+export declare function playSFX(
     containerName: string,
     bankId: number,
     soundId: number,
@@ -370,8 +393,9 @@ export function playSFX(
  * *z: a floating point number representing the z coordinate on the map.
  * *looped: a boolean representing whether the sound will be looped
  * returns a sound element if the sound was successfully created, false otherwise.
+ * @noSelf
  */
-export function playSFX3D(
+export declare function playSFX3D(
     containerName: string,
     bankId: number,
     soundId: number,
@@ -400,8 +424,9 @@ export function playSFX3D(
  * bandwidth). To throttle the sound, use true. Sounds will be throttled per default and
  * only for URLs.
  * @return returns a sound element if the sound was successfully created, false otherwise.
+ * @noSelf
  */
-export function playSound(
+export declare function playSound(
     soundPath: string,
     looped?: boolean,
     throttled?: boolean
@@ -430,8 +455,9 @@ export function playSound(
  * @param throttled a boolean representing whether the sound will be throttled (i.e. given reduced download
  * bandwidth). To throttle the sound, use true.
  * @return returns a sound element if the sound was successfully created, false otherwise.
+ * @noSelf
  */
-export function playSound3D(
+export declare function playSound3D(
     soundPath: string,
     x: number,
     y: number,
@@ -443,8 +469,9 @@ export function playSound3D(
  * This function plays a frontend sound for the specified player.
  * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
  * @param sound a whole int specifying the sound id to play. Valid values are:
+ * @noSelf
  */
-export function playSoundFrontEnd(
+export declare function playSoundFrontEnd(
     sound: number
 ): boolean;
 
@@ -453,8 +480,9 @@ export function playSoundFrontEnd(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetRadioChannel Wiki, setRadioChannel }
  * @param ID The ID of the radio station you want to play.
  * @return returns true if channel was set successfully, false otherwise.
+ * @noSelf
  */
-export function setRadioChannel(
+export declare function setRadioChannel(
     ID: number
 ): boolean;
 
@@ -466,8 +494,9 @@ export function setRadioChannel(
  * @param effectName the effect you want to enable or disable
  * @param bEnable true if you want to enable the effect, false if you want to disable it.
  * @return returns true if the effect was set successfully, false otherwise.
+ * @noSelf
  */
-export function setSoundEffectEnabled(
+export declare function setSoundEffectEnabled(
     theSound_thePlayer: Element,
     effectName: string,
     bEnable: boolean
@@ -484,8 +513,9 @@ export function setSoundEffectEnabled(
  * setsoundlooped(mysound, true)
  * end)
  * </syntaxhighlight>
+ * @noSelf
  */
-export function setSoundLooped(
+export declare function setSoundLooped(
     theSound: Element,
     loop: boolean
 ): boolean;
@@ -496,8 +526,9 @@ export function setSoundLooped(
  * @param sound a sound element.
  * @param distance the default value for this is 20
  * @return returns a true if the max distance was set, false otherwise.
+ * @noSelf
  */
-export function setSoundMaxDistance(
+export declare function setSoundMaxDistance(
     sound: Element,
     distance: number
 ): boolean;
@@ -509,8 +540,9 @@ export function setSoundMaxDistance(
  * @param distance an integer representing the distance the sound stops getting louder. the default value
  * for this is 5
  * @return returns a true if the minimum distance was set, false otherwise.
+ * @noSelf
  */
-export function setSoundMinDistance(
+export declare function setSoundMinDistance(
     sound: Element,
     distance: number
 ): boolean;
@@ -522,8 +554,9 @@ export function setSoundMinDistance(
  * @param pan A float|floating point number representing the desired pan level. Range is from -1.0
  * (left) to 1.0 (right)
  * @return returns true if the sound element pan was successfully changed, false otherwise.
+ * @noSelf
  */
-export function setSoundPan(
+export declare function setSoundPan(
     theSound: Element,
     pan: number
 ): boolean;
@@ -537,8 +570,9 @@ export function setSoundPan(
  * @return returns true if the sound is valid and good arguments were passed, false if not.
  * if the sound is not 3d, this function will return true as well, but issoundpanningenabled
  * will always return true after this (so it has no effect).
+ * @noSelf
  */
-export function setSoundPanningEnabled(
+export declare function setSoundPanningEnabled(
     sound: Element,
     enable: boolean
 ): boolean;
@@ -552,8 +586,9 @@ export function setSoundPanningEnabled(
  * @param paused a boolean value representing whether the sound should be paused or not. To pause the
  * sound, use true.
  * @return returns true if the sound element was successfully paused, false otherwise.
+ * @noSelf
  */
-export function setSoundPaused(
+export declare function setSoundPaused(
     theSound: Element,
     paused: boolean
 ): boolean;
@@ -568,8 +603,9 @@ export function setSoundPaused(
  * @param pos a float value representing the new seek position of the sound element in seconds.
  * @return returns true if the sound elements seek position was successfully changed, false
  * otherwise.
+ * @noSelf
  */
-export function setSoundPosition(
+export declare function setSoundPosition(
     theSound: Element,
     pos: number
 ): boolean;
@@ -583,8 +619,9 @@ export function setSoundPosition(
  * @param fPitch a float that defines the new sound http://en.wikipedia.org/wiki/Pitch_%28music%29 pitch
  * @param bReverse a boolean representing whether the sound will be reversed or not.
  * @return returns true if the properties sucessfully set, false otherwise.
+ * @noSelf
  */
-export function setSoundProperties(
+export declare function setSoundProperties(
     sound: Element,
     fSampleRate: number,
     fTempo: number,
@@ -599,8 +636,9 @@ export function setSoundProperties(
  * @param speed a floating point number representing the desired sound playback speed.
  * @return returns true if the sound element playback speed was successfully changed, false
  * otherwise.
+ * @noSelf
  */
-export function setSoundSpeed(
+export declare function setSoundSpeed(
     theSound: Element,
     speed: number
 ): boolean;
@@ -614,8 +652,9 @@ export function setSoundSpeed(
  * @param volume A floating point number representing the desired volume level. Range is from 0.0 to 1.0.
  * This can go above 1.0 for amplification.
  * @return returns true if the sound element volume was successfully changed, false otherwise.
+ * @noSelf
  */
-export function setSoundVolume(
+export declare function setSoundVolume(
     theSound_thePlayer: Element,
     volume: number
 ): boolean;
@@ -625,7 +664,8 @@ export function setSoundVolume(
  * @see {@link https://wiki.multitheftauto.com/wiki/StopSound Wiki, stopSound }
  * @param theSound the sound element you want to stop playing.
  * @return returns true if the sound was successfully stopped, false otherwise.
+ * @noSelf
  */
-export function stopSound(
+export declare function stopSound(
     theSound: Element
 ): boolean;

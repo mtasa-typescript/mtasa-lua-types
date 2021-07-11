@@ -1,6 +1,7 @@
 import { Element } from './oop/Element';
 import { Resource } from './oop/Resource';
 import { Player } from './oop/Player';
+import { Timer } from './oop/Timer';
 
 /**
  * A table of resource names containing all export functions
@@ -45,9 +46,9 @@ export const sourceResourceRoot: Element;
 /**
  * The resource that called the event
  */
-export const sourceResource: Element;
+export const sourceResource: Resource;
 
 /**
  * Current timer in callback function.
  */
-export const sourceTimer: Element;
+export const sourceTimer: Timer;

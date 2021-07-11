@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -35,8 +36,9 @@ import {
  * @see {@link https://wiki.multitheftauto.com/wiki/GetLoadedModules Wiki, getLoadedModules }
  * @return returns a table of all the currently loaded modules. if no modules are loaded, the table
  * will be empty.
+ * @noSelf
  */
-export function getLoadedModules(): LuaTable;
+export declare function getLoadedModules(): LuaTable;
 
 /**
  * This function returns information about the specified Modules|module.
@@ -47,7 +49,8 @@ export function getLoadedModules(): LuaTable;
  * *name: module name
  * *author: module author
  * if invalid name for module is passed, it will return false.
+ * @noSelf
  */
-export function getModuleInfo(
+export declare function getModuleInfo(
     moduleName: string
 ): LuaTable;

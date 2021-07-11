@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -66,8 +67,9 @@ import {
  * you add the handler. This function can take commandName parameter, followed by as many
  * parameters as you expect after your command (see below). These are all optional.
  * @param caseSensitive Specifies if the command handler will ignore the case for this command name.
+ * @noSelf
  */
-export function addCommandHandler(
+export declare function addCommandHandler(
     commandName: string,
     handlerFunction: HandleFunction,
     caseSensitive?: boolean
@@ -88,8 +90,9 @@ export function addCommandHandler(
  * arguments, ... ] )</syntaxhighlight>
  * :The values passed to this function are:
  * @param arguments The optional arguments you specified when calling bindKey (see below).
+ * @noSelf
  */
-export function bindKey(
+export declare function bindKey(
     key: string,
     keyState: string,
     handlerFunction: HandleFunction,
@@ -104,8 +107,9 @@ export function bindKey(
  * to trigger the function.
  * @param args Additional parameters that will be passed to the handler function(s) of the command that
  * is called, separated by spaces.
+ * @noSelf
  */
-export function executeCommandHandler(
+export declare function executeCommandHandler(
     commandName: string,
     args?: string
 ): boolean;
@@ -119,8 +123,9 @@ export function executeCommandHandler(
  * controls.
  * @param rawValue A bool indicating if it should return the raw player input value.
  * @return returns a float between 0 and 1 indicating the amount the control is pressed.
+ * @noSelf
  */
-export function getAnalogControlState(
+export declare function getAnalogControlState(
     control: string,
     rawValue?: boolean
 ): number;
@@ -134,8 +139,9 @@ export function getAnalogControlState(
  * @return if one or more keys are bound to the specified control or console command, a table is
  * returned indexed by the names of the keys and containing key states as values. if no keys
  * are bound or an invalid name was passed, returns false.
+ * @noSelf
  */
-export function getBoundKeys(
+export declare function getBoundKeys(
     command_control: string
 ): LuaTable;
 
@@ -148,8 +154,9 @@ export function getBoundKeys(
  * @return returns a table containing all the commands of the given resource or a table with
  * subtables containing the command and theresource pointer ( { command, theresource } ).
  * see examples below if you dont understand it.
+ * @noSelf
  */
-export function getCommandHandlers(
+export declare function getCommandHandlers(
     theResource?: Resource
 ): LuaTable;
 
@@ -162,8 +169,9 @@ export function getCommandHandlers(
  * @param down If the bound key should trigger the function when the key is pressed
  * @param both If the bound key should trigger the function when the key is pressed or released
  * @return returns a table of the commands bound on that key.
+ * @noSelf
  */
-export function getCommandsBoundToKey(
+export declare function getCommandsBoundToKey(
     theKey: string,
     keyState: string
 ): LuaTable;
@@ -176,8 +184,9 @@ export function getCommandsBoundToKey(
  * @param up If the bound key should trigger the function when the key is released
  * @param down If the bound key should trigger the function when the key is pressed
  * @param both If the bound key should trigger the function when the key is pressed or released
+ * @noSelf
  */
-export function getFunctionsBoundToKey(
+export declare function getFunctionsBoundToKey(
     key: string,
     keyState: string
 ): LuaTable;
@@ -187,8 +196,9 @@ export function getFunctionsBoundToKey(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetKeyBoundToCommand Wiki, getKeyBoundToCommand }
  * @param command command what you need check.
  * @return returns a string of first key binded to current command.
+ * @noSelf
  */
-export function getKeyBoundToCommand(
+export declare function getKeyBoundToCommand(
     command: string
 ): string;
 
@@ -197,8 +207,9 @@ export function getKeyBoundToCommand(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetKeyBoundToFunction Wiki, getKeyBoundToFunction }
  * @param theFunction The function in which you would like to check the bound key
  * @return returns a string of the first key the function was bound to.
+ * @noSelf
  */
-export function getKeyBoundToFunction(
+export declare function getKeyBoundToFunction(
     theFunction: HandleFunction
 ): string;
 
@@ -209,8 +220,9 @@ export function getKeyBoundToFunction(
  * @param keyName The name of the key youre checking state of. See Key names.
  * @return returns true if the specified key is pressed, false if it isnt or if an invalid key name
  * is passed.
+ * @noSelf
  */
-export function getKeyState(
+export declare function getKeyState(
     keyName: string
 ): boolean;
 
@@ -218,8 +230,9 @@ export function getKeyState(
  * Checks whether a GTA control is enabled or disabled for a certain player.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsControlEnabled Wiki, isControlEnabled }
  * @param control The control you wish to check. See control names for a list of possible controls.
+ * @noSelf
  */
-export function isControlEnabled(
+export declare function isControlEnabled(
     control: string
 ): boolean;
 
@@ -234,8 +247,9 @@ export function isControlEnabled(
  * the server.
  * @return returns true if the command handler was removed successfully, false if the command doesnt
  * exist.
+ * @noSelf
  */
-export function removeCommandHandler(
+export declare function removeCommandHandler(
     commandName: string,
     handler?: HandleFunction
 ): boolean;
@@ -247,8 +261,9 @@ export function removeCommandHandler(
  * @param gtaControls A boolean deciding whether the enabled parameter will affect GTAs internal controls.
  * @param mtaControls A boolean deciding whether the enabled parameter will affect MTAs own controls., e.g.
  * chatbox.
+ * @noSelf
  */
-export function toggleAllControls(
+export declare function toggleAllControls(
     enabled: boolean,
     gtaControls?: boolean,
     mtaControls?: boolean
@@ -260,8 +275,9 @@ export function toggleAllControls(
  * @param control The control that you want to toggle the ability of. See control names for a list of
  * possible controls.
  * @param enabled A boolean value representing whether or not the key will be usable or not.
+ * @noSelf
  */
-export function toggleControl(
+export declare function toggleControl(
     control: string,
     enabled: boolean
 ): boolean;
@@ -280,8 +296,9 @@ export function toggleControl(
  * unbound, whatever function they are bound to.
  * @return returns true if the key was unbound, false if it was not previously bound or invalid
  * arguments were passed to the function.
+ * @noSelf
  */
-export function unbindKey(
+export declare function unbindKey(
     key: string,
     keyState: string,
     command: string

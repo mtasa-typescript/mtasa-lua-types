@@ -27,14 +27,16 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
  * This function creates a blip element, which is displayed as an icon on the clients radar.
  * @see {@link https://wiki.multitheftauto.com/wiki/CreateBlip Wiki, createBlip }
+ * @noSelf
  */
-export function createBlip(
+export declare function createBlip(
     x: number,
     y: number,
     z: number,
@@ -53,8 +55,9 @@ export function createBlip(
  * This function creates a blip that is attached to an element. This blip is displayed as an
  * icon on the clients radar and will follow the element that it is attached to around.
  * @see {@link https://wiki.multitheftauto.com/wiki/CreateBlipAttachedTo Wiki, createBlipAttachedTo }
+ * @noSelf
  */
-export function createBlipAttachedTo(
+export declare function createBlipAttachedTo(
     elementToAttachTo: Element,
     icon?: number,
     size?: number,
@@ -76,8 +79,9 @@ export function createBlipAttachedTo(
  * @return returns four integers in rgba format, with a maximum value of 255 for each. the values
  * are, in order, red, green, blue, and alpha.  alpha decides the transparancy where 255 is
  * opaque and 0 is fully transparent. false is returned if the blip is invalid.
+ * @noSelf
  */
-export function getBlipColor(
+export declare function getBlipColor(
     theBlip: Blip
 ): LuaMultiReturn<[
     number,
@@ -92,8 +96,9 @@ export function getBlipColor(
  * @param theBlip : the blip were getting the icon number of.
  * @return returns an int indicating which icon the blip has. valid values are listed on the radar
  * blips page.
+ * @noSelf
  */
-export function getBlipIcon(
+export declare function getBlipIcon(
     theBlip: Blip
 ): number;
 
@@ -104,8 +109,9 @@ export function getBlipIcon(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetBlipOrdering Wiki, getBlipOrdering }
  * @param theBlip the blip to retrieve the Z ordering value of.
  * @return returns the z ordering value of the blip if successful, false otherwise.
+ * @noSelf
  */
-export function getBlipOrdering(
+export declare function getBlipOrdering(
     theBlip: Blip
 ): number;
 
@@ -115,8 +121,9 @@ export function getBlipOrdering(
  * @param theBlip The blip you wish to get the size of.
  * @return returns an int indicating the size of the blip. the default value is 2. the maximum value
  * is 25.
+ * @noSelf
  */
-export function getBlipSize(
+export declare function getBlipSize(
     theBlip: Blip
 ): number;
 
@@ -125,8 +132,9 @@ export function getBlipSize(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetBlipVisibleDistance Wiki, getBlipVisibleDistance }
  * @param theBlip The blip whose visible distance you wish to get.
  * @return returns one float with the blips visible distance, false if the blip is invalid.
+ * @noSelf
  */
-export function getBlipVisibleDistance(
+export declare function getBlipVisibleDistance(
     theBlip: Blip
 ): number;
 
@@ -143,8 +151,9 @@ export function getBlipVisibleDistance(
  * is opaque and 0 is transparent.
  * @return returns true if the blips color was set successfully. returns false if the blip passed to
  * the function is invalid, or any of the colors are out of the valid range.
+ * @noSelf
  */
-export function setBlipColor(
+export declare function setBlipColor(
     theBlip: Blip,
     red: number,
     green: number,
@@ -160,8 +169,9 @@ export function setBlipColor(
  * Radar Blips page.
  * @return returns true if the icon was successfully set, false if the element passed was not a
  * valid blip or the icon value was not a valid icon number.
+ * @noSelf
  */
-export function setBlipIcon(
+export declare function setBlipIcon(
     theBlip: Blip,
     icon: number
 ): boolean;
@@ -174,8 +184,9 @@ export function setBlipIcon(
  * @param ordering the new Z ordering value. Blips with higher values will appear on top of blips with lower
  * values. Possible range: -32767 to 32767. Default: 0.
  * @return returns true if the blip ordering was changed successfully, false otherwise.
+ * @noSelf
  */
-export function setBlipOrdering(
+export declare function setBlipOrdering(
     theBlip: Blip,
     ordering: number
 ): boolean;
@@ -188,8 +199,9 @@ export function setBlipOrdering(
  * gets clamped between 0 and 25.
  * @return returns an true if the blips size was set successfully. returns false if the element
  * passed was not a blip or if the icon size passed was invalid.
+ * @noSelf
  */
-export function setBlipSize(
+export declare function setBlipSize(
     theBlip: Blip,
     iconSize: number
 ): boolean;
@@ -200,8 +212,9 @@ export function setBlipSize(
  * @param theBlip The blip whose visible distance you wish to get.
  * @param theDistance The distance you want the blip to be visible for. Value gets clamped between 0 and 65535.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setBlipVisibleDistance(
+export declare function setBlipVisibleDistance(
     theBlip: Blip,
     theDistance: number
 ): boolean;

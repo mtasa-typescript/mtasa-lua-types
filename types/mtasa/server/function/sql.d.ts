@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -73,8 +74,9 @@ import {
  * processed in order, one at a time. Any name can be used.
  * @return returns a database connection element unless there are problems, in which case it return
  * false.
+ * @noSelf
  */
-export function dbConnect(
+export declare function dbConnect(
     databaseType: string,
     host: string,
     username?: string,
@@ -95,8 +97,9 @@ export function dbConnect(
  * string quoted, use '''??''') Make sure that numbers are in number format as a string
  * number is treated differently.
  * @return returns true unless the connection is incorrect, in which case it returns false.
+ * @noSelf
  */
-export function dbExec(
+export declare function dbExec(
     databaseConnection: Element,
     query: string,
     param1?: unknown,
@@ -109,8 +112,9 @@ export function dbExec(
  * @see {@link https://wiki.multitheftauto.com/wiki/DbFree Wiki, dbFree }
  * @param queryHandle A query handle previously returned from dbQuery
  * @return returns true if the handle was successfully freed, false otherwise.
+ * @noSelf
  */
-export function dbFree(
+export declare function dbFree(
     queryHandle: HandleFunction
 ): boolean;
 
@@ -147,8 +151,9 @@ export function dbFree(
  * }
  * </syntaxhighlight>
  * a subsequent table represents the next row.
+ * @noSelf
  */
-export function dbPoll(
+export declare function dbPoll(
     queryHandle: HandleFunction,
     timeout: number,
     multipleResults?: boolean
@@ -168,8 +173,9 @@ export function dbPoll(
  * String parameters are automatically quoted and escaped as required. (If you do not want a
  * string quoted, use '''??''')
  * @return returns a prepare sql query string, or false if an error occurred.
+ * @noSelf
  */
-export function dbPrepareString(
+export declare function dbPrepareString(
     databaseConnection: Element,
     query: string,
     param1?: unknown,
@@ -192,8 +198,9 @@ export function dbPrepareString(
  * String parameters are automatically quoted and escaped as required. (If you do not want a
  * string quoted, use '''??''')
  * @return returns a query handle unless the connection is incorrect, in which case it return false.
+ * @noSelf
  */
-export function dbQuery(
+export declare function dbQuery(
     callbackFunction: HandleFunction,
     callbackArguments: LuaTable,
     databaseConnection: Element,
@@ -204,8 +211,9 @@ export function dbQuery(
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/DbQuery Wiki, dbQuery }
+ * @noSelf
  */
-export function dbQuery(
+export declare function dbQuery(
     databaseConnection: Element,
     query: string,
     param1?: unknown,
@@ -233,8 +241,9 @@ export function dbQuery(
  * }
  * </syntaxhighlight>
  * a subsequent table represents the next row.
+ * @noSelf
  */
-export function executeSQLQuery(
+export declare function executeSQLQuery(
     query: string,
     param1?: unknown,
     ...varargs: any[]

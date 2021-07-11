@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -58,8 +59,9 @@ import {
  * @param makeSound a boolean specifying whether the explosion should be heard or not.
  * @param camShake a float specifying the camera shakes intensity.
  * @param damaging a boolean specifying whether the explosion should cause damage or not.
+ * @noSelf
  */
-export function createExplosion(
+export declare function createExplosion(
     x: number,
     y: number,
     z: number,

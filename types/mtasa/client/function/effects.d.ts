@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -61,8 +62,9 @@ import {
  * effect, or 0 to use the default draw distance.
  * @param soundEnable to enable the sound of the effect.
  * @return returns the element/effect|effect element if creation was successful, false otherwise.
+ * @noSelf
  */
-export function createEffect(
+export declare function createEffect(
     name: string,
     x: number,
     y: number,
@@ -81,8 +83,9 @@ export function createEffect(
  * @param dirX, dirY, dirZ a direction vector indicating where the blood flies to.
  * @param count the number of flying droplets to create.
  * @param brightness the brightness. Ranges from 0 (almost black) to 1 (normal color).
+ * @noSelf
  */
-export function fxAddBlood(
+export declare function fxAddBlood(
     posX: number,
     posY: number,
     posZ: number,
@@ -103,8 +106,9 @@ export function fxAddBlood(
  * @param sparkCount the number of sparks to create.
  * @param smokeIntensity the amount/transparency of smoke, ranges from 0 to 1.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddBulletImpact(
+export declare function fxAddBulletImpact(
     posX: number,
     posY: number,
     posZ: number,
@@ -124,8 +128,9 @@ export function fxAddBulletImpact(
  * @param posY A float representing the y position of the splash
  * @param posZ A float representing the z position of the splash
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddBulletSplash(
+export declare function fxAddBulletSplash(
     posX: number,
     posY: number,
     posZ: number
@@ -139,8 +144,9 @@ export function fxAddBulletSplash(
  * @param scale the size of the chunks.
  * @param count the number of chunks to create.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddDebris(
+export declare function fxAddDebris(
     posX: number,
     posY: number,
     posZ: number,
@@ -160,8 +166,9 @@ export function fxAddDebris(
  * @param posY A float representing the y position of the splash
  * @param posZ A float representing the z position of the splash
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddFootSplash(
+export declare function fxAddFootSplash(
     posX: number,
     posY: number,
     posZ: number
@@ -177,8 +184,9 @@ export function fxAddFootSplash(
  * @param scale A float representing the size of the particle effect, where 1 is the standard size.
  * @param count The density of the particle effect.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddGlass(
+export declare function fxAddGlass(
     posX: number,
     posY: number,
     posZ: number,
@@ -197,8 +205,9 @@ export function fxAddGlass(
  * @param dirX, dirY, dirZ a direction vector indicating where the bullet is fired.
  * @param includeSparks A bool representing whether the particle effect will generate sparks.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddGunshot(
+export declare function fxAddGunshot(
     posX: number,
     posY: number,
     posZ: number,
@@ -214,8 +223,9 @@ export function fxAddGunshot(
  * @param posX, posY, posZ the world coordinates where the effect originates.
  * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddPunchImpact(
+export declare function fxAddPunchImpact(
     posX: number,
     posY: number,
     posZ: number,
@@ -242,8 +252,9 @@ export function fxAddPunchImpact(
  * directions. Also affects their speed.
  * @param life the higher this value, the longer the sparks survive before they disappear.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddSparks(
+export declare function fxAddSparks(
     posX: number,
     posY: number,
     posZ: number,
@@ -266,8 +277,9 @@ export function fxAddSparks(
  * @param posX, posY, posZ the world coordinates where the effect originates.
  * @param dirX, dirY, dirZ a direction vector indicating where the tank fire is directed to.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddTankFire(
+export declare function fxAddTankFire(
     posX: number,
     posY: number,
     posZ: number,
@@ -282,8 +294,9 @@ export function fxAddTankFire(
  * @param posX, posY, posZ the world coordinates where the puff originates.
  * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddTyreBurst(
+export declare function fxAddTyreBurst(
     posX: number,
     posY: number,
     posZ: number,
@@ -299,8 +312,9 @@ export function fxAddTyreBurst(
  * @param posY A float representing the y position of the hydrant
  * @param posZ A float representing the z position of the hydrant
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddWaterHydrant(
+export declare function fxAddWaterHydrant(
     posX: number,
     posY: number,
     posZ: number
@@ -313,8 +327,9 @@ export function fxAddWaterHydrant(
  * @param posY A float representing the y position of the splash
  * @param posZ A float representing the z position of the splash
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddWaterSplash(
+export declare function fxAddWaterSplash(
     posX: number,
     posY: number,
     posZ: number
@@ -328,8 +343,9 @@ export function fxAddWaterSplash(
  * @param count the number of splinters to create.
  * @param brightness the brightness. Ranges from 0 (black) to 1 (normal color).
  * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function fxAddWood(
+export declare function fxAddWood(
     posX: number,
     posY: number,
     posZ: number,
@@ -344,8 +360,9 @@ export function fxAddWood(
  * This function gets the density of certain effect.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetEffectDensity Wiki, getEffectDensity }
  * @param theEffect The effect to get density of.
+ * @noSelf
  */
-export function getEffectDensity(
+export declare function getEffectDensity(
     theEffect: Effect
 ): number;
 
@@ -354,8 +371,9 @@ export function getEffectDensity(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetEffectSpeed Wiki, getEffectSpeed }
  * @param theEffect The effect to get the speed of.
  * @return returns float containing the effects speed, false if invalid arguments were specified.
+ * @noSelf
  */
-export function getEffectSpeed(
+export declare function getEffectSpeed(
     theEffect: Effect
 ): number;
 
@@ -366,8 +384,9 @@ export function getEffectSpeed(
  * @param theEffect The effect to change the speed of.
  * @param density The level of density (from 0 to 2).
  * @return returns true if the density was succesfully changed, false otherwise.
+ * @noSelf
  */
-export function setEffectDensity(
+export declare function setEffectDensity(
     theEffect: Effect,
     density: number
 ): boolean;
@@ -378,8 +397,9 @@ export function setEffectDensity(
  * @param theEffect The effect to change the speed of.
  * @param speed The speed to set.
  * @return returns true if the effect speed was succesfuly changed, false otherwise.
+ * @noSelf
  */
-export function setEffectSpeed(
+export declare function setEffectSpeed(
     theEffect: Effect,
     speed: number
 ): boolean;

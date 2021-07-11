@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -37,8 +38,9 @@ import {
  * @param key The key you wish to subscribe the player to.
  * @param thePlayer The player you wish to subscribe.
  * @return returns true if the player was subscribed, false otherwise.
+ * @noSelf
  */
-export function addElementDataSubscriber(
+export declare function addElementDataSubscriber(
     theElement: Element,
     key: string,
     thePlayer: Player
@@ -85,8 +87,9 @@ export function addElementDataSubscriber(
  * @param yRotOffset The y rotation offset (default 0).
  * @param zRotOffset The z rotation offset (default 0).
  * @return returns true if the attaching process was successful, false otherwise.
+ * @noSelf
  */
-export function attachElements(
+export declare function attachElements(
     theElement: Element,
     theAttachToElement: Element,
     xPosOffset?: number,
@@ -106,8 +109,9 @@ export function attachElements(
  * @see {@link https://wiki.multitheftauto.com/wiki/ClearElementVisibleTo Wiki, clearElementVisibleTo }
  * @param theElement The element in which you wish to restore to its default visibility
  * @return returns true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function clearElementVisibleTo(
+export declare function clearElementVisibleTo(
     theElement: Element
 ): boolean;
 
@@ -130,8 +134,9 @@ export function clearElementVisibleTo(
  * element's position.'''
  * @return returns the handle of the new cloned element of the parent, false if invalid arguments
  * were passed.
+ * @noSelf
  */
-export function cloneElement(
+export declare function cloneElement(
     theElement: Element,
     xPos?: number,
     yPos?: number,
@@ -150,8 +155,9 @@ export function cloneElement(
  * @param elementID The ID of the element being created.
  * @return returns the element if it was successfully created. returns false if the arguments are
  * wrong.
+ * @noSelf
  */
-export function createElement(
+export declare function createElement(
     elementType: string,
     elementID?: string
 ): Element;
@@ -171,8 +177,9 @@ export function createElement(
  * @return returns true if the element was destroyed successfully, false if either the element
  * passed to it was invalid or it could not be destroyed for some other reason (for example,
  * clientside destroyelement cant destroy serverside elements).
+ * @noSelf
  */
-export function destroyElement(
+export declare function destroyElement(
     elementToDestroy: Element
 ): boolean;
 
@@ -183,8 +190,9 @@ export function destroyElement(
  * @param theAttachToElement The element you wish to detach from, will detach from the attached element if this isnt
  * specified.
  * @return returns true if the detaching was successful, false otherwise.
+ * @noSelf
  */
-export function detachElements(
+export declare function detachElements(
     theElement: Element,
     theAttachToElement?: Element
 ): boolean;
@@ -195,8 +203,9 @@ export function detachElements(
  * @param theElement the element you want to get the element data of.
  * @return if successful, returns a table with as keys the names of the element data and as values
  * the corresponding element data values. returns false in case of failure.
+ * @noSelf
  */
-export function getAllElementData(
+export declare function getAllElementData(
     theElement: Element
 ): LuaTable;
 
@@ -205,8 +214,9 @@ export function getAllElementData(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetAttachedElements Wiki, getAttachedElements }
  * @param theElement : The element which you require the information from.
  * @return returns a table of all the elements attached to the specified element.
+ * @noSelf
  */
-export function getAttachedElements(
+export declare function getAttachedElements(
     theElement: Element
 ): LuaTable;
 
@@ -217,8 +227,9 @@ export function getAttachedElements(
  * @param theElement The element whose alpha you want to retrieve.
  * @return returns an integer (0-255; 0 = transparent) indicating the elements alpha, or false if
  * invalid arguments were passed.
+ * @noSelf
  */
-export function getElementAlpha(
+export declare function getElementAlpha(
     theElement: Element
 ): number;
 
@@ -227,8 +238,9 @@ export function getElementAlpha(
  * @param theElement The element to retrieve the angular velocity from. Can be either a player, ped, object,
  * vehicle or a Element/Weapon|custom weapon. Server side supports only vehicles currently.
  * @return returns three floats describing the x, y and z rotation
+ * @noSelf
  */
-export function getElementAngularVelocity(
+export declare function getElementAngularVelocity(
     theElement: Element
 ): LuaMultiReturn<[
     number,
@@ -243,8 +255,9 @@ export function getElementAngularVelocity(
  * @param theElement The attached element.
  * @return returns 6 float|floats, of which the first 3 indicate the position offset (x, y, z), and
  * the last 3 indicate the rotation offset (x, y, z), if successful. false otherwise.
+ * @noSelf
  */
-export function getElementAttachedOffsets(
+export declare function getElementAttachedOffsets(
     theElement: Element
 ): LuaMultiReturn<[
     number,
@@ -261,8 +274,9 @@ export function getElementAttachedOffsets(
  * @param theElement The element you require the information for.
  * @return returns the element that the chosen element is attached to, or false if the element isnt
  * attached to another element.
+ * @noSelf
  */
-export function getElementAttachedTo(
+export declare function getElementAttachedTo(
     theElement: Element
 ): Element;
 
@@ -275,8 +289,9 @@ export function getElementAttachedTo(
  * @param index If there are two or more elements of the same ID it will return the element with the
  * specified index starting at 0.
  * @return returns the element with the given id, or false if no such element exists.
+ * @noSelf
  */
-export function getElementByID(
+export declare function getElementByID(
     id: string,
     index?: number
 ): Element;
@@ -288,8 +303,9 @@ export function getElementByID(
  * type.
  * @param index the elements index (0 for the first element, 1 for the second, etc).
  * @return returns the requested element, or false if it doesnt exist.
+ * @noSelf
  */
-export function getElementByIndex(
+export declare function getElementByIndex(
     theType: string,
     index: number
 ): Element;
@@ -301,8 +317,9 @@ export function getElementByIndex(
  * @param parent the element above the one to be returned in the hierarchy.
  * @param index the elements index (0 for the first element, 1 for the second, etc).
  * @return returns the requested element if it exists, or false if it doesnt.
+ * @noSelf
  */
-export function getElementChild(
+export declare function getElementChild(
     parent: Element,
     index: number
 ): Element;
@@ -333,8 +350,9 @@ export function getElementChild(
  * @return this function returns a table that contains a list of elements that the parent has. if
  * the element has no children, it will return an empy table. it will return false if the
  * parent element does not exist.
+ * @noSelf
  */
-export function getElementChildren(
+export declare function getElementChildren(
     parent: Element,
     theType?: string
 ): LuaTable;
@@ -346,8 +364,9 @@ export function getElementChildren(
  * @param parent the parent element
  * @return returns an int with the number of child elements, or false if the parent element does not
  * exist.
+ * @noSelf
  */
-export function getElementChildrenCount(
+export declare function getElementChildrenCount(
     parent: Element
 ): number;
 
@@ -358,8 +377,9 @@ export function getElementChildrenCount(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementCollisionsEnabled Wiki, getElementCollisionsEnabled }
  * @param theElement The element for which you want to check whether collisions are enabled
  * @return returns true if the collisions are enabled, false otherwise.
+ * @noSelf
  */
-export function getElementCollisionsEnabled(
+export declare function getElementCollisionsEnabled(
     theElement: Element
 ): boolean;
 
@@ -370,8 +390,9 @@ export function getElementCollisionsEnabled(
  * @param theElement The element you want to get the colshape of
  * @return returns colshape of the element, false if not or an invalid argument was passed to the
  * function.
+ * @noSelf
  */
-export function getElementColShape(
+export declare function getElementColShape(
     theElement: Element
 ): ColShape;
 
@@ -385,8 +406,9 @@ export function getElementColShape(
  * @return this function returns a variable containing the requested element data, or false if the
  * element or the element data does not exist. when getting data corresponding to a xml
  * attribute, this is always a string.
+ * @noSelf
  */
-export function getElementData(
+export declare function getElementData(
     theElement: Element,
     key: string,
     inherit?: boolean
@@ -398,8 +420,9 @@ export function getElementData(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDimension Wiki, getElementDimension }
  * @param theElement The element in which youd like to retrieve the dimension of.
  * @return returns an integer for the dimension if theelement is valid, false otherwise.
+ * @noSelf
  */
-export function getElementDimension(
+export declare function getElementDimension(
     theElement: Element
 ): number;
 
@@ -409,8 +432,9 @@ export function getElementDimension(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementHealth Wiki, getElementHealth }
  * @param theElement The player or vehicle whose health you want to check.
  * @return returns a float indicating the elements health, or false if invalid arguments were passed.
+ * @noSelf
  */
-export function getElementHealth(
+export declare function getElementHealth(
     theElement: Element
 ): number;
 
@@ -421,8 +445,9 @@ export function getElementHealth(
  * @param theElement the element from which to retrieve the ID.
  * @return this returns a string containing the element id. it will return an empty string if it has
  * no id. it will return false if the element is invalid.
+ * @noSelf
  */
-export function getElementID(
+export declare function getElementID(
     theElement: Element
 ): string;
 
@@ -432,8 +457,9 @@ export function getElementID(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementInterior Wiki, getElementInterior }
  * @param theElement The element of which youd like to retrieve the interior
  * @return returns an int for the interior if theelement is valid, false otherwise.
+ * @noSelf
  */
-export function getElementInterior(
+export declare function getElementInterior(
     theElement: Element
 ): number;
 
@@ -449,8 +475,9 @@ export function getElementInterior(
  * @return returns a multi-dimensional array (which can be transformed into a proper matrix class
  * using matrix.create method) containing a 4x4 matrix. returns false if the element is not
  * streamed in, and not a vehicle, ped or object.
+ * @noSelf
  */
-export function getElementMatrix(
+export declare function getElementMatrix(
     theElement: Element,
     legacy?: boolean
 ): LuaTable;
@@ -464,8 +491,9 @@ export function getElementMatrix(
  * * for players/peds: a gtasa player model (skin) id. see character skins.
  * * for vehicles: the vehicle ids|vehicle id of the vehicle.
  * * for objects: an int specifying the model id.
+ * @noSelf
  */
-export function getElementModel(
+export declare function getElementModel(
     theElement: Element
 ): number;
 
@@ -475,8 +503,9 @@ export function getElementModel(
  * @param theElement The child of the parent element you want returned.
  * @return this returns the parent as an element. it returns false if theelement is invalid, or is
  * the root node.
+ * @noSelf
  */
-export function getElementParent(
+export declare function getElementParent(
     theElement: Element
 ): Element;
 
@@ -494,8 +523,9 @@ export function getElementParent(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementPosition Wiki, getElementPosition }
  * @param theElement The element which youd like to retrieve the location of
  * @return returns three floats indicating the position of the element, x, y and z respectively.
+ * @noSelf
  */
-export function getElementPosition(
+export declare function getElementPosition(
     theElement: Element
 ): LuaMultiReturn<[
     number,
@@ -525,8 +555,9 @@ export function getElementPosition(
  * @return * rx, ry, rz: 3 floats representing the euler rotation angles on the axis x, y and z
  * (with the rotation order depending on the rotorder argument) if element exists and is a
  * valid element, false if its invalid.
+ * @noSelf
  */
-export function getElementRotation(
+export declare function getElementRotation(
     theElement: Element,
     rotOrder?: string
 ): LuaMultiReturn<[
@@ -542,8 +573,9 @@ export function getElementRotation(
  * example, if there is an element of type flag (e.g. <flag />) in the .map file, the using
  * flag as the type argument would find it.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsByType Wiki, getElementsByType }
+ * @noSelf
  */
-export function getElementsByType(
+export declare function getElementsByType(
     theType: string,
     startat?: Element
 ): LuaTable;
@@ -569,8 +601,9 @@ export function getElementsByType(
  * @return returns a table containing all the elements inside the colshape, of the specified type.
  * returns an empty table if there are no elements inside. returns false if the colshape is
  * invalid.
+ * @noSelf
  */
-export function getElementsWithinColShape(
+export declare function getElementsWithinColShape(
     theShape: ColShape,
     elemType?: string
 ): LuaTable;
@@ -599,8 +632,9 @@ export function getElementsWithinColShape(
  * @return returns a table containing all the elements of the specified type within range. returns
  * an empty table if there are no elements within range. returns false if the arguments are
  * invalid.
+ * @noSelf
  */
-export function getElementsWithinRange(
+export declare function getElementsWithinRange(
     x: number,
     y: number,
     z: number,
@@ -617,8 +651,9 @@ export function getElementsWithinRange(
  * @param theElement : The element to get the syncer of.
  * @return returns the element that is the syncer of theelement or false if the element does not
  * have a syncer.
+ * @noSelf
  */
-export function getElementSyncer(
+export declare function getElementSyncer(
     theElement: Element
 ): Element;
 
@@ -627,8 +662,9 @@ export function getElementSyncer(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetElementType Wiki, getElementType }
  * @param theElement The element you wish to get the type of.
  * @return returns a string containing the element type, false if invalid arguments were passed.
+ * @noSelf
  */
-export function getElementType(
+export declare function getElementType(
     theElement: Element
 ): string;
 
@@ -646,8 +682,9 @@ export function getElementType(
  * the returned values are expressed in gta units per 1/50th of a
  * secondhttp://forum.mtasa.com/viewtopic.php?f=91&t=31225. a gta unit is equal to one
  * metrehttp://gta.wikia.com/unit#gta3.2c_gtavc_.26_gtasa.
+ * @noSelf
  */
-export function getElementVelocity(
+export declare function getElementVelocity(
     theElement: Element
 ): LuaMultiReturn<[
     number,
@@ -663,8 +700,9 @@ export function getElementVelocity(
  * @param theElement The element which youd like to retrieve the zone name from
  * @param citiesonly : An optional argument to choose if you want to return the city name (eg Las Venturas)
  * @return returns the string of the elements zone name.
+ * @noSelf
  */
-export function getElementZoneName(
+export declare function getElementZoneName(
     theElement: Element,
     citiesonly?: boolean
 ): string;
@@ -674,8 +712,9 @@ export function getElementZoneName(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetLowLODElement Wiki, getLowLODElement }
  * @param theElement The element whose low LOD version we want to get.
  * @return returns a low lod element if successful, false otherwise.
+ * @noSelf
  */
-export function getLowLODElement(
+export declare function getLowLODElement(
     theElement: Element
 ): Element;
 
@@ -687,8 +726,9 @@ export function getLowLODElement(
  * to make a scripting function affect all elements.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetRootElement Wiki, getRootElement }
  * @return returns the root element.
+ * @noSelf
  */
-export function getRootElement(): Element;
+export declare function getRootElement(): Element;
 
 /**
  * This function checks if an element has element data available under a certain key.}}
@@ -699,8 +739,9 @@ export function getRootElement(): Element;
  * key in case the specified element doesnt have it.
  * @return this function returns true if the element contains element data for key, or false if the
  * element doesnt exist or there is no data associated with the key.
+ * @noSelf
  */
-export function hasElementData(
+export declare function hasElementData(
     theElement: Element,
     key: string,
     inherit?: boolean
@@ -713,8 +754,9 @@ export function hasElementData(
  * @param key The key you wish to check whether the player is subscribed to.
  * @param thePlayer The player you wish to check.
  * @return returns true if the player is subscribed, false otherwise.
+ * @noSelf
  */
-export function hasElementDataSubscriber(
+export declare function hasElementDataSubscriber(
     theElement: Element,
     key: string,
     thePlayer: Player
@@ -725,8 +767,9 @@ export function hasElementDataSubscriber(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsElement Wiki, isElement }
  * @param theValue : The value that we want to check.
  * @return returns true if the passed value is an element, false otherwise.
+ * @noSelf
  */
-export function isElement(
+export declare function isElement(
     theValue: unknown
 ): boolean;
 
@@ -736,8 +779,9 @@ export function isElement(
  * @param theElement The element to check for attachment.
  * @return returns true if the specified element is attached to another element, false if it is not
  * attached or nil if an improper argument was passed.
+ * @noSelf
  */
-export function isElementAttached(
+export declare function isElementAttached(
     theElement: Element
 ): boolean;
 
@@ -747,8 +791,9 @@ export function isElementAttached(
  * @param theElement The element to check
  * @return returns true if the propagation is enabled, false if disabled or invalid arguments have
  * been passed.
+ * @noSelf
  */
-export function isElementCallPropagationEnabled(
+export declare function isElementCallPropagationEnabled(
     theElement: Element
 ): boolean;
 
@@ -758,8 +803,9 @@ export function isElementCallPropagationEnabled(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsElementDoubleSided Wiki, isElementDoubleSided }
  * @param theElement The element in which youd like to check the double-sidedness of.
  * @return returns true if the theelement is double-sided, false otherwise.
+ * @noSelf
  */
-export function isElementDoubleSided(
+export declare function isElementDoubleSided(
     theElement: Element
 ): boolean;
 
@@ -769,8 +815,9 @@ export function isElementDoubleSided(
  * @param theElement the element whose freeze status we want to check.
  * @return *returns true if the element is frozen, false if it isnt or if invalid arguments were
  * passed.
+ * @noSelf
  */
-export function isElementFrozen(
+export declare function isElementFrozen(
     theElement: Element
 ): boolean;
 
@@ -780,8 +827,9 @@ export function isElementFrozen(
  * @param theElement : The element to check.
  * @return returns true if the passed element is in water, false if it isnt, or if the element is
  * invalid.
+ * @noSelf
  */
-export function isElementInWater(
+export declare function isElementInWater(
     theElement: Element
 ): boolean;
 
@@ -790,8 +838,9 @@ export function isElementInWater(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLowLOD Wiki, isElementLowLOD }
  * @param theElement The element whose low LOD status we want to get.
  * @return returns true if the element is low lod, false otherwise.
+ * @noSelf
  */
-export function isElementLowLOD(
+export declare function isElementLowLOD(
     theElement: Element
 ): boolean;
 
@@ -805,8 +854,9 @@ export function isElementLowLOD(
  * @param visibleTo The player you want to check against
  * @return returns true if element is visible to the specified player, false if not or an invalid
  * argument was passed to the function.
+ * @noSelf
  */
-export function isElementVisibleTo(
+export declare function isElementVisibleTo(
     theElement: Element,
     visibleTo: Element
 ): boolean;
@@ -822,8 +872,9 @@ export function isElementVisibleTo(
  * @param theElement The element youre checking.
  * @param theShape The colshape youre checking
  * @return returns true if the element is within the colshape, false otherwise
+ * @noSelf
  */
-export function isElementWithinColShape(
+export declare function isElementWithinColShape(
     theElement: Element,
     theShape: ColShape
 ): boolean;
@@ -834,8 +885,9 @@ export function isElementWithinColShape(
  * @param theElement The element youre checking.
  * @param theMarker The marker youre checking.
  * @return returns true if the element is within the marker, false otherwise
+ * @noSelf
  */
-export function isElementWithinMarker(
+export declare function isElementWithinMarker(
     theElement: Element,
     theMarker: Marker
 ): boolean;
@@ -848,8 +900,9 @@ export function isElementWithinMarker(
  * @param key The key string you wish to remove.
  * @return returns true if the data was removed succesfully, false if the given key does not exist
  * in the element or the element is invalid.
+ * @noSelf
  */
-export function removeElementData(
+export declare function removeElementData(
     theElement: Element,
     key: string
 ): boolean;
@@ -861,8 +914,9 @@ export function removeElementData(
  * @param key The key you wish to unsubscribe the player from.
  * @param thePlayer The player you wish to unsubscribe.
  * @return returns true if the player was unsubscribed, false otherwise.
+ * @noSelf
  */
-export function removeElementDataSubscriber(
+export declare function removeElementDataSubscriber(
     theElement: Element,
     key: string,
     thePlayer: Player
@@ -877,8 +931,9 @@ export function removeElementDataSubscriber(
  * transparent.
  * @param Note Objects are fully transparent at 140.
  * @return returns true or false if invalid arguments were passed.
+ * @noSelf
  */
-export function setElementAlpha(
+export declare function setElementAlpha(
     theElement: Element,
     alpha: number
 ): boolean;
@@ -891,8 +946,9 @@ export function setElementAlpha(
  * @param ry velocity around the Y axis
  * @param rz velocity around the Z axis
  * @return returns true if it was succesful, false otherwise.
+ * @noSelf
  */
-export function setElementAngularVelocity(
+export declare function setElementAngularVelocity(
     theElement: Element,
     rx: number,
     ry: number,
@@ -912,8 +968,9 @@ export function setElementAngularVelocity(
  * @param yRotOffset The y rotation offset (default 0).
  * @param zRotOffset The z rotation offset (default 0).
  * @return returns true if the attaching process was successful, false otherwise.
+ * @noSelf
  */
-export function setElementAttachedOffsets(
+export declare function setElementAttachedOffsets(
     theElement: Element,
     xPosOffset?: number,
     yPosOffset?: number,
@@ -930,8 +987,9 @@ export function setElementAttachedOffsets(
  * @param theElement The element whose propagation behaviour youd like to change
  * @param enabled Whether propagation should be enabled or not
  * @return returns true, if the propagation behaviour has been changed successfully, false otherwise.
+ * @noSelf
  */
-export function setElementCallPropagationEnabled(
+export declare function setElementCallPropagationEnabled(
     theElement: Element,
     enabled: boolean
 ): boolean;
@@ -943,8 +1001,9 @@ export function setElementCallPropagationEnabled(
  * @param theElement The element you wish to set the collisions of
  * @param enabled A boolean to indicate whether collisions are enabled (true) or disabled (false)
  * @return returns true if the collisions were set succesfully, false otherwise.
+ * @noSelf
  */
-export function setElementCollisionsEnabled(
+export declare function setElementCollisionsEnabled(
     theElement: Element,
     enabled: boolean
 ): boolean;
@@ -970,8 +1029,9 @@ export function setElementCollisionsEnabled(
  * @param local - Dont synchronise. You can also parse false for this option.
  * @param subscribe - Only synchronise to specific clients. See addElementDataSubscriber and
  * removeElementDataSubscriber.
+ * @noSelf
  */
-export function setElementData(
+export declare function setElementData(
     theElement: Element,
     key: string,
     value: unknown,
@@ -988,8 +1048,9 @@ export function setElementData(
  * Valid values are 0 to 65535.
  * @return returns true if theelement and dimension are valid, false otherwise.
  * also returns false if theelement is a player and its not alive.
+ * @noSelf
  */
-export function setElementDimension(
+export declare function setElementDimension(
     theElement: Element,
     dimension: number
 ): boolean;
@@ -1005,8 +1066,9 @@ export function setElementDimension(
  * @param theElement The element in which youd like to set the double-sidedness of.
  * @param enable Set to true/false to enable/disable double-sidedness.
  * @return returns true if theelement is valid, false otherwise.
+ * @noSelf
  */
-export function setElementDoubleSided(
+export declare function setElementDoubleSided(
     theElement: Element,
     enable: boolean
 ): boolean;
@@ -1019,8 +1081,9 @@ export function setElementDoubleSided(
  * @param freezeStatus A boolean denoting whether we want to freeze (true) or unfreeze (false) it.
  * @return returns true if the element was frozen, false if it wasnt or if invalid arguments are
  * passed.
+ * @noSelf
  */
-export function setElementFrozen(
+export declare function setElementFrozen(
     theElement: Element,
     freezeStatus: boolean
 ): boolean;
@@ -1037,8 +1100,9 @@ export function setElementFrozen(
  * @param newHealth A float indicating the new health to set for the element.
  * @return returns true if the new health was set successfully, or false if invalid arguments were
  * passed.
+ * @noSelf
  */
-export function setElementHealth(
+export declare function setElementHealth(
     theElement: Element,
     newHealth: number
 ): boolean;
@@ -1053,8 +1117,9 @@ export function setElementHealth(
  * @param name The new ID for theElement.
  * @return this returns true if successful. it will return false if theelement is invalid, or does
  * not exist, or if name is invalid, or is not a string.
+ * @noSelf
  */
-export function setElementID(
+export declare function setElementID(
     theElement: Element,
     name: string
 ): boolean;
@@ -1069,8 +1134,9 @@ export function setElementID(
  * @param y A floating point number representing the Y coordinate on the map.
  * @param z A floating point number representing the Z coordinate on the map.
  * @return returns true if theelement and interior are valid arguments, false otherwise.
+ * @noSelf
  */
-export function setElementInterior(
+export declare function setElementInterior(
     theElement: Element,
     interior: number,
     x?: number,
@@ -1084,8 +1150,9 @@ export function setElementInterior(
  * @param theElement The element which you set matrix
  * @param theMatrix The matrix.
  * @return returns true if the matrix was set succesfully, false otherwise.
+ * @noSelf
  */
-export function setElementMatrix(
+export declare function setElementMatrix(
     theElement: Element,
     theMatrix: LuaTable
 ): boolean;
@@ -1100,8 +1167,9 @@ export function setElementMatrix(
  * ** For vehicles: The [[Vehicle IDs|vehicle ID]] of the vehicle being changed.
  * ** For objects/projectiles/weapons: An [[int]] specifying the model id.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setElementModel(
+export declare function setElementModel(
     theElement: Element,
     model: number
 ): boolean;
@@ -1112,8 +1180,9 @@ export function setElementModel(
  * @param theElement The element that you wish to set the parent of.
  * @param parent The element you wish to be the parent of theElement.
  * @return returns true if both elements are valid, false otherwise.
+ * @noSelf
  */
-export function setElementParent(
+export declare function setElementParent(
     theElement: Element,
     parent: Element
 ): boolean;
@@ -1128,8 +1197,9 @@ export function setElementParent(
  * @param warp teleports players, resetting any animations they were doing. Setting this to false
  * preserves the current animation.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function setElementPosition(
+export declare function setElementPosition(
     theElement: Element,
     x: number,
     y: number,
@@ -1165,8 +1235,9 @@ export function setElementPosition(
  * air and other inconsistencies. The default value of false is for backward compatibility
  * with scripts which may depend upon the incorrect behaviour.
  * @return returns true if the element rotation was successfully set and false otherwise.
+ * @noSelf
  */
-export function setElementRotation(
+export declare function setElementRotation(
     theElement: Element,
     rotX: number,
     rotY: number,
@@ -1201,8 +1272,9 @@ export function setElementRotation(
  * relevant player to that element.
  * @return returns true if the syncer was changed successfully, false if the element passed was not
  * a ped or vehicle.
+ * @noSelf
  */
-export function setElementSyncer(
+export declare function setElementSyncer(
     theElement: Element,
     thePlayer: Player
 ): boolean;
@@ -1222,8 +1294,9 @@ export function setElementSyncer(
  * @param speedZ A floating point value determining the speed along the Z axis.
  * @return returns true if the speed was set successfully, false if a bad element was specified or
  * other bad arguments.
+ * @noSelf
  */
-export function setElementVelocity(
+export declare function setElementVelocity(
     theElement: Element,
     speedX: number,
     speedY: number,
@@ -1251,8 +1324,9 @@ export function setElementVelocity(
  * @param visible Whether you are making it visible or invisible to the player.
  * @return returns true if the elements visibility was changed successfully, false otherwise, for
  * example if you are trying to change the visibility of a vehicle, player or object.
+ * @noSelf
  */
-export function setElementVisibleTo(
+export declare function setElementVisibleTo(
     theElement: Element,
     visibleTo: Element,
     visible: boolean
@@ -1266,8 +1340,9 @@ export function setElementVisibleTo(
  * @param theElement The element whose low LOD version we want to change.
  * @param lowLODElement A low LOD element to display when the first element is not fully visible.
  * @return returns true if the assignment was successful, false otherwise.
+ * @noSelf
  */
-export function setLowLODElement(
+export declare function setLowLODElement(
     theElement: Element,
     lowLODElement: Element
 ): boolean;

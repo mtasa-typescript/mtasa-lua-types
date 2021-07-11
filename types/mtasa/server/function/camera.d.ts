@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -46,8 +47,9 @@ import {
  * fading in.
  * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
  * fading in.
+ * @noSelf
  */
-export function fadeCamera(
+export declare function fadeCamera(
     thePlayer: Player,
     fadeIn: boolean,
     timeToFade?: number,
@@ -61,8 +63,9 @@ export function fadeCamera(
  * player).
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
  * @param thePlayer : The player whose camera interior you want to get.
+ * @noSelf
  */
-export function getCameraInterior(
+export declare function getCameraInterior(
     thePlayer: Player
 ): number;
 
@@ -70,8 +73,9 @@ export function getCameraInterior(
  * This function gets the position of the camera and the position of the point it is facing.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraMatrix Wiki, getCameraMatrix }
  * @param thePlayer The player whose camera matrix is to be returned.
+ * @noSelf
  */
-export function getCameraMatrix(
+export declare function getCameraMatrix(
     thePlayer: Player
 ): LuaMultiReturn<[
     number,
@@ -89,8 +93,9 @@ export function getCameraMatrix(
  * players camera (i.e. what it is following).
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraTarget Wiki, getCameraTarget }
  * @param thePlayer The player whose camera you wish to receive the target of.
+ * @noSelf
  */
-export function getCameraTarget(
+export declare function getCameraTarget(
     thePlayer: Player
 ): Element;
 
@@ -100,8 +105,9 @@ export function getCameraTarget(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
  * @param thePlayer the player whose camera interior will be set.
  * @param interior the interior to place the camera in.
+ * @noSelf
  */
-export function setCameraInterior(
+export declare function setCameraInterior(
     thePlayer: Player,
     interior: number
 ): boolean;
@@ -124,8 +130,9 @@ export function setCameraInterior(
  * 180 means the camera is upside down.
  * @param fov the field of view angle, 0.01 to 180. The higher this value is, the more you will be able
  * to see what is to your sides.
+ * @noSelf
  */
-export function setCameraMatrix(
+export declare function setCameraMatrix(
     thePlayer: Player,
     positionX: number,
     positionY: number,
@@ -145,8 +152,9 @@ export function setCameraMatrix(
  * @param thePlayer The player whose camera you wish to modify.
  * @param target The player who you want the camera to follow. If none is specified, the camera will
  * target the player.
+ * @noSelf
  */
-export function setCameraTarget(
+export declare function setCameraTarget(
     thePlayer: Player,
     target?: Player
 ): boolean;

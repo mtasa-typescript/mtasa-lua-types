@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -35,15 +36,17 @@ import {
  * displayed in the server browser next to the servers name.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetGameType Wiki, getGameType }
  * @return returns the gametype as a string. if no gametype is set it returns nil.
+ * @noSelf
  */
-export function getGameType(): string;
+export declare function getGameType(): string;
 
 /**
  * This function retrieves the current mapname as set by setMapName.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetMapName Wiki, getMapName }
  * @return returns the mapname as a string. if no mapname is set it returns nil.
+ * @noSelf
  */
-export function getMapName(): string;
+export declare function getMapName(): string;
 
 /**
  * This function gets a rule value. A rule value is a string that can be viewed by server
@@ -52,8 +55,9 @@ export function getMapName(): string;
  * @param key The name of the rule
  * @return returns a string containing the value set for the specified key, false if invalid
  * arguments were specified.
+ * @noSelf
  */
-export function getRuleValue(
+export declare function getRuleValue(
     key: string
 ): string;
 
@@ -62,8 +66,9 @@ export function getRuleValue(
  * @see {@link https://wiki.multitheftauto.com/wiki/RemoveRuleValue Wiki, removeRuleValue }
  * @param key The name of the rule you wish to remove
  * @return returns true if the rule value was removed, false if it failed.
+ * @noSelf
  */
-export function removeRuleValue(
+export declare function removeRuleValue(
     key: string
 ): boolean;
 
@@ -77,8 +82,9 @@ export function removeRuleValue(
  * @param gameType A string containing a name for the game mode, or false to clear it.
  * @return returns true if the game type was set, false if an invalid argument was passed to the
  * function.
+ * @noSelf
  */
-export function setGameType(
+export declare function setGameType(
     gameType: string
 ): boolean;
 
@@ -88,8 +94,9 @@ export function setGameType(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetMapName Wiki, setMapName }
  * @param mapName The name you wish the server browser to show.
  * @return returns true if map name was set successfully, false otherwise.
+ * @noSelf
  */
-export function setMapName(
+export declare function setMapName(
     mapName: string
 ): boolean;
 
@@ -99,8 +106,9 @@ export function setMapName(
  * @param key The name of the rule
  * @param value The value you wish to set for the rule
  * @return returns true if the rule value was set, false if invalid arguments were specified.
+ * @noSelf
  */
-export function setRuleValue(
+export declare function setRuleValue(
     key: string,
     value: string
 ): boolean;

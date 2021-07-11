@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -53,8 +54,9 @@ import {
  * @param bodyPartID : An integer representing the body part ID you wish to retrieve the name of.
  * @return this function returns a string containing the body part name if the id is valid, false
  * otherwise.
+ * @noSelf
  */
-export function getBodyPartName(
+export declare function getBodyPartName(
     bodyPartID: number
 ): string;
 
@@ -68,8 +70,9 @@ export function getBodyPartName(
  * retrieve. Each type has a different number of valid indexes.
  * @return this function returns 2 strings, a texture and model respectively, false if invalid
  * arguments were passed to the function.
+ * @noSelf
  */
-export function getClothesByTypeIndex(
+export declare function getClothesByTypeIndex(
     clothesType: number,
     clothesIndex: number
 ): LuaMultiReturn<[
@@ -82,8 +85,9 @@ export function getClothesByTypeIndex(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetClothesTypeName Wiki, getClothesTypeName }
  * @param clothesType : An integer determining the type of clothes you want to get the clothes of.
  * @return this function returns a string (the name of the clothes type) if found, false otherwise.
+ * @noSelf
  */
-export function getClothesTypeName(
+export declare function getClothesTypeName(
     clothesType: number
 ): string;
 
@@ -97,8 +101,9 @@ export function getClothesTypeName(
  * and index from. See the CJ Clothes|clothes catalog.
  * @return this function returns two integers, type and index respectively, false if invalid
  * arguments were passed to the function.
+ * @noSelf
  */
-export function getTypeIndexFromClothes(
+export declare function getTypeIndexFromClothes(
     clothesTexture: string,
     clothesModel: string
 ): LuaMultiReturn<[

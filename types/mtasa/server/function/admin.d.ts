@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -47,8 +48,9 @@ import {
  * infinite amount of time.
  * @return returns the new ban if the ip/username/serial was banned successfully, false if invalid
  * arguments are specified.
+ * @noSelf
  */
-export function addBan(
+export declare function addBan(
     IP?: string,
     Username?: string,
     Serial?: string,
@@ -71,8 +73,9 @@ export function addBan(
  * @param seconds The amount of seconds the player will be banned from the server for. This can be 0 for an
  * infinite amount of time.
  * @return returns a ban object if banned successfully, or false if unsuccessful.
+ * @noSelf
  */
-export function banPlayer(
+export declare function banPlayer(
     bannedPlayer: Player,
     IP?: boolean,
     Username?: boolean,
@@ -89,8 +92,9 @@ export function banPlayer(
  * @param theBan The ban you want to return the admin of.
  * @return returns a string of the admin if everything was successful, false if invalid arguments
  * are specified if there was no admin specified for the ban.
+ * @noSelf
  */
-export function getBanAdmin(
+export declare function getBanAdmin(
     theBan: Ban
 ): string;
 
@@ -100,8 +104,9 @@ export function getBanAdmin(
  * @param theBan The ban in which you want to return the IP of.
  * @return returns a string of the ip if everything was successful, false if invalid arguments are
  * specified if there was no ip specified for the ban.
+ * @noSelf
  */
-export function getBanIP(
+export declare function getBanIP(
     theBan: Ban
 ): string;
 
@@ -112,8 +117,9 @@ export function getBanIP(
  * @param theBan The ban element which nickname you want to return.
  * @return returns a string of the nickname if everything was successfull, false if invalid
  * arguments are specified if there was no nickname specified for the ban element.
+ * @noSelf
  */
-export function getBanNick(
+export declare function getBanNick(
     theBan: Ban
 ): string;
 
@@ -123,8 +129,9 @@ export function getBanNick(
  * @param theBan The ban in which you want to return the reason of.
  * @return returns a string of the reason if everything was successful, false if invalid arguments
  * are specified if there was no reason specified for the ban.
+ * @noSelf
  */
-export function getBanReason(
+export declare function getBanReason(
     theBan: Ban
 ): string;
 
@@ -133,8 +140,9 @@ export function getBanReason(
  * banlist.xml.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetBans Wiki, getBans }
  * @return returns a table containing all the bans.
+ * @noSelf
  */
-export function getBans(): LuaTable;
+export declare function getBans(): LuaTable;
 
 /**
  * This function will return the serial of the specified ban.
@@ -142,8 +150,9 @@ export function getBans(): LuaTable;
  * @param theBan The ban you want to retrieve the serial of.
  * @return returns a string of the serial if everything was successful, false if invalid arguments
  * are specified or if there was no serial specified for the ban.
+ * @noSelf
  */
-export function getBanSerial(
+export declare function getBanSerial(
     theBan: Ban
 ): string;
 
@@ -155,8 +164,9 @@ export function getBanSerial(
  * use in conjunction with getrealtime in order to retrieve detailed information.
  * * returns false if invalid arguments were specified or if there was no banning time
  * specified for the ban.
+ * @noSelf
  */
-export function getBanTime(
+export declare function getBanTime(
     theBan: Ban
 ): number;
 
@@ -166,8 +176,9 @@ export function getBanTime(
  * @param theBan The ban in which you wish to retrieve the username of.
  * @return returns a string of the username if everything was successful, false if invalid arguments
  * are specified if there was no username specified for the ban.
+ * @noSelf
  */
-export function getBanUsername(
+export declare function getBanUsername(
     theBan: Ban
 ): string;
 
@@ -179,8 +190,9 @@ export function getBanUsername(
  * use in conjunction with getrealtime in order to retrieve detailed information.
  * * returns false if invalid arguments are specified or if there was no unbanning time
  * specified for the ban.
+ * @noSelf
  */
-export function getUnbanTime(
+export declare function getUnbanTime(
     theBan: Ban
 ): number;
 
@@ -189,8 +201,9 @@ export function getUnbanTime(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsBan Wiki, isBan }
  * @param theBan The value to check
  * @return returns true if the value is a ban, false otherwise.
+ * @noSelf
  */
-export function isBan(
+export declare function isBan(
     theBan: Ban
 ): boolean;
 
@@ -204,8 +217,9 @@ export function isBan(
  * after 1.5.8)
  * @return returns true if the player was kicked succesfully, false if invalid arguments are
  * specified.
+ * @noSelf
  */
-export function kickPlayer(
+export declare function kickPlayer(
     kickedPlayer: Player,
     responsiblePlayer?: Player | string,
     reason?: string
@@ -215,8 +229,9 @@ export function kickPlayer(
  * This function will reload the server ban list file.
  * @see {@link https://wiki.multitheftauto.com/wiki/ReloadBans Wiki, reloadBans }
  * @return returns true if the ban list was reloaded successfully, false otherwise.
+ * @noSelf
  */
-export function reloadBans(): boolean;
+export declare function reloadBans(): boolean;
 
 /**
  * This function will remove a specific ban.
@@ -225,8 +240,9 @@ export function reloadBans(): boolean;
  * @param responsibleElement The element that is responsible for removing the ban element. This can be a player or the
  * root (getRootElement()).
  * @return returns true if the ban was removed succesfully, false if invalid arguments are specified.
+ * @noSelf
  */
-export function removeBan(
+export declare function removeBan(
     theBan: Ban,
     responsibleElement?: Player
 ): boolean;
@@ -237,8 +253,9 @@ export function removeBan(
  * @param theBan The ban you want to change the admin of.
  * @param theAdmin The new admin.
  * @return returns true if changed, false otherwise.
+ * @noSelf
  */
-export function setBanAdmin(
+export declare function setBanAdmin(
     theBan: Ban,
     theAdmin: string
 ): boolean;
@@ -248,8 +265,9 @@ export function setBanAdmin(
  * @param theBan The ban you want to change the nick of.
  * @param theNick A string representing the nick you want to set the ban to.
  * @return returns true if changed, false otherwise.
+ * @noSelf
  */
-export function setBanNick(
+export declare function setBanNick(
     theBan: Ban,
     theNick: string
 ): boolean;
@@ -260,8 +278,9 @@ export function setBanNick(
  * @param theBan The ban that you wish to set the reason of.
  * @param theReason the new reason (max 60 characters).
  * @return returns true if the new reason was set successfully, false otherwise.
+ * @noSelf
  */
-export function setBanReason(
+export declare function setBanReason(
     theBan: Ban,
     theReason: string
 ): boolean;
@@ -273,8 +292,9 @@ export function setBanReason(
  * @param theBan The ban of which to change the unban time of
  * @param theTime the new unban time
  * @return returns true if changed successfully, false otherwise.
+ * @noSelf
  */
-export function setUnbanTime(
+export declare function setUnbanTime(
     theBan: Ban,
     theTime: number
 ): boolean;

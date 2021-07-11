@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -38,8 +39,9 @@ import {
  * @param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames Bob and bob
  * will refer to different accounts)
  * @return returns an account or false if the account already exists or an error occured.
+ * @noSelf
  */
-export function addAccount(
+export declare function addAccount(
     name: string,
     pass: string,
     allowCaseVariations?: boolean
@@ -51,8 +53,9 @@ export function addAccount(
  * @param theAccount The account you wish to copy the data to.
  * @param fromAccount The account you wish to copy the data from.
  * @return returns a true if the accounts were valid, false otherwise.
+ * @noSelf
  */
-export function copyAccountData(
+export declare function copyAccountData(
     theAccount: Account,
     fromAccount: Account
 ): boolean;
@@ -67,8 +70,9 @@ export function copyAccountData(
  * |16257}}
  * @return returns an account or false if an account matching the username specified (and password,
  * if specified) could not be found.
+ * @noSelf
  */
-export function getAccount(
+export declare function getAccount(
     username: string,
     password?: string,
     caseSensitive?: boolean
@@ -80,8 +84,9 @@ export function getAccount(
  * @param id The ID to get account from
  * @return returns account associated with specified id. returns false if invalid arguments were
  * specified or there is no account with this id.
+ * @noSelf
  */
-export function getAccountByID(
+export declare function getAccountByID(
     id: number
 ): Account;
 
@@ -93,8 +98,9 @@ export function getAccountByID(
  * @param theAccount The account you wish to retrieve the data from.
  * @param key The key under which the data is stored
  * @return returns a string containing the stored data or false if no data was stored under that key.
+ * @noSelf
  */
-export function getAccountData(
+export declare function getAccountData(
     theAccount: Account,
     key: string
 ): string;
@@ -105,8 +111,9 @@ export function getAccountData(
  * @param theAccount The account you wish to get the ID of.
  * @return returns a int containing the accounts id, false if the account does not exist or an
  * invalid argument was passed to the function.
+ * @noSelf
  */
-export function getAccountID(
+export declare function getAccountID(
     theAccount: Account
 ): number;
 
@@ -116,8 +123,9 @@ export function getAccountID(
  * @param theAccount The account you wish to get the IP of.
  * @return returns a string containing the accounts ip, false if the account does not exist or an
  * invalid argument was passed to the function.
+ * @noSelf
  */
-export function getAccountIP(
+export declare function getAccountIP(
     theAccount: Account
 ): string;
 
@@ -127,8 +135,9 @@ export function getAccountIP(
  * @param theAccount The account you wish to get the name of.
  * @return returns a string containing the accounts name, false if the account does not exist or an
  * invalid argument was passed to the function.
+ * @noSelf
  */
-export function getAccountName(
+export declare function getAccountName(
     theAccount: Account
 ): string;
 
@@ -138,8 +147,9 @@ export function getAccountName(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountPlayer Wiki, getAccountPlayer }
  * @param theAccount The account you wish to get the player of.
  * @return returns a player element if the account is currently in use, false otherwise.
+ * @noSelf
  */
-export function getAccountPlayer(
+export declare function getAccountPlayer(
     theAccount: Account
 ): Player;
 
@@ -149,8 +159,9 @@ export function getAccountPlayer(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetAccounts Wiki, getAccounts }
  * @return a table over the accounts that exist in the server internal.db file. this table might be
  * empty.
+ * @noSelf
  */
-export function getAccounts(): LuaTable;
+export declare function getAccounts(): LuaTable;
 
 /**
  * This function returns a table containing all accounts with specified dataName and value
@@ -160,8 +171,9 @@ export function getAccounts(): LuaTable;
  * @param value The value the dataName should have
  * @return returns table containing the accounts associated with specified value at dataname.
  * returns false if invalid arguments were specified.
+ * @noSelf
  */
-export function getAccountsByData(
+export declare function getAccountsByData(
     dataName: string,
     value: string
 ): LuaTable;
@@ -173,8 +185,9 @@ export function getAccountsByData(
  * @param ip The IP to get accounts from
  * @return returns table containing the accounts associated with specified ip-address. returns false
  * if invalid arguments were specified.
+ * @noSelf
  */
-export function getAccountsByIP(
+export declare function getAccountsByIP(
     ip: string
 ): LuaTable;
 
@@ -186,8 +199,9 @@ export function getAccountsByIP(
  * @param serial The serial to get accounts from
  * @return returns table containing the accounts associated with specified serial. returns false if
  * invalid arguments were specified.
+ * @noSelf
  */
-export function getAccountsBySerial(
+export declare function getAccountsBySerial(
     serial: string
 ): LuaTable;
 
@@ -197,8 +211,9 @@ export function getAccountsBySerial(
  * @param theAccount The account to get serial from
  * @return returns string containing the serial, the string is empty if the account was never used.
  * returns false if invalid arguments were specified.
+ * @noSelf
  */
-export function getAccountSerial(
+export declare function getAccountSerial(
     theAccount: Account
 ): string;
 
@@ -207,8 +222,9 @@ export function getAccountSerial(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetAllAccountData Wiki, getAllAccountData }
  * @param theAccount The account you wish to retrieve all data from.
  * @return a table containing all the user data. this table might be empty.
+ * @noSelf
  */
-export function getAllAccountData(
+export declare function getAllAccountData(
     theAccount: Account
 ): LuaTable;
 
@@ -218,8 +234,9 @@ export function getAllAccountData(
  * @param thePlayer The player element you want to get the account of.
  * @return returns the players account object, or false if the player passed to the function is
  * invalid.
+ * @noSelf
  */
-export function getPlayerAccount(
+export declare function getPlayerAccount(
     thePlayer: Player
 ): Account;
 
@@ -232,8 +249,9 @@ export function getPlayerAccount(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsGuestAccount Wiki, isGuestAccount }
  * @param theAccount The account you want to check to see if it is a guest account.
  * @return returns true if the account is a guest account, false otherwise.
+ * @noSelf
  */
-export function isGuestAccount(
+export declare function isGuestAccount(
     theAccount: Account
 ): boolean;
 
@@ -248,8 +266,9 @@ export function isGuestAccount(
  * or nil if the log in failed for some reason, ie. the player was already logged in to some
  * account (use logout first), if the account was already in use or if it failed for some
  * other reason.
+ * @noSelf
  */
-export function logIn(
+export declare function logIn(
     thePlayer: Player,
     theAccount: Account,
     thePassword: string
@@ -261,8 +280,9 @@ export function logIn(
  * @param thePlayer The player to log out of his current account
  * @return returns true if the player was successfully logged out, false or nil if it failed for
  * some reason, ie. the player was never logged in.
+ * @noSelf
  */
-export function logOut(
+export declare function logOut(
     thePlayer: Player
 ): boolean;
 
@@ -271,8 +291,9 @@ export function logOut(
  * @see {@link https://wiki.multitheftauto.com/wiki/RemoveAccount Wiki, removeAccount }
  * @param theAccount The account you wish to remove
  * @return returns true if account was successfully removed, false if the account does not exist.
+ * @noSelf
  */
-export function removeAccount(
+export declare function removeAccount(
     theAccount: Account
 ): boolean;
 
@@ -288,8 +309,9 @@ export function removeAccount(
  * @param value The value you wish to store. Set to false to remove the data. NOTE: you cannot store
  * tables as values, but you can use toJSON strings.
  * @return returns a true if the account data was set, false if an invalid argument was specified.
+ * @noSelf
  */
-export function setAccountData(
+export declare function setAccountData(
     theAccount: Account,
     key: string,
     value: unknown
@@ -303,8 +325,9 @@ export function setAccountData(
  * @param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames Bob and bob
  * will refer to different accounts)
  * @return returns a true if the account name was set, false if an invalid argument was specified.
+ * @noSelf
  */
-export function setAccountName(
+export declare function setAccountName(
     theAccount: Account,
     name: string,
     allowCaseVariations?: boolean
@@ -316,8 +339,9 @@ export function setAccountName(
  * @param theAccount the account whose password you want to set
  * @param password the password
  * @return returns true if the password was set correctly, false otherwise.
+ * @noSelf
  */
-export function setAccountPassword(
+export declare function setAccountPassword(
     theAccount: Account,
     password: string
 ): boolean;

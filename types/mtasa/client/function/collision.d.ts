@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -57,8 +58,9 @@ import {
  * one in the polygon.
  * Returns ''true'' if the polygon was changed, ''false'' if invalid arguments were passed.
  * @return returns true if the polygon was changed, false if invalid arguments were passed.
+ * @noSelf
  */
-export function addColPolygonPoint(
+export declare function addColPolygonPoint(
     shape: ColShape,
     fX: number,
     fY: number,
@@ -75,8 +77,9 @@ export function addColPolygonPoint(
  * @param radius The radius of the collision circle. Can not be smaller than 0.1
  * @return returns a colshape element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function createColCircle(
+export declare function createColCircle(
     fX: number,
     fY: number,
     radius: number
@@ -95,8 +98,9 @@ export function createColCircle(
  * @param fHeight The collision cuboids height
  * @return returns a colshape element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function createColCuboid(
+export declare function createColCuboid(
     fX: number,
     fY: number,
     fZ: number,
@@ -125,8 +129,9 @@ export function createColCuboid(
  * @param ... From the 3rd position you can have as many points as you require to create the colshape.
  * @return returns a colshape element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function createColPolygon(
+export declare function createColPolygon(
     fCenterX: number,
     fCenterY: number,
     fX1: number,
@@ -149,8 +154,9 @@ export function createColPolygon(
  * @param fHeight The collision rectangles height
  * @return returns a colshape element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function createColRectangle(
+export declare function createColRectangle(
     fX: number,
     fY: number,
     fWidth: number,
@@ -167,8 +173,9 @@ export function createColRectangle(
  * @param fRadius The collision spheres radius
  * @return returns a colshape element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function createColSphere(
+export declare function createColSphere(
     fX: number,
     fY: number,
     fZ: number,
@@ -189,8 +196,9 @@ export function createColSphere(
  * @param fHeight The collision tubes height
  * @return returns a colshape element if successful, false if invalid arguments were passed to the
  * function.
+ * @noSelf
  */
-export function createColTube(
+export declare function createColTube(
     fX: number,
     fY: number,
     fZ: number,
@@ -204,8 +212,9 @@ export function createColTube(
  * @param shape The colshape polygon
  * @return returns two floats, indicating the floor and ceiling of the colshape height, false if
  * invalid arguments were passed.
+ * @noSelf
  */
-export function getColPolygonHeight(
+export declare function getColPolygonHeight(
     shape: ColShape
 ): LuaMultiReturn<[
     number,
@@ -219,8 +228,9 @@ export function getColPolygonHeight(
  * being the first bound point.
  * @return returns two floats, x and y, indicating the position of the point, false if invalid
  * arguments were passed.
+ * @noSelf
  */
-export function getColPolygonPointPosition(
+export declare function getColPolygonPointPosition(
     shape: ColShape,
     index: number
 ): LuaMultiReturn<[
@@ -233,8 +243,9 @@ export function getColPolygonPointPosition(
  * @param shape The colshape polygon you wish to get the points of.
  * @return returns a table of coordinates, each coordinate being a table containing the x and y
  * position of a bound point, false if invalid arguments were passed.
+ * @noSelf
  */
-export function getColPolygonPoints(
+export declare function getColPolygonPoints(
     shape: ColShape
 ): LuaTable;
 
@@ -243,8 +254,9 @@ export function getColPolygonPoints(
  * @param shape The colshape you wish to get the radius of.
  * @return returns a float containing the radius of the colshape, false if an invalid colshape was
  * passed.
+ * @noSelf
  */
-export function getColShapeRadius(
+export declare function getColShapeRadius(
     shape: ColShape
 ): number;
 
@@ -256,8 +268,9 @@ export function getColShapeRadius(
  * *cuboid: width, depth, height.
  * *rectangle: width, height.
  * *tube: height.
+ * @noSelf
  */
-export function getColShapeSize(
+export declare function getColShapeSize(
     shape: ColShape
 ): LuaMultiReturn<[
     number,
@@ -276,8 +289,9 @@ export function getColShapeSize(
  * *3: rectangle
  * *4: polygon
  * *5: tube
+ * @noSelf
  */
-export function getColShapeType(
+export declare function getColShapeType(
     shape: ColShape
 ): number;
 
@@ -289,8 +303,9 @@ export function getColShapeType(
  * @param posZ The Z coordinate of the position youre checking.
  * @return returns true if the position is inside the colshape, false if it isnt or if any
  * parameters are invalid.
+ * @noSelf
  */
-export function isInsideColShape(
+export declare function isInsideColShape(
     theShape: ColShape,
     posX: number,
     posY: number,
@@ -303,8 +318,9 @@ export function isInsideColShape(
  * @param index The index of the point you wish to remove. The points are indexed in order, with 1 being
  * the first bound point. You cant remove the last 3 points.
  * @return returns true if the polygon was changed, false if invalid arguments were passed.
+ * @noSelf
  */
-export function removeColPolygonPoint(
+export declare function removeColPolygonPoint(
     shape: ColShape,
     index: number
 ): boolean;
@@ -317,8 +333,9 @@ export function removeColPolygonPoint(
  * @param ceil The polygon ceiling (highest Z coordinate). Parse false to reset this value to infinitely
  * tall.
  * @return returns true if the polygon was changed, false if invalid arguments were passed.
+ * @noSelf
  */
-export function setColPolygonHeight(
+export declare function setColPolygonHeight(
     shape: ColShape,
     floor: number,
     ceil: number
@@ -332,8 +349,9 @@ export function setColPolygonHeight(
  * @param fX The new X position of the bound point.
  * @param fY The new Y position of the bound point.
  * @return returns true if the polygon was changed, false if invalid arguments were passed.
+ * @noSelf
  */
-export function setColPolygonPointPosition(
+export declare function setColPolygonPointPosition(
     shape: ColShape,
     index: number,
     fX: number,
@@ -345,8 +363,9 @@ export function setColPolygonPointPosition(
  * @param shape The colshape you wish to change the radius of.
  * @param radius The radius you want to set.
  * @return returns true if the radius was changed, or false if invalid arguments were passed.
+ * @noSelf
  */
-export function setColShapeRadius(
+export declare function setColShapeRadius(
     shape: ColShape,
     radius: number
 ): boolean;
@@ -358,8 +377,9 @@ export function setColShapeRadius(
  * @param depth The collision cuboids depth.
  * @param height The collision tubess height.
  * @return returns true if the size was changed, false if invalid arguments were passed.
+ * @noSelf
  */
-export function setColShapeSize(
+export declare function setColShapeSize(
     shape: ColShape,
     width: number,
     depth: number,

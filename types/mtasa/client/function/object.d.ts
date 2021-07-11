@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -53,8 +54,9 @@ import {
  * @param theObject an object element
  * @return * true if the object was successfully broken.
  * * false if the object is not breakable, or a wrong object was given.
+ * @noSelf
  */
-export function breakObject(
+export declare function breakObject(
     theObject: MTASAObject
 ): boolean;
 
@@ -71,8 +73,9 @@ export function breakObject(
  * @param isLowLOD A bool value specifying if the object will be low LOD. A low LOD object has no collision
  * and a longer draw distance.
  * @return * returns the object element if the creation was successful, false otherwise.
+ * @noSelf
  */
-export function createObject(
+export declare function createObject(
     modelId: number,
     x: number,
     y: number,
@@ -90,8 +93,9 @@ export function createObject(
  * @return * a float representing the mass of the object.
  * * false if invalid arguments were passed.
  * * -1 if object was never streamed in.
+ * @noSelf
  */
-export function getObjectMass(
+export declare function getObjectMass(
     theObject: MTASAObject
 ): number;
 
@@ -104,8 +108,9 @@ export function getObjectMass(
  * </div>
  * @return on success: table for all, 3 float|floats for center_of_mass or float for other properties
  * on failure: false
+ * @noSelf
  */
-export function getObjectProperty(
+export declare function getObjectProperty(
     theObject: MTASAObject,
     property: string
 ): any;
@@ -116,8 +121,9 @@ export function getObjectProperty(
  * @param theObject : the object you wish to return the scale of.
  * @return * three float values indicating the scale of the object on the x, y, and z axis if
  * successful, false otherwise.
+ * @noSelf
  */
-export function getObjectScale(
+export declare function getObjectScale(
     theObject: MTASAObject
 ): LuaMultiReturn<[
     number,
@@ -131,8 +137,9 @@ export function getObjectScale(
  * @param theObject / modelId The object / model ID thats being checked.
  * @return * true if the object is breakable.
  * * false if the object is not breakable.
+ * @noSelf
  */
-export function isObjectBreakable(
+export declare function isObjectBreakable(
     theObject: MTASAObject | number
 ): boolean;
 
@@ -141,8 +148,9 @@ export function isObjectBreakable(
  * @param theObject The object
  * @return * true if the object is moving.
  * * false if the object is not moving.
+ * @noSelf
  */
-export function isObjectMoving(
+export declare function isObjectMoving(
     theObject: MTASAObject
 ): boolean;
 
@@ -169,8 +177,9 @@ export function isObjectMoving(
  * parameter)
  * @return * true if the function moved the object succesfully.
  * * false otherwise.
+ * @noSelf
  */
-export function moveObject(
+export declare function moveObject(
     theObject: MTASAObject,
     time: number,
     targetx: number,
@@ -191,8 +200,9 @@ export function moveObject(
  * @param theObject an object element
  * @return * true if the object was sucessfully respawned.
  * * false if the object is not breakable, or a wrong object was given.
+ * @noSelf
  */
-export function respawnObject(
+export declare function respawnObject(
     theObject: MTASAObject
 ): boolean;
 
@@ -203,8 +213,9 @@ export function respawnObject(
  * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
  * @return * true if the object is now breakable.
  * * false if it cant or if invalid arguments are passed.
+ * @noSelf
  */
-export function setObjectBreakable(
+export declare function setObjectBreakable(
     theObject: MTASAObject,
     breakable: boolean
 ): boolean;
@@ -217,8 +228,9 @@ export function setObjectBreakable(
  * @param mass the new mass.
  * @return * true if the new mass value has been.
  * * false otherwise.
+ * @noSelf
  */
-export function setObjectMass(
+export declare function setObjectMass(
     theObject: MTASAObject,
     mass: number
 ): boolean;
@@ -229,8 +241,9 @@ export function setObjectMass(
  * @param property : the property you want to set the value of:
  * @param value : the new value for the property.
  * @return returns true if the property was set successfully, false otherwise.
+ * @noSelf
  */
-export function setObjectProperty(
+export declare function setObjectProperty(
     theObject: MTASAObject,
     property: string,
     value: unknown
@@ -246,8 +259,9 @@ export function setObjectProperty(
  * @param scaleZ : a float containing the new scale on the Z axis
  * @return * true if the scale was set properly.
  * * false otherwise.
+ * @noSelf
  */
-export function setObjectScale(
+export declare function setObjectScale(
     theObject: MTASAObject,
     scale: number,
     scaleY?: number,
@@ -260,8 +274,9 @@ export function setObjectScale(
  * @param theobject the object whose movement you wish to stop
  * @return * true if successful.
  * * false otherwise.
+ * @noSelf
  */
-export function stopObject(
+export declare function stopObject(
     theobject: MTASAObject
 ): boolean;
 
@@ -272,8 +287,9 @@ export function stopObject(
  * @param respawn : a bool denoting whether we want to enable (true) or disable (false) respawning
  * @return * true when the it was changed successfully.
  * * false otherwise.
+ * @noSelf
  */
-export function toggleObjectRespawn(
+export declare function toggleObjectRespawn(
     theObject: MTASAObject,
     respawn: boolean
 ): boolean;

@@ -27,7 +27,7 @@ export { Browser } from './oop/Browser';
 export { Light } from './oop/Light';
 export { Effect } from './oop/Effect';
 export { Material } from './oop/Material';
-export { Texture } from './oop/Texture';
+export { DxTexture } from './oop/DxTexture';
 export { Searchlight } from './oop/Searchlight';
 export { Weapon } from './oop/Weapon';
 export { MTASAObject } from './oop/MTASAObject';
@@ -41,5 +41,6 @@ export { Projectile } from './oop/Projectile';
 export { EngineTXD } from './oop/EngineTXD';
 export { EngineDFF } from './oop/EngineDFF';
 export { EngineCOL } from './oop/EngineCOL';
+export { FetchRemoteCallback } from '../shared/utils/callback';
 
 export type HandleFunction = any;

@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -36,8 +37,9 @@ import {
  * @param thePlayer The player you want to get cursor state of.
  * @return returns true if the players cursor is showing, false if it isnt or if invalid parameters
  * were passed.
+ * @noSelf
  */
-export function isCursorShowing(
+export declare function isCursorShowing(
     thePlayer: Player
 ): boolean;
 
@@ -48,8 +50,9 @@ export function isCursorShowing(
  * @param show A boolean value determining whether to show (true) or hide (false) the cursor.
  * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.
  * true implies controls are disabled, false implies controls remain enabled.
+ * @noSelf
  */
-export function showCursor(
+export declare function showCursor(
     thePlayer: Player,
     show: boolean,
     toggleControls?: boolean

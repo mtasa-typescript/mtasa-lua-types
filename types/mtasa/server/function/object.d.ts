@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -43,8 +44,9 @@ import {
  * @param isLowLOD A bool value specifying if the object will be low LOD. A low LOD object has no collision
  * and a longer draw distance.
  * @return * returns the object element if the creation was successful, false otherwise.
+ * @noSelf
  */
-export function createObject(
+export declare function createObject(
     modelId: number,
     x: number,
     y: number,
@@ -61,8 +63,9 @@ export function createObject(
  * @param theObject : the object you wish to return the scale of.
  * @return * three float values indicating the scale of the object on the x, y, and z axis if
  * successful, false otherwise.
+ * @noSelf
  */
-export function getObjectScale(
+export declare function getObjectScale(
     theObject: MTASAObject
 ): LuaMultiReturn<[
     number,
@@ -93,8 +96,9 @@ export function getObjectScale(
  * parameter)
  * @return * true if the function moved the object succesfully.
  * * false otherwise.
+ * @noSelf
  */
-export function moveObject(
+export declare function moveObject(
     theObject: MTASAObject,
     time: number,
     targetx: number,
@@ -119,8 +123,9 @@ export function moveObject(
  * @param scaleZ : a float containing the new scale on the Z axis
  * @return * true if the scale was set properly.
  * * false otherwise.
+ * @noSelf
  */
-export function setObjectScale(
+export declare function setObjectScale(
     theObject: MTASAObject,
     scale: number,
     scaleY?: number,
@@ -133,7 +138,8 @@ export function setObjectScale(
  * @param theobject the object whose movement you wish to stop
  * @return * true if successful.
  * * false otherwise.
+ * @noSelf
  */
-export function stopObject(
+export declare function stopObject(
     theobject: MTASAObject
 ): boolean;

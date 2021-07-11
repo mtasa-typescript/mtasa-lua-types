@@ -1,8 +1,13 @@
 {
     "extends": "dtslint/dtslint.json",
     "rules": {
+        // JSDoc will be everywhere
         "no-redundant-jsdoc": false,
+        // Sometimes there are static new methods
         "no-misused-new": false,
-        "no-unnecessary-class": false
+        // I don't want to use functions instead of constructors
+        "no-unnecessary-class": false,
+        // See https://github.com/TypeScriptToLua/TypeScriptToLua/issues/1019
+        "strict-export-declare-modifiers": false
     }
 }

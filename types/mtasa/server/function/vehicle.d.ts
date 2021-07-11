@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -41,8 +42,9 @@ import {
  * @param useRandomiser Randomise the light order, false for sequential
  * @param silentFlag If you want the siren to be silent set this to true
  * @return returns true if sirens were successfully added to the vehicle, false otherwise.
+ * @noSelf
  */
-export function addVehicleSirens(
+export declare function addVehicleSirens(
     theVehicle: Vehicle,
     sirenCount: number,
     sirenType: number,
@@ -62,8 +64,9 @@ export function addVehicleSirens(
  * 1087) server sided and when your camera target is the player inside the vehicle with
  * hydraulics and if the player is not you.
  * @return returns true if the upgrade was successfully added to the vehicle, otherwise false.
+ * @noSelf
  */
-export function addVehicleUpgrade(
+export declare function addVehicleUpgrade(
     theVehicle: Vehicle,
     upgrade: string | number
 ): boolean;
@@ -74,8 +77,9 @@ export function addVehicleUpgrade(
  * @param theVehicle : the vehicle you wish to attach a trailer to.
  * @param theTrailer : the trailer you wish to be attached.
  * @return returns true if the vehicles were successfully attached, false otherwise.
+ * @noSelf
  */
-export function attachTrailerToVehicle(
+export declare function attachTrailerToVehicle(
     theVehicle: Vehicle,
     theTrailer: Vehicle
 ): boolean;
@@ -87,8 +91,9 @@ export function attachTrailerToVehicle(
  * @param vehicleToBlow the vehicle that you wish to blow up.
  * @param explode if this argument is true then the vehicle will explode, otherwise it will just be blown
  * up silently.
+ * @noSelf
  */
-export function blowVehicle(
+export declare function blowVehicle(
     vehicleToBlow: Vehicle,
     explode?: boolean
 ): boolean;
@@ -116,8 +121,9 @@ export function blowVehicle(
  * @param variant2 : An integer for the second vehicle variant. See vehicle variants.
  * @return returns the vehicle element that was created. returns false if the arguments are
  * incorrect, or if the vehicle limit of 65535 is exceeded.
+ * @noSelf
  */
-export function createVehicle(
+export declare function createVehicle(
     model: number,
     x: number,
     y: number,
@@ -137,8 +143,9 @@ export function createVehicle(
  * @param theVehicle : The vehicle you wish to detach a trailer from.
  * @param theTrailer : The trailer you wish to be detached.
  * @return returns true if the vehicles were successfully detached, false otherwise.
+ * @noSelf
  */
-export function detachTrailerFromVehicle(
+export declare function detachTrailerFromVehicle(
     theVehicle: Vehicle,
     theTrailer?: Vehicle
 ): boolean;
@@ -149,8 +156,9 @@ export function detachTrailerFromVehicle(
  * @see {@link https://wiki.multitheftauto.com/wiki/FixVehicle Wiki, fixVehicle }
  * @param theVehicle the vehicle you wish to fix
  * @return returns true if the vehicle was fixed, false if thevehicle is invalid.
+ * @noSelf
  */
-export function fixVehicle(
+export declare function fixVehicle(
     theVehicle: Vehicle
 ): boolean;
 
@@ -162,8 +170,9 @@ export function fixVehicle(
  * @param modelId the vehicle model you wish to get the handling data of.
  * @return returns a table containing all the handling data, false if an invalid vehicle model is
  * specified. here is a list of valid table properties and what they return:
+ * @noSelf
  */
-export function getModelHandling(
+export declare function getModelHandling(
     modelId: number
 ): LuaTable;
 
@@ -175,8 +184,9 @@ export function getModelHandling(
  * @param modelID The vehicle ID you wish to get the original handling from.
  * @return returns a table containing all the handling data, false otherwise. here a list of valid
  * table properties and what they return:
+ * @noSelf
  */
-export function getOriginalHandling(
+export declare function getOriginalHandling(
     modelID: number
 ): LuaTable;
 
@@ -186,8 +196,9 @@ export function getOriginalHandling(
  * @param train the train of which to get the driving direction.
  * @return returns true if the train is driving clockwise on the train track, false if it is going
  * counterclockwise or a failure occured.
+ * @noSelf
  */
-export function getTrainDirection(
+export declare function getTrainDirection(
     train: Vehicle
 ): boolean;
 
@@ -197,8 +208,9 @@ export function getTrainDirection(
  * @param train the train to get the position of
  * @return returns a float that represents how along the track it is, false if there is problem with
  * train element.
+ * @noSelf
  */
-export function getTrainPosition(
+export declare function getTrainPosition(
     train: Vehicle
 ): number;
 
@@ -207,8 +219,9 @@ export function getTrainPosition(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainSpeed Wiki, getTrainSpeed }
  * @param train the train of which to retrieve the speed.
  * @return returns the trains speed if successful, false otherwise.
+ * @noSelf
  */
-export function getTrainSpeed(
+export declare function getTrainSpeed(
     train: Vehicle
 ): number;
 
@@ -218,8 +231,9 @@ export function getTrainSpeed(
  * @param train the train of which to get the track.
  * @return returns an integer (whole number) that represents the train track, false if there is
  * problem with train element.
+ * @noSelf
  */
-export function getTrainTrack(
+export declare function getTrainTrack(
     train: Vehicle
 ): number;
 
@@ -237,8 +251,9 @@ export function getTrainTrack(
  * *returns false if the vehicle doesnt exist.
  * valid color ids if brgb is set to false:
  * <br>
+ * @noSelf
  */
-export function getVehicleColor(
+export declare function getVehicleColor(
     theVehicle: Vehicle,
     bRGB: boolean
 ): LuaMultiReturn<[
@@ -265,8 +280,9 @@ export function getVehicleColor(
  * upgrades for all slots are listed if this is not specified.
  * @return returns a table with all the compatible upgrades, or false if invalid arguments are
  * passed.
+ * @noSelf
  */
-export function getVehicleCompatibleUpgrades(
+export declare function getVehicleCompatibleUpgrades(
     theVehicle: Vehicle,
     slot?: number
 ): LuaTable;
@@ -278,8 +294,9 @@ export function getVehicleCompatibleUpgrades(
  * @param theVehicle the vehicle you want to get the controller of.
  * @return returns a player object, if there isnt a driver, it will search the trailer chain for the
  * front driver, false otherwise.
+ * @noSelf
  */
-export function getVehicleController(
+export declare function getVehicleController(
     theVehicle: Vehicle
 ): Player;
 
@@ -292,8 +309,9 @@ export function getVehicleController(
  * (rear right)
  * @return returns a number between 0 and 1 that indicates how open the door is. 0 is closed, and 1
  * is fully open. returns false if invalid arguments are passed.
+ * @noSelf
  */
-export function getVehicleDoorOpenRatio(
+export declare function getVehicleDoorOpenRatio(
     theVehicle: Vehicle,
     door: number
 ): number;
@@ -315,8 +333,9 @@ export function getVehicleDoorOpenRatio(
  * * 2: shut, damaged
  * * 3: ajar, damaged
  * * 4: missing
+ * @noSelf
  */
-export function getVehicleDoorState(
+export declare function getVehicleDoorState(
     theVehicle: Vehicle,
     door: number
 ): number;
@@ -325,8 +344,9 @@ export function getVehicleDoorState(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleEngineState Wiki, getVehicleEngineState }
  * @param theVehicle : the vehicle you wish to get the engine state of.
  * @return returns true if the vehicles engine is started, false otherwise.
+ * @noSelf
  */
-export function getVehicleEngineState(
+export declare function getVehicleEngineState(
     theVehicle: Vehicle
 ): boolean;
 
@@ -336,8 +356,9 @@ export function getVehicleEngineState(
  * @param theVehicle the vehicle you wish to get the handling data of.
  * @return returns a table containing all the handling data, false otherwise. heres a list of valid
  * table properties and what they return:
+ * @noSelf
  */
-export function getVehicleHandling(
+export declare function getVehicleHandling(
     theVehicle: Element
 ): LuaTable;
 
@@ -347,8 +368,9 @@ export function getVehicleHandling(
  * @param theVehicle The vehicle that you wish to set the headlight color of.
  * @return returns three integers for the red, green and blue of the headlight color for the
  * specified vehicle, false if an invalid vehicle was specified.
+ * @noSelf
  */
-export function getVehicleHeadLightColor(
+export declare function getVehicleHeadLightColor(
     theVehicle: Vehicle
 ): LuaMultiReturn<[
     number,
@@ -363,8 +385,9 @@ export function getVehicleHeadLightColor(
  * @param theVehicle the vehicle of which you wish to check the landing gear state.
  * @return returns true if landing gear is down, false if the landing gear is up.<br />
  * returns nil if the vehicle has no landing gear, or is invalid.
+ * @noSelf
  */
-export function getVehicleLandingGearDown(
+export declare function getVehicleLandingGearDown(
     theVehicle: Vehicle
 ): boolean;
 
@@ -378,8 +401,9 @@ export function getVehicleLandingGearDown(
  * @param 2 Rear right
  * @param 3 Rear left
  * @return returns 0 (working) or 1 (broken)
+ * @noSelf
  */
-export function getVehicleLightState(
+export declare function getVehicleLightState(
     theVehicle: Vehicle,
     light: number
 ): number;
@@ -392,8 +416,9 @@ export function getVehicleLightState(
  * OR
  * @param modelID the model id that you wish to know the maximum capacity of.
  * @return returns an int indicating the maximum number of passengers that can enter a vehicle.
+ * @noSelf
  */
-export function getVehicleMaxPassengers(
+export declare function getVehicleMaxPassengers(
     theVehicle: Vehicle | number
 ): number;
 
@@ -404,8 +429,9 @@ export function getVehicleMaxPassengers(
  * @return returns an integer if the name exists, false otherwise.
  * if you use this function on vehicles with shared names, such as police, it will return
  * the earliest occurrence of that vehicles id.
+ * @noSelf
  */
-export function getVehicleModelFromName(
+export declare function getVehicleModelFromName(
     name: string
 ): number;
 
@@ -415,8 +441,9 @@ export function getVehicleModelFromName(
  * @param theVehicle the vehicle you want to get the name of.
  * @return returns a string containing the requested vehicles name, or false if the vehicle passed
  * to the function is invalid.
+ * @noSelf
  */
-export function getVehicleName(
+export declare function getVehicleName(
     theVehicle: Vehicle
 ): string;
 
@@ -425,8 +452,9 @@ export function getVehicleName(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleNameFromModel Wiki, getVehicleNameFromModel }
  * @param model This is the vehicle model ID. See vehicle IDs to see what values will return names.
  * @return returns the name of the vehicle if the model id was valid, false otherwise.
+ * @noSelf
  */
-export function getVehicleNameFromModel(
+export declare function getVehicleNameFromModel(
     model: number
 ): string;
 
@@ -437,8 +465,9 @@ export function getVehicleNameFromModel(
  * @param seat the seat where the player is sitting (0 for driver, 1+ for passengers).
  * @return returns the player sitting in the vehicle, or false if the seat is unoccupied or doesnt
  * exist.
+ * @noSelf
  */
-export function getVehicleOccupant(
+export declare function getVehicleOccupant(
     theVehicle: Vehicle,
     seat?: number
 ): Player;
@@ -465,8 +494,9 @@ export function getVehicleOccupant(
  * outputdebugstring(players in your vehicle: .. counter)
  * </syntaxhighlight>
  * </div>
+ * @noSelf
  */
-export function getVehicleOccupants(
+export declare function getVehicleOccupants(
     theVehicle: Vehicle
 ): LuaTable;
 
@@ -476,8 +506,9 @@ export function getVehicleOccupants(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOverrideLights Wiki, getVehicleOverrideLights }
  * @param theVehicle : the vehicle you wish to retrieve the override lights setting of.
  * @return returns an integer value: 0 (no override), 1 (force off) or 2 (force on).
+ * @noSelf
  */
-export function getVehicleOverrideLights(
+export declare function getVehicleOverrideLights(
     theVehicle: Vehicle
 ): number;
 
@@ -490,8 +521,9 @@ export function getVehicleOverrideLights(
  * * 1: the second paintjob
  * * 2: the third paintjob
  * * 3: default paintjob (no paintjob)
+ * @noSelf
  */
-export function getVehiclePaintjob(
+export declare function getVehiclePaintjob(
     theVehicle: Vehicle
 ): number;
 
@@ -511,8 +543,9 @@ export function getVehiclePaintjob(
  * @param 6 Rear bumper
  * @return returns an int indicating the state of the specified the panel. this is a value between 0
  * and 3, with 0 indicating the panel is undamaged and 3 indicating it is very damaged.
+ * @noSelf
  */
-export function getVehiclePanelState(
+export declare function getVehiclePanelState(
     theVehicle: Vehicle,
     panel: number
 ): number;
@@ -524,8 +557,9 @@ export function getVehiclePanelState(
  * @return returns a string that corresponds to the plate on the text, false if a bad argument was
  * passed or if it is not a vehicle. every vehicle (including planes, boats, etc.) has a
  * numberplate, even if its not visible.
+ * @noSelf
  */
-export function getVehiclePlateText(
+export declare function getVehiclePlateText(
     theVehicle: Vehicle
 ): string;
 
@@ -534,8 +568,9 @@ export function getVehiclePlateText(
  * @param theVehicle The vehicle which youd like to retrieve the respawn coordinates of.
  * @return returns three float|floats indicating the respawn coordinates of the vehicle, x, y and z
  * respectively.
+ * @noSelf
  */
-export function getVehicleRespawnPosition(
+export declare function getVehicleRespawnPosition(
     theVehicle: Element
 ): LuaMultiReturn<[
     number,
@@ -548,8 +583,9 @@ export function getVehicleRespawnPosition(
  * @param theVehicle The vehicle which youd like to retrieve the respawn rotation of.
  * @return returns three float|floats indicating the respawn rotation of the vehicle, x, y and z
  * respectively.
+ * @noSelf
  */
-export function getVehicleRespawnRotation(
+export declare function getVehicleRespawnRotation(
     theVehicle: Element
 ): LuaMultiReturn<[
     number,
@@ -572,8 +608,9 @@ export function getVehicleRespawnRotation(
  * bool sirenparams.flags.userandomiser
  * bool sirenparams.flags.silent
  * </syntaxhighlight>
+ * @noSelf
  */
-export function getVehicleSirenParams(
+export declare function getVehicleSirenParams(
     theVehicle: Vehicle
 ): LuaTable;
 
@@ -593,8 +630,9 @@ export function getVehicleSirenParams(
  * int     sirendatasirenpoint.alpha
  * int     sirendatasirenpoint.min_alpha
  * </syntaxhighlight>
+ * @noSelf
  */
-export function getVehicleSirens(
+export declare function getVehicleSirens(
     theVehicle: Vehicle
 ): LuaTable;
 
@@ -605,8 +643,9 @@ export function getVehicleSirens(
  * @return returns true if the sirens are turned on for the specified vehicle, false if the sirens
  * are turned off for the specified vehicle, if the vehicle doesnt have sirens or if invalid
  * arguments are specified.
+ * @noSelf
  */
-export function getVehicleSirensOn(
+export declare function getVehicleSirensOn(
     theVehicle: Vehicle
 ): boolean;
 
@@ -616,8 +655,9 @@ export function getVehicleSirensOn(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclesOfType Wiki, getVehiclesOfType }
  * @param model : The model of vehicles you want.
  * @return returns a table of existing vehicles matching the specified model.
+ * @noSelf
  */
-export function getVehiclesOfType(
+export declare function getVehiclesOfType(
     model: number
 ): LuaTable;
 
@@ -626,8 +666,9 @@ export function getVehiclesOfType(
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowedByVehicle Wiki, getVehicleTowedByVehicle }
  * @param theVehicle : The vehicle you wish to get the towed vehicle from.
  * @return returns the vehicle that thevehicle is towing, false if it isnt towing a vehicle.
+ * @noSelf
  */
-export function getVehicleTowedByVehicle(
+export declare function getVehicleTowedByVehicle(
     theVehicle: Vehicle
 ): Vehicle;
 
@@ -637,8 +678,9 @@ export function getVehicleTowedByVehicle(
  * @param theVehicle : the vehicle being towed.
  * @return * the vehicle that thevehicle is being towed by.
  * * false if it isnt being towed.
+ * @noSelf
  */
-export function getVehicleTowingVehicle(
+export declare function getVehicleTowingVehicle(
     theVehicle: Vehicle
 ): Vehicle;
 
@@ -651,8 +693,9 @@ export function getVehicleTowingVehicle(
  * @return returns two floats for the x (horizontal) and y (vertical) axis rotation respectively.
  * these values are in radians. the function will return 0, 0 if the vehicle is not a
  * vehicle with a turret.
+ * @noSelf
  */
-export function getVehicleTurretPosition(
+export declare function getVehicleTurretPosition(
     turretVehicle: Vehicle
 ): LuaMultiReturn<[
     number,
@@ -668,8 +711,9 @@ export function getVehicleTurretPosition(
  * @return returns a string with vehicle type or false if an invalid modelid has been supplied, or
  * an empty string if the vehicle is blocked internally (some trailers).
  * possible strings returned:
+ * @noSelf
  */
-export function getVehicleType(
+export declare function getVehicleType(
     theVehicle: Vehicle
 ): string;
 
@@ -679,8 +723,9 @@ export function getVehicleType(
  * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
  * @return returns an integer with the upgrade on the slot if correct arguments were passed, false
  * otherwise.
+ * @noSelf
  */
-export function getVehicleUpgradeOnSlot(
+export declare function getVehicleUpgradeOnSlot(
     theVehicle: Vehicle,
     slot: number
 ): number;
@@ -691,8 +736,9 @@ export function getVehicleUpgradeOnSlot(
  * @param theVehicle The vehicle you wish to retrieve the upgrades of.
  * @return returns a table of all the upgrades on each slot of a vehicle, which may be empty, or
  * false if a valid vehicle is not passed.
+ * @noSelf
  */
-export function getVehicleUpgrades(
+export declare function getVehicleUpgrades(
     theVehicle: Vehicle
 ): LuaTable;
 
@@ -702,8 +748,9 @@ export function getVehicleUpgrades(
  * @param slot/upgrade the slot ID or corresponding upgrade ID of which you want the name.
  * @return returns a string with the slot name if a valid slot or upgrade id was given, false
  * otherwise.
+ * @noSelf
  */
-export function getVehicleUpgradeSlotName(
+export declare function getVehicleUpgradeSlotName(
     slot_upgrade: number
 ): string;
 
@@ -718,8 +765,9 @@ export function getVehicleUpgradeSlotName(
  * * int: an integer for the second vehicle variant see vehicle variants
  * on failure:
  * * bool: false because the specified vehicle didnt exist
+ * @noSelf
  */
-export function getVehicleVariant(
+export declare function getVehicleVariant(
     theVehicle: Vehicle
 ): LuaMultiReturn<[
     number,
@@ -738,8 +786,9 @@ export function getVehicleVariant(
  * * 1: flat
  * * 2: fallen off
  * * 3: collisionless
+ * @noSelf
  */
-export function getVehicleWheelStates(
+export declare function getVehicleWheelStates(
     theVehicle: Vehicle
 ): LuaMultiReturn<[
     number,
@@ -753,8 +802,9 @@ export function getVehicleWheelStates(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsTrainDerailable Wiki, isTrainDerailable }
  * @param vehicleToCheck The vehicle you wish to check.
  * @return returns true if the train is derailable, false otherwise.
+ * @noSelf
  */
-export function isTrainDerailable(
+export declare function isTrainDerailable(
     vehicleToCheck: Vehicle
 ): boolean;
 
@@ -763,8 +813,9 @@ export function isTrainDerailable(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsTrainDerailed Wiki, isTrainDerailed }
  * @param vehicleToCheck the vehicle that you wish to check is derailed.
  * @return returns true if the train is derailed, false if the train is still on the rails
+ * @noSelf
  */
-export function isTrainDerailed(
+export declare function isTrainDerailed(
     vehicleToCheck: Vehicle
 ): boolean;
 
@@ -774,8 +825,9 @@ export function isTrainDerailed(
  * @param theVehicle The vehicle that you want to obtain the blown status of.
  * @return returns true if the vehicle specified has blown up, false if it is still intact or the
  * vehicle specified is invalid.
+ * @noSelf
  */
-export function isVehicleBlown(
+export declare function isVehicleBlown(
     theVehicle: Vehicle
 ): boolean;
 
@@ -785,8 +837,9 @@ export function isVehicleBlown(
  * @param theVehicle the vehicle whose invincibility status we want to check.
  * @return returns true if the vehicle is damage proof, false if it isnt or if invalid arguments
  * were passed.
+ * @noSelf
  */
-export function isVehicleDamageProof(
+export declare function isVehicleDamageProof(
     theVehicle: Vehicle
 ): boolean;
 
@@ -796,8 +849,9 @@ export function isVehicleDamageProof(
  * @param theVehicle The vehicle that you want to obtain the fuel tank status of.
  * @return returns true if the specified vehicle is valid and its fuel tank is explodable, false
  * otherwise.
+ * @noSelf
  */
-export function isVehicleFuelTankExplodable(
+export declare function isVehicleFuelTankExplodable(
     theVehicle: Vehicle
 ): boolean;
 
@@ -807,8 +861,9 @@ export function isVehicleFuelTankExplodable(
  * @param theVehicle The vehicle that you want to obtain the locked status of.
  * @return returns true if the vehicle specified is locked, false if is unlocked or the vehicle
  * specified is invalid.
+ * @noSelf
  */
-export function isVehicleLocked(
+export declare function isVehicleLocked(
     theVehicle: Vehicle
 ): boolean;
 
@@ -817,8 +872,9 @@ export function isVehicleLocked(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleOnGround Wiki, isVehicleOnGround }
  * @param theVehicle The vehicle you wish to check.
  * @return returns true if vehicle is on the ground, false if it is not.
+ * @noSelf
  */
-export function isVehicleOnGround(
+export declare function isVehicleOnGround(
     theVehicle: Vehicle
 ): boolean;
 
@@ -827,8 +883,9 @@ export function isVehicleOnGround(
  * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleTaxiLightOn Wiki, isVehicleTaxiLightOn }
  * @param taxi The vehicle element of the taxi that you wish to get the light state of.
  * @return returns true if the light is on, false otherwise.
+ * @noSelf
  */
-export function isVehicleTaxiLightOn(
+export declare function isVehicleTaxiLightOn(
     taxi: Vehicle
 ): boolean;
 
@@ -837,8 +894,9 @@ export function isVehicleTaxiLightOn(
  * @see {@link https://wiki.multitheftauto.com/wiki/RemoveVehicleSirens Wiki, removeVehicleSirens }
  * @param theVehicle The vehicle to remove the sirens of
  * @return returns true if sirens were successfully removed from the vehicle, false otherwise.
+ * @noSelf
  */
-export function removeVehicleSirens(
+export declare function removeVehicleSirens(
     theVehicle: Vehicle
 ): boolean;
 
@@ -847,8 +905,9 @@ export function removeVehicleSirens(
  * @param theVehicle : The element representing the vehicle you wish to remove the upgrade from
  * @param upgrade : The ID of the upgrade you wish to remove.
  * @return returns true if the upgrade was successfully removed from the vehicle, otherwise false.
+ * @noSelf
  */
-export function removeVehicleUpgrade(
+export declare function removeVehicleUpgrade(
     theVehicle: Vehicle,
     upgrade: number
 ): boolean;
@@ -861,8 +920,9 @@ export function removeVehicleUpgrade(
  * @param theVehicle The vehicle you wish to reset the explosion time from.
  * @return returns true if the vehicle explosion time has been reset, false if it failed to reset
  * the explosion time.
+ * @noSelf
  */
-export function resetVehicleExplosionTime(
+export declare function resetVehicleExplosionTime(
     theVehicle: Vehicle
 ): boolean;
 
@@ -872,8 +932,9 @@ export function resetVehicleExplosionTime(
  * @param theVehicle The vehicle you wish to reset the idle time from.
  * @return returns true if the vehicle idle time has been reset, false if it failed to reset the
  * idle time.
+ * @noSelf
  */
-export function resetVehicleIdleTime(
+export declare function resetVehicleIdleTime(
     theVehicle: Vehicle
 ): boolean;
 
@@ -885,8 +946,9 @@ export function resetVehicleIdleTime(
  * @param theVehicle The vehicle you wish to respawn
  * @return returns true if the vehicle respawned successfully, false if the passed argument does not
  * exist or is not a vehicle.
+ * @noSelf
  */
-export function respawnVehicle(
+export declare function respawnVehicle(
     theVehicle: Vehicle
 ): boolean;
 
@@ -899,8 +961,9 @@ export function respawnVehicle(
  * @param value The value of the modelss handling property you wish to set, or nil if you want to reset
  * the handling property to its default value.
  * @return returns true if the handling was set successfully, false otherwise.
+ * @noSelf
  */
-export function setModelHandling(
+export declare function setModelHandling(
     modelId: number,
     property: string,
     value: unknown
@@ -913,8 +976,9 @@ export function setModelHandling(
  * @param derailableVehicle The vehicle that you wish to set derailable.
  * @param derailable whether the train or tram is derailable. True as derailable, False as non-derailable.
  * @return returns true if the state was successfully set, false otherwise.
+ * @noSelf
  */
-export function setTrainDerailable(
+export declare function setTrainDerailable(
     derailableVehicle: Vehicle,
     derailable: boolean
 ): boolean;
@@ -925,8 +989,9 @@ export function setTrainDerailable(
  * @param vehicleToDerail The vehicle that you wish to derail.
  * @param derailed whether the train is derailed.
  * @return returns true if the state was successfully set
+ * @noSelf
  */
-export function setTrainDerailed(
+export declare function setTrainDerailed(
     vehicleToDerail: Vehicle,
     derailed: boolean
 ): boolean;
@@ -938,8 +1003,9 @@ export function setTrainDerailed(
  * @param train the train whose direction to change.
  * @param clockwise if true, will make the train go clockwise. If false, makes it go counterclockwise.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setTrainDirection(
+export declare function setTrainDirection(
     train: Vehicle,
     clockwise: boolean
 ): boolean;
@@ -950,8 +1016,9 @@ export function setTrainDirection(
  * @param train the train of which to set the track
  * @param position the position along the track (0 - 18107 a complete way round)
  * @return returns true if the train position was set, false otherwise.
+ * @noSelf
  */
-export function setTrainPosition(
+export declare function setTrainPosition(
     train: Vehicle,
     position: number
 ): boolean;
@@ -963,8 +1030,9 @@ export function setTrainPosition(
  * @param speed the new on-track speed of the train. A positive value will make it go clockwise, a
  * negative value counter clockwise.
  * @return returns true if successful, false otherwise.
+ * @noSelf
  */
-export function setTrainSpeed(
+export declare function setTrainSpeed(
     train: Vehicle,
     speed: number
 ): boolean;
@@ -975,8 +1043,9 @@ export function setTrainSpeed(
  * @param train the train of which to set the track
  * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
  * @return returns true if the track was set to the train, false otherwise.
+ * @noSelf
  */
-export function setTrainTrack(
+export declare function setTrainTrack(
     train: Vehicle,
     track: number
 ): boolean;
@@ -1009,8 +1078,9 @@ export function setTrainTrack(
  * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleColor Wiki, setVehicleColor }
  * @return returns true if vehicles color was set, false if an invalid vehicle or invalid colors
  * were specified.
+ * @noSelf
  */
-export function setVehicleColor(
+export declare function setVehicleColor(
     veh: Vehicle,
     r1: number,
     g1: number,
@@ -1034,8 +1104,9 @@ export function setVehicleColor(
  * @param damageProof true is damage proof, false is damageable.
  * @return returns true if the vehicle was set damage proof succesfully, false if the arguments are
  * invalid or it failed.
+ * @noSelf
  */
-export function setVehicleDamageProof(
+export declare function setVehicleDamageProof(
     theVehicle: Vehicle,
     damageProof: boolean
 ): boolean;
@@ -1047,8 +1118,9 @@ export function setVehicleDamageProof(
  * @param dirtLevel The dirt level
  * @return returns true if the dirt level was set on the vehicle, false if the dirt level was not
  * set or if invalid arguments are specified.
+ * @noSelf
  */
-export function setVehicleDirtLevel(
+export declare function setVehicleDirtLevel(
     theVehicle: Vehicle,
     dirtLevel: number
 ): boolean;
@@ -1065,8 +1137,9 @@ export function setVehicleDirtLevel(
  * value of 0 will change the door open ratio instantly.
  * @return returns true if the door open ratio was successfully set, false if invalid arguments are
  * passed.
+ * @noSelf
  */
-export function setVehicleDoorOpenRatio(
+export declare function setVehicleDoorOpenRatio(
     theVehicle: Vehicle,
     door: number,
     ratio: number,
@@ -1088,8 +1161,9 @@ export function setVehicleDoorOpenRatio(
  * @param spawnFlyingComponent A boolean, if set to true, spawns flying doors etc. if you remove a component with
  * <nowiki>state == 4</nowiki>.
  * @return returns true if the door state was successfully set, false otherwise.
+ * @noSelf
  */
-export function setVehicleDoorState(
+export declare function setVehicleDoorState(
     theVehicle: Vehicle,
     door: number,
     state: number
@@ -1105,8 +1179,9 @@ export function setVehicleDoorState(
  * (false).
  * @return returns true if the damageability state was successfully changed, false if invalid
  * arguments were passed.
+ * @noSelf
  */
-export function setVehicleDoorsUndamageable(
+export declare function setVehicleDoorsUndamageable(
     theVehicle: Vehicle,
     state: boolean
 ): boolean;
@@ -1119,8 +1194,9 @@ export function setVehicleDoorsUndamageable(
  * @param theVehicle : The vehicle you wish to change the engine state of.
  * @param engineState : A boolean value representing whether the engine will be turned on (true) or off (false).
  * @return returns true if the vehicles engine state was successfully changed, false otherwise.
+ * @noSelf
  */
-export function setVehicleEngineState(
+export declare function setVehicleEngineState(
     theVehicle: Vehicle,
     engineState: boolean
 ): boolean;
@@ -1134,8 +1210,9 @@ export function setVehicleEngineState(
  * @param explodable : A boolean value representing whether or not the fuel tank will be explodable.
  * @return returns true if the vehicles fuel tank explodable state was successfully changed, false
  * otherwise.
+ * @noSelf
  */
-export function setVehicleFuelTankExplodable(
+export declare function setVehicleFuelTankExplodable(
     theVehicle: Vehicle,
     explodable: boolean
 ): boolean;
@@ -1148,8 +1225,9 @@ export function setVehicleFuelTankExplodable(
  * @param value The value of the property you wish to set the handling of the vehicle to.
  * @return returns true if the handling was set successfully, false otherwise. see below a list of
  * valid properties and their required values:
+ * @noSelf
  */
-export function setVehicleHandling(
+export declare function setVehicleHandling(
     theVehicle: Element,
     property: string,
     value: unknown
@@ -1165,8 +1243,9 @@ export function setVehicleHandling(
  * @param blue An integer indicating the amount of blue for the vehicles headlights
  * @return returns true if vehicles headlight color was set, false if an invalid vehicle or invalid
  * color ranges were specified for red,green or blue.
+ * @noSelf
  */
-export function setVehicleHeadLightColor(
+export declare function setVehicleHeadLightColor(
     theVehicle: Vehicle,
     red: number,
     green: number,
@@ -1181,8 +1260,9 @@ export function setVehicleHeadLightColor(
  * @param timeDelay : The number of milliseconds the vehicle will be allowed to remain unused until it
  * respawns.
  * @return returns true if the vehicle was found and edited.
+ * @noSelf
  */
-export function setVehicleIdleRespawnDelay(
+export declare function setVehicleIdleRespawnDelay(
     theVehicle: Vehicle,
     timeDelay: number
 ): boolean;
@@ -1194,8 +1274,9 @@ export function setVehicleIdleRespawnDelay(
  * @param gearState A bool representing the state of the landing gear.  true represents a collapsed landing
  * gear, while false represents a disabled landing gear.
  * @return returns true if the landing gear was set successfully, false otherwise.
+ * @noSelf
  */
-export function setVehicleLandingGearDown(
+export declare function setVehicleLandingGearDown(
     theVehicle: Vehicle,
     gearState: boolean
 ): boolean;
@@ -1215,8 +1296,9 @@ export function setVehicleLandingGearDown(
  * were passed to the function.
  * @return returns true if the light state was set successfully, false if invalid arguments were
  * passed to the function.
+ * @noSelf
  */
-export function setVehicleLightState(
+export declare function setVehicleLightState(
     theVehicle: Vehicle,
     light: number,
     state: number
@@ -1229,8 +1311,9 @@ export function setVehicleLightState(
  * @param theVehicle The vehicle which you wish to change the lock status of
  * @param locked Boolean for the status you wish to set. Set true to lock, false to unlock
  * @return returns true if the operation was successful, false otherwise.
+ * @noSelf
  */
-export function setVehicleLocked(
+export declare function setVehicleLocked(
     theVehicle: Vehicle,
     locked: boolean
 ): boolean;
@@ -1244,8 +1327,9 @@ export function setVehicleLocked(
  * @param 1 : Lights are forced off.
  * @param 2 : Lights are forced on.
  * @return returns true if the vehicles lights setting was changed. otherwise false.
+ * @noSelf
  */
-export function setVehicleOverrideLights(
+export declare function setVehicleOverrideLights(
     theVehicle: Vehicle,
     value: number
 ): boolean;
@@ -1257,8 +1341,9 @@ export function setVehicleOverrideLights(
  * @param theVehicle : The vehicle you wish to change the paintjob of.
  * @param value : A whole number representing the new paintjob id. Ranges from 0 up to 3.
  * @return returns true if the vehicles paintjob was changed. otherwise false.
+ * @noSelf
  */
-export function setVehiclePaintjob(
+export declare function setVehiclePaintjob(
     theVehicle: Vehicle,
     value: number
 ): boolean;
@@ -1284,8 +1369,9 @@ export function setVehiclePaintjob(
  * @param state How damaged the part is on the scale of 0 to 3, with 0 being undamaged and 3 being very
  * damaged. How this is manifested depends on the panel and the vehicle.
  * @return returns true if the panel state has been updated, false otherwise
+ * @noSelf
  */
-export function setVehiclePanelState(
+export declare function setVehiclePanelState(
     theVehicle: Vehicle,
     panelID: number,
     state: number
@@ -1299,8 +1385,9 @@ export function setVehiclePanelState(
  * @param numberplate a string that will go on the number plate of the car (max 8 characters).
  * @return returns true if the numberplate was changed successfully, or false if invalid arguments
  * were passed
+ * @noSelf
  */
-export function setVehiclePlateText(
+export declare function setVehiclePlateText(
     theVehicle: Element,
     numberplate: string
 ): boolean;
@@ -1312,8 +1399,9 @@ export function setVehiclePlateText(
  * @param theVehicle : The vehicle you wish to change the respawn delay of.
  * @param timeDelay : The amount of milliseconds to delay.
  * @return returns true if the vehicle was found and edited.
+ * @noSelf
  */
-export function setVehicleRespawnDelay(
+export declare function setVehicleRespawnDelay(
     theVehicle: Vehicle,
     timeDelay: number
 ): boolean;
@@ -1329,8 +1417,9 @@ export function setVehicleRespawnDelay(
  * @param ry : A floating point number representing the rotation about the Y axis in Degrees.
  * @param rz : A floating point number representing the rotation about the Z axis in Degrees.
  * @return returns true if the vehicle was found and edited, false otherwise.
+ * @noSelf
  */
-export function setVehicleRespawnPosition(
+export declare function setVehicleRespawnPosition(
     theVehicle: Vehicle,
     x: number,
     y: number,
@@ -1348,8 +1437,9 @@ export function setVehicleRespawnPosition(
  * @param ry : A float representing the rotation about the Y axis in degrees.
  * @param rz : A float representing the rotation about the Z axis in degrees.
  * @return returns true if the vehicle respawn rotation was set successfully, false otherwise.
+ * @noSelf
  */
-export function setVehicleRespawnRotation(
+export declare function setVehicleRespawnRotation(
     theVehicle: Vehicle,
     rx: number,
     ry: number,
@@ -1370,8 +1460,9 @@ export function setVehicleRespawnRotation(
  * @param alpha The alpha of the siren from 0 to 255
  * @param minAlpha The minimum alpha of the light during day time
  * @return returns true if the siren point was successfully changed on the vehicle, false otherwise.
+ * @noSelf
  */
-export function setVehicleSirens(
+export declare function setVehicleSirens(
     theVehicle: Vehicle,
     sirenPoint: number,
     posX: number,
@@ -1392,8 +1483,9 @@ export function setVehicleSirens(
  * @return returns true if the sirens are set for the specified vehicle, false if the sirens cant be
  * set for the specified vehicle, if the vehicle doesnt have sirens or if invalid arguments
  * are specified.
+ * @noSelf
  */
-export function setVehicleSirensOn(
+export declare function setVehicleSirensOn(
     theVehicle: Vehicle,
     sirensOn: boolean
 ): boolean;
@@ -1404,8 +1496,9 @@ export function setVehicleSirensOn(
  * @param taxi The vehicle element of the taxi that you wish to turn the light on.
  * @param LightState whether the light is on. True for on, False for off.
  * @return returns true if the state was successfully set, false otherwise.
+ * @noSelf
  */
-export function setVehicleTaxiLightOn(
+export declare function setVehicleTaxiLightOn(
     taxi: Vehicle,
     LightState: boolean
 ): boolean;
@@ -1421,8 +1514,9 @@ export function setVehicleTaxiLightOn(
  * @param positionY : The vertical position of the turret. In radians
  * @return returns a true if a valid vehicle element and valid positions were passed, false
  * otherwise.
+ * @noSelf
  */
-export function setVehicleTurretPosition(
+export declare function setVehicleTurretPosition(
     turretVehicle: Vehicle,
     positionX: number,
     positionY: number
@@ -1441,8 +1535,9 @@ export function setVehicleTurretPosition(
  * on failure:
  * * bool: false because the specified vehicle didnt exist or specified variants were
  * invalid.
+ * @noSelf
  */
-export function setVehicleVariant(
+export declare function setVehicleVariant(
     theVehicle: Vehicle,
     variant1?: number,
     variant2?: number
@@ -1459,8 +1554,9 @@ export function setVehicleVariant(
  * @param frontRight A whole number representing the wheel state (-1 for no change)
  * @param rearRight A whole number representing the wheel state (-1 for no change)
  * @return returns a boolean value true or false that tells you if it was successful or not.
+ * @noSelf
  */
-export function setVehicleWheelStates(
+export declare function setVehicleWheelStates(
     theVehicle: Vehicle,
     frontLeft: number,
     rearLeft?: number,
@@ -1480,8 +1576,9 @@ export function setVehicleWheelStates(
  * @param rz The z rotation you wish to spawn the vehicle at
  * @return returns true if the vehicle spawned successfully, false if the passed argument does not
  * exist or is not a vehicle.
+ * @noSelf
  */
-export function spawnVehicle(
+export declare function spawnVehicle(
     theVehicle: Vehicle,
     x: number,
     y: number,
@@ -1497,8 +1594,9 @@ export function spawnVehicle(
  * @param theVehicle : The vehicle you wish to toggle the respawning of.
  * @param Respawn : A boolean determining if the vehicle will respawn or not.
  * @return returns true if the vehicle was found and edited.
+ * @noSelf
  */
-export function toggleVehicleRespawn(
+export declare function toggleVehicleRespawn(
     theVehicle: Vehicle,
     Respawn: boolean
 ): boolean;

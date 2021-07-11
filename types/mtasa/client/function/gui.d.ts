@@ -9,7 +9,7 @@ import {
     EngineCOL,
     EngineIFP,
     PrimitiveType,
-    Texture,
+    DxTexture,
     ObjectGroup,
     Matrix,
     Browser,
@@ -44,7 +44,8 @@ import {
     RadarArea,
     Water,
     Timer,
-    HandleFunction
+    HandleFunction,
+    FetchRemoteCallback
 } from '../structure';
 
 /**
@@ -78,8 +79,9 @@ import {
  * *1 number if any other cvar was specified
  * *a table of all cvar values, if cvar was not specified
  * *false if an invalid cvar was specified
+ * @noSelf
  */
-export function getChatboxLayout(
+export declare function getChatboxLayout(
     CVar?: string
 ): boolean | number | LuaTable;
 
@@ -87,8 +89,9 @@ export function getChatboxLayout(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiBlur Wiki, guiBlur }
  * @param guiElement the GUI element that you want to defocus
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function guiBlur(
+export declare function guiBlur(
     guiElement: Element
 ): boolean;
 
@@ -97,8 +100,9 @@ export function guiBlur(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiBringToFront Wiki, guiBringToFront }
  * @param guiElement the GUI element that you want to move to the front.
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function guiBringToFront(
+export declare function guiBringToFront(
     guiElement: Element
 ): boolean;
 
@@ -107,8 +111,9 @@ export function guiBringToFront(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected Wiki, guiCheckBoxGetSelected }
  * @param theCheckbox The checkbox you wish to retrieve the selection state of.
  * @return returns true if the checkbox is selected, false if it is not.
+ * @noSelf
  */
-export function guiCheckBoxGetSelected(
+export declare function guiCheckBoxGetSelected(
     theCheckbox: Element
 ): boolean;
 
@@ -118,8 +123,9 @@ export function guiCheckBoxGetSelected(
  * @param theCheckbox The GUI element in which you wish to change the selection state of
  * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
  * @return returns true if the checkboxs selection state was successfully set, false otherwise.
+ * @noSelf
  */
-export function guiCheckBoxSetSelected(
+export declare function guiCheckBoxSetSelected(
     theCheckbox: Element,
     state: boolean
 ): boolean;
@@ -130,8 +136,9 @@ export function guiCheckBoxSetSelected(
  * @param comboBox The combobox you want to add a row to
  * @param value The text that the item will contain.
  * @return returns the item id if it has been created, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxAddItem(
+export declare function guiComboBoxAddItem(
     comboBox: Element,
     value: string
 ): number;
@@ -142,8 +149,9 @@ export function guiComboBoxAddItem(
  * @param comboBox The combobox element to be cleared
  * @return returns true if the combobox element is valid and has been cleared successfully, false
  * otherwise.
+ * @noSelf
  */
-export function guiComboBoxClear(
+export declare function guiComboBoxClear(
     comboBox: Element
 ): boolean;
 
@@ -151,8 +159,9 @@ export function guiComboBoxClear(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxGetItemCount Wiki, guiComboBoxGetItemCount }
  * @param comboBox The combo box to get the number of items from.
  * @return returns the number of items if the function is successful, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxGetItemCount(
+export declare function guiComboBoxGetItemCount(
     comboBox: Element
 ): number;
 
@@ -162,8 +171,9 @@ export function guiComboBoxGetItemCount(
  * @param comboBox The combobox containing the item youre interested in
  * @param itemId The index of the item
  * @return returns the text of the item if the arguments are right, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxGetItemText(
+export declare function guiComboBoxGetItemText(
     comboBox: Element,
     itemId: number
 ): string;
@@ -174,8 +184,9 @@ export function guiComboBoxGetItemText(
  * @param comboBox the combobox you want to know the selected item index of
  * @return returns the index of the selected item if the specified combobox is valid and has a
  * selected item, -1 if no item is selected, nil otherwise.
+ * @noSelf
  */
-export function guiComboBoxGetSelected(
+export declare function guiComboBoxGetSelected(
     comboBox: Element
 ): number;
 
@@ -183,8 +194,9 @@ export function guiComboBoxGetSelected(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxIsOpen Wiki, guiComboBoxIsOpen }
  * @param comboBox The combo box to get the state.
  * @return returns true if combobox is opened, false if combobox is closed, nil otherwise.
+ * @noSelf
  */
-export function guiComboBoxIsOpen(
+export declare function guiComboBoxIsOpen(
     comboBox: Element
 ): boolean;
 
@@ -194,8 +206,9 @@ export function guiComboBoxIsOpen(
  * @param comboBox The combobox containing the item youre interested in
  * @param itemId The index of the item to remove
  * @return returns true if the item was removes successfully, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxRemoveItem(
+export declare function guiComboBoxRemoveItem(
     comboBox: Element,
     itemId: number
 ): boolean;
@@ -207,8 +220,9 @@ export function guiComboBoxRemoveItem(
  * @param itemId The index of the item
  * @param text The text you want to put in (does NOT accept numbers, use tostring() for that)
  * @return returns true if the text was set successfully, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxSetItemText(
+export declare function guiComboBoxSetItemText(
     comboBox: Element,
     itemId: number,
     text: string
@@ -220,8 +234,9 @@ export function guiComboBoxSetItemText(
  * @param state The state of combobox. true, if the combobox is to be opened. false if the combobox is to
  * be closed.
  * @return returns true if is successful, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxSetOpen(
+export declare function guiComboBoxSetOpen(
     comboBox: Element,
     state: boolean
 ): boolean;
@@ -233,8 +248,9 @@ export function guiComboBoxSetOpen(
  * @param itemIndex the item you want to select (item 0 is the first item). If -1 is specified, then the
  * combo box text is set to its caption.
  * @return returns true if the selected item has been changed successfully, false otherwise.
+ * @noSelf
  */
-export function guiComboBoxSetSelected(
+export declare function guiComboBoxSetSelected(
     comboBox: Element,
     itemIndex: number
 ): boolean;
@@ -268,8 +284,9 @@ export function guiComboBoxSetSelected(
  * and sizing according to screen positioning.
  * @return returns a gui-browser element if it was created successfully, false otherwise. returns
  * also false, if the user disabled remote pages and islocal was set to false.
+ * @noSelf
  */
-export function guiCreateBrowser(
+export declare function guiCreateBrowser(
     x: number,
     y: number,
     width: number,
@@ -300,8 +317,9 @@ export function guiCreateBrowser(
  * according to screen positioning.
  * @return returns an element of the created element/gui/button|button if it was successfully
  * created, false otherwise.
+ * @noSelf
  */
-export function guiCreateButton(
+export declare function guiCreateButton(
     x: number,
     y: number,
     width: number,
@@ -333,8 +351,9 @@ export function guiCreateButton(
  * parent is passed, the parent will become the screen - causing positioning and sizing
  * according to screen positioning.
  * @return returns element of the checkbox if it was created succesfully, false otherwise.
+ * @noSelf
  */
-export function guiCreateCheckBox(
+export declare function guiCreateCheckBox(
     x: number,
     y: number,
     width: number,
@@ -368,8 +387,9 @@ export function guiCreateCheckBox(
  * and sizing according to screen positioning.
  * @return returns an element of the created combobox if it was successfully created, false
  * otherwise.
+ * @noSelf
  */
-export function guiCreateComboBox(
+export declare function guiCreateComboBox(
     x: number,
     y: number,
     width: number,
@@ -401,8 +421,9 @@ export function guiCreateComboBox(
  * and sizing according to screen positioning.
  * @return returns a gui-edit element of the created edit box if it was successfully created, false
  * otherwise.
+ * @noSelf
  */
-export function guiCreateEdit(
+export declare function guiCreateEdit(
     x: number,
     y: number,
     width: number,
@@ -423,8 +444,9 @@ export function guiCreateEdit(
  * @return returns a gui font element if successful, false if invalid arguments were passed to the
  * function, or there is insufficient resources available.
  * you should always check to see if this function has returned false.
+ * @noSelf
  */
-export function guiCreateFont(
+export declare function guiCreateFont(
     filepath: string,
     size?: number
 ): Element;
@@ -450,8 +472,9 @@ export function guiCreateFont(
  * and sizing according to screen positioning.
  * @return returns an element of the created gridlist if it was successfully created, false
  * otherwise.
+ * @noSelf
  */
-export function guiCreateGridList(
+export declare function guiCreateGridList(
     x: number,
     y: number,
     width: number,
@@ -484,8 +507,9 @@ export function guiCreateGridList(
  * according to screen positioning.
  * @return returns an gui_widgets|element of the created label if it was successfully created, false
  * otherwise.
+ * @noSelf
  */
-export function guiCreateLabel(
+export declare function guiCreateLabel(
     x: number,
     y: number,
     width: number,
@@ -516,8 +540,9 @@ export function guiCreateLabel(
  * according to screen positioning.
  * @return returns a gui-memo element of the created memo if it was successfully created, false
  * otherwise.
+ * @noSelf
  */
-export function guiCreateMemo(
+export declare function guiCreateMemo(
     x: number,
     y: number,
     width: number,
@@ -545,8 +570,9 @@ export function guiCreateMemo(
  * origin. If no parent is passed, the parent will become the screen - causing positioning
  * and sizing according to screen positioning.
  * @return returns element of the progress bar if it was created succesfully, false otherwise.
+ * @noSelf
  */
-export function guiCreateProgressBar(
+export declare function guiCreateProgressBar(
     x: number,
     y: number,
     width: number,
@@ -578,8 +604,9 @@ export function guiCreateProgressBar(
  * ''NOTE:'' All radio buttons become grouped together with their parent item.  Only ONE
  * radio button per group/parent will be able to be selected at the same time.
  * @return returns element of the radio button if it was created succesfully, false otherwise.
+ * @noSelf
  */
-export function guiCreateRadioButton(
+export declare function guiCreateRadioButton(
     x: number,
     y: number,
     width: number,
@@ -608,8 +635,9 @@ export function guiCreateRadioButton(
  * @param parent the gui-element this scrollbar is attached to. By default, it is nil, meaning the widget
  * is attached to the background.
  * @return returns a gui-scrollbar if it was created successfully, false otherwise.
+ * @noSelf
  */
-export function guiCreateScrollBar(
+export declare function guiCreateScrollBar(
     x: number,
     y: number,
     width: number,
@@ -634,8 +662,9 @@ export function guiCreateScrollBar(
  * @param parent the gui-element this scrollpane is attached to. By default, it is nil, meaning the widget
  * is attached to the background.
  * @return the gui-element if created, otherwise false.
+ * @noSelf
  */
-export function guiCreateScrollPane(
+export declare function guiCreateScrollPane(
     x: number,
     y: number,
     width: number,
@@ -663,8 +692,9 @@ export function guiCreateScrollPane(
  * passed, the parent will become the screen - causing positioning and sizing according to
  * screen positioning.
  * @return returns element if image was created successfully, false otherwise.
+ * @noSelf
  */
-export function guiCreateStaticImage(
+export declare function guiCreateStaticImage(
     x: number,
     y: number,
     width: number,
@@ -682,8 +712,9 @@ export function guiCreateStaticImage(
  * @param text The caption for the tab
  * @param parent The parent tab panel, as a tab panel element type
  * @return returns a tab element if successful, false otherwise.
+ * @noSelf
  */
-export function guiCreateTab(
+export declare function guiCreateTab(
     text: string,
     parent: Element
 ): Element;
@@ -706,8 +737,9 @@ export function guiCreateTab(
  * parent is passed, the parent will become the screen - causing positioning and sizing
  * according to screen positioning.
  * @return returns a gui tab panel element if successful, false otherwise.
+ * @noSelf
  */
-export function guiCreateTabPanel(
+export declare function guiCreateTabPanel(
     x: number,
     y: number,
     width: number,
@@ -733,8 +765,9 @@ export function guiCreateTabPanel(
  * fraction of the screen size. If false, then the size and co-ordinates are based on
  * clients resolution, accessible using guiGetScreenSize.
  * @return returns a gui window element if it was created successfully, false otherwise.
+ * @noSelf
  */
-export function guiCreateWindow(
+export declare function guiCreateWindow(
     x: number,
     y: number,
     width: number,
@@ -749,8 +782,9 @@ export function guiCreateWindow(
  * @param tabToDelete This is an element representing the tab that you want to delete.
  * @param tabPanel This is the guiCreateTabPanel|tab panel parent that the tab is attached to.
  * @return returns true the tab was successfully deleted, false otherwise.
+ * @noSelf
  */
-export function guiDeleteTab(
+export declare function guiDeleteTab(
     tabToDelete: Element,
     tabPanel: Element
 ): boolean;
@@ -760,8 +794,9 @@ export function guiDeleteTab(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetCaretIndex Wiki, guiEditGetCaretIndex }
  * @param theElement The edit box you want to get the caret position from
  * @return returns the caret index on success, false otherwise.
+ * @noSelf
  */
-export function guiEditGetCaretIndex(
+export declare function guiEditGetCaretIndex(
     theElement: Element
 ): number;
 
@@ -769,8 +804,9 @@ export function guiEditGetCaretIndex(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength Wiki, guiEditGetMaxLength }
  * @param guiEdit The edit box you want to get the maximum text length of.
  * @return returns the maximum text length on success, false otherwise.
+ * @noSelf
  */
-export function guiEditGetMaxLength(
+export declare function guiEditGetMaxLength(
     guiEdit: GuiEdit
 ): number;
 
@@ -779,8 +815,9 @@ export function guiEditGetMaxLength(
  * @param guiEdit the edit box to check masked flag of.
  * @return returns true if the edit box is masked, false if not, nil if an invalid edit box was
  * provided.
+ * @noSelf
  */
-export function guiEditIsMasked(
+export declare function guiEditIsMasked(
     guiEdit: GuiEdit
 ): boolean;
 
@@ -789,8 +826,9 @@ export function guiEditIsMasked(
  * @param guiEdit The edit box to check read-only status of.
  * @return returns true if the edit box is read-only, false if not, nil if an invalid edit box was
  * provided.
+ * @noSelf
  */
-export function guiEditIsReadOnly(
+export declare function guiEditIsReadOnly(
     guiEdit: GuiEdit
 ): boolean;
 
@@ -801,8 +839,9 @@ export function guiEditIsReadOnly(
  * @param theElement The edit box to be changed.
  * @param index An integer referring to the desired position within the box.
  * @return returns true if the index was successfully set, false otherwise.
+ * @noSelf
  */
-export function guiEditSetCaretIndex(
+export declare function guiEditSetCaretIndex(
     theElement: Element,
     index: number
 ): boolean;
@@ -814,8 +853,9 @@ export function guiEditSetCaretIndex(
  * @param theElement The edit box to be changed.
  * @param status A boolean value indicating whether masking is to be enabled or disabled.
  * @return returns true if the function is successful, false otherwise.
+ * @noSelf
  */
-export function guiEditSetMasked(
+export declare function guiEditSetMasked(
     theElement: Element,
     status: boolean
 ): boolean;
@@ -826,8 +866,9 @@ export function guiEditSetMasked(
  * @param theElement The edit box to be changed.
  * @param length An integer indicating the maximum number of characters that can be typed into the box.
  * @return returns true if the max length was set successfully, false otherwise.
+ * @noSelf
  */
-export function guiEditSetMaxLength(
+export declare function guiEditSetMaxLength(
     guiEdit: Element,
     length: number
 ): boolean;
@@ -839,8 +880,9 @@ export function guiEditSetMaxLength(
  * @param editField The element of the Element/GUI/Edit field|edit field to be modified.
  * @param status A boolean value indicating whether read-only is to be enabled or disabled.
  * @return returns true if edit fields read-only status was changed successfully, false otherwise.
+ * @noSelf
  */
-export function guiEditSetReadOnly(
+export declare function guiEditSetReadOnly(
     editField: Element,
     status: boolean
 ): boolean;
@@ -849,8 +891,9 @@ export function guiEditSetReadOnly(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiFocus Wiki, guiFocus }
  * @param guiElement the GUI element that you want to focus
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function guiFocus(
+export declare function guiFocus(
     guiElement: Element
 ): boolean;
 
@@ -861,8 +904,9 @@ export function guiFocus(
  * @param guiElement The gui element in which you want to retrieve the alpha of.
  * @return this function returns a positive integer in between 0 and 1 of the gui elements current
  * alpha, or false if it could not be retrieved.
+ * @noSelf
  */
-export function guiGetAlpha(
+export declare function guiGetAlpha(
     guiElement: Element
 ): number;
 
@@ -873,8 +917,9 @@ export function guiGetAlpha(
  * @param theBrowser The gui-browser
  * @return returns the element/browser|browser element if a correct element/gui-browser|gui-browser
  * has been passed, false otherwise.
+ * @noSelf
  */
-export function guiGetBrowser(
+export declare function guiGetBrowser(
     theBrowser: GuiBrowser
 ): Browser;
 
@@ -893,16 +938,18 @@ export function guiGetBrowser(
  * * container_drag  // drag container cursor (note: not in use)
  * * segment_moving  // segment moving cursor (note: not in use)
  * * segment_sizing  // segment sizing cursor (note: not in use)
+ * @noSelf
  */
-export function guiGetCursorType(): string;
+export declare function guiGetCursorType(): string;
 
 /**
  * This function determines if a GUI element is enabled.
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetEnabled Wiki, guiGetEnabled }
  * @param guiElement the GUI element to be checked.
  * @return returns true if the element is enabled, false otherwise.
+ * @noSelf
  */
-export function guiGetEnabled(
+export declare function guiGetEnabled(
     guiElement: Element
 ): boolean;
 
@@ -913,8 +960,9 @@ export function guiGetEnabled(
  * @return *string a string containing the name of the elements current font, or false if the gui
  * element passed to the function is invalid.
  * *element  the custom gui font that is used, or nil otherwise
+ * @noSelf
  */
-export function guiGetFont(
+export declare function guiGetFont(
     guiElement: Element
 ): LuaMultiReturn<[
     string,
@@ -925,8 +973,9 @@ export function guiGetFont(
  * This function checks whether user input is focused on the GUI or the game.
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputEnabled Wiki, guiGetInputEnabled }
  * @return returns true if input is focused on gui, false if its focused on the game.
+ * @noSelf
  */
-export function guiGetInputEnabled(): boolean;
+export declare function guiGetInputEnabled(): boolean;
 
 /**
  * This function returns the current input mode as set by guiSetInputMode.
@@ -939,8 +988,9 @@ export function guiGetInputEnabled(): boolean;
  * activate the chatbox
  * * no_binds_when_editing: binds are always enabled except when an editable editbox or memo
  * has input focus
+ * @noSelf
  */
-export function guiGetInputMode(): string;
+export declare function guiGetInputMode(): string;
 
 /**
  * This function allows retrieval of a GUI elements current position, relative to its parent.
@@ -950,8 +1000,9 @@ export function guiGetInputMode(): string;
  * width, or the number of offset pixels from the parents origin.
  * @return returns floats representing the x and y position of the element, or false if the position
  * could not be retrieved.
+ * @noSelf
  */
-export function guiGetPosition(
+export declare function guiGetPosition(
     guiElement: Element,
     relative: boolean
 ): LuaMultiReturn<[
@@ -968,8 +1019,9 @@ export function guiGetPosition(
  * @return if the function succeeds, the return value is a table. its keys are property names, the
  * corresponding values are the values of the properties (both names and values are always
  * strings). if the function fails, it returns false.
+ * @noSelf
  */
-export function guiGetProperties(
+export declare function guiGetProperties(
     guiElement: Element
 ): LuaTable;
 
@@ -982,8 +1034,9 @@ export function guiGetProperties(
  * @param property the name of of property you want the value of.
  * @return if the function succeeds, it returns a string with the value of the property. if it
  * fails, it returns false.
+ * @noSelf
  */
-export function guiGetProperty(
+export declare function guiGetProperty(
     guiElement: Element,
     property: string
 ): string;
@@ -992,8 +1045,9 @@ export function guiGetProperty(
  * This function retrieves the local screen size according to the resolution they are using.
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetScreenSize Wiki, guiGetScreenSize }
  * @return this returns two floats representing the players screen resolution, width and height.
+ * @noSelf
  */
-export function guiGetScreenSize(): LuaMultiReturn<[
+export declare function guiGetScreenSize(): LuaMultiReturn<[
     number,
     number
 ]>;
@@ -1006,8 +1060,9 @@ export function guiGetScreenSize(): LuaMultiReturn<[
  * @return returns an element of the element/gui/tab|tab if a tab was selected or nil if no tab was
  * selected. if passed arguments were invalid or something went wrong, the function will
  * return false.
+ * @noSelf
  */
-export function guiGetSelectedTab(
+export declare function guiGetSelectedTab(
     tabPanel: Element
 ): Element;
 
@@ -1018,8 +1073,9 @@ export function guiGetSelectedTab(
  * @param relative A boolean representing whether the size should be relative to the elements parent width,
  * or an absolute size in pixels.
  * @return returns the gui element size x and y if the function has been successful, false otherwise.
+ * @noSelf
  */
-export function guiGetSize(
+export declare function guiGetSize(
     theElement: Element,
     relative: boolean
 ): LuaMultiReturn<[
@@ -1034,8 +1090,9 @@ export function guiGetSize(
  * @param guiElement element you wish to get text of.
  * @return returns a string containing the requested elements text, or false if the gui element
  * passed to the function is invalid.
+ * @noSelf
  */
-export function guiGetText(
+export declare function guiGetText(
     guiElement: Element
 ): string;
 
@@ -1044,8 +1101,9 @@ export function guiGetText(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetVisible Wiki, guiGetVisible }
  * @param guiElement the GUI element to be checked
  * @return returns true if the element is visible, false otherwise.
+ * @noSelf
  */
-export function guiGetVisible(
+export declare function guiGetVisible(
     guiElement: Element
 ): boolean;
 
@@ -1056,8 +1114,9 @@ export function guiGetVisible(
  * @param title Title of the column
  * @param width Column width, relative to the grid list width
  * @return returns the column id if it was created, false otherwise.
+ * @noSelf
  */
-export function guiGridListAddColumn(
+export declare function guiGridListAddColumn(
     gridList: Element,
     title: string,
     width: number
@@ -1077,8 +1136,9 @@ export function guiGridListAddColumn(
  * passed (use numbers for sorting purposes).
  * @param ... Item text for any other columns
  * @return returns the row id if it has been created, false otherwise.
+ * @noSelf
  */
-export function guiGridListAddRow(
+export declare function guiGridListAddRow(
     gridList: Element,
     itemText1?: number | string,
     itemText2?: number | string,
@@ -1092,8 +1152,9 @@ export function guiGridListAddRow(
  * @param gridList The Element/GUI/Gridlist|grid list element where the column is located.
  * @param columnIndex The ID of the column you want to be auto-sized.
  * @return returns true if the column was auto-sized, false otherwise.
+ * @noSelf
  */
-export function guiGridListAutoSizeColumn(
+export declare function guiGridListAutoSizeColumn(
     gridList: Element,
     columnIndex: number
 ): boolean;
@@ -1104,8 +1165,9 @@ export function guiGridListAutoSizeColumn(
  * @param gridList The grid list element to be cleared
  * @return returns true if the grid list element is valid and has been cleared successfully, false
  * otherwise.
+ * @noSelf
  */
-export function guiGridListClear(
+export declare function guiGridListClear(
     gridList: Element
 ): boolean;
 
@@ -1114,8 +1176,9 @@ export function guiGridListClear(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount Wiki, guiGridListGetColumnCount }
  * @param gridList The grid list you want to add a column to
  * @return returns an integer with the amount of columns in the gridlist, false otherwise.
+ * @noSelf
  */
-export function guiGridListGetColumnCount(
+export declare function guiGridListGetColumnCount(
     gridList: Element
 ): number;
 
@@ -1125,8 +1188,9 @@ export function guiGridListGetColumnCount(
  * @param guiGridlist : The grid list you want to get the column title from
  * @param columnIndex : Column ID
  * @return returns a string containing the column title, or false otherwise.
+ * @noSelf
  */
-export function guiGridListGetColumnTitle(
+export declare function guiGridListGetColumnTitle(
     guiGridlist: Element,
     columnIndex: number
 ): string;
@@ -1139,8 +1203,9 @@ export function guiGridListGetColumnTitle(
  * @param relative A boolean defining whether width measurements will be relative to the Gridlist size, or
  * absolute pixels.
  * @return returns the width of the gridlist column, false if bad arguments were given.
+ * @noSelf
  */
-export function guiGridListGetColumnWidth(
+export declare function guiGridListGetColumnWidth(
     gridList: Element,
     columnIndex: number,
     relative: boolean
@@ -1152,8 +1217,9 @@ export function guiGridListGetColumnWidth(
  * @param guiGridlist : The grid list you want to get the horizontal scroll position from
  * @return returns a integer between 0 and 100 indicating the horizontal scroll position, or false
  * otherwise.
+ * @noSelf
  */
-export function guiGridListGetHorizontalScrollPosition(
+export declare function guiGridListGetHorizontalScrollPosition(
     guiGridlist: Element
 ): number;
 
@@ -1165,8 +1231,9 @@ export function guiGridListGetHorizontalScrollPosition(
  * @param columnIndex Column ID
  * @return returns four int values, representing the amount of red, green, blue and alpha if
  * successful. false otherwise.
+ * @noSelf
  */
-export function guiGridListGetItemColor(
+export declare function guiGridListGetItemColor(
     gridList: Element,
     rowIndex: number,
     columnIndex: number
@@ -1189,8 +1256,9 @@ export function guiGridListGetItemColor(
  * @param columnIndex the column index of the item
  * @return returns the item data of the specified item if succesful, false if one of the arguments
  * was invalid.
+ * @noSelf
  */
-export function guiGridListGetItemData(
+export declare function guiGridListGetItemData(
     gridList: Element,
     rowIndex: number,
     columnIndex: number
@@ -1203,8 +1271,9 @@ export function guiGridListGetItemData(
  * @param rowIndex row id of the item
  * @param columnIndex column id of the item
  * @return returns the text of the item if the arguments are right, false otherwise.
+ * @noSelf
  */
-export function guiGridListGetItemText(
+export declare function guiGridListGetItemText(
     gridList: Element,
     rowIndex: number,
     columnIndex: number
@@ -1215,8 +1284,9 @@ export function guiGridListGetItemText(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetRowCount Wiki, guiGridListGetRowCount }
  * @param gridList The grid list to get the number of rows from.
  * @return returns the number of rows if the function is successful, false otherwise.
+ * @noSelf
  */
-export function guiGridListGetRowCount(
+export declare function guiGridListGetRowCount(
     gridList: Element
 ): number;
 
@@ -1227,8 +1297,9 @@ export function guiGridListGetRowCount(
  * @param gridList The Element/GUI/Gridlist|grid list which amount of selected items you want to retrieve.
  * @return returns an integer representing the amount of selected options if everything was
  * successful or false if invalid arguments were passed.
+ * @noSelf
  */
-export function guiGridListGetSelectedCount(
+export declare function guiGridListGetSelectedCount(
     gridList: Element
 ): number;
 
@@ -1239,8 +1310,9 @@ export function guiGridListGetSelectedCount(
  * @param gridList the grid list you want to know the selected row index of
  * @return returns the row and column indexes of the selected item if the specified grid list is
  * valid and has a selected item, (-1, -1) if no item is selected, false otherwise.
+ * @noSelf
  */
-export function guiGridListGetSelectedItem(
+export declare function guiGridListGetSelectedItem(
     gridList: Element
 ): LuaMultiReturn<[
     number,
@@ -1270,8 +1342,9 @@ export function guiGridListGetSelectedItem(
  * }
  * </syntaxhighlight>
  * if everything was successful or false if invalid arguments were passed.
+ * @noSelf
  */
-export function guiGridListGetSelectedItems(
+export declare function guiGridListGetSelectedItems(
     gridList: Element
 ): LuaTable;
 
@@ -1279,8 +1352,9 @@ export function guiGridListGetSelectedItems(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectionMode Wiki, guiGridListGetSelectionMode }
  * @param gridlist The gridlist you want to get the selection mode of.
  * @return returns the id of the current gridlists selection mode.
+ * @noSelf
  */
-export function guiGridListGetSelectionMode(
+export declare function guiGridListGetSelectionMode(
     gridlist: GuiElement
 ): number;
 
@@ -1290,8 +1364,9 @@ export function guiGridListGetSelectionMode(
  * @param guiGridlist : The grid list you want to get the vertical scroll position from
  * @return returns a integer between 0 and 100 indicating the vertical scroll position, or false
  * otherwise.
+ * @noSelf
  */
-export function guiGridListGetVerticalScrollPosition(
+export declare function guiGridListGetVerticalScrollPosition(
     guiGridlist: Element
 ): number;
 
@@ -1308,8 +1383,9 @@ export function guiGridListGetVerticalScrollPosition(
  * passed (use numbers for sorting purposes).
  * @param ... Item text for any other columns
  * @return returns true if the row was successfully added, false otherwise.
+ * @noSelf
  */
-export function guiGridListInsertRowAfter(
+export declare function guiGridListInsertRowAfter(
     gridList: Element,
     rowIndex: number
 ): number;
@@ -1318,8 +1394,9 @@ export function guiGridListInsertRowAfter(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListIsSortingEnabled Wiki, guiGridListIsSortingEnabled }
  * @param guiGridlist The GUI gridlist you wish to check if sorting is enabled or not.
  * @return returns true if sorting is enabled, false otherwise.
+ * @noSelf
  */
-export function guiGridListIsSortingEnabled(
+export declare function guiGridListIsSortingEnabled(
     guiGridlist: Element
 ): boolean;
 
@@ -1329,8 +1406,9 @@ export function guiGridListIsSortingEnabled(
  * @param gridList The grid list you want to remove a column from
  * @param columnIndex Column ID
  * @return returns true if the grid list column was successfully removed, false otherwise.
+ * @noSelf
  */
-export function guiGridListRemoveColumn(
+export declare function guiGridListRemoveColumn(
     gridList: Element,
     columnIndex: number
 ): boolean;
@@ -1341,8 +1419,9 @@ export function guiGridListRemoveColumn(
  * @param gridList The grid list you want to remove a row from
  * @param rowIndex The row ID which you want to remove
  * @return returns true if the grid list row was successfully removed, false otherwise.
+ * @noSelf
  */
-export function guiGridListRemoveRow(
+export declare function guiGridListRemoveRow(
     gridList: Element,
     rowIndex: number
 ): boolean;
@@ -1354,8 +1433,9 @@ export function guiGridListRemoveRow(
  * @param columnIndex : Column ID
  * @param title : The title of the column
  * @return returns true if the new title was set, or false otherwise.
+ * @noSelf
  */
-export function guiGridListSetColumnTitle(
+export declare function guiGridListSetColumnTitle(
     guiGridlist: Element,
     columnIndex: number,
     title: string
@@ -1371,8 +1451,9 @@ export function guiGridListSetColumnTitle(
  * absolute pixels.
  * @return returns true if the gridlist column width was successfully set, false if bad arguments
  * were given.
+ * @noSelf
  */
-export function guiGridListSetColumnWidth(
+export declare function guiGridListSetColumnWidth(
     gridList: Element,
     columnIndex: number,
     width: number,
@@ -1385,8 +1466,9 @@ export function guiGridListSetColumnWidth(
  * @param guiGridlist : The grid list you want to set the horizontal scroll position from
  * @param fPosition : A float representing the horizontal scroll position (0-100)
  * @return returns true if the horizontal scroll position was set, or false otherwise.
+ * @noSelf
  */
-export function guiGridListSetHorizontalScrollPosition(
+export declare function guiGridListSetHorizontalScrollPosition(
     guiGridlist: Element,
     fPosition: number
 ): boolean;
@@ -1402,8 +1484,9 @@ export function guiGridListSetHorizontalScrollPosition(
  * @param blue The amount of blue in the color (0-255)
  * @param alpha The amount of alpha in the color (0-255).
  * @return returns true if the item color was set successfully, false otherwise.
+ * @noSelf
  */
-export function guiGridListSetItemColor(
+export declare function guiGridListSetItemColor(
     gridList: Element,
     rowIndex: number,
     columnIndex: number,
@@ -1423,8 +1506,9 @@ export function guiGridListSetItemColor(
  * @param columnIndex The column of the item you wish to set to
  * @param data The data you wish to set to the item.
  * @return returns true if the data was set successfully, false otherwise
+ * @noSelf
  */
-export function guiGridListSetItemData(
+export declare function guiGridListSetItemData(
     gridList: Element,
     rowIndex: number,
     columnIndex: number,
@@ -1443,8 +1527,9 @@ export function guiGridListSetItemData(
  * @param section Determines if the item is a section
  * @param number Tells whether the text item is a number value or not (used for sorting)
  * @return returns true if the item text was set successfully, false otherwise.
+ * @noSelf
  */
-export function guiGridListSetItemText(
+export declare function guiGridListSetItemText(
     gridList: Element,
     rowIndex: number,
     columnIndex: number,
@@ -1460,8 +1545,9 @@ export function guiGridListSetItemText(
  * @param horizontalBar A bool where true forces the horizontal scrollbar on, and false returns them to default.
  * @param verticalBar A bool where true forces the verical scrollbar on, and false returns them to default.
  * @return returns true if the scrollbars were successfully set, false otherwise.
+ * @noSelf
  */
-export function guiGridListSetScrollBars(
+export declare function guiGridListSetScrollBars(
     guiGridlist: Element,
     horizontalBar: boolean,
     verticalBar: boolean
@@ -1477,8 +1563,9 @@ export function guiGridListSetScrollBars(
  * @param bReset set to false for multiple selections
  * @return returns true if the passed arguments are correct and the item has been selected, false
  * otherwise.
+ * @noSelf
  */
-export function guiGridListSetSelectedItem(
+export declare function guiGridListSetSelectedItem(
     gridList: Element,
     rowIndex: number,
     columnIndex: number,
@@ -1503,8 +1590,9 @@ export function guiGridListSetSelectedItem(
  * @param 8 Nominated(First) single row selection
  * @param 9 Nominated(First) multiple row selection
  * @return returns true if the selection mode was successfully set, false otherwise.
+ * @noSelf
  */
-export function guiGridListSetSelectionMode(
+export declare function guiGridListSetSelectionMode(
     gridlist: GuiElement,
     mode: number
 ): boolean;
@@ -1518,8 +1606,9 @@ export function guiGridListSetSelectionMode(
  * @param guiGridlist The GUI gridlist you wish to toggle the sorting of.
  * @param enabled A boolean representing whether the sorting is enabled, or disabled.
  * @return returns true if sorting was successfully toggled., false otherwise.
+ * @noSelf
  */
-export function guiGridListSetSortingEnabled(
+export declare function guiGridListSetSortingEnabled(
     guiGridlist: Element,
     enabled: boolean
 ): boolean;
@@ -1530,8 +1619,9 @@ export function guiGridListSetSortingEnabled(
  * @param guiGridlist : The grid list you want to set the vertical scroll position from
  * @param fPosition : A float representing the vertical scroll position (0-100)
  * @return returns true if the vertical scroll position was set, or false otherwise.
+ * @noSelf
  */
-export function guiGridListSetVerticalScrollPosition(
+export declare function guiGridListSetVerticalScrollPosition(
     guiGridlist: Element,
     fPosition: number
 ): boolean;
@@ -1542,8 +1632,9 @@ export function guiGridListSetVerticalScrollPosition(
  * @param theLabel The label to get color.
  * @return returns three int values, representing the amount of red, green, blue if successful.
  * false otherwise.
+ * @noSelf
  */
-export function guiLabelGetColor(
+export declare function guiLabelGetColor(
     theLabel: GuiElement
 ): LuaMultiReturn<[
     number,
@@ -1557,8 +1648,9 @@ export function guiLabelGetColor(
  * @param theLabel The text label to get the font height from.
  * @return returns the absolute height of the font currently used in the text label if the function
  * is successful, false otherwise.
+ * @noSelf
  */
-export function guiLabelGetFontHeight(
+export declare function guiLabelGetFontHeight(
     theLabel: Element
 ): number;
 
@@ -1568,8 +1660,9 @@ export function guiLabelGetFontHeight(
  * @param theLabel The text label to get the text extent from.
  * @return returns the absolute width of the current text inside the text label if the function is
  * successful, false otherwise.
+ * @noSelf
  */
-export function guiLabelGetTextExtent(
+export declare function guiLabelGetTextExtent(
     theLabel: Element
 ): number;
 
@@ -1581,8 +1674,9 @@ export function guiLabelGetTextExtent(
  * @param green An integer specifying the amount of green (0 to 255).
  * @param blue An integer specifying the amount of blue (0 to 255).
  * @return returns true if the the color of the gui label was successfully changed, false otherwise.
+ * @noSelf
  */
-export function guiLabelSetColor(
+export declare function guiLabelSetColor(
     theElement: Element,
     red: number,
     green: number,
@@ -1599,8 +1693,9 @@ export function guiLabelSetColor(
  * **"right"
  * @param wordwrap Whether or not to enable wordwrap for the gui-label.
  * @return returns true on success, false otherwise.
+ * @noSelf
  */
-export function guiLabelSetHorizontalAlign(
+export declare function guiLabelSetHorizontalAlign(
     theLabel: Element,
     align: string,
     wordwrap?: boolean
@@ -1615,8 +1710,9 @@ export function guiLabelSetHorizontalAlign(
  * **"center"
  * **"bottom"
  * @return returns true on success, false otherwise.
+ * @noSelf
  */
-export function guiLabelSetVerticalAlign(
+export declare function guiLabelSetVerticalAlign(
     theLabel: Element,
     align: string
 ): boolean;
@@ -1626,8 +1722,9 @@ export function guiLabelSetVerticalAlign(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoGetCaretIndex Wiki, guiMemoGetCaretIndex }
  * @param theElement The memo box you want to get the caret position from
  * @return returns the caret index on success, false otherwise.
+ * @noSelf
  */
-export function guiMemoGetCaretIndex(
+export declare function guiMemoGetCaretIndex(
     theElement: Element
 ): number;
 
@@ -1635,8 +1732,9 @@ export function guiMemoGetCaretIndex(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoGetVerticalScrollPosition Wiki, guiMemoGetVerticalScrollPosition }
  * @param theMemo : the guiCreateMemo|memo you want to know the vertical scroll position of.
  * @return returns a float ranging between 0 and 100, or false otherwise.
+ * @noSelf
  */
-export function guiMemoGetVerticalScrollPosition(
+export declare function guiMemoGetVerticalScrollPosition(
     theMemo: GuiMemo
 ): number;
 
@@ -1644,8 +1742,9 @@ export function guiMemoGetVerticalScrollPosition(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoIsReadOnly Wiki, guiMemoIsReadOnly }
  * @param theMemo The memo to check read-only status of.
  * @return returns true if the memo is read only, false if the memo isnt read only, nil otherwise.
+ * @noSelf
  */
-export function guiMemoIsReadOnly(
+export declare function guiMemoIsReadOnly(
     theMemo: GuiMemo
 ): boolean;
 
@@ -1656,8 +1755,9 @@ export function guiMemoIsReadOnly(
  * @param index An integer referring to the desired character position within the box. 0 would be before
  * the first character in the box, 1 before the second, etc.
  * @return returns true if the caret was successfully moved, false otherwise.
+ * @noSelf
  */
-export function guiMemoSetCaretIndex(
+export declare function guiMemoSetCaretIndex(
     theMemo: GuiMemo,
     index: number
 ): boolean;
@@ -1669,8 +1769,9 @@ export function guiMemoSetCaretIndex(
  * @param theMemo The memo to change read-only status of.
  * @param status A boolean value indicating whether read-only is to be enabled or disabled.
  * @return returns true if the status was successfully changed, false otherwise.
+ * @noSelf
  */
-export function guiMemoSetReadOnly(
+export declare function guiMemoSetReadOnly(
     theMemo: GuiMemo,
     status: boolean
 ): boolean;
@@ -1680,8 +1781,9 @@ export function guiMemoSetReadOnly(
  * @param theMemo : the guiCreateMemo|memo you want to change the vertical scroll position of.
  * @param position : a float ranging between 0 and 100.
  * @return returns true if the position was set, false otherwise.
+ * @noSelf
  */
-export function guiMemoSetVerticalScrollPosition(
+export declare function guiMemoSetVerticalScrollPosition(
     theMemo: GuiMemo,
     position: number
 ): boolean;
@@ -1691,8 +1793,9 @@ export function guiMemoSetVerticalScrollPosition(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiMoveToBack Wiki, guiMoveToBack }
  * @param guiElement the GUI element that you want to move to the back
  * @return returns true if the function was successful, false otherwise.
+ * @noSelf
  */
-export function guiMoveToBack(
+export declare function guiMoveToBack(
     guiElement: Element
 ): boolean;
 
@@ -1701,8 +1804,9 @@ export function guiMoveToBack(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiProgressBarGetProgress Wiki, guiProgressBarGetProgress }
  * @param theProgressbar : The progressbar you want to check.
  * @return returns a float ranging between 0 and 100.
+ * @noSelf
  */
-export function guiProgressBarGetProgress(
+export declare function guiProgressBarGetProgress(
     theProgressbar: ProgressBar
 ): number;
 
@@ -1712,8 +1816,9 @@ export function guiProgressBarGetProgress(
  * @param theProgressbar : The progressbar you want to change the progress of
  * @param progress : a float ranging from 0 - 100
  * @return returns true if the progress was set, false otherwise.
+ * @noSelf
  */
-export function guiProgressBarSetProgress(
+export declare function guiProgressBarSetProgress(
     theProgressbar: ProgressBar,
     progress: number
 ): boolean;
@@ -1723,8 +1828,9 @@ export function guiProgressBarSetProgress(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiRadioButtonGetSelected Wiki, guiRadioButtonGetSelected }
  * @param guiRadioButton The radio button you wish to retrieve the selection state of.
  * @return returns true if the radio button is selected, false if it is not.
+ * @noSelf
  */
-export function guiRadioButtonGetSelected(
+export declare function guiRadioButtonGetSelected(
     guiRadioButton: Element
 ): boolean;
 
@@ -1735,8 +1841,9 @@ export function guiRadioButtonGetSelected(
  * @param state The state of the radio button, where true indicates selected, and false indicates
  * unselected.
  * @return returns true if the radio buttons selection state was successfully set, false otherwise.
+ * @noSelf
  */
-export function guiRadioButtonSetSelected(
+export declare function guiRadioButtonSetSelected(
     guiRadioButton: Element,
     state: boolean
 ): boolean;
@@ -1747,8 +1854,9 @@ export function guiRadioButtonSetSelected(
  * @param theScrollBar : The scrollbar you want to check.
  * @return returns a float ranging between 0 and 100, representing the amount the scrollbar has been
  * scrolled.
+ * @noSelf
  */
-export function guiScrollBarGetScrollPosition(
+export declare function guiScrollBarGetScrollPosition(
     theScrollBar: GuiScrollBar
 ): number;
 
@@ -1758,8 +1866,9 @@ export function guiScrollBarGetScrollPosition(
  * @param theScrollBar : The scrollbar you want to change the progress of
  * @param amount : a float ranging from 0 - 100 representing the amount you wish to set the scroll bar.
  * @return returns true if the scroll position was successfully set, false otherwise.
+ * @noSelf
  */
-export function guiScrollBarSetScrollPosition(
+export declare function guiScrollBarSetScrollPosition(
     theScrollBar: GuiScrollBar,
     amount: number
 ): boolean;
@@ -1769,8 +1878,9 @@ export function guiScrollBarSetScrollPosition(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneGetHorizontalScrollPosition Wiki, guiScrollPaneGetHorizontalScrollPosition }
  * @param horizontalScrollPane : The scroll pane you want to know the position of
  * @return returns a float ranging between 0 and 100, or false otherwise.
+ * @noSelf
  */
-export function guiScrollPaneGetHorizontalScrollPosition(
+export declare function guiScrollPaneGetHorizontalScrollPosition(
     horizontalScrollPane: Element
 ): number;
 
@@ -1779,8 +1889,9 @@ export function guiScrollPaneGetHorizontalScrollPosition(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneGetVerticalScrollPosition Wiki, guiScrollPaneGetVerticalScrollPosition }
  * @param verticalScrollPane : The scroll pane you want to know the position of
  * @return returns a float ranging between 0 and 100, or false otherwise.
+ * @noSelf
  */
-export function guiScrollPaneGetVerticalScrollPosition(
+export declare function guiScrollPaneGetVerticalScrollPosition(
     verticalScrollPane: Element
 ): number;
 
@@ -1790,8 +1901,9 @@ export function guiScrollPaneGetVerticalScrollPosition(
  * @param horizontalScrollPane : The scroll pane you want to change the position of
  * @param position : a float ranging from 0 - 100
  * @return returns true if the position was set, false otherwise.
+ * @noSelf
  */
-export function guiScrollPaneSetHorizontalScrollPosition(
+export declare function guiScrollPaneSetHorizontalScrollPosition(
     horizontalScrollPane: Element,
     position: number
 ): boolean;
@@ -1803,8 +1915,9 @@ export function guiScrollPaneSetHorizontalScrollPosition(
  * @param horizontal A bool where true forces the horizontal scrollbar on, and false returns them to default.
  * @param vertical A bool where true forces the vertical scrollbar on, and false returns them to default.
  * @return returns true if the call was successfully, false otherwise.
+ * @noSelf
  */
-export function guiScrollPaneSetScrollBars(
+export declare function guiScrollPaneSetScrollBars(
     scrollPane: Element,
     horizontal: boolean,
     vertical: boolean
@@ -1816,8 +1929,9 @@ export function guiScrollPaneSetScrollBars(
  * @param verticalScrollPane : The scroll pane you want to change the position of
  * @param position : a float ranging from 0 - 100
  * @return returns true if the position was set, false otherwise.
+ * @noSelf
  */
-export function guiScrollPaneSetVerticalScrollPosition(
+export declare function guiScrollPaneSetVerticalScrollPosition(
     verticalScrollPane: Element,
     position: number
 ): boolean;
@@ -1829,8 +1943,9 @@ export function guiScrollPaneSetVerticalScrollPosition(
  * @param alpha The visibility/transparency of the GUI element. Ranges from 0 (fully transparent) to 1
  * (fully opaque). Default value is 0.80.
  * @return returns true if the gui elements alpha was successfully changed, false otherwise.
+ * @noSelf
  */
-export function guiSetAlpha(
+export declare function guiSetAlpha(
     guielement: Element,
     alpha: number
 ): boolean;
@@ -1842,8 +1957,9 @@ export function guiSetAlpha(
  * @param guiElement the GUI element you wish to enable or disable
  * @param enabled the new state
  * @return if the function succeeds it returns true, if it fails it returns false.
+ * @noSelf
  */
-export function guiSetEnabled(
+export declare function guiSetEnabled(
     guiElement: Element,
     enabled: boolean
 ): boolean;
@@ -1855,8 +1971,9 @@ export function guiSetEnabled(
  * @param font Either a custom GUI font element or the name of a built-in GUI font. See Standard GUI
  * Font Names
  * @return returns true if the font has been successfully set on the gui element, false otherwise.
+ * @noSelf
  */
-export function guiSetFont(
+export declare function guiSetFont(
     guiElement: Element,
     font: any
 ): boolean;
@@ -1870,8 +1987,9 @@ export function guiSetFont(
  * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetInputEnabled Wiki, guiSetInputEnabled }
  * @param enabled true if input should go to GUI, false if it should go to the game.
  * @return returns true if input mode could be changed, false if invalid parameters are passed.
+ * @noSelf
  */
-export function guiSetInputEnabled(
+export declare function guiSetInputEnabled(
     enabled: boolean
 ): boolean;
 
@@ -1893,8 +2011,9 @@ export function guiSetInputEnabled(
  * chatbox
  * @param no_binds_when_editing binds are always enabled except when an editable editbox or memo has input focus
  * @return returns true if input mode could be changed, false if invalid parameters are passed.
+ * @noSelf
  */
-export function guiSetInputMode(
+export declare function guiSetInputMode(
     mode: string
 ): boolean;
 
@@ -1906,8 +2025,9 @@ export function guiSetInputMode(
  * @param y Position over the Y axis
  * @param relative Bool that indicates if the x/y positions are relative to the elements parent element.
  * @return returns true if the position has been successfully set, false otherwise.
+ * @noSelf
  */
-export function guiSetPosition(
+export declare function guiSetPosition(
     theElement: Element,
     x: number,
     y: number,
@@ -1923,8 +2043,9 @@ export function guiSetPosition(
  * @param property the name of of property you want the value of.
  * @param value the new value for the property.
  * @return if the function succeeds it returns true, if it fails it returns false.
+ * @noSelf
  */
-export function guiSetProperty(
+export declare function guiSetProperty(
     guiElement: Element,
     property: string,
     value: string
@@ -1937,8 +2058,9 @@ export function guiSetProperty(
  * @param tabPanel The Element/GUI/Tab panel|tab panel which current tab you want to change.
  * @param theTab The Element/GUI/Tab|tab which will be the new active tab.
  * @return returns true if the selected tab was changed to a new one successfully, false otherwise.
+ * @noSelf
  */
-export function guiSetSelectedTab(
+export declare function guiSetSelectedTab(
     tabPanel: Element,
     theTab: Element
 ): boolean;
@@ -1954,8 +2076,9 @@ export function guiSetSelectedTab(
  * x,y,width,height floats must be between 0 and 1, representing sizes relative to the
  * parent.
  * @return returns true if the gui elements size was set successfully, false otherwise.
+ * @noSelf
  */
-export function guiSetSize(
+export declare function guiSetSize(
     guiElement: Element,
     width: number,
     height: number,
@@ -1968,8 +2091,9 @@ export function guiSetSize(
  * @param guiElement The GUI element you wish to change the text of
  * @param text The new text
  * @return returns true if text has been successfully set on the gui element, false otherwise.
+ * @noSelf
  */
-export function guiSetText(
+export declare function guiSetText(
     guiElement: Element,
     text: string
 ): boolean;
@@ -1980,8 +2104,9 @@ export function guiSetText(
  * @param guiElement the GUI element whose visibility is to be changed
  * @param state the new visibility state
  * @return returns true if the elements visibility could be changed, false otherwise.
+ * @noSelf
  */
-export function guiSetVisible(
+export declare function guiSetVisible(
     guiElement: Element,
     state: boolean
 ): boolean;
@@ -1993,8 +2118,9 @@ export function guiSetVisible(
  * @param theImage The static image element to get the original size of.
  * @return returns two integers where first is the width and second the height of the image in
  * pixels, false if the image element was invalid.
+ * @noSelf
  */
-export function guiStaticImageGetNativeSize(
+export declare function guiStaticImageGetNativeSize(
     theImage: Element
 ): LuaMultiReturn<[
     number,
@@ -2010,8 +2136,9 @@ export function guiStaticImageGetNativeSize(
  * @param filename A string specifying the filepath of the image file being loaded in current resource.
  * @return returns true if the the image in the static image element was successfully changed, false
  * otherwise.
+ * @noSelf
  */
-export function guiStaticImageLoadImage(
+export declare function guiStaticImageLoadImage(
     theElement: Element,
     filename: string
 ): boolean;
@@ -2021,8 +2148,9 @@ export function guiStaticImageLoadImage(
  * @param guiWindow the window to check the movable flag of
  * @return returns true if the window is movable, false if not, nil if an invalid window was
  * provided.
+ * @noSelf
  */
-export function guiWindowIsMovable(
+export declare function guiWindowIsMovable(
     guiWindow: GuiWindow
 ): boolean;
 
@@ -2031,8 +2159,9 @@ export function guiWindowIsMovable(
  * @param guiWindow the window to check the sizable flag of
  * @return returns true if the window is sizable, false if not, nil if an invalid window was
  * provided.
+ * @noSelf
  */
-export function guiWindowIsSizable(
+export declare function guiWindowIsSizable(
     guiWindow: GuiWindow
 ): boolean;
 
@@ -2042,8 +2171,9 @@ export function guiWindowIsSizable(
  * @param theElement The window to be changed.
  * @param status A boolean value indicating whether the window is movable or not.
  * @return returns true if the function is successful, false otherwise.
+ * @noSelf
  */
-export function guiWindowSetMovable(
+export declare function guiWindowSetMovable(
     theElement: Element,
     status: boolean
 ): boolean;
@@ -2054,8 +2184,9 @@ export function guiWindowSetMovable(
  * @param theElement The window to be changed.
  * @param status A boolean value indicating whether user resizing is to be enabled or disabled.
  * @return returns true if the function is successful, false otherwise.
+ * @noSelf
  */
-export function guiWindowSetSizable(
+export declare function guiWindowSetSizable(
     theElement: Element,
     status: boolean
 ): boolean;
@@ -2065,30 +2196,34 @@ export function guiWindowSetSizable(
  * or not.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsChatBoxInputActive Wiki, isChatBoxInputActive }
  * @return returns true if the chatbox is receiving input, false if not active.
+ * @noSelf
  */
-export function isChatBoxInputActive(): boolean;
+export declare function isChatBoxInputActive(): boolean;
 
 /**
  * This function returns whether the ingame console window is visible or not.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsConsoleActive Wiki, isConsoleActive }
  * @return returns true if the console is visible, false if not.
+ * @noSelf
  */
-export function isConsoleActive(): boolean;
+export declare function isConsoleActive(): boolean;
 
 /**
  * This function returns whether the ingame debug window is visible or not. This is the
  * debugwindow visible using the debugscript <level> command.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsDebugViewActive Wiki, isDebugViewActive }
  * @return returns true if the debug view is visible, false if not.
+ * @noSelf
  */
-export function isDebugViewActive(): boolean;
+export declare function isDebugViewActive(): boolean;
 
 /**
  * This function returns whether the user is in the mainmenu or not.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsMainMenuActive Wiki, isMainMenuActive }
  * @return returns true if the mainmenu is visible, false if not.
+ * @noSelf
  */
-export function isMainMenuActive(): boolean;
+export declare function isMainMenuActive(): boolean;
 
 /**
  * This function returns whether any system windows that take focus are active. This
@@ -2100,8 +2235,9 @@ export function isMainMenuActive(): boolean;
  * To get the status of the debug view, see isDebugViewActive.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsMTAWindowActive Wiki, isMTAWindowActive }
  * @return returns true if the focus is on the mta window, false if it isnt.
+ * @noSelf
  */
-export function isMTAWindowActive(): boolean;
+export declare function isMTAWindowActive(): boolean;
 
 /**
  * This function returns whether the file downloading dialog box is active or not. This
@@ -2113,15 +2249,17 @@ export function isMTAWindowActive(): boolean;
  * files it requires are downloaded.
  * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxActive Wiki, isTransferBoxActive }
  * @return returns true if the file transfer box is visible, false if not.
+ * @noSelf
  */
-export function isTransferBoxActive(): boolean;
+export declare function isTransferBoxActive(): boolean;
 
 /**
  * This function enables or disables the debug window.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetDebugViewActive Wiki, setDebugViewActive }
  * @param enabled true if debug window should be visible, false otherwise.
  * @return returns true, false if invalid parameters are passed.
+ * @noSelf
  */
-export function setDebugViewActive(
+export declare function setDebugViewActive(
     enabled: boolean
 ): boolean;
