@@ -28,7 +28,8 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    FetchRemoteCallback,
+    GenericEventHandler
 } from '../structure';
 
 /**
@@ -94,10 +95,12 @@ export declare function addEvent(
  * specified event could not be found or any parameters were invalid.
  * @noSelf
  */
-export declare function addEventHandler(
-    eventName: string,
+export declare function addEventHandler<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     attachedTo: Element,
-    handlerFunction: HandleFunction,
+    handlerFunction: CallbackType["function"],
     propagate?: boolean,
     priority?: string
 ): boolean;

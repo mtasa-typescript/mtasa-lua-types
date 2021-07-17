@@ -7,6 +7,7 @@
     "scripts": {
         "build": "echo No buildable content",
         "test": "dtslint .",
+        "tstl": "tstl",
         "prettier": "prettier"
     },
     "repository": {

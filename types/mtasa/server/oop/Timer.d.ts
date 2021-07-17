@@ -27,7 +27,8 @@ import {
     RadarArea,
     Water,
     HandleFunction,
-    FetchRemoteCallback
+    FetchRemoteCallback,
+    GenericEventHandler
 } from '../structure';
 
 /** @customConstructor Timer */

@@ -45,7 +45,8 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    FetchRemoteCallback,
+    GenericEventHandler
 } from '../structure';
 
 /**
@@ -1148,8 +1149,9 @@ export declare function setPedHeadless(
  * will immediately stop any lookat. A negative time will make the ped look at the target
  * indefinitely.
  * @param blend the time, in milliseconds, during which the look will blend.
- * @param target if this argument is specified, the position arguments will be ignored and the peds gaze
- * will follow the specified element instead. Can be a player, a vehicle, another ped etc.
+ * @param target if this argument is specified, the position arguments will be mean offsets relative to
+ * the target and the peds gaze will follow the specified element instead. Can be a player,
+ * a vehicle, another ped etc.
  * @noSelf
  */
 export declare function setPedLookAt(
@@ -1157,21 +1159,9 @@ export declare function setPedLookAt(
     x: number,
     y: number,
     z: number,
-    time: number,
-    blend: number,
-    target: Element
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedLookAt Wiki, setPedLookAt }
- * @noSelf
- */
-export declare function setPedLookAt(
-    thePed: Ped,
-    x: number,
-    y: number,
-    z: number,
-    target: Element
+    time?: number,
+    blend?: number,
+    target?: Element
 ): boolean;
 
 /**

@@ -28,7 +28,8 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    FetchRemoteCallback,
+    GenericEventHandler
 } from '../structure';
 
 /** @customConstructor Weapon */

@@ -45,7 +45,8 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    FetchRemoteCallback,
+    GenericEventHandler
 } from '../structure';
 
 /**
@@ -1071,7 +1072,6 @@ export declare function resetTimer(
 
 /**
  * This function sets the players clipboard text (what appears when you paste with CTRL + V)
- * Note that there is no getClipBoard function for safety reasons.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetClipboard Wiki, setClipboard }
  * @param theText The new text to be in the players clipboard when the player pastes with CTRL + V.
  * @return returns true if the text in the clip board was set correctly.

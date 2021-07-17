@@ -44,16 +44,12 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    FetchRemoteCallback,
+    GenericEventHandler
 } from '../structure';
 
 /** @customConstructor Player */
 export class Player extends Ped {
-    /**
-     * This function gets the current team a player is on.
-     */
-    team: Team;
-
     /**
      * This function allows you to check the current blur level of a specified player.
      */
@@ -83,11 +79,8 @@ export class Player extends Ped {
 
     /**
      * This function gets the current team a player is on.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
-     * @return returns a team element representing the team the player is on, false if the player is not
-     * part of a team.
      */
-    getTeam(): Team;
+    team: Team;
 
     /**
      * This function is used to forcefully show a players radar map.
@@ -270,4 +263,12 @@ export class Player extends Ped {
     static takeMoney(
         amount: number
     ): boolean;
+
+    /**
+     * This function gets the current team a player is on.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
+     * @return returns a team element representing the team the player is on, false if the player is not
+     * part of a team.
+     */
+    getTeam(): Team;
 }

@@ -28,6 +28,8 @@ export { RadarArea } from './oop/RadarArea';
 export { Water } from './oop/Water';
 export { Timer } from './oop/Timer';
 export { XML } from './oop/XML';
+
 export { FetchRemoteCallback } from '../shared/utils/callback';
+export { GenericEventHandler } from '../shared/utils/event';
 
 export type HandleFunction = any;
