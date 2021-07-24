@@ -52,6 +52,50 @@ import {
 /** @customConstructor Shader */
 export class Shader extends Material {
     /**
+     * This function applies a shader to one or more world textures.
+     * * The resource Shader_examples#Texture_names|shader_tex_names can help in finding the
+     * names of world textures.
+     * * When replacing the texture for a ped using the CJ skin, set textureName to CJ
+     * * The shader inherits the render states of the original when it is drawn, so texture
+     * stage 0 will already be set to the original texture.
+     * * When using with a ped, ensure you have set ped or all in the elementTypes when calling
+     * dxCreateShader
+     * * CJ body parts textures can be replaced by using: cj_ped_head, cj_ped_hat, cj_ped_torso,
+     * cj_ped_legs, cj_ped_feet, cj_ped_glasses, cj_ped_necklace, cj_ped_watch and
+     * cj_ped_extra1. Latest version of
+     * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
+     * show what is being used.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
+     * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
+     * be used to apply to more than one texture at a time.
+     * @param targetElement The element to restrict applying the shader to. If this is not set the shader will be
+     * applied to everything using the texture name. Valid element types for targetElement are
+     * vehicle|vehicles, Object|objects and Ped|peds.
+     * @param appendLayers allows two or more layered shaders to be applied in the same texture. You may want to
+     * modify the DepthBias in the technique pass to avoid Z-fighting artifacts when using this.
+     * @return returns true if the shader was successfully applied, false otherwise.
+     */
+    applyToWorldTexture(
+        textureName: string,
+        targetElement?: Element,
+        appendLayers?: boolean
+    ): boolean;
+
+    /**
+     * This function removes a shader from one or more world textures.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture Wiki, engineRemoveShaderFromWorldTexture }
+     * @param textureName The name of the world texture to remove the shader from. It should be exactly the same
+     * string as used with engineApplyShaderToWorldTexture when the shader was initially applied.
+     * @param targetElement The element to remove the shader from. It should be the same element as used with
+     * engineApplyShaderToWorldTexture when the shader was initially applied.
+     * @return returns true if the shader was successfully removed, false otherwise.
+     */
+    removeFromWorldTexture(
+        textureName: string,
+        targetElement?: Element
+    ): boolean;
+
+    /**
      * This function sets the amount of geometric sub-division to use when drawing a shader
      * element with dxDrawImage.
      * Using tessellation allows a shader to manipulate the shape of the rendered image at each
@@ -115,49 +159,5 @@ export class Shader extends Material {
     setValue(
         parameterName: string,
         value: any
-    ): boolean;
-
-    /**
-     * This function applies a shader to one or more world textures.
-     * * The resource Shader_examples#Texture_names|shader_tex_names can help in finding the
-     * names of world textures.
-     * * When replacing the texture for a ped using the CJ skin, set textureName to CJ
-     * * The shader inherits the render states of the original when it is drawn, so texture
-     * stage 0 will already be set to the original texture.
-     * * When using with a ped, ensure you have set ped or all in the elementTypes when calling
-     * dxCreateShader
-     * * CJ body parts textures can be replaced by using: cj_ped_head, cj_ped_hat, cj_ped_torso,
-     * cj_ped_legs, cj_ped_feet, cj_ped_glasses, cj_ped_necklace, cj_ped_watch and
-     * cj_ped_extra1. Latest version of
-     * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
-     * show what is being used.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
-     * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
-     * be used to apply to more than one texture at a time.
-     * @param targetElement The element to restrict applying the shader to. If this is not set the shader will be
-     * applied to everything using the texture name. Valid element types for targetElement are
-     * vehicle|vehicles, Object|objects and Ped|peds.
-     * @param appendLayers allows two or more layered shaders to be applied in the same texture. You may want to
-     * modify the DepthBias in the technique pass to avoid Z-fighting artifacts when using this.
-     * @return returns true if the shader was successfully applied, false otherwise.
-     */
-    applyToWorldTexture(
-        textureName: string,
-        targetElement?: Element,
-        appendLayers?: boolean
-    ): boolean;
-
-    /**
-     * This function removes a shader from one or more world textures.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture Wiki, engineRemoveShaderFromWorldTexture }
-     * @param textureName The name of the world texture to remove the shader from. It should be exactly the same
-     * string as used with engineApplyShaderToWorldTexture when the shader was initially applied.
-     * @param targetElement The element to remove the shader from. It should be the same element as used with
-     * engineApplyShaderToWorldTexture when the shader was initially applied.
-     * @return returns true if the shader was successfully removed, false otherwise.
-     */
-    removeFromWorldTexture(
-        textureName: string,
-        targetElement?: Element
     ): boolean;
 }

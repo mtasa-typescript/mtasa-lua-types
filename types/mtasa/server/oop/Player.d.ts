@@ -142,6 +142,11 @@ export class Player extends Ped {
     voiceIgnoreFrom: boolean;
 
     /**
+     * This function gets the current team a player is on.
+     */
+    team: Team;
+
+    /**
      * Returns the interior of the local camera (independent of the interior of the local
      * player).
      */
@@ -166,11 +171,6 @@ export class Player extends Ped {
      * players camera (i.e. what it is following).
      */
     cameraTarget: Element;
-
-    /**
-     * This function gets the current team a player is on.
-     */
-    team: Team;
 
     /**
      * This function returns the specified players account object.
@@ -661,12 +661,89 @@ export class Player extends Ped {
     ): boolean;
 
     /**
-     * This function plays a frontend sound for the specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
-     * @param sound a whole int specifying the sound id to play. Valid values are:
+     * This function gets the current team a player is on.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
+     * @return returns a team element representing the team the player is on, false if the player is not
+     * part of a team.
      */
-    playSoundFrontEnd(
-        sound: number
+    getTeam(): Team;
+
+    /**
+     * This function adds a player to an existing team. The player will automatically be removed
+     * from his current team if hes on one.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
+     * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
+     * team.
+     * @return returns true if the player was successfully added to the specified team or removed from
+     * his previous one, false otherwise.
+     */
+    setTeam(
+        theTeam: Team
+    ): boolean;
+
+    /**
+     * This function will ban the specified player by either IP, serial or username
+     * This function will ban the specified player from the server by IP.
+     * @see {@link https://wiki.multitheftauto.com/wiki/BanPlayer Wiki, banPlayer }
+     * @param IP Will player be banned by IP?
+     * @param Username Will player be banned by username?
+     * @param Serial Will player be banned by serial?
+     * @param responsibleElement The element that is responsible for banning the player. This can be a player or the root
+     * (getRootElement()) (Maximum 30 characters if using a string).
+     * @param reason The reason the player will be banned from the server.
+     * @param seconds The amount of seconds the player will be banned from the server for. This can be 0 for an
+     * infinite amount of time.
+     * @return returns a ban object if banned successfully, or false if unsuccessful.
+     */
+    ban(
+        IP?: boolean,
+        Username?: boolean,
+        Serial?: boolean,
+        responsiblePlayer?: Player | string,
+        reason?: string,
+        seconds?: number
+    ): Ban;
+
+    /**
+     * This function will kick the specified player from the server.
+     * @see {@link https://wiki.multitheftauto.com/wiki/KickPlayer Wiki, kickPlayer }
+     * @param responsiblePlayer The player that is responsible for the event. Note: If left out as in the second syntax,
+     * responsible player for the kick will be Console (Maximum 30 characters if using a string).
+     * @param reason The reason for the kick. (Maximum 64 characters before 1.5.8, Maximum 128 characters
+     * after 1.5.8)
+     * @return returns true if the player was kicked succesfully, false if invalid arguments are
+     * specified.
+     */
+    kick(
+        responsiblePlayer?: Player | string,
+        reason?: string
+    ): boolean;
+
+    /**
+     * This outputs the specified text string to the chatbox. It can be specified as a message
+     * to certain player(s) or all players.
+     * It can optionally allow you to embed color changes into the string by setting the
+     * colorCoded boolean to true. This allows:
+     * <syntaxhighlight lang=lua>
+     * outputChatBox ( #FF0000Hello #00FF00World, root, 255, 255, 255, true )
+     * </syntaxhighlight>
+     * This will display as: <span style=color:red;>Hello</span> <span
+     * style=color:green>World</span>
+     * @see {@link https://wiki.multitheftauto.com/wiki/OutputChatBox Wiki, outputChatBox }
+     * @param visibleTo Can also be a table of players or team.}}
+     * @param r The amount of red in the color of the text. Default value is 231.
+     * @param g The amount of green in the color of the text. Default value is 217.
+     * @param b The amount of blue in the color of the text. Default value is 176.
+     * @param colorCoded A boolean value determining whether or not #RRGGBB tags should be used.
+     * Note: The #RRGGBB format must contain capital letters a-f is not acceptable but A-F is.
+     * Default RGB values in this format are: '#E7D9B0'.
+     */
+    outputChat(
+        visibleTo?: LuaTable | Element,
+        r?: number,
+        g?: number,
+        b?: number,
+        colorCoded?: boolean
     ): boolean;
 
     /**
@@ -804,89 +881,12 @@ export class Player extends Ped {
     ): boolean;
 
     /**
-     * This function will ban the specified player by either IP, serial or username
-     * This function will ban the specified player from the server by IP.
-     * @see {@link https://wiki.multitheftauto.com/wiki/BanPlayer Wiki, banPlayer }
-     * @param IP Will player be banned by IP?
-     * @param Username Will player be banned by username?
-     * @param Serial Will player be banned by serial?
-     * @param responsibleElement The element that is responsible for banning the player. This can be a player or the root
-     * (getRootElement()) (Maximum 30 characters if using a string).
-     * @param reason The reason the player will be banned from the server.
-     * @param seconds The amount of seconds the player will be banned from the server for. This can be 0 for an
-     * infinite amount of time.
-     * @return returns a ban object if banned successfully, or false if unsuccessful.
+     * This function plays a frontend sound for the specified player.
+     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
+     * @param sound a whole int specifying the sound id to play. Valid values are:
      */
-    ban(
-        IP?: boolean,
-        Username?: boolean,
-        Serial?: boolean,
-        responsiblePlayer?: Player | string,
-        reason?: string,
-        seconds?: number
-    ): Ban;
-
-    /**
-     * This function will kick the specified player from the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/KickPlayer Wiki, kickPlayer }
-     * @param responsiblePlayer The player that is responsible for the event. Note: If left out as in the second syntax,
-     * responsible player for the kick will be Console (Maximum 30 characters if using a string).
-     * @param reason The reason for the kick. (Maximum 64 characters before 1.5.8, Maximum 128 characters
-     * after 1.5.8)
-     * @return returns true if the player was kicked succesfully, false if invalid arguments are
-     * specified.
-     */
-    kick(
-        responsiblePlayer?: Player | string,
-        reason?: string
-    ): boolean;
-
-    /**
-     * This function gets the current team a player is on.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
-     * @return returns a team element representing the team the player is on, false if the player is not
-     * part of a team.
-     */
-    getTeam(): Team;
-
-    /**
-     * This function adds a player to an existing team. The player will automatically be removed
-     * from his current team if hes on one.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
-     * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
-     * team.
-     * @return returns true if the player was successfully added to the specified team or removed from
-     * his previous one, false otherwise.
-     */
-    setTeam(
-        theTeam: Team
-    ): boolean;
-
-    /**
-     * This outputs the specified text string to the chatbox. It can be specified as a message
-     * to certain player(s) or all players.
-     * It can optionally allow you to embed color changes into the string by setting the
-     * colorCoded boolean to true. This allows:
-     * <syntaxhighlight lang=lua>
-     * outputChatBox ( #FF0000Hello #00FF00World, root, 255, 255, 255, true )
-     * </syntaxhighlight>
-     * This will display as: <span style=color:red;>Hello</span> <span
-     * style=color:green>World</span>
-     * @see {@link https://wiki.multitheftauto.com/wiki/OutputChatBox Wiki, outputChatBox }
-     * @param visibleTo Can also be a table of players or team.}}
-     * @param r The amount of red in the color of the text. Default value is 231.
-     * @param g The amount of green in the color of the text. Default value is 217.
-     * @param b The amount of blue in the color of the text. Default value is 176.
-     * @param colorCoded A boolean value determining whether or not #RRGGBB tags should be used.
-     * Note: The #RRGGBB format must contain capital letters a-f is not acceptable but A-F is.
-     * Default RGB values in this format are: '#E7D9B0'.
-     */
-    outputChat(
-        visibleTo?: LuaTable | Element,
-        r?: number,
-        g?: number,
-        b?: number,
-        colorCoded?: boolean
+    playSoundFrontEnd(
+        sound: number
     ): boolean;
 
     /**
