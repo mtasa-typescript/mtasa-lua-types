@@ -9,52 +9,53 @@ on:
             - '**.md'
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            -   uses: actions/checkout@v2
-            -   name: Setup node 12
-                uses: actions/setup-node@v2.1.5
-                with:
-                    node-version: 12.x
-            -   name: Cache Node files
-                uses: actions/cache@v2.1.5
-                env:
-                    cache-name: cache-node-modules
-                with:
-                    # npm cache files are stored in `~/.npm` on Linux/macOS
-                    path: |
-                        ~/.npm
-                    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-                    restore-keys: |
-                        ${{ runner.os }}-build-${{ env.cache-name }}-
-                        ${{ runner.os }}-build-
-                        ${{ runner.os }}-
-            -   run: npm ci
-            -   run: npm run build
     test:
         runs-on: ubuntu-latest
         steps:
-            -   uses: actions/checkout@v2
-            -   name: Setup node 12
-                uses: actions/setup-node@v2.1.5
-                with:
-                    node-version: 12.x
-            -   name: Cache Node files
-                uses: actions/cache@v2.1.5
-                env:
-                    cache-name: cache-node-modules
-                with:
-                    # npm cache files are stored in `~/.npm` on Linux/macOS
-                    path: |
-                        ~/.npm
-                    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-                    restore-keys: |
-                        ${{ runner.os }}-build-${{ env.cache-name }}-
-                        ${{ runner.os }}-build-
-                        ${{ runner.os }}-
-            -   run: npm ci
-            -   run: npm run test
+            - uses: actions/checkout@v2
+            - name: Setup node 12
+              uses: actions/setup-node@v2.1.5
+              with:
+                  node-version: 12.x
+            - name: Cache Node files
+              uses: actions/cache@v2.1.5
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  # npm cache files are stored in `~/.npm` on Linux/macOS
+                  path: |
+                      ~/.npm
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+                      ${{ runner.os }}-build-
+                      ${{ runner.os }}-
+            - run: npm ci
+            - run: npm run prettier
+            - run: npm run test
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node 12
+              uses: actions/setup-node@v2.1.5
+              with:
+                  node-version: 12.x
+            - name: Cache Node files
+              uses: actions/cache@v2.1.5
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  # npm cache files are stored in `~/.npm` on Linux/macOS
+                  path: |
+                      ~/.npm
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+                      ${{ runner.os }}-build-
+                      ${{ runner.os }}-
+            - run: npm ci
+            - run: npm run build
     publish:
         runs-on: ubuntu-latest
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
@@ -62,28 +63,28 @@ jobs:
             - build
             - test
         steps:
-            -   uses: actions/checkout@v2
-            -   uses: actions/setup-node@v2.1.5
-                with:
-                    node-version: '12.x'
-                    registry-url: 'https://registry.npmjs.org'
-            -   name: Cache Node files
-                uses: actions/cache@v2.1.5
-                env:
-                    cache-name: cache-node-modules
-                with:
-                    # npm cache files are stored in `~/.npm` on Linux/macOS
-                    path: |
-                        ~/.npm
-                    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-                    restore-keys: |
-                        ${{ runner.os }}-build-${{ env.cache-name }}-
-                        ${{ runner.os }}-build-
-                        ${{ runner.os }}-
-            -   run: npm ci
-            -   run: npm run build
-            -   run: |
-                   export TAG="latest"
-                   npm publish --tag "$TAG"
-                env:
-                    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2.1.5
+              with:
+                  node-version: '12.x'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Cache Node files
+              uses: actions/cache@v2.1.5
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  # npm cache files are stored in `~/.npm` on Linux/macOS
+                  path: |
+                      ~/.npm
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+                      ${{ runner.os }}-build-
+                      ${{ runner.os }}-
+            - run: npm ci
+            - run: npm run build
+            - run: |
+                  export TAG="latest"
+                  npm publish --tag "$TAG"
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

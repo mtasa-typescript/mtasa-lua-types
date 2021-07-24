@@ -8,7 +8,8 @@
         "build": "echo No buildable content",
         "test": "dtslint .",
         "tstl": "tstl",
-        "prettier": "prettier"
+        "prettier": "prettier --check .",
+        "prettier-fix": "prettier --write ."
     },
     "repository": {
         "type": "git",

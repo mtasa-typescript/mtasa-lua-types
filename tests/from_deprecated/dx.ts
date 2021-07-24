@@ -2,8 +2,18 @@ import { mtasa } from 'types/mtasa/client';
 
 const color: number = mtasa.tocolor(13, 14, 15);
 const drawImage: boolean = mtasa.dxDrawImage(0, 0, 128, 326, '');
-const drawImageSection: boolean = mtasa.dxDrawImageSection(0, 0, 16, 16, 64, 64, 8, 8, 'img');
-const drawLine: boolean = mtasa.dxDrawLine(3, 4, 1, 0, 0xFFFFFFFF);
+const drawImageSection: boolean = mtasa.dxDrawImageSection(
+    0,
+    0,
+    16,
+    16,
+    64,
+    64,
+    8,
+    8,
+    'img',
+);
+const drawLine: boolean = mtasa.dxDrawLine(3, 4, 1, 0, 0xffffffff);
 const drawLine3D: boolean = mtasa.dxDrawLine3D(-100, -120, -150, 540, 541, 542);
 
 // TODO: complete tests for deprecated module
