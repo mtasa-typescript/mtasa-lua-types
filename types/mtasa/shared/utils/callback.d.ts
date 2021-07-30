@@ -14,4 +14,9 @@
  * * 1007: File error <br>
  * @param arguments The arguments that were passed into fetchRemote
  */
-export type FetchRemoteCallback = (this: void, responseData: string, error: number, ...arguments: any[]) => void;
+export type FetchRemoteCallback = (
+    this: void,
+    responseData: string,
+    error: number,
+    ...arguments: any[]
+) => void;

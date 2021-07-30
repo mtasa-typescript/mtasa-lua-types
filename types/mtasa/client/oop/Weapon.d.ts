@@ -44,27 +44,19 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Weapon */
 export class Weapon extends Element {
     /**
-     * This function gets the total ammo a Element/Weapon|custom weapon has.
-     */
-    ammo: number;
-
-    /**
      * This function gets the amount of ammo left in a Element/Weapon|custom weapons
      * magazine/clip.
      */
     clipAmmo: number;
-
-    /**
-     * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
-     */
-    firingRate: number;
 
     /**
      * This function gets the owner of a Element/Weapon|custom weapon. Weapon ownership system
@@ -79,27 +71,19 @@ export class Weapon extends Element {
     state: string;
 
     /**
+     * This function gets the total ammo a Element/Weapon|custom weapon has.
+     */
+    ammo: number;
+
+    /**
      * This functions gets the target of a Element/Weapon|custom weapon.
      */
     target: null | Element | number;
 
     /**
-     * This function gets a weapon property of the specified Element/Weapon|custom weapon
-     * (clientside only) or specified Weapons|player-held weapon (both client and server).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
-     * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
-     * @param weaponSkill Either: pro, std or poor
-     * @param property The property you want to get the value of:
-     * The following properties are get only:
-     * @return on success:
-     * int: the weapon property
-     * on failure:
-     * bool: false if the passed arguments were invalid
+     * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
      */
-    getProperty(
-        weaponSkill: string,
-        property: string
-    ): number;
+    firingRate: number;
 
     /**
      * <section name=Server class=server show=true>
@@ -164,12 +148,22 @@ export class Weapon extends Element {
     fire(): boolean;
 
     /**
-     * This function gets the total ammo a Element/Weapon|custom weapon has.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponAmmo Wiki, getWeaponAmmo }
-     * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
-     * error occured.
+     * This function gets a weapon property of the specified Element/Weapon|custom weapon
+     * (clientside only) or specified Weapons|player-held weapon (both client and server).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+     * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
+     * @param weaponSkill Either: pro, std or poor
+     * @param property The property you want to get the value of:
+     * The following properties are get only:
+     * @return on success:
+     * int: the weapon property
+     * on failure:
+     * bool: false if the passed arguments were invalid
      */
-    getAmmo(): number;
+    getProperty(
+        weaponSkill: string,
+        property: string
+    ): number;
 
     /**
      * This function gets the amount of ammo left in a Element/Weapon|custom weapons
@@ -179,13 +173,6 @@ export class Weapon extends Element {
      * occured.
      */
     getClipAmmo(): number;
-
-    /**
-     * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
-     * @return returns an integer with the firing rate of the custom weapon, false otherwise.
-     */
-    getFiringRate(): number;
 
     /**
      * This function gets the flags of a Element/Weapon|custom weapon.
@@ -237,15 +224,12 @@ export class Weapon extends Element {
     getState(): string;
 
     /**
-     * This functions gets the target of a Element/Weapon|custom weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponTarget Wiki, getWeaponTarget }
-     * @return * returns the target of the element/weapon|custom weapon, which can be:
-     * **nil if the weapon is in rotation based targeting.
-     * **3 float|floats if the weapon is firing at a fixed point.
-     * **an element if the weapon is firing an entity.
-     * * returns false if the weapon element is not valid.
+     * This function gets the total ammo a Element/Weapon|custom weapon has.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponAmmo Wiki, getWeaponAmmo }
+     * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
+     * error occured.
      */
-    getTarget(): null | Element | number;
+    getAmmo(): number;
 
     /**
      * This function resets the firing rate of a Element/Weapon|custom weapon to the default one.
@@ -253,29 +237,6 @@ export class Weapon extends Element {
      * @return returns true on success, false otherwise.
      */
     resetFiringRate(): boolean;
-
-    /**
-     * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
-     * @param clipAmmo The amount of ammo in the clip.
-     * @return this function returns true if the arguments are valid and the weapon clip ammo could be
-     * changed; false otherwise.
-     */
-    setClipAmmo(
-        clipAmmo: number
-    ): boolean;
-
-    /**
-     * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
-     * firing state.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
-     * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
-     * quicker the Element/Weapon|custom weapon will shoot.
-     * @return returns true on success, false otherwise.
-     */
-    setFiringRate(
-        firingRate: number
-    ): boolean;
 
     /**
      * This function sets a Element/Weapon|custom weapon flags, used to change how it behaves or
@@ -320,4 +281,45 @@ export class Weapon extends Element {
     setState(
         theState: string
     ): boolean;
+
+    /**
+     * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
+     * @param clipAmmo The amount of ammo in the clip.
+     * @return this function returns true if the arguments are valid and the weapon clip ammo could be
+     * changed; false otherwise.
+     */
+    setClipAmmo(
+        clipAmmo: number
+    ): boolean;
+
+    /**
+     * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
+     * firing state.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
+     * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
+     * quicker the Element/Weapon|custom weapon will shoot.
+     * @return returns true on success, false otherwise.
+     */
+    setFiringRate(
+        firingRate: number
+    ): boolean;
+
+    /**
+     * This functions gets the target of a Element/Weapon|custom weapon.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponTarget Wiki, getWeaponTarget }
+     * @return * returns the target of the element/weapon|custom weapon, which can be:
+     * **nil if the weapon is in rotation based targeting.
+     * **3 float|floats if the weapon is firing at a fixed point.
+     * **an element if the weapon is firing an entity.
+     * * returns false if the weapon element is not valid.
+     */
+    getTarget(): null | Element | number;
+
+    /**
+     * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
+     * @return returns an integer with the firing rate of the custom weapon, false otherwise.
+     */
+    getFiringRate(): number;
 }

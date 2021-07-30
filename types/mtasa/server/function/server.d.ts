@@ -28,17 +28,59 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /**
- * This function returns the maximum number of player slots on the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMaxPlayers Wiki, getMaxPlayers }
- * @return returns the maximum number of players allowed on the server.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxVisible Wiki, isTransferBoxVisible }
+ * @return on server this returns a boolean, whether the transfer box should be visible during
+ * downloads or not.
+ * on client this returns a boolean, whether the transfer box should be visible or not at
+ * the time of invocation.
  * @noSelf
  */
-export declare function getMaxPlayers(): number;
+export declare function isTransferBoxVisible(): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible Wiki, setTransferBoxVisible }
+ * @param visible The new visibility state.
+ * @return returns true if the visibility was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setTransferBoxVisible(
+    visible: boolean
+): boolean;
+
+/**
+ * This function changes the password required to join the server to the given string.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetServerPassword Wiki, setServerPassword }
+ * @param thePassword The new server password you want. Pass nil or an empty string to remove the password.
+ * @return returns true if the password was successfully changed or removed, false or nil otherwise.
+ * @noSelf
+ */
+export declare function setServerPassword(
+    thePassword: string
+): boolean;
+
+/**
+ * This function enables or disables glitches that are found in the original Single Player
+ * game that can be used to gain an advantage in multiplayer.
+ * Users of the fastmove glitch may additionally want to install
+ * https://community.mtasa.com/index.php?p=resources&s=details&id=13368 this resource to
+ * disable crouchsliding.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetGlitchEnabled Wiki, setGlitchEnabled }
+ * @param glitchName the name of the property to set. Possible values are:
+ * @param enable whether or not to enable the glitch.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setGlitchEnabled(
+    glitchName: string,
+    enable: boolean
+): boolean;
 
 /**
  * This function retrieves the servers HTTP port.
@@ -55,15 +97,6 @@ export declare function getServerHttpPort(): number;
  * @noSelf
  */
 export declare function getServerName(): string;
-
-/**
- * This function returns the current password required to join the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetServerPassword Wiki, getServerPassword }
- * @return returns the current server password as a string if it has a password, if not it returns
- * nil.
- * @noSelf
- */
-export declare function getServerPassword(): string;
 
 /**
  * This function retrieves the servers port.
@@ -86,31 +119,21 @@ export declare function isGlitchEnabled(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxVisible Wiki, isTransferBoxVisible }
- * @return on server this returns a boolean, whether the transfer box should be visible during
- * downloads or not.
- * on client this returns a boolean, whether the transfer box should be visible or not at
- * the time of invocation.
+ * This function returns the current password required to join the server.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetServerPassword Wiki, getServerPassword }
+ * @return returns the current server password as a string if it has a password, if not it returns
+ * nil.
  * @noSelf
  */
-export declare function isTransferBoxVisible(): boolean;
+export declare function getServerPassword(): string;
 
 /**
- * This function enables or disables glitches that are found in the original Single Player
- * game that can be used to gain an advantage in multiplayer.
- * Users of the fastmove glitch may additionally want to install
- * https://community.mtasa.com/index.php?p=resources&s=details&id=13368 this resource to
- * disable crouchsliding.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetGlitchEnabled Wiki, setGlitchEnabled }
- * @param glitchName the name of the property to set. Possible values are:
- * @param enable whether or not to enable the glitch.
- * @return returns true if successful, false otherwise.
+ * This function returns the maximum number of player slots on the server.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetMaxPlayers Wiki, getMaxPlayers }
+ * @return returns the maximum number of players allowed on the server.
  * @noSelf
  */
-export declare function setGlitchEnabled(
-    glitchName: string,
-    enable: boolean
-): boolean;
+export declare function getMaxPlayers(): number;
 
 /**
  * This function sets the maximum number of player slots on the server.
@@ -121,27 +144,6 @@ export declare function setGlitchEnabled(
  */
 export declare function setMaxPlayers(
     slots: number
-): boolean;
-
-/**
- * This function changes the password required to join the server to the given string.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetServerPassword Wiki, setServerPassword }
- * @param thePassword The new server password you want. Pass nil or an empty string to remove the password.
- * @return returns true if the password was successfully changed or removed, false or nil otherwise.
- * @noSelf
- */
-export declare function setServerPassword(
-    thePassword: string
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible Wiki, setTransferBoxVisible }
- * @param visible The new visibility state.
- * @return returns true if the visibility was set successfully, false otherwise.
- * @noSelf
- */
-export declare function setTransferBoxVisible(
-    visible: boolean
 ): boolean;
 
 /**

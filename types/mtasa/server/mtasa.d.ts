@@ -63,3 +63,7 @@ export * from './oop/Weapon';
 export * from './oop/XML';
 export * from './oop/XmlNode';
 export * from './oop/connection';
+
+export { EventNames } from './event/all_event_names';
+import * as Event from './event';
+export { Event };

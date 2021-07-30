@@ -45,21 +45,23 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../../structure';
 
 /** @customConstructor GuiLabel */
 export class GuiLabel extends GuiElement {
     /**
-     * This function returns the height of the font currently used in a GUI text label.
-     */
-    fontHeight: number;
-
-    /**
      * This function returns the extent, or width, of the current text inside a GUI text label.
      */
     textExtent: number;
+
+    /**
+     * This function returns the height of the font currently used in a GUI text label.
+     */
+    fontHeight: number;
 
     /**
      * This function sets the horizontal alignment of a text label.
@@ -107,34 +109,6 @@ export class GuiLabel extends GuiElement {
     );
 
     /**
-     * This function gets the color of a label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetColor Wiki, guiLabelGetColor }
-     * @return returns three int values, representing the amount of red, green, blue if successful.
-     * false otherwise.
-     */
-    getColor(): LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function returns the height of the font currently used in a GUI text label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetFontHeight Wiki, guiLabelGetFontHeight }
-     * @return returns the absolute height of the font currently used in the text label if the function
-     * is successful, false otherwise.
-     */
-    getFontHeight(): number;
-
-    /**
-     * This function returns the extent, or width, of the current text inside a GUI text label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetTextExtent Wiki, guiLabelGetTextExtent }
-     * @return returns the absolute width of the current text inside the text label if the function is
-     * successful, false otherwise.
-     */
-    getTextExtent(): number;
-
-    /**
      * This function allows you to set the color of a GUI label.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetColor Wiki, guiLabelSetColor }
      * @param red An integer specifying the amount of red (0 to 255).
@@ -147,6 +121,34 @@ export class GuiLabel extends GuiElement {
         green: number,
         blue: number
     ): boolean;
+
+    /**
+     * This function gets the color of a label.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetColor Wiki, guiLabelGetColor }
+     * @return returns three int values, representing the amount of red, green, blue if successful.
+     * false otherwise.
+     */
+    getColor(): LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function returns the extent, or width, of the current text inside a GUI text label.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetTextExtent Wiki, guiLabelGetTextExtent }
+     * @return returns the absolute width of the current text inside the text label if the function is
+     * successful, false otherwise.
+     */
+    getTextExtent(): number;
+
+    /**
+     * This function returns the height of the font currently used in a GUI text label.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetFontHeight Wiki, guiLabelGetFontHeight }
+     * @return returns the absolute height of the font currently used in the text label if the function
+     * is successful, false otherwise.
+     */
+    getFontHeight(): number;
 
     /**
      * This function sets the horizontal alignment of a text label.

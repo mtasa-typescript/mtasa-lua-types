@@ -44,20 +44,24 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../../structure';
 
 /** @customConstructor GuiEdit */
 export class GuiEdit extends GuiElement {
     /**
+     * This function allows you to set or remove read-only status for an edit box. If read-only
+     * is set to true, the box is not editable.
+     */
+    readOnly: boolean;
+
+    /**
      * This function returns the caret (the text cursor) position within the editbox.
      */
     caretIndex: number;
-
-    /**
-     */
-    maxLength: number;
 
     /**
      * This function sets or removes masking (covering up the text being typed) for password
@@ -66,10 +70,25 @@ export class GuiEdit extends GuiElement {
     masked: boolean;
 
     /**
+     */
+    maxLength: number;
+
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength Wiki, guiEditGetMaxLength }
+     * @return returns the maximum text length on success, false otherwise.
+     */
+    getMaxLength(): number;
+
+    /**
      * This function allows you to set or remove read-only status for an edit box. If read-only
      * is set to true, the box is not editable.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly Wiki, guiEditSetReadOnly }
+     * @param status A boolean value indicating whether read-only is to be enabled or disabled.
+     * @return returns true if edit fields read-only status was changed successfully, false otherwise.
      */
-    readOnly: boolean;
+    setReadOnly(
+        status: boolean
+    ): boolean;
 
     /**
      * This function is for creating a new GUI edit box. This is a text box in which the user
@@ -112,10 +131,15 @@ export class GuiEdit extends GuiElement {
     getCaretIndex(): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength Wiki, guiEditGetMaxLength }
-     * @return returns the maximum text length on success, false otherwise.
+     * This function sets or removes masking (covering up the text being typed) for password
+     * text fields.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMasked Wiki, guiEditSetMasked }
+     * @param status A boolean value indicating whether masking is to be enabled or disabled.
+     * @return returns true if the function is successful, false otherwise.
      */
-    getMaxLength(): number;
+    setMasked(
+        status: boolean
+    ): boolean;
 
     /**
      * This function sets the current position of the caret (the text cursor) within the edit
@@ -129,17 +153,6 @@ export class GuiEdit extends GuiElement {
     ): boolean;
 
     /**
-     * This function sets or removes masking (covering up the text being typed) for password
-     * text fields.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMasked Wiki, guiEditSetMasked }
-     * @param status A boolean value indicating whether masking is to be enabled or disabled.
-     * @return returns true if the function is successful, false otherwise.
-     */
-    setMasked(
-        status: boolean
-    ): boolean;
-
-    /**
      * This function sets the maximum text length that can be typed into an edit box.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMaxLength Wiki, guiEditSetMaxLength }
      * @param theElement The edit box to be changed.
@@ -148,16 +161,5 @@ export class GuiEdit extends GuiElement {
      */
     setMaxLength(
         length: number
-    ): boolean;
-
-    /**
-     * This function allows you to set or remove read-only status for an edit box. If read-only
-     * is set to true, the box is not editable.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly Wiki, guiEditSetReadOnly }
-     * @param status A boolean value indicating whether read-only is to be enabled or disabled.
-     * @return returns true if edit fields read-only status was changed successfully, false otherwise.
-     */
-    setReadOnly(
-        status: boolean
     ): boolean;
 }

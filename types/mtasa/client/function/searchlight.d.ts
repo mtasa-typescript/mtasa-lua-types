@@ -45,8 +45,10 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /**
@@ -76,6 +78,23 @@ export declare function createSearchLight(
     endRadius: number,
     renderSpot?: boolean
 ): Searchlight;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition Wiki, setSearchLightEndPosition }
+ * @param theSearchLight : the searchlight to modify the property of.
+ * @param endX : the X coordinate where the searchlight light cone will end.
+ * @param endY : the Y coordinate where the searchlight light cone will end.
+ * @param endZ : the Z coordinate where the searchlight light cone will end.
+ * @return if every argument is correct, this function returns true. if not, it will return false
+ * plus an error message.
+ * @noSelf
+ */
+export declare function setSearchLightEndPosition(
+    theSearchLight: Searchlight,
+    endX: number,
+    endY: number,
+    endZ: number
+): boolean;
 
 /**
  * This function gets the end position of a Element/Searchlight|searchlight element.
@@ -134,23 +153,6 @@ export declare function getSearchLightStartPosition(
 export declare function getSearchLightStartRadius(
     theSearchLight: Searchlight
 ): number;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition Wiki, setSearchLightEndPosition }
- * @param theSearchLight : the searchlight to modify the property of.
- * @param endX : the X coordinate where the searchlight light cone will end.
- * @param endY : the Y coordinate where the searchlight light cone will end.
- * @param endZ : the Z coordinate where the searchlight light cone will end.
- * @return if every argument is correct, this function returns true. if not, it will return false
- * plus an error message.
- * @noSelf
- */
-export declare function setSearchLightEndPosition(
-    theSearchLight: Searchlight,
-    endX: number,
-    endY: number,
-    endZ: number
-): boolean;
 
 /**
  * This function sets the end radius of a Element/Searchlight|searchlight element.

@@ -28,9 +28,31 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * This function is used to get the clothes type and index from the texture and model.
+ * (Scans through the list of clothes for the specific type).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTypeIndexFromClothes Wiki, getTypeIndexFromClothes }
+ * @param clothesTexture : A string determining the clothes texture that you wish to retrieve the type and index
+ * from. See the CJ Clothes|clothes catalog.
+ * @param clothesModel : A string determining the corresponding clothes model that you wish to retrieve the type
+ * and index from. See the CJ Clothes|clothes catalog.
+ * @return this function returns two integers, type and index respectively, false if invalid
+ * arguments were passed to the function.
+ * @noSelf
+ */
+export declare function getTypeIndexFromClothes(
+    clothesTexture: string,
+    clothesModel: string
+): LuaMultiReturn<[
+    number,
+    number
+]>;
 
 /**
  * This function is used to get the name of a body part on a player.
@@ -42,6 +64,17 @@ import {
  */
 export declare function getBodyPartName(
     bodyPartID: number
+): string;
+
+/**
+ * This function is used to get the name of a certain clothes type.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetClothesTypeName Wiki, getClothesTypeName }
+ * @param clothesType : An integer determining the type of clothes you want to get the clothes of.
+ * @return this function returns a string (the name of the clothes type) if found, false otherwise.
+ * @noSelf
+ */
+export declare function getClothesTypeName(
+    clothesType: number
 ): string;
 
 /**
@@ -62,35 +95,4 @@ export declare function getClothesByTypeIndex(
 ): LuaMultiReturn<[
     string,
     string
-]>;
-
-/**
- * This function is used to get the name of a certain clothes type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetClothesTypeName Wiki, getClothesTypeName }
- * @param clothesType : An integer determining the type of clothes you want to get the clothes of.
- * @return this function returns a string (the name of the clothes type) if found, false otherwise.
- * @noSelf
- */
-export declare function getClothesTypeName(
-    clothesType: number
-): string;
-
-/**
- * This function is used to get the clothes type and index from the texture and model.
- * (Scans through the list of clothes for the specific type).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTypeIndexFromClothes Wiki, getTypeIndexFromClothes }
- * @param clothesTexture : A string determining the clothes texture that you wish to retrieve the type and index
- * from. See the CJ Clothes|clothes catalog.
- * @param clothesModel : A string determining the corresponding clothes model that you wish to retrieve the type
- * and index from. See the CJ Clothes|clothes catalog.
- * @return this function returns two integers, type and index respectively, false if invalid
- * arguments were passed to the function.
- * @noSelf
- */
-export declare function getTypeIndexFromClothes(
-    clothesTexture: string,
-    clothesModel: string
-): LuaMultiReturn<[
-    number,
-    number
 ]>;

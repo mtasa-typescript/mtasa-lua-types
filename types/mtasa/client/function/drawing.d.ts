@@ -45,25 +45,11 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
-
-/**
- * This function converts Texture_pixels|pixels from one format to another.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxConvertPixels Wiki, dxConvertPixels }
- * @param pixels The pixels to convert the format of
- * @param newFormat The new format required (plain or png or jpeg)
- * @param quality The quality of the returned pixels if the new format is jpeg
- * @return returns a copy of the pixels in the new format, or false if invalid arguments were passed
- * to the function.
- * @noSelf
- */
-export declare function dxConvertPixels(
-    pixels: string,
-    newFormat: string,
-    quality?: number
-): string;
 
 /**
  * <br/>
@@ -94,6 +80,415 @@ export declare function dxCreateFont(
     bold?: boolean,
     quality?: string
 ): Element;
+
+/**
+ * <lowercasetitle/>
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawCircle Wiki, dxDrawCircle }
+ * @param posX : An integer representing the absolute X position of the circle center, represented by
+ * pixels on the screen.
+ * @param posY : An integer representing the absolute Y position of the circle center, represented by
+ * pixels on the screen.
+ * @param radius : An integer representing the radius scale of the circle that is being drawn.
+ * @param startAngle : An integer representing the angle of the first point of the circle.
+ * @param stopAngle : An integer representing the angle of the last point of the circle.
+ * @param theColor : An integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
+ * red, GG = green, BB = blue).
+ * @param theCenterColor : An integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
+ * red, GG = green, BB = blue).
+ * @param segments : An integer ranging from 3-1024 representing how many triangles are used to form the
+ * circle, more segments = smoother circle. Note: using lots of segments may cause lag.
+ * @param ratio : Ratio between width and height, e.g: 2 would mean that the width of the circle is 2
+ * times the height.
+ * @param postGUI : A bool representing whether the circle should be drawn on top of or behind any ingame
+ * GUI (rendered by CEGUI).
+ * @return returns true if the creation of the 2d circle was successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawCircle(
+    posX: number,
+    posY: number,
+    radius: number,
+    startAngle?: number,
+    stopAngle?: number,
+    theColor?: number,
+    theCenterColor?: number,
+    segments?: number,
+    ratio?: number,
+    postGUI?: boolean
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
+ * @noSelf
+ */
+export declare function dxDrawMaterialLine3D(
+    startX: number,
+    startY: number,
+    startZ: number,
+    endX: number,
+    endY: number,
+    endZ: number,
+    material: Element,
+    width: number,
+    color?: number,
+    postGUI?: boolean,
+    faceTowardX?: number,
+    faceTowardY?: number,
+    faceTowardZ?: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
+ * @noSelf
+ */
+export declare function dxDrawMaterialSectionLine3D(
+    startX: number,
+    startY: number,
+    startZ: number,
+    endX: number,
+    endY: number,
+    endZ: number,
+    u: number,
+    v: number,
+    usize: number,
+    vsize: number,
+    material: Element,
+    width: number,
+    color?: number,
+    postGUI?: boolean,
+    faceTowardX?: number,
+    faceTowardY?: number,
+    faceTowardZ?: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawPrimitive Wiki, dxDrawPrimitive }
+ * @param pType Type of primitive to be drawn.
+ * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @param vertices Tables representing each primitive vertice, required amount of them is determined by
+ * primitive type.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawPrimitive(
+    pType: string,
+    postGUI: boolean,
+    vertice1: LuaTable,
+    vertice2?: LuaTable,
+    ...varargs: any[]
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+ * @noSelf
+ */
+export declare function dxGetTexturePixels(
+    texture: Element,
+    x?: number,
+    y?: number,
+    width?: number,
+    height?: number
+): string;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetRenderTarget Wiki, dxSetRenderTarget }
+ * @param renderTarget The render target element whose pixels we want to draw on.
+ * @param clear If set to true, the render target will also be cleared.
+ * @return returns true if the render target was successfully changed, false otherwise.
+ * @noSelf
+ */
+export declare function dxSetRenderTarget(
+    renderTarget?: Element,
+    clear?: boolean
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+ * @noSelf
+ */
+export declare function dxSetTexturePixels(
+    texture: Element,
+    pixels: string,
+    x?: number,
+    y?: number,
+    width?: number,
+    height?: number
+): boolean;
+
+/**
+ * Differing from dxDrawImage, this function only draws a part of an image on the screen for
+ * a single frame. In order for the image to stay visible continuously, you need to call
+ * this function with the same parameters on each frame update (see onClientRender).
+ * Image files should ideally have dimensions that are a power of two, to prevent possible
+ * blurring.<br/>
+ * <b>Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...</b>
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawImageSection Wiki, dxDrawImageSection }
+ * @param posX the absolute X coordinate of the top left corner of the image
+ * @param posY the absolute Y coordinate of the top left corner of the image
+ * @param width the absolute width of the image
+ * @param height the absolute height of the image
+ * @param u the absolute X coordinate of the top left corner of the section which should be drawn
+ * from image
+ * @param v the absolute Y coordinate of the top left corner of the section which should be drawn
+ * from image
+ * @param usize the absolute width of the image section
+ * @param vsize the absolute height of the image section
+ * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
+ * images are also supported). Image files should ideally have dimensions that are a power
+ * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
+ * up drawing.
+ * @param rotation the rotation, in degrees for the image.
+ * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
+ * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
+ * @param color the color of the image, a value produced by tocolor or hexadecimal number in format:
+ * 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
+ * @param postgui A bool representing whether the image should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawImageSection(
+    posX: number,
+    posY: number,
+    width: number,
+    height: number,
+    u: number,
+    v: number,
+    usize: number,
+    vsize: number,
+    image: any,
+    rotation?: number,
+    rotationCenterOffsetX?: number,
+    rotationCenterOffsetY?: number,
+    color?: number,
+    postGUI?: boolean
+): boolean;
+
+/**
+ * Draws a string of text on the screen for one frame. In order for the text to stay visible
+ * continuously, you need to call this function with the same parameters on each frame
+ * update (see onClientRender).
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawText Wiki, dxDrawText }
+ * @param text the text to draw
+ * @param leftX the absolute X coordinate of the top left corner of the text
+ * @param topY the absolute Y coordinate of the top left corner of the text
+ * @param rightX the absolute X coordinate of the right side of the text bounding box. Used for text
+ * aligning, clipping and word breaking.
+ * @param bottomY the absolute Y coordinate of the bottom side of the text bounding box. Used for text
+ * aligning, clipping and word breaking.
+ * @param color the color of the text, a value produced by tocolor or 0xAARRGGBB (AA = alpha, RR = red,
+ * GG = green, BB = blue).
+ * @param scale the size of the text.{{New feature|3.0110|1.1|scale: can (optionally) be specified as two
+ * floats. i.e. scaleX, scaleY}}
+ * @param font Either a custom DX font element or the name of a built-in DX font: Note: Some fonts are
+ * incompatible with certain languages such as Arabic.
+ * @param alignX horizontal alignment of the text within the bounding box. Can be left, center or right.
+ * @param alignY vertical alignment of the text within the bounding box. Can be top, center or bottom.
+ * @param clip if set to true, the parts of the text that dont fit within the bounding box will be cut
+ * off.
+ * @param wordBreak if set to true, the text will wrap to a new line whenever it reaches the right side of
+ * the bounding box. If false, the text will always be completely on one line.
+ * @param postGUI A bool representing whether the text should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @param colorCoded Set to true to enable embedded #FFFFFF color codes. Note: clip and wordBreak are forced
+ * false if this is set.
+ * @param subPixelPositioning A bool representing whether the text can be positioned sub-pixel-ly. Looks nicer for
+ * moving/scaling animations.
+ * @param fRotation Rotation
+ * @param fRotationCenterX Rotation Origin X
+ * @param fRotationCenterY Rotation Origin Y
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawText(
+    text: string,
+    leftX: number,
+    topY: number,
+    rightX?: number,
+    bottomY?: number,
+    color?: number,
+    scaleXY?: number,
+    scaleY?: number,
+    font?: any,
+    alignX?: string,
+    alignY?: string,
+    clip?: boolean,
+    wordBreak?: boolean,
+    postGUI?: boolean,
+    colorCoded?: boolean,
+    subPixelPositioning?: boolean,
+    fRotation?: number,
+    fRotationCenterX?: number,
+    fRotationCenterY?: number
+): boolean;
+
+/**
+ * Draws an image on the screen for a single frame. In order for the image to stay visible
+ * continuously, you need to call this function with the same parameters on each frame
+ * update (see onClientRender).<br/>
+ * Image files should ideally have dimensions that are a power of two, to prevent possible
+ * blurring.<br/>
+ * <b>Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...</b>
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawImage Wiki, dxDrawImage }
+ * @param posX the absolute X coordinate of the top left corner of the image
+ * @param posY the absolute Y coordinate of the top left corner of the image
+ * @param width the absolute width of the image
+ * @param height the absolute height of the image
+ * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
+ * images are also supported). Image files should ideally have dimensions that are a power
+ * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
+ * up drawing.
+ * @param rotation the rotation, in degrees for the image.
+ * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
+ * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
+ * @param color Tints the image with a value produced by tocolor or hexadecimal number in format:
+ * 0xAARRGGBB (RR = red, GG = green, BB = blue, AA = alpha).
+ * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawImage(
+    posX: number,
+    posY: number,
+    width: number,
+    height: number,
+    image: any,
+    rotation?: number,
+    rotationCenterOffsetX?: number,
+    rotationCenterOffsetY?: number,
+    color?: number,
+    postGUI?: boolean
+): boolean;
+
+/**
+ * If image file is used, it should ideally have dimensions that are a power of two, to
+ * prevent possible blurring.
+ * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...}}
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive Wiki, dxDrawMaterialPrimitive }
+ * @param pType Type of primitive to be drawn.
+ * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
+ * images are also supported). Image files should ideally have dimensions that are a power
+ * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
+ * up drawing.
+ * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @param vertices Tables representing each primitive vertice, required amount of them is determined by
+ * primitive type.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawMaterialPrimitive(
+    pType: PrimitiveType,
+    material: any,
+    postGUI: boolean,
+    vertice1: LuaTable,
+    vertice2?: LuaTable,
+    ...varargs: any[]
+): boolean;
+
+/**
+ * NOTE: This function already takes the clients screen resolution into account.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTextSize Wiki, dxGetTextSize }
+ * @param text A string representing the text for which you wish to retrieve with width for.
+ * @param width The width of the text. Use with wordBreak = true.
+ * @param scaleX The scale of the text. Scale can also be inputted as a Vector2.
+ * @param scaleY The scale of the text.
+ * @param font Either a custom DX font element or the name of a built-in dx font:
+ * @param wordBreak If set to true, the text will wrap to a new line whenever it reaches the right side of
+ * the bounding box. If false, the text will always be completely on one line.
+ * @param colorCoded Should we exclude color codes from the width? False will include the hex in the length.
+ * Returns two floats representing the width and height of the text in pixels.
+ * @return returns two floats representing the width and height of the text in pixels.
+ * @noSelf
+ */
+export declare function dxGetTextSize(
+    text: string,
+    width?: number,
+    scaleXY?: number,
+    scaleY?: number,
+    font?: any,
+    wordBreak?: boolean,
+    colorCoded?: boolean
+): LuaMultiReturn<[
+    number,
+    number
+]>;
+
+/**
+ * This function allows for the positioning of dxDraw calls to be automatically adjusted
+ * according to the clients aspect ratio setting.  This lasts for a single execution of an
+ * event handler for one of the following events: onClientRender, onClientPreRender and
+ * onClientHUDRender. So the function has to be called every frame, just like dxDraws.
+ * This is particularly useful for draws that must align with the GTA HUD, for which the
+ * sizing and positioning can vary for different aspect ratios.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetAspectRatioAdjustmentEnabled Wiki, dxSetAspectRatioAdjustmentEnabled }
+ * @param bEnabled : Should the adjustment be enabled or disabled.
+ * @param sourceRatio This should be set to the aspect ratio the dxDraws were originally designed in.
+ * @return returns true when it was changed successfully, or false otherwise.
+ * @noSelf
+ */
+export declare function dxSetAspectRatioAdjustmentEnabled(
+    bEnabled: boolean,
+    sourceRatio?: number
+): boolean;
+
+/**
+ * This function applies a 3D transformation to a shader element when it is drawn with
+ * dxDrawImage.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
+ * @param theShader The shader element whose transformation is to be changed
+ * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
+ * rotate along its width.
+ * @param rotationY Rotation angle in degrees around the Y axis (Up,down). This will make the shader rotate
+ * along its height.
+ * @param rotationZ Rotation angle in degrees around the Z axis (In,out). This will make the shader rotate in
+ * a similar way to the rotation argument in dxDrawImage.
+ * @param rotationCenterOffsetX The center of rotation offset X position in screen relative units.
+ * @param rotationCenterOffsetY The center of rotation offset Y position in screen relative units.
+ * @param rotationCenterOffsetZ The center of rotation offset Z position in screen relative units.
+ * @param bRotationCenterOffsetOriginIsScreen Set to boolean|true if the center of rotation origin should be the center of the screen
+ * rather than the center of the image.
+ * @param perspectiveCenterOffsetX The center of perspective offset X position in screen relative units.
+ * @param perspectiveCenterOffsetY The center of perspective offset Y position in screen relative units.
+ * @param bPerspectiveCenterOffsetOriginIsScreen Set to boolean|true if the center of perspective origin should be the center of the
+ * screen rather than the center of the image.
+ * To convert screen relative units into screen pixel coordinates, ''multiply'' by the
+ * screen size. Conversely, to convert screen pixel coordinates to screen relative units,
+ * '''''divide''''' by the screen size.
+ * @return returns true if the shader elements transform was successfully changed, false otherwise.
+ * @noSelf
+ */
+export declare function dxSetShaderTransform(
+    theShader: Element,
+    rotationX: number,
+    rotationY: number,
+    rotationZ: number,
+    rotationCenterOffsetX?: number,
+    rotationCenterOffsetY?: number,
+    rotationCenterOffsetZ?: number,
+    bRotationCenterOffsetOriginIsScreen?: boolean,
+    perspectiveCenterOffsetX?: number,
+    perspectiveCenterOffsetY?: number,
+    bPerspectiveCenterOffsetOriginIsScreen?: boolean
+): boolean;
+
+/**
+ * This function converts Texture_pixels|pixels from one format to another.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxConvertPixels Wiki, dxConvertPixels }
+ * @param pixels The pixels to convert the format of
+ * @param newFormat The new format required (plain or png or jpeg)
+ * @param quality The quality of the returned pixels if the new format is jpeg
+ * @return returns a copy of the pixels in the new format, or false if invalid arguments were passed
+ * to the function.
+ * @noSelf
+ */
+export declare function dxConvertPixels(
+    pixels: string,
+    newFormat: string,
+    quality?: number
+): string;
 
 /**
  * This function creates a render target element, which is a special type of texture that
@@ -267,127 +662,26 @@ export declare function dxCreateTexture(
 ): Element;
 
 /**
- * <lowercasetitle/>
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawCircle Wiki, dxDrawCircle }
- * @param posX : An integer representing the absolute X position of the circle center, represented by
- * pixels on the screen.
- * @param posY : An integer representing the absolute Y position of the circle center, represented by
- * pixels on the screen.
- * @param radius : An integer representing the radius scale of the circle that is being drawn.
- * @param startAngle : An integer representing the angle of the first point of the circle.
- * @param stopAngle : An integer representing the angle of the last point of the circle.
- * @param theColor : An integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
- * red, GG = green, BB = blue).
- * @param theCenterColor : An integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
- * red, GG = green, BB = blue).
- * @param segments : An integer ranging from 3-1024 representing how many triangles are used to form the
- * circle, more segments = smoother circle. Note: using lots of segments may cause lag.
- * @param ratio : Ratio between width and height, e.g: 2 would mean that the width of the circle is 2
- * times the height.
- * @param postGUI : A bool representing whether the circle should be drawn on top of or behind any ingame
- * GUI (rendered by CEGUI).
- * @return returns true if the creation of the 2d circle was successful, false otherwise.
+ * This function drawn same sphere as /showcol. It provides 4 levels of iterations which
+ * mean density of sphere. Adjust radius to iterations to get optimum density of mesh. About
+ * 50 spheres with iterations = 4 can cause fps drop.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawWiredSphere Wiki, dxDrawWiredSphere }
+ * @param x, y, z A position in world of sphere.
+ * @param radius A radius of sphere.
+ * @param theColor A color of sphere from tocolor function.
+ * @param fLineWidth A width of line
+ * @param iterations Number 1, 2, 3 or 4. 1 mean low density, 4 mean high.
+ * @return returns a true if the operation was successful, false otherwise.
  * @noSelf
  */
-export declare function dxDrawCircle(
-    posX: number,
-    posY: number,
+export declare function dxDrawWiredSphere(
+    x: number,
+    y: number,
+    z: number,
     radius: number,
-    startAngle?: number,
-    stopAngle?: number,
-    theColor?: number,
-    theCenterColor?: number,
-    segments?: number,
-    ratio?: number,
-    postGUI?: boolean
-): boolean;
-
-/**
- * Draws an image on the screen for a single frame. In order for the image to stay visible
- * continuously, you need to call this function with the same parameters on each frame
- * update (see onClientRender).<br/>
- * Image files should ideally have dimensions that are a power of two, to prevent possible
- * blurring.<br/>
- * <b>Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...</b>
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawImage Wiki, dxDrawImage }
- * @param posX the absolute X coordinate of the top left corner of the image
- * @param posY the absolute Y coordinate of the top left corner of the image
- * @param width the absolute width of the image
- * @param height the absolute height of the image
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
- * images are also supported). Image files should ideally have dimensions that are a power
- * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
- * up drawing.
- * @param rotation the rotation, in degrees for the image.
- * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
- * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
- * @param color Tints the image with a value produced by tocolor or hexadecimal number in format:
- * 0xAARRGGBB (RR = red, GG = green, BB = blue, AA = alpha).
- * @param postGUI A bool representing whether the image should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawImage(
-    posX: number,
-    posY: number,
-    width: number,
-    height: number,
-    image: any,
-    rotation?: number,
-    rotationCenterOffsetX?: number,
-    rotationCenterOffsetY?: number,
-    color?: number,
-    postGUI?: boolean
-): boolean;
-
-/**
- * Differing from dxDrawImage, this function only draws a part of an image on the screen for
- * a single frame. In order for the image to stay visible continuously, you need to call
- * this function with the same parameters on each frame update (see onClientRender).
- * Image files should ideally have dimensions that are a power of two, to prevent possible
- * blurring.<br/>
- * <b>Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...</b>
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawImageSection Wiki, dxDrawImageSection }
- * @param posX the absolute X coordinate of the top left corner of the image
- * @param posY the absolute Y coordinate of the top left corner of the image
- * @param width the absolute width of the image
- * @param height the absolute height of the image
- * @param u the absolute X coordinate of the top left corner of the section which should be drawn
- * from image
- * @param v the absolute Y coordinate of the top left corner of the section which should be drawn
- * from image
- * @param usize the absolute width of the image section
- * @param vsize the absolute height of the image section
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
- * images are also supported). Image files should ideally have dimensions that are a power
- * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
- * up drawing.
- * @param rotation the rotation, in degrees for the image.
- * @param rotationCenterOffsetX the absolute X offset from the image center for which to rotate the image from.
- * @param rotationCenterOffsetY the absolute Y offset from the image center for which to rotate the image from.
- * @param color the color of the image, a value produced by tocolor or hexadecimal number in format:
- * 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
- * @param postgui A bool representing whether the image should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawImageSection(
-    posX: number,
-    posY: number,
-    width: number,
-    height: number,
-    u: number,
-    v: number,
-    usize: number,
-    vsize: number,
-    image: any,
-    rotation?: number,
-    rotationCenterOffsetX?: number,
-    rotationCenterOffsetY?: number,
-    color?: number,
-    postGUI?: boolean
+    theColor: number,
+    fLineWidth: number,
+    iterations: number
 ): boolean;
 
 /**
@@ -422,6 +716,35 @@ export declare function dxDrawLine(
 ): boolean;
 
 /**
+ * This function draws a 2D rectangle across the screen - rendered for one frame. This
+ * should be used in conjunction with onClientRender in order to display continuously.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawRectangle Wiki, dxDrawRectangle }
+ * @param startX An float representing the absolute origin X position of the rectangle, represented by
+ * pixels on the screen.
+ * @param startY An float representing the absolute origin Y position of the rectangle, represented by
+ * pixels on the screen.
+ * @param width An float representing the width of the rectangle, drawn in a right direction from the
+ * origin.
+ * @param height An float representing the height of the rectangle, drawn in a downwards direction from
+ * the origin.
+ * @param color the hex color of the rectangle, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
+ * red, GG = green, BB = blue).
+ * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI.
+ * @param subPixelPositioning A bool representing whether the rectangle can be positioned sub-pixel-ly.
+ * @return returns true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawRectangle(
+    startX: number,
+    startY: number,
+    width: number,
+    height: number,
+    color?: number,
+    postGUI?: boolean,
+    subPixelPositioning?: boolean
+): boolean;
+
+/**
  * This function draws a 3D line between two points in the 3D world - rendered for one
  * frame.  This should be used in conjunction with onClientRender in order to display
  * continuously.
@@ -451,6 +774,71 @@ export declare function dxDrawLine3D(
     color?: number,
     width?: number,
     postGUI?: boolean
+): boolean;
+
+/**
+ * This function draws a 3D primitive in the 3D world - rendered for one frame.  This should
+ * be used in conjunction with onClientRender in order to display continuously.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawPrimitive3D Wiki, dxDrawPrimitive3D }
+ * @param primitiveType The type of primitive to be drawn. This could be:
+ * "pointlist"
+ * "linelist"
+ * "linestrip"
+ * "trianglefan"
+ * "trianglelist"
+ * "trianglestrip"
+ * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @param vertex1 A table with the coordinates of the vertex plus its color.
+ * @param vertex2 A table with the coordinates of the vertex plus its color.
+ * @param vertex3 A table with the coordinates of the vertex plus its color.
+ * The vertex should be passed like this:
+ * <syntaxhighlight lang="lua">
+ * {x, y, z, color}
+ * </syntaxhighlight>
+ * @param vertexN A table with the coordinates of the vertex plus its color. You can add as much as you
+ * want.
+ * Returns a ''true'' if the operation was successful, ''false'' otherwise.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawPrimitive3D(
+    primitiveType: string,
+    postGUI: boolean,
+    vertex1: LuaTable,
+    vertex2: LuaTable,
+    vertex3: LuaTable,
+    vertex4?: LuaTable,
+    ...varargs: any[]
+): boolean;
+
+/**
+ * This function draws a 3D primitive shape with material applied to it in the 3D world -
+ * rendered for one frame. This should be used in conjunction with onClientRender in order
+ * to display continuously.
+ * If image file is used, it should ideally have dimensions that are a power of two, to
+ * prevent possible blurring.
+ * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive3D Wiki, dxDrawMaterialPrimitive3D }
+ * @param pType Type of primitive to be drawn.
+ * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
+ * images are also supported). Image files should ideally have dimensions that are a power
+ * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
+ * up drawing.
+ * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
+ * (rendered by CEGUI).
+ * @param vertices Tables representing each primitive vertice, required amount of them is determined by
+ * primitive type.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function dxDrawMaterialPrimitive3D(
+    pType: PrimitiveType,
+    material: any,
+    postGUI: boolean,
+    vertice1: LuaTable,
+    vertice2?: LuaTable,
+    ...varargs: any[]
 ): boolean;
 
 /**
@@ -495,81 +883,6 @@ export declare function dxDrawMaterialLine3D(
     faceTowardX?: number,
     faceTowardY?: number,
     faceTowardZ?: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
- * @noSelf
- */
-export declare function dxDrawMaterialLine3D(
-    startX: number,
-    startY: number,
-    startZ: number,
-    endX: number,
-    endY: number,
-    endZ: number,
-    material: Element,
-    width: number,
-    color?: number,
-    postGUI?: boolean,
-    faceTowardX?: number,
-    faceTowardY?: number,
-    faceTowardZ?: number
-): boolean;
-
-/**
- * If image file is used, it should ideally have dimensions that are a power of two, to
- * prevent possible blurring.
- * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...}}
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive Wiki, dxDrawMaterialPrimitive }
- * @param pType Type of primitive to be drawn.
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
- * images are also supported). Image files should ideally have dimensions that are a power
- * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
- * up drawing.
- * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @param vertices Tables representing each primitive vertice, required amount of them is determined by
- * primitive type.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawMaterialPrimitive(
-    pType: PrimitiveType,
-    material: any,
-    postGUI: boolean,
-    vertice1: LuaTable,
-    vertice2?: LuaTable,
-    ...varargs: any[]
-): boolean;
-
-/**
- * This function draws a 3D primitive shape with material applied to it in the 3D world -
- * rendered for one frame. This should be used in conjunction with onClientRender in order
- * to display continuously.
- * If image file is used, it should ideally have dimensions that are a power of two, to
- * prevent possible blurring.
- * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive3D Wiki, dxDrawMaterialPrimitive3D }
- * @param pType Type of primitive to be drawn.
- * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
- * images are also supported). Image files should ideally have dimensions that are a power
- * of two, to prevent possible blurring. Use a texture created with dxCreateTexture to speed
- * up drawing.
- * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @param vertices Tables representing each primitive vertice, required amount of them is determined by
- * primitive type.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawMaterialPrimitive3D(
-    pType: PrimitiveType,
-    material: any,
-    postGUI: boolean,
-    vertice1: LuaTable,
-    vertice2?: LuaTable,
-    ...varargs: any[]
 ): boolean;
 
 /**
@@ -622,287 +935,33 @@ export declare function dxDrawMaterialSectionLine3D(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
- * @noSelf
- */
-export declare function dxDrawMaterialSectionLine3D(
-    startX: number,
-    startY: number,
-    startZ: number,
-    endX: number,
-    endY: number,
-    endZ: number,
-    u: number,
-    v: number,
-    usize: number,
-    vsize: number,
-    material: Element,
-    width: number,
-    color?: number,
-    postGUI?: boolean,
-    faceTowardX?: number,
-    faceTowardY?: number,
-    faceTowardZ?: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawPrimitive Wiki, dxDrawPrimitive }
- * @param pType Type of primitive to be drawn.
- * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @param vertices Tables representing each primitive vertice, required amount of them is determined by
- * primitive type.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawPrimitive(
-    pType: string,
-    postGUI: boolean,
-    vertice1: LuaTable,
-    vertice2?: LuaTable,
-    ...varargs: any[]
-): boolean;
-
-/**
- * This function draws a 3D primitive in the 3D world - rendered for one frame.  This should
- * be used in conjunction with onClientRender in order to display continuously.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawPrimitive3D Wiki, dxDrawPrimitive3D }
- * @param primitiveType The type of primitive to be drawn. This could be:
- * "pointlist"
- * "linelist"
- * "linestrip"
- * "trianglefan"
- * "trianglelist"
- * "trianglestrip"
- * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @param vertex1 A table with the coordinates of the vertex plus its color.
- * @param vertex2 A table with the coordinates of the vertex plus its color.
- * @param vertex3 A table with the coordinates of the vertex plus its color.
- * The vertex should be passed like this:
- * <syntaxhighlight lang="lua">
- * {x, y, z, color}
- * </syntaxhighlight>
- * @param vertexN A table with the coordinates of the vertex plus its color. You can add as much as you
- * want.
- * Returns a ''true'' if the operation was successful, ''false'' otherwise.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawPrimitive3D(
-    primitiveType: string,
-    postGUI: boolean,
-    vertex1: LuaTable,
-    vertex2: LuaTable,
-    vertex3: LuaTable,
-    vertex4?: LuaTable,
-    ...varargs: any[]
-): boolean;
-
-/**
- * This function draws a 2D rectangle across the screen - rendered for one frame. This
- * should be used in conjunction with onClientRender in order to display continuously.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawRectangle Wiki, dxDrawRectangle }
- * @param startX An float representing the absolute origin X position of the rectangle, represented by
- * pixels on the screen.
- * @param startY An float representing the absolute origin Y position of the rectangle, represented by
- * pixels on the screen.
- * @param width An float representing the width of the rectangle, drawn in a right direction from the
- * origin.
- * @param height An float representing the height of the rectangle, drawn in a downwards direction from
- * the origin.
- * @param color the hex color of the rectangle, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
- * red, GG = green, BB = blue).
- * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI.
- * @param subPixelPositioning A bool representing whether the rectangle can be positioned sub-pixel-ly.
- * @return returns true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawRectangle(
-    startX: number,
-    startY: number,
-    width: number,
-    height: number,
-    color?: number,
-    postGUI?: boolean,
-    subPixelPositioning?: boolean
-): boolean;
-
-/**
- * Draws a string of text on the screen for one frame. In order for the text to stay visible
- * continuously, you need to call this function with the same parameters on each frame
- * update (see onClientRender).
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawText Wiki, dxDrawText }
- * @param text the text to draw
- * @param leftX the absolute X coordinate of the top left corner of the text
- * @param topY the absolute Y coordinate of the top left corner of the text
- * @param rightX the absolute X coordinate of the right side of the text bounding box. Used for text
- * aligning, clipping and word breaking.
- * @param bottomY the absolute Y coordinate of the bottom side of the text bounding box. Used for text
- * aligning, clipping and word breaking.
- * @param color the color of the text, a value produced by tocolor or 0xAARRGGBB (AA = alpha, RR = red,
- * GG = green, BB = blue).
- * @param scale the size of the text.{{New feature|3.0110|1.1|scale: can (optionally) be specified as two
- * floats. i.e. scaleX, scaleY}}
- * @param font Either a custom DX font element or the name of a built-in DX font: Note: Some fonts are
- * incompatible with certain languages such as Arabic.
- * @param alignX horizontal alignment of the text within the bounding box. Can be left, center or right.
- * @param alignY vertical alignment of the text within the bounding box. Can be top, center or bottom.
- * @param clip if set to true, the parts of the text that dont fit within the bounding box will be cut
- * off.
- * @param wordBreak if set to true, the text will wrap to a new line whenever it reaches the right side of
- * the bounding box. If false, the text will always be completely on one line.
- * @param postGUI A bool representing whether the text should be drawn on top of or behind any ingame GUI
- * (rendered by CEGUI).
- * @param colorCoded Set to true to enable embedded #FFFFFF color codes. Note: clip and wordBreak are forced
- * false if this is set.
- * @param subPixelPositioning A bool representing whether the text can be positioned sub-pixel-ly. Looks nicer for
- * moving/scaling animations.
- * @param fRotation Rotation
- * @param fRotationCenterX Rotation Origin X
- * @param fRotationCenterY Rotation Origin Y
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawText(
-    text: string,
-    leftX: number,
-    topY: number,
-    rightX?: number,
-    bottomY?: number,
-    color?: number,
-    scaleXY?: number,
-    scaleY?: number,
-    font?: any,
-    alignX?: string,
-    alignY?: string,
-    clip?: boolean,
-    wordBreak?: boolean,
-    postGUI?: boolean,
-    colorCoded?: boolean,
-    subPixelPositioning?: boolean,
-    fRotation?: number,
-    fRotationCenterX?: number,
-    fRotationCenterY?: number
-): boolean;
-
-/**
- * This function drawn same sphere as /showcol. It provides 4 levels of iterations which
- * mean density of sphere. Adjust radius to iterations to get optimum density of mesh. About
- * 50 spheres with iterations = 4 can cause fps drop.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawWiredSphere Wiki, dxDrawWiredSphere }
- * @param x, y, z A position in world of sphere.
- * @param radius A radius of sphere.
- * @param theColor A color of sphere from tocolor function.
- * @param fLineWidth A width of line
- * @param iterations Number 1, 2, 3 or 4. 1 mean low density, 4 mean high.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function dxDrawWiredSphere(
-    x: number,
-    y: number,
-    z: number,
-    radius: number,
-    theColor: number,
-    fLineWidth: number,
-    iterations: number
-): boolean;
-
-/**
- * This function returns the current blend mode for the dxDraw functions. The blend mode is
- * set using dxSetBlendMode
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetBlendMode Wiki, dxGetBlendMode }
- * @return returns the current blend mode, which can be one of:
- * *blend
- * *add
- * *modulate_add
- * *overwrite
- * @noSelf
- */
-export declare function dxGetBlendMode(): string;
-
-/**
- * This function retrieves the theoretical height of a certain piece of text, if it were to
- * be drawn using dxDrawText.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetFontHeight Wiki, dxGetFontHeight }
- * @param scale The size of the text.
- * @param font Either a custom DX font element or the name of a built-in dx font:
- * @return returns an integer of the height of the text.
- * @noSelf
- */
-export declare function dxGetFontHeight(
-    scale?: number,
-    font?: any
-): number;
-
-/**
- * This gets the dimensions of the supplied material element.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetMaterialSize Wiki, dxGetMaterialSize }
- * @param material The material element whose size is to be gotten
- * @return returns two ints representing the width and height in pixels of the material, or false if
- * an invalid parameter was passed to the function.
- * if the material is a volume texture, this function will return three ints representing
- * the width, height and depth.
- * @noSelf
- */
-export declare function dxGetMaterialSize(
-    material: Element
-): LuaMultiReturn<[
-    number,
-    number,
-    number | undefined
-]>;
-
-/**
- * This function gets the color of a single pixel from Texture_pixels|pixels contained in a
- * string. It only works with plain format pixels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelColor Wiki, dxGetPixelColor }
- * @param pixels The pixels to use
- * @param x The X coordinate for the pixel
- * @param y The Y coordinate for the pixel
- * @return returns 4 ints representing the rgba color value of the pixel if succesful, or false if
- * invalid arguments were passed to the function.
- * @noSelf
- */
-export declare function dxGetPixelColor(
-    pixels: string,
-    x: number,
-    y: number
-): LuaMultiReturn<[
-    number,
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function returns the format of Texture_pixels|pixels contained in a string.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelsFormat Wiki, dxGetPixelsFormat }
- * @param pixels The pixels to get the format of
- * @return returns the format of the pixels if successful (plain or png or jpeg), false if invalid
- * arguments were passed to the function.
- * @noSelf
- */
-export declare function dxGetPixelsFormat(
-    pixels: string
-): string;
-
-/**
- * This function gets the dimensions of Texture_pixels|pixels contained in a string. It
- * works with all pixel formats.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelsSize Wiki, dxGetPixelsSize }
- * @param pixels The pixels to get the dimensions of
- * @return returns width and height of the pixels if successful, false if invalid arguments were
+ * This function fetches the Texture_pixels|pixels from a texture element. It can be used
+ * with a standard texture, render target or screen source.
+ * *This function is slow and not something you want to be doing once a frame.
+ * *It is slower when reading pixels from a render target or screen source.
+ * *And is very slow indeed if the texture format is not  argb .
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+ * @param texture The texture element to get the pixels from
+ * @param surfaceIndex Desired slice to get if the texture is a volume texture, or desired face to get if the
+ * texture is a cube map. <nowiki>(Cube map faces: 0=+X 1=-X 2=+Y 3=-Y 4=+Z 5=-Z)</nowiki>
+ * By default the pixels from the whole texture is returned. To get only a portion of the
+ * texture, define a rectangular area using all four of these optional arguments:
+ * @param x Rectangle left position
+ * @param y Rectangle top position
+ * @param width Rectangle width
+ * @param height Rectangle height
+ * @return returns a plain format pixels string if successful, false if invalid arguments were
  * passed to the function.
  * @noSelf
  */
-export declare function dxGetPixelsSize(
-    pixels: string
-): LuaMultiReturn<[
-    number,
-    number
-]>;
+export declare function dxGetTexturePixels(
+    surfaceIndex: number,
+    texture: Element,
+    x?: number,
+    y?: number,
+    width?: number,
+    height?: number
+): string;
 
 /**
  * This function gets information about various internal datum
@@ -950,73 +1009,86 @@ export declare function dxGetPixelsSize(
 export declare function dxGetStatus(): LuaTable;
 
 /**
- * NOTE: This function already takes the clients screen resolution into account.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTextSize Wiki, dxGetTextSize }
- * @param text A string representing the text for which you wish to retrieve with width for.
- * @param width The width of the text. Use with wordBreak = true.
- * @param scaleX The scale of the text. Scale can also be inputted as a Vector2.
- * @param scaleY The scale of the text.
- * @param font Either a custom DX font element or the name of a built-in dx font:
- * @param wordBreak If set to true, the text will wrap to a new line whenever it reaches the right side of
- * the bounding box. If false, the text will always be completely on one line.
- * @param colorCoded Should we exclude color codes from the width? False will include the hex in the length.
- * Returns two floats representing the width and height of the text in pixels.
- * @return returns two floats representing the width and height of the text in pixels.
+ * This function gets the color of a single pixel from Texture_pixels|pixels contained in a
+ * string. It only works with plain format pixels.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelColor Wiki, dxGetPixelColor }
+ * @param pixels The pixels to use
+ * @param x The X coordinate for the pixel
+ * @param y The Y coordinate for the pixel
+ * @return returns 4 ints representing the rgba color value of the pixel if succesful, or false if
+ * invalid arguments were passed to the function.
  * @noSelf
  */
-export declare function dxGetTextSize(
-    text: string,
-    width?: number,
-    scaleXY?: number,
-    scaleY?: number,
-    font?: any,
-    wordBreak?: boolean,
-    colorCoded?: boolean
+export declare function dxGetPixelColor(
+    pixels: string,
+    x: number,
+    y: number
+): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function gets the current aspect ratio set by dxSetAspectRatioAdjustmentEnabled.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxIsAspectRatioAdjustmentEnabled Wiki, dxIsAspectRatioAdjustmentEnabled }
+ * @return *boolean: returns true when enabled by dxsetaspectratioadjustmentenabled, false otherwise.
+ * *float: aspect ratio set by dxsetaspectratioadjustmentenabled
+ * @noSelf
+ */
+export declare function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[
+    boolean,
+    number
+]>;
+
+/**
+ * This function gets the dimensions of Texture_pixels|pixels contained in a string. It
+ * works with all pixel formats.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelsSize Wiki, dxGetPixelsSize }
+ * @param pixels The pixels to get the dimensions of
+ * @return returns width and height of the pixels if successful, false if invalid arguments were
+ * passed to the function.
+ * @noSelf
+ */
+export declare function dxGetPixelsSize(
+    pixels: string
 ): LuaMultiReturn<[
     number,
     number
 ]>;
 
 /**
- * This function fetches the Texture_pixels|pixels from a texture element. It can be used
- * with a standard texture, render target or screen source.
- * *This function is slow and not something you want to be doing once a frame.
- * *It is slower when reading pixels from a render target or screen source.
- * *And is very slow indeed if the texture format is not  argb .
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
- * @param texture The texture element to get the pixels from
- * @param surfaceIndex Desired slice to get if the texture is a volume texture, or desired face to get if the
- * texture is a cube map. <nowiki>(Cube map faces: 0=+X 1=-X 2=+Y 3=-Y 4=+Z 5=-Z)</nowiki>
- * By default the pixels from the whole texture is returned. To get only a portion of the
- * texture, define a rectangular area using all four of these optional arguments:
- * @param x Rectangle left position
- * @param y Rectangle top position
- * @param width Rectangle width
- * @param height Rectangle height
- * @return returns a plain format pixels string if successful, false if invalid arguments were
- * passed to the function.
+ * This function is used for testing scripts written using guiCreateFont, dxCreateFont,
+ * dxCreateShader and dxCreateRenderTarget.
+ * Each one of the 3 test modes should be used in turn to help highlight any potential
+ * problems.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTestMode Wiki, dxSetTestMode }
+ * @param testMode The test mode to be set. It can be one of the following values:
+ * @param none Test mode disabled
+ * @param no_mem Simulate no free video memory available for MTA.
+ * @param low_mem Simulate little free video memory available for MTA.
+ * @param no_shader Simulate shaders failing validation.
+ * @return returns true if the test mode was successfully set, false otherwise.
  * @noSelf
  */
-export declare function dxGetTexturePixels(
-    surfaceIndex: number,
-    texture: Element,
-    x?: number,
-    y?: number,
-    width?: number,
-    height?: number
-): string;
+export declare function dxSetTestMode(
+    testMode: string
+): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+ * This function retrieves the theoretical height of a certain piece of text, if it were to
+ * be drawn using dxDrawText.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetFontHeight Wiki, dxGetFontHeight }
+ * @param scale The size of the text.
+ * @param font Either a custom DX font element or the name of a built-in dx font:
+ * @return returns an integer of the height of the text.
  * @noSelf
  */
-export declare function dxGetTexturePixels(
-    texture: Element,
-    x?: number,
-    y?: number,
-    width?: number,
-    height?: number
-): string;
+export declare function dxGetFontHeight(
+    scale?: number,
+    font?: any
+): number;
 
 /**
  * This function retrieves the theoretical width (in pixels) of a certain piece of text, if
@@ -1039,198 +1111,29 @@ export declare function dxGetTextWidth(
 ): number;
 
 /**
- * This function gets the current aspect ratio set by dxSetAspectRatioAdjustmentEnabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxIsAspectRatioAdjustmentEnabled Wiki, dxIsAspectRatioAdjustmentEnabled }
- * @return *boolean: returns true when enabled by dxsetaspectratioadjustmentenabled, false otherwise.
- * *float: aspect ratio set by dxsetaspectratioadjustmentenabled
+ * This function returns the current blend mode for the dxDraw functions. The blend mode is
+ * set using dxSetBlendMode
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetBlendMode Wiki, dxGetBlendMode }
+ * @return returns the current blend mode, which can be one of:
+ * *blend
+ * *add
+ * *modulate_add
+ * *overwrite
  * @noSelf
  */
-export declare function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[
-    boolean,
-    number
-]>;
+export declare function dxGetBlendMode(): string;
 
 /**
- * This function allows for the positioning of dxDraw calls to be automatically adjusted
- * according to the clients aspect ratio setting.  This lasts for a single execution of an
- * event handler for one of the following events: onClientRender, onClientPreRender and
- * onClientHUDRender. So the function has to be called every frame, just like dxDraws.
- * This is particularly useful for draws that must align with the GTA HUD, for which the
- * sizing and positioning can vary for different aspect ratios.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetAspectRatioAdjustmentEnabled Wiki, dxSetAspectRatioAdjustmentEnabled }
- * @param bEnabled : Should the adjustment be enabled or disabled.
- * @param sourceRatio This should be set to the aspect ratio the dxDraws were originally designed in.
- * @return returns true when it was changed successfully, or false otherwise.
+ * This function returns the format of Texture_pixels|pixels contained in a string.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelsFormat Wiki, dxGetPixelsFormat }
+ * @param pixels The pixels to get the format of
+ * @return returns the format of the pixels if successful (plain or png or jpeg), false if invalid
+ * arguments were passed to the function.
  * @noSelf
  */
-export declare function dxSetAspectRatioAdjustmentEnabled(
-    bEnabled: boolean,
-    sourceRatio?: number
-): boolean;
-
-/**
- * This function sets the current blend mode for the dxDraw functions. Changing the blend
- * mode can increase the quality when drawing text or certain other images to a render
- * target. As a general guide use modulate_add when drawing text to a render target, and add
- * when drawing the render target to the screen. Dont forget to restore the default blend at
- * the end - See the example below.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetBlendMode Wiki, dxSetBlendMode }
- * @param blendMode The blend mode to use which can be one of:
- * @param blend The source textures are alpha blended to the screen/render target. This is the default
- * mode for drawing and gives the results we all know and love.
- * @param add The source textures are added to the screen/render target.
- * @param modulate_add The source textures are multiplied by the alpha and then added to the screen/render
- * target.
- * @param overwrite The source textures are overwritten. This can be useful for clearing render targets.
- * @return returns true if successful, or false if invalid arguments were passed to the function.
- * @noSelf
- */
-export declare function dxSetBlendMode(
-    blendMode: string
-): boolean;
-
-/**
- * This function sets the color of a single pixel for Texture_pixels|pixels contained in a
- * string. It only works with plain format pixels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetPixelColor Wiki, dxSetPixelColor }
- * @param pixels The pixels to use
- * @param x The X coordinate for the pixel
- * @param y The Y coordinate for the pixel
- * @param r The red channel for the color (0-255)
- * @param g The green channel for the color (0-255)
- * @param b The blue channel for the color (0-255)
- * @param a The alpha channel for the color (0-255)
- * @return returns true if successful, or false if invalid arguments were passed to the function.
- * @noSelf
- */
-export declare function dxSetPixelColor(
-    pixels: string,
-    x: number,
-    y: number,
-    r: number,
-    g: number,
-    b: number,
-    a?: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetRenderTarget Wiki, dxSetRenderTarget }
- * @param renderTarget The render target element whose pixels we want to draw on.
- * @param clear If set to true, the render target will also be cleared.
- * @return returns true if the render target was successfully changed, false otherwise.
- * @noSelf
- */
-export declare function dxSetRenderTarget(
-    renderTarget?: Element,
-    clear?: boolean
-): boolean;
-
-/**
- * This function sets the amount of geometric sub-division to use when drawing a shader
- * element with dxDrawImage.
- * Using tessellation allows a shader to manipulate the shape of the rendered image at each
- * sub-division boundary.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
- * @param theShader The shader element whose tessellation is to be changed
- * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
- * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
- * @return returns true if the shader elements tessellation was successfully changed, false
- * otherwise.
- * @noSelf
- */
-export declare function dxSetShaderTessellation(
-    theShader: Element,
-    tessellationX: number,
-    tessellationY: number
-): boolean;
-
-/**
- * This function applies a 3D transformation to a shader element when it is drawn with
- * dxDrawImage.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
- * @param theShader The shader element whose transformation is to be changed
- * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
- * rotate along its width.
- * @param rotationY Rotation angle in degrees around the Y axis (Up,down). This will make the shader rotate
- * along its height.
- * @param rotationZ Rotation angle in degrees around the Z axis (In,out). This will make the shader rotate in
- * a similar way to the rotation argument in dxDrawImage.
- * @param rotationCenterOffsetX The center of rotation offset X position in screen relative units.
- * @param rotationCenterOffsetY The center of rotation offset Y position in screen relative units.
- * @param rotationCenterOffsetZ The center of rotation offset Z position in screen relative units.
- * @param bRotationCenterOffsetOriginIsScreen Set to boolean|true if the center of rotation origin should be the center of the screen
- * rather than the center of the image.
- * @param perspectiveCenterOffsetX The center of perspective offset X position in screen relative units.
- * @param perspectiveCenterOffsetY The center of perspective offset Y position in screen relative units.
- * @param bPerspectiveCenterOffsetOriginIsScreen Set to boolean|true if the center of perspective origin should be the center of the
- * screen rather than the center of the image.
- * To convert screen relative units into screen pixel coordinates, ''multiply'' by the
- * screen size. Conversely, to convert screen pixel coordinates to screen relative units,
- * '''''divide''''' by the screen size.
- * @return returns true if the shader elements transform was successfully changed, false otherwise.
- * @noSelf
- */
-export declare function dxSetShaderTransform(
-    theShader: Element,
-    rotationX: number,
-    rotationY: number,
-    rotationZ: number,
-    rotationCenterOffsetX?: number,
-    rotationCenterOffsetY?: number,
-    rotationCenterOffsetZ?: number,
-    bRotationCenterOffsetOriginIsScreen?: boolean,
-    perspectiveCenterOffsetX?: number,
-    perspectiveCenterOffsetY?: number,
-    bPerspectiveCenterOffsetOriginIsScreen?: boolean
-): boolean;
-
-/**
- * This sets a named parameter for a shader element
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
- * @param theShader The shader element whose parameter is to be changed
- * @param parameterName The name of parameter
- * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
- * floats(numbers))
- * @return returns true if the shader elements parameter was successfully changed, false otherwise.
- * @noSelf
- */
-export declare function dxSetShaderValue(
-    theShader: Element,
-    parameterName: string,
-    value: any
-): boolean;
-
-/**
- * This function is used for testing scripts written using guiCreateFont, dxCreateFont,
- * dxCreateShader and dxCreateRenderTarget.
- * Each one of the 3 test modes should be used in turn to help highlight any potential
- * problems.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTestMode Wiki, dxSetTestMode }
- * @param testMode The test mode to be set. It can be one of the following values:
- * @param none Test mode disabled
- * @param no_mem Simulate no free video memory available for MTA.
- * @param low_mem Simulate little free video memory available for MTA.
- * @param no_shader Simulate shaders failing validation.
- * @return returns true if the test mode was successfully set, false otherwise.
- * @noSelf
- */
-export declare function dxSetTestMode(
-    testMode: string
-): boolean;
-
-/**
- * This functions allows you to change the edge handling after creating the texture.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
- * @param theTexture The affected texture
- * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
- * @param border-color If textureEdge is set to border, you are able to define a border color here
- * @noSelf
- */
-export declare function dxSetTextureEdge(
-    theTexture: DxTexture,
-    textureEdge: string,
-    border_color?: number
-): boolean;
+export declare function dxGetPixelsFormat(
+    pixels: string
+): string;
 
 /**
  * This function sets the Texture_pixels|pixels of a texture element. It can be used with a
@@ -1263,16 +1166,67 @@ export declare function dxSetTexturePixels(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+ * This function sets the amount of geometric sub-division to use when drawing a shader
+ * element with dxDrawImage.
+ * Using tessellation allows a shader to manipulate the shape of the rendered image at each
+ * sub-division boundary.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
+ * @param theShader The shader element whose tessellation is to be changed
+ * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
+ * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
+ * @return returns true if the shader elements tessellation was successfully changed, false
+ * otherwise.
  * @noSelf
  */
-export declare function dxSetTexturePixels(
-    texture: Element,
+export declare function dxSetShaderTessellation(
+    theShader: Element,
+    tessellationX: number,
+    tessellationY: number
+): boolean;
+
+/**
+ * This function sets the color of a single pixel for Texture_pixels|pixels contained in a
+ * string. It only works with plain format pixels.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetPixelColor Wiki, dxSetPixelColor }
+ * @param pixels The pixels to use
+ * @param x The X coordinate for the pixel
+ * @param y The Y coordinate for the pixel
+ * @param r The red channel for the color (0-255)
+ * @param g The green channel for the color (0-255)
+ * @param b The blue channel for the color (0-255)
+ * @param a The alpha channel for the color (0-255)
+ * @return returns true if successful, or false if invalid arguments were passed to the function.
+ * @noSelf
+ */
+export declare function dxSetPixelColor(
     pixels: string,
-    x?: number,
-    y?: number,
-    width?: number,
-    height?: number
+    x: number,
+    y: number,
+    r: number,
+    g: number,
+    b: number,
+    a?: number
+): boolean;
+
+/**
+ * This function sets the current blend mode for the dxDraw functions. Changing the blend
+ * mode can increase the quality when drawing text or certain other images to a render
+ * target. As a general guide use modulate_add when drawing text to a render target, and add
+ * when drawing the render target to the screen. Dont forget to restore the default blend at
+ * the end - See the example below.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetBlendMode Wiki, dxSetBlendMode }
+ * @param blendMode The blend mode to use which can be one of:
+ * @param blend The source textures are alpha blended to the screen/render target. This is the default
+ * mode for drawing and gives the results we all know and love.
+ * @param add The source textures are added to the screen/render target.
+ * @param modulate_add The source textures are multiplied by the alpha and then added to the screen/render
+ * target.
+ * @param overwrite The source textures are overwritten. This can be useful for clearing render targets.
+ * @return returns true if successful, or false if invalid arguments were passed to the function.
+ * @noSelf
+ */
+export declare function dxSetBlendMode(
+    blendMode: string
 ): boolean;
 
 /**
@@ -1289,4 +1243,52 @@ export declare function dxSetTexturePixels(
 export declare function dxUpdateScreenSource(
     screenSource: Element,
     resampleNow?: boolean
+): boolean;
+
+/**
+ * This functions allows you to change the edge handling after creating the texture.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
+ * @param theTexture The affected texture
+ * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
+ * @param border-color If textureEdge is set to border, you are able to define a border color here
+ * @noSelf
+ */
+export declare function dxSetTextureEdge(
+    theTexture: DxTexture,
+    textureEdge: string,
+    border_color?: number
+): boolean;
+
+/**
+ * This gets the dimensions of the supplied material element.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxGetMaterialSize Wiki, dxGetMaterialSize }
+ * @param material The material element whose size is to be gotten
+ * @return returns two ints representing the width and height in pixels of the material, or false if
+ * an invalid parameter was passed to the function.
+ * if the material is a volume texture, this function will return three ints representing
+ * the width, height and depth.
+ * @noSelf
+ */
+export declare function dxGetMaterialSize(
+    material: Element
+): LuaMultiReturn<[
+    number,
+    number,
+    number | undefined
+]>;
+
+/**
+ * This sets a named parameter for a shader element
+ * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
+ * @param theShader The shader element whose parameter is to be changed
+ * @param parameterName The name of parameter
+ * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
+ * floats(numbers))
+ * @return returns true if the shader elements parameter was successfully changed, false otherwise.
+ * @noSelf
+ */
+export declare function dxSetShaderValue(
+    theShader: Element,
+    parameterName: string,
+    value: any
 ): boolean;

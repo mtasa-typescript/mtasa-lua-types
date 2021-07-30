@@ -28,12 +28,53 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor connection */
 export class connection {
+    /**
+     * This function escapes arguments in the same way as dbQuery, except dbPrepareString
+     * returns the query string instead of processing the query. This allows you to safely build
+     * complex query strings from component parts and help prevent (one class of) SQL
+     * injection.}}
+     * @see {@link https://wiki.multitheftauto.com/wiki/DbPrepareString Wiki, dbPrepareString }
+     * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
+     * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
+     * make sure they are of the correct type. Also, the number of parameters passed must be
+     * equal to the number of ? characters in the query string.
+     * String parameters are automatically quoted and escaped as required. (If you do not want a
+     * string quoted, use '''??''')
+     * @return returns a prepare sql query string, or false if an error occurred.
+     */
+    prepareString(
+        query: string,
+        param1?: unknown,
+        ...varargs: any[]
+    ): string;
+
+    /**
+     * This function executes a database query using the supplied connection. No result is
+     * returned.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DbExec Wiki, dbExec }
+     * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
+     * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
+     * make sure they are of the correct type. Also, the number of parameters passed must be
+     * equal to the number of ? characters in the query string.
+     * String parameters are automatically quoted and escaped as required. (If you do not want a
+     * string quoted, use '''??''') Make sure that numbers are in number format as a string
+     * number is treated differently.
+     * @return returns true unless the connection is incorrect, in which case it returns false.
+     */
+    exec(
+        query: string,
+        param1?: unknown,
+        ...varargs: any[]
+    ): boolean;
+
     /**
      * This function opens a connection to a database and returns an element that can be used
      * with dbQuery. To disconnect use destroyElement.
@@ -85,45 +126,6 @@ export class connection {
         password?: string,
         options?: string
     );
-
-    /**
-     * This function executes a database query using the supplied connection. No result is
-     * returned.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DbExec Wiki, dbExec }
-     * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
-     * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
-     * make sure they are of the correct type. Also, the number of parameters passed must be
-     * equal to the number of ? characters in the query string.
-     * String parameters are automatically quoted and escaped as required. (If you do not want a
-     * string quoted, use '''??''') Make sure that numbers are in number format as a string
-     * number is treated differently.
-     * @return returns true unless the connection is incorrect, in which case it returns false.
-     */
-    exec(
-        query: string,
-        param1?: unknown,
-        ...varargs: any[]
-    ): boolean;
-
-    /**
-     * This function escapes arguments in the same way as dbQuery, except dbPrepareString
-     * returns the query string instead of processing the query. This allows you to safely build
-     * complex query strings from component parts and help prevent (one class of) SQL
-     * injection.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/DbPrepareString Wiki, dbPrepareString }
-     * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
-     * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
-     * make sure they are of the correct type. Also, the number of parameters passed must be
-     * equal to the number of ? characters in the query string.
-     * String parameters are automatically quoted and escaped as required. (If you do not want a
-     * string quoted, use '''??''')
-     * @return returns a prepare sql query string, or false if an error occurred.
-     */
-    prepareString(
-        query: string,
-        param1?: unknown,
-        ...varargs: any[]
-    ): string;
 
     /**
      * This function starts a database query using the supplied connection. Use the returned

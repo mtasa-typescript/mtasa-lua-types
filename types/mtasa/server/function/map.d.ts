@@ -28,9 +28,27 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * This converts a set of elements in the element tree into XML. This is a format that can
+ * then be loaded as a map file. Each element represents a single XML node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SaveMapData Wiki, saveMapData }
+ * @param node : An existing node that should contain the contents of baseElement
+ * @param baseElement : The first element to output to the XML tree. This element and all its children (and
+ * their children, etc) will be output.
+ * @param childrenOnly : Defines if you want to only save children of the specified element.
+ * @noSelf
+ */
+export declare function saveMapData(
+    node: XmlNode,
+    baseElement: Element,
+    childrenOnly?: boolean
+): boolean;
 
 /**
  * This function is intended to load data from a loaded XML file into the element tree. This
@@ -60,20 +78,4 @@ export declare function loadMapData(
  */
 export declare function resetMapInfo(
     thePlayer?: Player
-): boolean;
-
-/**
- * This converts a set of elements in the element tree into XML. This is a format that can
- * then be loaded as a map file. Each element represents a single XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/SaveMapData Wiki, saveMapData }
- * @param node : An existing node that should contain the contents of baseElement
- * @param baseElement : The first element to output to the XML tree. This element and all its children (and
- * their children, etc) will be output.
- * @param childrenOnly : Defines if you want to only save children of the specified element.
- * @noSelf
- */
-export declare function saveMapData(
-    node: XmlNode,
-    baseElement: Element,
-    childrenOnly?: boolean
 ): boolean;

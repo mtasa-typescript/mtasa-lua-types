@@ -28,9 +28,74 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetBanNick Wiki, setBanNick }
+ * @param theBan The ban you want to change the nick of.
+ * @param theNick A string representing the nick you want to set the ban to.
+ * @return returns true if changed, false otherwise.
+ * @noSelf
+ */
+export declare function setBanNick(
+    theBan: Ban,
+    theNick: string
+): boolean;
+
+/**
+ * This function checks whether the passed value is valid ban or not.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsBan Wiki, isBan }
+ * @param theBan The value to check
+ * @return returns true if the value is a ban, false otherwise.
+ * @noSelf
+ */
+export declare function isBan(
+    theBan: Ban
+): boolean;
+
+/**
+ * This function sets a new admin for a ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetBanAdmin Wiki, setBanAdmin }
+ * @param theBan The ban you want to change the admin of.
+ * @param theAdmin The new admin.
+ * @return returns true if changed, false otherwise.
+ * @noSelf
+ */
+export declare function setBanAdmin(
+    theBan: Ban,
+    theAdmin: string
+): boolean;
+
+/**
+ * This function sets a new unban time of a given ban using unix timestamp (seconds since
+ * Jan 01 1970).
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetUnbanTime Wiki, setUnbanTime }
+ * @param theBan The ban of which to change the unban time of
+ * @param theTime the new unban time
+ * @return returns true if changed successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setUnbanTime(
+    theBan: Ban,
+    theTime: number
+): boolean;
+
+/**
+ * This function sets the reason for the specified ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetBanReason Wiki, setBanReason }
+ * @param theBan The ban that you wish to set the reason of.
+ * @param theReason the new reason (max 60 characters).
+ * @return returns true if the new reason was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setBanReason(
+    theBan: Ban,
+    theReason: string
+): boolean;
 
 /**
  * This function will add a ban for the specified IP/username/serial to the server.
@@ -87,128 +152,6 @@ export declare function banPlayer(
 ): Ban;
 
 /**
- * This function will return the responsible admin (nickname of the admin) of the specified
- * ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanAdmin Wiki, getBanAdmin }
- * @param theBan The ban you want to return the admin of.
- * @return returns a string of the admin if everything was successful, false if invalid arguments
- * are specified if there was no admin specified for the ban.
- * @noSelf
- */
-export declare function getBanAdmin(
-    theBan: Ban
-): string;
-
-/**
- * This function will return the IP of the specified ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanIP Wiki, getBanIP }
- * @param theBan The ban in which you want to return the IP of.
- * @return returns a string of the ip if everything was successful, false if invalid arguments are
- * specified if there was no ip specified for the ban.
- * @noSelf
- */
-export declare function getBanIP(
-    theBan: Ban
-): string;
-
-/**
- * This function will return the nickname (nickname that the player had when he was banned)
- * of the specified ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanNick Wiki, getBanNick }
- * @param theBan The ban element which nickname you want to return.
- * @return returns a string of the nickname if everything was successfull, false if invalid
- * arguments are specified if there was no nickname specified for the ban element.
- * @noSelf
- */
-export declare function getBanNick(
-    theBan: Ban
-): string;
-
-/**
- * This function will return the ban reason of the specified ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanReason Wiki, getBanReason }
- * @param theBan The ban in which you want to return the reason of.
- * @return returns a string of the reason if everything was successful, false if invalid arguments
- * are specified if there was no reason specified for the ban.
- * @noSelf
- */
-export declare function getBanReason(
-    theBan: Ban
-): string;
-
-/**
- * This function will return a table containing all the bans present in the servers
- * banlist.xml.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBans Wiki, getBans }
- * @return returns a table containing all the bans.
- * @noSelf
- */
-export declare function getBans(): LuaTable;
-
-/**
- * This function will return the serial of the specified ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanSerial Wiki, getBanSerial }
- * @param theBan The ban you want to retrieve the serial of.
- * @return returns a string of the serial if everything was successful, false if invalid arguments
- * are specified or if there was no serial specified for the ban.
- * @noSelf
- */
-export declare function getBanSerial(
-    theBan: Ban
-): string;
-
-/**
- * This function will return the time the specified ban was created, in seconds.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanTime Wiki, getBanTime }
- * @param theBan The ban of which you wish to retrieve the time of.
- * @return * returns an integer of the banning time in the format of seconds from the year 1970.
- * use in conjunction with getrealtime in order to retrieve detailed information.
- * * returns false if invalid arguments were specified or if there was no banning time
- * specified for the ban.
- * @noSelf
- */
-export declare function getBanTime(
-    theBan: Ban
-): number;
-
-/**
- * This function will return the username of the specified ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBanUsername Wiki, getBanUsername }
- * @param theBan The ban in which you wish to retrieve the username of.
- * @return returns a string of the username if everything was successful, false if invalid arguments
- * are specified if there was no username specified for the ban.
- * @noSelf
- */
-export declare function getBanUsername(
-    theBan: Ban
-): string;
-
-/**
- * This function will return the unbanning time of the specified ban in seconds.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetUnbanTime Wiki, getUnbanTime }
- * @param theBan The ban in which you wish to retrieve the unban time of.
- * @return * returns an integer of the unbanning time in the format of seconds from the year 1970.
- * use in conjunction with getrealtime in order to retrieve detailed information.
- * * returns false if invalid arguments are specified or if there was no unbanning time
- * specified for the ban.
- * @noSelf
- */
-export declare function getUnbanTime(
-    theBan: Ban
-): number;
-
-/**
- * This function checks whether the passed value is valid ban or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBan Wiki, isBan }
- * @param theBan The value to check
- * @return returns true if the value is a ban, false otherwise.
- * @noSelf
- */
-export declare function isBan(
-    theBan: Ban
-): boolean;
-
-/**
  * This function will kick the specified player from the server.
  * @see {@link https://wiki.multitheftauto.com/wiki/KickPlayer Wiki, kickPlayer }
  * @param kickedPlayer The player that will be kicked from the server
@@ -249,53 +192,112 @@ export declare function removeBan(
 ): boolean;
 
 /**
- * This function sets a new admin for a ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBanAdmin Wiki, setBanAdmin }
- * @param theBan The ban you want to change the admin of.
- * @param theAdmin The new admin.
- * @return returns true if changed, false otherwise.
+ * This function will return a table containing all the bans present in the servers
+ * banlist.xml.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBans Wiki, getBans }
+ * @return returns a table containing all the bans.
  * @noSelf
  */
-export declare function setBanAdmin(
-    theBan: Ban,
-    theAdmin: string
-): boolean;
+export declare function getBans(): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBanNick Wiki, setBanNick }
- * @param theBan The ban you want to change the nick of.
- * @param theNick A string representing the nick you want to set the ban to.
- * @return returns true if changed, false otherwise.
+ * This function will return the IP of the specified ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanIP Wiki, getBanIP }
+ * @param theBan The ban in which you want to return the IP of.
+ * @return returns a string of the ip if everything was successful, false if invalid arguments are
+ * specified if there was no ip specified for the ban.
  * @noSelf
  */
-export declare function setBanNick(
-    theBan: Ban,
-    theNick: string
-): boolean;
+export declare function getBanIP(
+    theBan: Ban
+): string;
 
 /**
- * This function sets the reason for the specified ban.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBanReason Wiki, setBanReason }
- * @param theBan The ban that you wish to set the reason of.
- * @param theReason the new reason (max 60 characters).
- * @return returns true if the new reason was set successfully, false otherwise.
+ * This function will return the ban reason of the specified ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanReason Wiki, getBanReason }
+ * @param theBan The ban in which you want to return the reason of.
+ * @return returns a string of the reason if everything was successful, false if invalid arguments
+ * are specified if there was no reason specified for the ban.
  * @noSelf
  */
-export declare function setBanReason(
-    theBan: Ban,
-    theReason: string
-): boolean;
+export declare function getBanReason(
+    theBan: Ban
+): string;
 
 /**
- * This function sets a new unban time of a given ban using unix timestamp (seconds since
- * Jan 01 1970).
- * @see {@link https://wiki.multitheftauto.com/wiki/SetUnbanTime Wiki, setUnbanTime }
- * @param theBan The ban of which to change the unban time of
- * @param theTime the new unban time
- * @return returns true if changed successfully, false otherwise.
+ * This function will return the nickname (nickname that the player had when he was banned)
+ * of the specified ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanNick Wiki, getBanNick }
+ * @param theBan The ban element which nickname you want to return.
+ * @return returns a string of the nickname if everything was successfull, false if invalid
+ * arguments are specified if there was no nickname specified for the ban element.
  * @noSelf
  */
-export declare function setUnbanTime(
-    theBan: Ban,
-    theTime: number
-): boolean;
+export declare function getBanNick(
+    theBan: Ban
+): string;
+
+/**
+ * This function will return the responsible admin (nickname of the admin) of the specified
+ * ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanAdmin Wiki, getBanAdmin }
+ * @param theBan The ban you want to return the admin of.
+ * @return returns a string of the admin if everything was successful, false if invalid arguments
+ * are specified if there was no admin specified for the ban.
+ * @noSelf
+ */
+export declare function getBanAdmin(
+    theBan: Ban
+): string;
+
+/**
+ * This function will return the serial of the specified ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanSerial Wiki, getBanSerial }
+ * @param theBan The ban you want to retrieve the serial of.
+ * @return returns a string of the serial if everything was successful, false if invalid arguments
+ * are specified or if there was no serial specified for the ban.
+ * @noSelf
+ */
+export declare function getBanSerial(
+    theBan: Ban
+): string;
+
+/**
+ * This function will return the time the specified ban was created, in seconds.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanTime Wiki, getBanTime }
+ * @param theBan The ban of which you wish to retrieve the time of.
+ * @return * returns an integer of the banning time in the format of seconds from the year 1970.
+ * use in conjunction with getrealtime in order to retrieve detailed information.
+ * * returns false if invalid arguments were specified or if there was no banning time
+ * specified for the ban.
+ * @noSelf
+ */
+export declare function getBanTime(
+    theBan: Ban
+): number;
+
+/**
+ * This function will return the unbanning time of the specified ban in seconds.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetUnbanTime Wiki, getUnbanTime }
+ * @param theBan The ban in which you wish to retrieve the unban time of.
+ * @return * returns an integer of the unbanning time in the format of seconds from the year 1970.
+ * use in conjunction with getrealtime in order to retrieve detailed information.
+ * * returns false if invalid arguments are specified or if there was no unbanning time
+ * specified for the ban.
+ * @noSelf
+ */
+export declare function getUnbanTime(
+    theBan: Ban
+): number;
+
+/**
+ * This function will return the username of the specified ban.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBanUsername Wiki, getBanUsername }
+ * @param theBan The ban in which you wish to retrieve the username of.
+ * @return returns a string of the username if everything was successful, false if invalid arguments
+ * are specified if there was no username specified for the ban.
+ * @noSelf
+ */
+export declare function getBanUsername(
+    theBan: Ban
+): string;

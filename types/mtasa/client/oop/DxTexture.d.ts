@@ -44,8 +44,10 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor DxTexture */
@@ -121,17 +123,6 @@ export class DxTexture {
     ): string;
 
     /**
-     * This functions allows you to change the edge handling after creating the texture.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
-     * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
-     * @param border-color If textureEdge is set to border, you are able to define a border color here
-     */
-    setEdge(
-        textureEdge: string,
-        border_color?: number
-    ): boolean;
-
-    /**
      * This function sets the Texture_pixels|pixels of a texture element. It can be used with a
      * standard texture, render target or screen source. Only plain format pixels please.
      * * This function is slow and not something you want to be doing once a frame.
@@ -153,5 +144,16 @@ export class DxTexture {
         y?: number,
         width?: number,
         height?: number
+    ): boolean;
+
+    /**
+     * This functions allows you to change the edge handling after creating the texture.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
+     * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
+     * @param border-color If textureEdge is set to border, you are able to define a border color here
+     */
+    setEdge(
+        textureEdge: string,
+        border_color?: number
     ): boolean;
 }

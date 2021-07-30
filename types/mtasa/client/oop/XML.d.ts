@@ -45,12 +45,24 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor XML */
 export class XML {
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadString Wiki, xmlLoadString }
+     * @param xmlString A string containing XML data
+     * @return returns the root xmlnode object of an xml string if successful, or false otherwise
+     * (invalid xml string).
+     */
+    static loadstring(
+        xmlString: string
+    ): XmlNode;
+
     /**
      * This function creates a new XML document, which can later be saved to a file by using
      * xmlSaveFile. This function will overwrite the file specified if it already exists.
@@ -93,15 +105,5 @@ export class XML {
     static load(
         filePath: string,
         readOnly?: boolean
-    ): XmlNode;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadString Wiki, xmlLoadString }
-     * @param xmlString A string containing XML data
-     * @return returns the root xmlnode object of an xml string if successful, or false otherwise
-     * (invalid xml string).
-     */
-    static loadstring(
-        xmlString: string
     ): XmlNode;
 }

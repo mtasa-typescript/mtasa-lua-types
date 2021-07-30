@@ -45,12 +45,51 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Shader */
 export class Shader extends Material {
+    /**
+     * This function applies a 3D transformation to a shader element when it is drawn with
+     * dxDrawImage.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
+     * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
+     * rotate along its width.
+     * @param rotationY Rotation angle in degrees around the Y axis (Up,down). This will make the shader rotate
+     * along its height.
+     * @param rotationZ Rotation angle in degrees around the Z axis (In,out). This will make the shader rotate in
+     * a similar way to the rotation argument in dxDrawImage.
+     * @param rotationCenterOffsetX The center of rotation offset X position in screen relative units.
+     * @param rotationCenterOffsetY The center of rotation offset Y position in screen relative units.
+     * @param rotationCenterOffsetZ The center of rotation offset Z position in screen relative units.
+     * @param bRotationCenterOffsetOriginIsScreen Set to boolean|true if the center of rotation origin should be the center of the screen
+     * rather than the center of the image.
+     * @param perspectiveCenterOffsetX The center of perspective offset X position in screen relative units.
+     * @param perspectiveCenterOffsetY The center of perspective offset Y position in screen relative units.
+     * @param bPerspectiveCenterOffsetOriginIsScreen Set to boolean|true if the center of perspective origin should be the center of the
+     * screen rather than the center of the image.
+     * To convert screen relative units into screen pixel coordinates, ''multiply'' by the
+     * screen size. Conversely, to convert screen pixel coordinates to screen relative units,
+     * '''''divide''''' by the screen size.
+     * @return returns true if the shader elements transform was successfully changed, false otherwise.
+     */
+    setTransform(
+        rotationX: number,
+        rotationY: number,
+        rotationZ: number,
+        rotationCenterOffsetX?: number,
+        rotationCenterOffsetY?: number,
+        rotationCenterOffsetZ?: number,
+        bRotationCenterOffsetOriginIsScreen?: boolean,
+        perspectiveCenterOffsetX?: number,
+        perspectiveCenterOffsetY?: number,
+        bPerspectiveCenterOffsetOriginIsScreen?: boolean
+    ): boolean;
+
     /**
      * This function applies a shader to one or more world textures.
      * * The resource Shader_examples#Texture_names|shader_tex_names can help in finding the
@@ -109,43 +148,6 @@ export class Shader extends Material {
     setTessellation(
         tessellationX: number,
         tessellationY: number
-    ): boolean;
-
-    /**
-     * This function applies a 3D transformation to a shader element when it is drawn with
-     * dxDrawImage.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
-     * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
-     * rotate along its width.
-     * @param rotationY Rotation angle in degrees around the Y axis (Up,down). This will make the shader rotate
-     * along its height.
-     * @param rotationZ Rotation angle in degrees around the Z axis (In,out). This will make the shader rotate in
-     * a similar way to the rotation argument in dxDrawImage.
-     * @param rotationCenterOffsetX The center of rotation offset X position in screen relative units.
-     * @param rotationCenterOffsetY The center of rotation offset Y position in screen relative units.
-     * @param rotationCenterOffsetZ The center of rotation offset Z position in screen relative units.
-     * @param bRotationCenterOffsetOriginIsScreen Set to boolean|true if the center of rotation origin should be the center of the screen
-     * rather than the center of the image.
-     * @param perspectiveCenterOffsetX The center of perspective offset X position in screen relative units.
-     * @param perspectiveCenterOffsetY The center of perspective offset Y position in screen relative units.
-     * @param bPerspectiveCenterOffsetOriginIsScreen Set to boolean|true if the center of perspective origin should be the center of the
-     * screen rather than the center of the image.
-     * To convert screen relative units into screen pixel coordinates, ''multiply'' by the
-     * screen size. Conversely, to convert screen pixel coordinates to screen relative units,
-     * '''''divide''''' by the screen size.
-     * @return returns true if the shader elements transform was successfully changed, false otherwise.
-     */
-    setTransform(
-        rotationX: number,
-        rotationY: number,
-        rotationZ: number,
-        rotationCenterOffsetX?: number,
-        rotationCenterOffsetY?: number,
-        rotationCenterOffsetZ?: number,
-        bRotationCenterOffsetOriginIsScreen?: boolean,
-        perspectiveCenterOffsetX?: number,
-        perspectiveCenterOffsetY?: number,
-        bPerspectiveCenterOffsetOriginIsScreen?: boolean
     ): boolean;
 
     /**

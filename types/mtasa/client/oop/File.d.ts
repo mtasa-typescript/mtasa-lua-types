@@ -44,12 +44,19 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor File */
 export class File {
+    /**
+     * Checks if the file position is at the end of the file.
+     */
+    eof: boolean;
+
     /**
      * Returns the current read/write position in the given file.
      */
@@ -62,8 +69,11 @@ export class File {
 
     /**
      * Checks if the file position is at the end of the file.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FileIsEOF Wiki, fileIsEOF }
+     * @return returns true if the file position of the specified file is at the end of the file, false
+     * otherwise.
      */
-    eof: boolean;
+    isEOF(): boolean;
 
     /**
      * Closes a file handle obtained by fileCreate or fileOpen.
@@ -71,21 +81,6 @@ export class File {
      * @return returns true if successful, false otherwise.
      */
     close(): boolean;
-
-    /**
-     * This function copies a file.{{Note|The file functions should not be used to implement
-     * configuration files. It is encouraged to use the XML functions for this instead.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/FileCopy Wiki, fileCopy }
-     * @param filePath : The path of the file you want to copy.
-     * @param copyToFilePath : Where to copy the specified file to.
-     * @param overwrite : If set to true it will overwrite a file that already exists at copyToFilePath.
-     * @return return true if the file was copied, else false if the filepath doesnt exist.
-     */
-    static copy(
-        filePath: string,
-        copyToFilePath: string,
-        overwrite?: boolean
-    ): boolean;
 
     /**
      * Creates a new file in a directory of a resource. If there already exists a file with the
@@ -124,24 +119,6 @@ export class File {
     ): boolean;
 
     /**
-     * This functions checks whether a specified file exists inside a resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FileExists Wiki, fileExists }
-     * @param filePath The filepath of the file, whose existence is going to be checked, in the following
-     * format: :resourceName/path. resourceName is the name of the resource the file is checked
-     * to be in, and path is the path from the root directory of the resource to the file.
-     * :For example, if you want to check whether a file named 'myfile.txt' exists in the
-     * resource 'mapcreator', it can be done from another resource this way:
-     * ''fileExists(":mapcreator/myfile.txt")''.
-     * :If the file, whose existence is going to be checked, is in the current resource, only
-     * the file path is necessary, e.g. ''fileExists("myfile.txt")''. Note that you must use
-     * forward slashes '/' for the folders, backslashes '' will return false.
-     * @return returns true if the file exists, false otherwise.
-     */
-    static exists(
-        filePath: string
-    ): boolean;
-
-    /**
      * Forces pending disk writes to be executed. fileWrite doesnt directly write to the hard
      * disk but places the data in a temporary buffer; only when there is enough data in the
      * buffer it is actually written to disk. Call this function if you need the data written
@@ -152,30 +129,6 @@ export class File {
      * @return returns true if succeeded, false in case of failure (e.g. the file handle is invalid).
      */
     flush(): boolean;
-
-    /**
-     * Returns the current read/write position in the given file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPos Wiki, fileGetPos }
-     * @return returns the file position if successful, or false if an error occured (e.g. an invalid
-     * handle was passed).
-     */
-    getPos(): number;
-
-    /**
-     * Returns the total size in bytes of the given file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FileGetSize Wiki, fileGetSize }
-     * @return returns the file size if successful, or false if an error occured (e.g. an invalid file
-     * handle was passed).
-     */
-    getSize(): number;
-
-    /**
-     * Checks if the file position is at the end of the file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FileIsEOF Wiki, fileIsEOF }
-     * @return returns true if the file position of the specified file is at the end of the file, false
-     * otherwise.
-     */
-    isEOF(): boolean;
 
     /**
      * Opens an existing file for reading and writing.
@@ -226,6 +179,22 @@ export class File {
     ): boolean;
 
     /**
+     * Returns the current read/write position in the given file.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPos Wiki, fileGetPos }
+     * @return returns the file position if successful, or false if an error occured (e.g. an invalid
+     * handle was passed).
+     */
+    getPos(): number;
+
+    /**
+     * Returns the total size in bytes of the given file.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FileGetSize Wiki, fileGetSize }
+     * @return returns the file size if successful, or false if an error occured (e.g. an invalid file
+     * handle was passed).
+     */
+    getSize(): number;
+
+    /**
      * Sets the current read/write position in the file.
      * @see {@link https://wiki.multitheftauto.com/wiki/FileSetPos Wiki, fileSetPos }
      * @param offset The new position. This is the number of bytes from the beginning of the file. If this
@@ -237,6 +206,39 @@ export class File {
     setPos(
         offset: number
     ): number;
+
+    /**
+     * This function copies a file.{{Note|The file functions should not be used to implement
+     * configuration files. It is encouraged to use the XML functions for this instead.}}
+     * @see {@link https://wiki.multitheftauto.com/wiki/FileCopy Wiki, fileCopy }
+     * @param filePath : The path of the file you want to copy.
+     * @param copyToFilePath : Where to copy the specified file to.
+     * @param overwrite : If set to true it will overwrite a file that already exists at copyToFilePath.
+     * @return return true if the file was copied, else false if the filepath doesnt exist.
+     */
+    static copy(
+        filePath: string,
+        copyToFilePath: string,
+        overwrite?: boolean
+    ): boolean;
+
+    /**
+     * This functions checks whether a specified file exists inside a resource.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FileExists Wiki, fileExists }
+     * @param filePath The filepath of the file, whose existence is going to be checked, in the following
+     * format: :resourceName/path. resourceName is the name of the resource the file is checked
+     * to be in, and path is the path from the root directory of the resource to the file.
+     * :For example, if you want to check whether a file named 'myfile.txt' exists in the
+     * resource 'mapcreator', it can be done from another resource this way:
+     * ''fileExists(":mapcreator/myfile.txt")''.
+     * :If the file, whose existence is going to be checked, is in the current resource, only
+     * the file path is necessary, e.g. ''fileExists("myfile.txt")''. Note that you must use
+     * forward slashes '/' for the folders, backslashes '' will return false.
+     * @return returns true if the file exists, false otherwise.
+     */
+    static exists(
+        filePath: string
+    ): boolean;
 
     /**
      * Writes one or more strings to a given file, starting at the current read/write position.

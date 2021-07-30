@@ -28,9 +28,266 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleEngineState Wiki, getVehicleEngineState }
+ * @param theVehicle : the vehicle you wish to get the engine state of.
+ * @return returns true if the vehicles engine is started, false otherwise.
+ * @noSelf
+ */
+export declare function getVehicleEngineState(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleRespawnPosition Wiki, getVehicleRespawnPosition }
+ * @param theVehicle The vehicle which youd like to retrieve the respawn coordinates of.
+ * @return returns three float|floats indicating the respawn coordinates of the vehicle, x, y and z
+ * respectively.
+ * @noSelf
+ */
+export declare function getVehicleRespawnPosition(
+    theVehicle: Element
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleRespawnRotation Wiki, getVehicleRespawnRotation }
+ * @param theVehicle The vehicle which youd like to retrieve the respawn rotation of.
+ * @return returns three float|floats indicating the respawn rotation of the vehicle, x, y and z
+ * respectively.
+ * @noSelf
+ */
+export declare function getVehicleRespawnRotation(
+    theVehicle: Element
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot Wiki, getVehicleUpgradeOnSlot }
+ * @param theVehicle : The vehicle whose upgrade you want to retrieve.
+ * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
+ * @return returns an integer with the upgrade on the slot if correct arguments were passed, false
+ * otherwise.
+ * @noSelf
+ */
+export declare function getVehicleUpgradeOnSlot(
+    theVehicle: Vehicle,
+    slot: number
+): number;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/RemoveVehicleUpgrade Wiki, removeVehicleUpgrade }
+ * @param theVehicle : The element representing the vehicle you wish to remove the upgrade from
+ * @param upgrade : The ID of the upgrade you wish to remove.
+ * @return returns true if the upgrade was successfully removed from the vehicle, otherwise false.
+ * @noSelf
+ */
+export declare function removeVehicleUpgrade(
+    theVehicle: Vehicle,
+    upgrade: number
+): boolean;
+
+/**
+ * Checks to see if a vehicle has contact with the ground.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleOnGround Wiki, isVehicleOnGround }
+ * @param theVehicle The vehicle you wish to check.
+ * @return returns true if vehicle is on the ground, false if it is not.
+ * @noSelf
+ */
+export declare function isVehicleOnGround(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * Gets the direction in which a train is driving (clockwise or counterclockwise).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainDirection Wiki, getTrainDirection }
+ * @param train the train of which to get the driving direction.
+ * @return returns true if the train is driving clockwise on the train track, false if it is going
+ * counterclockwise or a failure occured.
+ * @noSelf
+ */
+export declare function getTrainDirection(
+    train: Vehicle
+): boolean;
+
+/**
+ * Gets the name of a vehicle by its model ID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleNameFromModel Wiki, getVehicleNameFromModel }
+ * @param model This is the vehicle model ID. See vehicle IDs to see what values will return names.
+ * @return returns the name of the vehicle if the model id was valid, false otherwise.
+ * @noSelf
+ */
+export declare function getVehicleNameFromModel(
+    model: number
+): string;
+
+/**
+ * Gets the position the train is currently on the track
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainPosition Wiki, getTrainPosition }
+ * @param train the train to get the position of
+ * @return returns a float that represents how along the track it is, false if there is problem with
+ * train element.
+ * @noSelf
+ */
+export declare function getTrainPosition(
+    train: Vehicle
+): number;
+
+/**
+ * Gets the speed at which a train is traveling on the rails.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainSpeed Wiki, getTrainSpeed }
+ * @param train the train of which to retrieve the speed.
+ * @return returns the trains speed if successful, false otherwise.
+ * @noSelf
+ */
+export declare function getTrainSpeed(
+    train: Vehicle
+): number;
+
+/**
+ * Gets the track of a train
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainTrack Wiki, getTrainTrack }
+ * @param train the train of which to get the track.
+ * @return returns an integer (whole number) that represents the train track, false if there is
+ * problem with train element.
+ * @noSelf
+ */
+export declare function getTrainTrack(
+    train: Vehicle
+): number;
+
+/**
+ * Resets the vehicle explosion time. This is the point in time at which the vehicle last
+ * exploded: at this time plus the vehicles respawn delay, the vehicle is respawned. You can
+ * use this function to prevent the vehicle from respawning.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleExplosionTime Wiki, resetVehicleExplosionTime }
+ * @param theVehicle The vehicle you wish to reset the explosion time from.
+ * @return returns true if the vehicle explosion time has been reset, false if it failed to reset
+ * the explosion time.
+ * @noSelf
+ */
+export declare function resetVehicleExplosionTime(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * Resets the vehicle idle time
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleIdleTime Wiki, resetVehicleIdleTime }
+ * @param theVehicle The vehicle you wish to reset the idle time from.
+ * @return returns true if the vehicle idle time has been reset, false if it failed to reset the
+ * idle time.
+ * @noSelf
+ */
+export declare function resetVehicleIdleTime(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * Sets the direction in which a train or tram drives over the rails (clockwise or
+ * counterclockwise).
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDirection Wiki, setTrainDirection }
+ * @param train the train whose direction to change.
+ * @param clockwise if true, will make the train go clockwise. If false, makes it go counterclockwise.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setTrainDirection(
+    train: Vehicle,
+    clockwise: boolean
+): boolean;
+
+/**
+ * Sets the on-track speed of a train.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainSpeed Wiki, setTrainSpeed }
+ * @param train the train whose speed to change.
+ * @param speed the new on-track speed of the train. A positive value will make it go clockwise, a
+ * negative value counter clockwise.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setTrainSpeed(
+    train: Vehicle,
+    speed: number
+): boolean;
+
+/**
+ * Sets the position the train is currently on the track
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainPosition Wiki, setTrainPosition }
+ * @param train the train of which to set the track
+ * @param position the position along the track (0 - 18107 a complete way round)
+ * @return returns true if the train position was set, false otherwise.
+ * @noSelf
+ */
+export declare function setTrainPosition(
+    train: Vehicle,
+    position: number
+): boolean;
+
+/**
+ * Sets the track of a train
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainTrack Wiki, setTrainTrack }
+ * @param train the train of which to set the track
+ * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
+ * @return returns true if the track was set to the train, false otherwise.
+ * @noSelf
+ */
+export declare function setTrainTrack(
+    train: Vehicle,
+    track: number
+): boolean;
+
+/**
+ * Spawns a vehicle at any given position and rotation
+ * @see {@link https://wiki.multitheftauto.com/wiki/SpawnVehicle Wiki, spawnVehicle }
+ * @param theVehicle The vehicle you wish to spawn
+ * @param x The x position you wish to spawn the vehicle at
+ * @param y The x position you wish to spawn the vehicle at
+ * @param z The x position you wish to spawn the vehicle at
+ * @param rx The x rotation you wish to spawn the vehicle at
+ * @param ry The y rotation you wish to spawn the vehicle at
+ * @param rz The z rotation you wish to spawn the vehicle at
+ * @return returns true if the vehicle spawned successfully, false if the passed argument does not
+ * exist or is not a vehicle.
+ * @noSelf
+ */
+export declare function spawnVehicle(
+    theVehicle: Vehicle,
+    x: number,
+    y: number,
+    z: number,
+    rx?: number,
+    ry?: number,
+    rz?: number
+): boolean;
+
+/**
+ * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AddVehicleUpgrade Wiki, addVehicleUpgrade }
+ * @param theVehicle : The element representing the vehicle you wish to add the upgrade to.
+ * @param upgrade : The id of the upgrade you wish to add: 1000 to 1193 (see Vehicle Upgrades) or all to
+ * add all upgrades.
+ * '''Note:''' setCameraTarget will behave strangely if you use hydraulics (upgrade id:
+ * 1087) server sided and when your camera target is the player inside the vehicle with
+ * hydraulics and if the player is not you.
+ * @return returns true if the upgrade was successfully added to the vehicle, otherwise false.
+ * @noSelf
+ */
+export declare function addVehicleUpgrade(
+    theVehicle: Vehicle,
+    upgrade: string | number
+): boolean;
 
 /**
  * This function adds sirens to a vehicle.
@@ -56,20 +313,44 @@ export declare function addVehicleSirens(
 ): boolean;
 
 /**
- * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddVehicleUpgrade Wiki, addVehicleUpgrade }
- * @param theVehicle : The element representing the vehicle you wish to add the upgrade to.
- * @param upgrade : The id of the upgrade you wish to add: 1000 to 1193 (see Vehicle Upgrades) or all to
- * add all upgrades.
- * '''Note:''' setCameraTarget will behave strangely if you use hydraulics (upgrade id:
- * 1087) server sided and when your camera target is the player inside the vehicle with
- * hydraulics and if the player is not you.
- * @return returns true if the upgrade was successfully added to the vehicle, otherwise false.
+ * This function allows you to change the state of one of the six panels vehicles can have.
+ * When executed on the server-side resources, the damage will be synched for all players,
+ * whereas the change is only client-side if the function is used in a client resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePanelState Wiki, setVehiclePanelState }
+ * @param theVehicle The vehicle you would like to modify the panel of.
+ * @param panelID An ID specifying the part of the vehicle. Possible values are:
+ * @param Cars
+ * @param 0 Engine Smoke (left engine for a Nevada or a Beagle)
+ * @param 1 Engine Smoke (right engine for a Nevada or a Beagle)
+ * @param 2 Rudder
+ * @param 3 Elevators
+ * @param 4 Ailerons
+ * @param 5 Unknown
+ * @param 6 Unknown
+ * ''NOTE:'' Settings are not applicable for all vehicles of these types, for instance panel
+ * 0 effects a Dodo, but does nothing to a hydra.
+ * @param Planes
+ * @param state How damaged the part is on the scale of 0 to 3, with 0 being undamaged and 3 being very
+ * damaged. How this is manifested depends on the panel and the vehicle.
+ * @return returns true if the panel state has been updated, false otherwise
  * @noSelf
  */
-export declare function addVehicleUpgrade(
+export declare function setVehiclePanelState(
     theVehicle: Vehicle,
-    upgrade: string | number
+    panelID: number,
+    state: number
+): boolean;
+
+/**
+ * This function allows you to determine whether a vehicle is blown or still intact.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleBlown Wiki, isVehicleBlown }
+ * @param theVehicle The vehicle that you want to obtain the blown status of.
+ * @return returns true if the vehicle specified has blown up, false if it is still intact or the
+ * vehicle specified is invalid.
+ * @noSelf
+ */
+export declare function isVehicleBlown(
+    theVehicle: Vehicle
 ): boolean;
 
 /**
@@ -86,17 +367,134 @@ export declare function attachTrailerToVehicle(
 ): boolean;
 
 /**
- * This function will blow up a vehicle. This will cause an explosion and will kill the
- * driver and any passengers inside it.
- * @see {@link https://wiki.multitheftauto.com/wiki/BlowVehicle Wiki, blowVehicle }
- * @param vehicleToBlow the vehicle that you wish to blow up.
- * @param explode if this argument is true then the vehicle will explode, otherwise it will just be blown
- * up silently.
+ * This function can be used to set the numberplate text of a car.
+ * It now also changes the numberplate text of any vehicle that has visual numberplates.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePlateText Wiki, setVehiclePlateText }
+ * @param theVehicle the vehicle whose numberplate you want to change.
+ * @param numberplate a string that will go on the number plate of the car (max 8 characters).
+ * @return returns true if the numberplate was changed successfully, or false if invalid arguments
+ * were passed
  * @noSelf
  */
-export declare function blowVehicle(
-    vehicleToBlow: Vehicle,
-    explode?: boolean
+export declare function setVehiclePlateText(
+    theVehicle: Element,
+    numberplate: string
+): boolean;
+
+/**
+ * This function can be used to set the vehicles doors to be locked or unlocked.  Locking a
+ * vehicle restricts access to the vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLocked Wiki, setVehicleLocked }
+ * @param theVehicle The vehicle which you wish to change the lock status of
+ * @param locked Boolean for the status you wish to set. Set true to lock, false to unlock
+ * @return returns true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleLocked(
+    theVehicle: Vehicle,
+    locked: boolean
+): boolean;
+
+/**
+ * This function changes the explodable state of a vehicles fuel tank, which toggles the
+ * ability to blow the vehicle up by shooting the tank. This function will have no effect on
+ * vehicles with tanks that cannot be shot in single player.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleFuelTankExplodable Wiki, setVehicleFuelTankExplodable }
+ * @param theVehicle : The vehicle you wish to change the fuel tank explodable state of.
+ * @param explodable : A boolean value representing whether or not the fuel tank will be explodable.
+ * @return returns true if the vehicles fuel tank explodable state was successfully changed, false
+ * otherwise.
+ * @noSelf
+ */
+export declare function setVehicleFuelTankExplodable(
+    theVehicle: Vehicle,
+    explodable: boolean
+): boolean;
+
+/**
+ * This function changes the light overriding setting on a vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleOverrideLights Wiki, setVehicleOverrideLights }
+ * @param theVehicle : The vehicle you wish to change the override lights setting of.
+ * @param value : A whole number representing the state of the lights:
+ * @param 0 : No override, lights are set to default.
+ * @param 1 : Lights are forced off.
+ * @param 2 : Lights are forced on.
+ * @return returns true if the vehicles lights setting was changed. otherwise false.
+ * @noSelf
+ */
+export declare function setVehicleOverrideLights(
+    theVehicle: Vehicle,
+    value: number
+): boolean;
+
+/**
+ * This function changes the paintjob on the specified vehicle. <br/>
+ * See Paintjob|paintjob for list of supported vehicles.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePaintjob Wiki, setVehiclePaintjob }
+ * @param theVehicle : The vehicle you wish to change the paintjob of.
+ * @param value : A whole number representing the new paintjob id. Ranges from 0 up to 3.
+ * @return returns true if the vehicles paintjob was changed. otherwise false.
+ * @noSelf
+ */
+export declare function setVehiclePaintjob(
+    theVehicle: Vehicle,
+    value: number
+): boolean;
+
+/**
+ * This function changes the properties of a vehicles siren point.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirens Wiki, setVehicleSirens }
+ * @param theVehicle The vehicle to modify
+ * @param sirenPoint The siren point to modify
+ * @param posX The x position of this siren point from the center of the vehicle
+ * @param posY The y position of this siren point from the center of the vehicle
+ * @param posZ The z position of this siren point from the center of the vehicle
+ * @param red The amount of red from 0 to 255
+ * @param green The amount of green from 0 to 255
+ * @param blue The amount of blue from 0 to 255
+ * @param alpha The alpha of the siren from 0 to 255
+ * @param minAlpha The minimum alpha of the light during day time
+ * @return returns true if the siren point was successfully changed on the vehicle, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleSirens(
+    theVehicle: Vehicle,
+    sirenPoint: number,
+    posX: number,
+    posY: number,
+    posZ: number,
+    red: number,
+    green: number,
+    blue: number,
+    alpha?: number,
+    minAlpha?: number
+): boolean;
+
+/**
+ * This function changes the state of the sirens on the specified vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirensOn Wiki, setVehicleSirensOn }
+ * @param theVehicle The vehicle that will have the sirens set
+ * @param sirensOn The state to set the sirens to
+ * @return returns true if the sirens are set for the specified vehicle, false if the sirens cant be
+ * set for the specified vehicle, if the vehicle doesnt have sirens or if invalid arguments
+ * are specified.
+ * @noSelf
+ */
+export declare function setVehicleSirensOn(
+    theVehicle: Vehicle,
+    sirensOn: boolean
+): boolean;
+
+/**
+ * This function checks if a vehicle is damage proof (set with setVehicleDamageProof).
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleDamageProof Wiki, isVehicleDamageProof }
+ * @param theVehicle the vehicle whose invincibility status we want to check.
+ * @return returns true if the vehicle is damage proof, false if it isnt or if invalid arguments
+ * were passed.
+ * @noSelf
+ */
+export declare function isVehicleDamageProof(
+    theVehicle: Vehicle
 ): boolean;
 
 /**
@@ -152,16 +550,345 @@ export declare function detachTrailerFromVehicle(
 ): boolean;
 
 /**
- * This function will set a vehicles health to full and fix its damage model. If you wish to
- * only change the vehicles health, without affecting its damage model, use setElementHealth.
- * @see {@link https://wiki.multitheftauto.com/wiki/FixVehicle Wiki, fixVehicle }
- * @param theVehicle the vehicle you wish to fix
- * @return returns true if the vehicle was fixed, false if thevehicle is invalid.
+ * This function get the parameters of a vehicles siren.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirenParams Wiki, getVehicleSirenParams }
+ * @param theVehicle The vehicle to get the siren parameters of
+ * @return returns a table with the siren count, siren type and a sub table for the four flags.
+ * false otherwise.
+ * <syntaxhighlight lang=lua>
+ * int   sirenparams.sirencount
+ * int   sirenparams.sirentype
+ * table sirenparams.flags
+ * bool sirenparams.flags360
+ * bool sirenparams.flags.doloscheck
+ * bool sirenparams.flags.userandomiser
+ * bool sirenparams.flags.silent
+ * </syntaxhighlight>
  * @noSelf
  */
-export declare function fixVehicle(
+export declare function getVehicleSirenParams(
+    theVehicle: Vehicle
+): LuaTable;
+
+/**
+ * This function gets all peds sitting in the specified vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupants Wiki, getVehicleOccupants }
+ * @param theVehicle the vehicle of which you wish to retrieve the occupants.
+ * @return returns a table with seat id as an index and the occupant as an element like this:
+ * tableseat = occupant
+ * returns false if an invalid vehicle was passed or if the vehicle has no seats (like a
+ * trailer)
+ * <div style=font-weight: bold;background:blue;color:white;padding:2px;
+ * padding-left:8px;>counting players in a vehicle</div>
+ * <div style=border: 2px solid blue;padding: 5px;>dont use an ipairs loop with the table
+ * returned by this function. it will skip the driver, as ipairs starts at 1 and the driver
+ * seat is id 0. and if theres an empty seat, ipairs will stop looping. you should use a
+ * pairs loop instead.
+ * <syntaxhighlight lang=lua>
+ * local counter = 0
+ * for seat, player in pairs(getvehicleoccupants(pseudovehicle)) do
+ * counter = counter + 1
+ * end
+ * outputdebugstring(players in your vehicle: .. counter)
+ * </syntaxhighlight>
+ * </div>
+ * @noSelf
+ */
+export declare function getVehicleOccupants(
+    theVehicle: Vehicle
+): LuaTable;
+
+/**
+ * This function gets the current paintjob on the specified vehicle. <br />
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePaintjob Wiki, getVehiclePaintjob }
+ * @param theVehicle : the vehicle you wish to get the paintjob of.
+ * @return returns an integer representing the current paintjob on the vehicle. <br />
+ * * 0: the first paintjob
+ * * 1: the second paintjob
+ * * 2: the third paintjob
+ * * 3: default paintjob (no paintjob)
+ * @noSelf
+ */
+export declare function getVehiclePaintjob(
+    theVehicle: Vehicle
+): number;
+
+/**
+ * This function gets the player sitting/trying to enter the specified vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupant Wiki, getVehicleOccupant }
+ * @param theVehicle the vehicle of which you wish to retrieve the driver or a passenger.
+ * @param seat the seat where the player is sitting (0 for driver, 1+ for passengers).
+ * @return returns the player sitting in the vehicle, or false if the seat is unoccupied or doesnt
+ * exist.
+ * @noSelf
+ */
+export declare function getVehicleOccupant(
+    theVehicle: Vehicle,
+    seat?: number
+): Player;
+
+/**
+ * This function gets the position of a vehicles turret, if it has one. Vehicles with
+ * turrets include firetrucks and tanks.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTurretPosition Wiki, getVehicleTurretPosition }
+ * @param turretVehicle : The vehicle whose turret position you want to retrieve. This should be a vehicle with a
+ * turret.
+ * @return returns two floats for the x (horizontal) and y (vertical) axis rotation respectively.
+ * these values are in radians. the function will return 0, 0 if the vehicle is not a
+ * vehicle with a turret.
+ * @noSelf
+ */
+export declare function getVehicleTurretPosition(
+    turretVehicle: Vehicle
+): LuaMultiReturn<[
+    number,
+    number
+]>;
+
+/**
+ * This function gets the properties of a vehicles sirens.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirens Wiki, getVehicleSirens }
+ * @param theVehicle The vehicle to get siren information of.
+ * @return if the vehicle is invalid, it returns false. otherwise, returns a table with sub tables
+ * containing the properties of each siren point in the following manner:
+ * <syntaxhighlight lang=lua>
+ * float   sirendatasirenpoint.x
+ * float   sirendatasirenpoint.y
+ * float   sirendatasirenpoint.z
+ * int     sirendatasirenpoint.red
+ * int     sirendatasirenpoint.green
+ * int     sirendatasirenpoint.blue
+ * int     sirendatasirenpoint.alpha
+ * int     sirendatasirenpoint.min_alpha
+ * </syntaxhighlight>
+ * @noSelf
+ */
+export declare function getVehicleSirens(
+    theVehicle: Vehicle
+): LuaTable;
+
+/**
+ * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
+ * different for example the labelling on trucks or the contents of a pick-up truck and the
+ * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleVariant Wiki, getVehicleVariant }
+ * @param theVehicle A handle to the vehicle that you want to get the variant of.
+ * @return on success:
+ * * int: an integer for the first vehicle variant see vehicle variants
+ * * int: an integer for the second vehicle variant see vehicle variants
+ * on failure:
+ * * bool: false because the specified vehicle didnt exist
+ * @noSelf
+ */
+export declare function getVehicleVariant(
+    theVehicle: Vehicle
+): LuaMultiReturn<[
+    number,
+    number
+]>;
+
+/**
+ * This function is used to change the handling data of a vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleHandling Wiki, setVehicleHandling }
+ * @param theVehicle The vehicle you wish to set the handling of.
+ * @param property The property you wish to set the handling of the vehicle to.
+ * @param value The value of the property you wish to set the handling of the vehicle to.
+ * @return returns true if the handling was set successfully, false otherwise. see below a list of
+ * valid properties and their required values:
+ * @noSelf
+ */
+export declare function setVehicleHandling(
+    theVehicle: Element,
+    property: string,
+    value: unknown
+): boolean;
+
+/**
+ * This function is used to change the handling data of all vehicles of a specified model.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetModelHandling Wiki, setModelHandling }
+ * @param modelId The Vehicle_IDs|vehicle model you wish to set the handling of.
+ * @param property The property you wish to set the handling of the vehicle to, or nil if you want to reset
+ * the all the handling properties.
+ * @param value The value of the modelss handling property you wish to set, or nil if you want to reset
+ * the handling property to its default value.
+ * @return returns true if the handling was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setModelHandling(
+    modelId: number,
+    property: string,
+    value: unknown
+): boolean;
+
+/**
+ * This function is used to check whether a vehicles landing gear is down or not. Only
+ * planes can be used with this function.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleLandingGearDown Wiki, getVehicleLandingGearDown }
+ * @param theVehicle the vehicle of which you wish to check the landing gear state.
+ * @return returns true if landing gear is down, false if the landing gear is up.<br />
+ * returns nil if the vehicle has no landing gear, or is invalid.
+ * @noSelf
+ */
+export declare function getVehicleLandingGearDown(
     theVehicle: Vehicle
 ): boolean;
+
+/**
+ * This function is used to find out the current state of the override-lights setting of a
+ * vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOverrideLights Wiki, getVehicleOverrideLights }
+ * @param theVehicle : the vehicle you wish to retrieve the override lights setting of.
+ * @return returns an integer value: 0 (no override), 1 (force off) or 2 (force on).
+ * @noSelf
+ */
+export declare function getVehicleOverrideLights(
+    theVehicle: Vehicle
+): number;
+
+/**
+ * This function is used to get the player in control of the specified vehicle which
+ * includes somebody who is trying to enter the drivers seat.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleController Wiki, getVehicleController }
+ * @param theVehicle the vehicle you want to get the controller of.
+ * @return returns a player object, if there isnt a driver, it will search the trailer chain for the
+ * front driver, false otherwise.
+ * @noSelf
+ */
+export declare function getVehicleController(
+    theVehicle: Vehicle
+): Player;
+
+/**
+ * This function is used to get the vehicle being towed by another.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowedByVehicle Wiki, getVehicleTowedByVehicle }
+ * @param theVehicle : The vehicle you wish to get the towed vehicle from.
+ * @return returns the vehicle that thevehicle is towing, false if it isnt towing a vehicle.
+ * @noSelf
+ */
+export declare function getVehicleTowedByVehicle(
+    theVehicle: Vehicle
+): Vehicle;
+
+/**
+ * This function is used to get the vehicle that is towing another.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowingVehicle Wiki, getVehicleTowingVehicle }
+ * @param theVehicle : the vehicle being towed.
+ * @return * the vehicle that thevehicle is being towed by.
+ * * false if it isnt being towed.
+ * @noSelf
+ */
+export declare function getVehicleTowingVehicle(
+    theVehicle: Vehicle
+): Vehicle;
+
+/**
+ * This function is used to retrieve the text on the number plate of a specified vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePlateText Wiki, getVehiclePlateText }
+ * @param theVehicle the vehicle that you wish to retrieve the plate text from.
+ * @return returns a string that corresponds to the plate on the text, false if a bad argument was
+ * passed or if it is not a vehicle. every vehicle (including planes, boats, etc.) has a
+ * numberplate, even if its not visible.
+ * @noSelf
+ */
+export declare function getVehiclePlateText(
+    theVehicle: Vehicle
+): string;
+
+/**
+ * This function is used to set the landing gear state of certain vehicles.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLandingGearDown Wiki, setVehicleLandingGearDown }
+ * @param theVehicle The vehicle of which you wish to set the landing gear state.
+ * @param gearState A bool representing the state of the landing gear.  true represents a collapsed landing
+ * gear, while false represents a disabled landing gear.
+ * @return returns true if the landing gear was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleLandingGearDown(
+    theVehicle: Vehicle,
+    gearState: boolean
+): boolean;
+
+/**
+ * This function makes a vehicles doors undamageable, so they wont fall off when theyre hit.
+ * Note that the vehicle has to be locked using setVehicleLocked for this setting to have
+ * any effect.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorsUndamageable Wiki, setVehicleDoorsUndamageable }
+ * @param theVehicle The vehicle of which you wish to set the car door damageability.
+ * @param state A boolean denoting whether the vehicles doors are undamageable (true) or damageable
+ * (false).
+ * @return returns true if the damageability state was successfully changed, false if invalid
+ * arguments were passed.
+ * @noSelf
+ */
+export declare function setVehicleDoorsUndamageable(
+    theVehicle: Vehicle,
+    state: boolean
+): boolean;
+
+/**
+ * This function removes sirens from a vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RemoveVehicleSirens Wiki, removeVehicleSirens }
+ * @param theVehicle The vehicle to remove the sirens of
+ * @return returns true if sirens were successfully removed from the vehicle, false otherwise.
+ * @noSelf
+ */
+export declare function removeVehicleSirens(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * This function respawns a vehicle according to its set respawn position, set by
+ * setVehicleRespawnPosition or the position and rotation it was created on. To spawn a
+ * vehicle to a specific location just once, spawnVehicle can be used.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RespawnVehicle Wiki, respawnVehicle }
+ * @param theVehicle The vehicle you wish to respawn
+ * @return returns true if the vehicle respawned successfully, false if the passed argument does not
+ * exist or is not a vehicle.
+ * @noSelf
+ */
+export declare function respawnVehicle(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * This function retrieves the model ID of a vehicle as an integer value from its name.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelFromName Wiki, getVehicleModelFromName }
+ * @param name A string containing the name of the vehicle.
+ * @return returns an integer if the name exists, false otherwise.
+ * if you use this function on vehicles with shared names, such as police, it will return
+ * the earliest occurrence of that vehicles id.
+ * @noSelf
+ */
+export declare function getVehicleModelFromName(
+    name: string
+): number;
+
+/**
+ * This function retrieves the type of a vehicle (such as if it is a car or a boat).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleType Wiki, getVehicleType }
+ * @param vehicle The vehicle element to get the type of.
+ * '''OR'''
+ * @param modelID A vehicle model ID
+ * @return returns a string with vehicle type or false if an invalid modelid has been supplied, or
+ * an empty string if the vehicle is blocked internally (some trailers).
+ * possible strings returned:
+ * @noSelf
+ */
+export declare function getVehicleType(
+    theVehicle: Vehicle
+): string;
+
+/**
+ * This function returns a string containing the name of the vehicle
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleName Wiki, getVehicleName }
+ * @param theVehicle the vehicle you want to get the name of.
+ * @return returns a string containing the requested vehicles name, or false if the vehicle passed
+ * to the function is invalid.
+ * @noSelf
+ */
+export declare function getVehicleName(
+    theVehicle: Vehicle
+): string;
 
 /**
  * This function returns a table containing the handling data of the specified vehicle model.
@@ -178,6 +905,46 @@ export declare function getModelHandling(
 ): LuaTable;
 
 /**
+ * This function returns a table of all the compatible upgrades (or all for a specified
+ * slot, optionally) for a specified vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleCompatibleUpgrades Wiki, getVehicleCompatibleUpgrades }
+ * @param theVehicle the vehicle you wish to retrieve the list of compatible upgrades of.
+ * @param slot the upgrade slot number for which youre getting the list (from 0 to 16). Compatible
+ * upgrades for all slots are listed if this is not specified.
+ * @return returns a table with all the compatible upgrades, or false if invalid arguments are
+ * passed.
+ * @noSelf
+ */
+export declare function getVehicleCompatibleUpgrades(
+    theVehicle: Vehicle,
+    slot?: number
+): LuaTable;
+
+/**
+ * This function returns a table of all the upgrades on a specifed vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgrades Wiki, getVehicleUpgrades }
+ * @param theVehicle The vehicle you wish to retrieve the upgrades of.
+ * @return returns a table of all the upgrades on each slot of a vehicle, which may be empty, or
+ * false if a valid vehicle is not passed.
+ * @noSelf
+ */
+export declare function getVehicleUpgrades(
+    theVehicle: Vehicle
+): LuaTable;
+
+/**
+ * This function returns a table of the current vehicle handling data.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleHandling Wiki, getVehicleHandling }
+ * @param theVehicle the vehicle you wish to get the handling data of.
+ * @return returns a table containing all the handling data, false otherwise. heres a list of valid
+ * table properties and what they return:
+ * @noSelf
+ */
+export declare function getVehicleHandling(
+    theVehicle: Element
+): LuaTable;
+
+/**
  * This function returns a table of the original vehicle handling. Use getVehicleHandling if
  * you wish to get the current handling of a vehicle, or getModelHandling for a specific
  * vehicle model.
@@ -190,53 +957,6 @@ export declare function getModelHandling(
 export declare function getOriginalHandling(
     modelID: number
 ): LuaTable;
-
-/**
- * Gets the direction in which a train is driving (clockwise or counterclockwise).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainDirection Wiki, getTrainDirection }
- * @param train the train of which to get the driving direction.
- * @return returns true if the train is driving clockwise on the train track, false if it is going
- * counterclockwise or a failure occured.
- * @noSelf
- */
-export declare function getTrainDirection(
-    train: Vehicle
-): boolean;
-
-/**
- * Gets the position the train is currently on the track
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainPosition Wiki, getTrainPosition }
- * @param train the train to get the position of
- * @return returns a float that represents how along the track it is, false if there is problem with
- * train element.
- * @noSelf
- */
-export declare function getTrainPosition(
-    train: Vehicle
-): number;
-
-/**
- * Gets the speed at which a train is traveling on the rails.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainSpeed Wiki, getTrainSpeed }
- * @param train the train of which to retrieve the speed.
- * @return returns the trains speed if successful, false otherwise.
- * @noSelf
- */
-export declare function getTrainSpeed(
-    train: Vehicle
-): number;
-
-/**
- * Gets the track of a train
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainTrack Wiki, getTrainTrack }
- * @param train the train of which to get the track.
- * @return returns an integer (whole number) that represents the train track, false if there is
- * problem with train element.
- * @noSelf
- */
-export declare function getTrainTrack(
-    train: Vehicle
-): number;
 
 /**
  * This function returns the color of the specified vehicle. A vehicle can have up to four
@@ -273,48 +993,26 @@ export declare function getVehicleColor(
 ]>;
 
 /**
- * This function returns a table of all the compatible upgrades (or all for a specified
- * slot, optionally) for a specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleCompatibleUpgrades Wiki, getVehicleCompatibleUpgrades }
- * @param theVehicle the vehicle you wish to retrieve the list of compatible upgrades of.
- * @param slot the upgrade slot number for which youre getting the list (from 0 to 16). Compatible
- * upgrades for all slots are listed if this is not specified.
- * @return returns a table with all the compatible upgrades, or false if invalid arguments are
- * passed.
+ * This function returns the current state of a specifed panel on the vehicle. A vehicle can
+ * have up to 7 panels.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePanelState Wiki, getVehiclePanelState }
+ * @param theVehicle the vehicle that you wish to know the panel state of.
+ * @param panel an integer specifying the panel you want to know the state of. Not every vehicle has
+ * every panel. Possible values are:
+ * @param 0 Front-left panel
+ * @param 1 Front-right panel
+ * @param 2 Rear-left panel
+ * @param 3 Rear-right panel
+ * @param 4 Windscreen
+ * @param 5 Front bumper
+ * @param 6 Rear bumper
+ * @return returns an int indicating the state of the specified the panel. this is a value between 0
+ * and 3, with 0 indicating the panel is undamaged and 3 indicating it is very damaged.
  * @noSelf
  */
-export declare function getVehicleCompatibleUpgrades(
+export declare function getVehiclePanelState(
     theVehicle: Vehicle,
-    slot?: number
-): LuaTable;
-
-/**
- * This function is used to get the player in control of the specified vehicle which
- * includes somebody who is trying to enter the drivers seat.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleController Wiki, getVehicleController }
- * @param theVehicle the vehicle you want to get the controller of.
- * @return returns a player object, if there isnt a driver, it will search the trailer chain for the
- * front driver, false otherwise.
- * @noSelf
- */
-export declare function getVehicleController(
-    theVehicle: Vehicle
-): Player;
-
-/**
- * This function tells you how open a door is (the open ratio). Doors include boots/trunks
- * and bonnets on vehicles that have them.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDoorOpenRatio Wiki, getVehicleDoorOpenRatio }
- * @param theVehicle The vehicle that you wish to get the door open ratio of.
- * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
- * (rear right)
- * @return returns a number between 0 and 1 that indicates how open the door is. 0 is closed, and 1
- * is fully open. returns false if invalid arguments are passed.
- * @noSelf
- */
-export declare function getVehicleDoorOpenRatio(
-    theVehicle: Vehicle,
-    door: number
+    panel: number
 ): number;
 
 /**
@@ -342,57 +1040,6 @@ export declare function getVehicleDoorState(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleEngineState Wiki, getVehicleEngineState }
- * @param theVehicle : the vehicle you wish to get the engine state of.
- * @return returns true if the vehicles engine is started, false otherwise.
- * @noSelf
- */
-export declare function getVehicleEngineState(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * This function returns a table of the current vehicle handling data.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleHandling Wiki, getVehicleHandling }
- * @param theVehicle the vehicle you wish to get the handling data of.
- * @return returns a table containing all the handling data, false otherwise. heres a list of valid
- * table properties and what they return:
- * @noSelf
- */
-export declare function getVehicleHandling(
-    theVehicle: Element
-): LuaTable;
-
-/**
- * This function will get the headlight color of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleHeadLightColor Wiki, getVehicleHeadLightColor }
- * @param theVehicle The vehicle that you wish to set the headlight color of.
- * @return returns three integers for the red, green and blue of the headlight color for the
- * specified vehicle, false if an invalid vehicle was specified.
- * @noSelf
- */
-export declare function getVehicleHeadLightColor(
-    theVehicle: Vehicle
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function is used to check whether a vehicles landing gear is down or not. Only
- * planes can be used with this function.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleLandingGearDown Wiki, getVehicleLandingGearDown }
- * @param theVehicle the vehicle of which you wish to check the landing gear state.
- * @return returns true if landing gear is down, false if the landing gear is up.<br />
- * returns nil if the vehicle has no landing gear, or is invalid.
- * @noSelf
- */
-export declare function getVehicleLandingGearDown(
-    theVehicle: Vehicle
-): boolean;
-
-/**
  * This function returns the current state of the specified light on the vehicle.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleLightState Wiki, getVehicleLightState }
  * @param theVehicle the vehicle that you wish to know the light state of.
@@ -410,6 +1057,29 @@ export declare function getVehicleLightState(
 ): number;
 
 /**
+ * This function returns the current states of all the wheels on the vehicle.
+ * No vehicles have more than 4 wheels, if they appear to they will be duplicating other
+ * wheels.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelStates Wiki, getVehicleWheelStates }
+ * @param theVehicle A handle to the vehicle that you wish to know the wheel states of.
+ * @return returns 4 ints indicating the states of the wheels (front left, rear left, front right,
+ * rear right). these values can be:
+ * * 0: inflated
+ * * 1: flat
+ * * 2: fallen off
+ * * 3: collisionless
+ * @noSelf
+ */
+export declare function getVehicleWheelStates(
+    theVehicle: Vehicle
+): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number
+]>;
+
+/**
  * This function returns the maximum number of passengers that a specified vehicle can hold.
  * Only passenger seats are counted, the driver seat is excluded.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleMaxPassengers Wiki, getVehicleMaxPassengers }
@@ -424,218 +1094,16 @@ export declare function getVehicleMaxPassengers(
 ): number;
 
 /**
- * This function retrieves the model ID of a vehicle as an integer value from its name.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelFromName Wiki, getVehicleModelFromName }
- * @param name A string containing the name of the vehicle.
- * @return returns an integer if the name exists, false otherwise.
- * if you use this function on vehicles with shared names, such as police, it will return
- * the earliest occurrence of that vehicles id.
+ * This function returns the name of an upgrade slot name (e.g. roof, spoiler).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeSlotName Wiki, getVehicleUpgradeSlotName }
+ * @param slot/upgrade the slot ID or corresponding upgrade ID of which you want the name.
+ * @return returns a string with the slot name if a valid slot or upgrade id was given, false
+ * otherwise.
  * @noSelf
  */
-export declare function getVehicleModelFromName(
-    name: string
-): number;
-
-/**
- * This function returns a string containing the name of the vehicle
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleName Wiki, getVehicleName }
- * @param theVehicle the vehicle you want to get the name of.
- * @return returns a string containing the requested vehicles name, or false if the vehicle passed
- * to the function is invalid.
- * @noSelf
- */
-export declare function getVehicleName(
-    theVehicle: Vehicle
+export declare function getVehicleUpgradeSlotName(
+    slot_upgrade: number
 ): string;
-
-/**
- * Gets the name of a vehicle by its model ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleNameFromModel Wiki, getVehicleNameFromModel }
- * @param model This is the vehicle model ID. See vehicle IDs to see what values will return names.
- * @return returns the name of the vehicle if the model id was valid, false otherwise.
- * @noSelf
- */
-export declare function getVehicleNameFromModel(
-    model: number
-): string;
-
-/**
- * This function gets the player sitting/trying to enter the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupant Wiki, getVehicleOccupant }
- * @param theVehicle the vehicle of which you wish to retrieve the driver or a passenger.
- * @param seat the seat where the player is sitting (0 for driver, 1+ for passengers).
- * @return returns the player sitting in the vehicle, or false if the seat is unoccupied or doesnt
- * exist.
- * @noSelf
- */
-export declare function getVehicleOccupant(
-    theVehicle: Vehicle,
-    seat?: number
-): Player;
-
-/**
- * This function gets all peds sitting in the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupants Wiki, getVehicleOccupants }
- * @param theVehicle the vehicle of which you wish to retrieve the occupants.
- * @return returns a table with seat id as an index and the occupant as an element like this:
- * tableseat = occupant
- * returns false if an invalid vehicle was passed or if the vehicle has no seats (like a
- * trailer)
- * <div style=font-weight: bold;background:blue;color:white;padding:2px;
- * padding-left:8px;>counting players in a vehicle</div>
- * <div style=border: 2px solid blue;padding: 5px;>dont use an ipairs loop with the table
- * returned by this function. it will skip the driver, as ipairs starts at 1 and the driver
- * seat is id 0. and if theres an empty seat, ipairs will stop looping. you should use a
- * pairs loop instead.
- * <syntaxhighlight lang=lua>
- * local counter = 0
- * for seat, player in pairs(getvehicleoccupants(pseudovehicle)) do
- * counter = counter + 1
- * end
- * outputdebugstring(players in your vehicle: .. counter)
- * </syntaxhighlight>
- * </div>
- * @noSelf
- */
-export declare function getVehicleOccupants(
-    theVehicle: Vehicle
-): LuaTable;
-
-/**
- * This function is used to find out the current state of the override-lights setting of a
- * vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOverrideLights Wiki, getVehicleOverrideLights }
- * @param theVehicle : the vehicle you wish to retrieve the override lights setting of.
- * @return returns an integer value: 0 (no override), 1 (force off) or 2 (force on).
- * @noSelf
- */
-export declare function getVehicleOverrideLights(
-    theVehicle: Vehicle
-): number;
-
-/**
- * This function gets the current paintjob on the specified vehicle. <br />
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePaintjob Wiki, getVehiclePaintjob }
- * @param theVehicle : the vehicle you wish to get the paintjob of.
- * @return returns an integer representing the current paintjob on the vehicle. <br />
- * * 0: the first paintjob
- * * 1: the second paintjob
- * * 2: the third paintjob
- * * 3: default paintjob (no paintjob)
- * @noSelf
- */
-export declare function getVehiclePaintjob(
-    theVehicle: Vehicle
-): number;
-
-/**
- * This function returns the current state of a specifed panel on the vehicle. A vehicle can
- * have up to 7 panels.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePanelState Wiki, getVehiclePanelState }
- * @param theVehicle the vehicle that you wish to know the panel state of.
- * @param panel an integer specifying the panel you want to know the state of. Not every vehicle has
- * every panel. Possible values are:
- * @param 0 Front-left panel
- * @param 1 Front-right panel
- * @param 2 Rear-left panel
- * @param 3 Rear-right panel
- * @param 4 Windscreen
- * @param 5 Front bumper
- * @param 6 Rear bumper
- * @return returns an int indicating the state of the specified the panel. this is a value between 0
- * and 3, with 0 indicating the panel is undamaged and 3 indicating it is very damaged.
- * @noSelf
- */
-export declare function getVehiclePanelState(
-    theVehicle: Vehicle,
-    panel: number
-): number;
-
-/**
- * This function is used to retrieve the text on the number plate of a specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePlateText Wiki, getVehiclePlateText }
- * @param theVehicle the vehicle that you wish to retrieve the plate text from.
- * @return returns a string that corresponds to the plate on the text, false if a bad argument was
- * passed or if it is not a vehicle. every vehicle (including planes, boats, etc.) has a
- * numberplate, even if its not visible.
- * @noSelf
- */
-export declare function getVehiclePlateText(
-    theVehicle: Vehicle
-): string;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleRespawnPosition Wiki, getVehicleRespawnPosition }
- * @param theVehicle The vehicle which youd like to retrieve the respawn coordinates of.
- * @return returns three float|floats indicating the respawn coordinates of the vehicle, x, y and z
- * respectively.
- * @noSelf
- */
-export declare function getVehicleRespawnPosition(
-    theVehicle: Element
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleRespawnRotation Wiki, getVehicleRespawnRotation }
- * @param theVehicle The vehicle which youd like to retrieve the respawn rotation of.
- * @return returns three float|floats indicating the respawn rotation of the vehicle, x, y and z
- * respectively.
- * @noSelf
- */
-export declare function getVehicleRespawnRotation(
-    theVehicle: Element
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function get the parameters of a vehicles siren.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirenParams Wiki, getVehicleSirenParams }
- * @param theVehicle The vehicle to get the siren parameters of
- * @return returns a table with the siren count, siren type and a sub table for the four flags.
- * false otherwise.
- * <syntaxhighlight lang=lua>
- * int   sirenparams.sirencount
- * int   sirenparams.sirentype
- * table sirenparams.flags
- * bool sirenparams.flags360
- * bool sirenparams.flags.doloscheck
- * bool sirenparams.flags.userandomiser
- * bool sirenparams.flags.silent
- * </syntaxhighlight>
- * @noSelf
- */
-export declare function getVehicleSirenParams(
-    theVehicle: Vehicle
-): LuaTable;
-
-/**
- * This function gets the properties of a vehicles sirens.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirens Wiki, getVehicleSirens }
- * @param theVehicle The vehicle to get siren information of.
- * @return if the vehicle is invalid, it returns false. otherwise, returns a table with sub tables
- * containing the properties of each siren point in the following manner:
- * <syntaxhighlight lang=lua>
- * float   sirendatasirenpoint.x
- * float   sirendatasirenpoint.y
- * float   sirendatasirenpoint.z
- * int     sirendatasirenpoint.red
- * int     sirendatasirenpoint.green
- * int     sirendatasirenpoint.blue
- * int     sirendatasirenpoint.alpha
- * int     sirendatasirenpoint.min_alpha
- * </syntaxhighlight>
- * @noSelf
- */
-export declare function getVehicleSirens(
-    theVehicle: Vehicle
-): LuaTable;
 
 /**
  * This function returns whether the sirens are turned on for the specified vehicle.
@@ -663,140 +1131,273 @@ export declare function getVehiclesOfType(
 ): LuaTable;
 
 /**
- * This function is used to get the vehicle being towed by another.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowedByVehicle Wiki, getVehicleTowedByVehicle }
- * @param theVehicle : The vehicle you wish to get the towed vehicle from.
- * @return returns the vehicle that thevehicle is towing, false if it isnt towing a vehicle.
+ * This function sets how much a vehicles door is open. Doors include the boot/trunk and the
+ * bonnet of the vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorOpenRatio Wiki, setVehicleDoorOpenRatio }
+ * @param theVehicle The vehicle that you wish to change the door open ratio of.
+ * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
+ * (rear right)
+ * @param ratio The ratio value, ranging from 0 (fully closed) to 1 (fully open).
+ * @param time The number of milliseconds the door should take to reach the value you have specified. A
+ * value of 0 will change the door open ratio instantly.
+ * @return returns true if the door open ratio was successfully set, false if invalid arguments are
+ * passed.
  * @noSelf
  */
-export declare function getVehicleTowedByVehicle(
-    theVehicle: Vehicle
-): Vehicle;
+export declare function setVehicleDoorOpenRatio(
+    theVehicle: Vehicle,
+    door: number,
+    ratio: number,
+    time?: number
+): boolean;
 
 /**
- * This function is used to get the vehicle that is towing another.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowingVehicle Wiki, getVehicleTowingVehicle }
- * @param theVehicle : the vehicle being towed.
- * @return * the vehicle that thevehicle is being towed by.
- * * false if it isnt being towed.
+ * This function sets the dirt level on a vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDirtLevel Wiki, setVehicleDirtLevel }
+ * @param theVehicle The vehicle that you want to set the dirt level from
+ * @param dirtLevel The dirt level
+ * @return returns true if the dirt level was set on the vehicle, false if the dirt level was not
+ * set or if invalid arguments are specified.
  * @noSelf
  */
-export declare function getVehicleTowingVehicle(
-    theVehicle: Vehicle
-): Vehicle;
+export declare function setVehicleDirtLevel(
+    theVehicle: Vehicle,
+    dirtLevel: number
+): boolean;
 
 /**
- * This function gets the position of a vehicles turret, if it has one. Vehicles with
- * turrets include firetrucks and tanks.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTurretPosition Wiki, getVehicleTurretPosition }
+ * This function sets the position (and rotation) the vehicle will respawn to.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleRespawnPosition Wiki, setVehicleRespawnPosition }
+ * @param theVehicle : The vehicle you wish to change the respawn position of.
+ * @param x : A floating point number representing the X coordinate on the map.
+ * @param y : A floating point number representing the Y coordinate on the map.
+ * @param z : A floating point number representing the Z coordinate on the map.
+ * @param rx : A floating point number representing the rotation about the X axis in Degrees.
+ * @param ry : A floating point number representing the rotation about the Y axis in Degrees.
+ * @param rz : A floating point number representing the rotation about the Z axis in Degrees.
+ * @return returns true if the vehicle was found and edited, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleRespawnPosition(
+    theVehicle: Vehicle,
+    x: number,
+    y: number,
+    z: number,
+    rx?: number,
+    ry?: number,
+    rz?: number
+): boolean;
+
+/**
+ * This function sets the position of a vehicles turret, if it has one. This can be used to
+ * influence the turrets rotation, so it doesnt follow the camera. Vehicles with turrets
+ * include firetrucks and tanks.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTurretPosition Wiki, setVehicleTurretPosition }
  * @param turretVehicle : The vehicle whose turret position you want to retrieve. This should be a vehicle with a
  * turret.
- * @return returns two floats for the x (horizontal) and y (vertical) axis rotation respectively.
- * these values are in radians. the function will return 0, 0 if the vehicle is not a
- * vehicle with a turret.
- * @noSelf
- */
-export declare function getVehicleTurretPosition(
-    turretVehicle: Vehicle
-): LuaMultiReturn<[
-    number,
-    number
-]>;
-
-/**
- * This function retrieves the type of a vehicle (such as if it is a car or a boat).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleType Wiki, getVehicleType }
- * @param vehicle The vehicle element to get the type of.
- * '''OR'''
- * @param modelID A vehicle model ID
- * @return returns a string with vehicle type or false if an invalid modelid has been supplied, or
- * an empty string if the vehicle is blocked internally (some trailers).
- * possible strings returned:
- * @noSelf
- */
-export declare function getVehicleType(
-    theVehicle: Vehicle
-): string;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot Wiki, getVehicleUpgradeOnSlot }
- * @param theVehicle : The vehicle whose upgrade you want to retrieve.
- * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
- * @return returns an integer with the upgrade on the slot if correct arguments were passed, false
+ * @param positionX : The horizontal position of the turret. In radians
+ * @param positionY : The vertical position of the turret. In radians
+ * @return returns a true if a valid vehicle element and valid positions were passed, false
  * otherwise.
  * @noSelf
  */
-export declare function getVehicleUpgradeOnSlot(
+export declare function setVehicleTurretPosition(
+    turretVehicle: Vehicle,
+    positionX: number,
+    positionY: number
+): boolean;
+
+/**
+ * This function sets the rotation the vehicle will respawn to.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleRespawnRotation Wiki, setVehicleRespawnRotation }
+ * @param theVehicle : The vehicle you wish to change the respawn position of.
+ * @param rx : A float representing the rotation about the X axis in degrees.
+ * @param ry : A float representing the rotation about the Y axis in degrees.
+ * @param rz : A float representing the rotation about the Z axis in degrees.
+ * @return returns true if the vehicle respawn rotation was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleRespawnRotation(
     theVehicle: Vehicle,
-    slot: number
+    rx: number,
+    ry: number,
+    rz: number
+): boolean;
+
+/**
+ * This function sets the state of the light on the vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLightState Wiki, setVehicleLightState }
+ * @param theVehicle A handle to the vehicle that you wish to change the light state of.
+ * @param light A whole number determining the individual light:
+ * @param 0 Front left
+ * @param 1 Front right
+ * @param 2 Rear right
+ * @param 3 Rear left
+ * @param state A whole number determining the new state of the light. 0 represents normal lights, and 1
+ * represents broken lights.
+ * Returns ''true'' if the light state was set successfully, ''false'' if invalid arguments
+ * were passed to the function.
+ * @return returns true if the light state was set successfully, false if invalid arguments were
+ * passed to the function.
+ * @noSelf
+ */
+export declare function setVehicleLightState(
+    theVehicle: Vehicle,
+    light: number,
+    state: number
+): boolean;
+
+/**
+ * This function sets the state of the specified door on a vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorState Wiki, setVehicleDoorState }
+ * @param theVehicle The vehicle that you wish to change the door state of.
+ * @param door An integer representing which door to set the state of. Valid values are:
+ * @param 0 Shut, intact (aka Closed, undamaged)
+ * @param 1 Ajar, intact (aka Slightly open, undamaged)
+ * @param 2 Shut, damaged (aka Closed, damaged)
+ * @param 3 Ajar, damaged (aka Slightly open, damaged)
+ * @param 4 Missing
+ * @param 5 Rear right
+ * @param state An integer representing the state to set the door to. Valid values are:
+ * @param spawnFlyingComponent A boolean, if set to true, spawns flying doors etc. if you remove a component with
+ * <nowiki>state == 4</nowiki>.
+ * @return returns true if the door state was successfully set, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleDoorState(
+    theVehicle: Vehicle,
+    door: number,
+    state: number
+): boolean;
+
+/**
+ * This function sets the state of wheels on the vehicle.
+ * Internally, no vehicles have more than 4 wheels. If they appear to, they will be
+ * duplicating other wheels.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWheelStates Wiki, setVehicleWheelStates }
+ * @param theVehicle A handle to the vehicle that you wish to change the wheel states of.
+ * @param frontLeft A whole number representing the wheel state (-1 for no change)
+ * @param rearLeft A whole number representing the wheel state (-1 for no change)
+ * @param frontRight A whole number representing the wheel state (-1 for no change)
+ * @param rearRight A whole number representing the wheel state (-1 for no change)
+ * @return returns a boolean value true or false that tells you if it was successful or not.
+ * @noSelf
+ */
+export declare function setVehicleWheelStates(
+    theVehicle: Vehicle,
+    frontLeft: number,
+    rearLeft?: number,
+    frontRight?: number,
+    rearRight?: number
+): boolean;
+
+/**
+ * This function sets the time delay (in milliseconds) the vehicle will remain at its
+ * position while empty.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleIdleRespawnDelay Wiki, setVehicleIdleRespawnDelay }
+ * @param theVehicle : The vehicle you wish to change the respawn delay of.
+ * @param timeDelay : The number of milliseconds the vehicle will be allowed to remain unused until it
+ * respawns.
+ * @return returns true if the vehicle was found and edited.
+ * @noSelf
+ */
+export declare function setVehicleIdleRespawnDelay(
+    theVehicle: Vehicle,
+    timeDelay: number
+): boolean;
+
+/**
+ * This function sets the time delay (in milliseconds) the vehicle will remain wrecked
+ * before respawning.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleRespawnDelay Wiki, setVehicleRespawnDelay }
+ * @param theVehicle : The vehicle you wish to change the respawn delay of.
+ * @param timeDelay : The amount of milliseconds to delay.
+ * @return returns true if the vehicle was found and edited.
+ * @noSelf
+ */
+export declare function setVehicleRespawnDelay(
+    theVehicle: Vehicle,
+    timeDelay: number
+): boolean;
+
+/**
+ * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
+ * different for example the labelling on trucks or the contents of a pick-up truck and the
+ * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleVariant Wiki, setVehicleVariant }
+ * @param theVehicle A handle to the vehicle that you want to get the variant of.
+ * @param variant1 : An integer for the first variant see Vehicle variants
+ * @param variant2 : An integer for the second variant see Vehicle variants
+ * @return on success:
+ * * bool: returns true as the vehicle variants were successfully set.
+ * on failure:
+ * * bool: false because the specified vehicle didnt exist or specified variants were
+ * invalid.
+ * @noSelf
+ */
+export declare function setVehicleVariant(
+    theVehicle: Vehicle,
+    variant1?: number,
+    variant2?: number
+): boolean;
+
+/**
+ * This function tells you how open a door is (the open ratio). Doors include boots/trunks
+ * and bonnets on vehicles that have them.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDoorOpenRatio Wiki, getVehicleDoorOpenRatio }
+ * @param theVehicle The vehicle that you wish to get the door open ratio of.
+ * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
+ * (rear right)
+ * @return returns a number between 0 and 1 that indicates how open the door is. 0 is closed, and 1
+ * is fully open. returns false if invalid arguments are passed.
+ * @noSelf
+ */
+export declare function getVehicleDoorOpenRatio(
+    theVehicle: Vehicle,
+    door: number
 ): number;
 
 /**
- * This function returns a table of all the upgrades on a specifed vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgrades Wiki, getVehicleUpgrades }
- * @param theVehicle The vehicle you wish to retrieve the upgrades of.
- * @return returns a table of all the upgrades on each slot of a vehicle, which may be empty, or
- * false if a valid vehicle is not passed.
+ * This function toggles whether or not the vehicle will be respawned after blown or idle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ToggleVehicleRespawn Wiki, toggleVehicleRespawn }
+ * @param theVehicle : The vehicle you wish to toggle the respawning of.
+ * @param Respawn : A boolean determining if the vehicle will respawn or not.
+ * @return returns true if the vehicle was found and edited.
  * @noSelf
  */
-export declare function getVehicleUpgrades(
-    theVehicle: Vehicle
-): LuaTable;
+export declare function toggleVehicleRespawn(
+    theVehicle: Vehicle,
+    Respawn: boolean
+): boolean;
 
 /**
- * This function returns the name of an upgrade slot name (e.g. roof, spoiler).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeSlotName Wiki, getVehicleUpgradeSlotName }
- * @param slot/upgrade the slot ID or corresponding upgrade ID of which you want the name.
- * @return returns a string with the slot name if a valid slot or upgrade id was given, false
- * otherwise.
+ * This function turns a vehicles engine on or off. Note that the engine will always be
+ * turned on when someone enters the driver seat, unless you override that behaviour with
+ * scripts.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleEngineState Wiki, setVehicleEngineState }
+ * @param theVehicle : The vehicle you wish to change the engine state of.
+ * @param engineState : A boolean value representing whether the engine will be turned on (true) or off (false).
+ * @return returns true if the vehicles engine state was successfully changed, false otherwise.
  * @noSelf
  */
-export declare function getVehicleUpgradeSlotName(
-    slot_upgrade: number
-): string;
+export declare function setVehicleEngineState(
+    theVehicle: Vehicle,
+    engineState: boolean
+): boolean;
 
 /**
- * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
- * different for example the labelling on trucks or the contents of a pick-up truck and the
- * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleVariant Wiki, getVehicleVariant }
- * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @return on success:
- * * int: an integer for the first vehicle variant see vehicle variants
- * * int: an integer for the second vehicle variant see vehicle variants
- * on failure:
- * * bool: false because the specified vehicle didnt exist
+ * This function will blow up a vehicle. This will cause an explosion and will kill the
+ * driver and any passengers inside it.
+ * @see {@link https://wiki.multitheftauto.com/wiki/BlowVehicle Wiki, blowVehicle }
+ * @param vehicleToBlow the vehicle that you wish to blow up.
+ * @param explode if this argument is true then the vehicle will explode, otherwise it will just be blown
+ * up silently.
  * @noSelf
  */
-export declare function getVehicleVariant(
-    theVehicle: Vehicle
-): LuaMultiReturn<[
-    number,
-    number
-]>;
-
-/**
- * This function returns the current states of all the wheels on the vehicle.
- * No vehicles have more than 4 wheels, if they appear to they will be duplicating other
- * wheels.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelStates Wiki, getVehicleWheelStates }
- * @param theVehicle A handle to the vehicle that you wish to know the wheel states of.
- * @return returns 4 ints indicating the states of the wheels (front left, rear left, front right,
- * rear right). these values can be:
- * * 0: inflated
- * * 1: flat
- * * 2: fallen off
- * * 3: collisionless
- * @noSelf
- */
-export declare function getVehicleWheelStates(
-    theVehicle: Vehicle
-): LuaMultiReturn<[
-    number,
-    number,
-    number,
-    number
-]>;
+export declare function blowVehicle(
+    vehicleToBlow: Vehicle,
+    explode?: boolean
+): boolean;
 
 /**
  * This function will check if a train or tram is derailable.
@@ -821,63 +1422,20 @@ export declare function isTrainDerailed(
 ): boolean;
 
 /**
- * This function allows you to determine whether a vehicle is blown or still intact.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleBlown Wiki, isVehicleBlown }
- * @param theVehicle The vehicle that you want to obtain the blown status of.
- * @return returns true if the vehicle specified has blown up, false if it is still intact or the
- * vehicle specified is invalid.
+ * This function will get the headlight color of a vehicle.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleHeadLightColor Wiki, getVehicleHeadLightColor }
+ * @param theVehicle The vehicle that you wish to set the headlight color of.
+ * @return returns three integers for the red, green and blue of the headlight color for the
+ * specified vehicle, false if an invalid vehicle was specified.
  * @noSelf
  */
-export declare function isVehicleBlown(
+export declare function getVehicleHeadLightColor(
     theVehicle: Vehicle
-): boolean;
-
-/**
- * This function checks if a vehicle is damage proof (set with setVehicleDamageProof).
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleDamageProof Wiki, isVehicleDamageProof }
- * @param theVehicle the vehicle whose invincibility status we want to check.
- * @return returns true if the vehicle is damage proof, false if it isnt or if invalid arguments
- * were passed.
- * @noSelf
- */
-export declare function isVehicleDamageProof(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * This will tell you if a vehicles petrol tank is explodable.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleFuelTankExplodable Wiki, isVehicleFuelTankExplodable }
- * @param theVehicle The vehicle that you want to obtain the fuel tank status of.
- * @return returns true if the specified vehicle is valid and its fuel tank is explodable, false
- * otherwise.
- * @noSelf
- */
-export declare function isVehicleFuelTankExplodable(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * This will tell you if a vehicle is locked.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleLocked Wiki, isVehicleLocked }
- * @param theVehicle The vehicle that you want to obtain the locked status of.
- * @return returns true if the vehicle specified is locked, false if is unlocked or the vehicle
- * specified is invalid.
- * @noSelf
- */
-export declare function isVehicleLocked(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * Checks to see if a vehicle has contact with the ground.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleOnGround Wiki, isVehicleOnGround }
- * @param theVehicle The vehicle you wish to check.
- * @return returns true if vehicle is on the ground, false if it is not.
- * @noSelf
- */
-export declare function isVehicleOnGround(
-    theVehicle: Vehicle
-): boolean;
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
 
 /**
  * This function will get the taxi light state of a taxi (vehicle IDs 420 and 438)
@@ -888,86 +1446,6 @@ export declare function isVehicleOnGround(
  */
 export declare function isVehicleTaxiLightOn(
     taxi: Vehicle
-): boolean;
-
-/**
- * This function removes sirens from a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveVehicleSirens Wiki, removeVehicleSirens }
- * @param theVehicle The vehicle to remove the sirens of
- * @return returns true if sirens were successfully removed from the vehicle, false otherwise.
- * @noSelf
- */
-export declare function removeVehicleSirens(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveVehicleUpgrade Wiki, removeVehicleUpgrade }
- * @param theVehicle : The element representing the vehicle you wish to remove the upgrade from
- * @param upgrade : The ID of the upgrade you wish to remove.
- * @return returns true if the upgrade was successfully removed from the vehicle, otherwise false.
- * @noSelf
- */
-export declare function removeVehicleUpgrade(
-    theVehicle: Vehicle,
-    upgrade: number
-): boolean;
-
-/**
- * Resets the vehicle explosion time. This is the point in time at which the vehicle last
- * exploded: at this time plus the vehicles respawn delay, the vehicle is respawned. You can
- * use this function to prevent the vehicle from respawning.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleExplosionTime Wiki, resetVehicleExplosionTime }
- * @param theVehicle The vehicle you wish to reset the explosion time from.
- * @return returns true if the vehicle explosion time has been reset, false if it failed to reset
- * the explosion time.
- * @noSelf
- */
-export declare function resetVehicleExplosionTime(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * Resets the vehicle idle time
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleIdleTime Wiki, resetVehicleIdleTime }
- * @param theVehicle The vehicle you wish to reset the idle time from.
- * @return returns true if the vehicle idle time has been reset, false if it failed to reset the
- * idle time.
- * @noSelf
- */
-export declare function resetVehicleIdleTime(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * This function respawns a vehicle according to its set respawn position, set by
- * setVehicleRespawnPosition or the position and rotation it was created on. To spawn a
- * vehicle to a specific location just once, spawnVehicle can be used.
- * @see {@link https://wiki.multitheftauto.com/wiki/RespawnVehicle Wiki, respawnVehicle }
- * @param theVehicle The vehicle you wish to respawn
- * @return returns true if the vehicle respawned successfully, false if the passed argument does not
- * exist or is not a vehicle.
- * @noSelf
- */
-export declare function respawnVehicle(
-    theVehicle: Vehicle
-): boolean;
-
-/**
- * This function is used to change the handling data of all vehicles of a specified model.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetModelHandling Wiki, setModelHandling }
- * @param modelId The Vehicle_IDs|vehicle model you wish to set the handling of.
- * @param property The property you wish to set the handling of the vehicle to, or nil if you want to reset
- * the all the handling properties.
- * @param value The value of the modelss handling property you wish to set, or nil if you want to reset
- * the handling property to its default value.
- * @return returns true if the handling was set successfully, false otherwise.
- * @noSelf
- */
-export declare function setModelHandling(
-    modelId: number,
-    property: string,
-    value: unknown
 ): boolean;
 
 /**
@@ -998,57 +1476,15 @@ export declare function setTrainDerailed(
 ): boolean;
 
 /**
- * Sets the direction in which a train or tram drives over the rails (clockwise or
- * counterclockwise).
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDirection Wiki, setTrainDirection }
- * @param train the train whose direction to change.
- * @param clockwise if true, will make the train go clockwise. If false, makes it go counterclockwise.
- * @return returns true if successful, false otherwise.
+ * This function will set a vehicles health to full and fix its damage model. If you wish to
+ * only change the vehicles health, without affecting its damage model, use setElementHealth.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FixVehicle Wiki, fixVehicle }
+ * @param theVehicle the vehicle you wish to fix
+ * @return returns true if the vehicle was fixed, false if thevehicle is invalid.
  * @noSelf
  */
-export declare function setTrainDirection(
-    train: Vehicle,
-    clockwise: boolean
-): boolean;
-
-/**
- * Sets the position the train is currently on the track
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainPosition Wiki, setTrainPosition }
- * @param train the train of which to set the track
- * @param position the position along the track (0 - 18107 a complete way round)
- * @return returns true if the train position was set, false otherwise.
- * @noSelf
- */
-export declare function setTrainPosition(
-    train: Vehicle,
-    position: number
-): boolean;
-
-/**
- * Sets the on-track speed of a train.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainSpeed Wiki, setTrainSpeed }
- * @param train the train whose speed to change.
- * @param speed the new on-track speed of the train. A positive value will make it go clockwise, a
- * negative value counter clockwise.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function setTrainSpeed(
-    train: Vehicle,
-    speed: number
-): boolean;
-
-/**
- * Sets the track of a train
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainTrack Wiki, setTrainTrack }
- * @param train the train of which to set the track
- * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
- * @return returns true if the track was set to the train, false otherwise.
- * @noSelf
- */
-export declare function setTrainTrack(
-    train: Vehicle,
-    track: number
+export declare function fixVehicle(
+    theVehicle: Vehicle
 ): boolean;
 
 /**
@@ -1098,143 +1534,6 @@ export declare function setVehicleColor(
 ): boolean;
 
 /**
- * This functions makes a vehicle damage proof, so it wont take damage from bullets, hits,
- * explosions or fire. A damage proofs vehicle health can still be changed via script.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDamageProof Wiki, setVehicleDamageProof }
- * @param theVehicle The vehicle you wish to make damage proof.
- * @param damageProof true is damage proof, false is damageable.
- * @return returns true if the vehicle was set damage proof succesfully, false if the arguments are
- * invalid or it failed.
- * @noSelf
- */
-export declare function setVehicleDamageProof(
-    theVehicle: Vehicle,
-    damageProof: boolean
-): boolean;
-
-/**
- * This function sets the dirt level on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDirtLevel Wiki, setVehicleDirtLevel }
- * @param theVehicle The vehicle that you want to set the dirt level from
- * @param dirtLevel The dirt level
- * @return returns true if the dirt level was set on the vehicle, false if the dirt level was not
- * set or if invalid arguments are specified.
- * @noSelf
- */
-export declare function setVehicleDirtLevel(
-    theVehicle: Vehicle,
-    dirtLevel: number
-): boolean;
-
-/**
- * This function sets how much a vehicles door is open. Doors include the boot/trunk and the
- * bonnet of the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorOpenRatio Wiki, setVehicleDoorOpenRatio }
- * @param theVehicle The vehicle that you wish to change the door open ratio of.
- * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
- * (rear right)
- * @param ratio The ratio value, ranging from 0 (fully closed) to 1 (fully open).
- * @param time The number of milliseconds the door should take to reach the value you have specified. A
- * value of 0 will change the door open ratio instantly.
- * @return returns true if the door open ratio was successfully set, false if invalid arguments are
- * passed.
- * @noSelf
- */
-export declare function setVehicleDoorOpenRatio(
-    theVehicle: Vehicle,
-    door: number,
-    ratio: number,
-    time?: number
-): boolean;
-
-/**
- * This function sets the state of the specified door on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorState Wiki, setVehicleDoorState }
- * @param theVehicle The vehicle that you wish to change the door state of.
- * @param door An integer representing which door to set the state of. Valid values are:
- * @param 0 Shut, intact (aka Closed, undamaged)
- * @param 1 Ajar, intact (aka Slightly open, undamaged)
- * @param 2 Shut, damaged (aka Closed, damaged)
- * @param 3 Ajar, damaged (aka Slightly open, damaged)
- * @param 4 Missing
- * @param 5 Rear right
- * @param state An integer representing the state to set the door to. Valid values are:
- * @param spawnFlyingComponent A boolean, if set to true, spawns flying doors etc. if you remove a component with
- * <nowiki>state == 4</nowiki>.
- * @return returns true if the door state was successfully set, false otherwise.
- * @noSelf
- */
-export declare function setVehicleDoorState(
-    theVehicle: Vehicle,
-    door: number,
-    state: number
-): boolean;
-
-/**
- * This function makes a vehicles doors undamageable, so they wont fall off when theyre hit.
- * Note that the vehicle has to be locked using setVehicleLocked for this setting to have
- * any effect.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorsUndamageable Wiki, setVehicleDoorsUndamageable }
- * @param theVehicle The vehicle of which you wish to set the car door damageability.
- * @param state A boolean denoting whether the vehicles doors are undamageable (true) or damageable
- * (false).
- * @return returns true if the damageability state was successfully changed, false if invalid
- * arguments were passed.
- * @noSelf
- */
-export declare function setVehicleDoorsUndamageable(
-    theVehicle: Vehicle,
-    state: boolean
-): boolean;
-
-/**
- * This function turns a vehicles engine on or off. Note that the engine will always be
- * turned on when someone enters the driver seat, unless you override that behaviour with
- * scripts.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleEngineState Wiki, setVehicleEngineState }
- * @param theVehicle : The vehicle you wish to change the engine state of.
- * @param engineState : A boolean value representing whether the engine will be turned on (true) or off (false).
- * @return returns true if the vehicles engine state was successfully changed, false otherwise.
- * @noSelf
- */
-export declare function setVehicleEngineState(
-    theVehicle: Vehicle,
-    engineState: boolean
-): boolean;
-
-/**
- * This function changes the explodable state of a vehicles fuel tank, which toggles the
- * ability to blow the vehicle up by shooting the tank. This function will have no effect on
- * vehicles with tanks that cannot be shot in single player.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleFuelTankExplodable Wiki, setVehicleFuelTankExplodable }
- * @param theVehicle : The vehicle you wish to change the fuel tank explodable state of.
- * @param explodable : A boolean value representing whether or not the fuel tank will be explodable.
- * @return returns true if the vehicles fuel tank explodable state was successfully changed, false
- * otherwise.
- * @noSelf
- */
-export declare function setVehicleFuelTankExplodable(
-    theVehicle: Vehicle,
-    explodable: boolean
-): boolean;
-
-/**
- * This function is used to change the handling data of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleHandling Wiki, setVehicleHandling }
- * @param theVehicle The vehicle you wish to set the handling of.
- * @param property The property you wish to set the handling of the vehicle to.
- * @param value The value of the property you wish to set the handling of the vehicle to.
- * @return returns true if the handling was set successfully, false otherwise. see below a list of
- * valid properties and their required values:
- * @noSelf
- */
-export declare function setVehicleHandling(
-    theVehicle: Element,
-    property: string,
-    value: unknown
-): boolean;
-
-/**
  * This function will set the headlight color of a vehicle. valid Red Green and Blue
  * arguments range from 0-255
  * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleHeadLightColor Wiki, setVehicleHeadLightColor }
@@ -1254,244 +1553,6 @@ export declare function setVehicleHeadLightColor(
 ): boolean;
 
 /**
- * This function sets the time delay (in milliseconds) the vehicle will remain at its
- * position while empty.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleIdleRespawnDelay Wiki, setVehicleIdleRespawnDelay }
- * @param theVehicle : The vehicle you wish to change the respawn delay of.
- * @param timeDelay : The number of milliseconds the vehicle will be allowed to remain unused until it
- * respawns.
- * @return returns true if the vehicle was found and edited.
- * @noSelf
- */
-export declare function setVehicleIdleRespawnDelay(
-    theVehicle: Vehicle,
-    timeDelay: number
-): boolean;
-
-/**
- * This function is used to set the landing gear state of certain vehicles.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLandingGearDown Wiki, setVehicleLandingGearDown }
- * @param theVehicle The vehicle of which you wish to set the landing gear state.
- * @param gearState A bool representing the state of the landing gear.  true represents a collapsed landing
- * gear, while false represents a disabled landing gear.
- * @return returns true if the landing gear was set successfully, false otherwise.
- * @noSelf
- */
-export declare function setVehicleLandingGearDown(
-    theVehicle: Vehicle,
-    gearState: boolean
-): boolean;
-
-/**
- * This function sets the state of the light on the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLightState Wiki, setVehicleLightState }
- * @param theVehicle A handle to the vehicle that you wish to change the light state of.
- * @param light A whole number determining the individual light:
- * @param 0 Front left
- * @param 1 Front right
- * @param 2 Rear right
- * @param 3 Rear left
- * @param state A whole number determining the new state of the light. 0 represents normal lights, and 1
- * represents broken lights.
- * Returns ''true'' if the light state was set successfully, ''false'' if invalid arguments
- * were passed to the function.
- * @return returns true if the light state was set successfully, false if invalid arguments were
- * passed to the function.
- * @noSelf
- */
-export declare function setVehicleLightState(
-    theVehicle: Vehicle,
-    light: number,
-    state: number
-): boolean;
-
-/**
- * This function can be used to set the vehicles doors to be locked or unlocked.  Locking a
- * vehicle restricts access to the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLocked Wiki, setVehicleLocked }
- * @param theVehicle The vehicle which you wish to change the lock status of
- * @param locked Boolean for the status you wish to set. Set true to lock, false to unlock
- * @return returns true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function setVehicleLocked(
-    theVehicle: Vehicle,
-    locked: boolean
-): boolean;
-
-/**
- * This function changes the light overriding setting on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleOverrideLights Wiki, setVehicleOverrideLights }
- * @param theVehicle : The vehicle you wish to change the override lights setting of.
- * @param value : A whole number representing the state of the lights:
- * @param 0 : No override, lights are set to default.
- * @param 1 : Lights are forced off.
- * @param 2 : Lights are forced on.
- * @return returns true if the vehicles lights setting was changed. otherwise false.
- * @noSelf
- */
-export declare function setVehicleOverrideLights(
-    theVehicle: Vehicle,
-    value: number
-): boolean;
-
-/**
- * This function changes the paintjob on the specified vehicle. <br/>
- * See Paintjob|paintjob for list of supported vehicles.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePaintjob Wiki, setVehiclePaintjob }
- * @param theVehicle : The vehicle you wish to change the paintjob of.
- * @param value : A whole number representing the new paintjob id. Ranges from 0 up to 3.
- * @return returns true if the vehicles paintjob was changed. otherwise false.
- * @noSelf
- */
-export declare function setVehiclePaintjob(
-    theVehicle: Vehicle,
-    value: number
-): boolean;
-
-/**
- * This function allows you to change the state of one of the six panels vehicles can have.
- * When executed on the server-side resources, the damage will be synched for all players,
- * whereas the change is only client-side if the function is used in a client resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePanelState Wiki, setVehiclePanelState }
- * @param theVehicle The vehicle you would like to modify the panel of.
- * @param panelID An ID specifying the part of the vehicle. Possible values are:
- * @param Cars
- * @param 0 Engine Smoke (left engine for a Nevada or a Beagle)
- * @param 1 Engine Smoke (right engine for a Nevada or a Beagle)
- * @param 2 Rudder
- * @param 3 Elevators
- * @param 4 Ailerons
- * @param 5 Unknown
- * @param 6 Unknown
- * ''NOTE:'' Settings are not applicable for all vehicles of these types, for instance panel
- * 0 effects a Dodo, but does nothing to a hydra.
- * @param Planes
- * @param state How damaged the part is on the scale of 0 to 3, with 0 being undamaged and 3 being very
- * damaged. How this is manifested depends on the panel and the vehicle.
- * @return returns true if the panel state has been updated, false otherwise
- * @noSelf
- */
-export declare function setVehiclePanelState(
-    theVehicle: Vehicle,
-    panelID: number,
-    state: number
-): boolean;
-
-/**
- * This function can be used to set the numberplate text of a car.
- * It now also changes the numberplate text of any vehicle that has visual numberplates.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePlateText Wiki, setVehiclePlateText }
- * @param theVehicle the vehicle whose numberplate you want to change.
- * @param numberplate a string that will go on the number plate of the car (max 8 characters).
- * @return returns true if the numberplate was changed successfully, or false if invalid arguments
- * were passed
- * @noSelf
- */
-export declare function setVehiclePlateText(
-    theVehicle: Element,
-    numberplate: string
-): boolean;
-
-/**
- * This function sets the time delay (in milliseconds) the vehicle will remain wrecked
- * before respawning.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleRespawnDelay Wiki, setVehicleRespawnDelay }
- * @param theVehicle : The vehicle you wish to change the respawn delay of.
- * @param timeDelay : The amount of milliseconds to delay.
- * @return returns true if the vehicle was found and edited.
- * @noSelf
- */
-export declare function setVehicleRespawnDelay(
-    theVehicle: Vehicle,
-    timeDelay: number
-): boolean;
-
-/**
- * This function sets the position (and rotation) the vehicle will respawn to.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleRespawnPosition Wiki, setVehicleRespawnPosition }
- * @param theVehicle : The vehicle you wish to change the respawn position of.
- * @param x : A floating point number representing the X coordinate on the map.
- * @param y : A floating point number representing the Y coordinate on the map.
- * @param z : A floating point number representing the Z coordinate on the map.
- * @param rx : A floating point number representing the rotation about the X axis in Degrees.
- * @param ry : A floating point number representing the rotation about the Y axis in Degrees.
- * @param rz : A floating point number representing the rotation about the Z axis in Degrees.
- * @return returns true if the vehicle was found and edited, false otherwise.
- * @noSelf
- */
-export declare function setVehicleRespawnPosition(
-    theVehicle: Vehicle,
-    x: number,
-    y: number,
-    z: number,
-    rx?: number,
-    ry?: number,
-    rz?: number
-): boolean;
-
-/**
- * This function sets the rotation the vehicle will respawn to.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleRespawnRotation Wiki, setVehicleRespawnRotation }
- * @param theVehicle : The vehicle you wish to change the respawn position of.
- * @param rx : A float representing the rotation about the X axis in degrees.
- * @param ry : A float representing the rotation about the Y axis in degrees.
- * @param rz : A float representing the rotation about the Z axis in degrees.
- * @return returns true if the vehicle respawn rotation was set successfully, false otherwise.
- * @noSelf
- */
-export declare function setVehicleRespawnRotation(
-    theVehicle: Vehicle,
-    rx: number,
-    ry: number,
-    rz: number
-): boolean;
-
-/**
- * This function changes the properties of a vehicles siren point.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirens Wiki, setVehicleSirens }
- * @param theVehicle The vehicle to modify
- * @param sirenPoint The siren point to modify
- * @param posX The x position of this siren point from the center of the vehicle
- * @param posY The y position of this siren point from the center of the vehicle
- * @param posZ The z position of this siren point from the center of the vehicle
- * @param red The amount of red from 0 to 255
- * @param green The amount of green from 0 to 255
- * @param blue The amount of blue from 0 to 255
- * @param alpha The alpha of the siren from 0 to 255
- * @param minAlpha The minimum alpha of the light during day time
- * @return returns true if the siren point was successfully changed on the vehicle, false otherwise.
- * @noSelf
- */
-export declare function setVehicleSirens(
-    theVehicle: Vehicle,
-    sirenPoint: number,
-    posX: number,
-    posY: number,
-    posZ: number,
-    red: number,
-    green: number,
-    blue: number,
-    alpha?: number,
-    minAlpha?: number
-): boolean;
-
-/**
- * This function changes the state of the sirens on the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirensOn Wiki, setVehicleSirensOn }
- * @param theVehicle The vehicle that will have the sirens set
- * @param sirensOn The state to set the sirens to
- * @return returns true if the sirens are set for the specified vehicle, false if the sirens cant be
- * set for the specified vehicle, if the vehicle doesnt have sirens or if invalid arguments
- * are specified.
- * @noSelf
- */
-export declare function setVehicleSirensOn(
-    theVehicle: Vehicle,
-    sirensOn: boolean
-): boolean;
-
-/**
  * This function will set the taxi light on in a taxi (vehicle IDs 420 and 438)
  * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTaxiLightOn Wiki, setVehicleTaxiLightOn }
  * @param taxi The vehicle element of the taxi that you wish to turn the light on.
@@ -1505,99 +1566,40 @@ export declare function setVehicleTaxiLightOn(
 ): boolean;
 
 /**
- * This function sets the position of a vehicles turret, if it has one. This can be used to
- * influence the turrets rotation, so it doesnt follow the camera. Vehicles with turrets
- * include firetrucks and tanks.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTurretPosition Wiki, setVehicleTurretPosition }
- * @param turretVehicle : The vehicle whose turret position you want to retrieve. This should be a vehicle with a
- * turret.
- * @param positionX : The horizontal position of the turret. In radians
- * @param positionY : The vertical position of the turret. In radians
- * @return returns a true if a valid vehicle element and valid positions were passed, false
+ * This functions makes a vehicle damage proof, so it wont take damage from bullets, hits,
+ * explosions or fire. A damage proofs vehicle health can still be changed via script.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDamageProof Wiki, setVehicleDamageProof }
+ * @param theVehicle The vehicle you wish to make damage proof.
+ * @param damageProof true is damage proof, false is damageable.
+ * @return returns true if the vehicle was set damage proof succesfully, false if the arguments are
+ * invalid or it failed.
+ * @noSelf
+ */
+export declare function setVehicleDamageProof(
+    theVehicle: Vehicle,
+    damageProof: boolean
+): boolean;
+
+/**
+ * This will tell you if a vehicle is locked.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleLocked Wiki, isVehicleLocked }
+ * @param theVehicle The vehicle that you want to obtain the locked status of.
+ * @return returns true if the vehicle specified is locked, false if is unlocked or the vehicle
+ * specified is invalid.
+ * @noSelf
+ */
+export declare function isVehicleLocked(
+    theVehicle: Vehicle
+): boolean;
+
+/**
+ * This will tell you if a vehicles petrol tank is explodable.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleFuelTankExplodable Wiki, isVehicleFuelTankExplodable }
+ * @param theVehicle The vehicle that you want to obtain the fuel tank status of.
+ * @return returns true if the specified vehicle is valid and its fuel tank is explodable, false
  * otherwise.
  * @noSelf
  */
-export declare function setVehicleTurretPosition(
-    turretVehicle: Vehicle,
-    positionX: number,
-    positionY: number
-): boolean;
-
-/**
- * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
- * different for example the labelling on trucks or the contents of a pick-up truck and the
- * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleVariant Wiki, setVehicleVariant }
- * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @param variant1 : An integer for the first variant see Vehicle variants
- * @param variant2 : An integer for the second variant see Vehicle variants
- * @return on success:
- * * bool: returns true as the vehicle variants were successfully set.
- * on failure:
- * * bool: false because the specified vehicle didnt exist or specified variants were
- * invalid.
- * @noSelf
- */
-export declare function setVehicleVariant(
-    theVehicle: Vehicle,
-    variant1?: number,
-    variant2?: number
-): boolean;
-
-/**
- * This function sets the state of wheels on the vehicle.
- * Internally, no vehicles have more than 4 wheels. If they appear to, they will be
- * duplicating other wheels.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWheelStates Wiki, setVehicleWheelStates }
- * @param theVehicle A handle to the vehicle that you wish to change the wheel states of.
- * @param frontLeft A whole number representing the wheel state (-1 for no change)
- * @param rearLeft A whole number representing the wheel state (-1 for no change)
- * @param frontRight A whole number representing the wheel state (-1 for no change)
- * @param rearRight A whole number representing the wheel state (-1 for no change)
- * @return returns a boolean value true or false that tells you if it was successful or not.
- * @noSelf
- */
-export declare function setVehicleWheelStates(
-    theVehicle: Vehicle,
-    frontLeft: number,
-    rearLeft?: number,
-    frontRight?: number,
-    rearRight?: number
-): boolean;
-
-/**
- * Spawns a vehicle at any given position and rotation
- * @see {@link https://wiki.multitheftauto.com/wiki/SpawnVehicle Wiki, spawnVehicle }
- * @param theVehicle The vehicle you wish to spawn
- * @param x The x position you wish to spawn the vehicle at
- * @param y The x position you wish to spawn the vehicle at
- * @param z The x position you wish to spawn the vehicle at
- * @param rx The x rotation you wish to spawn the vehicle at
- * @param ry The y rotation you wish to spawn the vehicle at
- * @param rz The z rotation you wish to spawn the vehicle at
- * @return returns true if the vehicle spawned successfully, false if the passed argument does not
- * exist or is not a vehicle.
- * @noSelf
- */
-export declare function spawnVehicle(
-    theVehicle: Vehicle,
-    x: number,
-    y: number,
-    z: number,
-    rx?: number,
-    ry?: number,
-    rz?: number
-): boolean;
-
-/**
- * This function toggles whether or not the vehicle will be respawned after blown or idle.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToggleVehicleRespawn Wiki, toggleVehicleRespawn }
- * @param theVehicle : The vehicle you wish to toggle the respawning of.
- * @param Respawn : A boolean determining if the vehicle will respawn or not.
- * @return returns true if the vehicle was found and edited.
- * @noSelf
- */
-export declare function toggleVehicleRespawn(
-    theVehicle: Vehicle,
-    Respawn: boolean
+export declare function isVehicleFuelTankExplodable(
+    theVehicle: Vehicle
 ): boolean;

@@ -45,9 +45,46 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * This function finds a team element using the provided team name.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
+ * @param teamName A string determining the name of the team you wish to find.
+ * @return returns the team element if it was found, false otherwise.
+ * @noSelf
+ */
+export declare function getTeamFromName(
+    teamName: string
+): Team;
+
+/**
+ * This function gets the current team a player is on.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
+ * @param thePlayer : The player whose team you want to find out.
+ * @return returns a team element representing the team the player is on, false if the player is not
+ * part of a team.
+ * @noSelf
+ */
+export declare function getPlayerTeam(
+    thePlayer: Player
+): Team;
+
+/**
+ * This function gets the team name of a team object.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamName Wiki, getTeamName }
+ * @param theTeam The team you want to retrieve the name of.
+ * @return returns a string representing the teams name if the team object was valid, false
+ * otherwise.
+ * @noSelf
+ */
+export declare function getTeamName(
+    theTeam: Team
+): string;
 
 /**
  * This function is for returning the number of players in the specified team.
@@ -72,18 +109,6 @@ export declare function countPlayersInTeam(
 export declare function getPlayersInTeam(
     theTeam: Team
 ): LuaTable;
-
-/**
- * This function gets the current team a player is on.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
- * @param thePlayer : The player whose team you want to find out.
- * @return returns a team element representing the team the player is on, false if the player is not
- * part of a team.
- * @noSelf
- */
-export declare function getPlayerTeam(
-    thePlayer: Player
-): Team;
 
 /**
  * This function retrieves the color of a team.
@@ -112,26 +137,3 @@ export declare function getTeamColor(
 export declare function getTeamFriendlyFire(
     theTeam: Team
 ): boolean;
-
-/**
- * This function finds a team element using the provided team name.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
- * @param teamName A string determining the name of the team you wish to find.
- * @return returns the team element if it was found, false otherwise.
- * @noSelf
- */
-export declare function getTeamFromName(
-    teamName: string
-): Team;
-
-/**
- * This function gets the team name of a team object.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamName Wiki, getTeamName }
- * @param theTeam The team you want to retrieve the name of.
- * @return returns a string representing the teams name if the team object was valid, false
- * otherwise.
- * @noSelf
- */
-export declare function getTeamName(
-    theTeam: Team
-): string;

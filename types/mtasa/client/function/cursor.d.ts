@@ -45,17 +45,11 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
-
-/**
- * This function is used to get alpha (transparency) from the clients cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCursorAlpha Wiki, getCursorAlpha }
- * @return returns a int, 0-255, where 255 is fully opaque and 0 is fully transparent.
- * @noSelf
- */
-export declare function getCursorAlpha(): number;
 
 /**
  * This function gets the current position of the mouse cursor. Note that for performance
@@ -79,14 +73,6 @@ export declare function getCursorPosition(): LuaMultiReturn<[
 ]>;
 
 /**
- * This function is used to determine whether or not a players cursor is showing.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsCursorShowing Wiki, isCursorShowing }
- * @return returns true if the players cursor is showing, false if it isnt.
- * @noSelf
- */
-export declare function isCursorShowing(): boolean;
-
-/**
  * This function is used to change alpha (transparency) from the clients cursor.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetCursorAlpha Wiki, setCursorAlpha }
  * @param alpha : The alpha value to set. Value can be 0-255, where 255 is fully opaque and 0 is fully
@@ -96,6 +82,35 @@ export declare function isCursorShowing(): boolean;
  */
 export declare function setCursorAlpha(
     alpha: number
+): boolean;
+
+/**
+ * This function is used to determine whether or not a players cursor is showing.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsCursorShowing Wiki, isCursorShowing }
+ * @return returns true if the players cursor is showing, false if it isnt.
+ * @noSelf
+ */
+export declare function isCursorShowing(): boolean;
+
+/**
+ * This function is used to get alpha (transparency) from the clients cursor.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetCursorAlpha Wiki, getCursorAlpha }
+ * @return returns a int, 0-255, where 255 is fully opaque and 0 is fully transparent.
+ * @noSelf
+ */
+export declare function getCursorAlpha(): number;
+
+/**
+ * This function is used to show or hide a players cursor.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ShowCursor Wiki, showCursor }
+ * @param show A boolean value determining whether to show (true) or hide (false) the cursor.
+ * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.
+ * true implies controls are disabled, false implies controls remain enabled.
+ * @noSelf
+ */
+export declare function showCursor(
+    show: boolean,
+    toggleControls?: boolean
 ): boolean;
 
 /**
@@ -109,17 +124,4 @@ export declare function setCursorAlpha(
 export declare function setCursorPosition(
     cursorX: number,
     cursorY: number
-): boolean;
-
-/**
- * This function is used to show or hide a players cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/ShowCursor Wiki, showCursor }
- * @param show A boolean value determining whether to show (true) or hide (false) the cursor.
- * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.
- * true implies controls are disabled, false implies controls remain enabled.
- * @noSelf
- */
-export declare function showCursor(
-    show: boolean,
-    toggleControls?: boolean
 ): boolean;

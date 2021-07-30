@@ -44,12 +44,19 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Team */
 export class Team extends Element {
+    /**
+     * This function gets the team name of a team object.
+     */
+    name: string;
+
     /**
      * This function is for returning the number of players in the specified team.
      */
@@ -66,9 +73,22 @@ export class Team extends Element {
     friendlyFire: boolean;
 
     /**
-     * This function gets the team name of a team object.
+     * This function finds a team element using the provided team name.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
+     * @param teamName A string determining the name of the team you wish to find.
+     * @return returns the team element if it was found, false otherwise.
      */
-    name: string;
+    static getFromName(
+        teamName: string
+    ): Team;
+
+    /**
+     * This function gets the team name of a team object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamName Wiki, getTeamName }
+     * @return returns a string representing the teams name if the team object was valid, false
+     * otherwise.
+     */
+    getName(): string;
 
     /**
      * This function is for returning the number of players in the specified team.
@@ -105,22 +125,4 @@ export class Team extends Element {
      * if invalid arguments are specified.
      */
     getFriendlyFire(): boolean;
-
-    /**
-     * This function finds a team element using the provided team name.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
-     * @param teamName A string determining the name of the team you wish to find.
-     * @return returns the team element if it was found, false otherwise.
-     */
-    static getFromName(
-        teamName: string
-    ): Team;
-
-    /**
-     * This function gets the team name of a team object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamName Wiki, getTeamName }
-     * @return returns a string representing the teams name if the team object was valid, false
-     * otherwise.
-     */
-    getName(): string;
 }

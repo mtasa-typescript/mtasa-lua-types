@@ -45,9 +45,25 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/ExtinguishFire Wiki, extinguishFire }
+ * @param x, y, z the coordinates at which any fire will be extinguished.
+ * @param radius a float value indicating the radius in which to extinguish fire.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function extinguishFire(
+    x?: number,
+    y?: number,
+    z?: number,
+    radius?: number
+): boolean;
 
 /**
  * Creates a patch of fire that will spread a bit and die out after a while. Because its a
@@ -66,18 +82,4 @@ export declare function createFire(
     y: number,
     z: number,
     size?: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/ExtinguishFire Wiki, extinguishFire }
- * @param x, y, z the coordinates at which any fire will be extinguished.
- * @param radius a float value indicating the radius in which to extinguish fire.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function extinguishFire(
-    x?: number,
-    y?: number,
-    z?: number,
-    radius?: number
 ): boolean;

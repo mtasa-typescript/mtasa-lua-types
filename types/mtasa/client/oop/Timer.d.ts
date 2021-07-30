@@ -44,40 +44,20 @@ import {
     RadarArea,
     Water,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Timer */
-export class Timer {
+export class Timer<
+    CallbackType extends TimerCallbackFunction = TimerCallbackFunction
+> {
     /**
      * This function checks if a variable is a timer.
      */
     valid: boolean;
-
-    /**
-     * This function is for getting the details of a running timer.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetTimerDetails Wiki, getTimerDetails }
-     * @return * integer one represents the time left in miliseconds (1000th of a second) of the current
-     * time left in the loop.
-     * * integer two represents the amount of times the timer has left to execute.
-     * * integer three represents the time interval of timer.
-     * * returns false if the timer doesnt exist or stopped running. also, debugscript will say
-     * bad argument @ gettimerdetails. to prevent this, you can check if the timer exists with
-     * istimer().
-     */
-    getDetails(): LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function checks if a variable is a timer.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsTimer Wiki, isTimer }
-     * @return returns true if the passed value is a timer, false otherwise.
-     */
-    isValid(): boolean;
 
     /**
      * This function allows you to kill/halt existing timers.
@@ -122,9 +102,33 @@ export class Timer {
      * invalid or the timer could not be set.
      */
     constructor(
-        theFunction: HandleFunction,
+        theFunction: CallbackType,
         timeInterval: number,
         timesToExecute: number,
-        ...varargs: any[]
+        ...arguments: Parameters<CallbackType>
     );
+
+    /**
+     * This function checks if a variable is a timer.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsTimer Wiki, isTimer }
+     * @return returns true if the passed value is a timer, false otherwise.
+     */
+    isValid(): boolean;
+
+    /**
+     * This function is for getting the details of a running timer.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetTimerDetails Wiki, getTimerDetails }
+     * @return * integer one represents the time left in miliseconds (1000th of a second) of the current
+     * time left in the loop.
+     * * integer two represents the amount of times the timer has left to execute.
+     * * integer three represents the time interval of timer.
+     * * returns false if the timer doesnt exist or stopped running. also, debugscript will say
+     * bad argument @ gettimerdetails. to prevent this, you can check if the timer exists with
+     * istimer().
+     */
+    getDetails(): LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
 }

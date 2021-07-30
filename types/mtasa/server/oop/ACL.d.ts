@@ -27,8 +27,10 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor ACL */
@@ -37,26 +39,6 @@ export class ACL {
      * Get the name of given ACL.
      */
     name: string;
-
-    /**
-     * This function creates an ACL entry in the Access Control List system with the specified
-     * name.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclCreate Wiki, aclCreate }
-     * @param aclName The name of the ACL entry to add.
-     * @return returns the created acl object if successful. returns false if an acl of the given name
-     * could not be created.
-     */
-    constructor(
-        aclName: string
-    );
-
-    /**
-     * This function destroys the ACL passed. The destroyed ACL will no longer be valid.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclDestroy Wiki, aclDestroy }
-     * @return returns true if successfully destroyed and false if it could not be deleted (ie. its not
-     * valid).
-     */
-    destroy(): boolean;
 
     /**
      * Get the ACL with the given name. If need to get most of the ACLs, you should consider
@@ -80,36 +62,34 @@ export class ACL {
     getName(): string;
 
     /**
-     * This function returns whether the access for the given right is set to true or false in
-     * the ACL.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGetRight Wiki, aclGetRight }
-     * @param rightName The right name to return the access value of.
-     * @return returns true or false if the acl gives access or not to the given function. returns nil
-     * if it failed for some reason, e.g. an invalid acl was specified or the right specified
-     * does not exist in the acl.
+     * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic
+     * save can be delayed by up to 10 seconds for performance reasons. Calling this function
+     * will force an immediate save.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclSave Wiki, aclSave }
+     * @return returns true if the acl was successfully changed, false or nil if it could not be saved
+     * for some reason, ie. file in use.
      */
-    getRight(
-        rightName: string
-    ): boolean;
+    static save(): boolean;
 
     /**
-     * This function returns a list of all the ACLs.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclList Wiki, aclList }
-     * @return returns a table of all the acls. this table can be empty if no acls exist. it can also
-     * return false/nil if it failed for some reason.
+     * This function creates an ACL entry in the Access Control List system with the specified
+     * name.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclCreate Wiki, aclCreate }
+     * @param aclName The name of the ACL entry to add.
+     * @return returns the created acl object if successful. returns false if an acl of the given name
+     * could not be created.
      */
-    static list(): LuaTable;
+    constructor(
+        aclName: string
+    );
 
     /**
-     * This function returns a table of all the rights that a given ACL has.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclListRights Wiki, aclListRights }
-     * @param allowedType The allowed right type. Possible values are general, function, resource and command
-     * @return returns a table over the rights as strings in the given acl. this table might be empty.
-     * returns false or nil if theacl is invalid or it fails for some other reason.
+     * This function destroys the ACL passed. The destroyed ACL will no longer be valid.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclDestroy Wiki, aclDestroy }
+     * @return returns true if successfully destroyed and false if it could not be deleted (ie. its not
+     * valid).
      */
-    listRights(
-        allowedType: string
-    ): LuaTable;
+    destroy(): boolean;
 
     /**
      * This function reloads the ACLs and the ACL groups from the ACL XML file. All ACL and ACL
@@ -132,28 +112,23 @@ export class ACL {
     ): boolean;
 
     /**
-     * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic
-     * save can be delayed by up to 10 seconds for performance reasons. Calling this function
-     * will force an immediate save.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclSave Wiki, aclSave }
-     * @return returns true if the acl was successfully changed, false or nil if it could not be saved
-     * for some reason, ie. file in use.
+     * This function returns a list of all the ACLs.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclList Wiki, aclList }
+     * @return returns a table of all the acls. this table can be empty if no acls exist. it can also
+     * return false/nil if it failed for some reason.
      */
-    static save(): boolean;
+    static list(): LuaTable;
 
     /**
-     * This functions changes or adds the given right in the given ACL. The access can be true
-     * or false and specifies whether the ACL gives access to the right or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclSetRight Wiki, aclSetRight }
-     * @param rightName The right to add/change the access property of
-     * @param hasAccess Whether the access should be set to true or false
-     * @return returns true if the access was successfully changed, false or nil if it failed for some
-     * reason, ie. invalid acl or the rightname is invalid.
+     * This function returns a table of all the rights that a given ACL has.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclListRights Wiki, aclListRights }
+     * @param allowedType The allowed right type. Possible values are general, function, resource and command
+     * @return returns a table over the rights as strings in the given acl. this table might be empty.
+     * returns false or nil if theacl is invalid or it fails for some other reason.
      */
-    setRight(
-        rightName: string,
-        hasAccess: boolean
-    ): boolean;
+    listRights(
+        allowedType: string
+    ): LuaTable;
 
     /**
      * This function returns whether or not the given object has access to perform the given
@@ -202,5 +177,32 @@ export class ACL {
         theObject: string | Element,
         theAction: string,
         defaultPermission?: boolean
+    ): boolean;
+
+    /**
+     * This function returns whether the access for the given right is set to true or false in
+     * the ACL.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclGetRight Wiki, aclGetRight }
+     * @param rightName The right name to return the access value of.
+     * @return returns true or false if the acl gives access or not to the given function. returns nil
+     * if it failed for some reason, e.g. an invalid acl was specified or the right specified
+     * does not exist in the acl.
+     */
+    getRight(
+        rightName: string
+    ): boolean;
+
+    /**
+     * This functions changes or adds the given right in the given ACL. The access can be true
+     * or false and specifies whether the ACL gives access to the right or not.
+     * @see {@link https://wiki.multitheftauto.com/wiki/AclSetRight Wiki, aclSetRight }
+     * @param rightName The right to add/change the access property of
+     * @param hasAccess Whether the access should be set to true or false
+     * @return returns true if the access was successfully changed, false or nil if it failed for some
+     * reason, ie. invalid acl or the rightname is invalid.
+     */
+    setRight(
+        rightName: string,
+        hasAccess: boolean
     ): boolean;
 }

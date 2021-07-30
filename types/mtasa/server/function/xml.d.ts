@@ -28,9 +28,71 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadString Wiki, xmlLoadString }
+ * @param xmlString A string containing XML data
+ * @return returns the root xmlnode object of an xml string if successful, or false otherwise
+ * (invalid xml string).
+ * @noSelf
+ */
+export declare function xmlLoadString(
+    xmlString: string
+): XmlNode;
+
+/**
+ * Gets the tag name of the specified XML node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetName Wiki, xmlNodeGetName }
+ * @param node the node to get the tag name of.
+ * @return returns the tag name of the node if successful, false otherwise.
+ * @noSelf
+ */
+export declare function xmlNodeGetName(
+    node: XmlNode
+): string;
+
+/**
+ * Returns all the attributes of a specific XML node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetAttributes Wiki, xmlNodeGetAttributes }
+ * @param node the XML node to get the attributes of.
+ * @return if successful, returns a table with as keys the names of the attributes and as values the
+ * corresponding attribute values. if the node has no attributes, returns an empty table. in
+ * case of failure, returns false.
+ * @noSelf
+ */
+export declare function xmlNodeGetAttributes(
+    node: XmlNode
+): LuaTable;
+
+/**
+ * Returns the parent node of an xml node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetParent Wiki, xmlNodeGetParent }
+ * @param node the node of which you want to know the parent.
+ * @return returns the parent node of the specified node if successful. returns false if the
+ * specified node is the root node or an invalid node was passed.
+ * @noSelf
+ */
+export declare function xmlNodeGetParent(
+    node: XmlNode
+): XmlNode;
+
+/**
+ * Sets the tag name of the specified XML node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetName Wiki, xmlNodeSetName }
+ * @param node the node to change the tag name of.
+ * @param name the new tag name to set.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function xmlNodeSetName(
+    node: XmlNode,
+    name: string
+): boolean;
 
 /**
  * This function copies all contents of a certain node in a XML document to a new document
@@ -56,19 +118,6 @@ export declare function xmlCopyFile(
 ): XmlNode;
 
 /**
- * This function creates a new child node under an XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlCreateChild Wiki, xmlCreateChild }
- * @param parentNode the xmlnode you want to create a new child node under.
- * @param tagName the type of the child node that will be created.
- * @return returns the created xmlnode if successful, false otherwise.
- * @noSelf
- */
-export declare function xmlCreateChild(
-    parentNode: XmlNode,
-    tagName: string
-): XmlNode;
-
-/**
  * This function creates a new XML document, which can later be saved to a file by using
  * xmlSaveFile. This function will overwrite the file specified if it already exists.
  * @see {@link https://wiki.multitheftauto.com/wiki/XmlCreateFile Wiki, xmlCreateFile }
@@ -91,6 +140,19 @@ export declare function xmlCreateFile(
 ): XmlNode;
 
 /**
+ * This function creates a new child node under an XML node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlCreateChild Wiki, xmlCreateChild }
+ * @param parentNode the xmlnode you want to create a new child node under.
+ * @param tagName the type of the child node that will be created.
+ * @return returns the created xmlnode if successful, false otherwise.
+ * @noSelf
+ */
+export declare function xmlCreateChild(
+    parentNode: XmlNode,
+    tagName: string
+): XmlNode;
+
+/**
  * This function destroys a XML node from the XML node tree.
  * @see {@link https://wiki.multitheftauto.com/wiki/XmlDestroyNode Wiki, xmlDestroyNode }
  * @param theXMLNode The xml node you want to destroy.
@@ -102,121 +164,20 @@ export declare function xmlDestroyNode(
 ): boolean;
 
 /**
- * This function returns a named child node of an XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlFindChild Wiki, xmlFindChild }
- * @param parent : This is an xmlnode that you want to find the child node under.
- * @param tagName : This is the name of the child node you wish to find (case-sensitive).
- * @param index : This is the 0-based index of the node you wish to find. For example, to find the 5th
- * subnode with a particular name, you would use 4 as the index value. To find the first
- * occurence, use 0.
- * @return returns an xmlnode if the node was found, false otherwise.
+ * This function is made to be able to assign values to tags in XML files (eg.
+ * <something>anything</something>).
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetValue Wiki, xmlNodeSetValue }
+ * @param theXMLNode The xml node you want to set the value of.
+ * @param value The string value you want the node to have.
+ * @param setCDATA A boolean indicating if you want the value to be enclosed inside CDATA tags.
+ * @return returns true if value was successfully set, false otherwise.
  * @noSelf
  */
-export declare function xmlFindChild(
-    parent: XmlNode,
-    tagName: string,
-    index: number
-): XmlNode;
-
-/**
- * This function provides an alternative way to load XML files to getResourceConfig.
- * This function loads an XML file and returns the node by specifying a specific file path,
- * while getResourceConfig allows for loading an XML file from a resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadFile Wiki, xmlLoadFile }
- * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
- * name of the resource the file is in, and path is the path from the root directory of the
- * resource to the file.
- * :For example, if there is a file named 'settings.xml' in the resource 'ctf', it can be
- * accessed from another resource this way: ''xmlLoadFile(":ctf/settings.xml")''.
- * :If the file is in the current resource, only the file path is necessary, e.g.
- * ''xmlLoadFile("settings.xml")''.
- * @param readOnly By default, the XML file is opened with reading and writing access. You can specify true
- * for this parameter if you only need reading access.
- * @return returns the root xmlnode object of an xml file if successful, or false otherwise.
- * print error if something wrong with xml.
- * |7485}}
- * @noSelf
- */
-export declare function xmlLoadFile(
-    filePath: string,
-    readOnly?: boolean
-): XmlNode;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadString Wiki, xmlLoadString }
- * @param xmlString A string containing XML data
- * @return returns the root xmlnode object of an xml string if successful, or false otherwise
- * (invalid xml string).
- * @noSelf
- */
-export declare function xmlLoadString(
-    xmlString: string
-): XmlNode;
-
-/**
- * This function is used to return an attribute of a node in a configuration file.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetAttribute Wiki, xmlNodeGetAttribute }
- * @param node The node from which you wish to return the attribute
- * @param name The name of the attribute.
- * @return returns the attribute in string form or false, if the attribute is not defined.
- * @noSelf
- */
-export declare function xmlNodeGetAttribute(
-    node: XmlNode,
-    name: string
-): string;
-
-/**
- * Returns all the attributes of a specific XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetAttributes Wiki, xmlNodeGetAttributes }
- * @param node the XML node to get the attributes of.
- * @return if successful, returns a table with as keys the names of the attributes and as values the
- * corresponding attribute values. if the node has no attributes, returns an empty table. in
- * case of failure, returns false.
- * @noSelf
- */
-export declare function xmlNodeGetAttributes(
-    node: XmlNode
-): LuaTable;
-
-/**
- * This function returns all children of a particular XML node, or a particular child node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetChildren Wiki, xmlNodeGetChildren }
- * @param parent This is the xmlnode you want to retrieve one or all child nodes of.
- * @param index If you only want to retrieve one particular child node, specify its (0-based) index here.
- * For example if you only want the first node, specify 0; the fifth node has index 4, etc.
- * @return if index isnt specified, returns a table containing all child nodes. if index is
- * specified, returns the corresponding child node if it exists. if no nodes are found, it
- * returns an empty table. returns false in case of failure.
- * @noSelf
- */
-export declare function xmlNodeGetChildren(
-    parent: XmlNode,
-    index?: number
-): LuaTable | XmlNode;
-
-/**
- * Gets the tag name of the specified XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetName Wiki, xmlNodeGetName }
- * @param node the node to get the tag name of.
- * @return returns the tag name of the node if successful, false otherwise.
- * @noSelf
- */
-export declare function xmlNodeGetName(
-    node: XmlNode
-): string;
-
-/**
- * Returns the parent node of an xml node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetParent Wiki, xmlNodeGetParent }
- * @param node the node of which you want to know the parent.
- * @return returns the parent node of the specified node if successful. returns false if the
- * specified node is the root node or an invalid node was passed.
- * @noSelf
- */
-export declare function xmlNodeGetParent(
-    node: XmlNode
-): XmlNode;
+export declare function xmlNodeSetValue(
+    theXMLNode: XmlNode,
+    value: string,
+    setCDATA?: boolean
+): boolean;
 
 /**
  * This function is made to be able to read tag values in XML files (eg.
@@ -248,33 +209,74 @@ export declare function xmlNodeSetAttribute(
 ): boolean;
 
 /**
- * Sets the tag name of the specified XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetName Wiki, xmlNodeSetName }
- * @param node the node to change the tag name of.
- * @param name the new tag name to set.
- * @return returns true if successful, false otherwise.
+ * This function is used to return an attribute of a node in a configuration file.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetAttribute Wiki, xmlNodeGetAttribute }
+ * @param node The node from which you wish to return the attribute
+ * @param name The name of the attribute.
+ * @return returns the attribute in string form or false, if the attribute is not defined.
  * @noSelf
  */
-export declare function xmlNodeSetName(
+export declare function xmlNodeGetAttribute(
     node: XmlNode,
     name: string
-): boolean;
+): string;
 
 /**
- * This function is made to be able to assign values to tags in XML files (eg.
- * <something>anything</something>).
- * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetValue Wiki, xmlNodeSetValue }
- * @param theXMLNode The xml node you want to set the value of.
- * @param value The string value you want the node to have.
- * @param setCDATA A boolean indicating if you want the value to be enclosed inside CDATA tags.
- * @return returns true if value was successfully set, false otherwise.
+ * This function provides an alternative way to load XML files to getResourceConfig.
+ * This function loads an XML file and returns the node by specifying a specific file path,
+ * while getResourceConfig allows for loading an XML file from a resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadFile Wiki, xmlLoadFile }
+ * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
+ * name of the resource the file is in, and path is the path from the root directory of the
+ * resource to the file.
+ * :For example, if there is a file named 'settings.xml' in the resource 'ctf', it can be
+ * accessed from another resource this way: ''xmlLoadFile(":ctf/settings.xml")''.
+ * :If the file is in the current resource, only the file path is necessary, e.g.
+ * ''xmlLoadFile("settings.xml")''.
+ * @param readOnly By default, the XML file is opened with reading and writing access. You can specify true
+ * for this parameter if you only need reading access.
+ * @return returns the root xmlnode object of an xml file if successful, or false otherwise.
+ * print error if something wrong with xml.
+ * |7485}}
  * @noSelf
  */
-export declare function xmlNodeSetValue(
-    theXMLNode: XmlNode,
-    value: string,
-    setCDATA?: boolean
-): boolean;
+export declare function xmlLoadFile(
+    filePath: string,
+    readOnly?: boolean
+): XmlNode;
+
+/**
+ * This function returns a named child node of an XML node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlFindChild Wiki, xmlFindChild }
+ * @param parent : This is an xmlnode that you want to find the child node under.
+ * @param tagName : This is the name of the child node you wish to find (case-sensitive).
+ * @param index : This is the 0-based index of the node you wish to find. For example, to find the 5th
+ * subnode with a particular name, you would use 4 as the index value. To find the first
+ * occurence, use 0.
+ * @return returns an xmlnode if the node was found, false otherwise.
+ * @noSelf
+ */
+export declare function xmlFindChild(
+    parent: XmlNode,
+    tagName: string,
+    index: number
+): XmlNode;
+
+/**
+ * This function returns all children of a particular XML node, or a particular child node.
+ * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetChildren Wiki, xmlNodeGetChildren }
+ * @param parent This is the xmlnode you want to retrieve one or all child nodes of.
+ * @param index If you only want to retrieve one particular child node, specify its (0-based) index here.
+ * For example if you only want the first node, specify 0; the fifth node has index 4, etc.
+ * @return if index isnt specified, returns a table containing all child nodes. if index is
+ * specified, returns the corresponding child node if it exists. if no nodes are found, it
+ * returns an empty table. returns false in case of failure.
+ * @noSelf
+ */
+export declare function xmlNodeGetChildren(
+    parent: XmlNode,
+    index?: number
+): LuaTable | XmlNode;
 
 /**
  * This function saves a loaded XML file.

@@ -27,21 +27,28 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Marker */
 export class Marker extends Element {
     /**
-     * This function returns the icon name for a marker.
-     */
-    icon: string;
-
-    /**
      * This function returns a float containing the size of the specified marker.
      */
     size: number;
+
+    /**
+     * This function returns a markers type.
+     */
+    markerType: string;
+
+    /**
+     * This function returns the icon name for a marker.
+     */
+    icon: string;
 
     /**
      * This function returns the position of the specified markers target, the position it
@@ -56,9 +63,29 @@ export class Marker extends Element {
     ]>;
 
     /**
-     * This function returns a markers type.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerIcon Wiki, setMarkerIcon }
+     * @param icon A string referring to the type of icon, acceptable values are:
+     * @param none : No icon
+     * @param arrow : Arrow icon
+     * @param finish : Finish icon (at end of race)
      */
-    markerType: string;
+    setIcon(
+        icon: string
+    ): boolean;
+
+    /**
+     * This function changes a markers type. The type controls how the marker is displayed in
+     * the game. Its important that you use marker types that users are used to from the single
+     * player game. For example, checkpoints are used in races, rings are used for aircraft
+     * races, arrows are used for entering buildings etc.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerType Wiki, setMarkerType }
+     * @param markerType : A string denoting the marker type. Valid values are:
+     * @return returns true if the marker type was changed, false if it wasnt or marker values were
+     * invalid.
+     */
+    setMarkerType(
+        markerType: string
+    ): boolean;
 
     /**
      * This function creates a marker. A marker is a 3D model in the world that can highlight a
@@ -102,6 +129,21 @@ export class Marker extends Element {
     );
 
     /**
+     * This function returns a float containing the size of the specified marker.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerSize Wiki, getMarkerSize }
+     * @return returns a float containing the size of the specified marker.
+     */
+    getSize(): number;
+
+    /**
+     * This function returns a markers type.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerType Wiki, getMarkerType }
+     * @return * returns one of the following strings:
+     * if an invalid marker is specified, false is returned.
+     */
+    getMarkerType(): string;
+
+    /**
      * This function returns the color and transparency for a marker element. Not all marker
      * types support transparency.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerColor Wiki, getMarkerColor }
@@ -126,13 +168,6 @@ export class Marker extends Element {
     getIcon(): string;
 
     /**
-     * This function returns a float containing the size of the specified marker.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerSize Wiki, getMarkerSize }
-     * @return returns a float containing the size of the specified marker.
-     */
-    getSize(): number;
-
-    /**
      * This function returns the position of the specified markers target, the position it
      * points to. This only works for checkpoint markers and ring markers. For checkpoints it
      * returns the position the arrow is pointing to, for ring markers it returns the position
@@ -148,14 +183,6 @@ export class Marker extends Element {
     ]>;
 
     /**
-     * This function returns a markers type.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerType Wiki, getMarkerType }
-     * @return * returns one of the following strings:
-     * if an invalid marker is specified, false is returned.
-     */
-    getMarkerType(): string;
-
-    /**
      * This function sets the color of the specified marker by modifying the values for red,
      * green, blue and alpha.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerColor Wiki, setMarkerColor }
@@ -169,17 +196,6 @@ export class Marker extends Element {
         g: number,
         b: number,
         a: number
-    ): boolean;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerIcon Wiki, setMarkerIcon }
-     * @param icon A string referring to the type of icon, acceptable values are:
-     * @param none : No icon
-     * @param arrow : Arrow icon
-     * @param finish : Finish icon (at end of race)
-     */
-    setIcon(
-        icon: string
     ): boolean;
 
     /**
@@ -216,19 +232,5 @@ export class Marker extends Element {
         x: number,
         y: number,
         z: number
-    ): boolean;
-
-    /**
-     * This function changes a markers type. The type controls how the marker is displayed in
-     * the game. Its important that you use marker types that users are used to from the single
-     * player game. For example, checkpoints are used in races, rings are used for aircraft
-     * races, arrows are used for entering buildings etc.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerType Wiki, setMarkerType }
-     * @param markerType : A string denoting the marker type. Valid values are:
-     * @return returns true if the marker type was changed, false if it wasnt or marker values were
-     * invalid.
-     */
-    setMarkerType(
-        markerType: string
     ): boolean;
 }

@@ -45,37 +45,11 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
-
-/**
- * Creates an Element/Effect|effect on specified position.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateEffect Wiki, createEffect }
- * @param name A string contains Element/Effect#Effects_list|effect name.
- * @param x A floating point number representing the X coordinate on the map.
- * @param y A floating point number representing the Y coordinate on the map.
- * @param z A floating point number representing the Z coordinate on the map.
- * @param rX A floating point number representing the rotation about the X axis in degrees.
- * @param rY A floating point number representing the rotation about the Y axis in degrees.
- * @param rZ A floating point number representing the rotation about the Z axis in degrees.
- * @param drawDistance A floating point number between 1 and 8191 which represents the draw distance of the
- * effect, or 0 to use the default draw distance.
- * @param soundEnable to enable the sound of the effect.
- * @return returns the element/effect|effect element if creation was successful, false otherwise.
- * @noSelf
- */
-export declare function createEffect(
-    name: string,
-    x: number,
-    y: number,
-    z: number,
-    rX?: number,
-    rY?: number,
-    rZ?: number,
-    drawDistance?: number,
-    soundEnable?: boolean
-): Effect;
 
 /**
  * Creates a blood splatter particle effect.
@@ -122,22 +96,6 @@ export declare function fxAddBulletImpact(
 ): boolean;
 
 /**
- * This function creates a bullet splash particle effect, normally created when shooting
- * into water.
- * @see {@link https://wiki.multitheftauto.com/wiki/FxAddBulletSplash Wiki, fxAddBulletSplash }
- * @param posX A float representing the x position of the splash
- * @param posY A float representing the y position of the splash
- * @param posZ A float representing the z position of the splash
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function fxAddBulletSplash(
-    posX: number,
-    posY: number,
-    posZ: number
-): boolean;
-
-/**
  * Creates a debris particle effect (e.g. bits that fly off a car when ramming a wall).
  * @see {@link https://wiki.multitheftauto.com/wiki/FxAddDebris Wiki, fxAddDebris }
  * @param posX, posY, posZ the world coordinates where the debris originates.
@@ -157,6 +115,142 @@ export declare function fxAddDebris(
     colorA?: number,
     scale?: number,
     count?: number
+): boolean;
+
+/**
+ * Creates a number of sparks originating from a point or along a line.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FxAddSparks Wiki, fxAddSparks }
+ * @param posX, posY, posZ the world coordinates where the sparks originate.
+ * @param dirX, dirY, dirZ a direction vector indicating where the sparks fly to. The longer this vector is, the
+ * faster the sparks fly.
+ * @param force speed factor: the higher this value, the faster and further the sparks fly.
+ * @param count the number of effects to create.
+ * @param acrossLineX, acrossLineY, acrossLineZ a vector starting at the pos coordinates. If specified, the sparks will be created along
+ * a line going from pos to pos - acrossLine. If not specified, all sparks originate from
+ * the point at pos.
+ * @param blur if false, creates standard bullet impact-like sparks. If true, adds motion blur to the
+ * sparks.
+ * @param spread determines how strongly the particles deviate from each other. With low values the
+ * particles will stay quite close together, high values will make them fly in all
+ * directions. Also affects their speed.
+ * @param life the higher this value, the longer the sparks survive before they disappear.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function fxAddSparks(
+    posX: number,
+    posY: number,
+    posZ: number,
+    dirX: number,
+    dirY: number,
+    dirZ: number,
+    force?: number,
+    count?: number,
+    acrossLineX?: number,
+    acrossLineY?: number,
+    acrossLineZ?: number,
+    blur?: boolean,
+    spread?: number,
+    life?: number
+): boolean;
+
+/**
+ * Creates a punch impact particle effect (a small dust cloud).
+ * @see {@link https://wiki.multitheftauto.com/wiki/FxAddPunchImpact Wiki, fxAddPunchImpact }
+ * @param posX, posY, posZ the world coordinates where the effect originates.
+ * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function fxAddPunchImpact(
+    posX: number,
+    posY: number,
+    posZ: number,
+    dirX: number,
+    dirY: number,
+    dirZ: number
+): boolean;
+
+/**
+ * Creates a tyre burst particle effect (a small white smoke puff).
+ * @see {@link https://wiki.multitheftauto.com/wiki/FxAddTyreBurst Wiki, fxAddTyreBurst }
+ * @param posX, posY, posZ the world coordinates where the puff originates.
+ * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function fxAddTyreBurst(
+    posX: number,
+    posY: number,
+    posZ: number,
+    dirX: number,
+    dirY: number,
+    dirZ: number
+): boolean;
+
+/**
+ * Creates a wood splinter particle effect.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FxAddWood Wiki, fxAddWood }
+ * @param posX, posY, posZ the world coordinates where the effect originates.
+ * @param dirX, dirY, dirZ a direction vector indicating where the wood splinters fly to.
+ * @param count the number of splinters to create.
+ * @param brightness the brightness. Ranges from 0 (black) to 1 (normal color).
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function fxAddWood(
+    posX: number,
+    posY: number,
+    posZ: number,
+    dirX: number,
+    dirY: number,
+    dirZ: number,
+    count?: number,
+    brightness?: number
+): boolean;
+
+/**
+ * Creates an Element/Effect|effect on specified position.
+ * @see {@link https://wiki.multitheftauto.com/wiki/CreateEffect Wiki, createEffect }
+ * @param name A string contains Element/Effect#Effects_list|effect name.
+ * @param x A floating point number representing the X coordinate on the map.
+ * @param y A floating point number representing the Y coordinate on the map.
+ * @param z A floating point number representing the Z coordinate on the map.
+ * @param rX A floating point number representing the rotation about the X axis in degrees.
+ * @param rY A floating point number representing the rotation about the Y axis in degrees.
+ * @param rZ A floating point number representing the rotation about the Z axis in degrees.
+ * @param drawDistance A floating point number between 1 and 8191 which represents the draw distance of the
+ * effect, or 0 to use the default draw distance.
+ * @param soundEnable to enable the sound of the effect.
+ * @return returns the element/effect|effect element if creation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function createEffect(
+    name: string,
+    x: number,
+    y: number,
+    z: number,
+    rX?: number,
+    rY?: number,
+    rZ?: number,
+    drawDistance?: number,
+    soundEnable?: boolean
+): Effect;
+
+/**
+ * This function creates a bullet splash particle effect, normally created when shooting
+ * into water.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FxAddBulletSplash Wiki, fxAddBulletSplash }
+ * @param posX A float representing the x position of the splash
+ * @param posY A float representing the y position of the splash
+ * @param posZ A float representing the z position of the splash
+ * @return returns a true if the operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function fxAddBulletSplash(
+    posX: number,
+    posY: number,
+    posZ: number
 ): boolean;
 
 /**
@@ -219,60 +313,6 @@ export declare function fxAddGunshot(
 ): boolean;
 
 /**
- * Creates a punch impact particle effect (a small dust cloud).
- * @see {@link https://wiki.multitheftauto.com/wiki/FxAddPunchImpact Wiki, fxAddPunchImpact }
- * @param posX, posY, posZ the world coordinates where the effect originates.
- * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function fxAddPunchImpact(
-    posX: number,
-    posY: number,
-    posZ: number,
-    dirX: number,
-    dirY: number,
-    dirZ: number
-): boolean;
-
-/**
- * Creates a number of sparks originating from a point or along a line.
- * @see {@link https://wiki.multitheftauto.com/wiki/FxAddSparks Wiki, fxAddSparks }
- * @param posX, posY, posZ the world coordinates where the sparks originate.
- * @param dirX, dirY, dirZ a direction vector indicating where the sparks fly to. The longer this vector is, the
- * faster the sparks fly.
- * @param force speed factor: the higher this value, the faster and further the sparks fly.
- * @param count the number of effects to create.
- * @param acrossLineX, acrossLineY, acrossLineZ a vector starting at the pos coordinates. If specified, the sparks will be created along
- * a line going from pos to pos - acrossLine. If not specified, all sparks originate from
- * the point at pos.
- * @param blur if false, creates standard bullet impact-like sparks. If true, adds motion blur to the
- * sparks.
- * @param spread determines how strongly the particles deviate from each other. With low values the
- * particles will stay quite close together, high values will make them fly in all
- * directions. Also affects their speed.
- * @param life the higher this value, the longer the sparks survive before they disappear.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function fxAddSparks(
-    posX: number,
-    posY: number,
-    posZ: number,
-    dirX: number,
-    dirY: number,
-    dirZ: number,
-    force?: number,
-    count?: number,
-    acrossLineX?: number,
-    acrossLineY?: number,
-    acrossLineZ?: number,
-    blur?: boolean,
-    spread?: number,
-    life?: number
-): boolean;
-
-/**
  * This function creates a tank firing particle effect.
  * @see {@link https://wiki.multitheftauto.com/wiki/FxAddTankFire Wiki, fxAddTankFire }
  * @param posX, posY, posZ the world coordinates where the effect originates.
@@ -281,23 +321,6 @@ export declare function fxAddSparks(
  * @noSelf
  */
 export declare function fxAddTankFire(
-    posX: number,
-    posY: number,
-    posZ: number,
-    dirX: number,
-    dirY: number,
-    dirZ: number
-): boolean;
-
-/**
- * Creates a tyre burst particle effect (a small white smoke puff).
- * @see {@link https://wiki.multitheftauto.com/wiki/FxAddTyreBurst Wiki, fxAddTyreBurst }
- * @param posX, posY, posZ the world coordinates where the puff originates.
- * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function fxAddTyreBurst(
     posX: number,
     posY: number,
     posZ: number,
@@ -334,27 +357,6 @@ export declare function fxAddWaterSplash(
     posX: number,
     posY: number,
     posZ: number
-): boolean;
-
-/**
- * Creates a wood splinter particle effect.
- * @see {@link https://wiki.multitheftauto.com/wiki/FxAddWood Wiki, fxAddWood }
- * @param posX, posY, posZ the world coordinates where the effect originates.
- * @param dirX, dirY, dirZ a direction vector indicating where the wood splinters fly to.
- * @param count the number of splinters to create.
- * @param brightness the brightness. Ranges from 0 (black) to 1 (normal color).
- * @return returns a true if the operation was successful, false otherwise.
- * @noSelf
- */
-export declare function fxAddWood(
-    posX: number,
-    posY: number,
-    posZ: number,
-    dirX: number,
-    dirY: number,
-    dirZ: number,
-    count?: number,
-    brightness?: number
 ): boolean;
 
 /**

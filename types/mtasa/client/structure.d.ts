@@ -45,4 +45,7 @@ export { EngineCOL } from './oop/EngineCOL';
 export { FetchRemoteCallback } from '../shared/utils/callback';
 export { GenericEventHandler } from '../shared/utils/event';
 
-export type HandleFunction = any;
+export { CommandHandler } from './utils/callback';
+
+export type HandleFunction = ((...args: any[]) => any);
+export type TimerCallbackFunction = (...args: any[]) => void;

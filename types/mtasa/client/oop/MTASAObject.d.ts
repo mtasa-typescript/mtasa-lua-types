@@ -44,12 +44,19 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor MTASAObject */
 export class MTASAObject {
+    /**
+     * This function checks if an object / model ID is breakable.
+     */
+    breakable: boolean;
+
     /**
      * This function returns the mass of a specified object.
      */
@@ -65,17 +72,28 @@ export class MTASAObject {
     ]>;
 
     /**
-     * This function checks if an object / model ID is breakable.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectProperty Wiki, getObjectProperty }
+     * @param property : the property you want to get the value of:
+     * <div style="padding-left:20px">
+     * * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
+     * </div>
+     * @return on success: table for all, 3 float|floats for center_of_mass or float for other properties
+     * on failure: false
      */
-    breakable: boolean;
+    getProperty(
+        property: string
+    ): any;
 
     /**
-     * This function breaks a specific object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/BreakObject Wiki, breakObject }
-     * @return * true if the object was successfully broken.
-     * * false if the object is not breakable, or a wrong object was given.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectProperty Wiki, setObjectProperty }
+     * @param property : the property you want to set the value of:
+     * @param value : the new value for the property.
+     * @return returns true if the property was set successfully, false otherwise.
      */
-    break(): boolean;
+    setProperty(
+        property: string,
+        value: unknown
+    ): boolean;
 
     /**
      * Creates an object element at a given position and rotation.
@@ -103,6 +121,58 @@ export class MTASAObject {
     );
 
     /**
+     * This function breaks a specific object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/BreakObject Wiki, breakObject }
+     * @return * true if the object was successfully broken.
+     * * false if the object is not breakable, or a wrong object was given.
+     */
+    break(): boolean;
+
+    /**
+     * This function changes the visible size of an object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
+     * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
+     * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
+     * @param scaleY : a float containing the new scale on the Y axis
+     * @param scaleZ : a float containing the new scale on the Z axis
+     * @return * true if the scale was set properly.
+     * * false otherwise.
+     */
+    setScale(
+        scale: number,
+        scaleY?: number,
+        scaleZ?: number
+    ): boolean;
+
+    /**
+     * This function checks if an object / model ID is breakable.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsObjectBreakable Wiki, isObjectBreakable }
+     * @param theObject / modelId The object / model ID thats being checked.
+     * @return * true if the object is breakable.
+     * * false if the object is not breakable.
+     */
+    isBreakable(): boolean;
+
+    /**
+     * This function is used to toggle if an object should respawn after it got destroyed
+     * @see {@link https://wiki.multitheftauto.com/wiki/ToggleObjectRespawn Wiki, toggleObjectRespawn }
+     * @param respawn : a bool denoting whether we want to enable (true) or disable (false) respawning
+     * @return * true when the it was changed successfully.
+     * * false otherwise.
+     */
+    toggleObjectRespawn(
+        respawn: boolean
+    ): boolean;
+
+    /**
+     * This function respawns a specific object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/RespawnObject Wiki, respawnObject }
+     * @return * true if the object was sucessfully respawned.
+     * * false if the object is not breakable, or a wrong object was given.
+     */
+    respawn(): boolean;
+
+    /**
      * This function returns the mass of a specified object.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectMass Wiki, getObjectMass }
      * @return * a float representing the mass of the object.
@@ -110,19 +180,6 @@ export class MTASAObject {
      * * -1 if object was never streamed in.
      */
     getMass(): number;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectProperty Wiki, getObjectProperty }
-     * @param property : the property you want to get the value of:
-     * <div style="padding-left:20px">
-     * * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
-     * </div>
-     * @return on success: table for all, 3 float|floats for center_of_mass or float for other properties
-     * on failure: false
-     */
-    getProperty(
-        property: string
-    ): any;
 
     /**
      * This function returns the visible size of an object.
@@ -137,13 +194,28 @@ export class MTASAObject {
     ]>;
 
     /**
-     * This function checks if an object / model ID is breakable.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsObjectBreakable Wiki, isObjectBreakable }
-     * @param theObject / modelId The object / model ID thats being checked.
-     * @return * true if the object is breakable.
-     * * false if the object is not breakable.
+     * This function sets an object to be breakable/unbreakable.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectBreakable Wiki, setObjectBreakable }
+     * @param object the object thats being set.
+     * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
+     * @return * true if the object is now breakable.
+     * * false if it cant or if invalid arguments are passed.
      */
-    isBreakable(): boolean;
+    setBreakable(
+        breakable: boolean
+    ): boolean;
+
+    /**
+     * This function sets the mass of a specified object. Changing the mass leads to a different
+     * movement behavior for especially dynamic objects.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectMass Wiki, setObjectMass }
+     * @param mass the new mass.
+     * @return * true if the new mass value has been.
+     * * false otherwise.
+     */
+    setMass(
+        mass: number
+    ): boolean;
 
     /**
      * This function will smoothly move an object from its current position to a specified
@@ -183,80 +255,10 @@ export class MTASAObject {
     ): boolean;
 
     /**
-     * This function respawns a specific object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RespawnObject Wiki, respawnObject }
-     * @return * true if the object was sucessfully respawned.
-     * * false if the object is not breakable, or a wrong object was given.
-     */
-    respawn(): boolean;
-
-    /**
-     * This function sets an object to be breakable/unbreakable.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectBreakable Wiki, setObjectBreakable }
-     * @param object the object thats being set.
-     * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
-     * @return * true if the object is now breakable.
-     * * false if it cant or if invalid arguments are passed.
-     */
-    setBreakable(
-        breakable: boolean
-    ): boolean;
-
-    /**
-     * This function sets the mass of a specified object. Changing the mass leads to a different
-     * movement behavior for especially dynamic objects.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectMass Wiki, setObjectMass }
-     * @param mass the new mass.
-     * @return * true if the new mass value has been.
-     * * false otherwise.
-     */
-    setMass(
-        mass: number
-    ): boolean;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectProperty Wiki, setObjectProperty }
-     * @param property : the property you want to set the value of:
-     * @param value : the new value for the property.
-     * @return returns true if the property was set successfully, false otherwise.
-     */
-    setProperty(
-        property: string,
-        value: unknown
-    ): boolean;
-
-    /**
-     * This function changes the visible size of an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
-     * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
-     * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
-     * @param scaleY : a float containing the new scale on the Y axis
-     * @param scaleZ : a float containing the new scale on the Z axis
-     * @return * true if the scale was set properly.
-     * * false otherwise.
-     */
-    setScale(
-        scale: number,
-        scaleY?: number,
-        scaleZ?: number
-    ): boolean;
-
-    /**
      * This will allow you to stop an object that is currently moving.
      * @see {@link https://wiki.multitheftauto.com/wiki/StopObject Wiki, stopObject }
      * @return * true if successful.
      * * false otherwise.
      */
     stop(): boolean;
-
-    /**
-     * This function is used to toggle if an object should respawn after it got destroyed
-     * @see {@link https://wiki.multitheftauto.com/wiki/ToggleObjectRespawn Wiki, toggleObjectRespawn }
-     * @param respawn : a bool denoting whether we want to enable (true) or disable (false) respawning
-     * @return * true when the it was changed successfully.
-     * * false otherwise.
-     */
-    toggleObjectRespawn(
-        respawn: boolean
-    ): boolean;
 }

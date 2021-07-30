@@ -28,9 +28,193 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * Binds a players key to a handler function or command, which will be called when the key
+ * is pressed.
+ * @see {@link https://wiki.multitheftauto.com/wiki/BindKey Wiki, bindKey }
+ * @param thePlayer The player you wish to bind the key of.
+ * @param key The key that was pressed
+ * @param keyState The state of the key that was pressed, down if it was pressed, up if it was released.
+ * @param up If the bound key should trigger the function when the key is released
+ * @param down If the bound key should trigger the function when the key is pressed
+ * @param both If the bound key should trigger the function when the key is pressed or released
+ * @param handlerFunction The function that will be triggered when the players key is pressed. This function should
+ * have the form:
+ * :<syntaxhighlight lang="lua">function functionName ( player keyPresser, string key,
+ * string keyState, [ var arguments, ... ] )</syntaxhighlight>
+ * :The values passed to this function are:
+ * @param keyPresser The player who pressed the key
+ * @param arguments The optional arguments you specified when calling bindKey (see below).
+ * @noSelf
+ */
+export declare function bindKey(
+    thePlayer: Player,
+    key: string,
+    keyState: string,
+    handlerFunction: HandleFunction,
+    ...varargs: any[]
+): boolean;
+
+/**
+ * Checks whether a GTA control is enabled or disabled for a certain player.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsControlEnabled Wiki, isControlEnabled }
+ * @param thePlayer The player you wish the control status of.
+ * @param control The control you wish to check. See control names for a list of possible controls.
+ * @noSelf
+ */
+export declare function isControlEnabled(
+    thePlayer: Player,
+    control: string
+): boolean;
+
+/**
+ * Enables or disables the use of a GTA control for a specific player.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ToggleControl Wiki, toggleControl }
+ * @param thePlayer The player you wish to toggle the control ability of.
+ * @param control The control that you want to toggle the ability of. See control names for a list of
+ * possible controls.
+ * @param enabled A boolean value representing whether or not the key will be usable or not.
+ * @noSelf
+ */
+export declare function toggleControl(
+    thePlayer: Player,
+    control: string,
+    enabled: boolean
+): boolean;
+
+/**
+ * Enables or disables the use of all GTA controls for a specified player.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ToggleAllControls Wiki, toggleAllControls }
+ * @param thePlayer The player you wish to toggle the control ability of.
+ * @param enabled A boolean value representing whether or not the controls will be usable.
+ * @param gtaControls A boolean deciding whether the enabled parameter will affect GTAs internal controls.
+ * @param mtaControls A boolean deciding whether the enabled parameter will affect MTAs own controls., e.g.
+ * chatbox.
+ * @noSelf
+ */
+export declare function toggleAllControls(
+    thePlayer: Player,
+    enabled: boolean,
+    gtaControls?: boolean,
+    mtaControls?: boolean
+): boolean;
+
+/**
+ * Gets the functions bound to a key. To bind a function to a key use the bindKey function
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetFunctionsBoundToKey Wiki, getFunctionsBoundToKey }
+ * @param thePlayer The player to get the functions from a key.
+ * @param theKey The key you wish to check the functions from.
+ * @param keyState A string that has one of the following values:
+ * @param up If the bound key should trigger the function when the key is released
+ * @param down If the bound key should trigger the function when the key is pressed
+ * @param both If the bound key should trigger the function when the key is pressed or released
+ * @noSelf
+ */
+export declare function getFunctionsBoundToKey(
+    thePlayer: Player,
+    key: string,
+    keyState: string
+): LuaTable;
+
+/**
+ * Removes an existing key bind from the specified player.
+ * @see {@link https://wiki.multitheftauto.com/wiki/UnbindKey Wiki, unbindKey }
+ * @param thePlayer The player you wish to unbind the key of.
+ * @param key The key you wish to unbind. See Key names for a list of valid key names.
+ * @param keyState is optional in Syntax 2.
+ * @param up If the bound key triggered a function when the key was released
+ * @param down If the bound key triggered a function when the key was pressed
+ * @param both If the bound key triggered a function when the key was pressed and released
+ * @param command (Syntax 1) The command you wish to unbind.
+ * @param handler (Syntax 2) The function you wish to unbind.
+ * Note: If you do not specify ''handler'', any instances of ''key'' being bound will be
+ * unbound, whatever function they are bound to.
+ * @return returns true if the key was unbound, false if it was not previously bound or invalid
+ * arguments were passed to the function.
+ * @noSelf
+ */
+export declare function unbindKey(
+    thePlayer: Player,
+    key: string,
+    keyState: string,
+    command: string
+): boolean;
+
+/**
+ * Sets a state of a specified players control, as if they pressed or released it.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetControlState Wiki, setControlState }
+ * @param thePlayer The player you wish to set the control state of.
+ * @param control The control that you want to set the state of. See control names for a list of possible
+ * controls.
+ * @param state A boolean value representing whether or not the key will be set to pressed or not.
+ * @return returns true if the control state was successfully set, false otherwise.
+ * @noSelf
+ */
+export declare function setControlState(
+    thePlayer: Player,
+    control: string,
+    state: boolean
+): boolean;
+
+/**
+ * This function can be used to find out if a key has already been bound. If you do not
+ * specify a keyState or handler, any instances of key being bound will cause isKeyBound to
+ * return true.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsKeyBound Wiki, isKeyBound }
+ * @param thePlayer The player youre checking.
+ * @param key The key youre checking. See Key names for a list of valid key names.
+ * @param keyState Is the state of the key when it calls the function, Can be either:
+ * @param up when the key is released
+ * @param down when the key is pressed
+ * @param handler The function youre checking against
+ * @return returns true if the key is bound, false otherwise.
+ * @noSelf
+ */
+export declare function isKeyBound(
+    thePlayer: Player,
+    key: string,
+    keyState?: string,
+    handler?: HandleFunction
+): boolean;
+
+/**
+ * This function is used to retrieve a list of all the registered command handlers of a
+ * given resource (or of all resources).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetCommandHandlers Wiki, getCommandHandlers }
+ * @param theResource The resource from which you wish to retrieve all command handlers. Or leave it empty to
+ * retrieve command handlers of all resources.
+ * @return returns a table containing all the commands of the given resource or a table with
+ * subtables containing the command and theresource pointer ( { command, theresource } ).
+ * see examples below if you dont understand it.
+ * @noSelf
+ */
+export declare function getCommandHandlers(
+    theResource?: Resource
+): LuaTable;
+
+/**
+ * This function removes a command handler, that is one that has been added using
+ * addCommandHandler. This function can only remove command handlers that were added by the
+ * resource that it is called in.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RemoveCommandHandler Wiki, removeCommandHandler }
+ * @param commandName the name of the command you wish to remove.
+ * @param handler the specific handler function to remove. If not specified, all handler functions for the
+ * command (from the calling resource) will be removed. This argument is only available in
+ * the server.
+ * @return returns true if the command handler was removed successfully, false if the command doesnt
+ * exist.
+ * @noSelf
+ */
+export declare function removeCommandHandler(
+    commandName: string,
+    handler?: HandleFunction
+): boolean;
 
 /**
  * This function will attach a scripting function (handler) to a console command, so that
@@ -63,36 +247,9 @@ import {
  */
 export declare function addCommandHandler(
     commandName: string,
-    handlerFunction: HandleFunction,
+    handlerFunction: CommandHandler,
     restricted?: boolean,
     caseSensitive?: boolean
-): boolean;
-
-/**
- * Binds a players key to a handler function or command, which will be called when the key
- * is pressed.
- * @see {@link https://wiki.multitheftauto.com/wiki/BindKey Wiki, bindKey }
- * @param thePlayer The player you wish to bind the key of.
- * @param key The key that was pressed
- * @param keyState The state of the key that was pressed, down if it was pressed, up if it was released.
- * @param up If the bound key should trigger the function when the key is released
- * @param down If the bound key should trigger the function when the key is pressed
- * @param both If the bound key should trigger the function when the key is pressed or released
- * @param handlerFunction The function that will be triggered when the players key is pressed. This function should
- * have the form:
- * :<syntaxhighlight lang="lua">function functionName ( player keyPresser, string key,
- * string keyState, [ var arguments, ... ] )</syntaxhighlight>
- * :The values passed to this function are:
- * @param keyPresser The player who pressed the key
- * @param arguments The optional arguments you specified when calling bindKey (see below).
- * @noSelf
- */
-export declare function bindKey(
-    thePlayer: Player,
-    key: string,
-    keyState: string,
-    handlerFunction: HandleFunction,
-    ...varargs: any[]
 ): boolean;
 
 /**
@@ -112,21 +269,6 @@ export declare function executeCommandHandler(
     thePlayer: Player,
     args?: string
 ): boolean;
-
-/**
- * This function is used to retrieve a list of all the registered command handlers of a
- * given resource (or of all resources).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCommandHandlers Wiki, getCommandHandlers }
- * @param theResource The resource from which you wish to retrieve all command handlers. Or leave it empty to
- * retrieve command handlers of all resources.
- * @return returns a table containing all the commands of the given resource or a table with
- * subtables containing the command and theresource pointer ( { command, theresource } ).
- * see examples below if you dont understand it.
- * @noSelf
- */
-export declare function getCommandHandlers(
-    theResource?: Resource
-): LuaTable;
 
 /**
  * This function will check if a player is pressing a particular control. Controls are those
@@ -172,23 +314,6 @@ export declare function getControlState(
 ): boolean;
 
 /**
- * Gets the functions bound to a key. To bind a function to a key use the bindKey function
- * @see {@link https://wiki.multitheftauto.com/wiki/GetFunctionsBoundToKey Wiki, getFunctionsBoundToKey }
- * @param thePlayer The player to get the functions from a key.
- * @param theKey The key you wish to check the functions from.
- * @param keyState A string that has one of the following values:
- * @param up If the bound key should trigger the function when the key is released
- * @param down If the bound key should trigger the function when the key is pressed
- * @param both If the bound key should trigger the function when the key is pressed or released
- * @noSelf
- */
-export declare function getFunctionsBoundToKey(
-    thePlayer: Player,
-    key: string,
-    keyState: string
-): LuaTable;
-
-/**
  * getKeyBoundToFunction allows retrieval of the first key bound to a function.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetKeyBoundToFunction Wiki, getKeyBoundToFunction }
  * @param thePlayer The player you are checking the function bound to a key
@@ -200,126 +325,3 @@ export declare function getKeyBoundToFunction(
     thePlayer: Player,
     theFunction: HandleFunction
 ): string;
-
-/**
- * Checks whether a GTA control is enabled or disabled for a certain player.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsControlEnabled Wiki, isControlEnabled }
- * @param thePlayer The player you wish the control status of.
- * @param control The control you wish to check. See control names for a list of possible controls.
- * @noSelf
- */
-export declare function isControlEnabled(
-    thePlayer: Player,
-    control: string
-): boolean;
-
-/**
- * This function can be used to find out if a key has already been bound. If you do not
- * specify a keyState or handler, any instances of key being bound will cause isKeyBound to
- * return true.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsKeyBound Wiki, isKeyBound }
- * @param thePlayer The player youre checking.
- * @param key The key youre checking. See Key names for a list of valid key names.
- * @param keyState Is the state of the key when it calls the function, Can be either:
- * @param up when the key is released
- * @param down when the key is pressed
- * @param handler The function youre checking against
- * @return returns true if the key is bound, false otherwise.
- * @noSelf
- */
-export declare function isKeyBound(
-    thePlayer: Player,
-    key: string,
-    keyState?: string,
-    handler?: HandleFunction
-): boolean;
-
-/**
- * This function removes a command handler, that is one that has been added using
- * addCommandHandler. This function can only remove command handlers that were added by the
- * resource that it is called in.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveCommandHandler Wiki, removeCommandHandler }
- * @param commandName the name of the command you wish to remove.
- * @param handler the specific handler function to remove. If not specified, all handler functions for the
- * command (from the calling resource) will be removed. This argument is only available in
- * the server.
- * @return returns true if the command handler was removed successfully, false if the command doesnt
- * exist.
- * @noSelf
- */
-export declare function removeCommandHandler(
-    commandName: string,
-    handler?: HandleFunction
-): boolean;
-
-/**
- * Sets a state of a specified players control, as if they pressed or released it.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetControlState Wiki, setControlState }
- * @param thePlayer The player you wish to set the control state of.
- * @param control The control that you want to set the state of. See control names for a list of possible
- * controls.
- * @param state A boolean value representing whether or not the key will be set to pressed or not.
- * @return returns true if the control state was successfully set, false otherwise.
- * @noSelf
- */
-export declare function setControlState(
-    thePlayer: Player,
-    control: string,
-    state: boolean
-): boolean;
-
-/**
- * Enables or disables the use of all GTA controls for a specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToggleAllControls Wiki, toggleAllControls }
- * @param thePlayer The player you wish to toggle the control ability of.
- * @param enabled A boolean value representing whether or not the controls will be usable.
- * @param gtaControls A boolean deciding whether the enabled parameter will affect GTAs internal controls.
- * @param mtaControls A boolean deciding whether the enabled parameter will affect MTAs own controls., e.g.
- * chatbox.
- * @noSelf
- */
-export declare function toggleAllControls(
-    thePlayer: Player,
-    enabled: boolean,
-    gtaControls?: boolean,
-    mtaControls?: boolean
-): boolean;
-
-/**
- * Enables or disables the use of a GTA control for a specific player.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToggleControl Wiki, toggleControl }
- * @param thePlayer The player you wish to toggle the control ability of.
- * @param control The control that you want to toggle the ability of. See control names for a list of
- * possible controls.
- * @param enabled A boolean value representing whether or not the key will be usable or not.
- * @noSelf
- */
-export declare function toggleControl(
-    thePlayer: Player,
-    control: string,
-    enabled: boolean
-): boolean;
-
-/**
- * Removes an existing key bind from the specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/UnbindKey Wiki, unbindKey }
- * @param thePlayer The player you wish to unbind the key of.
- * @param key The key you wish to unbind. See Key names for a list of valid key names.
- * @param keyState is optional in Syntax 2.
- * @param up If the bound key triggered a function when the key was released
- * @param down If the bound key triggered a function when the key was pressed
- * @param both If the bound key triggered a function when the key was pressed and released
- * @param command (Syntax 1) The command you wish to unbind.
- * @param handler (Syntax 2) The function you wish to unbind.
- * Note: If you do not specify ''handler'', any instances of ''key'' being bound will be
- * unbound, whatever function they are bound to.
- * @return returns true if the key was unbound, false if it was not previously bound or invalid
- * arguments were passed to the function.
- * @noSelf
- */
-export declare function unbindKey(
-    thePlayer: Player,
-    key: string,
-    keyState: string,
-    command: string
-): boolean;

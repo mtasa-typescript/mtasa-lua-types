@@ -28,8 +28,10 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /**
@@ -57,6 +59,25 @@ export declare function createObject(
     rz?: number,
     isLowLOD?: boolean
 ): MTASAObject;
+
+/**
+ * This function changes the visible size of an object.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
+ * @param theObject : the object you wish to change the scale of.
+ * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
+ * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
+ * @param scaleY : a float containing the new scale on the Y axis
+ * @param scaleZ : a float containing the new scale on the Z axis
+ * @return * true if the scale was set properly.
+ * * false otherwise.
+ * @noSelf
+ */
+export declare function setObjectScale(
+    theObject: MTASAObject,
+    scale: number,
+    scaleY?: number,
+    scaleZ?: number
+): boolean;
 
 /**
  * This function returns the visible size of an object.
@@ -112,25 +133,6 @@ export declare function moveObject(
     fEasingPeriod?: number,
     fEasingAmplitude?: number,
     fEasingOvershoot?: number
-): boolean;
-
-/**
- * This function changes the visible size of an object.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
- * @param theObject : the object you wish to change the scale of.
- * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
- * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
- * @param scaleY : a float containing the new scale on the Y axis
- * @param scaleZ : a float containing the new scale on the Z axis
- * @return * true if the scale was set properly.
- * * false otherwise.
- * @noSelf
- */
-export declare function setObjectScale(
-    theObject: MTASAObject,
-    scale: number,
-    scaleY?: number,
-    scaleZ?: number
 ): boolean;
 
 /**

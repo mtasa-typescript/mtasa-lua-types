@@ -28,9 +28,50 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerIcon Wiki, setMarkerIcon }
+ * @param theMarker The marker to change the visual style of
+ * @param icon A string referring to the type of icon, acceptable values are:
+ * @param none : No icon
+ * @param arrow : Arrow icon
+ * @param finish : Finish icon (at end of race)
+ * @noSelf
+ */
+export declare function setMarkerIcon(
+    theMarker: Marker,
+    icon: string
+): boolean;
+
+/**
+ * Returns the number of markers that currently exist in the world.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerCount Wiki, getMarkerCount }
+ * @return returns the number of markers that currently exist.
+ * @noSelf
+ */
+export declare function getMarkerCount(): number;
+
+/**
+ * This function changes a markers type. The type controls how the marker is displayed in
+ * the game. Its important that you use marker types that users are used to from the single
+ * player game. For example, checkpoints are used in races, rings are used for aircraft
+ * races, arrows are used for entering buildings etc.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerType Wiki, setMarkerType }
+ * @param theMarker : A marker element referencing the specified marker.
+ * @param markerType : A string denoting the marker type. Valid values are:
+ * @return returns true if the marker type was changed, false if it wasnt or marker values were
+ * invalid.
+ * @noSelf
+ */
+export declare function setMarkerType(
+    theMarker: Marker,
+    markerType: string
+): boolean;
 
 /**
  * This function creates a marker. A marker is a 3D model in the world that can highlight a
@@ -75,6 +116,29 @@ export declare function createMarker(
 ): Marker;
 
 /**
+ * This function returns a float containing the size of the specified marker.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerSize Wiki, getMarkerSize }
+ * @param myMarker : The marker that you wish to retrieve the size of.
+ * @return returns a float containing the size of the specified marker.
+ * @noSelf
+ */
+export declare function getMarkerSize(
+    myMarker: Marker
+): number;
+
+/**
+ * This function returns a markers type.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerType Wiki, getMarkerType }
+ * @param theMarker : A marker element referencing the specified marker.
+ * @return * returns one of the following strings:
+ * if an invalid marker is specified, false is returned.
+ * @noSelf
+ */
+export declare function getMarkerType(
+    theMarker: Marker
+): string;
+
+/**
  * This function returns the color and transparency for a marker element. Not all marker
  * types support transparency.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerColor Wiki, getMarkerColor }
@@ -93,14 +157,6 @@ export declare function getMarkerColor(
 ]>;
 
 /**
- * Returns the number of markers that currently exist in the world.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerCount Wiki, getMarkerCount }
- * @return returns the number of markers that currently exist.
- * @noSelf
- */
-export declare function getMarkerCount(): number;
-
-/**
  * This function returns the icon name for a marker.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerIcon Wiki, getMarkerIcon }
  * @param theMarker : A marker element referencing the specified marker.
@@ -113,17 +169,6 @@ export declare function getMarkerCount(): number;
 export declare function getMarkerIcon(
     theMarker: Marker
 ): string;
-
-/**
- * This function returns a float containing the size of the specified marker.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerSize Wiki, getMarkerSize }
- * @param myMarker : The marker that you wish to retrieve the size of.
- * @return returns a float containing the size of the specified marker.
- * @noSelf
- */
-export declare function getMarkerSize(
-    myMarker: Marker
-): number;
 
 /**
  * This function returns the position of the specified markers target, the position it
@@ -145,18 +190,6 @@ export declare function getMarkerTarget(
 ]>;
 
 /**
- * This function returns a markers type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerType Wiki, getMarkerType }
- * @param theMarker : A marker element referencing the specified marker.
- * @return * returns one of the following strings:
- * if an invalid marker is specified, false is returned.
- * @noSelf
- */
-export declare function getMarkerType(
-    theMarker: Marker
-): string;
-
-/**
  * This function sets the color of the specified marker by modifying the values for red,
  * green, blue and alpha.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerColor Wiki, setMarkerColor }
@@ -173,20 +206,6 @@ export declare function setMarkerColor(
     g: number,
     b: number,
     a: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerIcon Wiki, setMarkerIcon }
- * @param theMarker The marker to change the visual style of
- * @param icon A string referring to the type of icon, acceptable values are:
- * @param none : No icon
- * @param arrow : Arrow icon
- * @param finish : Finish icon (at end of race)
- * @noSelf
- */
-export declare function setMarkerIcon(
-    theMarker: Marker,
-    icon: string
 ): boolean;
 
 /**
@@ -229,21 +248,4 @@ export declare function setMarkerTarget(
     x: number,
     y: number,
     z: number
-): boolean;
-
-/**
- * This function changes a markers type. The type controls how the marker is displayed in
- * the game. Its important that you use marker types that users are used to from the single
- * player game. For example, checkpoints are used in races, rings are used for aircraft
- * races, arrows are used for entering buildings etc.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerType Wiki, setMarkerType }
- * @param theMarker : A marker element referencing the specified marker.
- * @param markerType : A string denoting the marker type. Valid values are:
- * @return returns true if the marker type was changed, false if it wasnt or marker values were
- * invalid.
- * @noSelf
- */
-export declare function setMarkerType(
-    theMarker: Marker,
-    markerType: string
 ): boolean;

@@ -28,9 +28,47 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * This function gets a rule value. A rule value is a string that can be viewed by server
+ * browsers and used for filtering the server list.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRuleValue Wiki, getRuleValue }
+ * @param key The name of the rule
+ * @return returns a string containing the value set for the specified key, false if invalid
+ * arguments were specified.
+ * @noSelf
+ */
+export declare function getRuleValue(
+    key: string
+): string;
+
+/**
+ * This function is used to set a map name that will be visible in the server browser. In
+ * practice you should generally rely on the mapmanager to do this for you.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetMapName Wiki, setMapName }
+ * @param mapName The name you wish the server browser to show.
+ * @return returns true if map name was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setMapName(
+    mapName: string
+): boolean;
+
+/**
+ * This function removes a set rule value that can be viewed by server browsers.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RemoveRuleValue Wiki, removeRuleValue }
+ * @param key The name of the rule you wish to remove
+ * @return returns true if the rule value was removed, false if it failed.
+ * @noSelf
+ */
+export declare function removeRuleValue(
+    key: string
+): boolean;
 
 /**
  * This function retrieves the current gametype as set by setGameType. The game type is
@@ -50,27 +88,16 @@ export declare function getGameType(): string;
 export declare function getMapName(): string;
 
 /**
- * This function gets a rule value. A rule value is a string that can be viewed by server
- * browsers and used for filtering the server list.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRuleValue Wiki, getRuleValue }
+ * This function sets a rule value that can be viewed by server browsers.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetRuleValue Wiki, setRuleValue }
  * @param key The name of the rule
- * @return returns a string containing the value set for the specified key, false if invalid
- * arguments were specified.
+ * @param value The value you wish to set for the rule
+ * @return returns true if the rule value was set, false if invalid arguments were specified.
  * @noSelf
  */
-export declare function getRuleValue(
-    key: string
-): string;
-
-/**
- * This function removes a set rule value that can be viewed by server browsers.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveRuleValue Wiki, removeRuleValue }
- * @param key The name of the rule you wish to remove
- * @return returns true if the rule value was removed, false if it failed.
- * @noSelf
- */
-export declare function removeRuleValue(
-    key: string
+export declare function setRuleValue(
+    key: string,
+    value: string
 ): boolean;
 
 /**
@@ -87,29 +114,4 @@ export declare function removeRuleValue(
  */
 export declare function setGameType(
     gameType: string
-): boolean;
-
-/**
- * This function is used to set a map name that will be visible in the server browser. In
- * practice you should generally rely on the mapmanager to do this for you.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMapName Wiki, setMapName }
- * @param mapName The name you wish the server browser to show.
- * @return returns true if map name was set successfully, false otherwise.
- * @noSelf
- */
-export declare function setMapName(
-    mapName: string
-): boolean;
-
-/**
- * This function sets a rule value that can be viewed by server browsers.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetRuleValue Wiki, setRuleValue }
- * @param key The name of the rule
- * @param value The value you wish to set for the rule
- * @return returns true if the rule value was set, false if invalid arguments were specified.
- * @noSelf
- */
-export declare function setRuleValue(
-    key: string,
-    value: string
 ): boolean;

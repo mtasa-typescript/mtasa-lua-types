@@ -27,12 +27,23 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Account */
 export class Account {
+    /**
+     * This function checks to see if an account is a guest account. A guest account is an
+     * account automatically created for a user when they join the server and deleted when they
+     * quit or login to another account. Data stored in a guest account is not stored after the
+     * player has left the server. As a consequence, this function will check if a player is
+     * logged in or not.
+     */
+    guest: boolean;
+
     /**
      * This function retrieves the ID of an account.
      */
@@ -49,10 +60,9 @@ export class Account {
     name: string;
 
     /**
-     * This function returns the player element that is currently using a specified account,
-     * i.e. is logged into it. Only one player can use an account at a time.
+     * This function returns a table containing all the user data for the account provided
      */
-    player: Player;
+    data: LuaTable;
 
     /**
      * This function returns the last serial that logged onto the specified account.
@@ -60,18 +70,10 @@ export class Account {
     serial: string;
 
     /**
-     * This function returns a table containing all the user data for the account provided
+     * This function returns the player element that is currently using a specified account,
+     * i.e. is logged into it. Only one player can use an account at a time.
      */
-    data: LuaTable;
-
-    /**
-     * This function checks to see if an account is a guest account. A guest account is an
-     * account automatically created for a user when they join the server and deleted when they
-     * quit or login to another account. Data stored in a guest account is not stored after the
-     * player has left the server. As a consequence, this function will check if a player is
-     * logged in or not.
-     */
-    guest: boolean;
+    player: Player;
 
     /**
      * This function sets the password of the specified account.
@@ -94,6 +96,17 @@ export class Account {
     ): Account;
 
     /**
+     * This function checks to see if an account is a guest account. A guest account is an
+     * account automatically created for a user when they join the server and deleted when they
+     * quit or login to another account. Data stored in a guest account is not stored after the
+     * player has left the server. As a consequence, this function will check if a player is
+     * logged in or not.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsGuestAccount Wiki, isGuestAccount }
+     * @return returns true if the account is a guest account, false otherwise.
+     */
+    isGuest(): boolean;
+
+    /**
      * This function copies all of the data from one account to another.
      * @see {@link https://wiki.multitheftauto.com/wiki/CopyAccountData Wiki, copyAccountData }
      * @param fromAccount The account you wish to copy the data from.
@@ -104,21 +117,11 @@ export class Account {
     ): boolean;
 
     /**
-     * This function returns an account for a specific user.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccount Wiki, getAccount }
-     * @param username The username of the account you want to retrieve
-     * @param password The password for the account. If this argument is not specified, you can get the account
-     * whatever password it is, otherwise the password must match the accounts.
-     * @param caseSensitive : Specifies whether to ignore the case when searching for an account.
-     * |16257}}
-     * @return returns an account or false if an account matching the username specified (and password,
-     * if specified) could not be found.
+     * This function is used to delete existing player accounts.
+     * @see {@link https://wiki.multitheftauto.com/wiki/RemoveAccount Wiki, removeAccount }
+     * @return returns true if account was successfully removed, false if the account does not exist.
      */
-    constructor(
-        username: string,
-        password?: string,
-        caseSensitive?: boolean
-    );
+    remove(): boolean;
 
     /**
      * This function retrieves a string that has been stored using setAccountData. Data stored
@@ -157,37 +160,6 @@ export class Account {
     getName(): string;
 
     /**
-     * This function returns the player element that is currently using a specified account,
-     * i.e. is logged into it. Only one player can use an account at a time.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountPlayer Wiki, getAccountPlayer }
-     * @return returns a player element if the account is currently in use, false otherwise.
-     */
-    getPlayer(): Player;
-
-    /**
-     * This function returns a table over all the accounts that exist in the server internal.db
-     * file. (Note: accounts.xml is no longer used after version 1.0.4)
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccounts Wiki, getAccounts }
-     * @return a table over the accounts that exist in the server internal.db file. this table might be
-     * empty.
-     */
-    static getAll(): LuaTable;
-
-    /**
-     * This function returns a table containing all accounts with specified dataName and value
-     * (set with setAccountData).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountsByData Wiki, getAccountsByData }
-     * @param dataName The name of the data
-     * @param value The value the dataName should have
-     * @return returns table containing the accounts associated with specified value at dataname.
-     * returns false if invalid arguments were specified.
-     */
-    static getAllByData(
-        dataName: string,
-        value: string
-    ): LuaTable;
-
-    /**
      * This function returns a table containing all accounts that were logged onto from
      * specified IP-address.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountsByIP Wiki, getAccountsByIP }
@@ -213,12 +185,18 @@ export class Account {
     ): LuaTable;
 
     /**
-     * This function returns the last serial that logged onto the specified account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountSerial Wiki, getAccountSerial }
-     * @return returns string containing the serial, the string is empty if the account was never used.
+     * This function returns a table containing all accounts with specified dataName and value
+     * (set with setAccountData).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountsByData Wiki, getAccountsByData }
+     * @param dataName The name of the data
+     * @param value The value the dataName should have
+     * @return returns table containing the accounts associated with specified value at dataname.
      * returns false if invalid arguments were specified.
      */
-    getSerial(): string;
+    static getAllByData(
+        dataName: string,
+        value: string
+    ): LuaTable;
 
     /**
      * This function returns a table containing all the user data for the account provided
@@ -228,22 +206,46 @@ export class Account {
     getAllData(): LuaTable;
 
     /**
-     * This function checks to see if an account is a guest account. A guest account is an
-     * account automatically created for a user when they join the server and deleted when they
-     * quit or login to another account. Data stored in a guest account is not stored after the
-     * player has left the server. As a consequence, this function will check if a player is
-     * logged in or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsGuestAccount Wiki, isGuestAccount }
-     * @return returns true if the account is a guest account, false otherwise.
+     * This function returns a table over all the accounts that exist in the server internal.db
+     * file. (Note: accounts.xml is no longer used after version 1.0.4)
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccounts Wiki, getAccounts }
+     * @return a table over the accounts that exist in the server internal.db file. this table might be
+     * empty.
      */
-    isGuest(): boolean;
+    static getAll(): LuaTable;
 
     /**
-     * This function is used to delete existing player accounts.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RemoveAccount Wiki, removeAccount }
-     * @return returns true if account was successfully removed, false if the account does not exist.
+     * This function returns an account for a specific user.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccount Wiki, getAccount }
+     * @param username The username of the account you want to retrieve
+     * @param password The password for the account. If this argument is not specified, you can get the account
+     * whatever password it is, otherwise the password must match the accounts.
+     * @param caseSensitive : Specifies whether to ignore the case when searching for an account.
+     * |16257}}
+     * @return returns an account or false if an account matching the username specified (and password,
+     * if specified) could not be found.
      */
-    remove(): boolean;
+    constructor(
+        username: string,
+        password?: string,
+        caseSensitive?: boolean
+    );
+
+    /**
+     * This function returns the last serial that logged onto the specified account.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountSerial Wiki, getAccountSerial }
+     * @return returns string containing the serial, the string is empty if the account was never used.
+     * returns false if invalid arguments were specified.
+     */
+    getSerial(): string;
+
+    /**
+     * This function returns the player element that is currently using a specified account,
+     * i.e. is logged into it. Only one player can use an account at a time.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountPlayer Wiki, getAccountPlayer }
+     * @return returns a player element if the account is currently in use, false otherwise.
+     */
+    getPlayer(): Player;
 
     /**
      * This function sets a string to be stored in an account. This can then be retrieved using

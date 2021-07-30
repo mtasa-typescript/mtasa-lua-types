@@ -45,9 +45,23 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * Checks if the file position is at the end of the file.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FileIsEOF Wiki, fileIsEOF }
+ * @param theFile A handle to the file you wish to check.
+ * @return returns true if the file position of the specified file is at the end of the file, false
+ * otherwise.
+ * @noSelf
+ */
+export declare function fileIsEOF(
+    theFile: File
+): boolean;
 
 /**
  * Closes a file handle obtained by fileCreate or fileOpen.
@@ -58,22 +72,6 @@ import {
  */
 export declare function fileClose(
     theFile: File
-): boolean;
-
-/**
- * This function copies a file.{{Note|The file functions should not be used to implement
- * configuration files. It is encouraged to use the XML functions for this instead.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/FileCopy Wiki, fileCopy }
- * @param filePath : The path of the file you want to copy.
- * @param copyToFilePath : Where to copy the specified file to.
- * @param overwrite : If set to true it will overwrite a file that already exists at copyToFilePath.
- * @return return true if the file was copied, else false if the filepath doesnt exist.
- * @noSelf
- */
-export declare function fileCopy(
-    filePath: string,
-    copyToFilePath: string,
-    overwrite?: boolean
 ): boolean;
 
 /**
@@ -115,25 +113,6 @@ export declare function fileDelete(
 ): boolean;
 
 /**
- * This functions checks whether a specified file exists inside a resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileExists Wiki, fileExists }
- * @param filePath The filepath of the file, whose existence is going to be checked, in the following
- * format: :resourceName/path. resourceName is the name of the resource the file is checked
- * to be in, and path is the path from the root directory of the resource to the file.
- * :For example, if you want to check whether a file named 'myfile.txt' exists in the
- * resource 'mapcreator', it can be done from another resource this way:
- * ''fileExists(":mapcreator/myfile.txt")''.
- * :If the file, whose existence is going to be checked, is in the current resource, only
- * the file path is necessary, e.g. ''fileExists("myfile.txt")''. Note that you must use
- * forward slashes '/' for the folders, backslashes '' will return false.
- * @return returns true if the file exists, false otherwise.
- * @noSelf
- */
-export declare function fileExists(
-    filePath: string
-): boolean;
-
-/**
  * Forces pending disk writes to be executed. fileWrite doesnt directly write to the hard
  * disk but places the data in a temporary buffer; only when there is enough data in the
  * buffer it is actually written to disk. Call this function if you need the data written
@@ -146,53 +125,6 @@ export declare function fileExists(
  * @noSelf
  */
 export declare function fileFlush(
-    theFile: File
-): boolean;
-
-/**
- * This function retrieves the path of the given file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPath Wiki, fileGetPath }
- * @param theFile The file you want to get the path.
- * @return returns a string representing the file path, false if invalid file was provided.
- * @noSelf
- */
-export declare function fileGetPath(
-    theFile: File
-): string;
-
-/**
- * Returns the current read/write position in the given file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPos Wiki, fileGetPos }
- * @param theFile the file handle you wish to get the position of.
- * @return returns the file position if successful, or false if an error occured (e.g. an invalid
- * handle was passed).
- * @noSelf
- */
-export declare function fileGetPos(
-    theFile: File
-): number;
-
-/**
- * Returns the total size in bytes of the given file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileGetSize Wiki, fileGetSize }
- * @param theFile the file handle you wish to get the size of.
- * @return returns the file size if successful, or false if an error occured (e.g. an invalid file
- * handle was passed).
- * @noSelf
- */
-export declare function fileGetSize(
-    theFile: File
-): number;
-
-/**
- * Checks if the file position is at the end of the file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileIsEOF Wiki, fileIsEOF }
- * @param theFile A handle to the file you wish to check.
- * @return returns true if the file position of the specified file is at the end of the file, false
- * otherwise.
- * @noSelf
- */
-export declare function fileIsEOF(
     theFile: File
 ): boolean;
 
@@ -250,6 +182,30 @@ export declare function fileRename(
 ): boolean;
 
 /**
+ * Returns the current read/write position in the given file.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPos Wiki, fileGetPos }
+ * @param theFile the file handle you wish to get the position of.
+ * @return returns the file position if successful, or false if an error occured (e.g. an invalid
+ * handle was passed).
+ * @noSelf
+ */
+export declare function fileGetPos(
+    theFile: File
+): number;
+
+/**
+ * Returns the total size in bytes of the given file.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FileGetSize Wiki, fileGetSize }
+ * @param theFile the file handle you wish to get the size of.
+ * @return returns the file size if successful, or false if an error occured (e.g. an invalid file
+ * handle was passed).
+ * @noSelf
+ */
+export declare function fileGetSize(
+    theFile: File
+): number;
+
+/**
  * Sets the current read/write position in the file.
  * @see {@link https://wiki.multitheftauto.com/wiki/FileSetPos Wiki, fileSetPos }
  * @param theFile The file handle of which you want to change the read/write position.
@@ -264,6 +220,52 @@ export declare function fileSetPos(
     theFile: File,
     offset: number
 ): number;
+
+/**
+ * This function copies a file.{{Note|The file functions should not be used to implement
+ * configuration files. It is encouraged to use the XML functions for this instead.}}
+ * @see {@link https://wiki.multitheftauto.com/wiki/FileCopy Wiki, fileCopy }
+ * @param filePath : The path of the file you want to copy.
+ * @param copyToFilePath : Where to copy the specified file to.
+ * @param overwrite : If set to true it will overwrite a file that already exists at copyToFilePath.
+ * @return return true if the file was copied, else false if the filepath doesnt exist.
+ * @noSelf
+ */
+export declare function fileCopy(
+    filePath: string,
+    copyToFilePath: string,
+    overwrite?: boolean
+): boolean;
+
+/**
+ * This function retrieves the path of the given file.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPath Wiki, fileGetPath }
+ * @param theFile The file you want to get the path.
+ * @return returns a string representing the file path, false if invalid file was provided.
+ * @noSelf
+ */
+export declare function fileGetPath(
+    theFile: File
+): string;
+
+/**
+ * This functions checks whether a specified file exists inside a resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FileExists Wiki, fileExists }
+ * @param filePath The filepath of the file, whose existence is going to be checked, in the following
+ * format: :resourceName/path. resourceName is the name of the resource the file is checked
+ * to be in, and path is the path from the root directory of the resource to the file.
+ * :For example, if you want to check whether a file named 'myfile.txt' exists in the
+ * resource 'mapcreator', it can be done from another resource this way:
+ * ''fileExists(":mapcreator/myfile.txt")''.
+ * :If the file, whose existence is going to be checked, is in the current resource, only
+ * the file path is necessary, e.g. ''fileExists("myfile.txt")''. Note that you must use
+ * forward slashes '/' for the folders, backslashes '' will return false.
+ * @return returns true if the file exists, false otherwise.
+ * @noSelf
+ */
+export declare function fileExists(
+    filePath: string
+): boolean;
 
 /**
  * Writes one or more strings to a given file, starting at the current read/write position.

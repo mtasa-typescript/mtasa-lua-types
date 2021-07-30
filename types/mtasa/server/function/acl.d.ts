@@ -28,9 +28,97 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * Get the ACL with the given name. If need to get most of the ACLs, you should consider
+ * using aclList to get a table of them all.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGet Wiki, aclGet }
+ * @param aclName The name to get the ACL belonging to
+ * @return returns the acl with that name if it could be retrieved, false/nil if the acl does not
+ * exist or it fails for some other reason.
+ * @noSelf
+ */
+export declare function aclGet(
+    aclName: string
+): ACL;
+
+/**
+ * Get the name of given ACL.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGetName Wiki, aclGetName }
+ * @param theACL The ACL to get the name of
+ * @return returns the name of the given acl as a string if successful. returns false/nil if
+ * unsuccessful, ie the acl is invalid.
+ * @noSelf
+ */
+export declare function aclGetName(
+    theAcl: ACL
+): string;
+
+/**
+ * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic
+ * save can be delayed by up to 10 seconds for performance reasons. Calling this function
+ * will force an immediate save.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclSave Wiki, aclSave }
+ * @return returns true if the acl was successfully changed, false or nil if it could not be saved
+ * for some reason, ie. file in use.
+ * @noSelf
+ */
+export declare function aclSave(): boolean;
+
+/**
+ * This function adds an object to the given ACL group. An object can be a players account,
+ * specified as:
+ * user.<accountname>
+ * Or a resource, specified as:
+ * resource.<resourcename>
+ * Objects are specified as strings. The ACL groups work for the user accounts and the
+ * resources that are specified in them.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupAddObject Wiki, aclGroupAddObject }
+ * @param theGroup The group to add the object name string too.
+ * @param theObjectName The object string to add to the given ACL.
+ * @return returns true if the object was successfully added to the acl, false if it already existed
+ * in the list.
+ * @noSelf
+ */
+export declare function aclGroupAddObject(
+    theGroup: ACLGroup,
+    theObjectName: string
+): boolean;
+
+/**
+ * This function adds the given ACL to the given ACL group. This makes the resources and
+ * players in the given ACL group have access to whats specified in the given ACL. The
+ * rights for something in the different ACLs in a group are OR-ed together, which means if
+ * one ACL gives access to something, this ACL group will have access to that.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupAddACL Wiki, aclGroupAddACL }
+ * @param theGroup The group to add the ACL to
+ * @param theACL The ACL to add to the group
+ * @return returns true if the acl could be successfully added to the acl group, false/nil if either
+ * of the elements are invalid, the acl is already in that group or if something else goes
+ * wrong.
+ * @noSelf
+ */
+export declare function aclGroupAddACL(
+    theGroup: ACLGroup,
+    theACL: ACL
+): boolean;
+
+/**
+ * This function creates a group in the ACL. An ACL group can contain objects like players
+ * and resources. They specify who has access to the ACLs in this group.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclCreateGroup Wiki, aclCreateGroup }
+ * @param groupName The name of the group to create
+ * @return returns the pointer to the created aclgroup if successful. returns false if failed.
+ * @noSelf
+ */
+export declare function aclCreateGroup(
+    groupName: string
+): ACLGroup;
 
 /**
  * This function creates an ACL entry in the Access Control List system with the specified
@@ -44,18 +132,6 @@ import {
 export declare function aclCreate(
     aclName: string
 ): ACL;
-
-/**
- * This function creates a group in the ACL. An ACL group can contain objects like players
- * and resources. They specify who has access to the ACLs in this group.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclCreateGroup Wiki, aclCreateGroup }
- * @param groupName The name of the group to create
- * @return returns the pointer to the created aclgroup if successful. returns false if failed.
- * @noSelf
- */
-export declare function aclCreateGroup(
-    groupName: string
-): ACLGroup;
 
 /**
  * This function destroys the ACL passed. The destroyed ACL will no longer be valid.
@@ -83,17 +159,17 @@ export declare function aclDestroyGroup(
 ): boolean;
 
 /**
- * Get the ACL with the given name. If need to get most of the ACLs, you should consider
- * using aclList to get a table of them all.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGet Wiki, aclGet }
- * @param aclName The name to get the ACL belonging to
- * @return returns the acl with that name if it could be retrieved, false/nil if the acl does not
- * exist or it fails for some other reason.
+ * This function is used to determine if an object is in a group.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsObjectInACLGroup Wiki, isObjectInACLGroup }
+ * @param theObject the name of the object to check. Examples: resource.ctf, user.Jim.
+ * @param theGroup the ACL group pointer of the group from which the object should be found.
+ * @return returns true if the object is in the specified group, false otherwise.
  * @noSelf
  */
-export declare function aclGet(
-    aclName: string
-): ACL;
+export declare function isObjectInACLGroup(
+    theObject: string,
+    theGroup: ACLGroup
+): boolean;
 
 /**
  * This function is used to get the ACL group with the given name. If you need most of the
@@ -109,72 +185,6 @@ export declare function aclGetGroup(
 ): ACLGroup;
 
 /**
- * Get the name of given ACL.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGetName Wiki, aclGetName }
- * @param theACL The ACL to get the name of
- * @return returns the name of the given acl as a string if successful. returns false/nil if
- * unsuccessful, ie the acl is invalid.
- * @noSelf
- */
-export declare function aclGetName(
-    theAcl: ACL
-): string;
-
-/**
- * This function returns whether the access for the given right is set to true or false in
- * the ACL.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGetRight Wiki, aclGetRight }
- * @param theAcl The ACL to get the right from
- * @param rightName The right name to return the access value of.
- * @return returns true or false if the acl gives access or not to the given function. returns nil
- * if it failed for some reason, e.g. an invalid acl was specified or the right specified
- * does not exist in the acl.
- * @noSelf
- */
-export declare function aclGetRight(
-    theAcl: ACL,
-    rightName: string
-): boolean;
-
-/**
- * This function adds the given ACL to the given ACL group. This makes the resources and
- * players in the given ACL group have access to whats specified in the given ACL. The
- * rights for something in the different ACLs in a group are OR-ed together, which means if
- * one ACL gives access to something, this ACL group will have access to that.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupAddACL Wiki, aclGroupAddACL }
- * @param theGroup The group to add the ACL to
- * @param theACL The ACL to add to the group
- * @return returns true if the acl could be successfully added to the acl group, false/nil if either
- * of the elements are invalid, the acl is already in that group or if something else goes
- * wrong.
- * @noSelf
- */
-export declare function aclGroupAddACL(
-    theGroup: ACLGroup,
-    theACL: ACL
-): boolean;
-
-/**
- * This function adds an object to the given ACL group. An object can be a players account,
- * specified as:
- * user.<accountname>
- * Or a resource, specified as:
- * resource.<resourcename>
- * Objects are specified as strings. The ACL groups work for the user accounts and the
- * resources that are specified in them.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupAddObject Wiki, aclGroupAddObject }
- * @param theGroup The group to add the object name string too.
- * @param theObjectName The object string to add to the given ACL.
- * @return returns true if the object was successfully added to the acl, false if it already existed
- * in the list.
- * @noSelf
- */
-export declare function aclGroupAddObject(
-    theGroup: ACLGroup,
-    theObjectName: string
-): boolean;
-
-/**
  * This function is used to get the name of the given ACL group.
  * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupGetName Wiki, aclGroupGetName }
  * @param aclGroup The ACL group to get the name of
@@ -187,38 +197,14 @@ export declare function aclGroupGetName(
 ): string;
 
 /**
- * This function returns a table of all the ACL groups.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupList Wiki, aclGroupList }
- * @return returns a table of all the acl groups if successful, returns an empty table if no acl
- * groups exist. false/nil can be returned if this function fails for some other reason.
+ * This function reloads the ACLs and the ACL groups from the ACL XML file. All ACL and ACL
+ * group elements are invalid after a call to this and should not be used anymore.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclReload Wiki, aclReload }
+ * @return returns true if the xml was successfully reloaded from the file, false or nil if the xml
+ * was invalid, didnt exist or could not be loaded for some other reason.
  * @noSelf
  */
-export declare function aclGroupList(): LuaTable;
-
-/**
- * This function returns a table over all the ACLs that exist in a given ACL group.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupListACL Wiki, aclGroupListACL }
- * @param theGroup The ACL group to get the ACL elements from
- * @return returns a table of the acl elements in the given acl group. this table might be empty.
- * returns false or nil if thegroup is invalid or it fails for some other reason.
- * @noSelf
- */
-export declare function aclGroupListACL(
-    theGroup: ACLGroup
-): LuaTable;
-
-/**
- * This function returns a table over all the objects that exist in a given ACL group. These
- * are objects like players and resources.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupListObjects Wiki, aclGroupListObjects }
- * @param theGroup The ACL group to get the objects from
- * @return returns a table of strings in the given acl group. this table might be empty. returns
- * false or nil if thegroup is invalid or it fails for some other reason.
- * @noSelf
- */
-export declare function aclGroupListObjects(
-    theGroup: ACLGroup
-): LuaTable;
+export declare function aclReload(): boolean;
 
 /**
  * This function removes the given ACL from the given ACL group.
@@ -250,6 +236,20 @@ export declare function aclGroupRemoveObject(
 ): boolean;
 
 /**
+ * This function removes the given right (string) from the given ACL.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclRemoveRight Wiki, aclRemoveRight }
+ * @param theAcl The ACL to remove the right from
+ * @param rightName The ACL name to remove from the right from
+ * @return returns true if the given right was successfully removed from the given acl, false or nil
+ * if it could not be removed for some reason, ie. it didnt exist in the acl.
+ * @noSelf
+ */
+export declare function aclRemoveRight(
+    theAcl: ACL,
+    rightName: string
+): boolean;
+
+/**
  * This function returns a list of all the ACLs.
  * @see {@link https://wiki.multitheftauto.com/wiki/AclList Wiki, aclList }
  * @return returns a table of all the acls. this table can be empty if no acls exist. it can also
@@ -257,6 +257,15 @@ export declare function aclGroupRemoveObject(
  * @noSelf
  */
 export declare function aclList(): LuaTable;
+
+/**
+ * This function returns a table of all the ACL groups.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupList Wiki, aclGroupList }
+ * @return returns a table of all the acl groups if successful, returns an empty table if no acl
+ * groups exist. false/nil can be returned if this function fails for some other reason.
+ * @noSelf
+ */
+export declare function aclGroupList(): LuaTable;
 
 /**
  * This function returns a table of all the rights that a given ACL has.
@@ -273,56 +282,29 @@ export declare function aclListRights(
 ): LuaTable;
 
 /**
- * This function reloads the ACLs and the ACL groups from the ACL XML file. All ACL and ACL
- * group elements are invalid after a call to this and should not be used anymore.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclReload Wiki, aclReload }
- * @return returns true if the xml was successfully reloaded from the file, false or nil if the xml
- * was invalid, didnt exist or could not be loaded for some other reason.
+ * This function returns a table over all the ACLs that exist in a given ACL group.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupListACL Wiki, aclGroupListACL }
+ * @param theGroup The ACL group to get the ACL elements from
+ * @return returns a table of the acl elements in the given acl group. this table might be empty.
+ * returns false or nil if thegroup is invalid or it fails for some other reason.
  * @noSelf
  */
-export declare function aclReload(): boolean;
+export declare function aclGroupListACL(
+    theGroup: ACLGroup
+): LuaTable;
 
 /**
- * This function removes the given right (string) from the given ACL.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclRemoveRight Wiki, aclRemoveRight }
- * @param theAcl The ACL to remove the right from
- * @param rightName The ACL name to remove from the right from
- * @return returns true if the given right was successfully removed from the given acl, false or nil
- * if it could not be removed for some reason, ie. it didnt exist in the acl.
+ * This function returns a table over all the objects that exist in a given ACL group. These
+ * are objects like players and resources.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupListObjects Wiki, aclGroupListObjects }
+ * @param theGroup The ACL group to get the objects from
+ * @return returns a table of strings in the given acl group. this table might be empty. returns
+ * false or nil if thegroup is invalid or it fails for some other reason.
  * @noSelf
  */
-export declare function aclRemoveRight(
-    theAcl: ACL,
-    rightName: string
-): boolean;
-
-/**
- * The ACL XML file is automatically saved whenever the ACL is modified, but the automatic
- * save can be delayed by up to 10 seconds for performance reasons. Calling this function
- * will force an immediate save.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclSave Wiki, aclSave }
- * @return returns true if the acl was successfully changed, false or nil if it could not be saved
- * for some reason, ie. file in use.
- * @noSelf
- */
-export declare function aclSave(): boolean;
-
-/**
- * This functions changes or adds the given right in the given ACL. The access can be true
- * or false and specifies whether the ACL gives access to the right or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/AclSetRight Wiki, aclSetRight }
- * @param theAcl The ACL to change the right of
- * @param rightName The right to add/change the access property of
- * @param hasAccess Whether the access should be set to true or false
- * @return returns true if the access was successfully changed, false or nil if it failed for some
- * reason, ie. invalid acl or the rightname is invalid.
- * @noSelf
- */
-export declare function aclSetRight(
-    theAcl: ACL,
-    rightName: string,
-    hasAccess: boolean
-): boolean;
+export declare function aclGroupListObjects(
+    theGroup: ACLGroup
+): LuaTable;
 
 /**
  * This function returns whether or not the given object has access to perform the given
@@ -375,14 +357,34 @@ export declare function hasObjectPermissionTo(
 ): boolean;
 
 /**
- * This function is used to determine if an object is in a group.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsObjectInACLGroup Wiki, isObjectInACLGroup }
- * @param theObject the name of the object to check. Examples: resource.ctf, user.Jim.
- * @param theGroup the ACL group pointer of the group from which the object should be found.
- * @return returns true if the object is in the specified group, false otherwise.
+ * This function returns whether the access for the given right is set to true or false in
+ * the ACL.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclGetRight Wiki, aclGetRight }
+ * @param theAcl The ACL to get the right from
+ * @param rightName The right name to return the access value of.
+ * @return returns true or false if the acl gives access or not to the given function. returns nil
+ * if it failed for some reason, e.g. an invalid acl was specified or the right specified
+ * does not exist in the acl.
  * @noSelf
  */
-export declare function isObjectInACLGroup(
-    theObject: string,
-    theGroup: ACLGroup
+export declare function aclGetRight(
+    theAcl: ACL,
+    rightName: string
+): boolean;
+
+/**
+ * This functions changes or adds the given right in the given ACL. The access can be true
+ * or false and specifies whether the ACL gives access to the right or not.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AclSetRight Wiki, aclSetRight }
+ * @param theAcl The ACL to change the right of
+ * @param rightName The right to add/change the access property of
+ * @param hasAccess Whether the access should be set to true or false
+ * @return returns true if the access was successfully changed, false or nil if it failed for some
+ * reason, ie. invalid acl or the rightname is invalid.
+ * @noSelf
+ */
+export declare function aclSetRight(
+    theAcl: ACL,
+    rightName: string,
+    hasAccess: boolean
 ): boolean;

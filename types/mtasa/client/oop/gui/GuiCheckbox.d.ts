@@ -45,8 +45,10 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../../structure';
 
 /** @customConstructor GuiCheckbox */
@@ -55,23 +57,6 @@ export class GuiCheckbox extends GuiElement {
      * This function gets a checkboxs selection state.
      */
     selected: boolean;
-
-    /**
-     * This function gets a checkboxs selection state.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected Wiki, guiCheckBoxGetSelected }
-     * @return returns true if the checkbox is selected, false if it is not.
-     */
-    getSelected(): boolean;
-
-    /**
-     * This function selects (ticks) or unselects a checkbox.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected Wiki, guiCheckBoxSetSelected }
-     * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
-     * @return returns true if the checkboxs selection state was successfully set, false otherwise.
-     */
-    setSelected(
-        state: boolean
-    ): boolean;
 
     /**
      * This function creates a Element/GUI/Checkbox|checkbox.
@@ -106,4 +91,21 @@ export class GuiCheckbox extends GuiElement {
         relative: boolean,
         parent?: Element
     );
+
+    /**
+     * This function gets a checkboxs selection state.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected Wiki, guiCheckBoxGetSelected }
+     * @return returns true if the checkbox is selected, false if it is not.
+     */
+    getSelected(): boolean;
+
+    /**
+     * This function selects (ticks) or unselects a checkbox.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected Wiki, guiCheckBoxSetSelected }
+     * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
+     * @return returns true if the checkboxs selection state was successfully set, false otherwise.
+     */
+    setSelected(
+        state: boolean
+    ): boolean;
 }

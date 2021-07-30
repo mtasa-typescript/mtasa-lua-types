@@ -45,22 +45,39 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Engine */
 export class Engine {
     /**
-     * This function gets the model ID of an object model from object name. This function is the
-     * counterpart of engineGetModelNameFromID.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
-     * @param modelName The model name of the object
-     * @return returns an int with the id of the object model, false otherwise.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance Wiki, engineResetModelLODDistance }
+     * @param model The model / object ID number you want to reset the LOD distance of.
+     * @return returns true if the lod distance was reset to default, or false if the model argument is
+     * incorrect, or the lod distance hasnt been changed.
      */
-    static getModelIDFromName(
-        modelName: string
-    ): number;
+    static resetModelLODDistance(
+        model: number
+    ): boolean;
+
+    /**
+     * This function enables or disables asynchronous model loading. Enabling asynchronous model
+     * loading may reduce the small pauses that occur when a new model is displayed for the
+     * first time. However, it can cause the new models to appear slightly later than they might
+     * have otherwise.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading Wiki, engineSetAsynchronousLoading }
+     * @param enable Set to true/false to enable/disable asynchronous loading. Only works if the clients
+     * preferences has Asynchronous Loading set to Auto.
+     * @param force If set to true, ignores the clients preferences.
+     * @return returns true if the function executed successfully, false otherwise.
+     */
+    static setAsynchronousLoading(
+        enable: boolean,
+        force: boolean
+    ): boolean;
 
     /**
      * This function gets the LOD distance for any object / model ID.
@@ -74,6 +91,17 @@ export class Engine {
     ): number;
 
     /**
+     * This function gets the model ID of an object model from object name. This function is the
+     * counterpart of engineGetModelNameFromID.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
+     * @param modelName The model name of the object
+     * @return returns an int with the id of the object model, false otherwise.
+     */
+    static getModelIDFromName(
+        modelName: string
+    ): number;
+
+    /**
      * This function gets the model name of an object model from model ID. This function is the
      * counterpart of engineGetModelIDFromName.
      * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID Wiki, engineGetModelNameFromID }
@@ -83,40 +111,6 @@ export class Engine {
     static getModelNameFromID(
         modelID: number
     ): string;
-
-    /**
-     * This function returns a table of the world textures which are applied to the specified
-     * model.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
-     * @param modelId You can either use the model id or the model name.
-     * @return returns a table if this function succeeds, false if it fails for some reason.
-     */
-    static getModelTextureNames(
-        modelId: string
-    ): LuaTable;
-
-    /**
-     * This function returns a list of the world textures which are being used to draw the
-     * current scene.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames Wiki, engineGetVisibleTextureNames }
-     * @param nameFilter Only include textures that match the wildcard string.
-     * @param modelId Only include textures that are used by the model id (or model name)
-     * @return returns a table of texture names.
-     */
-    static getVisibleTextureNames(
-        nameFilter?: string,
-        modelId?: string
-    ): LuaTable;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance Wiki, engineResetModelLODDistance }
-     * @param model The model / object ID number you want to reset the LOD distance of.
-     * @return returns true if the lod distance was reset to default, or false if the model argument is
-     * incorrect, or the lod distance hasnt been changed.
-     */
-    static resetModelLODDistance(
-        model: number
-    ): boolean;
 
     /**
      * This function restores the original collision model of the given model ID. Reverses the
@@ -142,20 +136,28 @@ export class Engine {
     ): boolean;
 
     /**
-     * This function enables or disables asynchronous model loading. Enabling asynchronous model
-     * loading may reduce the small pauses that occur when a new model is displayed for the
-     * first time. However, it can cause the new models to appear slightly later than they might
-     * have otherwise.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading Wiki, engineSetAsynchronousLoading }
-     * @param enable Set to true/false to enable/disable asynchronous loading. Only works if the clients
-     * preferences has Asynchronous Loading set to Auto.
-     * @param force If set to true, ignores the clients preferences.
-     * @return returns true if the function executed successfully, false otherwise.
+     * This function returns a list of the world textures which are being used to draw the
+     * current scene.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames Wiki, engineGetVisibleTextureNames }
+     * @param nameFilter Only include textures that match the wildcard string.
+     * @param modelId Only include textures that are used by the model id (or model name)
+     * @return returns a table of texture names.
      */
-    static setAsynchronousLoading(
-        enable: boolean,
-        force: boolean
-    ): boolean;
+    static getVisibleTextureNames(
+        nameFilter?: string,
+        modelId?: string
+    ): LuaTable;
+
+    /**
+     * This function returns a table of the world textures which are applied to the specified
+     * model.
+     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
+     * @param modelId You can either use the model id or the model name.
+     * @return returns a table if this function succeeds, false if it fails for some reason.
+     */
+    static getModelTextureNames(
+        modelId: string
+    ): LuaTable;
 
     /**
      * This function sets a custom LOD distance for any object / model ID. This is the distance

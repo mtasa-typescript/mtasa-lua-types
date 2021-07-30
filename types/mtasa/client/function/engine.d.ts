@@ -45,42 +45,28 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /**
- * This function applies a shader to one or more world textures.
- * * The resource Shader_examples#Texture_names|shader_tex_names can help in finding the
- * names of world textures.
- * * When replacing the texture for a ped using the CJ skin, set textureName to CJ
- * * The shader inherits the render states of the original when it is drawn, so texture
- * stage 0 will already be set to the original texture.
- * * When using with a ped, ensure you have set ped or all in the elementTypes when calling
- * dxCreateShader
- * * CJ body parts textures can be replaced by using: cj_ped_head, cj_ped_hat, cj_ped_torso,
- * cj_ped_legs, cj_ped_feet, cj_ped_glasses, cj_ped_necklace, cj_ped_watch and
- * cj_ped_extra1. Latest version of
- * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
- * show what is being used.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
- * @param shader The shader which is to be applied
- * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
- * be used to apply to more than one texture at a time.
- * @param targetElement The element to restrict applying the shader to. If this is not set the shader will be
- * applied to everything using the texture name. Valid element types for targetElement are
- * vehicle|vehicles, Object|objects and Ped|peds.
- * @param appendLayers allows two or more layered shaders to be applied in the same texture. You may want to
- * modify the DepthBias in the technique pass to avoid Z-fighting artifacts when using this.
- * @return returns true if the shader was successfully applied, false otherwise.
+ * *before release 1.5.8-20716 this must be ped.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineRequestModel Wiki, engineRequestModel }
+ * @param elementType : ped, vehicle and object.
+ * @param parentID : The Vehicle IDs|vehicle ID of the vehicle being allocated. (By default this is: 1337 -
+ * objects, 400 - vehicles, 7 or PSYCHO for peds)
+ * @return do not rely on the model numbers returned being consistent across multiple clients or
+ * multiple runs of resources. there is no guarantee for the order of the numbers or that
+ * the same numbers will always correspond to the same element type. any patterns are
+ * coincidental
  * @noSelf
  */
-export declare function engineApplyShaderToWorldTexture(
-    shader: Element,
-    textureName: string,
-    targetElement?: Element,
-    appendLayers?: boolean
-): boolean;
+export declare function engineRequestModel(
+    elementType: string,
+    parentID?: number
+): number;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineFreeModel Wiki, engineFreeModel }
@@ -93,42 +79,6 @@ export declare function engineFreeModel(
 ): boolean;
 
 /**
- * This function gets the model ID of an object model from object name. This function is the
- * counterpart of engineGetModelNameFromID.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
- * @param modelName The model name of the object
- * @return returns an int with the id of the object model, false otherwise.
- * @noSelf
- */
-export declare function engineGetModelIDFromName(
-    modelName: string
-): number;
-
-/**
- * This function gets the LOD distance for any object / model ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelLODDistance Wiki, engineGetModelLODDistance }
- * @param model The model / object ID number you want to get the LOD distance of.
- * @return returns a float representing the lod distance of the model, or false if the model
- * argument is incorrect.
- * @noSelf
- */
-export declare function engineGetModelLODDistance(
-    model: number
-): number;
-
-/**
- * This function gets the model name of an object model from model ID. This function is the
- * counterpart of engineGetModelIDFromName.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID Wiki, engineGetModelNameFromID }
- * @param modelID The model ID of the object
- * @return returns a string with the name of the object model, false otherwise.
- * @noSelf
- */
-export declare function engineGetModelNameFromID(
-    modelID: number
-): string;
-
-/**
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelPhysicalPropertiesGroup Wiki, engineGetModelPhysicalPropertiesGroup }
  * @param modelID : the id of model which you wish to get physical properties group of.
  * @return returns id of physical properties group that requested model uses, in range of 0-160, if
@@ -139,18 +89,6 @@ export declare function engineGetModelNameFromID(
 export declare function engineGetModelPhysicalPropertiesGroup(
     modelID: number
 ): number;
-
-/**
- * This function returns a table of the world textures which are applied to the specified
- * model.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
- * @param modelId You can either use the model id or the model name.
- * @return returns a table if this function succeeds, false if it fails for some reason.
- * @noSelf
- */
-export declare function engineGetModelTextureNames(
-    modelId: string
-): LuaTable;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextures Wiki, engineGetModelTextures }
@@ -204,18 +142,194 @@ export declare function engineGetSurfaceProperties(
 ): any;
 
 /**
- * This function returns a list of the world textures which are being used to draw the
- * current scene.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames Wiki, engineGetVisibleTextureNames }
- * @param nameFilter Only include textures that match the wildcard string.
- * @param modelId Only include textures that are used by the model id (or model name)
- * @return returns a table of texture names.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance Wiki, engineResetModelLODDistance }
+ * @param model The model / object ID number you want to reset the LOD distance of.
+ * @return returns true if the lod distance was reset to default, or false if the model argument is
+ * incorrect, or the lod distance hasnt been changed.
  * @noSelf
  */
-export declare function engineGetVisibleTextureNames(
-    nameFilter?: string,
-    modelId?: string
-): LuaTable;
+export declare function engineResetModelLODDistance(
+    model: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetSurfaceProperties Wiki, engineResetSurfaceProperties }
+ * @param surfaceID Material IDs|Material ID from 0 to 178
+ * @return returns true if the function executed succesfully, false otherwise.
+ * @noSelf
+ */
+export declare function engineResetSurfaceProperties(
+    surfaceID?: number
+): any;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreModelPhysicalPropertiesGroup Wiki, engineRestoreModelPhysicalPropertiesGroup }
+ * @param modelID : the id of model which you wish to restore original physical properties group of.
+ * @return returns true if there were no issues, if passed arguments were invalid an error is raised.
+ * @noSelf
+ */
+export declare function engineRestoreModelPhysicalPropertiesGroup(
+    modelID: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreObjectGroupPhysicalProperties Wiki, engineRestoreObjectGroupPhysicalProperties }
+ * @param groupID : the id of physical properties group which you wish to restore a property of.
+ * @param objectgroup-modifiable : the property which you wish to restore, as per table below.
+ * @return returns true if everything went well, error is raised otherwise.
+ * @noSelf
+ */
+export declare function engineRestoreObjectGroupPhysicalProperties(
+    groupID: number,
+    property: string
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestreamWorld Wiki, engineRestreamWorld }
+ * @return returns true if the world was restreamed successfully, false otherwise.
+ * @noSelf
+ */
+export declare function engineRestreamWorld(): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelPhysicalPropertiesGroup Wiki, engineSetModelPhysicalPropertiesGroup }
+ * @param modelID : the id of model which you wish to set physical properties group of.
+ * @param groupID : the id of new physical properties group to be used by given model.
+ * @return returns true if there were no issues with group change, otherwise an error is raised
+ * @noSelf
+ */
+export declare function engineSetModelPhysicalPropertiesGroup(
+    modelID: number,
+    groupID: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelVisibleTime Wiki, engineSetModelVisibleTime }
+ * @param modelID : ID of the model
+ * @param timeOn : value between 0 and 24 that states when the model should appear
+ * @param timeOff : value between 0 and 24 that states when the model should disappear
+ * @return returns true if the change was successful, false otherwise.
+ * @noSelf
+ */
+export declare function engineSetModelVisibleTime(
+    modelID: number,
+    timeOn: number,
+    timeOff: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetObjectGroupPhysicalProperty Wiki, engineSetObjectGroupPhysicalProperty }
+ * @param groupID : the id of physical properties group which you wish to set a property of.
+ * @param objectgroup-modifiable : the property which you wish to set, as per table below.
+ * @param newValue : new value of the property, with proper type as specified in table below
+ * @return returns true if everything went well, error is raised otherwise.
+ * @noSelf
+ */
+export declare function engineSetObjectGroupPhysicalProperty(
+    groupID: number,
+    property: string,
+    newValue: unknown
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetSurfaceProperties Wiki, engineSetSurfaceProperties }
+ * @param surfaceID Material IDs|Material ID from 0 to 178
+ * @param property Property name
+ * @param value New value from table below
+ * @return returns true if the function executed succesfully, false otherwise.
+ * @noSelf
+ */
+export declare function engineSetSurfaceProperties(
+    surfaceID: number,
+    property: string,
+    value: any
+): boolean;
+
+/**
+ * This function applies a shader to one or more world textures.
+ * * The resource Shader_examples#Texture_names|shader_tex_names can help in finding the
+ * names of world textures.
+ * * When replacing the texture for a ped using the CJ skin, set textureName to CJ
+ * * The shader inherits the render states of the original when it is drawn, so texture
+ * stage 0 will already be set to the original texture.
+ * * When using with a ped, ensure you have set ped or all in the elementTypes when calling
+ * dxCreateShader
+ * * CJ body parts textures can be replaced by using: cj_ped_head, cj_ped_hat, cj_ped_torso,
+ * cj_ped_legs, cj_ped_feet, cj_ped_glasses, cj_ped_necklace, cj_ped_watch and
+ * cj_ped_extra1. Latest version of
+ * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
+ * show what is being used.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
+ * @param shader The shader which is to be applied
+ * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
+ * be used to apply to more than one texture at a time.
+ * @param targetElement The element to restrict applying the shader to. If this is not set the shader will be
+ * applied to everything using the texture name. Valid element types for targetElement are
+ * vehicle|vehicles, Object|objects and Ped|peds.
+ * @param appendLayers allows two or more layered shaders to be applied in the same texture. You may want to
+ * modify the DepthBias in the technique pass to avoid Z-fighting artifacts when using this.
+ * @return returns true if the shader was successfully applied, false otherwise.
+ * @noSelf
+ */
+export declare function engineApplyShaderToWorldTexture(
+    shader: Element,
+    textureName: string,
+    targetElement?: Element,
+    appendLayers?: boolean
+): boolean;
+
+/**
+ * This function enables or disables asynchronous model loading. Enabling asynchronous model
+ * loading may reduce the small pauses that occur when a new model is displayed for the
+ * first time. However, it can cause the new models to appear slightly later than they might
+ * have otherwise.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading Wiki, engineSetAsynchronousLoading }
+ * @param enable Set to true/false to enable/disable asynchronous loading. Only works if the clients
+ * preferences has Asynchronous Loading set to Auto.
+ * @param force If set to true, ignores the clients preferences.
+ * @return returns true if the function executed successfully, false otherwise.
+ * @noSelf
+ */
+export declare function engineSetAsynchronousLoading(
+    enable: boolean,
+    force: boolean
+): boolean;
+
+/**
+ * This function gets the LOD distance for any object / model ID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelLODDistance Wiki, engineGetModelLODDistance }
+ * @param model The model / object ID number you want to get the LOD distance of.
+ * @return returns a float representing the lod distance of the model, or false if the model
+ * argument is incorrect.
+ * @noSelf
+ */
+export declare function engineGetModelLODDistance(
+    model: number
+): number;
+
+/**
+ * This function gets the model ID of an object model from object name. This function is the
+ * counterpart of engineGetModelNameFromID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
+ * @param modelName The model name of the object
+ * @return returns an int with the id of the object model, false otherwise.
+ * @noSelf
+ */
+export declare function engineGetModelIDFromName(
+    modelName: string
+): number;
+
+/**
+ * This function gets the model name of an object model from model ID. This function is the
+ * counterpart of engineGetModelIDFromName.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID Wiki, engineGetModelNameFromID }
+ * @param modelID The model ID of the object
+ * @return returns a string with the name of the object model, false otherwise.
+ * @noSelf
+ */
+export declare function engineGetModelNameFromID(
+    modelID: number
+): string;
 
 /**
  * This function imports (adds) a loaded RenderWare Texture Dictionary into a specific
@@ -275,6 +389,22 @@ export declare function engineLoadDFF(
 ): EngineDFF;
 
 /**
+ * This function loads a RenderWare Texture Dictionary (TXD) file into GTA. The texture
+ * dictionary can then be used to provide textures.
+ * This is a client side function. Be sure to transfer your TXD file by including it in the
+ * meta file.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadTXD Wiki, engineLoadTXD }
+ * @param txd_file / raw_data The filepath to the TXD file you want to load or whole data buffer of the TXD file.
+ * @param filteringEnabled Whether to enable texture filtering.
+ * @return returns a txd if the file was loaded, false otherwise.
+ * @noSelf
+ */
+export declare function engineLoadTXD(
+    txd_file: string | string,
+    filteringEnabled?: boolean
+): EngineTXD;
+
+/**
  * This function loads an animation library (IFP) file into GTA with a custom block name.
  * All three IFP formats are supported ANPK, ANP2, and ANP3. Unfortunately, GTA 3 animations
  * are not supported, however, you can load GTA:VC IFP files using this function. You dont
@@ -296,22 +426,6 @@ export declare function engineLoadIFP(
     ifp_file: string | string,
     custom_block_name: string
 ): EngineIFP;
-
-/**
- * This function loads a RenderWare Texture Dictionary (TXD) file into GTA. The texture
- * dictionary can then be used to provide textures.
- * This is a client side function. Be sure to transfer your TXD file by including it in the
- * meta file.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadTXD Wiki, engineLoadTXD }
- * @param txd_file / raw_data The filepath to the TXD file you want to load or whole data buffer of the TXD file.
- * @param filteringEnabled Whether to enable texture filtering.
- * @return returns a txd if the file was loaded, false otherwise.
- * @noSelf
- */
-export declare function engineLoadTXD(
-    txd_file: string | string,
-    filteringEnabled?: boolean
-): EngineTXD;
 
 /**
  * This function removes a shader from one or more world textures.
@@ -404,44 +518,6 @@ export declare function engineReplaceModel(
 ): boolean;
 
 /**
- * *before release 1.5.8-20716 this must be ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRequestModel Wiki, engineRequestModel }
- * @param elementType : ped, vehicle and object.
- * @param parentID : The Vehicle IDs|vehicle ID of the vehicle being allocated. (By default this is: 1337 -
- * objects, 400 - vehicles, 7 or PSYCHO for peds)
- * @return do not rely on the model numbers returned being consistent across multiple clients or
- * multiple runs of resources. there is no guarantee for the order of the numbers or that
- * the same numbers will always correspond to the same element type. any patterns are
- * coincidental
- * @noSelf
- */
-export declare function engineRequestModel(
-    elementType: string,
-    parentID?: number
-): number;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance Wiki, engineResetModelLODDistance }
- * @param model The model / object ID number you want to reset the LOD distance of.
- * @return returns true if the lod distance was reset to default, or false if the model argument is
- * incorrect, or the lod distance hasnt been changed.
- * @noSelf
- */
-export declare function engineResetModelLODDistance(
-    model: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetSurfaceProperties Wiki, engineResetSurfaceProperties }
- * @param surfaceID Material IDs|Material ID from 0 to 178
- * @return returns true if the function executed succesfully, false otherwise.
- * @noSelf
- */
-export declare function engineResetSurfaceProperties(
-    surfaceID?: number
-): any;
-
-/**
  * This function restores internal (default) animations that were replaced using
  * EngineReplaceAnimation|engineReplaceAnimation function. This function only affects a
  * specific player or ped just like EngineReplaceAnimation|engineReplaceAnimation.
@@ -490,50 +566,30 @@ export declare function engineRestoreModel(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreModelPhysicalPropertiesGroup Wiki, engineRestoreModelPhysicalPropertiesGroup }
- * @param modelID : the id of model which you wish to restore original physical properties group of.
- * @return returns true if there were no issues, if passed arguments were invalid an error is raised.
+ * This function returns a list of the world textures which are being used to draw the
+ * current scene.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames Wiki, engineGetVisibleTextureNames }
+ * @param nameFilter Only include textures that match the wildcard string.
+ * @param modelId Only include textures that are used by the model id (or model name)
+ * @return returns a table of texture names.
  * @noSelf
  */
-export declare function engineRestoreModelPhysicalPropertiesGroup(
-    modelID: number
-): boolean;
+export declare function engineGetVisibleTextureNames(
+    nameFilter?: string,
+    modelId?: string
+): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreObjectGroupPhysicalProperties Wiki, engineRestoreObjectGroupPhysicalProperties }
- * @param groupID : the id of physical properties group which you wish to restore a property of.
- * @param objectgroup-modifiable : the property which you wish to restore, as per table below.
- * @return returns true if everything went well, error is raised otherwise.
+ * This function returns a table of the world textures which are applied to the specified
+ * model.
+ * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
+ * @param modelId You can either use the model id or the model name.
+ * @return returns a table if this function succeeds, false if it fails for some reason.
  * @noSelf
  */
-export declare function engineRestoreObjectGroupPhysicalProperties(
-    groupID: number,
-    property: string
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestreamWorld Wiki, engineRestreamWorld }
- * @return returns true if the world was restreamed successfully, false otherwise.
- * @noSelf
- */
-export declare function engineRestreamWorld(): boolean;
-
-/**
- * This function enables or disables asynchronous model loading. Enabling asynchronous model
- * loading may reduce the small pauses that occur when a new model is displayed for the
- * first time. However, it can cause the new models to appear slightly later than they might
- * have otherwise.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading Wiki, engineSetAsynchronousLoading }
- * @param enable Set to true/false to enable/disable asynchronous loading. Only works if the clients
- * preferences has Asynchronous Loading set to Auto.
- * @param force If set to true, ignores the clients preferences.
- * @return returns true if the function executed successfully, false otherwise.
- * @noSelf
- */
-export declare function engineSetAsynchronousLoading(
-    enable: boolean,
-    force: boolean
-): boolean;
+export declare function engineGetModelTextureNames(
+    modelId: string
+): LuaTable;
 
 /**
  * This function sets a custom LOD distance for any object / model ID. This is the distance
@@ -571,58 +627,4 @@ export declare function engineSetAsynchronousLoading(
 export declare function engineSetModelLODDistance(
     model: number,
     distance: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelPhysicalPropertiesGroup Wiki, engineSetModelPhysicalPropertiesGroup }
- * @param modelID : the id of model which you wish to set physical properties group of.
- * @param groupID : the id of new physical properties group to be used by given model.
- * @return returns true if there were no issues with group change, otherwise an error is raised
- * @noSelf
- */
-export declare function engineSetModelPhysicalPropertiesGroup(
-    modelID: number,
-    groupID: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelVisibleTime Wiki, engineSetModelVisibleTime }
- * @param modelID : ID of the model
- * @param timeOn : value between 0 and 24 that states when the model should appear
- * @param timeOff : value between 0 and 24 that states when the model should disappear
- * @return returns true if the change was successful, false otherwise.
- * @noSelf
- */
-export declare function engineSetModelVisibleTime(
-    modelID: number,
-    timeOn: number,
-    timeOff: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetObjectGroupPhysicalProperty Wiki, engineSetObjectGroupPhysicalProperty }
- * @param groupID : the id of physical properties group which you wish to set a property of.
- * @param objectgroup-modifiable : the property which you wish to set, as per table below.
- * @param newValue : new value of the property, with proper type as specified in table below
- * @return returns true if everything went well, error is raised otherwise.
- * @noSelf
- */
-export declare function engineSetObjectGroupPhysicalProperty(
-    groupID: number,
-    property: string,
-    newValue: unknown
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetSurfaceProperties Wiki, engineSetSurfaceProperties }
- * @param surfaceID Material IDs|Material ID from 0 to 178
- * @param property Property name
- * @param value New value from table below
- * @return returns true if the function executed succesfully, false otherwise.
- * @noSelf
- */
-export declare function engineSetSurfaceProperties(
-    surfaceID: number,
-    property: string,
-    value: any
 ): boolean;

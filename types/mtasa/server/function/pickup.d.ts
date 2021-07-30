@@ -28,9 +28,87 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
+
+/**
+ * Returns the time it takes before a pickup respawns after a player picked it up. The time
+ * is specified in milliseconds.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupRespawnInterval Wiki, getPickupRespawnInterval }
+ * @param thePickup the pickup you want the respawn time of
+ * @return returns the respawn time of the pickup if successful, false in case of failure.
+ * @noSelf
+ */
+export declare function getPickupRespawnInterval(
+    thePickup: Pickup
+): number;
+
+/**
+ * Sets the time it takes for a pickup to respawn after a player picked it up.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetPickupRespawnInterval Wiki, setPickupRespawnInterval }
+ * @param thePickup the pickup to set the respawn time of
+ * @param ms the new respawn time in ms
+ * @return returns true if the new respawn time was set successfully, false otherwise.
+ * @noSelf
+ */
+export declare function setPickupRespawnInterval(
+    thePickup: Pickup,
+    ms: number
+): boolean;
+
+/**
+ * This function allows changing the type of a pickup to a Weapon, Armour or Health pickup,
+ * and allows you to set the health points or the weapon and ammo that the pickup will give.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetPickupType Wiki, setPickupType }
+ * @param thePickup The pickup which you wish to change the settings of
+ * @param theType : An integer representing the type of pickup. You can choose from:
+ * @param 0 : Health Pickup
+ * @param 1 : Armour Pickup
+ * @param 2 : Weapon Pickup
+ * @param 3 : Custom Pickup
+ * @param amount : This is an integer representing the amount of Health points or Armour points a pickup
+ * has.
+ * '''OR'''
+ * @param weapon : If the type is a Weapon pickup, then it represents the Weapon|weapon ID of the weapon
+ * pickup the ammo field must be entered if the type is Weapon Pickup.
+ * '''OR'''
+ * @param model : If the pickup is a custom model, this is the model id to use. Many non-pickup models
+ * can be used, though some may cause crashes. The following is a list of models designed to
+ * be used as pickups.
+ * @param 370 Jetpack
+ * @param 1240 Health (heart)
+ * @param 1242 Armour
+ * @param 1272 House (blue)
+ * @param 1273 House (green)
+ * @param 1274 Money (dollar symbol)
+ * @param 1277 Save (floppy disk)
+ * @param ammo : An integer representing the amount of ammo a pickup contains. This argument is only
+ * valid when the pickup type is a Weapon Pickup, and must be specified in that case.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setPickupType(
+    thePickup: Pickup,
+    theType: number,
+    amount_weapon_model: number,
+    ammo?: number
+): boolean;
+
+/**
+ * This function checks if a pickup is currently spawned (is visible and can be picked up)
+ * or not (a player picked it up recently).
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsPickupSpawned Wiki, isPickupSpawned }
+ * @param thePickup the pickup you want to check.
+ * @return returns true if the pickup is spawned, false if its not spawned or an invalid pickup was
+ * specified.
+ * @noSelf
+ */
+export declare function isPickupSpawned(
+    thePickup: Pickup
+): boolean;
 
 /**
  * This function creates a pickup element, which is placed in the GTA world and can be
@@ -94,6 +172,18 @@ export declare function createPickup(
 ): Pickup;
 
 /**
+ * This function is used to simulate the player using a pickup
+ * @see {@link https://wiki.multitheftauto.com/wiki/UsePickup Wiki, usePickup }
+ * @param thePickup : The pickup element to be picked up/used.
+ * @param thePlayer : The player to use the pickup.
+ * @noSelf
+ */
+export declare function usePickup(
+    thePickup: Pickup,
+    thePlayer: Player
+): boolean;
+
+/**
  * This function retrieves the amount of ammo in a weapon pickup.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupAmmo Wiki, getPickupAmmo }
  * @param thePickup The pickup in which you wish to retrieve the ammo of
@@ -114,18 +204,6 @@ export declare function getPickupAmmo(
  * @noSelf
  */
 export declare function getPickupAmount(
-    thePickup: Pickup
-): number;
-
-/**
- * Returns the time it takes before a pickup respawns after a player picked it up. The time
- * is specified in milliseconds.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupRespawnInterval Wiki, getPickupRespawnInterval }
- * @param thePickup the pickup you want the respawn time of
- * @return returns the respawn time of the pickup if successful, false in case of failure.
- * @noSelf
- */
-export declare function getPickupRespawnInterval(
     thePickup: Pickup
 ): number;
 
@@ -155,79 +233,3 @@ export declare function getPickupType(
 export declare function getPickupWeapon(
     thePickup: Pickup
 ): number;
-
-/**
- * This function checks if a pickup is currently spawned (is visible and can be picked up)
- * or not (a player picked it up recently).
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPickupSpawned Wiki, isPickupSpawned }
- * @param thePickup the pickup you want to check.
- * @return returns true if the pickup is spawned, false if its not spawned or an invalid pickup was
- * specified.
- * @noSelf
- */
-export declare function isPickupSpawned(
-    thePickup: Pickup
-): boolean;
-
-/**
- * Sets the time it takes for a pickup to respawn after a player picked it up.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPickupRespawnInterval Wiki, setPickupRespawnInterval }
- * @param thePickup the pickup to set the respawn time of
- * @param ms the new respawn time in ms
- * @return returns true if the new respawn time was set successfully, false otherwise.
- * @noSelf
- */
-export declare function setPickupRespawnInterval(
-    thePickup: Pickup,
-    ms: number
-): boolean;
-
-/**
- * This function allows changing the type of a pickup to a Weapon, Armour or Health pickup,
- * and allows you to set the health points or the weapon and ammo that the pickup will give.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPickupType Wiki, setPickupType }
- * @param thePickup The pickup which you wish to change the settings of
- * @param theType : An integer representing the type of pickup. You can choose from:
- * @param 0 : Health Pickup
- * @param 1 : Armour Pickup
- * @param 2 : Weapon Pickup
- * @param 3 : Custom Pickup
- * @param amount : This is an integer representing the amount of Health points or Armour points a pickup
- * has.
- * '''OR'''
- * @param weapon : If the type is a Weapon pickup, then it represents the Weapon|weapon ID of the weapon
- * pickup the ammo field must be entered if the type is Weapon Pickup.
- * '''OR'''
- * @param model : If the pickup is a custom model, this is the model id to use. Many non-pickup models
- * can be used, though some may cause crashes. The following is a list of models designed to
- * be used as pickups.
- * @param 370 Jetpack
- * @param 1240 Health (heart)
- * @param 1242 Armour
- * @param 1272 House (blue)
- * @param 1273 House (green)
- * @param 1274 Money (dollar symbol)
- * @param 1277 Save (floppy disk)
- * @param ammo : An integer representing the amount of ammo a pickup contains. This argument is only
- * valid when the pickup type is a Weapon Pickup, and must be specified in that case.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function setPickupType(
-    thePickup: Pickup,
-    theType: number,
-    amount_weapon_model: number,
-    ammo?: number
-): boolean;
-
-/**
- * This function is used to simulate the player using a pickup
- * @see {@link https://wiki.multitheftauto.com/wiki/UsePickup Wiki, usePickup }
- * @param thePickup : The pickup element to be picked up/used.
- * @param thePlayer : The player to use the pickup.
- * @noSelf
- */
-export declare function usePickup(
-    thePickup: Pickup,
-    thePlayer: Player
-): boolean;

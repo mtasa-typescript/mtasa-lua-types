@@ -44,8 +44,10 @@ import {
     Water,
     Timer,
     HandleFunction,
+    TimerCallbackFunction,
     FetchRemoteCallback,
-    GenericEventHandler
+    GenericEventHandler,
+    CommandHandler
 } from '../structure';
 
 /** @customConstructor Resource */
@@ -65,6 +67,13 @@ export class Resource {
      * resourceRoot whose value is the root element of that resource.
      */
     rootElement: Element;
+
+    /**
+     * This function gets the name of the specified resource.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+     * @return returns a string with the resource name in it, or false if the resource does not exist.
+     */
+    getName(): string;
 
     /**
      * This function is used to call a function from another resource (which must be running).
@@ -130,13 +139,6 @@ export class Resource {
     static getFromName(
         resourceName: string
     ): Resource;
-
-    /**
-     * This function gets the name of the specified resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
-     * @return returns a string with the resource name in it, or false if the resource does not exist.
-     */
-    getName(): string;
 
     /**
      * This function retrieves a resources root element. The resources root element is the
