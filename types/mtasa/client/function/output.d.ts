@@ -74,11 +74,15 @@ export declare function isChatVisible(): boolean;
  * This function is used to show or hide the players chat.
  * @see {@link https://wiki.multitheftauto.com/wiki/ShowChat Wiki, showChat }
  * @param show A boolean value determining whether to show (true) or hide (false) the chat.
+ * @param inputBlocked A boolean value determining whether chat input is blocked/hidden, regardless of chat
+ * visibility. If unset, this will keep the default behaviour prior to r20898 (true when
+ * chat is hidden, false when chat is visible).
  * @return returns true if the players chat was shown or hidden successfully, false otherwise.
  * @noSelf
  */
 export declare function showChat(
-    show: boolean
+    show: boolean,
+    inputBlocked?: boolean
 ): boolean;
 
 /**
