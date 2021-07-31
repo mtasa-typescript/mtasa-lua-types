@@ -56,20 +56,6 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
- * @noSelf
- */
-export declare function fetchRemote<
-    AdditionalArgs extends any[] = []
->(
-    URL: string,
-    callbackFunction: FetchRemoteCallback,
-    postData?: string,
-    postIsBinary?: boolean,
-    ...arguments: AdditionalArgs
-): boolean;
-
-/**
  * Aborts a FetchRemote|fetchRemote or CallRemote|callRemote request.
  * @see {@link https://wiki.multitheftauto.com/wiki/AbortRemoteRequest Wiki, abortRemoteRequest }
  * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
@@ -82,59 +68,59 @@ export declare function abortRemoteRequest(
 ): boolean;
 
 /**
- * Gets all FetchRemote|fetchRemote and CallRemote|callRemote requests currently running.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
- * @param theResource : the resource to get all requests from
- * @return returns a table with all requests, false if an invalid resource was provided
+ * This function is used to call a function from another resource (which must be running).
+ * The function which you wish to call must first be exported within the resources meta.
+ * For example:
+ * <syntaxhighlight lang=xml><meta>
+ * <info author=jbeta type=script description=Scoreboard resource />
+ * <script src=scoreboard_client.lua type=client/>
+ * <script src=scoreboard_exports.lua type=server/>
+ * <script src=scoreboard_http.lua type=server/>
+ * <export function=getScoreboardColumns http=true />
+ * <export function=getScoreboardRows http=true />
+ * <export function=addScoreboardColumn type=server/>
+ * <export function=removeScoreboardColumn type=server/>
+ * <export function=setPlayerScoreboardForced type=server/>
+ * <export function=setScoreboardForced type=client/>
+ * </meta></syntaxhighlight>
+ * This enables other resources to call a function from this resource.
+ * You cannot call a server function from the client or vice versa. See triggerServerEvent
+ * and triggerClientEvent for possibilities to do that.
+ * There is an easier syntax replacing this function. For example, you can instead of:<br>
+ * <syntaxhighlight lang=lua>call ( getResourceFromName ( resource ), exportedFunction, 1,
+ * 2, three )</syntaxhighlight>
+ * do much like a normal call:<br>
+ * <syntaxhighlight lang=lua>exports.resource:exportedFunction ( 1, 2, three
+ * )</syntaxhighlight>
+ * If the resource name contains illegal characters (such as hyphens), you can also do:<br>
+ * <syntaxhighlight lang=lua>exportsresource-name:exportedFunction ( 1, 2, three
+ * )</syntaxhighlight>
+ * Two extra hidden variables are passed to the exported function:
+ * * sourceResource - The resource that called the exported function
+ * * sourceResourceRoot - The resource root element of the resource which called the
+ * exported function.
+ * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+ * @param theResource This is a resource pointer which refers to the resource you are calling a function from.
+ * @param theFunction This is a string with the name of the function which you want to call.
+ * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
+ * arguments of can be specified, each being passed to the designated function.
+ * @param resource_name Resource name
+ * @param exportedFunction The name of the function you want to call. Its not a string.
+ * @return returns anything that the designated function has returned, if the function has no
+ * return, nil is returned. if the function does not exist, is not exported, or the call was
+ * not successful it will return false.
+ * returns anything that the designated function has returned, if the function has no
+ * return, nil is returned. if the function does not exist, is not exported, or the call was
+ * not successful it will return false.
  * @noSelf
  */
-export declare function getRemoteRequests(
-    theResource?: Resource
-): LuaTable;
-
-/**
- * Gets informations of an FetchRemote|fetchRemote or CallRemote|callRemote request info.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequestInfo Wiki, getRemoteRequestInfo }
- * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
- * GetRemoteRequests|getRemoteRequests
- * @return returns a table when valid, false otherwise
- * the table contains:
- * *bytesreceived: a number specifying the amount of data received so far. zero means the
- * download is queued
- * *bytestotal: a number specifying the final download size. will be zero if the remote http
- * server has not set the content-length header
- * *currentattempt: a number specifying the current connection attempt
- * *type: a string specifying either fetch or call
- * *url: a string specifying the url
- * *resource: the resource which started the request, or false if the resource has since
- * been stopped/restarted
- * *queue: a string specifying the queue name
- * *method: a string specifying the http method. e.g. get or post
- * *connectionattempts: a number specifying max number connection attempts as declared in
- * the fetchremote call
- * *connectiontimeout: a number specifying connection attempt timeout as declared in the
- * fetchremote call
- * *postdata: a string containing the request post data as declared in the fetchremote call
- * *headers: a table containing the request http headers as declared in the fetchremote call
- * @noSelf
- */
-export declare function getRemoteRequestInfo(
-    theRequest: Request,
-    postDataLength?: number,
-    includeHeaders?: boolean
-): LuaTable;
-
-/**
- * Returns a table containing the names of the functions that a resource exports. It will
- * return the exports of the current resource if there is no argument passed in.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
- * @param theResource the resource of which you want to know the call|exported functions.
- * @return returns a table of function names if successful, false otherwise.
- * @noSelf
- */
-export declare function getResourceExportedFunctions(
-    theResource?: Resource
-): LuaTable;
+export declare function call(
+    theResource: Resource,
+    theFunction: string,
+    ...varargs: any[]
+): LuaMultiReturn<[
+    ...any[]
+]>;
 
 /**
  * This function allows you to post and receive data from HTTP servers. The calls are
@@ -194,84 +180,61 @@ export declare function fetchRemote<
 ): boolean;
 
 /**
- * This function gets the name of the specified resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
- * @param res The resource you wish to get the name of.
- * @return returns a string with the resource name in it, or false if the resource does not exist.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
  * @noSelf
  */
-export declare function getResourceName(
-    res: Resource
-): string;
+export declare function fetchRemote<
+    AdditionalArgs extends any[] = []
+>(
+    URL: string,
+    callbackFunction: FetchRemoteCallback,
+    postData?: string,
+    postIsBinary?: boolean,
+    ...arguments: AdditionalArgs
+): boolean;
 
 /**
- * This function is used to call a function from another resource (which must be running).
- * The function which you wish to call must first be exported within the resources meta.
- * For example:
- * <syntaxhighlight lang=xml><meta>
- * <info author=jbeta type=script description=Scoreboard resource />
- * <script src=scoreboard_client.lua type=client/>
- * <script src=scoreboard_exports.lua type=server/>
- * <script src=scoreboard_http.lua type=server/>
- * <export function=getScoreboardColumns http=true />
- * <export function=getScoreboardRows http=true />
- * <export function=addScoreboardColumn type=server/>
- * <export function=removeScoreboardColumn type=server/>
- * <export function=setPlayerScoreboardForced type=server/>
- * <export function=setScoreboardForced type=client/>
- * </meta></syntaxhighlight>
- * This enables other resources to call a function from this resource.
- * You cannot call a server function from the client or vice versa. See triggerServerEvent
- * and triggerClientEvent for possibilities to do that.
- * There is an easier syntax replacing this function. For example, you can instead of:<br>
- * <syntaxhighlight lang=lua>call ( getResourceFromName ( resource ), exportedFunction, 1,
- * 2, three )</syntaxhighlight>
- * do much like a normal call:<br>
- * <syntaxhighlight lang=lua>exports.resource:exportedFunction ( 1, 2, three
- * )</syntaxhighlight>
- * If the resource name contains illegal characters (such as hyphens), you can also do:<br>
- * <syntaxhighlight lang=lua>exportsresource-name:exportedFunction ( 1, 2, three
- * )</syntaxhighlight>
- * Two extra hidden variables are passed to the exported function:
- * * sourceResource - The resource that called the exported function
- * * sourceResourceRoot - The resource root element of the resource which called the
- * exported function.
- * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
- * @param theResource This is a resource pointer which refers to the resource you are calling a function from.
- * @param theFunction This is a string with the name of the function which you want to call.
- * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
- * arguments of can be specified, each being passed to the designated function.
- * @param resource_name Resource name
- * @param exportedFunction The name of the function you want to call. Its not a string.
- * @return returns anything that the designated function has returned, if the function has no
- * return, nil is returned. if the function does not exist, is not exported, or the call was
- * not successful it will return false.
- * returns anything that the designated function has returned, if the function has no
- * return, nil is returned. if the function does not exist, is not exported, or the call was
- * not successful it will return false.
+ * Gets informations of an FetchRemote|fetchRemote or CallRemote|callRemote request info.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequestInfo Wiki, getRemoteRequestInfo }
+ * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
+ * GetRemoteRequests|getRemoteRequests
+ * @return returns a table when valid, false otherwise
+ * the table contains:
+ * *bytesreceived: a number specifying the amount of data received so far. zero means the
+ * download is queued
+ * *bytestotal: a number specifying the final download size. will be zero if the remote http
+ * server has not set the content-length header
+ * *currentattempt: a number specifying the current connection attempt
+ * *type: a string specifying either fetch or call
+ * *url: a string specifying the url
+ * *resource: the resource which started the request, or false if the resource has since
+ * been stopped/restarted
+ * *queue: a string specifying the queue name
+ * *method: a string specifying the http method. e.g. get or post
+ * *connectionattempts: a number specifying max number connection attempts as declared in
+ * the fetchremote call
+ * *connectiontimeout: a number specifying connection attempt timeout as declared in the
+ * fetchremote call
+ * *postdata: a string containing the request post data as declared in the fetchremote call
+ * *headers: a table containing the request http headers as declared in the fetchremote call
  * @noSelf
  */
-export declare function call(
-    theResource: Resource,
-    theFunction: string,
-    ...varargs: any[]
-): LuaMultiReturn<[
-    ...any[]
-]>;
+export declare function getRemoteRequestInfo(
+    theRequest: Request,
+    postDataLength?: number,
+    includeHeaders?: boolean
+): LuaTable;
 
 /**
- * This function is used to retrieve a resource from its name. A resources name is the same
- * as its folder or file archive name on the server (without the extension).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
- * @param resourceName the name of the resource you wish to get.
- * @return returns the resource with the specified name, or false if no resource of that name
- * exists. note that clientside this will also return false for resources that are in the
- * loaded state, since the client is unaware of resources that have not been started.
+ * Gets all FetchRemote|fetchRemote and CallRemote|callRemote requests currently running.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
+ * @param theResource : the resource to get all requests from
+ * @return returns a table with all requests, false if an invalid resource was provided
  * @noSelf
  */
-export declare function getResourceFromName(
-    resourceName: string
-): Resource;
+export declare function getRemoteRequests(
+    theResource?: Resource
+): LuaTable;
 
 /**
  * This function is used to return the root node of a configuration file. Config files must
@@ -294,6 +257,46 @@ export declare function getResourceConfig(
 ): XmlNode;
 
 /**
+ * This function retrieves the dynamic element root of a specified resource. The dynamic
+ * element root is the parent of elements that are created by scripts (e.g. with
+ * createObject) unless they specify a different parent.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot Wiki, getResourceDynamicElementRoot }
+ * @param theResource the resource of which dynamic element root we want.
+ * @return returns an element of the resources dynamic element root if the resource specified was
+ * valid and active (currently running), false otherwise.
+ * @noSelf
+ */
+export declare function getResourceDynamicElementRoot(
+    theResource: Resource
+): Element;
+
+/**
+ * Returns a table containing the names of the functions that a resource exports. It will
+ * return the exports of the current resource if there is no argument passed in.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
+ * @param theResource the resource of which you want to know the call|exported functions.
+ * @return returns a table of function names if successful, false otherwise.
+ * @noSelf
+ */
+export declare function getResourceExportedFunctions(
+    theResource?: Resource
+): LuaTable;
+
+/**
+ * This function is used to retrieve a resource from its name. A resources name is the same
+ * as its folder or file archive name on the server (without the extension).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
+ * @param resourceName the name of the resource you wish to get.
+ * @return returns the resource with the specified name, or false if no resource of that name
+ * exists. note that clientside this will also return false for resources that are in the
+ * loaded state, since the client is unaware of resources that have not been started.
+ * @noSelf
+ */
+export declare function getResourceFromName(
+    resourceName: string
+): Resource;
+
+/**
  * This function retrieves a resources GUI element. The resources GUI element is the element
  * in the element tree which is the default parent of all GUI elements that belong to a
  * particular resource. It has a predefined variable called guiRoot, and each resource has
@@ -308,6 +311,17 @@ export declare function getResourceConfig(
 export declare function getResourceGUIElement(
     theResource?: Resource
 ): Element;
+
+/**
+ * This function gets the name of the specified resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+ * @param res The resource you wish to get the name of.
+ * @return returns a string with the resource name in it, or false if the resource does not exist.
+ * @noSelf
+ */
+export declare function getResourceName(
+    res: Resource
+): string;
 
 /**
  * This function retrieves a resources root element. The resources root element is the
@@ -329,28 +343,6 @@ export declare function getResourceRootElement(
 ): Element;
 
 /**
- * This function retrieves the dynamic element root of a specified resource. The dynamic
- * element root is the parent of elements that are created by scripts (e.g. with
- * createObject) unless they specify a different parent.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot Wiki, getResourceDynamicElementRoot }
- * @param theResource the resource of which dynamic element root we want.
- * @return returns an element of the resources dynamic element root if the resource specified was
- * valid and active (currently running), false otherwise.
- * @noSelf
- */
-export declare function getResourceDynamicElementRoot(
-    theResource: Resource
-): Element;
-
-/**
- * This function retrieves the resource from which the function call was made.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
- * @return returns the resource in which the current script is.
- * @noSelf
- */
-export declare function getThisResource(): Resource;
-
-/**
  * This function returns the state of a given resource
  * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceState Wiki, getResourceState }
  * @param theResource The resource you wish to get the state of.
@@ -366,3 +358,11 @@ export declare function getThisResource(): Resource;
 export declare function getResourceState(
     theResource: Resource
 ): string;
+
+/**
+ * This function retrieves the resource from which the function call was made.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
+ * @return returns the resource in which the current script is.
+ * @noSelf
+ */
+export declare function getThisResource(): Resource;

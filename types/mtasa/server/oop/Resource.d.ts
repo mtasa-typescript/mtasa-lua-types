@@ -40,11 +40,6 @@ import {
 /** @customConstructor Resource */
 export class Resource {
     /**
-     * Checks whether a resource is currently archived (running from within a ZIP file).
-     */
-    archived: boolean;
-
-    /**
      * This function gets the name of the specified resource.
      */
     name: string;
@@ -61,67 +56,15 @@ export class Resource {
     rootElement: Element;
 
     /**
+     * Checks whether a resource is currently archived (running from within a ZIP file).
+     */
+    archived: boolean;
+
+    /**
      * This will check if a resource is currently protected, as defined in
      * Server_mtaserver.conf#resource|mtaserver.conf.
      */
     protected: boolean;
-
-    /**
-     * Checks whether a resource is currently archived (running from within a ZIP file).
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceArchived Wiki, isResourceArchived }
-     * @param resource the resource to check
-     * @return returns true if a resource is archived, false if it is not archived, or nil if there is
-     * problem with resource.
-     */
-    isArchived(): boolean;
-
-    /**
-     * This function copies a specified resource with a new name.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
-     * @param newResourceName the name that the copied resource will receive
-     * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
-     * gamemodes/amx).
-     * @return returns the resource element of the copy. returns false if the arguments are incorrect.
-     */
-    copy(
-        newResourceName: string,
-        organizationalDir?: string
-    ): Resource;
-
-    /**
-     * This function creates an new, empty resource. This creates a directory matching the name
-     * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
-     * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
-     * do not have spaces or non-ASCII characters in resource names.
-     * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
-     * @return returns the resource element of the new resource if successful, false otherwise. this
-     * could fail if the resource name already is in use, if a directory already exists with the
-     * name youve specified (but this isnt a valid resource) or if the name you specify isnt
-     * valid. it could also fail if the disk was full or for other similar reasons.
-     */
-    constructor(
-        resourceName: string,
-        organizationalDir?: string
-    );
-
-    /**
-     * This function deletes a resource from the MTA memory and moves it to the
-     * /resources-cache/trash/ directory.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
-     * @param resourceName The name of resource to delete.
-     * @return returns true if the resource has been deleted successfully, false otherwise.
-     */
-    static delete(
-        resourceName: string
-    ): boolean;
-
-    /**
-     * This function gets the name of the specified resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
-     * @return returns a string with the resource name in it, or false if the resource does not exist.
-     */
-    getName(): string;
 
     /**
      * This function is used to call a function from another resource (which must be running).
@@ -176,6 +119,47 @@ export class Resource {
     ]>;
 
     /**
+     * This function copies a specified resource with a new name.
+     * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
+     * @param newResourceName the name that the copied resource will receive
+     * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
+     * gamemodes/amx).
+     * @return returns the resource element of the copy. returns false if the arguments are incorrect.
+     */
+    copy(
+        newResourceName: string,
+        organizationalDir?: string
+    ): Resource;
+
+    /**
+     * This function creates an new, empty resource. This creates a directory matching the name
+     * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
+     * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
+     * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
+     * do not have spaces or non-ASCII characters in resource names.
+     * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
+     * @return returns the resource element of the new resource if successful, false otherwise. this
+     * could fail if the resource name already is in use, if a directory already exists with the
+     * name youve specified (but this isnt a valid resource) or if the name you specify isnt
+     * valid. it could also fail if the disk was full or for other similar reasons.
+     */
+    constructor(
+        resourceName: string,
+        organizationalDir?: string
+    );
+
+    /**
+     * This function deletes a resource from the MTA memory and moves it to the
+     * /resources-cache/trash/ directory.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
+     * @param resourceName The name of resource to delete.
+     * @return returns true if the resource has been deleted successfully, false otherwise.
+     */
+    static delete(
+        resourceName: string
+    ): boolean;
+
+    /**
      * This function is used to retrieve a resource from its name. A resources name is the same
      * as its folder or file archive name on the server (without the extension).
      * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
@@ -187,6 +171,80 @@ export class Resource {
     static getFromName(
         resourceName: string
     ): Resource;
+
+    /**
+     * This function retrieves the value of any attribute in a resource info tag.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
+     * @param attribute the name of the attribute we want info about.
+     * @return returns a string with the attribute value if it exists, false otherwise.
+     */
+    getInfo(
+        attribute: string
+    ): string;
+
+    /**
+     * This function retrieves the root element of a certain map in a specified resource.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
+     * @param mapName name of the maps which root element we want to retrieve, file extension is required
+     * @return returns an the resources map root element if the map exists and resource specified was
+     * valid and active (currently running), false otherwise.
+     */
+    getMapRootElement(
+        mapName: string
+    ): Element;
+
+    /**
+     * This function gets the name of the specified resource.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+     * @return returns a string with the resource name in it, or false if the resource does not exist.
+     */
+    getName(): string;
+
+    /**
+     * This function returns the organizational file path (e.g. admin) of a resource.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath Wiki, getResourceOrganizationalPath }
+     * @return returns the organizational folder name of the resource. it returns empty string if the
+     * resource is on root resources folder. it returns false if the resource could not be found.
+     */
+    getOrganizationalPath(): string;
+
+    /**
+     * This function retrieves a resources root element. The resources root element is the
+     * element in the element tree which is the parent of all elements that belong to a
+     * particular resource (except for elements specifically created elsewhere). You can attach
+     * event handlers to this element to easily capture events that originate from your resource
+     * (and global events that originate from the root element).
+     * Note: every resource has a Predefined_variables_list|predefined global variable called
+     * resourceRoot whose value is the root element of that resource.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
+     * @return returns an element representing the resources root, false if the specified resource
+     * doesnt exist.
+     */
+    getRootElement(): Element;
+
+    /**
+     * This function retrieves a table of all the resources that exist on the server.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
+     * @return returns a table of resources.
+     */
+    static getAll(): LuaTable;
+
+    /**
+     * Checks whether a resource is currently archived (running from within a ZIP file).
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceArchived Wiki, isResourceArchived }
+     * @param resource the resource to check
+     * @return returns true if a resource is archived, false if it is not archived, or nil if there is
+     * problem with resource.
+     */
+    isArchived(): boolean;
+
+    /**
+     * This will check if a resource is currently protected, as defined in
+     * Server_mtaserver.conf#resource|mtaserver.conf.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
+     * @return returns true if the resource is protected, false otherwise.
+     */
+    isProtected(): boolean;
 
     /**
      * This function removes a file from the resource.
@@ -250,56 +308,6 @@ export class Resource {
     ): boolean;
 
     /**
-     * This function retrieves a resources root element. The resources root element is the
-     * element in the element tree which is the parent of all elements that belong to a
-     * particular resource (except for elements specifically created elsewhere). You can attach
-     * event handlers to this element to easily capture events that originate from your resource
-     * (and global events that originate from the root element).
-     * Note: every resource has a Predefined_variables_list|predefined global variable called
-     * resourceRoot whose value is the root element of that resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
-     * @return returns an element representing the resources root, false if the specified resource
-     * doesnt exist.
-     */
-    getRootElement(): Element;
-
-    /**
-     * This function retrieves a table of all the resources that exist on the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
-     * @return returns a table of resources.
-     */
-    static getAll(): LuaTable;
-
-    /**
-     * This function retrieves the root element of a certain map in a specified resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
-     * @param mapName name of the maps which root element we want to retrieve, file extension is required
-     * @return returns an the resources map root element if the map exists and resource specified was
-     * valid and active (currently running), false otherwise.
-     */
-    getMapRootElement(
-        mapName: string
-    ): Element;
-
-    /**
-     * This function retrieves the value of any attribute in a resource info tag.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
-     * @param attribute the name of the attribute we want info about.
-     * @return returns a string with the attribute value if it exists, false otherwise.
-     */
-    getInfo(
-        attribute: string
-    ): string;
-
-    /**
-     * This function returns the organizational file path (e.g. admin) of a resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath Wiki, getResourceOrganizationalPath }
-     * @return returns the organizational folder name of the resource. it returns empty string if the
-     * resource is on root resources folder. it returns false if the resource could not be found.
-     */
-    getOrganizationalPath(): string;
-
-    /**
      * This function sets the value of any attribute in a resource info tag.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetResourceInfo Wiki, setResourceInfo }
      * @param attribute the name of the attribute that is to be set.
@@ -358,12 +366,4 @@ export class Resource {
      * resource was passed.
      */
     stop(): boolean;
-
-    /**
-     * This will check if a resource is currently protected, as defined in
-     * Server_mtaserver.conf#resource|mtaserver.conf.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
-     * @return returns true if the resource is protected, false otherwise.
-     */
-    isProtected(): boolean;
 }

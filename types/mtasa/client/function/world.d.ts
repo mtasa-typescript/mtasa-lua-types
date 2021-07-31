@@ -56,114 +56,13 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetNearClipDistance Wiki, getNearClipDistance }
- * @return this function returns a float containing the actual near clip distance.
+ * Gets whether the traffic lights are currently locked or not. If the lights are locked, it
+ * means they wont change unless you do setTrafficLightState.
+ * @see {@link https://wiki.multitheftauto.com/wiki/AreTrafficLightsLocked Wiki, areTrafficLightsLocked }
+ * @return returns true the traffic lights are currently locked, false otherwise.
  * @noSelf
  */
-export declare function getNearClipDistance(): number;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedsLODDistance Wiki, getPedsLODDistance }
- * @return this function returns a float containing the peds lod distance.
- * @noSelf
- */
-export declare function getPedsLODDistance(): number;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsWorldSoundEnabled Wiki, isWorldSoundEnabled }
- * @param group An integer representing the World sound groups|world sound group
- * @param index An integer representing an individual sound within the group
- * @return returns true if the world sounds are enabled, false if they are disabled or invalid
- * values were passed.
- * @noSelf
- */
-export declare function isWorldSoundEnabled(
-    group: number,
-    index?: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetColorFilter Wiki, resetColorFilter }
- * @return returns true if the color filtering was reset, false otherwise.
- * @noSelf
- */
-export declare function resetColorFilter(): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetPedsLODDistance Wiki, resetPedsLODDistance }
- * @return returns true if the peds lod distance was reset, false otherwise.
- * @noSelf
- */
-export declare function resetPedsLODDistance(): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetColorFilter Wiki, setColorFilter }
- * @param aRed The amount of red (0-255).
- * @param aGreen The amount of green (0-255).
- * @param aBlue The amount of blue (0-255).
- * @param aAlpha The amount of alpha (0-255).
- * @param bRed The amount of red (0-255).
- * @param bGreen The amount of green (0-255).
- * @param bBlue The amount of blue (0-255).
- * @param bAlpha The amount of alpha (0-255).
- * @return returns true if the color filter was set, false otherwise.
- * @noSelf
- */
-export declare function setColorFilter(
-    aRed: number,
-    aGreen: number,
-    aBlue: number,
-    aAlpha: number,
-    bRed: number,
-    bGreen: number,
-    bBlue: number,
-    bAlpha: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetNearClipDistance Wiki, setNearClipDistance }
- * @param distance the new near clip distance. It must be between 0.1 and 20 for the function to do any
- * effect. Default value is 0.3.
- * @return this function returns true if the argument is valid. returns false otherwise.
- * @noSelf
- */
-export declare function setNearClipDistance(
-    distance: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedsLODDistance Wiki, setPedsLODDistance }
- * @param distance the new peds LOD distance. It must be between 0 and 500. (Default for high_detail_peds on
- * is 500, when off, it is 60).
- * @return this function returns true if the argument is valid. returns false otherwise.
- * @noSelf
- */
-export declare function setPedsLODDistance(
-    distance: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWorldSoundEnabled Wiki, setWorldSoundEnabled }
- * @noSelf
- */
-export declare function setWorldSoundEnabled(
-    group: number,
-    enable: boolean,
-    immediate?: boolean
-): boolean;
-
-/**
- * Checks if a special world property (cheat) is enabled or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsWorldSpecialPropertyEnabled Wiki, isWorldSpecialPropertyEnabled }
- * @param propname the name of the property to retrieve. Possible values are listed on
- * SetWorldSpecialPropertyEnabled.
- * @return returns true if the property is enabled, false if it is disabled or the specified
- * property name is invalid.
- * @noSelf
- */
-export declare function isWorldSpecialPropertyEnabled(
-    propname: string
-): boolean;
+export declare function areTrafficLightsLocked(): boolean;
 
 /**
  * Creates a SWAT rope like that of the rope in single player used by SWAT Teams abseiling
@@ -181,28 +80,341 @@ export declare function createSWATRope(
 ): boolean;
 
 /**
- * Enables or disables a special world property.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWorldSpecialPropertyEnabled Wiki, setWorldSpecialPropertyEnabled }
- * @param propname the name of the property to set. Possible values are:
- * @param hovercars - equivalent of the JBGVNB cheat, and allows cars to drive on water.
- * @param aircars - equivalent of the RIPAZHA cheat, and allows cars to fly.
- * @param extrabunny - equivalent of the CJPHONEHOME or JHJOECW cheat, and allows you to bunny hop on bicycles
- * much higher.
- * @param extrajump - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher.
- * @param randomfoliage - toggle randomly generated foliage on the GTA:SA map (default: true)
- * @param snipermoon - toggle the GTA:SA easter egg, which increases the size of the moon every time you shoot
- * it with a sniper rifle (default: false)
- * @param extraairresistance - toggle the vehicle speed limit on cross-country roads (default: true)
- * **{{New feature/item|3.0156|1.5.5|12286|'''underworldwarp''' - toggle warp of peds and
- * vehicles when fall under map (default: true)}}
- * @param enable whether or not to enable the property.
- * @return returns true if successful, false otherwise.
+ * This function gets the maximum height at which aircraft can fly without their engines
+ * turning off.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetAircraftMaxHeight Wiki, getAircraftMaxHeight }
+ * @return returns a float containing the max aircraft height.
  * @noSelf
  */
-export declare function setWorldSpecialPropertyEnabled(
-    propname: string,
-    enable: boolean
+export declare function getAircraftMaxHeight(): number;
+
+/**
+ * This function returns the maximum velocity at which aircrafts could fly. Using this
+ * function server-side will return the server-side value, not necessarily the same that is
+ * set client-side.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetAircraftMaxVelocity Wiki, getAircraftMaxVelocity }
+ * @return returns a float being the max velocity that is currently set, depending on which side it
+ * is used.
+ * @noSelf
+ */
+export declare function getAircraftMaxVelocity(): number;
+
+/**
+ * This function will tell you if the birds are enabled or disabled.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBirdsEnabled Wiki, getBirdsEnabled }
+ * @return returns true if the birds are enabled or false if the birds are disabled.
+ * @noSelf
+ */
+export declare function getBirdsEnabled(): boolean;
+
+/**
+ * This function will tell you if clouds are enabled or disabled.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetCloudsEnabled Wiki, getCloudsEnabled }
+ * @return returns true if the clouds are enabled or false if clouds are disabled.
+ * @noSelf
+ */
+export declare function getCloudsEnabled(): boolean;
+
+/**
+ * This function will tell you what is the current render distance.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetFarClipDistance Wiki, getFarClipDistance }
+ * @return returns a float with the current render distance, false if the operation could not be
+ * completed.
+ * @noSelf
+ */
+export declare function getFarClipDistance(): number;
+
+/**
+ * This function will tell you what is the current fog render distance.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetFogDistance Wiki, getFogDistance }
+ * @return returns a float with the current fog render distance, false if the operation could not be
+ * completed.
+ * @noSelf
+ */
+export declare function getFogDistance(): number;
+
+/**
+ * This function gets the current game speed value.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetGameSpeed Wiki, getGameSpeed }
+ * @return returns a float representing the speed of the game.
+ * @noSelf
+ */
+export declare function getGameSpeed(): number;
+
+/**
+ * This function outputs the bounding box of a garage.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetGarageBoundingBox Wiki, getGarageBoundingBox }
+ * @param garageID The Garage|garage ID that represents the garage door that is being checked.
+ * @return returns four floats indicating the bounding box of the garage.
+ * western x position, eastern x position, southern y position, northern y position,, false
+ * when invalid garageid was provided.
+ * @noSelf
+ */
+export declare function getGarageBoundingBox(
+    garageID: number
+): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function outputs X, Y and Z position of given garage.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetGaragePosition Wiki, getGaragePosition }
+ * @param garageID The Garage|garage ID that represents the garage door that is being checked.
+ * @return returns three floats indicating the position of the garage, x, y and z respectively,
+ * false when garageid was invalid.
+ * @noSelf
+ */
+export declare function getGaragePosition(
+    garageID: number
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function outputs the size of garage.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetGarageSize Wiki, getGarageSize }
+ * @param garageID The Garage|garage ID that represents the garage door that is being checked.
+ * @return returns three floats indicating the size of the garage, false if an invalid garageid has
+ * been provided
+ * @noSelf
+ */
+export declare function getGarageSize(
+    garageID: number
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function returns the current gravity level for the context in which it is called
+ * (server or client).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetGravity Wiki, getGravity }
+ * @return returns a float with the current server or client (depending on where you call the
+ * function) gravity level.
+ * @noSelf
+ */
+export declare function getGravity(): number;
+
+/**
+ * This function gets the Z level of the highest ground below a point.
+ * It is required that the point is near enough to the local player so that its within the
+ * area where collision data is loaded. If this is not the case, an incorrect position will
+ * be returned.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetGroundPosition Wiki, getGroundPosition }
+ * @param x A floating point number representing the X world coordinate of the point.
+ * @param y A floating point number representing the Y world coordinate of the point.
+ * @param z A floating point number representing the Z world coordinate of the point.
+ * @return returns a float with the highest ground-level z coord if parameters are valid, 0 if the
+ * point you tried to test is outside the loaded world map, false otherwise.
+ * @noSelf
+ */
+export declare function getGroundPosition(
+    x: number,
+    y: number,
+    z: number
+): number;
+
+/**
+ * This function will return the current heat haze effect settings.
+ * Note: The server can only return the heat haze settings if it has actually been set by
+ * script.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetHeatHaze Wiki, getHeatHaze }
+ * @return returns 9 values, which are the same used as arguments in setheathaze:
+ * @noSelf
+ */
+export declare function getHeatHaze(): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    boolean
+]>;
+
+/**
+ * This function will tell you if interior furniture are enabled or disabled in a specified
+ * room ID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetInteriorFurnitureEnabled Wiki, getInteriorFurnitureEnabled }
+ * @return returns true if interior furniture is enabled or false if interior furniture is disabled.
+ * @noSelf
+ */
+export declare function getInteriorFurnitureEnabled(
+    roomID: number
 ): boolean;
+
+/**
+ * This function checks to see if the music played by default in clubs is disabled or not.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetInteriorSoundsEnabled Wiki, getInteriorSoundsEnabled }
+ * @return returns true if music is playing, returns false if music is not playing.
+ * @noSelf
+ */
+export declare function getInteriorSoundsEnabled(): boolean;
+
+/**
+ * This function gets the maximum height at which your jetpack can fly without failing to go
+ * higher.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetJetpackMaxHeight Wiki, getJetpackMaxHeight }
+ * @return returns a float containing the max jetpack height.
+ * @noSelf
+ */
+export declare function getJetpackMaxHeight(): number;
+
+/**
+ * Tells you how long an ingame minute takes in real-world milliseconds. The default GTA
+ * value is 1000.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetMinuteDuration Wiki, getMinuteDuration }
+ * @return returns the number of real-world milliseconds that go in an ingame minute.
+ * @noSelf
+ */
+export declare function getMinuteDuration(): number;
+
+/**
+ * This function returns the moon size.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetMoonSize Wiki, getMoonSize }
+ * @return returns a integer being the moon size that is currently set, depending on which side it
+ * is used.
+ * @noSelf
+ */
+export declare function getMoonSize(): number;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetNearClipDistance Wiki, getNearClipDistance }
+ * @return this function returns a float containing the actual near clip distance.
+ * @noSelf
+ */
+export declare function getNearClipDistance(): number;
+
+/**
+ * This function is used to get occlusions enabled state.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetOcclusionsEnabled Wiki, getOcclusionsEnabled }
+ * @return returns true if occlusions are enabled, or false otherwise.
+ * @noSelf
+ */
+export declare function getOcclusionsEnabled(): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetPedsLODDistance Wiki, getPedsLODDistance }
+ * @return this function returns a float containing the peds lod distance.
+ * @noSelf
+ */
+export declare function getPedsLODDistance(): number;
+
+/**
+ * This function is used to get the current rain level.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRainLevel Wiki, getRainLevel }
+ * @return returns the rain level as a number.
+ * @noSelf
+ */
+export declare function getRainLevel(): number;
+
+/**
+ * This function gets the Z level of the lowest roof above a point.
+ * It is required that the point is near enough to the local player so that its within the
+ * area where collision data is loaded.}}
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRoofPosition Wiki, getRoofPosition }
+ * @param x : A floating point number representing the X world coordinate of the point.
+ * @param y : A floating point number representing the Y world coordinate of the point.
+ * @param z : A floating point number representing the Z world coordinate of the point.
+ * @return returns a float with the lowest roof-level z coord if parameters are valid, false if the
+ * point you tried to test is outside the loaded world map.
+ * @noSelf
+ */
+export declare function getRoofPosition(
+    x: number,
+    y: number,
+    z: number
+): number;
+
+/**
+ * This function gets the screen position of a point in the world. This is useful for
+ * attaching 2D gui elements to parts of the world (e.g. players) or detecting if a point is
+ * on the screen (though it does not check if it is actually visible, you should use
+ * processLineOfSight for that).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetScreenFromWorldPosition Wiki, getScreenFromWorldPosition }
+ * @param x A float value indicating the x position in the world.
+ * @param y A float value indicating the y position in the world.
+ * @param z A float value indicating the z position in the world.
+ * @param edgeTolerance A float value indicating the distance the position can be off screen before the function
+ * returns false. Note: its clamped down on both axies to the size of screen at the given
+ * axis*10
+ * @param relative A boolean value that indicates if edgeTolerance is in pixels false, or relative to the
+ * screen size true.
+ * @return returns two x, y floats indicating the screen position and float distance between screen
+ * and given position if successful, false otherwise.
+ * @noSelf
+ */
+export declare function getScreenFromWorldPosition(
+    x: number,
+    y: number,
+    z: number,
+    edgeTolerance?: number,
+    relative?: boolean
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function will return the current sky color.
+ * Note: The server can only return the sky color if it has actually been set by script.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetSkyGradient Wiki, getSkyGradient }
+ * @return returns 6 int|ints, of which the first 3 represent the skys top color, (in rgb) and the
+ * last 3 represent the bottom colors.
+ * @noSelf
+ */
+export declare function getSkyGradient(): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function is used to get the color of the sun.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetSunColor Wiki, getSunColor }
+ * @return returns the color of the sun as six numbers, false if its default.
+ * @noSelf
+ */
+export declare function getSunColor(): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function is used to get the size of the sun.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetSunSize Wiki, getSunSize }
+ * @return returns the size of the sun as a number, false if the size of the sun is at its default.
+ * @noSelf
+ */
+export declare function getSunSize(): number;
+
+/**
+ * This function is used to get the current time in the game. If you want to get the real
+ * server time, use getRealTime.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTime Wiki, getTime }
+ * @return returns two ints that represent hours and minutes.
+ * @noSelf
+ */
+export declare function getTime(): LuaMultiReturn<[
+    number,
+    number
+]>;
 
 /**
  * Gets the current traffic light state. This state controls the traffic light colors. For
@@ -213,34 +425,6 @@ export declare function setWorldSpecialPropertyEnabled(
  * @noSelf
  */
 export declare function getTrafficLightState(): number;
-
-/**
- * Gets whether the traffic lights are currently locked or not. If the lights are locked, it
- * means they wont change unless you do setTrafficLightState.
- * @see {@link https://wiki.multitheftauto.com/wiki/AreTrafficLightsLocked Wiki, areTrafficLightsLocked }
- * @return returns true the traffic lights are currently locked, false otherwise.
- * @noSelf
- */
-export declare function areTrafficLightsLocked(): boolean;
-
-/**
- * Resets the distance of vehicles LOD to default. Default values depends on client setting.
- * If client has enabled high detail vehicles in video options, value will be reset to (500,
- * 500) - otherwise to (70, 150). You can check value of this option using dxGetStatus
- * (SettingHighDetailVehicles).
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehiclesLODDistance Wiki, resetVehiclesLODDistance }
- * @return returns true if the vehicles lod distance was reset, false otherwise.
- * @noSelf
- */
-export declare function resetVehiclesLODDistance(): boolean;
-
-/**
- * Resets the motion blur level on the clients screen to default value (36).
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetBlurLevel Wiki, resetBlurLevel }
- * @return returns true if the blur level was reset successfully. returns false otherwise.
- * @noSelf
- */
-export declare function resetBlurLevel(): boolean;
 
 /**
  * Returns the distance of vehicles LOD.
@@ -255,160 +439,31 @@ export declare function getVehiclesLODDistance(): LuaMultiReturn<[
 ]>;
 
 /**
- * Sets the current traffic light state. This state controls the traffic light colors. For
- * instance, state 1 will cause the north and south traffic lights to be amber, and the ones
- * left and east will turn red.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrafficLightState Wiki, setTrafficLightState }
- * @param state : If an integer is provided, the Traffic_light_states|state you wish to use (possible
- * values: 0-9). Else, one of the following strings:
- * @param auto : Sets the traffic lights default behavior (switches the colors automatically).
- * @param disabled : Turns traffic lights off.
- * Alternatively, you can provide two string parameters ('''colorNS''' and '''colorEW''')
- * with the colors for north-south and east-west traffic lights respectively. Valid colors
- * are:
- * @param green
- * @param yellow
- * @param red
- * @return returns true if the state was successfully set, false otherwise.
+ * This function returns the current Weather ID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWeather Wiki, getWeather }
+ * @return returns two integers indicating the weather type that is currently active. the first
+ * integer says what weather is currently considered to be active. the second integer is the
+ * weather id that is being blended into if any, otherwise it is nil.
  * @noSelf
  */
-export declare function setTrafficLightState(
-    state: number
-): boolean;
+export declare function getWeather(): LuaMultiReturn<[
+    number,
+    number
+]>;
 
 /**
- * Sets the distance of vehicles LOD.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclesLODDistance Wiki, setVehiclesLODDistance }
- * @param vehiclesDistance general distance used for most vehicles, this value is clamped to 0 – 500
- * @param trainsAndPlanesDistance distance used for trains and planes, this value is clamped to 0 – 500
+ * This function gets the wind velocity in San Andreas.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWindVelocity Wiki, getWindVelocity }
+ * @return *velocityx: the velocity on the x-coordinate or false if the wind velocity is default.
+ * *velocityy: the velocity on the y-coordinate or nil if the wind velocity is default.
+ * *velocityz: the velocity on the z-coordinate or nil if the wind velocity is default.
  * @noSelf
  */
-export declare function setVehiclesLODDistance(
-    vehiclesDistance: number,
-    trainsAndPlanesDistance: number
-): boolean;
-
-/**
- * Sets the real-world duration of an ingame minute. The GTA default is 1000.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMinuteDuration Wiki, setMinuteDuration }
- * @param milliseconds : the new duration of an ingame minute, accepted values 0 - 2147483647.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function setMinuteDuration(
-    milliseconds: number
-): boolean;
-
-/**
- * Tells you how long an ingame minute takes in real-world milliseconds. The default GTA
- * value is 1000.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMinuteDuration Wiki, getMinuteDuration }
- * @return returns the number of real-world milliseconds that go in an ingame minute.
- * @noSelf
- */
-export declare function getMinuteDuration(): number;
-
-/**
- * This function allows restoring of a changed sky gradient as a result of setSkyGradient.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetSkyGradient Wiki, resetSkyGradient }
- * @return returns true if sky color was reset correctly, false otherwise.
- * @noSelf
- */
-export declare function resetSkyGradient(): boolean;
-
-/**
- * This function allows restoring of all world objects,which were removed with
- * RemoveWorldModel.
- * @see {@link https://wiki.multitheftauto.com/wiki/RestoreAllWorldModels Wiki, restoreAllWorldModels }
- * @return returns true if the world objects were restored, false otherwise.
- * @noSelf
- */
-export declare function restoreAllWorldModels(): boolean;
-
-/**
- * This function allows restoring of world object,which was removed with RemoveWorldModel.
- * @see {@link https://wiki.multitheftauto.com/wiki/RestoreWorldModel Wiki, restoreWorldModel }
- * @param modelID A whole integer specifying the GTASA object model ID.
- * @param radius A floating point number representing the radius that will be eliminated.
- * @param x A floating point number representing the X coordinate on the map.
- * @param y A floating point number representing the Y coordinate on the map.
- * @param z A floating point number representing the Z coordinate on the map.
- * @param iInterior
- * @return returns true if the world object was restored, false otherwise.
- * @noSelf
- */
-export declare function restoreWorldModel(
-    modelID: number,
-    radius: number,
-    x: number,
-    y: number,
-    z: number,
-    iInterior?: number
-): boolean;
-
-/**
- * This function allows you to check if some background sound effects are enabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsAmbientSoundEnabled Wiki, isAmbientSoundEnabled }
- * @param theType The type of ambient sound to test. Can be either gunfire or general.
- * @return returns true if the ambient sound is enabled, false if it is disabled or invalid values
- * were passed.
- * @noSelf
- */
-export declare function isAmbientSoundEnabled(
-    theType: string
-): boolean;
-
-/**
- * This function allows you to disable some background sound effects. See also:
- * setWorldSoundEnabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetAmbientSoundEnabled Wiki, setAmbientSoundEnabled }
- * @param theType The type of ambient sound to toggle. Can be either gunfire or general.
- * @param enable Set false to turn off, true to turn on
- * @return returns true if the ambient sound was set correctly, false if invalid values were passed.
- * @noSelf
- */
-export declare function setAmbientSoundEnabled(
-    theType: string,
-    enable: boolean
-): boolean;
-
-/**
- * This function allows you to disable the flying birds.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBirdsEnabled Wiki, setBirdsEnabled }
- * @param enabled A boolean value determining if birds should be shown. Use true to show the birds and
- * false to hide them.
- * @return returns true if the birds state was changed succesfully, false if an invalid argument was
- * specified.
- * @noSelf
- */
-export declare function setBirdsEnabled(
-    enable: boolean
-): boolean;
-
-/**
- * This function allows you to disable world sounds. A world sound is a sound effect which
- * has not been caused by playSound or playSound3D.
- * *The values for group and index can be determined by using the client command
- * Client_Commands#showsound|showsound in conjunction with setDevelopmentMode
- * *This function does not affect sounds which are already playing, such as the wind sound
- * that can only be stopped by entering an interior.
- * * See also: setAmbientSoundEnabled}}
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWorldSoundEnabled Wiki, setWorldSoundEnabled }
- * @param group An int|integer representing the World sound groups|world sound group
- * @param enable Set to false to disable, true to enable
- * @param index An int|integer representing an individual sound within the group
- * @param immediate A boolean if set to true will cancel the sound if its already playing. This parameter
- * only works for stopping the sound.
- * @return returns true if the world sound was correctly enabled/disabled, false if invalid values
- * were passed.
- * @noSelf
- */
-export declare function setWorldSoundEnabled(
-    group: number,
-    index: number,
-    enable: boolean,
-    immediate?: boolean
-): boolean;
+export declare function getWindVelocity(): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
 
 /**
  * This function allows you to retrieve the world position corresponding to a 2D position on
@@ -463,6 +518,101 @@ export declare function getZoneName(
     z: number,
     citiesonly?: boolean
 ): string;
+
+/**
+ * This function allows you to check if some background sound effects are enabled.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsAmbientSoundEnabled Wiki, isAmbientSoundEnabled }
+ * @param theType The type of ambient sound to test. Can be either gunfire or general.
+ * @return returns true if the ambient sound is enabled, false if it is disabled or invalid values
+ * were passed.
+ * @noSelf
+ */
+export declare function isAmbientSoundEnabled(
+    theType: string
+): boolean;
+
+/**
+ * This function checks whether or not a specific garage door is open.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsGarageOpen Wiki, isGarageOpen }
+ * @param garageID The Garage|garage ID that represents the garage door that is being checked.
+ * @return returns true if the garage is open, false if it is closed or an invalid garage id was
+ * given.
+ * @noSelf
+ */
+export declare function isGarageOpen(
+    garageID: number
+): boolean;
+
+/**
+ * This function checks if there are obstacles between two points of the game world,
+ * optionally ignoring certain kinds of elements. Use processLineOfSight if you want more
+ * information about what the ray hits.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsLineOfSightClear Wiki, isLineOfSightClear }
+ * @param startX The first points world X coordinate.
+ * @param startY The first points world Y coordinate.
+ * @param startZ The first points world Z coordinate.
+ * @param endX The second points world X coordinate.
+ * @param endY The second points world Y coordinate.
+ * @param endZ The second points world Z coordinate.
+ * @param checkBuildings Allow the line of sight to be blocked by GTAs internally placed buildings, i.e. the world
+ * map.
+ * @param checkVehicles Allow the line of sight to be blocked by Vehicle|vehicles.
+ * @param checkPeds Allow the line of sight to be blocked by peds, i.e. Player|players.
+ * @param checkObjects Allow the line of sight to be blocked by Object|objects.
+ * @param checkDummies Allow the line of sight to be blocked by GTAs internal dummies.  These are not used in
+ * the current MTA version so this argument can be set to false.
+ * @param seeThroughStuff Allow the line of sight to pass through collision materials that have this flag enabled
+ * (By default material IDs 52, 55 and 66 which are some fences). This flag originally
+ * allows some objects to be walked on but you can shoot throug them.
+ * @param ignoreSomeObjectsForCamera Allow the line of sight to pass through objects that have (K) property enabled in
+ * object.dat data file. (i.e. Most dynamic objects like boxes or barrels)
+ * @param ignoredElement Allow the line of sight to pass through a certain specified element.
+ * @return returns true if the line between the specified points is clear, false if theres an
+ * obstacle or if invalid parameters are passed.
+ * @noSelf
+ */
+export declare function isLineOfSightClear(
+    startX: number,
+    startY: number,
+    startZ: number,
+    endX: number,
+    endY: number,
+    endZ: number,
+    checkBuildings?: boolean,
+    checkVehicles?: boolean,
+    checkPeds?: boolean,
+    checkObjects?: boolean,
+    checkDummies?: boolean,
+    seeThroughStuff?: boolean,
+    ignoreSomeObjectsForCamera?: boolean,
+    ignoredElement?: Element
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsWorldSoundEnabled Wiki, isWorldSoundEnabled }
+ * @param group An integer representing the World sound groups|world sound group
+ * @param index An integer representing an individual sound within the group
+ * @return returns true if the world sounds are enabled, false if they are disabled or invalid
+ * values were passed.
+ * @noSelf
+ */
+export declare function isWorldSoundEnabled(
+    group: number,
+    index?: number
+): boolean;
+
+/**
+ * Checks if a special world property (cheat) is enabled or not.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsWorldSpecialPropertyEnabled Wiki, isWorldSpecialPropertyEnabled }
+ * @param propname the name of the property to retrieve. Possible values are listed on
+ * SetWorldSpecialPropertyEnabled.
+ * @return returns true if the property is enabled, false if it is disabled or the specified
+ * property name is invalid.
+ * @noSelf
+ */
+export declare function isWorldSpecialPropertyEnabled(
+    propname: string
+): boolean;
 
 /**
  * This function casts a ray between two points in the world, and tells you information
@@ -567,371 +717,6 @@ export declare function processLineOfSight(
 ]>;
 
 /**
- * This function changes the distance at which fog appears. Keep in mind that this function
- * doesnt change the distance of render.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetFogDistance Wiki, setFogDistance }
- * @param distance distance in GTA units at which fog will appear. Very short or negative distances will
- * cause graphical bugs to the players.
- * @return returns true if the distance changed successfully, false if bad arguments were passed.
- * @noSelf
- */
-export declare function setFogDistance(
-    distance: number
-): boolean;
-
-/**
- * This function changes the heat haze effect.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetHeatHaze Wiki, setHeatHaze }
- * @return returns true if the heat haze effect was set correctly, false if invalid values were
- * passed.
- * @noSelf
- */
-export declare function setHeatHaze(
-    intensity: number,
-    randomShift?: number,
-    speedMin?: number,
-    speedMax?: number,
-    scanSizeX?: number,
-    scanSizeY?: number,
-    renderSizeX?: number,
-    renderSizeY?: number,
-    bShowInside?: boolean
-): boolean;
-
-/**
- * This function changes the maximum flying height of aircraft.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetAircraftMaxHeight Wiki, setAircraftMaxHeight }
- * @param Height The height you want aircraft to be able to go.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function setAircraftMaxHeight(
-    Height: number
-): boolean;
-
-/**
- * This function changes the maximum flying height of jetpack.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetJetpackMaxHeight Wiki, setJetpackMaxHeight }
- * @param Height : The max height starting at approximately -20.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function setJetpackMaxHeight(
-    Height: number
-): boolean;
-
-/**
- * This function changes the sky color to a two-color gradient.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetSkyGradient Wiki, setSkyGradient }
- * @param topRed The red value of the upper part of the sky, from 0 to 255.
- * @param topGreen The green value of the upper part of the sky, from 0 to 255.
- * @param topBlue The blue value of the upper part of the sky, from 0 to 255.
- * @param bottomRed The red value of the lower part of the sky, from 0 to 255.
- * @param bottomGreen The green value of the lower part of the sky, from 0 to 255.
- * @param bottomBlue The blue value of the lower part of the sky, from 0 to 255.
- * @return returns true if sky color was set correctly, false if invalid values were passed.
- * @noSelf
- */
-export declare function setSkyGradient(
-    topRed?: number,
-    topGreen?: number,
-    topBlue?: number,
-    bottomRed?: number,
-    bottomGreen?: number,
-    bottomBlue?: number
-): boolean;
-
-/**
- * This function changes the wind velocity. The wind shakes the vegetation and makes
- * particles fly in a direction. The intensity and direction of the effect deppends of the
- * wind velocity in each axis.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWindVelocity Wiki, setWindVelocity }
- * @param velocityX : The velocity of the wind along the x axis.
- * @param velocityY : The velocity of the wind along the y axis.
- * @param velocityZ : The velocity of the wind along the z axis.
- * @return returns true if successful, false if bad arguments were passed.
- * @noSelf
- */
-export declare function setWindVelocity(
-    velocityX: number,
-    velocityY: number,
-    velocityZ: number
-): boolean;
-
-/**
- * This function checks if there are obstacles between two points of the game world,
- * optionally ignoring certain kinds of elements. Use processLineOfSight if you want more
- * information about what the ray hits.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsLineOfSightClear Wiki, isLineOfSightClear }
- * @param startX The first points world X coordinate.
- * @param startY The first points world Y coordinate.
- * @param startZ The first points world Z coordinate.
- * @param endX The second points world X coordinate.
- * @param endY The second points world Y coordinate.
- * @param endZ The second points world Z coordinate.
- * @param checkBuildings Allow the line of sight to be blocked by GTAs internally placed buildings, i.e. the world
- * map.
- * @param checkVehicles Allow the line of sight to be blocked by Vehicle|vehicles.
- * @param checkPeds Allow the line of sight to be blocked by peds, i.e. Player|players.
- * @param checkObjects Allow the line of sight to be blocked by Object|objects.
- * @param checkDummies Allow the line of sight to be blocked by GTAs internal dummies.  These are not used in
- * the current MTA version so this argument can be set to false.
- * @param seeThroughStuff Allow the line of sight to pass through collision materials that have this flag enabled
- * (By default material IDs 52, 55 and 66 which are some fences). This flag originally
- * allows some objects to be walked on but you can shoot throug them.
- * @param ignoreSomeObjectsForCamera Allow the line of sight to pass through objects that have (K) property enabled in
- * object.dat data file. (i.e. Most dynamic objects like boxes or barrels)
- * @param ignoredElement Allow the line of sight to pass through a certain specified element.
- * @return returns true if the line between the specified points is clear, false if theres an
- * obstacle or if invalid parameters are passed.
- * @noSelf
- */
-export declare function isLineOfSightClear(
-    startX: number,
-    startY: number,
-    startZ: number,
-    endX: number,
-    endY: number,
-    endZ: number,
-    checkBuildings?: boolean,
-    checkVehicles?: boolean,
-    checkPeds?: boolean,
-    checkObjects?: boolean,
-    checkDummies?: boolean,
-    seeThroughStuff?: boolean,
-    ignoreSomeObjectsForCamera?: boolean,
-    ignoredElement?: Element
-): boolean;
-
-/**
- * This function checks to see if a line between two points collides with the water. This is
- * similar to processLineOfSight, but only collides with water. Waves are not taken into
- * account when testing the line.
- * @see {@link https://wiki.multitheftauto.com/wiki/TestLineAgainstWater Wiki, testLineAgainstWater }
- * @param startX, startY, startZ the position of the starting point of the line.
- * @param endX, endY, endZ the position of the end point of the line.
- * @return returns true and the position of the intersection point of the line and the water surface
- * if there is a collision, or false if there is no collision.
- * @noSelf
- */
-export declare function testLineAgainstWater(
-    startX: number,
-    startY: number,
-    startZ: number,
-    endX: number,
-    endY: number,
-    endZ: number
-): LuaMultiReturn<[
-    boolean,
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function checks to see if the music played by default in clubs is disabled or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetInteriorSoundsEnabled Wiki, getInteriorSoundsEnabled }
- * @return returns true if music is playing, returns false if music is not playing.
- * @noSelf
- */
-export declare function getInteriorSoundsEnabled(): boolean;
-
-/**
- * This function checks whether or not a specific garage door is open.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsGarageOpen Wiki, isGarageOpen }
- * @param garageID The Garage|garage ID that represents the garage door that is being checked.
- * @return returns true if the garage is open, false if it is closed or an invalid garage id was
- * given.
- * @noSelf
- */
-export declare function isGarageOpen(
-    garageID: number
-): boolean;
-
-/**
- * This function disables or enables the ambient sounds played by GTA in most interiors,
- * like restaurants, casinos, clubs, houses, etc.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetInteriorSoundsEnabled Wiki, setInteriorSoundsEnabled }
- * @return if a boolean was passed to the function, it always succeeds and returns true.
- * @noSelf
- */
-export declare function setInteriorSoundsEnabled(
-    enabled: boolean
-): boolean;
-
-/**
- * This function gets the Z level of the highest ground below a point.
- * It is required that the point is near enough to the local player so that its within the
- * area where collision data is loaded. If this is not the case, an incorrect position will
- * be returned.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetGroundPosition Wiki, getGroundPosition }
- * @param x A floating point number representing the X world coordinate of the point.
- * @param y A floating point number representing the Y world coordinate of the point.
- * @param z A floating point number representing the Z world coordinate of the point.
- * @return returns a float with the highest ground-level z coord if parameters are valid, 0 if the
- * point you tried to test is outside the loaded world map, false otherwise.
- * @noSelf
- */
-export declare function getGroundPosition(
-    x: number,
-    y: number,
-    z: number
-): number;
-
-/**
- * This function gets the Z level of the lowest roof above a point.
- * It is required that the point is near enough to the local player so that its within the
- * area where collision data is loaded.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRoofPosition Wiki, getRoofPosition }
- * @param x : A floating point number representing the X world coordinate of the point.
- * @param y : A floating point number representing the Y world coordinate of the point.
- * @param z : A floating point number representing the Z world coordinate of the point.
- * @return returns a float with the lowest roof-level z coord if parameters are valid, false if the
- * point you tried to test is outside the loaded world map.
- * @noSelf
- */
-export declare function getRoofPosition(
-    x: number,
-    y: number,
-    z: number
-): number;
-
-/**
- * This function gets the current game speed value.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetGameSpeed Wiki, getGameSpeed }
- * @return returns a float representing the speed of the game.
- * @noSelf
- */
-export declare function getGameSpeed(): number;
-
-/**
- * This function gets the maximum height at which aircraft can fly without their engines
- * turning off.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetAircraftMaxHeight Wiki, getAircraftMaxHeight }
- * @return returns a float containing the max aircraft height.
- * @noSelf
- */
-export declare function getAircraftMaxHeight(): number;
-
-/**
- * This function gets the maximum height at which your jetpack can fly without failing to go
- * higher.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetJetpackMaxHeight Wiki, getJetpackMaxHeight }
- * @return returns a float containing the max jetpack height.
- * @noSelf
- */
-export declare function getJetpackMaxHeight(): number;
-
-/**
- * This function gets the screen position of a point in the world. This is useful for
- * attaching 2D gui elements to parts of the world (e.g. players) or detecting if a point is
- * on the screen (though it does not check if it is actually visible, you should use
- * processLineOfSight for that).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetScreenFromWorldPosition Wiki, getScreenFromWorldPosition }
- * @param x A float value indicating the x position in the world.
- * @param y A float value indicating the y position in the world.
- * @param z A float value indicating the z position in the world.
- * @param edgeTolerance A float value indicating the distance the position can be off screen before the function
- * returns false. Note: its clamped down on both axies to the size of screen at the given
- * axis*10
- * @param relative A boolean value that indicates if edgeTolerance is in pixels false, or relative to the
- * screen size true.
- * @return returns two x, y floats indicating the screen position and float distance between screen
- * and given position if successful, false otherwise.
- * @noSelf
- */
-export declare function getScreenFromWorldPosition(
-    x: number,
-    y: number,
-    z: number,
-    edgeTolerance?: number,
-    relative?: boolean
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function gets the wind velocity in San Andreas.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWindVelocity Wiki, getWindVelocity }
- * @return *velocityx: the velocity on the x-coordinate or false if the wind velocity is default.
- * *velocityy: the velocity on the y-coordinate or nil if the wind velocity is default.
- * *velocityz: the velocity on the z-coordinate or nil if the wind velocity is default.
- * @noSelf
- */
-export declare function getWindVelocity(): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function is used to enable or disable occlusions. Occlusions are used by GTA to
- * enhance performance by hiding objects that are (normally) obscured by certain large
- * buildings. However when removeWorldModel is used they may also have the undesired effect
- * of making parts of the map disappear. Disabling occlusions will fix that.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetOcclusionsEnabled Wiki, setOcclusionsEnabled }
- * @param enabled A bool specifying if GTA occlusions should be enabled
- * @return returns true if the setting was set correctly, false if invalid arguments were passed.
- * @noSelf
- */
-export declare function setOcclusionsEnabled(
-    enabled: boolean
-): boolean;
-
-/**
- * This function is used to get occlusions enabled state.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetOcclusionsEnabled Wiki, getOcclusionsEnabled }
- * @return returns true if occlusions are enabled, or false otherwise.
- * @noSelf
- */
-export declare function getOcclusionsEnabled(): boolean;
-
-/**
- * This function is used to get the color of the sun.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSunColor Wiki, getSunColor }
- * @return returns the color of the sun as six numbers, false if its default.
- * @noSelf
- */
-export declare function getSunColor(): LuaMultiReturn<[
-    number,
-    number,
-    number,
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function is used to get the current rain level.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRainLevel Wiki, getRainLevel }
- * @return returns the rain level as a number.
- * @noSelf
- */
-export declare function getRainLevel(): number;
-
-/**
- * This function is used to get the current time in the game. If you want to get the real
- * server time, use getRealTime.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTime Wiki, getTime }
- * @return returns two ints that represent hours and minutes.
- * @noSelf
- */
-export declare function getTime(): LuaMultiReturn<[
-    number,
-    number
-]>;
-
-/**
- * This function is used to get the size of the sun.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSunSize Wiki, getSunSize }
- * @return returns the size of the sun as a number, false if the size of the sun is at its default.
- * @noSelf
- */
-export declare function getSunSize(): number;
-
-/**
  * This function is used to remove a world object.
  * @see {@link https://wiki.multitheftauto.com/wiki/RemoveWorldModel Wiki, removeWorldModel }
  * @param modelID A whole integer specifying the GTASA object model ID.
@@ -963,12 +748,43 @@ export declare function removeWorldModel(
 export declare function resetAmbientSounds(): boolean;
 
 /**
- * This function is used to reset the color of the sun to its normal color.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetSunColor Wiki, resetSunColor }
- * @return returns true if the color of the sun was reset, false otherwise.
+ * Resets the motion blur level on the clients screen to default value (36).
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetBlurLevel Wiki, resetBlurLevel }
+ * @return returns true if the blur level was reset successfully. returns false otherwise.
  * @noSelf
  */
-export declare function resetSunColor(): boolean;
+export declare function resetBlurLevel(): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetColorFilter Wiki, resetColorFilter }
+ * @return returns true if the color filtering was reset, false otherwise.
+ * @noSelf
+ */
+export declare function resetColorFilter(): boolean;
+
+/**
+ * This function resets the far clip distance to its default state.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetFarClipDistance Wiki, resetFarClipDistance }
+ * @return returns true if operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function resetFarClipDistance(): boolean;
+
+/**
+ * This function resets the fog render distance to its default state.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetFogDistance Wiki, resetFogDistance }
+ * @return returns true if operation was successful, false otherwise.
+ * @noSelf
+ */
+export declare function resetFogDistance(): boolean;
+
+/**
+ * This function restores the default heat haze.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetHeatHaze Wiki, resetHeatHaze }
+ * @return returns true if the heat haze was reset correctly, false otherwise.
+ * @noSelf
+ */
+export declare function resetHeatHaze(): boolean;
 
 /**
  * This function is used to reset the size of the moon to its normal size.
@@ -979,6 +795,45 @@ export declare function resetSunColor(): boolean;
 export declare function resetMoonSize(): boolean;
 
 /**
+ * This function resets near clip distance set by setNearClipDistance.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetNearClipDistance Wiki, resetNearClipDistance }
+ * @return *boolean: always returns true
+ * @noSelf
+ */
+export declare function resetNearClipDistance(): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetPedsLODDistance Wiki, resetPedsLODDistance }
+ * @return returns true if the peds lod distance was reset, false otherwise.
+ * @noSelf
+ */
+export declare function resetPedsLODDistance(): boolean;
+
+/**
+ * This function resets the rain level of the current weather to its default.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetRainLevel Wiki, resetRainLevel }
+ * @return returns true if the rain level was reset.
+ * @noSelf
+ */
+export declare function resetRainLevel(): boolean;
+
+/**
+ * This function allows restoring of a changed sky gradient as a result of setSkyGradient.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetSkyGradient Wiki, resetSkyGradient }
+ * @return returns true if sky color was reset correctly, false otherwise.
+ * @noSelf
+ */
+export declare function resetSkyGradient(): boolean;
+
+/**
+ * This function is used to reset the color of the sun to its normal color.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetSunColor Wiki, resetSunColor }
+ * @return returns true if the color of the sun was reset, false otherwise.
+ * @noSelf
+ */
+export declare function resetSunColor(): boolean;
+
+/**
  * This function is used to reset the size of the sun to its normal size.
  * @see {@link https://wiki.multitheftauto.com/wiki/ResetSunSize Wiki, resetSunSize }
  * @return returns true if the size of the sun was reset, false otherwise.
@@ -987,12 +842,367 @@ export declare function resetMoonSize(): boolean;
 export declare function resetSunSize(): boolean;
 
 /**
+ * Resets the distance of vehicles LOD to default. Default values depends on client setting.
+ * If client has enabled high detail vehicles in video options, value will be reset to (500,
+ * 500) - otherwise to (70, 150). You can check value of this option using dxGetStatus
+ * (SettingHighDetailVehicles).
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehiclesLODDistance Wiki, resetVehiclesLODDistance }
+ * @return returns true if the vehicles lod distance was reset, false otherwise.
+ * @noSelf
+ */
+export declare function resetVehiclesLODDistance(): boolean;
+
+/**
+ * This function resets the wind velocity in San Andreas to its default state.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResetWindVelocity Wiki, resetWindVelocity }
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function resetWindVelocity(): boolean;
+
+/**
  * This function is used to reset the world sounds to the default setting.
  * @see {@link https://wiki.multitheftauto.com/wiki/ResetWorldSounds Wiki, resetWorldSounds }
  * @return returns true if the world sounds were reset, false otherwise.
  * @noSelf
  */
 export declare function resetWorldSounds(): boolean;
+
+/**
+ * This function allows restoring of all world objects,which were removed with
+ * RemoveWorldModel.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RestoreAllWorldModels Wiki, restoreAllWorldModels }
+ * @return returns true if the world objects were restored, false otherwise.
+ * @noSelf
+ */
+export declare function restoreAllWorldModels(): boolean;
+
+/**
+ * This function allows restoring of world object,which was removed with RemoveWorldModel.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RestoreWorldModel Wiki, restoreWorldModel }
+ * @param modelID A whole integer specifying the GTASA object model ID.
+ * @param radius A floating point number representing the radius that will be eliminated.
+ * @param x A floating point number representing the X coordinate on the map.
+ * @param y A floating point number representing the Y coordinate on the map.
+ * @param z A floating point number representing the Z coordinate on the map.
+ * @param iInterior
+ * @return returns true if the world object was restored, false otherwise.
+ * @noSelf
+ */
+export declare function restoreWorldModel(
+    modelID: number,
+    radius: number,
+    x: number,
+    y: number,
+    z: number,
+    iInterior?: number
+): boolean;
+
+/**
+ * This function changes the maximum flying height of aircraft.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetAircraftMaxHeight Wiki, setAircraftMaxHeight }
+ * @param Height The height you want aircraft to be able to go.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setAircraftMaxHeight(
+    Height: number
+): boolean;
+
+/**
+ * This function sets the maximum velocity at which aircrafts could fly. Using this function
+ * server-side will overwrite the value that was previously set client-side.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetAircraftMaxVelocity Wiki, setAircraftMaxVelocity }
+ * @param velocity The max velocity, can be 0 or any positive value. Default is 1.5.
+ * @return returns true if the max velocity was set correctly, false otherwise.
+ * @noSelf
+ */
+export declare function setAircraftMaxVelocity(
+    velocity: number
+): boolean;
+
+/**
+ * This function allows you to disable some background sound effects. See also:
+ * setWorldSoundEnabled.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetAmbientSoundEnabled Wiki, setAmbientSoundEnabled }
+ * @param theType The type of ambient sound to toggle. Can be either gunfire or general.
+ * @param enable Set false to turn off, true to turn on
+ * @return returns true if the ambient sound was set correctly, false if invalid values were passed.
+ * @noSelf
+ */
+export declare function setAmbientSoundEnabled(
+    theType: string,
+    enable: boolean
+): boolean;
+
+/**
+ * This function allows you to disable the flying birds.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetBirdsEnabled Wiki, setBirdsEnabled }
+ * @param enabled A boolean value determining if birds should be shown. Use true to show the birds and
+ * false to hide them.
+ * @return returns true if the birds state was changed succesfully, false if an invalid argument was
+ * specified.
+ * @noSelf
+ */
+export declare function setBirdsEnabled(
+    enable: boolean
+): boolean;
+
+/**
+ * This function will enable or disable clouds. This is useful for race maps which are
+ * placed high up as clouds can cause low FPS.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetCloudsEnabled Wiki, setCloudsEnabled }
+ * @param enabled A boolean value determining if clouds should be shown. Use true to show clouds and false
+ * to hide them.
+ * @return returns true if the cloud state was changed succesfully, false if an invalid argument was
+ * specified.
+ * @noSelf
+ */
+export declare function setCloudsEnabled(
+    enabled: boolean
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetColorFilter Wiki, setColorFilter }
+ * @param aRed The amount of red (0-255).
+ * @param aGreen The amount of green (0-255).
+ * @param aBlue The amount of blue (0-255).
+ * @param aAlpha The amount of alpha (0-255).
+ * @param bRed The amount of red (0-255).
+ * @param bGreen The amount of green (0-255).
+ * @param bBlue The amount of blue (0-255).
+ * @param bAlpha The amount of alpha (0-255).
+ * @return returns true if the color filter was set, false otherwise.
+ * @noSelf
+ */
+export declare function setColorFilter(
+    aRed: number,
+    aGreen: number,
+    aBlue: number,
+    aAlpha: number,
+    bRed: number,
+    bGreen: number,
+    bBlue: number,
+    bAlpha: number
+): boolean;
+
+/**
+ * This function is used to set the distance of render. Areas beyond the specified distance
+ * will not be rendered.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetFarClipDistance Wiki, setFarClipDistance }
+ * @param distance A float specifying the distance of render. Setting this less than 5 will cause problems
+ * to the client.
+ * @return returns true if the distance was set correctly, false if invalid arguments were passed.
+ * @noSelf
+ */
+export declare function setFarClipDistance(
+    distance: number
+): boolean;
+
+/**
+ * This function changes the distance at which fog appears. Keep in mind that this function
+ * doesnt change the distance of render.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetFogDistance Wiki, setFogDistance }
+ * @param distance distance in GTA units at which fog will appear. Very short or negative distances will
+ * cause graphical bugs to the players.
+ * @return returns true if the distance changed successfully, false if bad arguments were passed.
+ * @noSelf
+ */
+export declare function setFogDistance(
+    distance: number
+): boolean;
+
+/**
+ * This function sets the game speed to the given value.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetGameSpeed Wiki, setGameSpeed }
+ * @param value : The float value of the game speed (Range 0 - 10)
+ * @return returns true if the gamespeed was set successfully, false otherwise.
+ * the normal game speed is 1.
+ * @noSelf
+ */
+export declare function setGameSpeed(
+    value: number
+): boolean;
+
+/**
+ * This function opens or closes the specified garage door in the world.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetGarageOpen Wiki, setGarageOpen }
+ * @param garageID The Garage|garage ID that represents the garage door being opened or closed.
+ * @param isOpen A boolean indicating whether or not to open the door.
+ * @return returns true if successful, false if an invalid garage id was given.
+ * @noSelf
+ */
+export declare function setGarageOpen(
+    garageID: number,
+    open: boolean
+): boolean;
+
+/**
+ * This function sets the servers gravity level.
+ * *This will override setPedGravity applied to peds/players.
+ * *Setting the gravity level to different values on clients can cause animation bugs
+ * (players floating across ground because players see different fall animation.)}}
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetGravity Wiki, setGravity }
+ * @param level : The level of gravity (default is 0.008).
+ * @return returns true if gravity was changed, false otherwise.
+ * @noSelf
+ */
+export declare function setGravity(
+    level: number
+): boolean;
+
+/**
+ * This function changes the heat haze effect.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetHeatHaze Wiki, setHeatHaze }
+ * @return returns true if the heat haze effect was set correctly, false if invalid values were
+ * passed.
+ * @noSelf
+ */
+export declare function setHeatHaze(
+    intensity: number,
+    randomShift?: number,
+    speedMin?: number,
+    speedMax?: number,
+    scanSizeX?: number,
+    scanSizeY?: number,
+    renderSizeX?: number,
+    renderSizeY?: number,
+    bShowInside?: boolean
+): boolean;
+
+/**
+ * This function toggles furniture generation in interiors with the specified room ID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetInteriorFurnitureEnabled Wiki, setInteriorFurnitureEnabled }
+ * @param roomID The room type which you want disable or enable the furniture in:
+ * @param 0 : shop
+ * @param 1 : office
+ * @param 2 : lounge
+ * @param 3 : bedroom
+ * @param 4 : kitchen
+ * @param enabled : A bool representing whether the interior furniture is enabled or disabled.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setInteriorFurnitureEnabled(
+    roomID: number,
+    enabled: boolean
+): boolean;
+
+/**
+ * This function disables or enables the ambient sounds played by GTA in most interiors,
+ * like restaurants, casinos, clubs, houses, etc.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetInteriorSoundsEnabled Wiki, setInteriorSoundsEnabled }
+ * @return if a boolean was passed to the function, it always succeeds and returns true.
+ * @noSelf
+ */
+export declare function setInteriorSoundsEnabled(
+    enabled: boolean
+): boolean;
+
+/**
+ * This function changes the maximum flying height of jetpack.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetJetpackMaxHeight Wiki, setJetpackMaxHeight }
+ * @param Height : The max height starting at approximately -20.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setJetpackMaxHeight(
+    Height: number
+): boolean;
+
+/**
+ * Sets the real-world duration of an ingame minute. The GTA default is 1000.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetMinuteDuration Wiki, setMinuteDuration }
+ * @param milliseconds : the new duration of an ingame minute, accepted values 0 - 2147483647.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setMinuteDuration(
+    milliseconds: number
+): boolean;
+
+/**
+ * This function sets the moon size. Using this function server-side will overwrite the
+ * value that was previously set client-side.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetMoonSize Wiki, setMoonSize }
+ * @param size The size, can be 0 or any positive value. Default is 3.
+ * @return returns true if the moon size was set correctly, false otherwise.
+ * @noSelf
+ */
+export declare function setMoonSize(
+    size: number
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetNearClipDistance Wiki, setNearClipDistance }
+ * @param distance the new near clip distance. It must be between 0.1 and 20 for the function to do any
+ * effect. Default value is 0.3.
+ * @return this function returns true if the argument is valid. returns false otherwise.
+ * @noSelf
+ */
+export declare function setNearClipDistance(
+    distance: number
+): boolean;
+
+/**
+ * This function is used to enable or disable occlusions. Occlusions are used by GTA to
+ * enhance performance by hiding objects that are (normally) obscured by certain large
+ * buildings. However when removeWorldModel is used they may also have the undesired effect
+ * of making parts of the map disappear. Disabling occlusions will fix that.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetOcclusionsEnabled Wiki, setOcclusionsEnabled }
+ * @param enabled A bool specifying if GTA occlusions should be enabled
+ * @return returns true if the setting was set correctly, false if invalid arguments were passed.
+ * @noSelf
+ */
+export declare function setOcclusionsEnabled(
+    enabled: boolean
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetPedsLODDistance Wiki, setPedsLODDistance }
+ * @param distance the new peds LOD distance. It must be between 0 and 500. (Default for high_detail_peds on
+ * is 500, when off, it is 60).
+ * @return this function returns true if the argument is valid. returns false otherwise.
+ * @noSelf
+ */
+export declare function setPedsLODDistance(
+    distance: number
+): boolean;
+
+/**
+ * This function sets the rain level to any weather available in GTA. Use resetRainLevel to
+ * undo the changes.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetRainLevel Wiki, setRainLevel }
+ * @param level A floating point number representing the rain level. 1 represents the maximum rain level
+ * usually available in GTA, but higher values are accepted.
+ * @param Note The level value is clamped between 0.0 and 10.0 to avoid gameplay issues.
+ * @return returns true if the rain level was set, false otherwise.
+ * @noSelf
+ */
+export declare function setRainLevel(
+    level: number
+): boolean;
+
+/**
+ * This function changes the sky color to a two-color gradient.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetSkyGradient Wiki, setSkyGradient }
+ * @param topRed The red value of the upper part of the sky, from 0 to 255.
+ * @param topGreen The green value of the upper part of the sky, from 0 to 255.
+ * @param topBlue The blue value of the upper part of the sky, from 0 to 255.
+ * @param bottomRed The red value of the lower part of the sky, from 0 to 255.
+ * @param bottomGreen The green value of the lower part of the sky, from 0 to 255.
+ * @param bottomBlue The blue value of the lower part of the sky, from 0 to 255.
+ * @return returns true if sky color was set correctly, false if invalid values were passed.
+ * @noSelf
+ */
+export declare function setSkyGradient(
+    topRed?: number,
+    topGreen?: number,
+    topBlue?: number,
+    bottomRed?: number,
+    bottomGreen?: number,
+    bottomBlue?: number
+): boolean;
 
 /**
  * This function is used to set the color of the sun.
@@ -1016,19 +1226,6 @@ export declare function setSunColor(
 ): boolean;
 
 /**
- * This function is used to set the distance of render. Areas beyond the specified distance
- * will not be rendered.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetFarClipDistance Wiki, setFarClipDistance }
- * @param distance A float specifying the distance of render. Setting this less than 5 will cause problems
- * to the client.
- * @return returns true if the distance was set correctly, false if invalid arguments were passed.
- * @noSelf
- */
-export declare function setFarClipDistance(
-    distance: number
-): boolean;
-
-/**
  * This function is used to set the size of the sun.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetSunSize Wiki, setSunSize }
  * @param Size The size you want the sun to be in the sky.
@@ -1038,160 +1235,6 @@ export declare function setFarClipDistance(
 export declare function setSunSize(
     Size: number
 ): boolean;
-
-/**
- * This function opens or closes the specified garage door in the world.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetGarageOpen Wiki, setGarageOpen }
- * @param garageID The Garage|garage ID that represents the garage door being opened or closed.
- * @param isOpen A boolean indicating whether or not to open the door.
- * @return returns true if successful, false if an invalid garage id was given.
- * @noSelf
- */
-export declare function setGarageOpen(
-    garageID: number,
-    open: boolean
-): boolean;
-
-/**
- * This function outputs X, Y and Z position of given garage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetGaragePosition Wiki, getGaragePosition }
- * @param garageID The Garage|garage ID that represents the garage door that is being checked.
- * @return returns three floats indicating the position of the garage, x, y and z respectively,
- * false when garageid was invalid.
- * @noSelf
- */
-export declare function getGaragePosition(
-    garageID: number
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function outputs the bounding box of a garage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetGarageBoundingBox Wiki, getGarageBoundingBox }
- * @param garageID The Garage|garage ID that represents the garage door that is being checked.
- * @return returns four floats indicating the bounding box of the garage.
- * western x position, eastern x position, southern y position, northern y position,, false
- * when invalid garageid was provided.
- * @noSelf
- */
-export declare function getGarageBoundingBox(
-    garageID: number
-): LuaMultiReturn<[
-    number,
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function outputs the size of garage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetGarageSize Wiki, getGarageSize }
- * @param garageID The Garage|garage ID that represents the garage door that is being checked.
- * @return returns three floats indicating the size of the garage, false if an invalid garageid has
- * been provided
- * @noSelf
- */
-export declare function getGarageSize(
-    garageID: number
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function resets near clip distance set by setNearClipDistance.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetNearClipDistance Wiki, resetNearClipDistance }
- * @return *boolean: always returns true
- * @noSelf
- */
-export declare function resetNearClipDistance(): boolean;
-
-/**
- * This function resets the far clip distance to its default state.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetFarClipDistance Wiki, resetFarClipDistance }
- * @return returns true if operation was successful, false otherwise.
- * @noSelf
- */
-export declare function resetFarClipDistance(): boolean;
-
-/**
- * This function resets the fog render distance to its default state.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetFogDistance Wiki, resetFogDistance }
- * @return returns true if operation was successful, false otherwise.
- * @noSelf
- */
-export declare function resetFogDistance(): boolean;
-
-/**
- * This function resets the rain level of the current weather to its default.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetRainLevel Wiki, resetRainLevel }
- * @return returns true if the rain level was reset.
- * @noSelf
- */
-export declare function resetRainLevel(): boolean;
-
-/**
- * This function resets the wind velocity in San Andreas to its default state.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetWindVelocity Wiki, resetWindVelocity }
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function resetWindVelocity(): boolean;
-
-/**
- * This function restores the default heat haze.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetHeatHaze Wiki, resetHeatHaze }
- * @return returns true if the heat haze was reset correctly, false otherwise.
- * @noSelf
- */
-export declare function resetHeatHaze(): boolean;
-
-/**
- * This function returns the current Weather ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeather Wiki, getWeather }
- * @return returns two integers indicating the weather type that is currently active. the first
- * integer says what weather is currently considered to be active. the second integer is the
- * weather id that is being blended into if any, otherwise it is nil.
- * @noSelf
- */
-export declare function getWeather(): LuaMultiReturn<[
-    number,
-    number
-]>;
-
-/**
- * This function returns the current gravity level for the context in which it is called
- * (server or client).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetGravity Wiki, getGravity }
- * @return returns a float with the current server or client (depending on where you call the
- * function) gravity level.
- * @noSelf
- */
-export declare function getGravity(): number;
-
-/**
- * This function returns the maximum velocity at which aircrafts could fly. Using this
- * function server-side will return the server-side value, not necessarily the same that is
- * set client-side.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetAircraftMaxVelocity Wiki, getAircraftMaxVelocity }
- * @return returns a float being the max velocity that is currently set, depending on which side it
- * is used.
- * @noSelf
- */
-export declare function getAircraftMaxVelocity(): number;
-
-/**
- * This function returns the moon size.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMoonSize Wiki, getMoonSize }
- * @return returns a integer being the moon size that is currently set, depending on which side it
- * is used.
- * @noSelf
- */
-export declare function getMoonSize(): number;
 
 /**
  * This function sets the current GTA time to the given time.
@@ -1207,6 +1250,52 @@ export declare function setTime(
 ): boolean;
 
 /**
+ * Toggles whether you want the traffic lights to be locked. If the lights are locked, it
+ * means they wont change unless you do setTrafficLightState.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTrafficLightsLocked Wiki, setTrafficLightsLocked }
+ * @param toggle : A bool indicating whether you want the traffic lights to change automatically, or not
+ * @return returns true if the successful, false otherwise.
+ * @noSelf
+ */
+export declare function setTrafficLightsLocked(
+    toggle: boolean
+): boolean;
+
+/**
+ * Sets the current traffic light state. This state controls the traffic light colors. For
+ * instance, state 1 will cause the north and south traffic lights to be amber, and the ones
+ * left and east will turn red.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTrafficLightState Wiki, setTrafficLightState }
+ * @param state : If an integer is provided, the Traffic_light_states|state you wish to use (possible
+ * values: 0-9). Else, one of the following strings:
+ * @param auto : Sets the traffic lights default behavior (switches the colors automatically).
+ * @param disabled : Turns traffic lights off.
+ * Alternatively, you can provide two string parameters ('''colorNS''' and '''colorEW''')
+ * with the colors for north-south and east-west traffic lights respectively. Valid colors
+ * are:
+ * @param green
+ * @param yellow
+ * @param red
+ * @return returns true if the state was successfully set, false otherwise.
+ * @noSelf
+ */
+export declare function setTrafficLightState(
+    state: number
+): boolean;
+
+/**
+ * Sets the distance of vehicles LOD.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclesLODDistance Wiki, setVehiclesLODDistance }
+ * @param vehiclesDistance general distance used for most vehicles, this value is clamped to 0 – 500
+ * @param trainsAndPlanesDistance distance used for trains and planes, this value is clamped to 0 – 500
+ * @noSelf
+ */
+export declare function setVehiclesLODDistance(
+    vehiclesDistance: number,
+    trainsAndPlanesDistance: number
+): boolean;
+
+/**
  * This function sets the current weather to the given valid value. To change the weather
  * gradually, see setWeatherBlended.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetWeather Wiki, setWeather }
@@ -1217,88 +1306,6 @@ export declare function setTime(
  */
 export declare function setWeather(
     weatherID: number
-): boolean;
-
-/**
- * This function sets the game speed to the given value.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetGameSpeed Wiki, setGameSpeed }
- * @param value : The float value of the game speed (Range 0 - 10)
- * @return returns true if the gamespeed was set successfully, false otherwise.
- * the normal game speed is 1.
- * @noSelf
- */
-export declare function setGameSpeed(
-    value: number
-): boolean;
-
-/**
- * This function sets the maximum velocity at which aircrafts could fly. Using this function
- * server-side will overwrite the value that was previously set client-side.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetAircraftMaxVelocity Wiki, setAircraftMaxVelocity }
- * @param velocity The max velocity, can be 0 or any positive value. Default is 1.5.
- * @return returns true if the max velocity was set correctly, false otherwise.
- * @noSelf
- */
-export declare function setAircraftMaxVelocity(
-    velocity: number
-): boolean;
-
-/**
- * This function sets the moon size. Using this function server-side will overwrite the
- * value that was previously set client-side.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMoonSize Wiki, setMoonSize }
- * @param size The size, can be 0 or any positive value. Default is 3.
- * @return returns true if the moon size was set correctly, false otherwise.
- * @noSelf
- */
-export declare function setMoonSize(
-    size: number
-): boolean;
-
-/**
- * This function sets the rain level to any weather available in GTA. Use resetRainLevel to
- * undo the changes.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetRainLevel Wiki, setRainLevel }
- * @param level A floating point number representing the rain level. 1 represents the maximum rain level
- * usually available in GTA, but higher values are accepted.
- * @param Note The level value is clamped between 0.0 and 10.0 to avoid gameplay issues.
- * @return returns true if the rain level was set, false otherwise.
- * @noSelf
- */
-export declare function setRainLevel(
-    level: number
-): boolean;
-
-/**
- * This function sets the servers gravity level.
- * *This will override setPedGravity applied to peds/players.
- * *Setting the gravity level to different values on clients can cause animation bugs
- * (players floating across ground because players see different fall animation.)}}
- * @see {@link https://wiki.multitheftauto.com/wiki/SetGravity Wiki, setGravity }
- * @param level : The level of gravity (default is 0.008).
- * @return returns true if gravity was changed, false otherwise.
- * @noSelf
- */
-export declare function setGravity(
-    level: number
-): boolean;
-
-/**
- * This function toggles furniture generation in interiors with the specified room ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetInteriorFurnitureEnabled Wiki, setInteriorFurnitureEnabled }
- * @param roomID The room type which you want disable or enable the furniture in:
- * @param 0 : shop
- * @param 1 : office
- * @param 2 : lounge
- * @param 3 : bedroom
- * @param 4 : kitchen
- * @param enabled : A bool representing whether the interior furniture is enabled or disabled.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function setInteriorFurnitureEnabled(
-    roomID: number,
-    enabled: boolean
 ): boolean;
 
 /**
@@ -1316,109 +1323,102 @@ export declare function setWeatherBlended(
 ): boolean;
 
 /**
- * This function will enable or disable clouds. This is useful for race maps which are
- * placed high up as clouds can cause low FPS.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCloudsEnabled Wiki, setCloudsEnabled }
- * @param enabled A boolean value determining if clouds should be shown. Use true to show clouds and false
- * to hide them.
- * @return returns true if the cloud state was changed succesfully, false if an invalid argument was
- * specified.
+ * This function changes the wind velocity. The wind shakes the vegetation and makes
+ * particles fly in a direction. The intensity and direction of the effect deppends of the
+ * wind velocity in each axis.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWindVelocity Wiki, setWindVelocity }
+ * @param velocityX : The velocity of the wind along the x axis.
+ * @param velocityY : The velocity of the wind along the y axis.
+ * @param velocityZ : The velocity of the wind along the z axis.
+ * @return returns true if successful, false if bad arguments were passed.
  * @noSelf
  */
-export declare function setCloudsEnabled(
-    enabled: boolean
+export declare function setWindVelocity(
+    velocityX: number,
+    velocityY: number,
+    velocityZ: number
 ): boolean;
 
 /**
- * This function will return the current heat haze effect settings.
- * Note: The server can only return the heat haze settings if it has actually been set by
- * script.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetHeatHaze Wiki, getHeatHaze }
- * @return returns 9 values, which are the same used as arguments in setheathaze:
+ * This function allows you to disable world sounds. A world sound is a sound effect which
+ * has not been caused by playSound or playSound3D.
+ * *The values for group and index can be determined by using the client command
+ * Client_Commands#showsound|showsound in conjunction with setDevelopmentMode
+ * *This function does not affect sounds which are already playing, such as the wind sound
+ * that can only be stopped by entering an interior.
+ * * See also: setAmbientSoundEnabled}}
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWorldSoundEnabled Wiki, setWorldSoundEnabled }
+ * @param group An int|integer representing the World sound groups|world sound group
+ * @param enable Set to false to disable, true to enable
+ * @param index An int|integer representing an individual sound within the group
+ * @param immediate A boolean if set to true will cancel the sound if its already playing. This parameter
+ * only works for stopping the sound.
+ * @return returns true if the world sound was correctly enabled/disabled, false if invalid values
+ * were passed.
  * @noSelf
  */
-export declare function getHeatHaze(): LuaMultiReturn<[
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    boolean
-]>;
+export declare function setWorldSoundEnabled(
+    group: number,
+    index: number,
+    enable: boolean,
+    immediate?: boolean
+): boolean;
 
 /**
- * This function will return the current sky color.
- * Note: The server can only return the sky color if it has actually been set by script.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSkyGradient Wiki, getSkyGradient }
- * @return returns 6 int|ints, of which the first 3 represent the skys top color, (in rgb) and the
- * last 3 represent the bottom colors.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWorldSoundEnabled Wiki, setWorldSoundEnabled }
  * @noSelf
  */
-export declare function getSkyGradient(): LuaMultiReturn<[
-    number,
-    number,
-    number,
+export declare function setWorldSoundEnabled(
+    group: number,
+    enable: boolean,
+    immediate?: boolean
+): boolean;
+
+/**
+ * Enables or disables a special world property.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWorldSpecialPropertyEnabled Wiki, setWorldSpecialPropertyEnabled }
+ * @param propname the name of the property to set. Possible values are:
+ * @param hovercars - equivalent of the JBGVNB cheat, and allows cars to drive on water.
+ * @param aircars - equivalent of the RIPAZHA cheat, and allows cars to fly.
+ * @param extrabunny - equivalent of the CJPHONEHOME or JHJOECW cheat, and allows you to bunny hop on bicycles
+ * much higher.
+ * @param extrajump - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher.
+ * @param randomfoliage - toggle randomly generated foliage on the GTA:SA map (default: true)
+ * @param snipermoon - toggle the GTA:SA easter egg, which increases the size of the moon every time you shoot
+ * it with a sniper rifle (default: false)
+ * @param extraairresistance - toggle the vehicle speed limit on cross-country roads (default: true)
+ * **{{New feature/item|3.0156|1.5.5|12286|'''underworldwarp''' - toggle warp of peds and
+ * vehicles when fall under map (default: true)}}
+ * @param enable whether or not to enable the property.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function setWorldSpecialPropertyEnabled(
+    propname: string,
+    enable: boolean
+): boolean;
+
+/**
+ * This function checks to see if a line between two points collides with the water. This is
+ * similar to processLineOfSight, but only collides with water. Waves are not taken into
+ * account when testing the line.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TestLineAgainstWater Wiki, testLineAgainstWater }
+ * @param startX, startY, startZ the position of the starting point of the line.
+ * @param endX, endY, endZ the position of the end point of the line.
+ * @return returns true and the position of the intersection point of the line and the water surface
+ * if there is a collision, or false if there is no collision.
+ * @noSelf
+ */
+export declare function testLineAgainstWater(
+    startX: number,
+    startY: number,
+    startZ: number,
+    endX: number,
+    endY: number,
+    endZ: number
+): LuaMultiReturn<[
+    boolean,
     number,
     number,
     number
 ]>;
-
-/**
- * This function will tell you if clouds are enabled or disabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCloudsEnabled Wiki, getCloudsEnabled }
- * @return returns true if the clouds are enabled or false if clouds are disabled.
- * @noSelf
- */
-export declare function getCloudsEnabled(): boolean;
-
-/**
- * This function will tell you if interior furniture are enabled or disabled in a specified
- * room ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetInteriorFurnitureEnabled Wiki, getInteriorFurnitureEnabled }
- * @return returns true if interior furniture is enabled or false if interior furniture is disabled.
- * @noSelf
- */
-export declare function getInteriorFurnitureEnabled(
-    roomID: number
-): boolean;
-
-/**
- * This function will tell you if the birds are enabled or disabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBirdsEnabled Wiki, getBirdsEnabled }
- * @return returns true if the birds are enabled or false if the birds are disabled.
- * @noSelf
- */
-export declare function getBirdsEnabled(): boolean;
-
-/**
- * This function will tell you what is the current fog render distance.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetFogDistance Wiki, getFogDistance }
- * @return returns a float with the current fog render distance, false if the operation could not be
- * completed.
- * @noSelf
- */
-export declare function getFogDistance(): number;
-
-/**
- * This function will tell you what is the current render distance.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetFarClipDistance Wiki, getFarClipDistance }
- * @return returns a float with the current render distance, false if the operation could not be
- * completed.
- * @noSelf
- */
-export declare function getFarClipDistance(): number;
-
-/**
- * Toggles whether you want the traffic lights to be locked. If the lights are locked, it
- * means they wont change unless you do setTrafficLightState.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrafficLightsLocked Wiki, setTrafficLightsLocked }
- * @param toggle : A bool indicating whether you want the traffic lights to change automatically, or not
- * @return returns true if the successful, false otherwise.
- * @noSelf
- */
-export declare function setTrafficLightsLocked(
-    toggle: boolean
-): boolean;

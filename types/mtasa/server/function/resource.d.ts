@@ -39,32 +39,6 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/CallRemote Wiki, callRemote }
- * @noSelf
- */
-export declare function callRemote(
-    host: string,
-    resourceName: string,
-    functionName: string,
-    callbackFunction: HandleFunction,
-    ...varargs: any[]
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
- * @noSelf
- */
-export declare function fetchRemote<
-    AdditionalArgs extends any[] = []
->(
-    URL: string,
-    callbackFunction: FetchRemoteCallback,
-    postData?: string,
-    postIsBinary?: boolean,
-    ...arguments: AdditionalArgs
-): boolean;
-
-/**
  * Aborts a FetchRemote|fetchRemote or CallRemote|callRemote request.
  * @see {@link https://wiki.multitheftauto.com/wiki/AbortRemoteRequest Wiki, abortRemoteRequest }
  * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
@@ -75,89 +49,6 @@ export declare function fetchRemote<
 export declare function abortRemoteRequest(
     theRequest: Request
 ): boolean;
-
-/**
- * Checks whether a resource is currently archived (running from within a ZIP file).
- * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceArchived Wiki, isResourceArchived }
- * @param resource the resource to check
- * @return returns true if a resource is archived, false if it is not archived, or nil if there is
- * problem with resource.
- * @noSelf
- */
-export declare function isResourceArchived(
-    resourceElement: Resource
-): boolean;
-
-/**
- * Gets all FetchRemote|fetchRemote and CallRemote|callRemote requests currently running.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
- * @param theResource : the resource to get all requests from
- * @return returns a table with all requests, false if an invalid resource was provided
- * @noSelf
- */
-export declare function getRemoteRequests(
-    theResource?: Resource
-): LuaTable;
-
-/**
- * Gets informations of an FetchRemote|fetchRemote or CallRemote|callRemote request info.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequestInfo Wiki, getRemoteRequestInfo }
- * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
- * GetRemoteRequests|getRemoteRequests
- * @return returns a table when valid, false otherwise
- * the table contains:
- * *bytesreceived: a number specifying the amount of data received so far. zero means the
- * download is queued
- * *bytestotal: a number specifying the final download size. will be zero if the remote http
- * server has not set the content-length header
- * *currentattempt: a number specifying the current connection attempt
- * *type: a string specifying either fetch or call
- * *url: a string specifying the url
- * *resource: the resource which started the request, or false if the resource has since
- * been stopped/restarted
- * *queue: a string specifying the queue name
- * *method: a string specifying the http method. e.g. get or post
- * *connectionattempts: a number specifying max number connection attempts as declared in
- * the fetchremote call
- * *connectiontimeout: a number specifying connection attempt timeout as declared in the
- * fetchremote call
- * *postdata: a string containing the request post data as declared in the fetchremote call
- * *headers: a table containing the request http headers as declared in the fetchremote call
- * @noSelf
- */
-export declare function getRemoteRequestInfo(
-    theRequest: Request,
-    postDataLength?: number,
-    includeHeaders?: boolean
-): LuaTable;
-
-/**
- * Gets the date and time at which a resource was last loaded in the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLoadTime Wiki, getResourceLoadTime }
- * @param res the resource you want to know the load time of.
- * @return if successful, returns the unix timestamp when the resource was loaded, otherwise false.
- * use in conjunction with getrealtime in order to retrieve detailed information.
- * if successful, returns a string with the date and time that the resource was last loaded
- * into memory (for example when the server started, or when the resource was changed and
- * reloaded). returns false on failure.
- * an example string is fri mar 28 13:51:04 2008.
- * @noSelf
- */
-export declare function getResourceLoadTime(
-    res: Resource
-): number;
-
-/**
- * Returns a table containing the names of the functions that a resource exports. It will
- * return the exports of the current resource if there is no argument passed in.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
- * @param theResource the resource of which you want to know the call|exported functions.
- * @return returns a table of function names if successful, false otherwise.
- * @noSelf
- */
-export declare function getResourceExportedFunctions(
-    theResource?: Resource
-): LuaTable;
 
 /**
  * This function adds a new empty config file to an existing resource.
@@ -199,6 +90,61 @@ export declare function addResourceMap(
     filePath: string,
     dimension?: number
 ): XmlNode;
+
+/**
+ * This function is used to call a function from another resource (which must be running).
+ * The function which you wish to call must first be exported within the resources meta.
+ * For example:
+ * <syntaxhighlight lang=xml><meta>
+ * <info author=jbeta type=script description=Scoreboard resource />
+ * <script src=scoreboard_client.lua type=client/>
+ * <script src=scoreboard_exports.lua type=server/>
+ * <script src=scoreboard_http.lua type=server/>
+ * <export function=getScoreboardColumns http=true />
+ * <export function=getScoreboardRows http=true />
+ * <export function=addScoreboardColumn type=server/>
+ * <export function=removeScoreboardColumn type=server/>
+ * <export function=setPlayerScoreboardForced type=server/>
+ * <export function=setScoreboardForced type=client/>
+ * </meta></syntaxhighlight>
+ * This enables other resources to call a function from this resource.
+ * You cannot call a server function from the client or vice versa. See triggerServerEvent
+ * and triggerClientEvent for possibilities to do that.
+ * There is an easier syntax replacing this function. For example, you can instead of:<br>
+ * <syntaxhighlight lang=lua>call ( getResourceFromName ( resource ), exportedFunction, 1,
+ * 2, three )</syntaxhighlight>
+ * do much like a normal call:<br>
+ * <syntaxhighlight lang=lua>exports.resource:exportedFunction ( 1, 2, three
+ * )</syntaxhighlight>
+ * If the resource name contains illegal characters (such as hyphens), you can also do:<br>
+ * <syntaxhighlight lang=lua>exportsresource-name:exportedFunction ( 1, 2, three
+ * )</syntaxhighlight>
+ * Two extra hidden variables are passed to the exported function:
+ * * sourceResource - The resource that called the exported function
+ * * sourceResourceRoot - The resource root element of the resource which called the
+ * exported function.
+ * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+ * @param theResource This is a resource pointer which refers to the resource you are calling a function from.
+ * @param theFunction This is a string with the name of the function which you want to call.
+ * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
+ * arguments of can be specified, each being passed to the designated function.
+ * @param resource_name Resource name
+ * @param exportedFunction The name of the function you want to call. Its not a string.
+ * @return returns anything that the designated function has returned, if the function has no
+ * return, nil is returned. if the function does not exist, is not exported, or the call was
+ * not successful it will return false.
+ * returns anything that the designated function has returned, if the function has no
+ * return, nil is returned. if the function does not exist, is not exported, or the call was
+ * not successful it will return false.
+ * @noSelf
+ */
+export declare function call(
+    theResource: Resource,
+    theFunction: string,
+    ...varargs: any[]
+): LuaMultiReturn<[
+    ...any[]
+]>;
 
 /**
  * This function allows you to call functions that have been exported with HTTP access by
@@ -253,6 +199,64 @@ export declare function callRemote(
     functionName: string,
     callbackFunction: HandleFunction,
     ...varargs: any[]
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/CallRemote Wiki, callRemote }
+ * @noSelf
+ */
+export declare function callRemote(
+    host: string,
+    resourceName: string,
+    functionName: string,
+    callbackFunction: HandleFunction,
+    ...varargs: any[]
+): boolean;
+
+/**
+ * This function copies a specified resource with a new name.
+ * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
+ * @param theResource the resource which is going to be copied
+ * @param newResourceName the name that the copied resource will receive
+ * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
+ * gamemodes/amx).
+ * @return returns the resource element of the copy. returns false if the arguments are incorrect.
+ * @noSelf
+ */
+export declare function copyResource(
+    theResource: Resource,
+    newResourceName: string,
+    organizationalDir?: string
+): Resource;
+
+/**
+ * This function creates an new, empty resource. This creates a directory matching the name
+ * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
+ * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
+ * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
+ * do not have spaces or non-ASCII characters in resource names.
+ * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
+ * @return returns the resource element of the new resource if successful, false otherwise. this
+ * could fail if the resource name already is in use, if a directory already exists with the
+ * name youve specified (but this isnt a valid resource) or if the name you specify isnt
+ * valid. it could also fail if the disk was full or for other similar reasons.
+ * @noSelf
+ */
+export declare function createResource(
+    resourceName: string,
+    organizationalDir?: string
+): Resource;
+
+/**
+ * This function deletes a resource from the MTA memory and moves it to the
+ * /resources-cache/trash/ directory.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
+ * @param resourceName The name of resource to delete.
+ * @return returns true if the resource has been deleted successfully, false otherwise.
+ * @noSelf
+ */
+export declare function deleteResource(
+    resourceName: string
 ): boolean;
 
 /**
@@ -313,165 +317,74 @@ export declare function fetchRemote<
 ): boolean;
 
 /**
- * This function changes the access for one ACL request of the given resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/UpdateResourceACLRequest Wiki, updateResourceACLRequest }
- * @param theResource the resource to set the ACL request for.
- * @param rightName a string with the name of the right to set the access for. This has to match an existing
- * ACL request.
- * @param access a boolean value setting the access. True is for allow, and false for deny.
- * @param byWho a string value to identity who is changing the setting.
- * @return returns true if the setting was changed, or false if no change was required or there was
- * a problem with the arguments.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
  * @noSelf
  */
-export declare function updateResourceACLRequest(
-    theResource: Resource,
-    rightName: string,
-    access: boolean,
-    byWho?: string
+export declare function fetchRemote<
+    AdditionalArgs extends any[] = []
+>(
+    URL: string,
+    callbackFunction: FetchRemoteCallback,
+    postData?: string,
+    postIsBinary?: boolean,
+    ...arguments: AdditionalArgs
 ): boolean;
 
 /**
- * This function copies a specified resource with a new name.
- * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
- * @param theResource the resource which is going to be copied
- * @param newResourceName the name that the copied resource will receive
- * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
- * gamemodes/amx).
- * @return returns the resource element of the copy. returns false if the arguments are incorrect.
+ * Gets informations of an FetchRemote|fetchRemote or CallRemote|callRemote request info.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequestInfo Wiki, getRemoteRequestInfo }
+ * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
+ * GetRemoteRequests|getRemoteRequests
+ * @return returns a table when valid, false otherwise
+ * the table contains:
+ * *bytesreceived: a number specifying the amount of data received so far. zero means the
+ * download is queued
+ * *bytestotal: a number specifying the final download size. will be zero if the remote http
+ * server has not set the content-length header
+ * *currentattempt: a number specifying the current connection attempt
+ * *type: a string specifying either fetch or call
+ * *url: a string specifying the url
+ * *resource: the resource which started the request, or false if the resource has since
+ * been stopped/restarted
+ * *queue: a string specifying the queue name
+ * *method: a string specifying the http method. e.g. get or post
+ * *connectionattempts: a number specifying max number connection attempts as declared in
+ * the fetchremote call
+ * *connectiontimeout: a number specifying connection attempt timeout as declared in the
+ * fetchremote call
+ * *postdata: a string containing the request post data as declared in the fetchremote call
+ * *headers: a table containing the request http headers as declared in the fetchremote call
  * @noSelf
  */
-export declare function copyResource(
-    theResource: Resource,
-    newResourceName: string,
-    organizationalDir?: string
-): Resource;
+export declare function getRemoteRequestInfo(
+    theRequest: Request,
+    postDataLength?: number,
+    includeHeaders?: boolean
+): LuaTable;
 
 /**
- * This function creates an new, empty resource. This creates a directory matching the name
- * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
- * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
- * do not have spaces or non-ASCII characters in resource names.
- * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
- * @return returns the resource element of the new resource if successful, false otherwise. this
- * could fail if the resource name already is in use, if a directory already exists with the
- * name youve specified (but this isnt a valid resource) or if the name you specify isnt
- * valid. it could also fail if the disk was full or for other similar reasons.
+ * Gets all FetchRemote|fetchRemote and CallRemote|callRemote requests currently running.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
+ * @param theResource : the resource to get all requests from
+ * @return returns a table with all requests, false if an invalid resource was provided
  * @noSelf
  */
-export declare function createResource(
-    resourceName: string,
-    organizationalDir?: string
-): Resource;
+export declare function getRemoteRequests(
+    theResource?: Resource
+): LuaTable;
 
 /**
- * This function deletes a resource from the MTA memory and moves it to the
- * /resources-cache/trash/ directory.
- * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
- * @param resourceName The name of resource to delete.
- * @return returns true if the resource has been deleted successfully, false otherwise.
+ * This function retrieves the ACL request section from the meta.xml file of the given
+ * resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceACLRequests Wiki, getResourceACLRequests }
+ * @param theResource the resource to get the ACL requests for.
+ * @return returns a table with the acl requests for the given resource, or false if the resource is
+ * not valid. a valid resource with no acl requests will return an empty table.
  * @noSelf
  */
-export declare function deleteResource(
-    resourceName: string
-): boolean;
-
-/**
- * This function finds new resources and checks for changes to the current ones.
- * @see {@link https://wiki.multitheftauto.com/wiki/RefreshResources Wiki, refreshResources }
- * @param refreshAll : If true MTA will check for changes in all resources. If false, MTA will only check for
- * new resources and try to reload resources with errors
- * @param targetResource : If set, the refresh is restricted to the supplied resource only
- * '''Note:''' Checking for changes in all resources can result in lag for a short period of
- * time. It should generally be avoided to set refreshAll to ''true''.
- * @return returns true if refresh was successful, false otherwise.
- * @noSelf
- */
-export declare function refreshResources(
-    refreshAll?: boolean,
-    targetResource?: Resource
-): boolean;
-
-/**
- * This function gets the name of the specified resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
- * @param res The resource you wish to get the name of.
- * @return returns a string with the resource name in it, or false if the resource does not exist.
- * @noSelf
- */
-export declare function getResourceName(
-    res: Resource
-): string;
-
-/**
- * This function is used to call a function from another resource (which must be running).
- * The function which you wish to call must first be exported within the resources meta.
- * For example:
- * <syntaxhighlight lang=xml><meta>
- * <info author=jbeta type=script description=Scoreboard resource />
- * <script src=scoreboard_client.lua type=client/>
- * <script src=scoreboard_exports.lua type=server/>
- * <script src=scoreboard_http.lua type=server/>
- * <export function=getScoreboardColumns http=true />
- * <export function=getScoreboardRows http=true />
- * <export function=addScoreboardColumn type=server/>
- * <export function=removeScoreboardColumn type=server/>
- * <export function=setPlayerScoreboardForced type=server/>
- * <export function=setScoreboardForced type=client/>
- * </meta></syntaxhighlight>
- * This enables other resources to call a function from this resource.
- * You cannot call a server function from the client or vice versa. See triggerServerEvent
- * and triggerClientEvent for possibilities to do that.
- * There is an easier syntax replacing this function. For example, you can instead of:<br>
- * <syntaxhighlight lang=lua>call ( getResourceFromName ( resource ), exportedFunction, 1,
- * 2, three )</syntaxhighlight>
- * do much like a normal call:<br>
- * <syntaxhighlight lang=lua>exports.resource:exportedFunction ( 1, 2, three
- * )</syntaxhighlight>
- * If the resource name contains illegal characters (such as hyphens), you can also do:<br>
- * <syntaxhighlight lang=lua>exportsresource-name:exportedFunction ( 1, 2, three
- * )</syntaxhighlight>
- * Two extra hidden variables are passed to the exported function:
- * * sourceResource - The resource that called the exported function
- * * sourceResourceRoot - The resource root element of the resource which called the
- * exported function.
- * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
- * @param theResource This is a resource pointer which refers to the resource you are calling a function from.
- * @param theFunction This is a string with the name of the function which you want to call.
- * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
- * arguments of can be specified, each being passed to the designated function.
- * @param resource_name Resource name
- * @param exportedFunction The name of the function you want to call. Its not a string.
- * @return returns anything that the designated function has returned, if the function has no
- * return, nil is returned. if the function does not exist, is not exported, or the call was
- * not successful it will return false.
- * returns anything that the designated function has returned, if the function has no
- * return, nil is returned. if the function does not exist, is not exported, or the call was
- * not successful it will return false.
- * @noSelf
- */
-export declare function call(
-    theResource: Resource,
-    theFunction: string,
-    ...varargs: any[]
-): LuaMultiReturn<[
-    ...any[]
-]>;
-
-/**
- * This function is used to retrieve a resource from its name. A resources name is the same
- * as its folder or file archive name on the server (without the extension).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
- * @param resourceName the name of the resource you wish to get.
- * @return returns the resource with the specified name, or false if no resource of that name
- * exists. note that clientside this will also return false for resources that are in the
- * loaded state, since the client is unaware of resources that have not been started.
- * @noSelf
- */
-export declare function getResourceFromName(
-    resourceName: string
-): Resource;
+export declare function getResourceACLRequests(
+    theResource: Resource
+): LuaTable;
 
 /**
  * This function is used to return the root node of a configuration file. Config files must
@@ -492,6 +405,230 @@ export declare function getResourceFromName(
 export declare function getResourceConfig(
     filePath: string
 ): XmlNode;
+
+/**
+ * This function retrieves the dynamic element root of a specified resource. The dynamic
+ * element root is the parent of elements that are created by scripts (e.g. with
+ * createObject) unless they specify a different parent.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot Wiki, getResourceDynamicElementRoot }
+ * @param theResource the resource of which dynamic element root we want.
+ * @return returns an element of the resources dynamic element root if the resource specified was
+ * valid and active (currently running), false otherwise.
+ * @noSelf
+ */
+export declare function getResourceDynamicElementRoot(
+    theResource: Resource
+): Element;
+
+/**
+ * Returns a table containing the names of the functions that a resource exports. It will
+ * return the exports of the current resource if there is no argument passed in.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
+ * @param theResource the resource of which you want to know the call|exported functions.
+ * @return returns a table of function names if successful, false otherwise.
+ * @noSelf
+ */
+export declare function getResourceExportedFunctions(
+    theResource?: Resource
+): LuaTable;
+
+/**
+ * This function is used to retrieve a resource from its name. A resources name is the same
+ * as its folder or file archive name on the server (without the extension).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
+ * @param resourceName the name of the resource you wish to get.
+ * @return returns the resource with the specified name, or false if no resource of that name
+ * exists. note that clientside this will also return false for resources that are in the
+ * loaded state, since the client is unaware of resources that have not been started.
+ * @noSelf
+ */
+export declare function getResourceFromName(
+    resourceName: string
+): Resource;
+
+/**
+ * This function retrieves the value of any attribute in a resource info tag.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
+ * @param theResource the resource we are getting the info from.
+ * @param attribute the name of the attribute we want info about.
+ * @return returns a string with the attribute value if it exists, false otherwise.
+ * @noSelf
+ */
+export declare function getResourceInfo(
+    theResource: Resource,
+    attribute: string
+): string;
+
+/**
+ * Used to check the last starting time and date of a resource
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLastStartTime Wiki, getResourceLastStartTime }
+ * @param theResource The resource of which youd like to check the last starting time.
+ * @return if successful, returns the unix timestamp when the resource was last started, or the
+ * string never if the resource has not been started yet, otherwise false. use in
+ * conjunction with getrealtime in order to retrieve detailed information.
+ * returns a string with the time and date, or false if the resource does not exist.
+ * @noSelf
+ */
+export declare function getResourceLastStartTime(
+    theResource: Resource
+): number;
+
+/**
+ * This function retrieves the reason why a resource failed to start.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLoadFailureReason Wiki, getResourceLoadFailureReason }
+ * @param theResource The resource you wish to check.
+ * @return if the resource failed to load, returns a string with the failure reason in it. if it
+ * loaded successfully, returns an empty string. returns false if the resource doesnt exist.
+ * @noSelf
+ */
+export declare function getResourceLoadFailureReason(
+    theResource: Resource
+): string;
+
+/**
+ * Gets the date and time at which a resource was last loaded in the server.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLoadTime Wiki, getResourceLoadTime }
+ * @param res the resource you want to know the load time of.
+ * @return if successful, returns the unix timestamp when the resource was loaded, otherwise false.
+ * use in conjunction with getrealtime in order to retrieve detailed information.
+ * if successful, returns a string with the date and time that the resource was last loaded
+ * into memory (for example when the server started, or when the resource was changed and
+ * reloaded). returns false on failure.
+ * an example string is fri mar 28 13:51:04 2008.
+ * @noSelf
+ */
+export declare function getResourceLoadTime(
+    res: Resource
+): number;
+
+/**
+ * This function retrieves the root element of a certain map in a specified resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
+ * @param theResource the resource where the map is located
+ * @param mapName name of the maps which root element we want to retrieve, file extension is required
+ * @return returns an the resources map root element if the map exists and resource specified was
+ * valid and active (currently running), false otherwise.
+ * @noSelf
+ */
+export declare function getResourceMapRootElement(
+    theResource: Resource,
+    mapName: string
+): Element;
+
+/**
+ * This function gets the name of the specified resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+ * @param res The resource you wish to get the name of.
+ * @return returns a string with the resource name in it, or false if the resource does not exist.
+ * @noSelf
+ */
+export declare function getResourceName(
+    res: Resource
+): string;
+
+/**
+ * This function returns the organizational file path (e.g. admin) of a resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath Wiki, getResourceOrganizationalPath }
+ * @param theResource the resource of which you want to know the organizational path
+ * @return returns the organizational folder name of the resource. it returns empty string if the
+ * resource is on root resources folder. it returns false if the resource could not be found.
+ * @noSelf
+ */
+export declare function getResourceOrganizationalPath(
+    theResource: Resource
+): string;
+
+/**
+ * This function retrieves a resources root element. The resources root element is the
+ * element in the element tree which is the parent of all elements that belong to a
+ * particular resource (except for elements specifically created elsewhere). You can attach
+ * event handlers to this element to easily capture events that originate from your resource
+ * (and global events that originate from the root element).
+ * Note: every resource has a Predefined_variables_list|predefined global variable called
+ * resourceRoot whose value is the root element of that resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
+ * @param theResource the resource whose root element we are getting. If not specified, assumes the current
+ * resource. (the resource returned from getThisResource)
+ * @return returns an element representing the resources root, false if the specified resource
+ * doesnt exist.
+ * @noSelf
+ */
+export declare function getResourceRootElement(
+    theResource?: Resource
+): Element;
+
+/**
+ * This function retrieves a table of all the resources that exist on the server.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
+ * @return returns a table of resources.
+ * @noSelf
+ */
+export declare function getResources(): LuaTable;
+
+/**
+ * This function returns the state of a given resource
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceState Wiki, getResourceState }
+ * @param theResource The resource you wish to get the state of.
+ * @return if successful returns a string with the resource state in it, false otherwise.
+ * the state can be one of:
+ * *loaded
+ * *running
+ * *starting
+ * *stopping
+ * *failed to load - use getresourceloadfailurereason to find out why it failed.
+ * @noSelf
+ */
+export declare function getResourceState(
+    theResource: Resource
+): string;
+
+/**
+ * This function retrieves the resource from which the function call was made.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
+ * @return returns the resource in which the current script is.
+ * @noSelf
+ */
+export declare function getThisResource(): Resource;
+
+/**
+ * Checks whether a resource is currently archived (running from within a ZIP file).
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceArchived Wiki, isResourceArchived }
+ * @param resource the resource to check
+ * @return returns true if a resource is archived, false if it is not archived, or nil if there is
+ * problem with resource.
+ * @noSelf
+ */
+export declare function isResourceArchived(
+    resourceElement: Resource
+): boolean;
+
+/**
+ * This will check if a resource is currently protected, as defined in
+ * Server_mtaserver.conf#resource|mtaserver.conf.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
+ * @param theResource the resource to check
+ * @return returns true if the resource is protected, false otherwise.
+ * @noSelf
+ */
+export declare function isResourceProtected(
+    theResource: Resource
+): boolean;
+
+/**
+ * This function finds new resources and checks for changes to the current ones.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RefreshResources Wiki, refreshResources }
+ * @param refreshAll : If true MTA will check for changes in all resources. If false, MTA will only check for
+ * new resources and try to reload resources with errors
+ * @param targetResource : If set, the refresh is restricted to the supplied resource only
+ * '''Note:''' Checking for changes in all resources can result in lag for a short period of
+ * time. It should generally be avoided to set refreshAll to ''true''.
+ * @return returns true if refresh was successful, false otherwise.
+ * @noSelf
+ */
+export declare function refreshResources(
+    refreshAll?: boolean,
+    targetResource?: Resource
+): boolean;
 
 /**
  * This function removes a file from the resource.
@@ -564,136 +701,6 @@ export declare function restartResource(
 ): boolean;
 
 /**
- * This function retrieves a resources root element. The resources root element is the
- * element in the element tree which is the parent of all elements that belong to a
- * particular resource (except for elements specifically created elsewhere). You can attach
- * event handlers to this element to easily capture events that originate from your resource
- * (and global events that originate from the root element).
- * Note: every resource has a Predefined_variables_list|predefined global variable called
- * resourceRoot whose value is the root element of that resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
- * @param theResource the resource whose root element we are getting. If not specified, assumes the current
- * resource. (the resource returned from getThisResource)
- * @return returns an element representing the resources root, false if the specified resource
- * doesnt exist.
- * @noSelf
- */
-export declare function getResourceRootElement(
-    theResource?: Resource
-): Element;
-
-/**
- * This function retrieves a table of all the resources that exist on the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
- * @return returns a table of resources.
- * @noSelf
- */
-export declare function getResources(): LuaTable;
-
-/**
- * This function retrieves the ACL request section from the meta.xml file of the given
- * resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceACLRequests Wiki, getResourceACLRequests }
- * @param theResource the resource to get the ACL requests for.
- * @return returns a table with the acl requests for the given resource, or false if the resource is
- * not valid. a valid resource with no acl requests will return an empty table.
- * @noSelf
- */
-export declare function getResourceACLRequests(
-    theResource: Resource
-): LuaTable;
-
-/**
- * This function retrieves the dynamic element root of a specified resource. The dynamic
- * element root is the parent of elements that are created by scripts (e.g. with
- * createObject) unless they specify a different parent.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot Wiki, getResourceDynamicElementRoot }
- * @param theResource the resource of which dynamic element root we want.
- * @return returns an element of the resources dynamic element root if the resource specified was
- * valid and active (currently running), false otherwise.
- * @noSelf
- */
-export declare function getResourceDynamicElementRoot(
-    theResource: Resource
-): Element;
-
-/**
- * This function retrieves the reason why a resource failed to start.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLoadFailureReason Wiki, getResourceLoadFailureReason }
- * @param theResource The resource you wish to check.
- * @return if the resource failed to load, returns a string with the failure reason in it. if it
- * loaded successfully, returns an empty string. returns false if the resource doesnt exist.
- * @noSelf
- */
-export declare function getResourceLoadFailureReason(
-    theResource: Resource
-): string;
-
-/**
- * This function retrieves the resource from which the function call was made.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
- * @return returns the resource in which the current script is.
- * @noSelf
- */
-export declare function getThisResource(): Resource;
-
-/**
- * This function retrieves the root element of a certain map in a specified resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
- * @param theResource the resource where the map is located
- * @param mapName name of the maps which root element we want to retrieve, file extension is required
- * @return returns an the resources map root element if the map exists and resource specified was
- * valid and active (currently running), false otherwise.
- * @noSelf
- */
-export declare function getResourceMapRootElement(
-    theResource: Resource,
-    mapName: string
-): Element;
-
-/**
- * This function retrieves the value of any attribute in a resource info tag.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
- * @param theResource the resource we are getting the info from.
- * @param attribute the name of the attribute we want info about.
- * @return returns a string with the attribute value if it exists, false otherwise.
- * @noSelf
- */
-export declare function getResourceInfo(
-    theResource: Resource,
-    attribute: string
-): string;
-
-/**
- * This function returns the organizational file path (e.g. admin) of a resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath Wiki, getResourceOrganizationalPath }
- * @param theResource the resource of which you want to know the organizational path
- * @return returns the organizational folder name of the resource. it returns empty string if the
- * resource is on root resources folder. it returns false if the resource could not be found.
- * @noSelf
- */
-export declare function getResourceOrganizationalPath(
-    theResource: Resource
-): string;
-
-/**
- * This function returns the state of a given resource
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceState Wiki, getResourceState }
- * @param theResource The resource you wish to get the state of.
- * @return if successful returns a string with the resource state in it, false otherwise.
- * the state can be one of:
- * *loaded
- * *running
- * *starting
- * *stopping
- * *failed to load - use getresourceloadfailurereason to find out why it failed.
- * @noSelf
- */
-export declare function getResourceState(
-    theResource: Resource
-): string;
-
-/**
  * This function sets the value of any attribute in a resource info tag.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetResourceInfo Wiki, setResourceInfo }
  * @param theResource the resource we are setting info to.
@@ -764,27 +771,20 @@ export declare function stopResource(
 ): boolean;
 
 /**
- * This will check if a resource is currently protected, as defined in
- * Server_mtaserver.conf#resource|mtaserver.conf.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
- * @param theResource the resource to check
- * @return returns true if the resource is protected, false otherwise.
+ * This function changes the access for one ACL request of the given resource.
+ * @see {@link https://wiki.multitheftauto.com/wiki/UpdateResourceACLRequest Wiki, updateResourceACLRequest }
+ * @param theResource the resource to set the ACL request for.
+ * @param rightName a string with the name of the right to set the access for. This has to match an existing
+ * ACL request.
+ * @param access a boolean value setting the access. True is for allow, and false for deny.
+ * @param byWho a string value to identity who is changing the setting.
+ * @return returns true if the setting was changed, or false if no change was required or there was
+ * a problem with the arguments.
  * @noSelf
  */
-export declare function isResourceProtected(
-    theResource: Resource
+export declare function updateResourceACLRequest(
+    theResource: Resource,
+    rightName: string,
+    access: boolean,
+    byWho?: string
 ): boolean;
-
-/**
- * Used to check the last starting time and date of a resource
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLastStartTime Wiki, getResourceLastStartTime }
- * @param theResource The resource of which youd like to check the last starting time.
- * @return if successful, returns the unix timestamp when the resource was last started, or the
- * string never if the resource has not been started yet, otherwise false. use in
- * conjunction with getrealtime in order to retrieve detailed information.
- * returns a string with the time and date, or false if the resource does not exist.
- * @noSelf
- */
-export declare function getResourceLastStartTime(
-    theResource: Resource
-): number;

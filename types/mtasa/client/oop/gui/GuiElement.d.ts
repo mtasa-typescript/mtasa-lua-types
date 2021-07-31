@@ -63,34 +63,14 @@ export class GuiElement {
     alpha: number;
 
     /**
-     * This function allows retrieval of a GUI elements current position, relative to its parent.
+     * This function is used to get the type of the current cursor image.
      */
-    position: LuaMultiReturn<[
-        number,
-        number
-    ]>;
-
-    /**
-     * This function checks whether user input is focused on the GUI or the game.
-     */
-    static inputEnabled: boolean;
+    static cursorType: string;
 
     /**
      * This function determines if a GUI element is enabled.
      */
     enabled: boolean;
-
-    /**
-     * This function determines if a GUI element is visible.
-     */
-    visible: boolean;
-
-    /**
-     * This function gets a list of the CEGUI property names and values of a GUI element. To
-     * find out what the different properties mean, check out the
-     * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
-     */
-    properties: LuaTable;
 
     /**
      * This function is used to get the current font that is used to draw text in GUI elements.
@@ -101,21 +81,41 @@ export class GuiElement {
     ]>;
 
     /**
-     * This function is used to get the text of GUI elements like edit boxes, labels, buttons
-     * etc.
+     * This function checks whether user input is focused on the GUI or the game.
      */
-    text: string;
-
-    /**
-     * This function is used to get the type of the current cursor image.
-     */
-    static cursorType: string;
+    static inputEnabled: boolean;
 
     /**
      * This function returns the current input mode as set by guiSetInputMode.
      * Default mode is allow_binds.
      */
     static inputMode: string;
+
+    /**
+     * This function allows retrieval of a GUI elements current position, relative to its parent.
+     */
+    position: LuaMultiReturn<[
+        number,
+        number
+    ]>;
+
+    /**
+     * This function gets a list of the CEGUI property names and values of a GUI element. To
+     * find out what the different properties mean, check out the
+     * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
+     */
+    properties: LuaTable;
+
+    /**
+     * This function is used to get the text of GUI elements like edit boxes, labels, buttons
+     * etc.
+     */
+    text: string;
+
+    /**
+     * This function determines if a GUI element is visible.
+     */
+    visible: boolean;
 
     /**
      * This function returns whether the ingame chatbox is being used (accepting chatbox input)
@@ -146,6 +146,13 @@ export class GuiElement {
     blur(): boolean;
 
     /**
+     * This function brings a GUI element on top of others.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiBringToFront Wiki, guiBringToFront }
+     * @return returns true if the function was successful, false otherwise.
+     */
+    bringToFront(): boolean;
+
+    /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiFocus Wiki, guiFocus }
      * @return returns true if the function was successful, false otherwise.
      */
@@ -161,16 +168,62 @@ export class GuiElement {
     getAlpha(): number;
 
     /**
-     * This changes the alpha level (the visibleness/transparency) of a GUI element
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetAlpha Wiki, guiSetAlpha }
-     * @param guiElement the GUI element whose visibility is to be changed
-     * @param alpha The visibility/transparency of the GUI element. Ranges from 0 (fully transparent) to 1
-     * (fully opaque). Default value is 0.80.
-     * @return returns true if the gui elements alpha was successfully changed, false otherwise.
+     * This function is used to get the type of the current cursor image.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetCursorType Wiki, guiGetCursorType }
+     * @return returns a string containing the cursor type:
+     * * none            // cursor has no image
+     * * arrow           // default cursor
+     * * sizing_ns       // n-s (up-down) sizing cursor
+     * * sizing_ew       // e-w (left-right) sizing cursor
+     * * sizing_nwse     // nw-se diagonal sizing cursor
+     * * sizing_nesw     // ne-sw diagonal sizing cursor
+     * * sizing_eswe     // es-we horizontal sizing cursor
+     * * move            // move cursor
+     * * container_drag  // drag container cursor (note: not in use)
+     * * segment_moving  // segment moving cursor (note: not in use)
+     * * segment_sizing  // segment sizing cursor (note: not in use)
      */
-    setAlpha(
-        alpha: number
-    ): boolean;
+    static getCursorType(): string;
+
+    /**
+     * This function determines if a GUI element is enabled.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetEnabled Wiki, guiGetEnabled }
+     * @return returns true if the element is enabled, false otherwise.
+     */
+    getEnabled(): boolean;
+
+    /**
+     * This function is used to get the current font that is used to draw text in GUI elements.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetFont Wiki, guiGetFont }
+     * @return *string a string containing the name of the elements current font, or false if the gui
+     * element passed to the function is invalid.
+     * *element  the custom gui font that is used, or nil otherwise
+     */
+    getFont(): LuaMultiReturn<[
+        string,
+        Element
+    ]>;
+
+    /**
+     * This function checks whether user input is focused on the GUI or the game.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputEnabled Wiki, guiGetInputEnabled }
+     * @return returns true if input is focused on gui, false if its focused on the game.
+     */
+    static isInputEnabled(): boolean;
+
+    /**
+     * This function returns the current input mode as set by guiSetInputMode.
+     * Default mode is allow_binds.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputMode Wiki, guiGetInputMode }
+     * @return returns a string defining the current input mode, potential values are:
+     * * allow_binds: binds are enabled, hence using a key such as t in an editbox will still
+     * activate the chatbox
+     * * no_binds: binds are disabled, hence using a key such as t in an editbox will not
+     * activate the chatbox
+     * * no_binds_when_editing: binds are always enabled except when an editable editbox or memo
+     * has input focus
+     */
+    static getInputMode(): string;
 
     /**
      * This function allows retrieval of a GUI elements current position, relative to its parent.
@@ -188,28 +241,123 @@ export class GuiElement {
     ]>;
 
     /**
-     * This function brings a GUI element on top of others.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiBringToFront Wiki, guiBringToFront }
-     * @return returns true if the function was successful, false otherwise.
+     * This function gets a list of the CEGUI property names and values of a GUI element. To
+     * find out what the different properties mean, check out the
+     * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperties Wiki, guiGetProperties }
+     * @return if the function succeeds, the return value is a table. its keys are property names, the
+     * corresponding values are the values of the properties (both names and values are always
+     * strings). if the function fails, it returns false.
      */
-    bringToFront(): boolean;
+    getProperties(): LuaTable;
 
     /**
-     * This function changes the visibility state of a GUI element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetVisible Wiki, guiSetVisible }
-     * @param state the new visibility state
-     * @return returns true if the elements visibility could be changed, false otherwise.
+     * This function gets the value of a specific CEGUI property of a GUI element. For a list of
+     * properties and their meaning, see the
+     * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperty Wiki, guiGetProperty }
+     * @param property the name of of property you want the value of.
+     * @return if the function succeeds, it returns a string with the value of the property. if it
+     * fails, it returns false.
      */
-    setVisible(
-        state: boolean
+    getProperty(
+        property: string
+    ): string;
+
+    /**
+     * This function retrieves the local screen size according to the resolution they are using.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetScreenSize Wiki, guiGetScreenSize }
+     * @return this returns two floats representing the players screen resolution, width and height.
+     */
+    static getScreenSize(): LuaMultiReturn<[
+        number,
+        number
+    ]>;
+
+    /**
+     * This function gets the size of a GUI element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetSize Wiki, guiGetSize }
+     * @param relative A boolean representing whether the size should be relative to the elements parent width,
+     * or an absolute size in pixels.
+     * @return returns the gui element size x and y if the function has been successful, false otherwise.
+     */
+    getSize(
+        relative: boolean
+    ): LuaMultiReturn<[
+        number,
+        number
+    ]>;
+
+    /**
+     * This function is used to get the text of GUI elements like edit boxes, labels, buttons
+     * etc.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetText Wiki, guiGetText }
+     * @return returns a string containing the requested elements text, or false if the gui element
+     * passed to the function is invalid.
+     */
+    getText(): string;
+
+    /**
+     * This function determines if a GUI element is visible.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetVisible Wiki, guiGetVisible }
+     * @return returns true if the element is visible, false otherwise.
+     */
+    getVisible(): boolean;
+
+    /**
+     * This function moves a GUI element to the very back of all other GUI elements.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiMoveToBack Wiki, guiMoveToBack }
+     * @return returns true if the function was successful, false otherwise.
+     */
+    moveToBack(): boolean;
+
+    /**
+     * This changes the alpha level (the visibleness/transparency) of a GUI element
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetAlpha Wiki, guiSetAlpha }
+     * @param guiElement the GUI element whose visibility is to be changed
+     * @param alpha The visibility/transparency of the GUI element. Ranges from 0 (fully transparent) to 1
+     * (fully opaque). Default value is 0.80.
+     * @return returns true if the gui elements alpha was successfully changed, false otherwise.
+     */
+    setAlpha(
+        alpha: number
     ): boolean;
 
     /**
-     * This function checks whether user input is focused on the GUI or the game.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputEnabled Wiki, guiGetInputEnabled }
-     * @return returns true if input is focused on gui, false if its focused on the game.
+     * This function enables/disables a GUI element. A disabled GUI element cant be used, gets a
+     * gray aspect and doesnt receive any events.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetEnabled Wiki, guiSetEnabled }
+     * @param enabled the new state
+     * @return if the function succeeds it returns true, if it fails it returns false.
      */
-    static isInputEnabled(): boolean;
+    setEnabled(
+        enabled: boolean
+    ): boolean;
+
+    /**
+     * This function sets the font of a GUI_widgets|GUI element to be used when drawing text.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetFont Wiki, guiSetFont }
+     * @param font Either a custom GUI font element or the name of a built-in GUI font. See Standard GUI
+     * Font Names
+     * @return returns true if the font has been successfully set on the gui element, false otherwise.
+     */
+    setFont(
+        font: any
+    ): boolean;
+
+    /**
+     * This function enables or disables input focus for the GUI.  This means that any keybinds
+     * or MTA binds are overidden so that text can be input into an editbox, for example.  In
+     * other words, keys such as t and y which activate the chatbox are disabled.
+     * guiSetInputMode can be used as an extended version of guiSetInputEnabled since it
+     * provides the same functionality with one added feature.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetInputEnabled Wiki, guiSetInputEnabled }
+     * @param enabled true if input should go to GUI, false if it should go to the game.
+     * @return returns true if input mode could be changed, false if invalid parameters are passed.
+     */
+    static setInputEnabled(
+        enabled: boolean
+    ): boolean;
 
     /**
      * This function controls the input mode to define whether or not (and when) keybinds or MTA
@@ -235,187 +383,69 @@ export class GuiElement {
     ): boolean;
 
     /**
-     * This function determines if a GUI element is enabled.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetEnabled Wiki, guiGetEnabled }
-     * @return returns true if the element is enabled, false otherwise.
+     * This function sets the position of a GUI element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetPosition Wiki, guiSetPosition }
+     * @param x Position over the X axis
+     * @param y Position over the Y axis
+     * @param relative Bool that indicates if the x/y positions are relative to the elements parent element.
+     * @return returns true if the position has been successfully set, false otherwise.
      */
-    getEnabled(): boolean;
-
-    /**
-     * This function determines if a GUI element is visible.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetVisible Wiki, guiGetVisible }
-     * @return returns true if the element is visible, false otherwise.
-     */
-    getVisible(): boolean;
-
-    /**
-     * This function enables or disables input focus for the GUI.  This means that any keybinds
-     * or MTA binds are overidden so that text can be input into an editbox, for example.  In
-     * other words, keys such as t and y which activate the chatbox are disabled.
-     * guiSetInputMode can be used as an extended version of guiSetInputEnabled since it
-     * provides the same functionality with one added feature.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetInputEnabled Wiki, guiSetInputEnabled }
-     * @param enabled true if input should go to GUI, false if it should go to the game.
-     * @return returns true if input mode could be changed, false if invalid parameters are passed.
-     */
-    static setInputEnabled(
-        enabled: boolean
-    ): boolean;
-
-    /**
-     * This function enables or disables the debug window.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetDebugViewActive Wiki, setDebugViewActive }
-     * @param enabled true if debug window should be visible, false otherwise.
-     * @return returns true, false if invalid parameters are passed.
-     */
-    static setDebugViewActive(
-        enabled: boolean
-    ): boolean;
-
-    /**
-     * This function enables/disables a GUI element. A disabled GUI element cant be used, gets a
-     * gray aspect and doesnt receive any events.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetEnabled Wiki, guiSetEnabled }
-     * @param enabled the new state
-     * @return if the function succeeds it returns true, if it fails it returns false.
-     */
-    setEnabled(
-        enabled: boolean
-    ): boolean;
-
-    /**
-     * This function gets a list of the CEGUI property names and values of a GUI element. To
-     * find out what the different properties mean, check out the
-     * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperties Wiki, guiGetProperties }
-     * @return if the function succeeds, the return value is a table. its keys are property names, the
-     * corresponding values are the values of the properties (both names and values are always
-     * strings). if the function fails, it returns false.
-     */
-    getProperties(): LuaTable;
-
-    /**
-     * This function gets the size of a GUI element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetSize Wiki, guiGetSize }
-     * @param relative A boolean representing whether the size should be relative to the elements parent width,
-     * or an absolute size in pixels.
-     * @return returns the gui element size x and y if the function has been successful, false otherwise.
-     */
-    getSize(
+    setPosition(
+        x: number,
+        y: number,
         relative: boolean
-    ): LuaMultiReturn<[
-        number,
-        number
-    ]>;
+    ): boolean;
 
     /**
-     * This function gets the value of a specific CEGUI property of a GUI element. For a list of
+     * This function sets the value of a specific CEGUI property of a GUI element. For a list of
      * properties and their meaning, see the
      * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperty Wiki, guiGetProperty }
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetProperty Wiki, guiSetProperty }
      * @param property the name of of property you want the value of.
-     * @return if the function succeeds, it returns a string with the value of the property. if it
-     * fails, it returns false.
+     * @param value the new value for the property.
+     * @return if the function succeeds it returns true, if it fails it returns false.
      */
-    getProperty(
-        property: string
-    ): string;
+    setProperty(
+        property: string,
+        value: string
+    ): boolean;
 
     /**
-     * This function is used to get the current font that is used to draw text in GUI elements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetFont Wiki, guiGetFont }
-     * @return *string a string containing the name of the elements current font, or false if the gui
-     * element passed to the function is invalid.
-     * *element  the custom gui font that is used, or nil otherwise
+     * This function sets the dimensions (size) of a GUI element. It refers to the bounding box
+     * size for GUI elements. It does not make GUI elements smaller or larger in appearance.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetSize Wiki, guiSetSize }
+     * @param width The desired width setting for the gui element
+     * @param height The desired height setting for the gui element
+     * @param relative This is whether sizes and positioning are relative.  If this is true, then all
+     * x,y,width,height floats must be between 0 and 1, representing sizes relative to the
+     * parent.
+     * @return returns true if the gui elements size was set successfully, false otherwise.
      */
-    getFont(): LuaMultiReturn<[
-        string,
-        Element
-    ]>;
+    setSize(
+        width: number,
+        height: number,
+        relative: boolean
+    ): boolean;
 
     /**
-     * This function is used to get the text of GUI elements like edit boxes, labels, buttons
-     * etc.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetText Wiki, guiGetText }
-     * @return returns a string containing the requested elements text, or false if the gui element
-     * passed to the function is invalid.
+     * This function sets the text of a GUI element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetText Wiki, guiSetText }
+     * @param text The new text
+     * @return returns true if text has been successfully set on the gui element, false otherwise.
      */
-    getText(): string;
+    setText(
+        text: string
+    ): boolean;
 
     /**
-     * This function is used to get the type of the current cursor image.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetCursorType Wiki, guiGetCursorType }
-     * @return returns a string containing the cursor type:
-     * * none            // cursor has no image
-     * * arrow           // default cursor
-     * * sizing_ns       // n-s (up-down) sizing cursor
-     * * sizing_ew       // e-w (left-right) sizing cursor
-     * * sizing_nwse     // nw-se diagonal sizing cursor
-     * * sizing_nesw     // ne-sw diagonal sizing cursor
-     * * sizing_eswe     // es-we horizontal sizing cursor
-     * * move            // move cursor
-     * * container_drag  // drag container cursor (note: not in use)
-     * * segment_moving  // segment moving cursor (note: not in use)
-     * * segment_sizing  // segment sizing cursor (note: not in use)
+     * This function changes the visibility state of a GUI element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetVisible Wiki, guiSetVisible }
+     * @param state the new visibility state
+     * @return returns true if the elements visibility could be changed, false otherwise.
      */
-    static getCursorType(): string;
-
-    /**
-     * This function moves a GUI element to the very back of all other GUI elements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiMoveToBack Wiki, guiMoveToBack }
-     * @return returns true if the function was successful, false otherwise.
-     */
-    moveToBack(): boolean;
-
-    /**
-     * This function retrieves the local screen size according to the resolution they are using.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetScreenSize Wiki, guiGetScreenSize }
-     * @return this returns two floats representing the players screen resolution, width and height.
-     */
-    static getScreenSize(): LuaMultiReturn<[
-        number,
-        number
-    ]>;
-
-    /**
-     * This function returns the current input mode as set by guiSetInputMode.
-     * Default mode is allow_binds.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputMode Wiki, guiGetInputMode }
-     * @return returns a string defining the current input mode, potential values are:
-     * * allow_binds: binds are enabled, hence using a key such as t in an editbox will still
-     * activate the chatbox
-     * * no_binds: binds are disabled, hence using a key such as t in an editbox will not
-     * activate the chatbox
-     * * no_binds_when_editing: binds are always enabled except when an editable editbox or memo
-     * has input focus
-     */
-    static getInputMode(): string;
-
-    /**
-     * This function returns whether any system windows that take focus are active. This
-     * includes:
-     * * Chatbox input
-     * * Console window
-     * * Main menu
-     * * Transferbox
-     * To get the status of the debug view, see isDebugViewActive.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsMTAWindowActive Wiki, isMTAWindowActive }
-     * @return returns true if the focus is on the mta window, false if it isnt.
-     */
-    static isMTAWindowActive(): boolean;
-
-    /**
-     * This function returns whether the file downloading dialog box is active or not. This
-     * appears when a resource is started and the client doesnt have all the files that resource
-     * requires the client to have.
-     * Its important to note that resources arent started on the client until theyre completely
-     * downloaded, so a resource cannot use this function to detect if its own files are
-     * downloaded. A client-side resource triggers the onClientResourceStart event when the
-     * files it requires are downloaded.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxActive Wiki, isTransferBoxActive }
-     * @return returns true if the file transfer box is visible, false if not.
-     */
-    static isTransferBoxActive(): boolean;
+    setVisible(
+        state: boolean
+    ): boolean;
 
     /**
      * This function returns whether the ingame chatbox is being used (accepting chatbox input)
@@ -448,68 +478,38 @@ export class GuiElement {
     static isMainMenuActive(): boolean;
 
     /**
-     * This function sets the dimensions (size) of a GUI element. It refers to the bounding box
-     * size for GUI elements. It does not make GUI elements smaller or larger in appearance.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetSize Wiki, guiSetSize }
-     * @param width The desired width setting for the gui element
-     * @param height The desired height setting for the gui element
-     * @param relative This is whether sizes and positioning are relative.  If this is true, then all
-     * x,y,width,height floats must be between 0 and 1, representing sizes relative to the
-     * parent.
-     * @return returns true if the gui elements size was set successfully, false otherwise.
+     * This function returns whether any system windows that take focus are active. This
+     * includes:
+     * * Chatbox input
+     * * Console window
+     * * Main menu
+     * * Transferbox
+     * To get the status of the debug view, see isDebugViewActive.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsMTAWindowActive Wiki, isMTAWindowActive }
+     * @return returns true if the focus is on the mta window, false if it isnt.
      */
-    setSize(
-        width: number,
-        height: number,
-        relative: boolean
-    ): boolean;
+    static isMTAWindowActive(): boolean;
 
     /**
-     * This function sets the font of a GUI_widgets|GUI element to be used when drawing text.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetFont Wiki, guiSetFont }
-     * @param font Either a custom GUI font element or the name of a built-in GUI font. See Standard GUI
-     * Font Names
-     * @return returns true if the font has been successfully set on the gui element, false otherwise.
+     * This function returns whether the file downloading dialog box is active or not. This
+     * appears when a resource is started and the client doesnt have all the files that resource
+     * requires the client to have.
+     * Its important to note that resources arent started on the client until theyre completely
+     * downloaded, so a resource cannot use this function to detect if its own files are
+     * downloaded. A client-side resource triggers the onClientResourceStart event when the
+     * files it requires are downloaded.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxActive Wiki, isTransferBoxActive }
+     * @return returns true if the file transfer box is visible, false if not.
      */
-    setFont(
-        font: any
-    ): boolean;
+    static isTransferBoxActive(): boolean;
 
     /**
-     * This function sets the position of a GUI element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetPosition Wiki, guiSetPosition }
-     * @param x Position over the X axis
-     * @param y Position over the Y axis
-     * @param relative Bool that indicates if the x/y positions are relative to the elements parent element.
-     * @return returns true if the position has been successfully set, false otherwise.
+     * This function enables or disables the debug window.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetDebugViewActive Wiki, setDebugViewActive }
+     * @param enabled true if debug window should be visible, false otherwise.
+     * @return returns true, false if invalid parameters are passed.
      */
-    setPosition(
-        x: number,
-        y: number,
-        relative: boolean
-    ): boolean;
-
-    /**
-     * This function sets the text of a GUI element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetText Wiki, guiSetText }
-     * @param text The new text
-     * @return returns true if text has been successfully set on the gui element, false otherwise.
-     */
-    setText(
-        text: string
-    ): boolean;
-
-    /**
-     * This function sets the value of a specific CEGUI property of a GUI element. For a list of
-     * properties and their meaning, see the
-     * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetProperty Wiki, guiSetProperty }
-     * @param property the name of of property you want the value of.
-     * @param value the new value for the property.
-     * @return if the function succeeds it returns true, if it fails it returns false.
-     */
-    setProperty(
-        property: string,
-        value: string
+    static setDebugViewActive(
+        enabled: boolean
     ): boolean;
 }

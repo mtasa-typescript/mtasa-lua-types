@@ -57,9 +57,9 @@ import {
 /** @customConstructor Browser */
 export class Browser extends Element {
     /**
-     * This function checks if a browser is currently loading a website.
+     * This function returns the title of the passed Element/Browser|browser.
      */
-    loading: boolean;
+    title: string;
 
     /**
      * This function returns the URL of the specified Element/Browser|browser.
@@ -67,9 +67,14 @@ export class Browser extends Element {
     url: string;
 
     /**
-     * This function returns the title of the passed Element/Browser|browser.
+     * This function checks if a browser is currently loading a website.
      */
-    title: string;
+    loading: boolean;
+
+    /**
+     * This function sets the rendering state of a browser.
+     */
+    renderingPaused: boolean;
 
     /**
      * This function sets either a specific Element/Browser|browsers volume, or the overall
@@ -78,57 +83,9 @@ export class Browser extends Element {
     volume: boolean;
 
     /**
-     * This function sets the rendering state of a browser.
-     */
-    renderingPaused: boolean;
-
-    /**
      * This function toggles the visibility of the developer tools pane.
      */
     devTools: boolean;
-
-    /**
-     * This function can be used to retrieve the source code of a website (asynchronously). The
-     * size of the source code is limited to 2 MiB (remaining bytes are cut).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSource Wiki, getBrowserSource }
-     * @param callback a callback function with syntax as described below
-     * <syntaxhighlight lang="lua">
-     * function ( string code )
-     * </syntaxhighlight>
-     * @return returns true if valid arguments have been passed, false otherwise.
-     */
-    getSource(
-        callback: HandleFunction
-    ): boolean;
-
-    /**
-     * This function checks if a browser is currently loading a website.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserLoading Wiki, isBrowserLoading }
-     * @return returns true if the browser is loading a website, false otherwise and nil if invalid
-     * arguments were passed.
-     */
-    isLoading(): boolean;
-
-    /**
-     * This function checks if a browser is focused.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserFocused Wiki, isBrowserFocused }
-     * @return returns true if the browser is focused, false otherwise and nil if invalid arguments were
-     * passed.
-     */
-    isFocused(): boolean;
-
-    /**
-     * This function checks if the specified URL is blocked from being loaded.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserDomainBlocked Wiki, isBrowserDomainBlocked }
-     * @param address A website URL
-     * @param isURL true if address should be parsed as URL, false otherwise.
-     * @return returns false if the url is able to be loaded, true if it is blocked and nil if an
-     * invalid domain/url was passed.
-     */
-    static isDomainBlocked(
-        address: string,
-        isURL?: boolean
-    ): boolean;
 
     /**
      * This function creates a new web Element/Browser|browser element.
@@ -160,6 +117,15 @@ export class Browser extends Element {
     ): boolean;
 
     /**
+     * This function will attempt to focus the Element/Browser|browser or unfocus all browsers.
+     * The browser that is focused will retrieve keyboard input.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FocusBrowser Wiki, focusBrowser }
+     * @return returns true if the browser was focused or if nil was passed, false if it failed to focus
+     * or the browser does not exist.
+     */
+    focus(): boolean;
+
+    /**
      * This function gets a given property of a specified browser.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserProperty Wiki, getBrowserProperty }
      * @param key The browser property key. It can be:
@@ -171,22 +137,51 @@ export class Browser extends Element {
     ): boolean;
 
     /**
+     * This function returns a table containing the browser settings.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSettings Wiki, getBrowserSettings }
+     * @return a table having the following keys:
+     * * remoteenabled: true if remote websites are enabled, false otherwise
+     * * remotejavascript: true if javascript is enabled on remote websites, false otherwise
+     * * pluginsenabled: true if plugins such as flash, silverlight (but not java) are enabled,
+     * false otherwise. this setting is false by default.
+     */
+    static getSettings(): LuaTable;
+
+    /**
+     * This function can be used to retrieve the source code of a website (asynchronously). The
+     * size of the source code is limited to 2 MiB (remaining bytes are cut).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSource Wiki, getBrowserSource }
+     * @param callback a callback function with syntax as described below
+     * <syntaxhighlight lang="lua">
+     * function ( string code )
+     * </syntaxhighlight>
+     * @return returns true if valid arguments have been passed, false otherwise.
+     */
+    getSource(
+        callback: HandleFunction
+    ): boolean;
+
+    /**
+     * This function returns the title of the passed Element/Browser|browser.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserTitle Wiki, getBrowserTitle }
+     * @return returns the title as a string. returns false if invalid arguments were passed.
+     */
+    getTitle(): string;
+
+    /**
+     * This function returns the URL of the specified Element/Browser|browser.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserURL Wiki, getBrowserURL }
+     * @return returns the web browser url.
+     */
+    getURL(): string;
+
+    /**
      * This function injects a mouse click (state: down).
      * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseDown Wiki, injectBrowserMouseDown }
      * @param mouseButton The mouse button (Possible values: left, middle, right)
      * @return returns true if the click was successfully injected, false otherwise.
      */
     injectMouseDown(
-        mouseButton: string
-    ): boolean;
-
-    /**
-     * This function injects a mouse click (state: up).
-     * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp Wiki, injectBrowserMouseUp }
-     * @param mouseButton The mouse button (Possible values: left, middle, right)
-     * @return returns true if the click was successfully injected, false otherwise.
-     */
-    injectMouseUp(
         mouseButton: string
     ): boolean;
 
@@ -203,6 +198,16 @@ export class Browser extends Element {
     ): boolean;
 
     /**
+     * This function injects a mouse click (state: up).
+     * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp Wiki, injectBrowserMouseUp }
+     * @param mouseButton The mouse button (Possible values: left, middle, right)
+     * @return returns true if the click was successfully injected, false otherwise.
+     */
+    injectMouseUp(
+        mouseButton: string
+    ): boolean;
+
+    /**
      * This function injects mouse wheel events.
      * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseWheel Wiki, injectBrowserMouseWheel }
      * @param verticalScroll : Amount of units you want the browser to scroll along the Y-axe.
@@ -213,6 +218,35 @@ export class Browser extends Element {
         verticalScroll: number,
         horizontalScroll: number
     ): boolean;
+
+    /**
+     * This function checks if the specified URL is blocked from being loaded.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserDomainBlocked Wiki, isBrowserDomainBlocked }
+     * @param address A website URL
+     * @param isURL true if address should be parsed as URL, false otherwise.
+     * @return returns false if the url is able to be loaded, true if it is blocked and nil if an
+     * invalid domain/url was passed.
+     */
+    static isDomainBlocked(
+        address: string,
+        isURL?: boolean
+    ): boolean;
+
+    /**
+     * This function checks if a browser is focused.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserFocused Wiki, isBrowserFocused }
+     * @return returns true if the browser is focused, false otherwise and nil if invalid arguments were
+     * passed.
+     */
+    isFocused(): boolean;
+
+    /**
+     * This function checks if a browser is currently loading a website.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserLoading Wiki, isBrowserLoading }
+     * @return returns true if the browser is loading a website, false otherwise and nil if invalid
+     * arguments were passed.
+     */
+    isLoading(): boolean;
 
     /**
      * This function loads the specified URL.
@@ -263,31 +297,6 @@ export class Browser extends Element {
     ): boolean;
 
     /**
-     * This function returns a table containing the browser settings.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSettings Wiki, getBrowserSettings }
-     * @return a table having the following keys:
-     * * remoteenabled: true if remote websites are enabled, false otherwise
-     * * remotejavascript: true if javascript is enabled on remote websites, false otherwise
-     * * pluginsenabled: true if plugins such as flash, silverlight (but not java) are enabled,
-     * false otherwise. this setting is false by default.
-     */
-    static getSettings(): LuaTable;
-
-    /**
-     * This function returns the URL of the specified Element/Browser|browser.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserURL Wiki, getBrowserURL }
-     * @return returns the web browser url.
-     */
-    getURL(): string;
-
-    /**
-     * This function returns the title of the passed Element/Browser|browser.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserTitle Wiki, getBrowserTitle }
-     * @return returns the title as a string. returns false if invalid arguments were passed.
-     */
-    getTitle(): string;
-
-    /**
      * This function sets a given property of a specified browser.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserProperty Wiki, setBrowserProperty }
      * @param key The browser property key. It can be:
@@ -298,6 +307,16 @@ export class Browser extends Element {
     setProperty(
         key: string,
         value: string
+    ): boolean;
+
+    /**
+     * This function sets the rendering state of a browser.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused Wiki, setBrowserRenderingPaused }
+     * @param paused true to pause rendering, false to continue
+     * @return returns true if the state was successfully changed
+     */
+    setRenderingPaused(
+        paused: boolean
     ): boolean;
 
     /**
@@ -312,16 +331,6 @@ export class Browser extends Element {
     ): boolean;
 
     /**
-     * This function sets the rendering state of a browser.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused Wiki, setBrowserRenderingPaused }
-     * @param paused true to pause rendering, false to continue
-     * @return returns true if the state was successfully changed
-     */
-    setRenderingPaused(
-        paused: boolean
-    ): boolean;
-
-    /**
      * This function toggles the visibility of the developer tools pane.
      * @see {@link https://wiki.multitheftauto.com/wiki/ToggleBrowserDevTools Wiki, toggleBrowserDevTools }
      * @param visible true to show the tools, false to hide
@@ -330,13 +339,4 @@ export class Browser extends Element {
     toggleDevTools(
         visible: boolean
     ): boolean;
-
-    /**
-     * This function will attempt to focus the Element/Browser|browser or unfocus all browsers.
-     * The browser that is focused will retrieve keyboard input.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FocusBrowser Wiki, focusBrowser }
-     * @return returns true if the browser was focused or if nil was passed, false if it failed to focus
-     * or the browser does not exist.
-     */
-    focus(): boolean;
 }

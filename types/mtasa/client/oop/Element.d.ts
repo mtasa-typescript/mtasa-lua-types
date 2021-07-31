@@ -57,13 +57,70 @@ import {
 /** @customConstructor Element */
 export class Element {
     /**
-     * Retrieve the rotation of elements.
+     * This function returns the alpha (transparency) value for the specified element. This can
+     * be a player, ped, object, vehicle or Element/Weapon|weapon.
      */
-    rotation: LuaMultiReturn<[
+    alpha: number;
+
+    /**
+     */
+    angularVelocity: LuaMultiReturn<[
         number,
         number,
         number
     ]>;
+
+    /**
+     * This function indicates if a specific element is set to have collisions disabled. An
+     * element without collisions does not interact with the physical environment and remains
+     * static.
+     */
+    collisions: boolean;
+
+    /**
+     * Some elements have an associated colshape, for example Marker and Pickup. This function
+     * is used to get the associated colshape.
+     */
+    colShape: ColShape;
+
+    /**
+     * This function allows you to retrieve the dimension of any element. The dimension
+     * determines what/who the element is visible to.
+     */
+    dimension: number;
+
+    /**
+     * This function is used to retrieve the distance between a elements centre of mass to the
+     * base of the model. This can be used to calculate the position the element has to be set
+     * to, to have it on ground level.
+     */
+    distanceFromCentreOfMassToBaseOfModel: number;
+
+    /**
+     * This function returns the current health for the specified element. This can be a player,
+     * a ped, a vehicle, or an object.
+     */
+    health: number;
+
+    /**
+     * This function gets the ID of an element. This is the id attribute of the element and is a
+     * string, NOT a number like a model ID, weapons ID or similar.
+     */
+    id: string;
+
+    /**
+     * This function allows you to retrieve the interior of any element. An interior is the
+     * current loaded place, 0 being outside.
+     */
+    interior: number;
+
+    /**
+     * This function gets an elements transform matrix. This contains 16 float values that
+     * multiplied to a point will give you the point transformed. It is most useful for matrix
+     * calculations such as calculating offsets. For further information, please refer to a
+     * tutorial of matrices in computer graphics programming.
+     */
+    matrix: LuaTable;
 
     /**
      * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
@@ -72,10 +129,9 @@ export class Element {
     model: number;
 
     /**
-     * Some elements have an associated colshape, for example Marker and Pickup. This function
-     * is used to get the associated colshape.
+     * This function is used to determine the parent of an element.
      */
-    colShape: ColShape;
+    parent: Element;
 
     /**
      * The getElementPosition function allows you to retrieve the position coordinates of an
@@ -96,111 +152,24 @@ export class Element {
     ]>;
 
     /**
-     * This function allows you to retrieve the dimension of any element. The dimension
-     * determines what/who the element is visible to.
-     */
-    dimension: number;
-
-    /**
-     * This function allows you to retrieve the interior of any element. An interior is the
-     * current loaded place, 0 being outside.
-     */
-    interior: number;
-
-    /**
-     * This function checks if element has been frozen.
-     */
-    frozen: boolean;
-
-    /**
-     * This function checks whether a clientside element is local to the client (doesnt exist in
-     * the server) or not.
-     */
-    localElement: boolean;
-
-    /**
-     * This function checks whether an element is double-sided as set by setElementDoubleSided
-     * or not.
-     */
-    doubleSided: boolean;
-
-    /**
-     * This function checks whether an element is streamable as set by setElementStreamable or
-     * not.
-     */
-    streamable: boolean;
-
-    /**
-     * This function checks whether an element is submerged in water.
-     */
-    inWater: boolean;
-
-    /**
-     * This function checks whether an element is synced by the local player or not. Accepted
-     * elements are ped|peds and vehicle|vehicles.
-     */
-    syncedByLocalPlayer: boolean;
-
-    /**
-     * This function gets an elements transform matrix. This contains 16 float values that
-     * multiplied to a point will give you the point transformed. It is most useful for matrix
-     * calculations such as calculating offsets. For further information, please refer to a
-     * tutorial of matrices in computer graphics programming.
-     */
-    matrix: LuaTable;
-
-    /**
-     * This function gets the ID of an element. This is the id attribute of the element and is a
-     * string, NOT a number like a model ID, weapons ID or similar.
-     */
-    id: string;
-
-    /**
      * This function gets the radius of an element. Normally, sphere or circle-shaped elements
      * tend to return a more accurate and expected radius than others with another shapes.
      */
     radius: number;
 
     /**
-     * This function indicates if a specific element is set to have collisions disabled. An
-     * element without collisions does not interact with the physical environment and remains
-     * static.
+     * Retrieve the rotation of elements.
      */
-    collisions: boolean;
-
-    /**
-     * This function is used to determine the parent of an element.
-     */
-    parent: Element;
-
-    /**
-     * This function is used to retrieve the distance between a elements centre of mass to the
-     * base of the model. This can be used to calculate the position the element has to be set
-     * to, to have it on ground level.
-     */
-    distanceFromCentreOfMassToBaseOfModel: number;
+    rotation: LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
 
     /**
      * This function is used to retrieve the type of an element.
      */
     type: string;
-
-    /**
-     * This function return the low LOD element that an element is associated with.
-     */
-    lowLOD: Element;
-
-    /**
-     * This function returns the alpha (transparency) value for the specified element. This can
-     * be a player, ped, object, vehicle or Element/Weapon|weapon.
-     */
-    alpha: number;
-
-    /**
-     * This function returns the current health for the specified element. This can be a player,
-     * a ped, a vehicle, or an object.
-     */
-    health: number;
 
     /**
      * This function returns three floats containing the velocity (movement speeds) along the X,
@@ -214,6 +183,38 @@ export class Element {
     ]>;
 
     /**
+     * This function return the low LOD element that an element is associated with.
+     */
+    lowLOD: Element;
+
+    /**
+     * This functions checks whether or not an element is attached to another element.
+     */
+    attached: boolean;
+
+    /**
+     * This function checks whether an element is double-sided as set by setElementDoubleSided
+     * or not.
+     */
+    doubleSided: boolean;
+
+    /**
+     * This function checks if element has been frozen.
+     */
+    frozen: boolean;
+
+    /**
+     * This function checks whether an element is submerged in water.
+     */
+    inWater: boolean;
+
+    /**
+     * This function checks whether a clientside element is local to the client (doesnt exist in
+     * the server) or not.
+     */
+    localElement: boolean;
+
+    /**
      * This function will check if an element is on the screen. Elements behind objects but
      * still in the camera view count as being on screen.
      * This function is particularly useful for detecting if dynamic objects are in destroyed
@@ -222,280 +223,20 @@ export class Element {
     onScreen: boolean;
 
     /**
-     * This functions checks whether or not an element is attached to another element.
+     * This function checks whether an element is streamable as set by setElementStreamable or
+     * not.
      */
-    attached: boolean;
+    streamable: boolean;
 
     /**
+     * This function checks whether an element is synced by the local player or not. Accepted
+     * elements are ped|peds and vehicle|vehicles.
      */
-    angularVelocity: LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
+    syncedByLocalPlayer: boolean;
 
     /**
      */
     waitingForGroundToLoad: boolean;
-
-    /**
-     * * This function checks if elements are in a box, not in a sphere.
-     * * Z argument isnt in use currently, but make your scripts like it is for future
-     * compatibility reasons.
-     * * This function doesnt work with elements which is created by createElement.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinRange Wiki, getElementsWithinRange }
-     * @param x the x coordinate at which to retrieve elements
-     * @param y the y coordinate at which to retrieve elements
-     * @param z the z coordinate at which to retrieve elements
-     * @param range the range at the coordinates in which to retrieve elements
-     * @param elemType The type of element you want a list of. This can be any element type, such as:
-     * @param player A player connected to the server
-     * @param ped A ped
-     * @param vehicle A vehicle
-     * @param object An object
-     * @param pickup A pickup
-     * @param marker A marker
-     * @param interior The interior you want to limit the search to. If not specified, it can return elements in
-     * any interior.
-     * @param dimension The dimension you want to limit the search to. If not specified, it can return elements
-     * in any dimension.
-     * @return returns a table containing all the elements of the specified type within range. returns
-     * an empty table if there are no elements within range. returns false if the arguments are
-     * invalid.
-     */
-    static getWithinRange(
-        x: number,
-        y: number,
-        z: number,
-        range: number,
-        elemType?: string,
-        interior?: number,
-        dimension?: number
-    ): LuaTable;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAngularVelocity Wiki, getElementAngularVelocity }
-     * @return returns three floats describing the x, y and z rotation
-     */
-    getAngularVelocity(): LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWaitingForGroundToLoad Wiki, isElementWaitingForGroundToLoad }
-     * @return returns true if the specified element is frozen waiting for collisions of custom map
-     * objects to load. returns false if its not or if the specified element is invalid.
-     */
-    isWaitingForGroundToLoad(): boolean;
-
-    /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAngularVelocity Wiki, setElementAngularVelocity }
-     * @param rx velocity around the X axis
-     * @param ry velocity around the Y axis
-     * @param rz velocity around the Z axis
-     * @return returns true if it was succesful, false otherwise.
-     */
-    setAngularVelocity(
-        rx: number,
-        ry: number,
-        rz: number
-    ): boolean;
-
-    /**
-     * Retrieve the rotation of elements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementRotation Wiki, getElementRotation }
-     * @param rotOrder A string representing the rotation order desired when returning the
-     * http://en.wikipedia.org/wiki/Euler_angles euler angles. If omitted, default value is
-     * default. Allowed values are:
-     * @param default default MTA behavior prior to 1.1, where rotation order depends on element type
-     * @param ZXY rotation about the Z axis (up), then about the resulting X axis (right) and finally about
-     * the resulting Y axis (front). This is the default rotation order for object|objects
-     * @param ZYX rotation about the Z axis (up), then about the resulting Y axis (front), and finally
-     * about the resulting X axis (right). This is the default rotation order for
-     * vehicle|vehicles
-     * The default rotation order for peds/players is Z-Y-X (clientside) and -Z-Y-X (serverside)
-     * but those rotation orders (set using ''"default"'' on peds) can not be used manually on
-     * other element types since they only exist due to historical and backward compatibility
-     * reasons.
-     * Specifying a rotation order other than ''"default"'' allows the same angles to later be
-     * uniformly used on several elements without having to consider their type.
-     * @return * rx, ry, rz: 3 floats representing the euler rotation angles on the axis x, y and z
-     * (with the rotation order depending on the rotorder argument) if element exists and is a
-     * valid element, false if its invalid.
-     */
-    getRotation(
-        rotOrder?: string
-    ): LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
-     * an object model or a vehicle model.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementModel Wiki, getElementModel }
-     * @return returns the model id if successful, false otherwise.
-     * * for players/peds: a gtasa player model (skin) id. see character skins.
-     * * for vehicles: the vehicle ids|vehicle id of the vehicle.
-     * * for objects: an int specifying the model id.
-     */
-    getModel(): number;
-
-    /**
-     * Sets the model of a given element. This allows you to change the model of a player (or
-     * ped), a vehicle or an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementModel Wiki, setElementModel }
-     * @param model the model ID to set.
-     * ** For players/peds: A GTASA player model (skin) ID. See [[Character Skins]].
-     * ** For vehicles: The [[Vehicle IDs|vehicle ID]] of the vehicle being changed.
-     * ** For objects/projectiles/weapons: An [[int]] specifying the model id.
-     * @return returns true if successful, false otherwise.
-     */
-    setModel(
-        model: number
-    ): boolean;
-
-    /**
-     * Sets the rotation of elements according to the world (does not work with players that are
-     * on the ground).
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementRotation Wiki, setElementRotation }
-     * @param rotX The elements rotation around the x axis in degrees
-     * @param rotY The elements rotation around the y axis in degrees
-     * @param rotZ The elements rotation around the z axis in degrees
-     * @param rotOrder A string representing the rotation order desired when interpreting the provided
-     * http://en.wikipedia.org/wiki/Euler_angles euler angles. If omitted, default value is
-     * default. Allowed values are:
-     * @param default default MTA behavior prior to 1.1, where rotation order depends on element type
-     * @param ZXY rotation about the Z axis (up), then about the resulting X axis (right), and finally
-     * about the resulting Y axis (front). This is the default rotation order for object|objects
-     * @param ZYX rotation about the Z axis (up), then about the resulting Y axis (front), and finally
-     * about the resulting X axis (right). This is the default rotation order for
-     * vehicle|vehicles
-     * The default rotation order for peds/players is -Z-Y-X but this rotation order (set using
-     * ''"default"'' on peds) can not be set manually on other element types since it only
-     * exists due to historical and backward compatibility reasons.
-     * Specifying a rotation order other than ''"default"'' allows the same angles to be
-     * uniformly used on several elements without having to consider their type.
-     * @param conformPedRotation Relevant only for peds and will be ignored for other element types. A bool which should
-     * be set to true to ensure the ped rotation is correctly set in all circumstances. Failing
-     * to set this argument may result in the ped rotation being inverted whilst it is in the
-     * air and other inconsistencies. The default value of false is for backward compatibility
-     * with scripts which may depend upon the incorrect behaviour.
-     * @return returns true if the element rotation was successfully set and false otherwise.
-     */
-    setRotation(
-        rotX: number,
-        rotY: number,
-        rotZ: number,
-        rotOrder?: string,
-        conformPedRotation?: boolean
-    ): boolean;
-
-    /**
-     * Some elements have an associated colshape, for example Marker and Pickup. This function
-     * is used to get the associated colshape.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementColShape Wiki, getElementColShape }
-     * @return returns colshape of the element, false if not or an invalid argument was passed to the
-     * function.
-     */
-    getColShape(): ColShape;
-
-    /**
-     * The getElementPosition function allows you to retrieve the position coordinates of an
-     * element.  This can be any real world element, including:
-     * * Element/Player|Players
-     * * Element/Vehicle|Vehicles
-     * * Element/Object|Objects
-     * * Element/Pickup|Pickups
-     * * Element/Marker|Markers
-     * * Element/Collision shape|Collision shapes
-     * * Element/Blip|Blips
-     * * Element/Radar area|Radar areas
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementPosition Wiki, getElementPosition }
-     * @return returns three floats indicating the position of the element, x, y and z respectively.
-     */
-    getPosition(): LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function allows you to retrieve the dimension of any element. The dimension
-     * determines what/who the element is visible to.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDimension Wiki, getElementDimension }
-     * @return returns an integer for the dimension if theelement is valid, false otherwise.
-     */
-    getDimension(): number;
-
-    /**
-     * This function allows you to retrieve the interior of any element. An interior is the
-     * current loaded place, 0 being outside.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementInterior Wiki, getElementInterior }
-     * @return returns an int for the interior if theelement is valid, false otherwise.
-     */
-    getInterior(): number;
-
-    /**
-     * This function allows you to set the dimension of any element. The dimension determines
-     * what/who the element is visible to.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementDimension Wiki, setElementDimension }
-     * @param dimension An integer representing the dimension ID. {{New feature/item|3.0154|1.5.3|11199|You can
-     * also use -1 to make the element visible in all dimensions (only valid to objects).}}
-     * Valid values are 0 to 65535.
-     * @return returns true if theelement and dimension are valid, false otherwise.
-     * also returns false if theelement is a player and its not alive.
-     */
-    setDimension(
-        dimension: number
-    ): boolean;
-
-    /**
-     * This function allows you to set the double-sidedness of an elements model. When an
-     * elements model is double-sided, its back facing triangles become visible.
-     * Possible uses of double-sidedness are: Elimination of invisible walls, using buildings as
-     * enclosures, using inverted landmasses as large pits or to make cave networks. It can also
-     * remove the need to add extra triangles to custom models when trying to make them appear
-     * solid from all directions.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementDoubleSided Wiki, setElementDoubleSided }
-     * @param enable Set to true/false to enable/disable double-sidedness.
-     * @return returns true if theelement is valid, false otherwise.
-     */
-    setDoubleSided(
-        enable: boolean
-    ): boolean;
-
-    /**
-     * This function allows you to set the interior of any element. An interior is the current
-     * loaded place, 0 being outside.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementInterior Wiki, setElementInterior }
-     * @param interior The interior you want to set the element to. Valid values are 0 to 255.
-     * @param x A floating point number representing the X coordinate on the map.
-     * @param y A floating point number representing the Y coordinate on the map.
-     * @param z A floating point number representing the Z coordinate on the map.
-     * @return returns true if theelement and interior are valid arguments, false otherwise.
-     */
-    setInterior(
-        interior: number,
-        x?: number,
-        y?: number,
-        z?: number
-    ): boolean;
-
-    /**
-     * This function assigns a low LOD element to an element. The low LOD element is displayed
-     * when its associated element is not fully visible. If a low LOD element is assigned to
-     * several elements, it will be displayed when any of these elements are not fully visible.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetLowLODElement Wiki, setLowLODElement }
-     * @param lowLODElement A low LOD element to display when the first element is not fully visible.
-     * @return returns true if the assignment was successful, false otherwise.
-     */
-    setLowLOD(
-        lowLODElement: Element
-    ): boolean;
 
     /**
      * This function attaches one element to another, so that the first one follows the second
@@ -549,6 +290,455 @@ export class Element {
     ): boolean;
 
     /**
+     * This function is used to create a new dummy element in the element tree which do not
+     * necessarily represent an entity within the San Andreas world. A common use for this
+     * function is for creating custom elements, such as a Flag or a Base.
+     * Elements created using this function are placed in the element tree with their parent as
+     * the dynamic map element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/CreateElement Wiki, createElement }
+     * @param elementType The type of element being created.
+     * @param elementID The ID of the element being created.
+     * @return returns the element if it was successfully created. returns false if the arguments are
+     * wrong.
+     */
+    constructor(
+        elementType: string,
+        elementID?: string
+    );
+
+    /**
+     * This function destroys an element and all elements within it in the hierarchy (its
+     * children, the children of those children etc). player|Player elements cannot be destroyed
+     * using this function. A player can only be removed from the hierarchy when they quit or
+     * are kicked. The root element also cannot be destroyed, however, passing the root as an
+     * argument will wipe all elements from the server, except for the players and clients,
+     * which will become direct descendants of the root node, and other elements that cannot be
+     * destroyed, such as resource root elements.
+     * Players are not the only elements that cannot be deleted. This list also includes remote
+     * clients and console elements.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DestroyElement Wiki, destroyElement }
+     * @return returns true if the element was destroyed successfully, false if either the element
+     * passed to it was invalid or it could not be destroyed for some other reason (for example,
+     * clientside destroyelement cant destroy serverside elements).
+     */
+    destroy(): boolean;
+
+    /**
+     * This function detaches attached elements from one another.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DetachElements Wiki, detachElements }
+     * @param theAttachToElement The element you wish to detach from, will detach from the attached element if this isnt
+     * specified.
+     * @return returns true if the detaching was successful, false otherwise.
+     */
+    detach(
+        theAttachToElement?: Element
+    ): boolean;
+
+    /**
+     * This function returns a table of all the elements attached to the specified element
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetAttachedElements Wiki, getAttachedElements }
+     * @return returns a table of all the elements attached to the specified element.
+     */
+    getAttachedElements(): LuaTable;
+
+    /**
+     * This function returns the alpha (transparency) value for the specified element. This can
+     * be a player, ped, object, vehicle or Element/Weapon|weapon.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAlpha Wiki, getElementAlpha }
+     * @return returns an integer (0-255; 0 = transparent) indicating the elements alpha, or false if
+     * invalid arguments were passed.
+     */
+    getAlpha(): number;
+
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAngularVelocity Wiki, getElementAngularVelocity }
+     * @return returns three floats describing the x, y and z rotation
+     */
+    getAngularVelocity(): LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function returns the offsets of an element that has been attached to another element
+     * using attachElements.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAttachedOffsets Wiki, getElementAttachedOffsets }
+     * @return returns 6 float|floats, of which the first 3 indicate the position offset (x, y, z), and
+     * the last 3 indicate the rotation offset (x, y, z), if successful. false otherwise.
+     */
+    getAttachedOffsets(): LuaMultiReturn<[
+        number,
+        number,
+        number,
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function determines the element that the specified element is attached to.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAttachedTo Wiki, getElementAttachedTo }
+     * @return returns the element that the chosen element is attached to, or false if the element isnt
+     * attached to another element.
+     */
+    getAttachedTo(): Element;
+
+    /**
+     * This function returns the minimum and maximum coordinates of an elements bounding box.
+     * It should be noted that the values returned are relative to the position of the element,
+     * and as such if you wish to get world coordinates for drawing, etc., you should retrieve
+     * the position of the element and add the returned values onto that.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementBoundingBox Wiki, getElementBoundingBox }
+     * @return *returns min x, min y, min z, max x, max y, max z if the passed element is valid and
+     * streamed in, false otherwise.
+     */
+    getBoundingBox(): LuaMultiReturn<[
+        number,
+        number,
+        number,
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function returns an element from the specified ID. If more than one element with the
+     * same ID exists, only the first one in the order it appears in the XML tree will be
+     * returned by this function.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementByID Wiki, getElementByID }
+     * @param id The ID of the element as it appears in the XML file or as set by setElementID.
+     * @param index If there are two or more elements of the same ID it will return the element with the
+     * specified index starting at 0.
+     * @return returns the element with the given id, or false if no such element exists.
+     */
+    static getByID(
+        id: string,
+        index?: number
+    ): Element;
+
+    /**
+     * This function returns one of the child elements of a given parent element. The child
+     * element is selected by its index (0 for the first child, 1 for the second and so on).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChild Wiki, getElementChild }
+     * @param index the elements index (0 for the first element, 1 for the second, etc).
+     * @return returns the requested element if it exists, or false if it doesnt.
+     */
+    getChild(
+        index: number
+    ): Element;
+
+    /**
+     * This function is used to retrieve a list of the child elements of a given parent element.
+     * Note that it will only return direct children and not elements that are further down the
+     * element tree.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChildren Wiki, getElementChildren }
+     * @param theType The type of element you want a list of. This is the same as the tag name in the .map
+     * file, so this can be used with a custom element type if desired. Built in types are:
+     * @param player A player connected to the server
+     * @param ped A ped
+     * @param water A water polygon
+     * @param sound A playing sound
+     * @param vehicle A vehicle
+     * @param object An object
+     * @param pickup A pickup
+     * @param marker A marker
+     * @param colshape A collision shape
+     * @param blip A blip
+     * @param radararea A radar area
+     * @param team A team
+     * @param spawnpoint A spawnpoint
+     * @param remoteclient A remote client connected to the server
+     * @param console The server Console
+     * @return this function returns a table that contains a list of elements that the parent has. if
+     * the element has no children, it will return an empy table. it will return false if the
+     * parent element does not exist.
+     */
+    getChildren(
+        theType?: string
+    ): LuaTable;
+
+    /**
+     * This function returns the number of children an element has. Note that only the direct
+     * children are counted and not elements that are further down the element tree.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChildrenCount Wiki, getElementChildrenCount }
+     * @return returns an int with the number of child elements, or false if the parent element does not
+     * exist.
+     */
+    getChildrenCount(): number;
+
+    /**
+     * This function indicates if a specific element is set to have collisions disabled. An
+     * element without collisions does not interact with the physical environment and remains
+     * static.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementCollisionsEnabled Wiki, getElementCollisionsEnabled }
+     * @return returns true if the collisions are enabled, false otherwise.
+     */
+    getCollisionsEnabled(): boolean;
+
+    /**
+     * Some elements have an associated colshape, for example Marker and Pickup. This function
+     * is used to get the associated colshape.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementColShape Wiki, getElementColShape }
+     * @return returns colshape of the element, false if not or an invalid argument was passed to the
+     * function.
+     */
+    getColShape(): ColShape;
+
+    /**
+     * This function retrieves element data attached to an element under a certain key.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementData Wiki, getElementData }
+     * @param key The name of the element data entry you want to retrieve. (Maximum 31 characters.)
+     * @param inherit - toggles whether or not the function should go up the hierarchy to find the requested
+     * key in case the specified element doesnt have it.
+     * @return this function returns a variable containing the requested element data, or false if the
+     * element or the element data does not exist. when getting data corresponding to a xml
+     * attribute, this is always a string.
+     */
+    getData(
+        key: string,
+        inherit?: boolean
+    ): unknown;
+
+    /**
+     * This function allows you to retrieve the dimension of any element. The dimension
+     * determines what/who the element is visible to.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDimension Wiki, getElementDimension }
+     * @return returns an integer for the dimension if theelement is valid, false otherwise.
+     */
+    getDimension(): number;
+
+    /**
+     * This function is used to retrieve the distance between a elements centre of mass to the
+     * base of the model. This can be used to calculate the position the element has to be set
+     * to, to have it on ground level.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDistanceFromCentreOfMassToBaseOfModel Wiki, getElementDistanceFromCentreOfMassToBaseOfModel }
+     * @return returns a float with the distance, or false if the element is invalid.
+     */
+    getDistanceFromCentreOfMassToBaseOfModel(): number;
+
+    /**
+     * This function returns the current health for the specified element. This can be a player,
+     * a ped, a vehicle, or an object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementHealth Wiki, getElementHealth }
+     * @return returns a float indicating the elements health, or false if invalid arguments were passed.
+     */
+    getHealth(): number;
+
+    /**
+     * This function gets the ID of an element. This is the id attribute of the element and is a
+     * string, NOT a number like a model ID, weapons ID or similar.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementID Wiki, getElementID }
+     * @return this returns a string containing the element id. it will return an empty string if it has
+     * no id. it will return false if the element is invalid.
+     */
+    getID(): string;
+
+    /**
+     * This function allows you to retrieve the interior of any element. An interior is the
+     * current loaded place, 0 being outside.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementInterior Wiki, getElementInterior }
+     * @return returns an int for the interior if theelement is valid, false otherwise.
+     */
+    getInterior(): number;
+
+    /**
+     * This function gets an elements transform matrix. This contains 16 float values that
+     * multiplied to a point will give you the point transformed. It is most useful for matrix
+     * calculations such as calculating offsets. For further information, please refer to a
+     * tutorial of matrices in computer graphics programming.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementMatrix Wiki, getElementMatrix }
+     * @param legacy Set to false to return correctly setup matrix (i.e. Last column in the first 3 rows set
+     * to zero).
+     * @return returns a multi-dimensional array (which can be transformed into a proper matrix class
+     * using matrix.create method) containing a 4x4 matrix. returns false if the element is not
+     * streamed in, and not a vehicle, ped or object.
+     */
+    getMatrix(
+        legacy?: boolean
+    ): LuaTable;
+
+    /**
+     * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
+     * an object model or a vehicle model.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementModel Wiki, getElementModel }
+     * @return returns the model id if successful, false otherwise.
+     * * for players/peds: a gtasa player model (skin) id. see character skins.
+     * * for vehicles: the vehicle ids|vehicle id of the vehicle.
+     * * for objects: an int specifying the model id.
+     */
+    getModel(): number;
+
+    /**
+     * This function is used to determine the parent of an element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementParent Wiki, getElementParent }
+     * @return this returns the parent as an element. it returns false if theelement is invalid, or is
+     * the root node.
+     */
+    getParent(): Element;
+
+    /**
+     * The getElementPosition function allows you to retrieve the position coordinates of an
+     * element.  This can be any real world element, including:
+     * * Element/Player|Players
+     * * Element/Vehicle|Vehicles
+     * * Element/Object|Objects
+     * * Element/Pickup|Pickups
+     * * Element/Marker|Markers
+     * * Element/Collision shape|Collision shapes
+     * * Element/Blip|Blips
+     * * Element/Radar area|Radar areas
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementPosition Wiki, getElementPosition }
+     * @return returns three floats indicating the position of the element, x, y and z respectively.
+     */
+    getPosition(): LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function gets the radius of an element. Normally, sphere or circle-shaped elements
+     * tend to return a more accurate and expected radius than others with another shapes.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementRadius Wiki, getElementRadius }
+     * @param player|Players .
+     * @param ped|Peds .
+     * @param vehicle|Vehicles .
+     * @param object|Objects .
+     * @return returns a float containing the radius if the element is valid, false otherwise.
+     */
+    getRadius(): number;
+
+    /**
+     * Retrieve the rotation of elements.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementRotation Wiki, getElementRotation }
+     * @param rotOrder A string representing the rotation order desired when returning the
+     * http://en.wikipedia.org/wiki/Euler_angles euler angles. If omitted, default value is
+     * default. Allowed values are:
+     * @param default default MTA behavior prior to 1.1, where rotation order depends on element type
+     * @param ZXY rotation about the Z axis (up), then about the resulting X axis (right) and finally about
+     * the resulting Y axis (front). This is the default rotation order for object|objects
+     * @param ZYX rotation about the Z axis (up), then about the resulting Y axis (front), and finally
+     * about the resulting X axis (right). This is the default rotation order for
+     * vehicle|vehicles
+     * The default rotation order for peds/players is Z-Y-X (clientside) and -Z-Y-X (serverside)
+     * but those rotation orders (set using ''"default"'' on peds) can not be used manually on
+     * other element types since they only exist due to historical and backward compatibility
+     * reasons.
+     * Specifying a rotation order other than ''"default"'' allows the same angles to later be
+     * uniformly used on several elements without having to consider their type.
+     * @return * rx, ry, rz: 3 floats representing the euler rotation angles on the axis x, y and z
+     * (with the rotation order depending on the rotorder argument) if element exists and is a
+     * valid element, false if its invalid.
+     */
+    getRotation(
+        rotOrder?: string
+    ): LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * * This function checks if elements are in a box, not in a sphere.
+     * * Z argument isnt in use currently, but make your scripts like it is for future
+     * compatibility reasons.
+     * * This function doesnt work with elements which is created by createElement.}}
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinRange Wiki, getElementsWithinRange }
+     * @param x the x coordinate at which to retrieve elements
+     * @param y the y coordinate at which to retrieve elements
+     * @param z the z coordinate at which to retrieve elements
+     * @param range the range at the coordinates in which to retrieve elements
+     * @param elemType The type of element you want a list of. This can be any element type, such as:
+     * @param player A player connected to the server
+     * @param ped A ped
+     * @param vehicle A vehicle
+     * @param object An object
+     * @param pickup A pickup
+     * @param marker A marker
+     * @param interior The interior you want to limit the search to. If not specified, it can return elements in
+     * any interior.
+     * @param dimension The dimension you want to limit the search to. If not specified, it can return elements
+     * in any dimension.
+     * @return returns a table containing all the elements of the specified type within range. returns
+     * an empty table if there are no elements within range. returns false if the arguments are
+     * invalid.
+     */
+    static getWithinRange(
+        x: number,
+        y: number,
+        z: number,
+        range: number,
+        elemType?: string,
+        interior?: number,
+        dimension?: number
+    ): LuaTable;
+
+    /**
+     * This function is used to retrieve the type of an element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementType Wiki, getElementType }
+     * @return returns a string containing the element type, false if invalid arguments were passed.
+     */
+    getType(): string;
+
+    /**
+     * This function returns three floats containing the velocity (movement speeds) along the X,
+     * Y, and Z axis respectively. This means that velocity values can be positive and negative
+     * for each axis.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementVelocity Wiki, getElementVelocity }
+     * @return if succesful, returns three floats that represent the elements current velocity along the
+     * x, y, and z axis respectively. this function can fail if the element is a player in a
+     * car. use the vehicle element in this case. it will also fail if the element specified
+     * does not have a velocity, or does not exist. in case of failure, the first return value
+     * will be false.
+     * the returned values are expressed in gta units per 1/50th of a
+     * secondhttp://forum.mtasa.com/viewtopic.php?f=91&t=31225. a gta unit is equal to one
+     * metrehttp://gta.wikia.com/unit#gta3.2c_gtavc_.26_gtasa.
+     */
+    getVelocity(): LuaMultiReturn<[
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function return the low LOD element that an element is associated with.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetLowLODElement Wiki, getLowLODElement }
+     * @return returns a low lod element if successful, false otherwise.
+     */
+    getLowLOD(): Element;
+
+    /**
+     * This function checks if an element has element data available under a certain key.}}
+     * @see {@link https://wiki.multitheftauto.com/wiki/HasElementData Wiki, hasElementData }
+     * @param key The name of the element data entry you want to check for. (Maximum 31 characters.)
+     * @param inherit - toggles whether or not the function should go up the hierarchy to find the requested
+     * key in case the specified element doesnt have it.
+     * @return this function returns true if the element contains element data for key, or false if the
+     * element doesnt exist or there is no data associated with the key.
+     */
+    hasData(
+        key: string,
+        inherit?: boolean
+    ): boolean;
+
+    /**
+     * This functions checks whether or not an element is attached to another element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementAttached Wiki, isElementAttached }
+     * @return returns true if the specified element is attached to another element, false if it is not
+     * attached or nil if an improper argument was passed.
+     */
+    isAttached(): boolean;
+
+    /**
+     * This functions checks if certain element has call propagation enabled.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementCallPropagationEnabled Wiki, isElementCallPropagationEnabled }
+     * @return returns true if the propagation is enabled, false if disabled or invalid arguments have
+     * been passed.
+     */
+    isCallPropagationEnabled(): boolean;
+
+    /**
      * This function can be used to check whether specified element is collidable with another
      * element.<br>
      * Note: You can only use this function with the element types listed below.
@@ -565,22 +755,161 @@ export class Element {
     ): boolean;
 
     /**
-     * This function can be used to disable streaming for an element. This will make sure the
-     * element is not virtualized (streamed out from GTA) when the player moves far away from
-     * it. This function only works in elements with a physical representation in the world
-     * (entities), such as player|players, ped|peds, vehicle|vehicles and object|objects.
-     * * There is a limit of elements that can be streamed in safely for every GTA entity type.
-     * If you bypass said limit by using this function, the client can experience problems of
-     * disappearing objects and unstability when trying to stream in new elements of that type.
-     * * In general, if you disable too many elements (of the same type or not) to stream out,
-     * GTA will always try to render them, so it can cause a noticeable FPS drop.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementStreamable Wiki, setElementStreamable }
-     * @param streamable true if this element should stream in/out like normal, false if it should always be
-     * streamed in.
-     * @return returns whether the element could be set to be streamable.
+     * This function checks whether an element is double-sided as set by setElementDoubleSided
+     * or not.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementDoubleSided Wiki, isElementDoubleSided }
+     * @return returns true if the theelement is double-sided, false otherwise.
      */
-    setStreamable(
-        streamable: boolean
+    isDoubleSided(): boolean;
+
+    /**
+     * This function checks if element has been frozen.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementFrozen Wiki, isElementFrozen }
+     * @return *returns true if the element is frozen, false if it isnt or if invalid arguments were
+     * passed.
+     */
+    isFrozen(): boolean;
+
+    /**
+     * This function checks whether an element is submerged in water.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementInWater Wiki, isElementInWater }
+     * @return returns true if the passed element is in water, false if it isnt, or if the element is
+     * invalid.
+     */
+    isInWater(): boolean;
+
+    /**
+     * This function checks whether a clientside element is local to the client (doesnt exist in
+     * the server) or not.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLocal Wiki, isElementLocal }
+     * @return returns true if the passed element is local, false if not or if invalid parameters are
+     * passed.
+     */
+    isLocal(): boolean;
+
+    /**
+     * This function reveals if an element is low LOD.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLowLOD Wiki, isElementLowLOD }
+     * @return returns true if the element is low lod, false otherwise.
+     */
+    isLowLOD(): boolean;
+
+    /**
+     * This function will check if an element is on the screen. Elements behind objects but
+     * still in the camera view count as being on screen.
+     * This function is particularly useful for detecting if dynamic objects are in destroyed
+     * state. Destroyed objects will return false.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementOnScreen Wiki, isElementOnScreen }
+     * @return returns true if element is on screen, false if not.
+     */
+    isOnScreen(): boolean;
+
+    /**
+     * This function checks whether an element is streamable as set by setElementStreamable or
+     * not.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementStreamable Wiki, isElementStreamable }
+     * @return returns true if the passed element is streamable like normal, false if this element must
+     * always be streamed in.
+     */
+    isStreamable(): boolean;
+
+    /**
+     * This function checks whether an element is synced by the local player or not. Accepted
+     * elements are ped|peds and vehicle|vehicles.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementSyncer Wiki, isElementSyncer }
+     * @return returns true if the passed element is synced by the local player, false otherwise.
+     */
+    isSyncer(): boolean;
+
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWaitingForGroundToLoad Wiki, isElementWaitingForGroundToLoad }
+     * @return returns true if the specified element is frozen waiting for collisions of custom map
+     * objects to load. returns false if its not or if the specified element is invalid.
+     */
+    isWaitingForGroundToLoad(): boolean;
+
+    /**
+     * This function is used to determine if an element is within a collision shape. Please note
+     * that for legacy reasons, a colshape created on the client does not collide with elements
+     * already existing at that location until they first move. Please also note that before
+     * 1.0.3, this did not function correctly when moving a colshape.
+     * Please note that this function doesnt verify whether element is in the same dimension and
+     * interior, additional checks could be implemented manually if they are needed.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWithinColShape Wiki, isElementWithinColShape }
+     * @param theShape The colshape youre checking
+     * @return returns true if the element is within the colshape, false otherwise
+     */
+    isWithinColShape(
+        theShape: ColShape
+    ): boolean;
+
+    /**
+     * This function is used to determine if an element is within a marker.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWithinMarker Wiki, isElementWithinMarker }
+     * @param theMarker The marker youre checking.
+     * @return returns true if the element is within the marker, false otherwise
+     */
+    isWithinMarker(
+        theMarker: Marker
+    ): boolean;
+
+    /**
+     * This function sets the alpha (transparency) value for the specified element. This can be
+     * a player, ped, object, vehicle or Element/Weapon|weapon.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAlpha Wiki, setElementAlpha }
+     * @param alpha The alpha value to set. Values are 0-255, where 255 is fully opaque and 0 is fully
+     * transparent.
+     * @param Note Objects are fully transparent at 140.
+     * @return returns true or false if invalid arguments were passed.
+     */
+    setAlpha(
+        alpha: number
+    ): boolean;
+
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAngularVelocity Wiki, setElementAngularVelocity }
+     * @param rx velocity around the X axis
+     * @param ry velocity around the Y axis
+     * @param rz velocity around the Z axis
+     * @return returns true if it was succesful, false otherwise.
+     */
+    setAngularVelocity(
+        rx: number,
+        ry: number,
+        rz: number
+    ): boolean;
+
+    /**
+     * This function updates the offsets of an element that has been attached to another element
+     * using attachElements.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAttachedOffsets Wiki, setElementAttachedOffsets }
+     * @param xPosOffset The x offset, if you want the elements to be a certain distance from one another (default
+     * 0).
+     * @param yPosOffset The y offset (default 0).
+     * @param zPosOffset The z offset (default 0).
+     * @param xRotOffset The x rotation offset (default 0).
+     * @param yRotOffset The y rotation offset (default 0).
+     * @param zRotOffset The z rotation offset (default 0).
+     * @return returns true if the attaching process was successful, false otherwise.
+     */
+    setAttachedOffsets(
+        xPosOffset?: number,
+        yPosOffset?: number,
+        zPosOffset?: number,
+        xRotOffset?: number,
+        yRotOffset?: number,
+        zRotOffset?: number
+    ): boolean;
+
+    /**
+     * This function enables/disables call propagation on a certain element. Look at the example
+     * for a practical application.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementCallPropagationEnabled Wiki, setElementCallPropagationEnabled }
+     * @param enabled Whether propagation should be enabled or not
+     * @return returns true, if the propagation behaviour has been changed successfully, false otherwise.
+     */
+    setCallPropagationEnabled(
+        enabled: boolean
     ): boolean;
 
     /**
@@ -614,114 +943,55 @@ export class Element {
     ): boolean;
 
     /**
-     * This function checks if an element has element data available under a certain key.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/HasElementData Wiki, hasElementData }
-     * @param key The name of the element data entry you want to check for. (Maximum 31 characters.)
-     * @param inherit - toggles whether or not the function should go up the hierarchy to find the requested
-     * key in case the specified element doesnt have it.
-     * @return this function returns true if the element contains element data for key, or false if the
-     * element doesnt exist or there is no data associated with the key.
+     * This function stores element data under a certain key, attached to an element. Element
+     * data set using this is then synced with all clients and the server. The data can contain
+     * server created elements, but you should avoid passing data that is not able to be synced
+     * such as xmlnodes, acls, aclgroups etc.
+     * As element data is synced to all clients, it can generate a lot of network traffic and be
+     * heavy on performance. Events are much more efficient for sending data from a client to
+     * the server only, or from the server to a specific client. <br/>
+     * Usage of element data should be disencouraged where your goal can be achieved with events
+     * like above, and table|tables for storing and retrieving data.
+     * Note this mode only works when setting element data serverside. Setting data clientside
+     * still sends the update to all clients if synchronize is set to true.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementData Wiki, setElementData }
+     * @param key The key you wish to store the data under. (Maximum 31 characters.)
+     * @param value The value you wish to store. See element data for a list of acceptable datatypes.
+     * @param synchronize Determines whether or not the data will be synchronized with the server.
      */
-    hasData(
+    setData(
         key: string,
-        inherit?: boolean
+        value: unknown,
+        synchronize?: boolean
     ): boolean;
 
     /**
-     * This function checks if element has been frozen.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementFrozen Wiki, isElementFrozen }
-     * @return *returns true if the element is frozen, false if it isnt or if invalid arguments were
-     * passed.
+     * This function allows you to set the dimension of any element. The dimension determines
+     * what/who the element is visible to.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementDimension Wiki, setElementDimension }
+     * @param dimension An integer representing the dimension ID. {{New feature/item|3.0154|1.5.3|11199|You can
+     * also use -1 to make the element visible in all dimensions (only valid to objects).}}
+     * Valid values are 0 to 65535.
+     * @return returns true if theelement and dimension are valid, false otherwise.
+     * also returns false if theelement is a player and its not alive.
      */
-    isFrozen(): boolean;
-
-    /**
-     * This function checks whether a clientside element is local to the client (doesnt exist in
-     * the server) or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLocal Wiki, isElementLocal }
-     * @return returns true if the passed element is local, false if not or if invalid parameters are
-     * passed.
-     */
-    isLocal(): boolean;
-
-    /**
-     * This function checks whether an element is double-sided as set by setElementDoubleSided
-     * or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementDoubleSided Wiki, isElementDoubleSided }
-     * @return returns true if the theelement is double-sided, false otherwise.
-     */
-    isDoubleSided(): boolean;
-
-    /**
-     * This function checks whether an element is streamable as set by setElementStreamable or
-     * not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementStreamable Wiki, isElementStreamable }
-     * @return returns true if the passed element is streamable like normal, false if this element must
-     * always be streamed in.
-     */
-    isStreamable(): boolean;
-
-    /**
-     * This function checks whether an element is submerged in water.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementInWater Wiki, isElementInWater }
-     * @return returns true if the passed element is in water, false if it isnt, or if the element is
-     * invalid.
-     */
-    isInWater(): boolean;
-
-    /**
-     * This function checks whether an element is synced by the local player or not. Accepted
-     * elements are ped|peds and vehicle|vehicles.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementSyncer Wiki, isElementSyncer }
-     * @return returns true if the passed element is synced by the local player, false otherwise.
-     */
-    isSyncer(): boolean;
-
-    /**
-     * This function destroys an element and all elements within it in the hierarchy (its
-     * children, the children of those children etc). player|Player elements cannot be destroyed
-     * using this function. A player can only be removed from the hierarchy when they quit or
-     * are kicked. The root element also cannot be destroyed, however, passing the root as an
-     * argument will wipe all elements from the server, except for the players and clients,
-     * which will become direct descendants of the root node, and other elements that cannot be
-     * destroyed, such as resource root elements.
-     * Players are not the only elements that cannot be deleted. This list also includes remote
-     * clients and console elements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DestroyElement Wiki, destroyElement }
-     * @return returns true if the element was destroyed successfully, false if either the element
-     * passed to it was invalid or it could not be destroyed for some other reason (for example,
-     * clientside destroyelement cant destroy serverside elements).
-     */
-    destroy(): boolean;
-
-    /**
-     * This function detaches attached elements from one another.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DetachElements Wiki, detachElements }
-     * @param theAttachToElement The element you wish to detach from, will detach from the attached element if this isnt
-     * specified.
-     * @return returns true if the detaching was successful, false otherwise.
-     */
-    detach(
-        theAttachToElement?: Element
+    setDimension(
+        dimension: number
     ): boolean;
 
     /**
-     * This function determines the element that the specified element is attached to.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAttachedTo Wiki, getElementAttachedTo }
-     * @return returns the element that the chosen element is attached to, or false if the element isnt
-     * attached to another element.
+     * This function allows you to set the double-sidedness of an elements model. When an
+     * elements model is double-sided, its back facing triangles become visible.
+     * Possible uses of double-sidedness are: Elimination of invisible walls, using buildings as
+     * enclosures, using inverted landmasses as large pits or to make cave networks. It can also
+     * remove the need to add extra triangles to custom models when trying to make them appear
+     * solid from all directions.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementDoubleSided Wiki, setElementDoubleSided }
+     * @param enable Set to true/false to enable/disable double-sidedness.
+     * @return returns true if theelement is valid, false otherwise.
      */
-    getAttachedTo(): Element;
-
-    /**
-     * This function enables/disables call propagation on a certain element. Look at the example
-     * for a practical application.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementCallPropagationEnabled Wiki, setElementCallPropagationEnabled }
-     * @param enabled Whether propagation should be enabled or not
-     * @return returns true, if the propagation behaviour has been changed successfully, false otherwise.
-     */
-    setCallPropagationEnabled(
-        enabled: boolean
+    setDoubleSided(
+        enable: boolean
     ): boolean;
 
     /**
@@ -734,337 +1004,6 @@ export class Element {
      */
     setFrozen(
         freezeStatus: boolean
-    ): boolean;
-
-    /**
-     * This function gets an elements transform matrix. This contains 16 float values that
-     * multiplied to a point will give you the point transformed. It is most useful for matrix
-     * calculations such as calculating offsets. For further information, please refer to a
-     * tutorial of matrices in computer graphics programming.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementMatrix Wiki, getElementMatrix }
-     * @param legacy Set to false to return correctly setup matrix (i.e. Last column in the first 3 rows set
-     * to zero).
-     * @return returns a multi-dimensional array (which can be transformed into a proper matrix class
-     * using matrix.create method) containing a 4x4 matrix. returns false if the element is not
-     * streamed in, and not a vehicle, ped or object.
-     */
-    getMatrix(
-        legacy?: boolean
-    ): LuaTable;
-
-    /**
-     * This function gets the ID of an element. This is the id attribute of the element and is a
-     * string, NOT a number like a model ID, weapons ID or similar.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementID Wiki, getElementID }
-     * @return this returns a string containing the element id. it will return an empty string if it has
-     * no id. it will return false if the element is invalid.
-     */
-    getID(): string;
-
-    /**
-     * This function gets the radius of an element. Normally, sphere or circle-shaped elements
-     * tend to return a more accurate and expected radius than others with another shapes.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementRadius Wiki, getElementRadius }
-     * @param player|Players .
-     * @param ped|Peds .
-     * @param vehicle|Vehicles .
-     * @param object|Objects .
-     * @return returns a float containing the radius if the element is valid, false otherwise.
-     */
-    getRadius(): number;
-
-    /**
-     * This function indicates if a specific element is set to have collisions disabled. An
-     * element without collisions does not interact with the physical environment and remains
-     * static.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementCollisionsEnabled Wiki, getElementCollisionsEnabled }
-     * @return returns true if the collisions are enabled, false otherwise.
-     */
-    getCollisionsEnabled(): boolean;
-
-    /**
-     * This function is used for setting an element as the parent of another element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementParent Wiki, setElementParent }
-     * @param parent The element you wish to be the parent of theElement.
-     * @return returns true if both elements are valid, false otherwise.
-     */
-    setParent(
-        parent: Element
-    ): boolean;
-
-    /**
-     * This function is used to create a new dummy element in the element tree which do not
-     * necessarily represent an entity within the San Andreas world. A common use for this
-     * function is for creating custom elements, such as a Flag or a Base.
-     * Elements created using this function are placed in the element tree with their parent as
-     * the dynamic map element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateElement Wiki, createElement }
-     * @param elementType The type of element being created.
-     * @param elementID The ID of the element being created.
-     * @return returns the element if it was successfully created. returns false if the arguments are
-     * wrong.
-     */
-    constructor(
-        elementType: string,
-        elementID?: string
-    );
-
-    /**
-     * This function is used to determine if an element is within a collision shape. Please note
-     * that for legacy reasons, a colshape created on the client does not collide with elements
-     * already existing at that location until they first move. Please also note that before
-     * 1.0.3, this did not function correctly when moving a colshape.
-     * Please note that this function doesnt verify whether element is in the same dimension and
-     * interior, additional checks could be implemented manually if they are needed.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWithinColShape Wiki, isElementWithinColShape }
-     * @param theShape The colshape youre checking
-     * @return returns true if the element is within the colshape, false otherwise
-     */
-    isWithinColShape(
-        theShape: ColShape
-    ): boolean;
-
-    /**
-     * This function is used to determine if an element is within a marker.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWithinMarker Wiki, isElementWithinMarker }
-     * @param theMarker The marker youre checking.
-     * @return returns true if the element is within the marker, false otherwise
-     */
-    isWithinMarker(
-        theMarker: Marker
-    ): boolean;
-
-    /**
-     * This function is used to determine the parent of an element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementParent Wiki, getElementParent }
-     * @return this returns the parent as an element. it returns false if theelement is invalid, or is
-     * the root node.
-     */
-    getParent(): Element;
-
-    /**
-     * This function is used to retrieve a list of the child elements of a given parent element.
-     * Note that it will only return direct children and not elements that are further down the
-     * element tree.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChildren Wiki, getElementChildren }
-     * @param theType The type of element you want a list of. This is the same as the tag name in the .map
-     * file, so this can be used with a custom element type if desired. Built in types are:
-     * @param player A player connected to the server
-     * @param ped A ped
-     * @param water A water polygon
-     * @param sound A playing sound
-     * @param vehicle A vehicle
-     * @param object An object
-     * @param pickup A pickup
-     * @param marker A marker
-     * @param colshape A collision shape
-     * @param blip A blip
-     * @param radararea A radar area
-     * @param team A team
-     * @param spawnpoint A spawnpoint
-     * @param remoteclient A remote client connected to the server
-     * @param console The server Console
-     * @return this function returns a table that contains a list of elements that the parent has. if
-     * the element has no children, it will return an empy table. it will return false if the
-     * parent element does not exist.
-     */
-    getChildren(
-        theType?: string
-    ): LuaTable;
-
-    /**
-     * This function is used to retrieve the distance between a elements centre of mass to the
-     * base of the model. This can be used to calculate the position the element has to be set
-     * to, to have it on ground level.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDistanceFromCentreOfMassToBaseOfModel Wiki, getElementDistanceFromCentreOfMassToBaseOfModel }
-     * @return returns a float with the distance, or false if the element is invalid.
-     */
-    getDistanceFromCentreOfMassToBaseOfModel(): number;
-
-    /**
-     * This function is used to retrieve the type of an element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementType Wiki, getElementType }
-     * @return returns a string containing the element type, false if invalid arguments were passed.
-     */
-    getType(): string;
-
-    /**
-     * This function retrieves element data attached to an element under a certain key.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementData Wiki, getElementData }
-     * @param key The name of the element data entry you want to retrieve. (Maximum 31 characters.)
-     * @param inherit - toggles whether or not the function should go up the hierarchy to find the requested
-     * key in case the specified element doesnt have it.
-     * @return this function returns a variable containing the requested element data, or false if the
-     * element or the element data does not exist. when getting data corresponding to a xml
-     * attribute, this is always a string.
-     */
-    getData(
-        key: string,
-        inherit?: boolean
-    ): unknown;
-
-    /**
-     * This function return the low LOD element that an element is associated with.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetLowLODElement Wiki, getLowLODElement }
-     * @return returns a low lod element if successful, false otherwise.
-     */
-    getLowLOD(): Element;
-
-    /**
-     * This function returns a table of all the elements attached to the specified element
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAttachedElements Wiki, getAttachedElements }
-     * @return returns a table of all the elements attached to the specified element.
-     */
-    getAttachedElements(): LuaTable;
-
-    /**
-     * This function returns an element from the specified ID. If more than one element with the
-     * same ID exists, only the first one in the order it appears in the XML tree will be
-     * returned by this function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementByID Wiki, getElementByID }
-     * @param id The ID of the element as it appears in the XML file or as set by setElementID.
-     * @param index If there are two or more elements of the same ID it will return the element with the
-     * specified index starting at 0.
-     * @return returns the element with the given id, or false if no such element exists.
-     */
-    static getByID(
-        id: string,
-        index?: number
-    ): Element;
-
-    /**
-     * This function returns one of the child elements of a given parent element. The child
-     * element is selected by its index (0 for the first child, 1 for the second and so on).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChild Wiki, getElementChild }
-     * @param index the elements index (0 for the first element, 1 for the second, etc).
-     * @return returns the requested element if it exists, or false if it doesnt.
-     */
-    getChild(
-        index: number
-    ): Element;
-
-    /**
-     * This function returns the alpha (transparency) value for the specified element. This can
-     * be a player, ped, object, vehicle or Element/Weapon|weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAlpha Wiki, getElementAlpha }
-     * @return returns an integer (0-255; 0 = transparent) indicating the elements alpha, or false if
-     * invalid arguments were passed.
-     */
-    getAlpha(): number;
-
-    /**
-     * This function returns the current health for the specified element. This can be a player,
-     * a ped, a vehicle, or an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementHealth Wiki, getElementHealth }
-     * @return returns a float indicating the elements health, or false if invalid arguments were passed.
-     */
-    getHealth(): number;
-
-    /**
-     * This function returns the minimum and maximum coordinates of an elements bounding box.
-     * It should be noted that the values returned are relative to the position of the element,
-     * and as such if you wish to get world coordinates for drawing, etc., you should retrieve
-     * the position of the element and add the returned values onto that.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementBoundingBox Wiki, getElementBoundingBox }
-     * @return *returns min x, min y, min z, max x, max y, max z if the passed element is valid and
-     * streamed in, false otherwise.
-     */
-    getBoundingBox(): LuaMultiReturn<[
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function returns the number of children an element has. Note that only the direct
-     * children are counted and not elements that are further down the element tree.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChildrenCount Wiki, getElementChildrenCount }
-     * @return returns an int with the number of child elements, or false if the parent element does not
-     * exist.
-     */
-    getChildrenCount(): number;
-
-    /**
-     * This function returns the offsets of an element that has been attached to another element
-     * using attachElements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAttachedOffsets Wiki, getElementAttachedOffsets }
-     * @return returns 6 float|floats, of which the first 3 indicate the position offset (x, y, z), and
-     * the last 3 indicate the rotation offset (x, y, z), if successful. false otherwise.
-     */
-    getAttachedOffsets(): LuaMultiReturn<[
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function returns three floats containing the velocity (movement speeds) along the X,
-     * Y, and Z axis respectively. This means that velocity values can be positive and negative
-     * for each axis.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetElementVelocity Wiki, getElementVelocity }
-     * @return if succesful, returns three floats that represent the elements current velocity along the
-     * x, y, and z axis respectively. this function can fail if the element is a player in a
-     * car. use the vehicle element in this case. it will also fail if the element specified
-     * does not have a velocity, or does not exist. in case of failure, the first return value
-     * will be false.
-     * the returned values are expressed in gta units per 1/50th of a
-     * secondhttp://forum.mtasa.com/viewtopic.php?f=91&t=31225. a gta unit is equal to one
-     * metrehttp://gta.wikia.com/unit#gta3.2c_gtavc_.26_gtasa.
-     */
-    getVelocity(): LuaMultiReturn<[
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function reveals if an element is low LOD.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLowLOD Wiki, isElementLowLOD }
-     * @return returns true if the element is low lod, false otherwise.
-     */
-    isLowLOD(): boolean;
-
-    /**
-     * This function sets matrix to element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementMatrix Wiki, setElementMatrix }
-     * @param theMatrix The matrix.
-     * @return returns true if the matrix was set succesfully, false otherwise.
-     */
-    setMatrix(
-        theMatrix: LuaTable
-    ): boolean;
-
-    /**
-     * This function sets the ID of an element to a string. This can be anything from an
-     * identifying number, to a name.
-     * You can only change the ID of an element clientside if that element has been created
-     * clientside as well.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementID Wiki, setElementID }
-     * @param name The new ID for theElement.
-     * @return this returns true if successful. it will return false if theelement is invalid, or does
-     * not exist, or if name is invalid, or is not a string.
-     */
-    setID(
-        name: string
-    ): boolean;
-
-    /**
-     * This function sets the alpha (transparency) value for the specified element. This can be
-     * a player, ped, object, vehicle or Element/Weapon|weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAlpha Wiki, setElementAlpha }
-     * @param alpha The alpha value to set. Values are 0-255, where 255 is fully opaque and 0 is fully
-     * transparent.
-     * @param Note Objects are fully transparent at 140.
-     * @return returns true or false if invalid arguments were passed.
-     */
-    setAlpha(
-        alpha: number
     ): boolean;
 
     /**
@@ -1084,6 +1023,71 @@ export class Element {
     ): boolean;
 
     /**
+     * This function sets the ID of an element to a string. This can be anything from an
+     * identifying number, to a name.
+     * You can only change the ID of an element clientside if that element has been created
+     * clientside as well.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementID Wiki, setElementID }
+     * @param name The new ID for theElement.
+     * @return this returns true if successful. it will return false if theelement is invalid, or does
+     * not exist, or if name is invalid, or is not a string.
+     */
+    setID(
+        name: string
+    ): boolean;
+
+    /**
+     * This function allows you to set the interior of any element. An interior is the current
+     * loaded place, 0 being outside.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementInterior Wiki, setElementInterior }
+     * @param interior The interior you want to set the element to. Valid values are 0 to 255.
+     * @param x A floating point number representing the X coordinate on the map.
+     * @param y A floating point number representing the Y coordinate on the map.
+     * @param z A floating point number representing the Z coordinate on the map.
+     * @return returns true if theelement and interior are valid arguments, false otherwise.
+     */
+    setInterior(
+        interior: number,
+        x?: number,
+        y?: number,
+        z?: number
+    ): boolean;
+
+    /**
+     * This function sets matrix to element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementMatrix Wiki, setElementMatrix }
+     * @param theMatrix The matrix.
+     * @return returns true if the matrix was set succesfully, false otherwise.
+     */
+    setMatrix(
+        theMatrix: LuaTable
+    ): boolean;
+
+    /**
+     * Sets the model of a given element. This allows you to change the model of a player (or
+     * ped), a vehicle or an object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementModel Wiki, setElementModel }
+     * @param model the model ID to set.
+     * ** For players/peds: A GTASA player model (skin) ID. See [[Character Skins]].
+     * ** For vehicles: The [[Vehicle IDs|vehicle ID]] of the vehicle being changed.
+     * ** For objects/projectiles/weapons: An [[int]] specifying the model id.
+     * @return returns true if successful, false otherwise.
+     */
+    setModel(
+        model: number
+    ): boolean;
+
+    /**
+     * This function is used for setting an element as the parent of another element.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementParent Wiki, setElementParent }
+     * @param parent The element you wish to be the parent of theElement.
+     * @return returns true if both elements are valid, false otherwise.
+     */
+    setParent(
+        parent: Element
+    ): boolean;
+
+    /**
      * This function sets the position of an element to the specified coordinates.
      * @see {@link https://wiki.multitheftauto.com/wiki/SetElementPosition Wiki, setElementPosition }
      * @param x The x coordinate of the destination.
@@ -1098,6 +1102,61 @@ export class Element {
         y: number,
         z: number,
         warp?: boolean
+    ): boolean;
+
+    /**
+     * Sets the rotation of elements according to the world (does not work with players that are
+     * on the ground).
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementRotation Wiki, setElementRotation }
+     * @param rotX The elements rotation around the x axis in degrees
+     * @param rotY The elements rotation around the y axis in degrees
+     * @param rotZ The elements rotation around the z axis in degrees
+     * @param rotOrder A string representing the rotation order desired when interpreting the provided
+     * http://en.wikipedia.org/wiki/Euler_angles euler angles. If omitted, default value is
+     * default. Allowed values are:
+     * @param default default MTA behavior prior to 1.1, where rotation order depends on element type
+     * @param ZXY rotation about the Z axis (up), then about the resulting X axis (right), and finally
+     * about the resulting Y axis (front). This is the default rotation order for object|objects
+     * @param ZYX rotation about the Z axis (up), then about the resulting Y axis (front), and finally
+     * about the resulting X axis (right). This is the default rotation order for
+     * vehicle|vehicles
+     * The default rotation order for peds/players is -Z-Y-X but this rotation order (set using
+     * ''"default"'' on peds) can not be set manually on other element types since it only
+     * exists due to historical and backward compatibility reasons.
+     * Specifying a rotation order other than ''"default"'' allows the same angles to be
+     * uniformly used on several elements without having to consider their type.
+     * @param conformPedRotation Relevant only for peds and will be ignored for other element types. A bool which should
+     * be set to true to ensure the ped rotation is correctly set in all circumstances. Failing
+     * to set this argument may result in the ped rotation being inverted whilst it is in the
+     * air and other inconsistencies. The default value of false is for backward compatibility
+     * with scripts which may depend upon the incorrect behaviour.
+     * @return returns true if the element rotation was successfully set and false otherwise.
+     */
+    setRotation(
+        rotX: number,
+        rotY: number,
+        rotZ: number,
+        rotOrder?: string,
+        conformPedRotation?: boolean
+    ): boolean;
+
+    /**
+     * This function can be used to disable streaming for an element. This will make sure the
+     * element is not virtualized (streamed out from GTA) when the player moves far away from
+     * it. This function only works in elements with a physical representation in the world
+     * (entities), such as player|players, ped|peds, vehicle|vehicles and object|objects.
+     * * There is a limit of elements that can be streamed in safely for every GTA entity type.
+     * If you bypass said limit by using this function, the client can experience problems of
+     * disappearing objects and unstability when trying to stream in new elements of that type.
+     * * In general, if you disable too many elements (of the same type or not) to stream out,
+     * GTA will always try to render them, so it can cause a noticeable FPS drop.}}
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementStreamable Wiki, setElementStreamable }
+     * @param streamable true if this element should stream in/out like normal, false if it should always be
+     * streamed in.
+     * @return returns whether the element could be set to be streamable.
+     */
+    setStreamable(
+        streamable: boolean
     ): boolean;
 
     /**
@@ -1122,73 +1181,14 @@ export class Element {
     ): boolean;
 
     /**
-     * This function stores element data under a certain key, attached to an element. Element
-     * data set using this is then synced with all clients and the server. The data can contain
-     * server created elements, but you should avoid passing data that is not able to be synced
-     * such as xmlnodes, acls, aclgroups etc.
-     * As element data is synced to all clients, it can generate a lot of network traffic and be
-     * heavy on performance. Events are much more efficient for sending data from a client to
-     * the server only, or from the server to a specific client. <br/>
-     * Usage of element data should be disencouraged where your goal can be achieved with events
-     * like above, and table|tables for storing and retrieving data.
-     * Note this mode only works when setting element data serverside. Setting data clientside
-     * still sends the update to all clients if synchronize is set to true.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementData Wiki, setElementData }
-     * @param key The key you wish to store the data under. (Maximum 31 characters.)
-     * @param value The value you wish to store. See element data for a list of acceptable datatypes.
-     * @param synchronize Determines whether or not the data will be synchronized with the server.
+     * This function assigns a low LOD element to an element. The low LOD element is displayed
+     * when its associated element is not fully visible. If a low LOD element is assigned to
+     * several elements, it will be displayed when any of these elements are not fully visible.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetLowLODElement Wiki, setLowLODElement }
+     * @param lowLODElement A low LOD element to display when the first element is not fully visible.
+     * @return returns true if the assignment was successful, false otherwise.
      */
-    setData(
-        key: string,
-        value: unknown,
-        synchronize?: boolean
+    setLowLOD(
+        lowLODElement: Element
     ): boolean;
-
-    /**
-     * This function updates the offsets of an element that has been attached to another element
-     * using attachElements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAttachedOffsets Wiki, setElementAttachedOffsets }
-     * @param xPosOffset The x offset, if you want the elements to be a certain distance from one another (default
-     * 0).
-     * @param yPosOffset The y offset (default 0).
-     * @param zPosOffset The z offset (default 0).
-     * @param xRotOffset The x rotation offset (default 0).
-     * @param yRotOffset The y rotation offset (default 0).
-     * @param zRotOffset The z rotation offset (default 0).
-     * @return returns true if the attaching process was successful, false otherwise.
-     */
-    setAttachedOffsets(
-        xPosOffset?: number,
-        yPosOffset?: number,
-        zPosOffset?: number,
-        xRotOffset?: number,
-        yRotOffset?: number,
-        zRotOffset?: number
-    ): boolean;
-
-    /**
-     * This function will check if an element is on the screen. Elements behind objects but
-     * still in the camera view count as being on screen.
-     * This function is particularly useful for detecting if dynamic objects are in destroyed
-     * state. Destroyed objects will return false.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementOnScreen Wiki, isElementOnScreen }
-     * @return returns true if element is on screen, false if not.
-     */
-    isOnScreen(): boolean;
-
-    /**
-     * This functions checks if certain element has call propagation enabled.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementCallPropagationEnabled Wiki, isElementCallPropagationEnabled }
-     * @return returns true if the propagation is enabled, false if disabled or invalid arguments have
-     * been passed.
-     */
-    isCallPropagationEnabled(): boolean;
-
-    /**
-     * This functions checks whether or not an element is attached to another element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsElementAttached Wiki, isElementAttached }
-     * @return returns true if the specified element is attached to another element, false if it is not
-     * attached or nil if an improper argument was passed.
-     */
-    isAttached(): boolean;
 }

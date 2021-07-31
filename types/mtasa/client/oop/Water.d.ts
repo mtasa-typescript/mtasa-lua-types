@@ -96,6 +96,19 @@ export class Water extends Element {
     );
 
     /**
+     * This function returns the water color of the GTA world.
+     * Note: The server can only return the water color, if it has actually been set by script.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterColor Wiki, getWaterColor }
+     * @return returns 4 int|ints, indicating the color of the water. (rgba)
+     */
+    getColor(): LuaMultiReturn<[
+        number,
+        number,
+        number,
+        number
+    ]>;
+
+    /**
      * Gets the world position of a vertex (i.e. corner) of a water area. Each water area is
      * either a triangle or quad (rectangle) so each has 3 or 4 corners.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterVertexPosition Wiki, getWaterVertexPosition }
@@ -110,6 +123,42 @@ export class Water extends Element {
         number,
         number
     ]>;
+
+    /**
+     * This function returns the current wave height.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWaveHeight Wiki, getWaveHeight }
+     * @return returns the height as a float, false otherwise.
+     */
+    static getWaveHeight(): number;
+
+    /**
+     * This function reset the water color of the GTA world to default.
+     * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterColor Wiki, resetWaterColor }
+     * @return returns true if water color was reset correctly, false otherwise.
+     */
+    static resetColor(): boolean;
+
+    /**
+     * This function resets the water of the GTA world back to its default level. water|Water
+     * elements are not affected.
+     * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterLevel Wiki, resetWaterLevel }
+     * @return returns true if water level was reset correctly, false otherwise.
+     */
+    static resetLevel(): boolean;
+
+    /**
+     * This function changes the water color of the GTA world.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterColor Wiki, setWaterColor }
+     * @param green The green value of the water, from 0 to 255.
+     * @param blue The blue value of the water, from 0 to 255.
+     * @param alpha The alpha (visibility) value of the water, from 0 to 255. Defaults to 200 if not declared.
+     * @return returns true if water color was set correctly, false if invalid values were passed.
+     */
+    setColor(
+        green: number,
+        blue: number,
+        alpha?: number
+    ): boolean;
 
     /**
      * Sets the height of some or all the water in the game world.
@@ -144,55 +193,6 @@ export class Water extends Element {
         y: number,
         z: number
     ): boolean;
-
-    /**
-     * This function changes the water color of the GTA world.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterColor Wiki, setWaterColor }
-     * @param green The green value of the water, from 0 to 255.
-     * @param blue The blue value of the water, from 0 to 255.
-     * @param alpha The alpha (visibility) value of the water, from 0 to 255. Defaults to 200 if not declared.
-     * @return returns true if water color was set correctly, false if invalid values were passed.
-     */
-    setColor(
-        green: number,
-        blue: number,
-        alpha?: number
-    ): boolean;
-
-    /**
-     * This function reset the water color of the GTA world to default.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterColor Wiki, resetWaterColor }
-     * @return returns true if water color was reset correctly, false otherwise.
-     */
-    static resetColor(): boolean;
-
-    /**
-     * This function resets the water of the GTA world back to its default level. water|Water
-     * elements are not affected.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterLevel Wiki, resetWaterLevel }
-     * @return returns true if water level was reset correctly, false otherwise.
-     */
-    static resetLevel(): boolean;
-
-    /**
-     * This function returns the current wave height.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWaveHeight Wiki, getWaveHeight }
-     * @return returns the height as a float, false otherwise.
-     */
-    static getWaveHeight(): number;
-
-    /**
-     * This function returns the water color of the GTA world.
-     * Note: The server can only return the water color, if it has actually been set by script.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterColor Wiki, getWaterColor }
-     * @return returns 4 int|ints, indicating the color of the water. (rgba)
-     */
-    getColor(): LuaMultiReturn<[
-        number,
-        number,
-        number,
-        number
-    ]>;
 
     /**
      * This function sets the wave height to the desired value, the default is 0.

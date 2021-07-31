@@ -39,89 +39,6 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
- * @noSelf
- */
-export declare function triggerClientEvent<
-    CallbackType extends GenericEventHandler = GenericEventHandler
->(
-    name: CallbackType["name"],
-    sourceElement: Element,
-    ...args: Parameters<CallbackType["function"]>
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
- * @noSelf
- */
-export declare function triggerLatentClientEvent<
-    CallbackType extends GenericEventHandler = GenericEventHandler
->(
-    name: CallbackType["name"],
-    bandwidth: number,
-    persist: boolean,
-    theElement: Element,
-    ...args: Parameters<CallbackType["function"]>
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
- * @noSelf
- */
-export declare function triggerLatentClientEvent<
-    CallbackType extends GenericEventHandler = GenericEventHandler
->(
-    sendTo: LuaTable | Element,
-    name: CallbackType["name"],
-    theElement: Element,
-    ...args: Parameters<CallbackType["function"]>
-): boolean;
-
-/**
- * Gets the currently queued latent events. The last one in the table is always the latest
- * event queued. Each returned handle can be used with getLatentEventStatus or
- * cancelLatentEvent
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventHandles Wiki, getLatentEventHandles }
- * @param thePlayer The player who is receiving the events.
- * @noSelf
- */
-export declare function getLatentEventHandles(
-    thePlayer: Player
-): LuaTable;
-
-/**
- * Gets the reason for cancelling an event.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCancelReason Wiki, getCancelReason }
- * @return returns the reason that was given with cancelevent
- * @noSelf
- */
-export declare function getCancelReason(): string;
-
-/**
- * Gets the status of one queued latent event.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventStatus Wiki, getLatentEventStatus }
- * @param thePlayer The player who is receiving the event.
- * @param handle A handle previous got from getLatentEventHandles.
- * @noSelf
- */
-export declare function getLatentEventStatus(
-    thePlayer: Player,
-    handle: number
-): LuaTable;
-
-/**
- * Stops a latent event from completing
- * @see {@link https://wiki.multitheftauto.com/wiki/CancelLatentEvent Wiki, cancelLatentEvent }
- * @param thePlayer The player who is receiving the event.
- * @param handle A handle previous got from getLatentEventHandles.
- * @noSelf
- */
-export declare function cancelLatentEvent(
-    thePlayer: Player,
-    handle: number
-): boolean;
-
-/**
  * This function allows you to register a custom event. Custom events function exactly like
  * the built-in events. See event system for more information on the event system.
  * @see {@link https://wiki.multitheftauto.com/wiki/AddEvent Wiki, addEvent }
@@ -134,123 +51,6 @@ export declare function cancelLatentEvent(
 export declare function addEvent(
     eventName: string,
     allowRemoteTrigger?: boolean
-): boolean;
-
-/**
- * This function checks if the last completed event was cancelled. This is mainly useful for
- * custom events created by scripts.
- * Events can be cancelled using cancelEvent, this indicates that the resource which
- * triggered the event should do whatever it can to reverse any changes made by whatever
- * caused the event. See triggerEvent for a more detailed explanation of this.
- * @see {@link https://wiki.multitheftauto.com/wiki/WasEventCancelled Wiki, wasEventCancelled }
- * @return returns true if the event was cancelled, false if it wasnt or doesnt exist.
- * @noSelf
- */
-export declare function wasEventCancelled(): boolean;
-
-/**
- * This function gets the attached functions from the event and attached element from
- * current lua script.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetEventHandlers Wiki, getEventHandlers }
- * @param eventName The name of the event. For example ( onPlayerWasted ).
- * @param attachedTo The element attached to.
- * @return returns table with attached functions, empty table otherwise.
- * @noSelf
- */
-export declare function getEventHandlers(
-    eventName: string,
-    attachedTo: Element
-): LuaTable;
-
-/**
- * This function is the same as triggerClientEvent  except the transmission rate of the data
- * contained in the arguments can be limited
- * and other network traffic is not blocked while the data is being transferred.
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
- * @param name The name of the event to trigger client side. You should register this event with
- * addEvent and add at least one event handler using addEventHandler.
- * @param theElement The element that is the Event system#Event handlers|source of the event. This could be
- * another player, or if this isnt relevant, use the root element.
- * @param sendTo The event will be sent to all players that are children of the specified element. By
- * default this is the root element, and hence the event is sent to all players. If you
- * specify a single player it will just be sent to that player. This argument can also be a
- * table of player elements.
- * @param bandwidth The bytes per second rate to send the data contained in the arguments.
- * @param persist A bool indicating whether the transmission should be allowed to continue even after the
- * resource that triggered it has since stopped.
- * @param arguments... A list of arguments to trigger with the event. You can pass any Lua data type (except
- * functions). You can also pass elements. The total amount of data should not exceed 100MB.
- * @return returns true if the event trigger has been sent, false if invalid arguments were
- * specified.
- * @noSelf
- */
-export declare function triggerLatentClientEvent<
-    CallbackType extends GenericEventHandler = GenericEventHandler
->(
-    sendTo: LuaTable | Element,
-    name: CallbackType["name"],
-    bandwidth: number,
-    persist: boolean,
-    theElement: Element,
-    ...args: Parameters<CallbackType["function"]>
-): boolean;
-
-/**
- * This function is used to stop the automatic internal handling of events, for example this
- * can be used to prevent an item being given to a player when they walk over a pickup, by
- * canceling the onPickupUse event.
- * cancelEvent does not have an effect on all events, see the individual events pages for
- * information on what happens when the event is canceled. cancelEvent does not stop further
- * event handlers from being called, as the order of event handlers being called is
- * undefined in many cases. Instead, you can see if the currently active event has been
- * cancelled using wasEventCancelled.
- * The use of cancelEvent outside of an event handler has no effect.
- * If you implement your own custom events and want to handle them being cancelled, you
- * should call wasEventCancelled to check after your call to triggerEvent.
- * @see {@link https://wiki.multitheftauto.com/wiki/CancelEvent Wiki, cancelEvent }
- * @noSelf
- */
-export declare function cancelEvent(
-    cancel?: boolean,
-    reason?: string
-): boolean;
-
-/**
- * This function triggers an event previously registered on a client. This is the primary
- * means of passing information between the server and the client. Clients have a similar
- * triggerServerEvent function that can do the reverse. You can treat this function as if it
- * was an asynchronous function call, using triggerServerEvent to pass back any returned
- * information if necessary.
- * Almost any data types can be passed as expected, including elements and complex nested
- * tables. Non-element MTA data types like xmlNodes or resource pointers will not be able to
- * be passed as they do not necessarily have a valid representation on the client.
- * Events are sent reliably, so clients will receive them, but there may be (but shouldnt
- * be) a significant delay before they are received. You should take this into account when
- * using them.
- * Keep in mind the bandwidth issues when using events - dont pass a large list of arguments
- * unless you really need to. It is marginally more efficient to pass one large event than
- * two smaller ones.
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
- * @param name The name of the event to trigger client side. You should register this event with
- * addEvent and add at least one event handler using addEventHandler.
- * @param sourceElement The element that is the Event system#Event handlers|source of the event.
- * @param sendTo The event will be sent to all players that are children of the specified element. By
- * default this is the root element, and hence the event is sent to all players. If you
- * specify a single player it will just be sent to that player. This argument can also be a
- * table of player elements.
- * @param arguments... A list of arguments to trigger with the event. You can pass any lua data type (except
- * functions). You can also pass elements.
- * @return returns true if the event trigger has been sent, false if invalid arguments were
- * specified.
- * @noSelf
- */
-export declare function triggerClientEvent<
-    CallbackType extends GenericEventHandler = GenericEventHandler
->(
-    sendTo: LuaTable | Element,
-    name: CallbackType["name"],
-    sourceElement: Element,
-    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
@@ -312,6 +112,154 @@ export declare function addEventHandler<
 ): boolean;
 
 /**
+ * This function is used to stop the automatic internal handling of events, for example this
+ * can be used to prevent an item being given to a player when they walk over a pickup, by
+ * canceling the onPickupUse event.
+ * cancelEvent does not have an effect on all events, see the individual events pages for
+ * information on what happens when the event is canceled. cancelEvent does not stop further
+ * event handlers from being called, as the order of event handlers being called is
+ * undefined in many cases. Instead, you can see if the currently active event has been
+ * cancelled using wasEventCancelled.
+ * The use of cancelEvent outside of an event handler has no effect.
+ * If you implement your own custom events and want to handle them being cancelled, you
+ * should call wasEventCancelled to check after your call to triggerEvent.
+ * @see {@link https://wiki.multitheftauto.com/wiki/CancelEvent Wiki, cancelEvent }
+ * @noSelf
+ */
+export declare function cancelEvent(
+    cancel?: boolean,
+    reason?: string
+): boolean;
+
+/**
+ * Stops a latent event from completing
+ * @see {@link https://wiki.multitheftauto.com/wiki/CancelLatentEvent Wiki, cancelLatentEvent }
+ * @param thePlayer The player who is receiving the event.
+ * @param handle A handle previous got from getLatentEventHandles.
+ * @noSelf
+ */
+export declare function cancelLatentEvent(
+    thePlayer: Player,
+    handle: number
+): boolean;
+
+/**
+ * Gets the reason for cancelling an event.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetCancelReason Wiki, getCancelReason }
+ * @return returns the reason that was given with cancelevent
+ * @noSelf
+ */
+export declare function getCancelReason(): string;
+
+/**
+ * This function gets the attached functions from the event and attached element from
+ * current lua script.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetEventHandlers Wiki, getEventHandlers }
+ * @param eventName The name of the event. For example ( onPlayerWasted ).
+ * @param attachedTo The element attached to.
+ * @return returns table with attached functions, empty table otherwise.
+ * @noSelf
+ */
+export declare function getEventHandlers(
+    eventName: string,
+    attachedTo: Element
+): LuaTable;
+
+/**
+ * Gets the currently queued latent events. The last one in the table is always the latest
+ * event queued. Each returned handle can be used with getLatentEventStatus or
+ * cancelLatentEvent
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventHandles Wiki, getLatentEventHandles }
+ * @param thePlayer The player who is receiving the events.
+ * @noSelf
+ */
+export declare function getLatentEventHandles(
+    thePlayer: Player
+): LuaTable;
+
+/**
+ * Gets the status of one queued latent event.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventStatus Wiki, getLatentEventStatus }
+ * @param thePlayer The player who is receiving the event.
+ * @param handle A handle previous got from getLatentEventHandles.
+ * @noSelf
+ */
+export declare function getLatentEventStatus(
+    thePlayer: Player,
+    handle: number
+): LuaTable;
+
+/**
+ * This functions removes a handler function from an event, so that the function is not
+ * called anymore when the event is triggered. See event system for more information on how
+ * the event system works.
+ * @see {@link https://wiki.multitheftauto.com/wiki/RemoveEventHandler Wiki, removeEventHandler }
+ * @param eventName The name of the event you want to detach the handler function from.
+ * @param attachedTo The element the handler was attached to.
+ * @param functionVar The handler function that was attached.
+ * @return returns true if the event handler was removed successfully. returns false if the
+ * specified event handler could not be found or invalid parameters were passed.
+ * @noSelf
+ */
+export declare function removeEventHandler<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
+    attachedTo: Element,
+    functionVar: CallbackType["function"]
+): boolean;
+
+/**
+ * This function triggers an event previously registered on a client. This is the primary
+ * means of passing information between the server and the client. Clients have a similar
+ * triggerServerEvent function that can do the reverse. You can treat this function as if it
+ * was an asynchronous function call, using triggerServerEvent to pass back any returned
+ * information if necessary.
+ * Almost any data types can be passed as expected, including elements and complex nested
+ * tables. Non-element MTA data types like xmlNodes or resource pointers will not be able to
+ * be passed as they do not necessarily have a valid representation on the client.
+ * Events are sent reliably, so clients will receive them, but there may be (but shouldnt
+ * be) a significant delay before they are received. You should take this into account when
+ * using them.
+ * Keep in mind the bandwidth issues when using events - dont pass a large list of arguments
+ * unless you really need to. It is marginally more efficient to pass one large event than
+ * two smaller ones.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
+ * @param name The name of the event to trigger client side. You should register this event with
+ * addEvent and add at least one event handler using addEventHandler.
+ * @param sourceElement The element that is the Event system#Event handlers|source of the event.
+ * @param sendTo The event will be sent to all players that are children of the specified element. By
+ * default this is the root element, and hence the event is sent to all players. If you
+ * specify a single player it will just be sent to that player. This argument can also be a
+ * table of player elements.
+ * @param arguments... A list of arguments to trigger with the event. You can pass any lua data type (except
+ * functions). You can also pass elements.
+ * @return returns true if the event trigger has been sent, false if invalid arguments were
+ * specified.
+ * @noSelf
+ */
+export declare function triggerClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    sendTo: LuaTable | Element,
+    name: CallbackType["name"],
+    sourceElement: Element,
+    ...args: Parameters<CallbackType["function"]>
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
+ * @noSelf
+ */
+export declare function triggerClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    name: CallbackType["name"],
+    sourceElement: Element,
+    ...args: Parameters<CallbackType["function"]>
+): boolean;
+
+/**
  * This function will trigger a named event on a specific element in the element tree. See
  * event system for more information on how the event system works.
  * You can use the value returned from this function to determine if the event was cancelled
@@ -346,21 +294,73 @@ export declare function triggerEvent<
 ): boolean;
 
 /**
- * This functions removes a handler function from an event, so that the function is not
- * called anymore when the event is triggered. See event system for more information on how
- * the event system works.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveEventHandler Wiki, removeEventHandler }
- * @param eventName The name of the event you want to detach the handler function from.
- * @param attachedTo The element the handler was attached to.
- * @param functionVar The handler function that was attached.
- * @return returns true if the event handler was removed successfully. returns false if the
- * specified event handler could not be found or invalid parameters were passed.
+ * This function is the same as triggerClientEvent  except the transmission rate of the data
+ * contained in the arguments can be limited
+ * and other network traffic is not blocked while the data is being transferred.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
+ * @param name The name of the event to trigger client side. You should register this event with
+ * addEvent and add at least one event handler using addEventHandler.
+ * @param theElement The element that is the Event system#Event handlers|source of the event. This could be
+ * another player, or if this isnt relevant, use the root element.
+ * @param sendTo The event will be sent to all players that are children of the specified element. By
+ * default this is the root element, and hence the event is sent to all players. If you
+ * specify a single player it will just be sent to that player. This argument can also be a
+ * table of player elements.
+ * @param bandwidth The bytes per second rate to send the data contained in the arguments.
+ * @param persist A bool indicating whether the transmission should be allowed to continue even after the
+ * resource that triggered it has since stopped.
+ * @param arguments... A list of arguments to trigger with the event. You can pass any Lua data type (except
+ * functions). You can also pass elements. The total amount of data should not exceed 100MB.
+ * @return returns true if the event trigger has been sent, false if invalid arguments were
+ * specified.
  * @noSelf
  */
-export declare function removeEventHandler<
+export declare function triggerLatentClientEvent<
     CallbackType extends GenericEventHandler = GenericEventHandler
 >(
-    eventName: CallbackType["name"],
-    attachedTo: Element,
-    functionVar: CallbackType["function"]
+    sendTo: LuaTable | Element,
+    name: CallbackType["name"],
+    bandwidth: number,
+    persist: boolean,
+    theElement: Element,
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
+ * @noSelf
+ */
+export declare function triggerLatentClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    name: CallbackType["name"],
+    bandwidth: number,
+    persist: boolean,
+    theElement: Element,
+    ...args: Parameters<CallbackType["function"]>
+): boolean;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
+ * @noSelf
+ */
+export declare function triggerLatentClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    sendTo: LuaTable | Element,
+    name: CallbackType["name"],
+    theElement: Element,
+    ...args: Parameters<CallbackType["function"]>
+): boolean;
+
+/**
+ * This function checks if the last completed event was cancelled. This is mainly useful for
+ * custom events created by scripts.
+ * Events can be cancelled using cancelEvent, this indicates that the resource which
+ * triggered the event should do whatever it can to reverse any changes made by whatever
+ * caused the event. See triggerEvent for a more detailed explanation of this.
+ * @see {@link https://wiki.multitheftauto.com/wiki/WasEventCancelled Wiki, wasEventCancelled }
+ * @return returns true if the event was cancelled, false if it wasnt or doesnt exist.
+ * @noSelf
+ */
+export declare function wasEventCancelled(): boolean;

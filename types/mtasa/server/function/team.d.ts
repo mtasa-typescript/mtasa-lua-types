@@ -39,55 +39,16 @@ import {
 } from '../structure';
 
 /**
- * This function adds a player to an existing team. The player will automatically be removed
- * from his current team if hes on one.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
- * @param thePlayer The player you wish to add to a team.
- * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
- * team.
- * @return returns true if the player was successfully added to the specified team or removed from
- * his previous one, false otherwise.
+ * This function is for returning the number of players in the specified team.
+ * @see {@link https://wiki.multitheftauto.com/wiki/CountPlayersInTeam Wiki, countPlayersInTeam }
+ * @param theTeam The team you wish to retrieve the player count of.
+ * @return returns an integer containing the number of players in the team, false if it could not be
+ * retrieved.
  * @noSelf
  */
-export declare function setPlayerTeam(
-    thePlayer: Player,
+export declare function countPlayersInTeam(
     theTeam: Team
-): boolean;
-
-/**
- * This function finds a team element using the provided team name.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
- * @param teamName A string determining the name of the team you wish to find.
- * @return returns the team element if it was found, false otherwise.
- * @noSelf
- */
-export declare function getTeamFromName(
-    teamName: string
-): Team;
-
-/**
- * This function gets the current team a player is on.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
- * @param thePlayer : The player whose team you want to find out.
- * @return returns a team element representing the team the player is on, false if the player is not
- * part of a team.
- * @noSelf
- */
-export declare function getPlayerTeam(
-    thePlayer: Player
-): Team;
-
-/**
- * This function gets the team name of a team object.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamName Wiki, getTeamName }
- * @param theTeam The team you want to retrieve the name of.
- * @return returns a string representing the teams name if the team object was valid, false
- * otherwise.
- * @noSelf
- */
-export declare function getTeamName(
-    theTeam: Team
-): string;
+): number;
 
 /**
  * This function is for creating a new team, which can be used to group players. Players
@@ -109,16 +70,95 @@ export declare function createTeam(
 ): Team;
 
 /**
- * This function is for returning the number of players in the specified team.
- * @see {@link https://wiki.multitheftauto.com/wiki/CountPlayersInTeam Wiki, countPlayersInTeam }
- * @param theTeam The team you wish to retrieve the player count of.
- * @return returns an integer containing the number of players in the team, false if it could not be
- * retrieved.
+ * This function retrieves all the players of the specified team.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayersInTeam Wiki, getPlayersInTeam }
+ * @param theTeam The team you wish to retrieve all the players from.
+ * @return returns a table of all the players in the team, or an empty one if there are none else
+ * false if invalid arguments are passed.
  * @noSelf
  */
-export declare function countPlayersInTeam(
+export declare function getPlayersInTeam(
     theTeam: Team
-): number;
+): LuaTable;
+
+/**
+ * This function gets the current team a player is on.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
+ * @param thePlayer : The player whose team you want to find out.
+ * @return returns a team element representing the team the player is on, false if the player is not
+ * part of a team.
+ * @noSelf
+ */
+export declare function getPlayerTeam(
+    thePlayer: Player
+): Team;
+
+/**
+ * This function retrieves the color of a team.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamColor Wiki, getTeamColor }
+ * @param theTeam The team you want to get the color of.
+ * @return returns 3 integers representing the red, green, and blue color components of the team if
+ * its valid, false otherwise.
+ * @noSelf
+ */
+export declare function getTeamColor(
+    theTeam: Team
+): LuaMultiReturn<[
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function tells you if friendly fire is turned on for the specified team.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFriendlyFire Wiki, getTeamFriendlyFire }
+ * @param theTeam The team object that will be checked
+ * @return returns true if friendly fire is on for the specified team, false if it is turned off or
+ * if invalid arguments are specified.
+ * @noSelf
+ */
+export declare function getTeamFriendlyFire(
+    theTeam: Team
+): boolean;
+
+/**
+ * This function finds a team element using the provided team name.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFromName Wiki, getTeamFromName }
+ * @param teamName A string determining the name of the team you wish to find.
+ * @return returns the team element if it was found, false otherwise.
+ * @noSelf
+ */
+export declare function getTeamFromName(
+    teamName: string
+): Team;
+
+/**
+ * This function gets the team name of a team object.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamName Wiki, getTeamName }
+ * @param theTeam The team you want to retrieve the name of.
+ * @return returns a string representing the teams name if the team object was valid, false
+ * otherwise.
+ * @noSelf
+ */
+export declare function getTeamName(
+    theTeam: Team
+): string;
+
+/**
+ * This function adds a player to an existing team. The player will automatically be removed
+ * from his current team if hes on one.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
+ * @param thePlayer The player you wish to add to a team.
+ * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
+ * team.
+ * @return returns true if the player was successfully added to the specified team or removed from
+ * his previous one, false otherwise.
+ * @noSelf
+ */
+export declare function setPlayerTeam(
+    thePlayer: Player,
+    theTeam: Team
+): boolean;
 
 /**
  * This function is for setting the color of a specified team. This color is shown, for
@@ -139,47 +179,6 @@ export declare function setTeamColor(
 ): boolean;
 
 /**
- * This function is used to set a teams name.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTeamName Wiki, setTeamName }
- * @param theTeam The team you want to change the name of.
- * @param newName A string representing the name you want the team to be called.
- * @return returns true if the team was valid and the name was changed, false otherwise.
- * @noSelf
- */
-export declare function setTeamName(
-    theTeam: Team,
-    newName: string
-): boolean;
-
-/**
- * This function retrieves all the players of the specified team.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayersInTeam Wiki, getPlayersInTeam }
- * @param theTeam The team you wish to retrieve all the players from.
- * @return returns a table of all the players in the team, or an empty one if there are none else
- * false if invalid arguments are passed.
- * @noSelf
- */
-export declare function getPlayersInTeam(
-    theTeam: Team
-): LuaTable;
-
-/**
- * This function retrieves the color of a team.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamColor Wiki, getTeamColor }
- * @param theTeam The team you want to get the color of.
- * @return returns 3 integers representing the red, green, and blue color components of the team if
- * its valid, false otherwise.
- * @noSelf
- */
-export declare function getTeamColor(
-    theTeam: Team
-): LuaMultiReturn<[
-    number,
-    number,
-    number
-]>;
-
-/**
  * This function sets the friendly fire value for the specified team.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetTeamFriendlyFire Wiki, setTeamFriendlyFire }
  * @param theTeam The  team that will have friendly fire set
@@ -196,13 +195,14 @@ export declare function setTeamFriendlyFire(
 ): boolean;
 
 /**
- * This function tells you if friendly fire is turned on for the specified team.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTeamFriendlyFire Wiki, getTeamFriendlyFire }
- * @param theTeam The team object that will be checked
- * @return returns true if friendly fire is on for the specified team, false if it is turned off or
- * if invalid arguments are specified.
+ * This function is used to set a teams name.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetTeamName Wiki, setTeamName }
+ * @param theTeam The team you want to change the name of.
+ * @param newName A string representing the name you want the team to be called.
+ * @return returns true if the team was valid and the name was changed, false otherwise.
  * @noSelf
  */
-export declare function getTeamFriendlyFire(
-    theTeam: Team
+export declare function setTeamName(
+    theTeam: Team,
+    newName: string
 ): boolean;

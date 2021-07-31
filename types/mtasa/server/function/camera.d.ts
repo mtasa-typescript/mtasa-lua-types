@@ -39,6 +39,33 @@ import {
 } from '../structure';
 
 /**
+ * This function will fade a players camera to a color or back to normal over a specified
+ * time period. This will also affect the sound volume for the player (50% faded = 50%
+ * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
+ * outs in a row, but for serverside scripts you must use one then the other.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
+ * @param thePlayer The player whose camera you wish to fade.
+ * @param fadeIn Should the camera be faded in or out? Pass true to fade the camera in, false to fade it
+ * out to a color.
+ * @param timeToFade The number of seconds it should take to fade.
+ * @param red The amount of red in the color that the camera fades out to (0 - 255). Not required for
+ * fading in.
+ * @param green The amount of green in the color that the camera fades out to (0 - 255). Not required for
+ * fading in.
+ * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
+ * fading in.
+ * @noSelf
+ */
+export declare function fadeCamera(
+    thePlayer: Player,
+    fadeIn: boolean,
+    timeToFade?: number,
+    red?: number,
+    green?: number,
+    blue?: number
+): boolean;
+
+/**
  * Returns the interior of the local camera (independent of the interior of the local
  * player).
  * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
@@ -48,34 +75,6 @@ import {
 export declare function getCameraInterior(
     thePlayer: Player
 ): number;
-
-/**
- * Sets the interior of the local camera. Only the interior of the camera is changed, the
- * local player stays in the interior he was in.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
- * @param thePlayer the player whose camera interior will be set.
- * @param interior the interior to place the camera in.
- * @noSelf
- */
-export declare function setCameraInterior(
-    thePlayer: Player,
-    interior: number
-): boolean;
-
-/**
- * This function allows you to set a players camera to follow other elements instead.
- * Currently supported element type is:
- * *Players
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
- * @param thePlayer The player whose camera you wish to modify.
- * @param target The player who you want the camera to follow. If none is specified, the camera will
- * target the player.
- * @noSelf
- */
-export declare function setCameraTarget(
-    thePlayer: Player,
-    target?: Player
-): boolean;
 
 /**
  * This function gets the position of the camera and the position of the point it is facing.
@@ -106,6 +105,19 @@ export declare function getCameraMatrix(
 export declare function getCameraTarget(
     thePlayer: Player
 ): Element;
+
+/**
+ * Sets the interior of the local camera. Only the interior of the camera is changed, the
+ * local player stays in the interior he was in.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
+ * @param thePlayer the player whose camera interior will be set.
+ * @param interior the interior to place the camera in.
+ * @noSelf
+ */
+export declare function setCameraInterior(
+    thePlayer: Player,
+    interior: number
+): boolean;
 
 /**
  * This function sets the cameras position and direction. The first three arguments are the
@@ -140,28 +152,16 @@ export declare function setCameraMatrix(
 ): boolean;
 
 /**
- * This function will fade a players camera to a color or back to normal over a specified
- * time period. This will also affect the sound volume for the player (50% faded = 50%
- * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
- * outs in a row, but for serverside scripts you must use one then the other.
- * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
- * @param thePlayer The player whose camera you wish to fade.
- * @param fadeIn Should the camera be faded in or out? Pass true to fade the camera in, false to fade it
- * out to a color.
- * @param timeToFade The number of seconds it should take to fade.
- * @param red The amount of red in the color that the camera fades out to (0 - 255). Not required for
- * fading in.
- * @param green The amount of green in the color that the camera fades out to (0 - 255). Not required for
- * fading in.
- * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
- * fading in.
+ * This function allows you to set a players camera to follow other elements instead.
+ * Currently supported element type is:
+ * *Players
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
+ * @param thePlayer The player whose camera you wish to modify.
+ * @param target The player who you want the camera to follow. If none is specified, the camera will
+ * target the player.
  * @noSelf
  */
-export declare function fadeCamera(
+export declare function setCameraTarget(
     thePlayer: Player,
-    fadeIn: boolean,
-    timeToFade?: number,
-    red?: number,
-    green?: number,
-    blue?: number
+    target?: Player
 ): boolean;

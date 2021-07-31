@@ -56,66 +56,6 @@ import {
 } from '../structure';
 
 /**
- * <section name=Server class=server show=true>
- * This function sets the weapon property of the specified weapons specified weapon type.
- * See lower down the page for documentation related to weapon creation.
- * <syntaxhighlight lang=lua>bool setWeaponProperty ( int weaponID/string weaponName, string
- * weaponSkill, string property, int/float theValue )</syntaxhighlight>
- * *weaponID: The ID or name of the Weapons|weapon you want to set a property of. Names can
- * be:
- * *weaponSkill: Either: pro, std or poor. The player must have this skill level set to have
- * the effect.
- * *property: The property you want to set the value of:
- * *theValue: The value to set the property to.
- * On success:
- * bool: Returns true if the weapon property was successfully set
- * On failure:
- * bool: Returns false if the weapon property was unable to be set
- * </section>
- * <section name=Client class=client show=true>
- * <p>The client side function only applies to custom weapons created client sided.</p>
- * <syntaxhighlight lang=lua>bool setWeaponProperty ( weapon theWeapon, string strProperty,
- * value theValue )</syntaxhighlight>
- * * theWeapon: the weapon to change the property of.
- * * strProperty: the property to edit:
- * * theValue: The value to set the property to.
- * Returns true if the property was set.
- * </section>
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
- * @param theWeapon the weapon to change the property of.
- * @param strProperty the property to edit:
- * @param theValue The value to set the property to.
- * @return returns true if the property was set.
- * @noSelf
- */
-export declare function setWeaponProperty(
-    theWeapon: Weapon,
-    strProperty: string,
-    theValue: unknown
-): boolean;
-
-/**
- * <section name=setWeaponAmmo class=server show=true>
- * Sets the ammo to a certain amount for a specified weapon (if they already have it),
- * regardless of current ammo.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponAmmo Wiki, setWeaponAmmo }
- * @param thePlayer A player object referencing the specified player
- * @param weapon A whole number integer that refers to a weapon ID.
- * @param totalAmmo A whole number integer serving as the total ammo amount for the given weapon (including
- * ammo in clip).
- * @param ammoInClip The amount of ammo to set in the players clip.  This will be taken from the main ammo.
- * If left unspecified or set to 0, the current clip will remain.
- * @return returns a boolean value true or false that tells you if it was successful or not.
- * @noSelf
- */
-export declare function setWeaponAmmo(
-    thePlayer: Player,
-    weapon: number,
-    totalAmmo: number,
-    ammoInClip?: number
-): boolean;
-
-/**
  * Creates a Element/Weapon|custom weapon that can fire bullets. Do not confuse this with
  * player held weapons.
  * @see {@link https://wiki.multitheftauto.com/wiki/CreateWeapon Wiki, createWeapon }
@@ -147,47 +87,15 @@ export declare function fireWeapon(
 ): boolean;
 
 /**
- * This function allows you to identify the weapon slot that a weapon belongs to.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSlotFromWeapon Wiki, getSlotFromWeapon }
- * @param weaponid Weapon to find the weapon slot of.
- * @return returns an integer representing the given weapon ids associated weapon slot, false if the
- * id was invalid.
+ * This function gets the total ammo a Element/Weapon|custom weapon has.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponAmmo Wiki, getWeaponAmmo }
+ * @param theWeapon : The weapon to get the ammo of.
+ * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
+ * error occured.
  * @noSelf
  */
-export declare function getSlotFromWeapon(
-    weaponid: number
-): number;
-
-/**
- * This function allows you to retrieve the name of a weapon from an ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponNameFromID Wiki, getWeaponNameFromID }
- * @param id The ID you wish to retrieve the name of
- * @return returns a string of the name of the weapon or death type, false otherwise. names will be
- * like these: (ignoring case)
- * @noSelf
- */
-export declare function getWeaponNameFromID(
-    id: number
-): string;
-
-/**
- * This function gets a weapon property of the specified Element/Weapon|custom weapon
- * (clientside only) or specified Weapons|player-held weapon (both client and server).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
- * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
- * @param weaponSkill Either: pro, std or poor
- * @param property The property you want to get the value of:
- * The following properties are get only:
- * @return on success:
- * int: the weapon property
- * on failure:
- * bool: false if the passed arguments were invalid
- * @noSelf
- */
-export declare function getWeaponProperty(
-    weaponID: number | string,
-    weaponSkill: string,
-    property: string
+export declare function getWeaponAmmo(
+    theWeapon: Weapon
 ): number;
 
 /**
@@ -200,6 +108,17 @@ export declare function getWeaponProperty(
  * @noSelf
  */
 export declare function getWeaponClipAmmo(
+    theWeapon: Weapon
+): number;
+
+/**
+ * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
+ * @param theWeapon The weapon to modify the firing rate of.
+ * @return returns an integer with the firing rate of the custom weapon, false otherwise.
+ * @noSelf
+ */
+export declare function getWeaponFiringRate(
     theWeapon: Weapon
 ): number;
 
@@ -233,26 +152,6 @@ export declare function getWeaponFlags(
 ): boolean;
 
 /**
- * This function gets the original weapon property of the specified weapons specified weapon
- * type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetOriginalWeaponProperty Wiki, getOriginalWeaponProperty }
- * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
- * @param weaponSkill Either: pro, std or poor
- * @param property The property you want to get the value of:
- * The following properties are get only:
- * @return on success:
- * int: the weapon property
- * on failure:
- * bool: false if the passed arguments were invalid
- * @noSelf
- */
-export declare function getOriginalWeaponProperty(
-    weaponID: number | string,
-    weaponSkill: string,
-    property: string
-): number;
-
-/**
  * This function gets the owner of a Element/Weapon|custom weapon. Weapon ownership system
  * was, however, disabled, so this function always returns false. Please refer to
  * setWeaponOwner for details.
@@ -284,16 +183,19 @@ export declare function getWeaponState(
 ): string;
 
 /**
- * This function gets the total ammo a Element/Weapon|custom weapon has.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponAmmo Wiki, getWeaponAmmo }
- * @param theWeapon : The weapon to get the ammo of.
- * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
- * error occured.
+ * This functions gets the target of a Element/Weapon|custom weapon.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponTarget Wiki, getWeaponTarget }
+ * @param theWeapon The weapon to get the target of.
+ * @return * returns the target of the element/weapon|custom weapon, which can be:
+ * **nil if the weapon is in rotation based targeting.
+ * **3 float|floats if the weapon is firing at a fixed point.
+ * **an element if the weapon is firing an entity.
+ * * returns false if the weapon element is not valid.
  * @noSelf
  */
-export declare function getWeaponAmmo(
+export declare function getWeaponTarget(
     theWeapon: Weapon
-): number;
+): null | Element | number;
 
 /**
  * This function resets the firing rate of a Element/Weapon|custom weapon to the default one.
@@ -304,6 +206,35 @@ export declare function getWeaponAmmo(
  */
 export declare function resetWeaponFiringRate(
     theWeapon: Weapon
+): boolean;
+
+/**
+ * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
+ * @param theWeapon The Element/Weapon|weapon to set the clip ammo of.
+ * @param clipAmmo The amount of ammo in the clip.
+ * @return this function returns true if the arguments are valid and the weapon clip ammo could be
+ * changed; false otherwise.
+ * @noSelf
+ */
+export declare function setWeaponClipAmmo(
+    theWeapon: Weapon,
+    clipAmmo: number
+): boolean;
+
+/**
+ * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
+ * firing state.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
+ * @param theWeapon The weapon to modify the firing rate of.
+ * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
+ * quicker the Element/Weapon|custom weapon will shoot.
+ * @return returns true on success, false otherwise.
+ * @noSelf
+ */
+export declare function setWeaponFiringRate(
+    theWeapon: Weapon,
+    firingRate: number
 ): boolean;
 
 /**
@@ -354,35 +285,6 @@ export declare function setWeaponFlags(
 export declare function setWeaponState(
     theWeapon: Weapon,
     theState: string
-): boolean;
-
-/**
- * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
- * @param theWeapon The Element/Weapon|weapon to set the clip ammo of.
- * @param clipAmmo The amount of ammo in the clip.
- * @return this function returns true if the arguments are valid and the weapon clip ammo could be
- * changed; false otherwise.
- * @noSelf
- */
-export declare function setWeaponClipAmmo(
-    theWeapon: Weapon,
-    clipAmmo: number
-): boolean;
-
-/**
- * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
- * firing state.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
- * @param theWeapon The weapon to modify the firing rate of.
- * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
- * quicker the Element/Weapon|custom weapon will shoot.
- * @return returns true on success, false otherwise.
- * @noSelf
- */
-export declare function setWeaponFiringRate(
-    theWeapon: Weapon,
-    firingRate: number
 ): boolean;
 
 /**
@@ -440,6 +342,38 @@ export declare function setWeaponTarget(
 ): boolean;
 
 /**
+ * This function gets the original weapon property of the specified weapons specified weapon
+ * type.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetOriginalWeaponProperty Wiki, getOriginalWeaponProperty }
+ * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
+ * @param weaponSkill Either: pro, std or poor
+ * @param property The property you want to get the value of:
+ * The following properties are get only:
+ * @return on success:
+ * int: the weapon property
+ * on failure:
+ * bool: false if the passed arguments were invalid
+ * @noSelf
+ */
+export declare function getOriginalWeaponProperty(
+    weaponID: number | string,
+    weaponSkill: string,
+    property: string
+): number;
+
+/**
+ * This function allows you to identify the weapon slot that a weapon belongs to.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetSlotFromWeapon Wiki, getSlotFromWeapon }
+ * @param weaponid Weapon to find the weapon slot of.
+ * @return returns an integer representing the given weapon ids associated weapon slot, false if the
+ * id was invalid.
+ * @noSelf
+ */
+export declare function getSlotFromWeapon(
+    weaponid: number
+): number;
+
+/**
  * This function will obtain the ID of a particular weapon from its name.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName Wiki, getWeaponIDFromName }
  * @param name A string containing the name of the weapon. Names can be: (Case is ignored)
@@ -451,27 +385,93 @@ export declare function getWeaponIDFromName(
 ): number;
 
 /**
- * This functions gets the target of a Element/Weapon|custom weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponTarget Wiki, getWeaponTarget }
- * @param theWeapon The weapon to get the target of.
- * @return * returns the target of the element/weapon|custom weapon, which can be:
- * **nil if the weapon is in rotation based targeting.
- * **3 float|floats if the weapon is firing at a fixed point.
- * **an element if the weapon is firing an entity.
- * * returns false if the weapon element is not valid.
+ * This function allows you to retrieve the name of a weapon from an ID.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponNameFromID Wiki, getWeaponNameFromID }
+ * @param id The ID you wish to retrieve the name of
+ * @return returns a string of the name of the weapon or death type, false otherwise. names will be
+ * like these: (ignoring case)
  * @noSelf
  */
-export declare function getWeaponTarget(
-    theWeapon: Weapon
-): null | Element | number;
+export declare function getWeaponNameFromID(
+    id: number
+): string;
 
 /**
- * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
- * @param theWeapon The weapon to modify the firing rate of.
- * @return returns an integer with the firing rate of the custom weapon, false otherwise.
+ * This function gets a weapon property of the specified Element/Weapon|custom weapon
+ * (clientside only) or specified Weapons|player-held weapon (both client and server).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+ * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
+ * @param weaponSkill Either: pro, std or poor
+ * @param property The property you want to get the value of:
+ * The following properties are get only:
+ * @return on success:
+ * int: the weapon property
+ * on failure:
+ * bool: false if the passed arguments were invalid
  * @noSelf
  */
-export declare function getWeaponFiringRate(
-    theWeapon: Weapon
+export declare function getWeaponProperty(
+    weaponID: number | string,
+    weaponSkill: string,
+    property: string
 ): number;
+
+/**
+ * <section name=setWeaponAmmo class=server show=true>
+ * Sets the ammo to a certain amount for a specified weapon (if they already have it),
+ * regardless of current ammo.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponAmmo Wiki, setWeaponAmmo }
+ * @param thePlayer A player object referencing the specified player
+ * @param weapon A whole number integer that refers to a weapon ID.
+ * @param totalAmmo A whole number integer serving as the total ammo amount for the given weapon (including
+ * ammo in clip).
+ * @param ammoInClip The amount of ammo to set in the players clip.  This will be taken from the main ammo.
+ * If left unspecified or set to 0, the current clip will remain.
+ * @return returns a boolean value true or false that tells you if it was successful or not.
+ * @noSelf
+ */
+export declare function setWeaponAmmo(
+    thePlayer: Player,
+    weapon: number,
+    totalAmmo: number,
+    ammoInClip?: number
+): boolean;
+
+/**
+ * <section name=Server class=server show=true>
+ * This function sets the weapon property of the specified weapons specified weapon type.
+ * See lower down the page for documentation related to weapon creation.
+ * <syntaxhighlight lang=lua>bool setWeaponProperty ( int weaponID/string weaponName, string
+ * weaponSkill, string property, int/float theValue )</syntaxhighlight>
+ * *weaponID: The ID or name of the Weapons|weapon you want to set a property of. Names can
+ * be:
+ * *weaponSkill: Either: pro, std or poor. The player must have this skill level set to have
+ * the effect.
+ * *property: The property you want to set the value of:
+ * *theValue: The value to set the property to.
+ * On success:
+ * bool: Returns true if the weapon property was successfully set
+ * On failure:
+ * bool: Returns false if the weapon property was unable to be set
+ * </section>
+ * <section name=Client class=client show=true>
+ * <p>The client side function only applies to custom weapons created client sided.</p>
+ * <syntaxhighlight lang=lua>bool setWeaponProperty ( weapon theWeapon, string strProperty,
+ * value theValue )</syntaxhighlight>
+ * * theWeapon: the weapon to change the property of.
+ * * strProperty: the property to edit:
+ * * theValue: The value to set the property to.
+ * Returns true if the property was set.
+ * </section>
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
+ * @param theWeapon the weapon to change the property of.
+ * @param strProperty the property to edit:
+ * @param theValue The value to set the property to.
+ * @return returns true if the property was set.
+ * @noSelf
+ */
+export declare function setWeaponProperty(
+    theWeapon: Weapon,
+    strProperty: string,
+    theValue: unknown
+): boolean;

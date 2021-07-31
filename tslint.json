@@ -14,7 +14,7 @@
         "void-return": false,
         // Const Enum is forbidden? Well....
         "no-const-enum": false,
-        // I have to use `Function` type
-        "ban-types": false
+        //
+        "no-unnecessary-generics": false
     }
 }

@@ -56,77 +56,13 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserVolume Wiki, setBrowserVolume }
+ * This function checks if the browser can return to the previous page.
+ * @see {@link https://wiki.multitheftauto.com/wiki/CanBrowserNavigateBack Wiki, canBrowserNavigateBack }
+ * @param webBrowser The browser you want to check for a previous page.
+ * @return returns true if the browser can navigate back, false otherwise.
  * @noSelf
  */
-export declare function setBrowserVolume(
-    volume: number
-): boolean;
-
-/**
- * Allows resizing of CEF browsers at runtime.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResizeBrowser Wiki, resizeBrowser }
- * @param webBrowser The browser you want to resize.
- * @param width The new width of the browser.
- * @param height The new height of the browser.
- * @return returns true if the browser is resized successfully, false if theres something wrong.
- * @noSelf
- */
-export declare function resizeBrowser(
-    webBrowser: Browser,
-    width: number,
-    height: number
-): boolean;
-
-/**
- * Returns the browser to the previous page.
- * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserBack Wiki, navigateBrowserBack }
- * @param webBrowser The browser that you want return to the previous page.
- * @return returns true if the browser has returned to the previous page, false otherwise.
- * @noSelf
- */
-export declare function navigateBrowserBack(
-    webBrowser: Browser
-): boolean;
-
-/**
- * This function can be used to retrieve the source code of a website (asynchronously). The
- * size of the source code is limited to 2 MiB (remaining bytes are cut).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSource Wiki, getBrowserSource }
- * @param webBrowser The browser element you want to get the source of
- * @param callback a callback function with syntax as described below
- * <syntaxhighlight lang="lua">
- * function ( string code )
- * </syntaxhighlight>
- * @return returns true if valid arguments have been passed, false otherwise.
- * @noSelf
- */
-export declare function getBrowserSource(
-    webBrowser: Browser,
-    callback: HandleFunction
-): boolean;
-
-/**
- * This function checks if a browser is currently loading a website.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserLoading Wiki, isBrowserLoading }
- * @param webBrowser The browser
- * @return returns true if the browser is loading a website, false otherwise and nil if invalid
- * arguments were passed.
- * @noSelf
- */
-export declare function isBrowserLoading(
-    webBrowser: Browser
-): boolean;
-
-/**
- * This function checks if a browser is focused.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserFocused Wiki, isBrowserFocused }
- * @param webBrowser The browser
- * @return returns true if the browser is focused, false otherwise and nil if invalid arguments were
- * passed.
- * @noSelf
- */
-export declare function isBrowserFocused(
+export declare function canBrowserNavigateBack(
     webBrowser: Browser
 ): boolean;
 
@@ -139,31 +75,6 @@ export declare function isBrowserFocused(
  */
 export declare function canBrowserNavigateForward(
     webBrowser: Browser
-): boolean;
-
-/**
- * This function checks if the browser can return to the previous page.
- * @see {@link https://wiki.multitheftauto.com/wiki/CanBrowserNavigateBack Wiki, canBrowserNavigateBack }
- * @param webBrowser The browser you want to check for a previous page.
- * @return returns true if the browser can navigate back, false otherwise.
- * @noSelf
- */
-export declare function canBrowserNavigateBack(
-    webBrowser: Browser
-): boolean;
-
-/**
- * This function checks if the specified URL is blocked from being loaded.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserDomainBlocked Wiki, isBrowserDomainBlocked }
- * @param address A website URL
- * @param isURL true if address should be parsed as URL, false otherwise.
- * @return returns false if the url is able to be loaded, true if it is blocked and nil if an
- * invalid domain/url was passed.
- * @noSelf
- */
-export declare function isBrowserDomainBlocked(
-    address: string,
-    isURL?: boolean
 ): boolean;
 
 /**
@@ -200,6 +111,19 @@ export declare function executeBrowserJavascript(
 ): boolean;
 
 /**
+ * This function will attempt to focus the Element/Browser|browser or unfocus all browsers.
+ * The browser that is focused will retrieve keyboard input.
+ * @see {@link https://wiki.multitheftauto.com/wiki/FocusBrowser Wiki, focusBrowser }
+ * @param webBrowser The web browser to be focused - if this is nil, it will unfocus all browsers.
+ * @return returns true if the browser was focused or if nil was passed, false if it failed to focus
+ * or the browser does not exist.
+ * @noSelf
+ */
+export declare function focusBrowser(
+    webBrowser: Browser
+): boolean;
+
+/**
  * This function gets a given property of a specified browser.
  * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserProperty Wiki, getBrowserProperty }
  * @param theBrowser browser element to get the property value of
@@ -214,6 +138,57 @@ export declare function getBrowserProperty(
 ): boolean;
 
 /**
+ * This function returns a table containing the browser settings.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSettings Wiki, getBrowserSettings }
+ * @return a table having the following keys:
+ * * remoteenabled: true if remote websites are enabled, false otherwise
+ * * remotejavascript: true if javascript is enabled on remote websites, false otherwise
+ * * pluginsenabled: true if plugins such as flash, silverlight (but not java) are enabled,
+ * false otherwise. this setting is false by default.
+ * @noSelf
+ */
+export declare function getBrowserSettings(): LuaTable;
+
+/**
+ * This function can be used to retrieve the source code of a website (asynchronously). The
+ * size of the source code is limited to 2 MiB (remaining bytes are cut).
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSource Wiki, getBrowserSource }
+ * @param webBrowser The browser element you want to get the source of
+ * @param callback a callback function with syntax as described below
+ * <syntaxhighlight lang="lua">
+ * function ( string code )
+ * </syntaxhighlight>
+ * @return returns true if valid arguments have been passed, false otherwise.
+ * @noSelf
+ */
+export declare function getBrowserSource(
+    webBrowser: Browser,
+    callback: HandleFunction
+): boolean;
+
+/**
+ * This function returns the title of the passed Element/Browser|browser.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserTitle Wiki, getBrowserTitle }
+ * @param webBrowser The browser
+ * @return returns the title as a string. returns false if invalid arguments were passed.
+ * @noSelf
+ */
+export declare function getBrowserTitle(
+    webBrowser: Browser
+): string;
+
+/**
+ * This function returns the URL of the specified Element/Browser|browser.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserURL Wiki, getBrowserURL }
+ * @param webBrowser The browser
+ * @return returns the web browser url.
+ * @noSelf
+ */
+export declare function getBrowserURL(
+    webBrowser: Browser
+): string;
+
+/**
  * This function injects a mouse click (state: down).
  * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseDown Wiki, injectBrowserMouseDown }
  * @param webBrowser The web browser
@@ -222,19 +197,6 @@ export declare function getBrowserProperty(
  * @noSelf
  */
 export declare function injectBrowserMouseDown(
-    webBrowser: Browser,
-    mouseButton: string
-): boolean;
-
-/**
- * This function injects a mouse click (state: up).
- * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp Wiki, injectBrowserMouseUp }
- * @param webBrowser The web browser
- * @param mouseButton The mouse button (Possible values: left, middle, right)
- * @return returns true if the click was successfully injected, false otherwise.
- * @noSelf
- */
-export declare function injectBrowserMouseUp(
     webBrowser: Browser,
     mouseButton: string
 ): boolean;
@@ -255,6 +217,19 @@ export declare function injectBrowserMouseMove(
 ): boolean;
 
 /**
+ * This function injects a mouse click (state: up).
+ * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp Wiki, injectBrowserMouseUp }
+ * @param webBrowser The web browser
+ * @param mouseButton The mouse button (Possible values: left, middle, right)
+ * @return returns true if the click was successfully injected, false otherwise.
+ * @noSelf
+ */
+export declare function injectBrowserMouseUp(
+    webBrowser: Browser,
+    mouseButton: string
+): boolean;
+
+/**
  * This function injects mouse wheel events.
  * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseWheel Wiki, injectBrowserMouseWheel }
  * @param webBrowser The web browser
@@ -267,6 +242,44 @@ export declare function injectBrowserMouseWheel(
     webBrowser: Browser,
     verticalScroll: number,
     horizontalScroll: number
+): boolean;
+
+/**
+ * This function checks if the specified URL is blocked from being loaded.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserDomainBlocked Wiki, isBrowserDomainBlocked }
+ * @param address A website URL
+ * @param isURL true if address should be parsed as URL, false otherwise.
+ * @return returns false if the url is able to be loaded, true if it is blocked and nil if an
+ * invalid domain/url was passed.
+ * @noSelf
+ */
+export declare function isBrowserDomainBlocked(
+    address: string,
+    isURL?: boolean
+): boolean;
+
+/**
+ * This function checks if a browser is focused.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserFocused Wiki, isBrowserFocused }
+ * @param webBrowser The browser
+ * @return returns true if the browser is focused, false otherwise and nil if invalid arguments were
+ * passed.
+ * @noSelf
+ */
+export declare function isBrowserFocused(
+    webBrowser: Browser
+): boolean;
+
+/**
+ * This function checks if a browser is currently loading a website.
+ * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserLoading Wiki, isBrowserLoading }
+ * @param webBrowser The browser
+ * @return returns true if the browser is loading a website, false otherwise and nil if invalid
+ * arguments were passed.
+ * @noSelf
+ */
+export declare function isBrowserLoading(
+    webBrowser: Browser
 ): boolean;
 
 /**
@@ -291,6 +304,39 @@ export declare function loadBrowserURL(
 ): boolean;
 
 /**
+ * Returns the browser to the previous page.
+ * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserBack Wiki, navigateBrowserBack }
+ * @param webBrowser The browser that you want return to the previous page.
+ * @return returns true if the browser has returned to the previous page, false otherwise.
+ * @noSelf
+ */
+export declare function navigateBrowserBack(
+    webBrowser: Browser
+): boolean;
+
+/**
+ * This function takes the browser to the next page.
+ * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserForward Wiki, navigateBrowserForward }
+ * @param webBrowser The browser that you want to take to the next page.
+ * @return returns true if the browser has gone to the next page, false otherwise.
+ * @noSelf
+ */
+export declare function navigateBrowserForward(
+    webBrowser: Browser
+): boolean;
+
+/**
+ * This function reloads the current browsers page.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ReloadBrowserPage Wiki, reloadBrowserPage }
+ * @param webBrowser The browser that you want to reload.
+ * @return returns true if the browser has reloaded, false otherwise.
+ * @noSelf
+ */
+export declare function reloadBrowserPage(
+    webBrowser: Browser
+): boolean;
+
+/**
  * This function opens a request window in order to accept the requested remote URLs.
  * @see {@link https://wiki.multitheftauto.com/wiki/RequestBrowserDomains Wiki, requestBrowserDomains }
  * @param pages A table containing all domains
@@ -306,6 +352,21 @@ export declare function requestBrowserDomains(
     pages: LuaTable,
     parseAsURL?: boolean,
     callback?: HandleFunction
+): boolean;
+
+/**
+ * Allows resizing of CEF browsers at runtime.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ResizeBrowser Wiki, resizeBrowser }
+ * @param webBrowser The browser you want to resize.
+ * @param width The new width of the browser.
+ * @param height The new height of the browser.
+ * @return returns true if the browser is resized successfully, false if theres something wrong.
+ * @noSelf
+ */
+export declare function resizeBrowser(
+    webBrowser: Browser,
+    width: number,
+    height: number
 ): boolean;
 
 /**
@@ -325,51 +386,6 @@ export declare function setBrowserAjaxHandler(
 ): boolean;
 
 /**
- * This function reloads the current browsers page.
- * @see {@link https://wiki.multitheftauto.com/wiki/ReloadBrowserPage Wiki, reloadBrowserPage }
- * @param webBrowser The browser that you want to reload.
- * @return returns true if the browser has reloaded, false otherwise.
- * @noSelf
- */
-export declare function reloadBrowserPage(
-    webBrowser: Browser
-): boolean;
-
-/**
- * This function returns a table containing the browser settings.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSettings Wiki, getBrowserSettings }
- * @return a table having the following keys:
- * * remoteenabled: true if remote websites are enabled, false otherwise
- * * remotejavascript: true if javascript is enabled on remote websites, false otherwise
- * * pluginsenabled: true if plugins such as flash, silverlight (but not java) are enabled,
- * false otherwise. this setting is false by default.
- * @noSelf
- */
-export declare function getBrowserSettings(): LuaTable;
-
-/**
- * This function returns the URL of the specified Element/Browser|browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserURL Wiki, getBrowserURL }
- * @param webBrowser The browser
- * @return returns the web browser url.
- * @noSelf
- */
-export declare function getBrowserURL(
-    webBrowser: Browser
-): string;
-
-/**
- * This function returns the title of the passed Element/Browser|browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserTitle Wiki, getBrowserTitle }
- * @param webBrowser The browser
- * @return returns the title as a string. returns false if invalid arguments were passed.
- * @noSelf
- */
-export declare function getBrowserTitle(
-    webBrowser: Browser
-): string;
-
-/**
  * This function sets a given property of a specified browser.
  * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserProperty Wiki, setBrowserProperty }
  * @param theBrowser The browser element you want to set a property of
@@ -383,6 +399,19 @@ export declare function setBrowserProperty(
     theBrowser: Browser,
     key: string,
     value: string
+): boolean;
+
+/**
+ * This function sets the rendering state of a browser.
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused Wiki, setBrowserRenderingPaused }
+ * @param webBrowser The browser
+ * @param paused true to pause rendering, false to continue
+ * @return returns true if the state was successfully changed
+ * @noSelf
+ */
+export declare function setBrowserRenderingPaused(
+    webBrowser: Browser,
+    paused: boolean
 ): boolean;
 
 /**
@@ -400,27 +429,11 @@ export declare function setBrowserVolume(
 ): boolean;
 
 /**
- * This function sets the rendering state of a browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused Wiki, setBrowserRenderingPaused }
- * @param webBrowser The browser
- * @param paused true to pause rendering, false to continue
- * @return returns true if the state was successfully changed
+ * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserVolume Wiki, setBrowserVolume }
  * @noSelf
  */
-export declare function setBrowserRenderingPaused(
-    webBrowser: Browser,
-    paused: boolean
-): boolean;
-
-/**
- * This function takes the browser to the next page.
- * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserForward Wiki, navigateBrowserForward }
- * @param webBrowser The browser that you want to take to the next page.
- * @return returns true if the browser has gone to the next page, false otherwise.
- * @noSelf
- */
-export declare function navigateBrowserForward(
-    webBrowser: Browser
+export declare function setBrowserVolume(
+    volume: number
 ): boolean;
 
 /**
@@ -434,17 +447,4 @@ export declare function navigateBrowserForward(
 export declare function toggleBrowserDevTools(
     webBrowser: Browser,
     visible: boolean
-): boolean;
-
-/**
- * This function will attempt to focus the Element/Browser|browser or unfocus all browsers.
- * The browser that is focused will retrieve keyboard input.
- * @see {@link https://wiki.multitheftauto.com/wiki/FocusBrowser Wiki, focusBrowser }
- * @param webBrowser The web browser to be focused - if this is nil, it will unfocus all browsers.
- * @return returns true if the browser was focused or if nil was passed, false if it failed to focus
- * or the browser does not exist.
- * @noSelf
- */
-export declare function focusBrowser(
-    webBrowser: Browser
 ): boolean;

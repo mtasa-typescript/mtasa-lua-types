@@ -50,61 +50,6 @@ export declare function clearChatBox(
 ): boolean;
 
 /**
- * This function is used to show or hide the players chat.
- * @see {@link https://wiki.multitheftauto.com/wiki/ShowChat Wiki, showChat }
- * @param thePlayer The player whose chat is to be hidden or shown.
- * @param show A boolean value determining whether to show (true) or hide (false) the chat.
- * @param inputBlocked A boolean value determining whether chat input is blocked/hidden, regardless of chat
- * visibility. If unset, this will keep the default behaviour prior to r20898 (true when
- * chat is hidden, false when chat is visible).
- * @return returns true if the players chat was shown or hidden successfully, false otherwise.
- * @noSelf
- */
-export declare function showChat(
-    thePlayer: Player,
-    show: boolean,
-    inputBlocked?: boolean
-): boolean;
-
-/**
- * This function outputs scripting debug messages, which can be read by enabling the debug
- * textbox. The debug display level can then be set so that info or warning messages get
- * filtered out.
- * @see {@link https://wiki.multitheftauto.com/wiki/OutputDebugString Wiki, outputDebugString }
- * @param text the text to be output to the debug box.
- * @param level the debug message level. Possible values are:
- * @param 0 Custom message
- * @param 1 Error message
- * @param 2 Warning message
- * @param 3 Information message (default)
- * @param 4 Custom message (omits file path and line number)}}
- * @param red The amount of red in the color of the text. Default value is 255.
- * @param green The amount of green in the color of the text. Default value is 255.
- * @param blue The amount of blue in the color of the text. Default value is 255.
- * @return returns true if the debug message was successfully output, false if invalid arguments are
- * specified.
- * @noSelf
- */
-export declare function outputDebugString(
-    text: string,
-    level?: number,
-    red?: number,
-    green?: number,
-    blue?: number
-): boolean;
-
-/**
- * This outputs a line of text to the servers log. This could be useful for debugging.
- * @see {@link https://wiki.multitheftauto.com/wiki/OutputServerLog Wiki, outputServerLog }
- * @param text The text to be output to the log.
- * @return returns true if successful, false otherwise.
- * @noSelf
- */
-export declare function outputServerLog(
-    text: string
-): boolean;
-
-/**
  * This outputs the specified text string to the chatbox. It can be specified as a message
  * to certain player(s) or all players.
  * It can optionally allow you to embed color changes into the string by setting the
@@ -147,4 +92,59 @@ export declare function outputChatBox(
 export declare function outputConsole(
     text: string,
     visibleTo?: Element
+): boolean;
+
+/**
+ * This function outputs scripting debug messages, which can be read by enabling the debug
+ * textbox. The debug display level can then be set so that info or warning messages get
+ * filtered out.
+ * @see {@link https://wiki.multitheftauto.com/wiki/OutputDebugString Wiki, outputDebugString }
+ * @param text the text to be output to the debug box.
+ * @param level the debug message level. Possible values are:
+ * @param 0 Custom message
+ * @param 1 Error message
+ * @param 2 Warning message
+ * @param 3 Information message (default)
+ * @param 4 Custom message (omits file path and line number)}}
+ * @param red The amount of red in the color of the text. Default value is 255.
+ * @param green The amount of green in the color of the text. Default value is 255.
+ * @param blue The amount of blue in the color of the text. Default value is 255.
+ * @return returns true if the debug message was successfully output, false if invalid arguments are
+ * specified.
+ * @noSelf
+ */
+export declare function outputDebugString(
+    text: string,
+    level?: number,
+    red?: number,
+    green?: number,
+    blue?: number
+): boolean;
+
+/**
+ * This outputs a line of text to the servers log. This could be useful for debugging.
+ * @see {@link https://wiki.multitheftauto.com/wiki/OutputServerLog Wiki, outputServerLog }
+ * @param text The text to be output to the log.
+ * @return returns true if successful, false otherwise.
+ * @noSelf
+ */
+export declare function outputServerLog(
+    text: string
+): boolean;
+
+/**
+ * This function is used to show or hide the players chat.
+ * @see {@link https://wiki.multitheftauto.com/wiki/ShowChat Wiki, showChat }
+ * @param thePlayer The player whose chat is to be hidden or shown.
+ * @param show A boolean value determining whether to show (true) or hide (false) the chat.
+ * @param inputBlocked A boolean value determining whether chat input is blocked/hidden, regardless of chat
+ * visibility. If unset, this will keep the default behaviour prior to r20898 (true when
+ * chat is hidden, false when chat is visible).
+ * @return returns true if the players chat was shown or hidden successfully, false otherwise.
+ * @noSelf
+ */
+export declare function showChat(
+    thePlayer: Player,
+    show: boolean,
+    inputBlocked?: boolean
 ): boolean;

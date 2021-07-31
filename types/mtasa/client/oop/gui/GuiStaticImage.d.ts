@@ -65,19 +65,6 @@ export class GuiStaticImage extends GuiElement {
     image: boolean;
 
     /**
-     * This function allows you to change the image in GUI static image element to another one.
-     * Tip: If you set other images as children you will have to use
-     * setElementCallPropagationEnabled to only affect the parent image.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage Wiki, guiStaticImageLoadImage }
-     * @param filename A string specifying the filepath of the image file being loaded in current resource.
-     * @return returns true if the the image in the static image element was successfully changed, false
-     * otherwise.
-     */
-    loadImage(
-        filename: string
-    ): boolean;
-
-    /**
      * This function creates a static image using a .png image in the resource.
      * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateStaticImage Wiki, guiCreateStaticImage }
      * @param x A float of the 2D x position of the image on a players screen. This is affected by the
@@ -106,4 +93,17 @@ export class GuiStaticImage extends GuiElement {
         relative: boolean,
         parent?: Element
     );
+
+    /**
+     * This function allows you to change the image in GUI static image element to another one.
+     * Tip: If you set other images as children you will have to use
+     * setElementCallPropagationEnabled to only affect the parent image.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage Wiki, guiStaticImageLoadImage }
+     * @param filename A string specifying the filepath of the image file being loaded in current resource.
+     * @return returns true if the the image in the static image element was successfully changed, false
+     * otherwise.
+     */
+    loadImage(
+        filename: string
+    ): boolean;
 }

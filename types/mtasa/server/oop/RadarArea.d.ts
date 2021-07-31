@@ -45,32 +45,6 @@ export class RadarArea extends Element {
     flashing: boolean;
 
     /**
-     * Sets the color of an existing radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaColor Wiki, setRadarAreaColor }
-     * @param r an integer representing the amount of red in the color (0 for no red, 255 for solid red)
-     * @param g an integer representing the amount of green in the color (0 for no green, 255 for solid
-     * green)
-     * @param b an integer representing the amount of blue in the color (0 for no blue, 255 for solid
-     * blue)
-     * @param a an integer representing the colors alpha (0 for transparent, 255 for opaque)
-     * @return returns true if the color was set successfully, false if the radar area doesnt exist or
-     * the color arguments are improper.
-     */
-    setColor(
-        r: number,
-        g: number,
-        b: number,
-        a: number
-    ): boolean;
-
-    /**
-     * This function allows detection of whether a radar area is flashing or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing Wiki, isRadarAreaFlashing }
-     * @return returns true if the radar area is flashing, false if it is not or if it doesnt exist.
-     */
-    isFlashing(): boolean;
-
-    /**
      * This function can be used to create custom radar areas on the radar.
      * @see {@link https://wiki.multitheftauto.com/wiki/CreateRadarArea Wiki, createRadarArea }
      * @param startPosX A float representing the origin x position of the radar area.
@@ -112,16 +86,15 @@ export class RadarArea extends Element {
     ]>;
 
     /**
-     * This function changes the size of an existing radararea|radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaSize Wiki, setRadarAreaSize }
-     * @param x the x length of the radar area.
-     * @param y the y length of the radar area.
-     * @return returns true if the size was set successfully, false if invalid arguments are passed.
+     * This function is used for getting the X and Y size of an existing radararea|radar area.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetRadarAreaSize Wiki, getRadarAreaSize }
+     * @return returns two floats indicating the x and y length of the radar area respectively, false if
+     * the radar area is invalid.
      */
-    setSize(
-        x: number,
-        y: number
-    ): boolean;
+    getSize(): LuaMultiReturn<[
+        number,
+        number
+    ]>;
 
     /**
      * This function checks if a 2D position is inside a radararea|radar area or not.
@@ -137,15 +110,30 @@ export class RadarArea extends Element {
     ): boolean;
 
     /**
-     * This function is used for getting the X and Y size of an existing radararea|radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetRadarAreaSize Wiki, getRadarAreaSize }
-     * @return returns two floats indicating the x and y length of the radar area respectively, false if
-     * the radar area is invalid.
+     * This function allows detection of whether a radar area is flashing or not.
+     * @see {@link https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing Wiki, isRadarAreaFlashing }
+     * @return returns true if the radar area is flashing, false if it is not or if it doesnt exist.
      */
-    getSize(): LuaMultiReturn<[
-        number,
-        number
-    ]>;
+    isFlashing(): boolean;
+
+    /**
+     * Sets the color of an existing radar area.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaColor Wiki, setRadarAreaColor }
+     * @param r an integer representing the amount of red in the color (0 for no red, 255 for solid red)
+     * @param g an integer representing the amount of green in the color (0 for no green, 255 for solid
+     * green)
+     * @param b an integer representing the amount of blue in the color (0 for no blue, 255 for solid
+     * blue)
+     * @param a an integer representing the colors alpha (0 for transparent, 255 for opaque)
+     * @return returns true if the color was set successfully, false if the radar area doesnt exist or
+     * the color arguments are improper.
+     */
+    setColor(
+        r: number,
+        g: number,
+        b: number,
+        a: number
+    ): boolean;
 
     /**
      * This function makes an existing radar area flash in transparency.
@@ -156,5 +144,17 @@ export class RadarArea extends Element {
      */
     setFlashing(
         flash: boolean
+    ): boolean;
+
+    /**
+     * This function changes the size of an existing radararea|radar area.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaSize Wiki, setRadarAreaSize }
+     * @param x the x length of the radar area.
+     * @param y the y length of the radar area.
+     * @return returns true if the size was set successfully, false if invalid arguments are passed.
+     */
+    setSize(
+        x: number,
+        y: number
     ): boolean;
 }

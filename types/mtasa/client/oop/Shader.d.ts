@@ -58,6 +58,22 @@ import {
 /** @customConstructor Shader */
 export class Shader extends Material {
     /**
+     * This function sets the amount of geometric sub-division to use when drawing a shader
+     * element with dxDrawImage.
+     * Using tessellation allows a shader to manipulate the shape of the rendered image at each
+     * sub-division boundary.
+     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
+     * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
+     * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
+     * @return returns true if the shader elements tessellation was successfully changed, false
+     * otherwise.
+     */
+    setTessellation(
+        tessellationX: number,
+        tessellationY: number
+    ): boolean;
+
+    /**
      * This function applies a 3D transformation to a shader element when it is drawn with
      * dxDrawImage.
      * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
@@ -92,6 +108,19 @@ export class Shader extends Material {
         perspectiveCenterOffsetX?: number,
         perspectiveCenterOffsetY?: number,
         bPerspectiveCenterOffsetOriginIsScreen?: boolean
+    ): boolean;
+
+    /**
+     * This sets a named parameter for a shader element
+     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
+     * @param parameterName The name of parameter
+     * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
+     * floats(numbers))
+     * @return returns true if the shader elements parameter was successfully changed, false otherwise.
+     */
+    setValue(
+        parameterName: string,
+        value: any
     ): boolean;
 
     /**
@@ -136,34 +165,5 @@ export class Shader extends Material {
     removeFromWorldTexture(
         textureName: string,
         targetElement?: Element
-    ): boolean;
-
-    /**
-     * This function sets the amount of geometric sub-division to use when drawing a shader
-     * element with dxDrawImage.
-     * Using tessellation allows a shader to manipulate the shape of the rendered image at each
-     * sub-division boundary.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
-     * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
-     * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
-     * @return returns true if the shader elements tessellation was successfully changed, false
-     * otherwise.
-     */
-    setTessellation(
-        tessellationX: number,
-        tessellationY: number
-    ): boolean;
-
-    /**
-     * This sets a named parameter for a shader element
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
-     * @param parameterName The name of parameter
-     * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
-     * floats(numbers))
-     * @return returns true if the shader elements parameter was successfully changed, false otherwise.
-     */
-    setValue(
-        parameterName: string,
-        value: any
     ): boolean;
 }

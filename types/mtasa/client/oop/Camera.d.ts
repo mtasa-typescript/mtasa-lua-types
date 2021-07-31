@@ -58,19 +58,19 @@ import {
 /** @customConstructor Camera */
 export class Camera extends Element {
     /**
+     */
+    static fov: number;
+
+    /**
+     * This function returns what goggle effect is currently affecting the camera.
+     */
+    static goggleEffect: string;
+
+    /**
      * Returns the interior of the local camera (independent of the interior of the local
      * player).
      */
     static interior: number;
-
-    /**
-     * This function allows you to get the active camera view modes. This indicates at what
-     * distance the camera will follow the player or vehicle.
-     */
-    static viewMode: LuaMultiReturn<[
-        number,
-        number
-    ]>;
 
     /**
      * This function gets the position of the camera and the position of the point it is facing.
@@ -87,13 +87,37 @@ export class Camera extends Element {
     ]>;
 
     /**
-     * This function returns what goggle effect is currently affecting the camera.
+     * This function allows you to get the active camera view modes. This indicates at what
+     * distance the camera will follow the player or vehicle.
      */
-    static goggleEffect: string;
+    static viewMode: LuaMultiReturn<[
+        number,
+        number
+    ]>;
 
     /**
+     * This function will fade a players camera to a color or back to normal over a specified
+     * time period. This will also affect the sound volume for the player (50% faded = 50%
+     * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
+     * outs in a row, but for serverside scripts you must use one then the other.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
+     * @param fadeIn Should the camera be faded in our out? Pass true to fade the camera in, false to fade it
+     * out to a color.
+     * @param timeToFade The number of seconds it should take to fade.
+     * @param red The amount of red in the color that the camera fades out to (0 - 255). Not required for
+     * fading in.
+     * @param green The amount of green in the color that the camera fades out to (0 - 255). Not required for
+     * fading in.
+     * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
+     * fading in.
      */
-    static fov: number;
+    static fade(
+        fadeIn: boolean,
+        timeToFade?: number,
+        red?: number,
+        green?: number,
+        blue?: number
+    ): boolean;
 
     /**
      * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraClip Wiki, getCameraClip }
@@ -119,19 +143,11 @@ export class Camera extends Element {
     ): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraFieldOfView Wiki, setCameraFieldOfView }
-     * @param cameraMode the camera mode to get the field of view of
-     * ** "player": whilst walking/running
-     * ** "vehicle": whilst in vehicle
-     * ** "vehicle_max": the max the field of view can go to when the vehicle is moving at a
-     * high speed (must be higher than "vehicle")
-     * @param fieldOfView The field of view angle, 0 to 179.
-     * @return returns true if the arguments are valid, false otherwise.
+     * This function returns what goggle effect is currently affecting the camera.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraGoggleEffect Wiki, getCameraGoggleEffect }
+     * @return * string indicating the current camera goggle effect. their meanings can be seen below.
      */
-    static setFieldOfView(
-        cameraMode: string,
-        fieldOfView: number
-    ): boolean;
+    static getGoggleEffect(): string;
 
     /**
      * Returns the interior of the local camera (independent of the interior of the local
@@ -139,53 +155,6 @@ export class Camera extends Element {
      * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
      */
     static getInterior(): number;
-
-    /**
-     * Sets the interior of the local camera. Only the interior of the camera is changed, the
-     * local player stays in the interior he was in.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
-     * @param interior the interior to place the camera in.
-     */
-    static setInterior(
-        interior: number
-    ): boolean;
-
-    /**
-     * This function allows you to get the active camera view modes. This indicates at what
-     * distance the camera will follow the player or vehicle.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraViewMode Wiki, getCameraViewMode }
-     */
-    static getCameraViewMode(): LuaMultiReturn<[
-        number,
-        number
-    ]>;
-
-    /**
-     * This function allows you to set the camera view modes. This indicates at what distance
-     * the camera will follow the player or vehicle.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraViewMode Wiki, setCameraViewMode }
-     * @param vehicleCameraMode : The view mode you wish to use when inside vehicles.
-     * @param pedCameraMode : The view mode you wish to use when you are not inside vehicles.
-     * @return returns true if the view(s) were set correctly, false otherwise.
-     */
-    static setCameraViewMode(
-        vehicleCameraMode: number,
-        pedCameraMode?: number
-    ): boolean;
-
-    /**
-     * This function allows you to set the cameras current goggle effect. This means you can
-     * activate nightvision or infrared effects by script
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraGoggleEffect Wiki, setCameraGoggleEffect }
-     * @param goggleEffect : the goggle effect you wish to set
-     * @param noiseEnabled : whether or not there should be a fuzzy noise effect
-     * @return * true if the effect was set correctly.
-     * * false otherwise.
-     */
-    static setGoggleEffect(
-        goggleEffect: string,
-        noiseEnabled?: boolean
-    ): boolean;
 
     /**
      * This function gets the position of the camera and the position of the point it is facing.
@@ -203,11 +172,14 @@ export class Camera extends Element {
     ]>;
 
     /**
-     * This function returns what goggle effect is currently affecting the camera.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraGoggleEffect Wiki, getCameraGoggleEffect }
-     * @return * string indicating the current camera goggle effect. their meanings can be seen below.
+     * This function allows you to get the active camera view modes. This indicates at what
+     * distance the camera will follow the player or vehicle.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraViewMode Wiki, getCameraViewMode }
      */
-    static getGoggleEffect(): string;
+    static getCameraViewMode(): LuaMultiReturn<[
+        number,
+        number
+    ]>;
 
     /**
      * This function sets if the camera will collide with any objects or vehicles in its way.
@@ -222,6 +194,45 @@ export class Camera extends Element {
     static setClip(
         objects?: boolean,
         vehicles?: boolean
+    ): boolean;
+
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraFieldOfView Wiki, setCameraFieldOfView }
+     * @param cameraMode the camera mode to get the field of view of
+     * ** "player": whilst walking/running
+     * ** "vehicle": whilst in vehicle
+     * ** "vehicle_max": the max the field of view can go to when the vehicle is moving at a
+     * high speed (must be higher than "vehicle")
+     * @param fieldOfView The field of view angle, 0 to 179.
+     * @return returns true if the arguments are valid, false otherwise.
+     */
+    static setFieldOfView(
+        cameraMode: string,
+        fieldOfView: number
+    ): boolean;
+
+    /**
+     * This function allows you to set the cameras current goggle effect. This means you can
+     * activate nightvision or infrared effects by script
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraGoggleEffect Wiki, setCameraGoggleEffect }
+     * @param goggleEffect : the goggle effect you wish to set
+     * @param noiseEnabled : whether or not there should be a fuzzy noise effect
+     * @return * true if the effect was set correctly.
+     * * false otherwise.
+     */
+    static setGoggleEffect(
+        goggleEffect: string,
+        noiseEnabled?: boolean
+    ): boolean;
+
+    /**
+     * Sets the interior of the local camera. Only the interior of the camera is changed, the
+     * local player stays in the interior he was in.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
+     * @param interior the interior to place the camera in.
+     */
+    static setInterior(
+        interior: number
     ): boolean;
 
     /**
@@ -254,26 +265,15 @@ export class Camera extends Element {
     ): boolean;
 
     /**
-     * This function will fade a players camera to a color or back to normal over a specified
-     * time period. This will also affect the sound volume for the player (50% faded = 50%
-     * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
-     * outs in a row, but for serverside scripts you must use one then the other.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
-     * @param fadeIn Should the camera be faded in our out? Pass true to fade the camera in, false to fade it
-     * out to a color.
-     * @param timeToFade The number of seconds it should take to fade.
-     * @param red The amount of red in the color that the camera fades out to (0 - 255). Not required for
-     * fading in.
-     * @param green The amount of green in the color that the camera fades out to (0 - 255). Not required for
-     * fading in.
-     * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
-     * fading in.
+     * This function allows you to set the camera view modes. This indicates at what distance
+     * the camera will follow the player or vehicle.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraViewMode Wiki, setCameraViewMode }
+     * @param vehicleCameraMode : The view mode you wish to use when inside vehicles.
+     * @param pedCameraMode : The view mode you wish to use when you are not inside vehicles.
+     * @return returns true if the view(s) were set correctly, false otherwise.
      */
-    static fade(
-        fadeIn: boolean,
-        timeToFade?: number,
-        red?: number,
-        green?: number,
-        blue?: number
+    static setCameraViewMode(
+        vehicleCameraMode: number,
+        pedCameraMode?: number
     ): boolean;
 }

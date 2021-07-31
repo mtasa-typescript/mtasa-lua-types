@@ -56,29 +56,6 @@ import {
 } from '../structure';
 
 /**
- * Get the time left before a projectile detonates.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCounter Wiki, getProjectileCounter }
- * @param projectile : the projectile to get the timer of.
- * @return returns the the time in milliseconds to detonation which depending on the projectile type
- * will do different things:
- * * grenades will explode when it hits 0
- * * teargas may be a duration timer
- * * both types of rockets will explode when it hits 0
- * * satchels restarts so i do not think it does anything
- * @noSelf
- */
-export declare function getProjectileCounter(
-    projectile: Projectile
-): number;
-
-/**
- * This function can be used to detonate a players satchels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DetonateSatchels Wiki, detonateSatchels }
- * @noSelf
- */
-export declare function detonateSatchels(): boolean;
-
-/**
  * This function creates a projectile of the specified type on the specified coordinates.
  * *Model argument is not synchronized between clients. Clients differs from local player
  * see always standard projectile model.
@@ -115,6 +92,29 @@ export declare function createProjectile(
     velZ?: number,
     model?: number
 ): Projectile;
+
+/**
+ * This function can be used to detonate a players satchels.
+ * @see {@link https://wiki.multitheftauto.com/wiki/DetonateSatchels Wiki, detonateSatchels }
+ * @noSelf
+ */
+export declare function detonateSatchels(): boolean;
+
+/**
+ * Get the time left before a projectile detonates.
+ * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCounter Wiki, getProjectileCounter }
+ * @param projectile : the projectile to get the timer of.
+ * @return returns the the time in milliseconds to detonation which depending on the projectile type
+ * will do different things:
+ * * grenades will explode when it hits 0
+ * * teargas may be a duration timer
+ * * both types of rockets will explode when it hits 0
+ * * satchels restarts so i do not think it does anything
+ * @noSelf
+ */
+export declare function getProjectileCounter(
+    projectile: Projectile
+): number;
 
 /**
  * This function returns the creator of the specified projectile.

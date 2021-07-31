@@ -82,18 +82,6 @@ export class Projectile {
     type: number;
 
     /**
-     * Get the time left before a projectile detonates.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCounter Wiki, getProjectileCounter }
-     * @return returns the the time in milliseconds to detonation which depending on the projectile type
-     * will do different things:
-     * * grenades will explode when it hits 0
-     * * teargas may be a duration timer
-     * * both types of rockets will explode when it hits 0
-     * * satchels restarts so i do not think it does anything
-     */
-    getCounter(): number;
-
-    /**
      * This function creates a projectile of the specified type on the specified coordinates.
      * *Model argument is not synchronized between clients. Clients differs from local player
      * see always standard projectile model.
@@ -129,6 +117,18 @@ export class Projectile {
         velZ?: number,
         model?: number
     );
+
+    /**
+     * Get the time left before a projectile detonates.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCounter Wiki, getProjectileCounter }
+     * @return returns the the time in milliseconds to detonation which depending on the projectile type
+     * will do different things:
+     * * grenades will explode when it hits 0
+     * * teargas may be a duration timer
+     * * both types of rockets will explode when it hits 0
+     * * satchels restarts so i do not think it does anything
+     */
+    getCounter(): number;
 
     /**
      * This function returns the creator of the specified projectile.

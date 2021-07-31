@@ -112,20 +112,6 @@ export class Searchlight extends Element {
     );
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition Wiki, setSearchLightEndPosition }
-     * @param endX : the X coordinate where the searchlight light cone will end.
-     * @param endY : the Y coordinate where the searchlight light cone will end.
-     * @param endZ : the Z coordinate where the searchlight light cone will end.
-     * @return if every argument is correct, this function returns true. if not, it will return false
-     * plus an error message.
-     */
-    setEndPosition(
-        endX: number,
-        endY: number,
-        endZ: number
-    ): boolean;
-
-    /**
      * This function gets the end position of a Element/Searchlight|searchlight element.
      * @see {@link https://wiki.multitheftauto.com/wiki/GetSearchLightEndPosition Wiki, getSearchLightEndPosition }
      * @return if the specified searchlight element is valid, this function will return three float,
@@ -166,6 +152,20 @@ export class Searchlight extends Element {
      * is the searchlights start radius. if not, it will return false plus an error message.
      */
     getStartRadius(): number;
+
+    /**
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition Wiki, setSearchLightEndPosition }
+     * @param endX : the X coordinate where the searchlight light cone will end.
+     * @param endY : the Y coordinate where the searchlight light cone will end.
+     * @param endZ : the Z coordinate where the searchlight light cone will end.
+     * @return if every argument is correct, this function returns true. if not, it will return false
+     * plus an error message.
+     */
+    setEndPosition(
+        endX: number,
+        endY: number,
+        endZ: number
+    ): boolean;
 
     /**
      * This function sets the end radius of a Element/Searchlight|searchlight element.

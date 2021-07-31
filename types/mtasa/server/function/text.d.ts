@@ -48,144 +48,6 @@ import {
 export declare function textCreateDisplay(): TextDisplay;
 
 /**
- * Overwrites a previously created text item with the specified text.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextItemSetText Wiki, textItemSetText }
- * @param theTextitem An existing text item that was previously created with textCreateTextItem
- * @param text The new text for the text item
- * @noSelf
- */
-export declare function textItemSetText(
-    theTextitem: TextItem,
-    text: string
-): void;
-
-/**
- * This function adds a player as an observer of a textdisplay. This allows the player to
- * see any textitems that the textdisplay contains.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayAddObserver Wiki, textDisplayAddObserver }
- * @param display : The textdisplay to add the player to as an observer.
- * @param playerToAdd : The player that should observe the textdisplay.
- * @noSelf
- */
-export declare function textDisplayAddObserver(
-    display: TextDisplay,
-    playerToAdd: Player
-): void;
-
-/**
- * This function adds a textitem to a textdisplay. This allows any observers of the
- * textdisplay to see the textitem.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayAddText Wiki, textDisplayAddText }
- * @param displayToAddTo : The textdisplay to add the textitem to.
- * @param itemToAdd : The textitem to add to the display.
- * @noSelf
- */
-export declare function textDisplayAddText(
-    displayToAddTo: TextDisplay,
-    itemToAdd: TextItem
-): void;
-
-/**
- * This function allows retrieval of the position of a text item.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetPosition Wiki, textItemGetPosition }
- * @param theTextItem The textitem you wish to retrieve the position of
- * @return returns two floats of the x and y position on the screen, where the maximum value is 1.0.
- * @noSelf
- */
-export declare function textItemGetPosition(
-    theTextItem: TextItem
-): LuaMultiReturn<[
-    number,
-    number
-]>;
-
-/**
- * This function allows retrieval of the scale or size of a text item.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetScale Wiki, textItemGetScale }
- * @param theTextitem The text item you wish to retrieve the scale of
- * @return returns a floating point of the scale of the text. 1.0 is around 12pt.
- * @noSelf
- */
-export declare function textItemGetScale(
-    theTextitem: TextItem
-): number;
-
-/**
- * This function allows the setting of the position of a text item.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextItemSetPosition Wiki, textItemSetPosition }
- * @param theTextItem The text item that you want to move
- * @param x A floating point number between 0.0 and 1.0 indicating how far across the screen the text
- * should be shown, as a percentage of the width, from the left hand side.
- * @param y A floating point number between 0.0 and 1.0 indicating how far down the screen the text
- * should be shown, as a percentage of the height, from the top.
- * @return returns true if the position was successfully set, false otherwise.
- * @noSelf
- */
-export declare function textItemSetPosition(
-    theTextItem: TextItem,
-    x: number,
-    y: number
-): boolean;
-
-/**
- * This function allows the setting of the scale of a text item.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextItemSetScale Wiki, textItemSetScale }
- * @param theTextitem The text item you wish to set the scale of.
- * @param scale A floating point value indicating the scale of the text you wish to set to. 1.0 is around
- * 12pt.
- * @return returns true if the scale was successfully set, false otherwise.
- * @noSelf
- */
-export declare function textItemSetScale(
-    theTextitem: TextItem,
-    scale: number
-): boolean;
-
-/**
- * This function allows you to retrieve the color of a text item.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetColor Wiki, textItemGetColor }
- * @param theTextItem The text item you wish to retrieve the color of.
- * @return returns four integers in rgba format, with a maximum value of 255 for each. the values
- * are, in order, red, green, blue, and alpha. alpha decides transparency where 255 is
- * opaque and 0 is transparent. false is returned if the text item is invalid.
- * @noSelf
- */
-export declare function textItemGetColor(
-    theTextItem: TextItem
-): LuaMultiReturn<[
-    number,
-    number,
-    number,
-    number
-]>;
-
-/**
- * This function can be used to retrieve all the players  currently observing a specified
- * textdisplay.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayGetObservers Wiki, textDisplayGetObservers }
- * @param theDisplay : The textdisplay of which observers you want to get.
- * @return returns a table of players that are observers of the display or false if invalid
- * textdisplay is passed.
- * @noSelf
- */
-export declare function textDisplayGetObservers(
-    theDisplay: TextDisplay
-): LuaTable;
-
-/**
- * This function checks if a player can see the specified textdisplay.
- * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayIsObserver Wiki, textDisplayIsObserver }
- * @param display : The textdisplay.
- * @param thePlayer : The player.
- * @return return true if textdisplay is showing, or false if not.
- * @noSelf
- */
-export declare function textDisplayIsObserver(
-    display: TextDisplay,
-    thePlayer: Player
-): boolean;
-
-/**
  * This function creates a text item. A text item represents a single area of text, much
  * like a label does in standard GUI programming. A text item can only be seen by players if
  * it is added to a textdisplay using textDisplayAddText. Each text item can be added to
@@ -249,6 +111,58 @@ export declare function textDestroyTextItem(
 ): void;
 
 /**
+ * This function adds a player as an observer of a textdisplay. This allows the player to
+ * see any textitems that the textdisplay contains.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayAddObserver Wiki, textDisplayAddObserver }
+ * @param display : The textdisplay to add the player to as an observer.
+ * @param playerToAdd : The player that should observe the textdisplay.
+ * @noSelf
+ */
+export declare function textDisplayAddObserver(
+    display: TextDisplay,
+    playerToAdd: Player
+): void;
+
+/**
+ * This function adds a textitem to a textdisplay. This allows any observers of the
+ * textdisplay to see the textitem.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayAddText Wiki, textDisplayAddText }
+ * @param displayToAddTo : The textdisplay to add the textitem to.
+ * @param itemToAdd : The textitem to add to the display.
+ * @noSelf
+ */
+export declare function textDisplayAddText(
+    displayToAddTo: TextDisplay,
+    itemToAdd: TextItem
+): void;
+
+/**
+ * This function can be used to retrieve all the players  currently observing a specified
+ * textdisplay.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayGetObservers Wiki, textDisplayGetObservers }
+ * @param theDisplay : The textdisplay of which observers you want to get.
+ * @return returns a table of players that are observers of the display or false if invalid
+ * textdisplay is passed.
+ * @noSelf
+ */
+export declare function textDisplayGetObservers(
+    theDisplay: TextDisplay
+): LuaTable;
+
+/**
+ * This function checks if a player can see the specified textdisplay.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayIsObserver Wiki, textDisplayIsObserver }
+ * @param display : The textdisplay.
+ * @param thePlayer : The player.
+ * @return return true if textdisplay is showing, or false if not.
+ * @noSelf
+ */
+export declare function textDisplayIsObserver(
+    display: TextDisplay,
+    thePlayer: Player
+): boolean;
+
+/**
  * This function removes a player observer of a textdisplay. This stops the player from
  * being able to see textitems that the textdisplay contains.
  * @see {@link https://wiki.multitheftauto.com/wiki/TextDisplayRemoveObserver Wiki, textDisplayRemoveObserver }
@@ -275,6 +189,38 @@ export declare function textDisplayRemoveText(
 ): void;
 
 /**
+ * This function allows you to retrieve the color of a text item.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetColor Wiki, textItemGetColor }
+ * @param theTextItem The text item you wish to retrieve the color of.
+ * @return returns four integers in rgba format, with a maximum value of 255 for each. the values
+ * are, in order, red, green, blue, and alpha. alpha decides transparency where 255 is
+ * opaque and 0 is transparent. false is returned if the text item is invalid.
+ * @noSelf
+ */
+export declare function textItemGetColor(
+    theTextItem: TextItem
+): LuaMultiReturn<[
+    number,
+    number,
+    number,
+    number
+]>;
+
+/**
+ * This function allows retrieval of the position of a text item.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetPosition Wiki, textItemGetPosition }
+ * @param theTextItem The textitem you wish to retrieve the position of
+ * @return returns two floats of the x and y position on the screen, where the maximum value is 1.0.
+ * @noSelf
+ */
+export declare function textItemGetPosition(
+    theTextItem: TextItem
+): LuaMultiReturn<[
+    number,
+    number
+]>;
+
+/**
  * This function retrieves the priority of a text item.  Priority defines the rate at whihc
  * a text item is updated
  * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetPriority Wiki, textItemGetPriority }
@@ -284,6 +230,17 @@ export declare function textDisplayRemoveText(
  */
 export declare function textItemGetPriority(
     textitemToCheck: TextItem
+): number;
+
+/**
+ * This function allows retrieval of the scale or size of a text item.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextItemGetScale Wiki, textItemGetScale }
+ * @param theTextitem The text item you wish to retrieve the scale of
+ * @return returns a floating point of the scale of the text. 1.0 is around 12pt.
+ * @noSelf
+ */
+export declare function textItemGetScale(
+    theTextitem: TextItem
 ): number;
 
 /**
@@ -318,6 +275,23 @@ export declare function textItemSetColor(
 ): boolean;
 
 /**
+ * This function allows the setting of the position of a text item.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextItemSetPosition Wiki, textItemSetPosition }
+ * @param theTextItem The text item that you want to move
+ * @param x A floating point number between 0.0 and 1.0 indicating how far across the screen the text
+ * should be shown, as a percentage of the width, from the left hand side.
+ * @param y A floating point number between 0.0 and 1.0 indicating how far down the screen the text
+ * should be shown, as a percentage of the height, from the top.
+ * @return returns true if the position was successfully set, false otherwise.
+ * @noSelf
+ */
+export declare function textItemSetPosition(
+    theTextItem: TextItem,
+    x: number,
+    y: number
+): boolean;
+
+/**
  * This function sets the priority for a text item.  Priority is the importance of sending
  * updated text to the client. The system is implemented as 3 queues, with the high queue
  * being emptied before the medium queue is processed, and with one update sent per server
@@ -332,4 +306,30 @@ export declare function textItemSetColor(
 export declare function textItemSetPriority(
     theTextItem: TextItem,
     priority: string
+): void;
+
+/**
+ * This function allows the setting of the scale of a text item.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextItemSetScale Wiki, textItemSetScale }
+ * @param theTextitem The text item you wish to set the scale of.
+ * @param scale A floating point value indicating the scale of the text you wish to set to. 1.0 is around
+ * 12pt.
+ * @return returns true if the scale was successfully set, false otherwise.
+ * @noSelf
+ */
+export declare function textItemSetScale(
+    theTextitem: TextItem,
+    scale: number
+): boolean;
+
+/**
+ * Overwrites a previously created text item with the specified text.
+ * @see {@link https://wiki.multitheftauto.com/wiki/TextItemSetText Wiki, textItemSetText }
+ * @param theTextitem An existing text item that was previously created with textCreateTextItem
+ * @param text The new text for the text item
+ * @noSelf
+ */
+export declare function textItemSetText(
+    theTextitem: TextItem,
+    text: string
 ): void;
