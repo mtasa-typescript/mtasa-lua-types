@@ -48,7 +48,11 @@ import {
     TimerCallbackFunction,
     FetchRemoteCallback,
     GenericEventHandler,
-    CommandHandler
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /** @customConstructor DxScreenSource */

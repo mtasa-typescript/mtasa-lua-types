@@ -1,3 +1,5 @@
+import { ControlName, KeyName, KeyState } from '../../shared/utils/misc';
+
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/AddCommandHandler Wiki, addCommandHandler}
  * @param playerSource: The player who triggered the command or the server console.
@@ -15,4 +17,19 @@ export type CommandHandler = (
     this: void,
     commandName: string,
     ...arguments: string[]
+) => void;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/BindKey Wiki, bindKey}
+ * @param key The key that was pressed
+ * @param keyState The state of the key that was pressed,
+ * down if it was pressed, up if it was released.
+ * @param arguments The optional arguments you specified
+ * when calling bindKey (see below).
+ */
+export type BindKeyCallback<AdditionalArgsType extends any[] = []> = (
+    this: void,
+    key: KeyName | ControlName,
+    keyState: KeyState,
+    ...arguments: AdditionalArgsType,
 ) => void;

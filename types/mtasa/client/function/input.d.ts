@@ -48,7 +48,11 @@ import {
     TimerCallbackFunction,
     FetchRemoteCallback,
     GenericEventHandler,
-    CommandHandler
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /**
@@ -68,11 +72,14 @@ import {
  * @param arguments The optional arguments you specified when calling bindKey (see below).
  * @noSelf
  */
-export declare function bindKey(
-    key: string,
-    keyState: string,
-    handlerFunction: HandleFunction,
-    ...varargs: any[]
+export declare function bindKey<
+    CallbackType extends BindKeyCallback = BindKeyCallback,
+    AdditionalArgs extends any[] = []
+>(
+    key: ControlName | KeyName,
+    keyState: KeyState,
+    handlerFunction: CallbackType,
+    ...arguments: AdditionalArgs
 ): boolean;
 
 /**
@@ -235,7 +242,7 @@ export declare function getCommandHandlers(
  */
 export declare function removeCommandHandler(
     commandName: string,
-    handler?: HandleFunction
+    handler?: CommandHandler
 ): boolean;
 
 /**

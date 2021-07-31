@@ -32,7 +32,11 @@ import {
     TimerCallbackFunction,
     FetchRemoteCallback,
     GenericEventHandler,
-    CommandHandler
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 export interface OnPlayerACInfo extends GenericEventHandler {

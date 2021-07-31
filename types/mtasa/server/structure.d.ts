@@ -32,7 +32,18 @@ export { XML } from './oop/XML';
 export { FetchRemoteCallback } from '../shared/utils/callback';
 export { GenericEventHandler } from '../shared/utils/event';
 
-export { CommandHandler } from './utils/callback';
+export {
+    CommandHandler,
+    BindKeyCallback,
+} from './utils/callback';
 
-export type HandleFunction = (...args: any[]) => any;
-export type TimerCallbackFunction = (...args: any[]) => void;
+export {
+    HandleFunction,
+    TimerCallbackFunction,
+} from '../shared/structure';
+
+export {
+    ControlName,
+    KeyName,
+    KeyState,
+} from '../shared/utils/misc';
