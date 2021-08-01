@@ -28,7 +28,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /**
@@ -94,10 +101,12 @@ export declare function addEvent(
  * specified event could not be found or any parameters were invalid.
  * @noSelf
  */
-export declare function addEventHandler(
-    eventName: string,
+export declare function addEventHandler<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     attachedTo: Element,
-    handlerFunction: HandleFunction,
+    handlerFunction: CallbackType["function"],
     propagate?: boolean,
     priority?: string
 ): boolean;
@@ -192,10 +201,12 @@ export declare function getLatentEventStatus(
  * specified event handler could not be found or invalid parameters were passed.
  * @noSelf
  */
-export declare function removeEventHandler(
-    eventName: string,
+export declare function removeEventHandler<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     attachedTo: Element,
-    functionVar: HandleFunction
+    functionVar: CallbackType["function"]
 ): boolean;
 
 /**
@@ -227,21 +238,25 @@ export declare function removeEventHandler(
  * specified.
  * @noSelf
  */
-export declare function triggerClientEvent(
+export declare function triggerClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
     sendTo: LuaTable | Element,
-    name: string,
+    name: CallbackType["name"],
     sourceElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
  * @noSelf
  */
-export declare function triggerClientEvent(
-    name: string,
+export declare function triggerClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    name: CallbackType["name"],
     sourceElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
@@ -270,10 +285,12 @@ export declare function triggerClientEvent(
  * cancelevent.
  * @noSelf
  */
-export declare function triggerEvent(
-    eventName: string,
+export declare function triggerEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     baseElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
@@ -298,36 +315,42 @@ export declare function triggerEvent(
  * specified.
  * @noSelf
  */
-export declare function triggerLatentClientEvent(
+export declare function triggerLatentClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
     sendTo: LuaTable | Element,
-    name: string,
+    name: CallbackType["name"],
     bandwidth: number,
     persist: boolean,
     theElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
  * @noSelf
  */
-export declare function triggerLatentClientEvent(
-    name: string,
+export declare function triggerLatentClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    name: CallbackType["name"],
     bandwidth: number,
     persist: boolean,
     theElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent Wiki, triggerLatentClientEvent }
  * @noSelf
  */
-export declare function triggerLatentClientEvent(
+export declare function triggerLatentClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
     sendTo: LuaTable | Element,
-    name: string,
+    name: CallbackType["name"],
     theElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**

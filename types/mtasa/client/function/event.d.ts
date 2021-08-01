@@ -45,7 +45,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /**
@@ -111,10 +118,12 @@ export declare function addEvent(
  * specified event could not be found or any parameters were invalid.
  * @noSelf
  */
-export declare function addEventHandler(
-    eventName: string,
+export declare function addEventHandler<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     attachedTo: Element,
-    handlerFunction: HandleFunction,
+    handlerFunction: CallbackType["function"],
     propagate?: boolean,
     priority?: string
 ): boolean;
@@ -191,10 +200,12 @@ export declare function getLatentEventStatus(
  * specified event handler could not be found or invalid parameters were passed.
  * @noSelf
  */
-export declare function removeEventHandler(
-    eventName: string,
+export declare function removeEventHandler<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     attachedTo: Element,
-    functionVar: HandleFunction
+    functionVar: CallbackType["function"]
 ): boolean;
 
 /**
@@ -223,10 +234,12 @@ export declare function removeEventHandler(
  * cancelevent.
  * @noSelf
  */
-export declare function triggerEvent(
-    eventName: string,
+export declare function triggerEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    eventName: CallbackType["name"],
     baseElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
@@ -247,22 +260,26 @@ export declare function triggerEvent(
  * specified.
  * @noSelf
  */
-export declare function triggerLatentServerEvent(
-    event: string,
+export declare function triggerLatentServerEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    event: CallbackType["name"],
     bandwidth: number,
     persist: boolean,
     theElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentServerEvent Wiki, triggerLatentServerEvent }
  * @noSelf
  */
-export declare function triggerLatentServerEvent(
-    event: string,
+export declare function triggerLatentServerEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    event: CallbackType["name"],
     theElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**
@@ -291,10 +308,12 @@ export declare function triggerLatentServerEvent(
  * specified or a client side element was a parameter.
  * @noSelf
  */
-export declare function triggerServerEvent(
-    event: string,
+export declare function triggerServerEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    event: CallbackType["name"],
     theElement: Element,
-    ...varargs: any[]
+    ...args: Parameters<CallbackType["function"]>
 ): boolean;
 
 /**

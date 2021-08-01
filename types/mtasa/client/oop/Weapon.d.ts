@@ -44,7 +44,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /** @customConstructor Weapon */
@@ -81,60 +88,6 @@ export class Weapon extends Element {
      * This functions gets the target of a Element/Weapon|custom weapon.
      */
     target: null | Element | number;
-
-    /**
-     * This function gets a weapon property of the specified Element/Weapon|custom weapon
-     * (clientside only) or specified Weapons|player-held weapon (both client and server).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
-     * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
-     * @param weaponSkill Either: pro, std or poor
-     * @param property The property you want to get the value of:
-     * The following properties are get only:
-     * @return on success:
-     * int: the weapon property
-     * on failure:
-     * bool: false if the passed arguments were invalid
-     */
-    getProperty(
-        weaponSkill: string,
-        property: string
-    ): number;
-
-    /**
-     * <section name=Server class=server show=true>
-     * This function sets the weapon property of the specified weapons specified weapon type.
-     * See lower down the page for documentation related to weapon creation.
-     * <syntaxhighlight lang=lua>bool setWeaponProperty ( int weaponID/string weaponName, string
-     * weaponSkill, string property, int/float theValue )</syntaxhighlight>
-     * *weaponID: The ID or name of the Weapons|weapon you want to set a property of. Names can
-     * be:
-     * *weaponSkill: Either: pro, std or poor. The player must have this skill level set to have
-     * the effect.
-     * *property: The property you want to set the value of:
-     * *theValue: The value to set the property to.
-     * On success:
-     * bool: Returns true if the weapon property was successfully set
-     * On failure:
-     * bool: Returns false if the weapon property was unable to be set
-     * </section>
-     * <section name=Client class=client show=true>
-     * <p>The client side function only applies to custom weapons created client sided.</p>
-     * <syntaxhighlight lang=lua>bool setWeaponProperty ( weapon theWeapon, string strProperty,
-     * value theValue )</syntaxhighlight>
-     * * theWeapon: the weapon to change the property of.
-     * * strProperty: the property to edit:
-     * * theValue: The value to set the property to.
-     * Returns true if the property was set.
-     * </section>
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
-     * @param strProperty the property to edit:
-     * @param theValue The value to set the property to.
-     * @return returns true if the property was set.
-     */
-    setProperty(
-        strProperty: string,
-        theValue: unknown
-    ): boolean;
 
     /**
      * Creates a Element/Weapon|custom weapon that can fire bullets. Do not confuse this with
@@ -318,5 +271,59 @@ export class Weapon extends Element {
      */
     setState(
         theState: string
+    ): boolean;
+
+    /**
+     * This function gets a weapon property of the specified Element/Weapon|custom weapon
+     * (clientside only) or specified Weapons|player-held weapon (both client and server).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+     * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
+     * @param weaponSkill Either: pro, std or poor
+     * @param property The property you want to get the value of:
+     * The following properties are get only:
+     * @return on success:
+     * int: the weapon property
+     * on failure:
+     * bool: false if the passed arguments were invalid
+     */
+    getProperty(
+        weaponSkill: string,
+        property: string
+    ): number;
+
+    /**
+     * <section name=Server class=server show=true>
+     * This function sets the weapon property of the specified weapons specified weapon type.
+     * See lower down the page for documentation related to weapon creation.
+     * <syntaxhighlight lang=lua>bool setWeaponProperty ( int weaponID/string weaponName, string
+     * weaponSkill, string property, int/float theValue )</syntaxhighlight>
+     * *weaponID: The ID or name of the Weapons|weapon you want to set a property of. Names can
+     * be:
+     * *weaponSkill: Either: pro, std or poor. The player must have this skill level set to have
+     * the effect.
+     * *property: The property you want to set the value of:
+     * *theValue: The value to set the property to.
+     * On success:
+     * bool: Returns true if the weapon property was successfully set
+     * On failure:
+     * bool: Returns false if the weapon property was unable to be set
+     * </section>
+     * <section name=Client class=client show=true>
+     * <p>The client side function only applies to custom weapons created client sided.</p>
+     * <syntaxhighlight lang=lua>bool setWeaponProperty ( weapon theWeapon, string strProperty,
+     * value theValue )</syntaxhighlight>
+     * * theWeapon: the weapon to change the property of.
+     * * strProperty: the property to edit:
+     * * theValue: The value to set the property to.
+     * Returns true if the property was set.
+     * </section>
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
+     * @param strProperty the property to edit:
+     * @param theValue The value to set the property to.
+     * @return returns true if the property was set.
+     */
+    setProperty(
+        strProperty: string,
+        theValue: unknown
     ): boolean;
 }

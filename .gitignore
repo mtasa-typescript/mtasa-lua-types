@@ -1,4 +1,5 @@
 .idea
 node_modules
 .vs
-__local.ts
+__local.*
+__pycache__

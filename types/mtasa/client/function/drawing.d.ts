@@ -45,7 +45,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /**
@@ -489,11 +496,11 @@ export declare function dxDrawMaterialLine3D(
     flipUV: boolean,
     material: Element,
     width: number,
-    color: number,
-    postGUI: boolean,
-    faceTowardX: number,
-    faceTowardY: number,
-    faceTowardZ: number
+    color?: number,
+    postGUI?: boolean,
+    faceTowardX?: number,
+    faceTowardY?: number,
+    faceTowardZ?: number
 ): boolean;
 
 /**
@@ -509,30 +516,11 @@ export declare function dxDrawMaterialLine3D(
     endZ: number,
     material: Element,
     width: number,
-    color: number,
-    postGUI: boolean,
-    faceTowardX: number,
-    faceTowardY: number,
-    faceTowardZ: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
- * @noSelf
- */
-export declare function dxDrawMaterialLine3D(
-    startX: number,
-    startY: number,
-    startZ: number,
-    endX: number,
-    endY: number,
-    endZ: number,
-    flipUV: boolean,
-    material: Element,
-    width: number,
-    faceTowardX: number,
-    faceTowardY: number,
-    faceTowardZ: number
+    color?: number,
+    postGUI?: boolean,
+    faceTowardX?: number,
+    faceTowardY?: number,
+    faceTowardZ?: number
 ): boolean;
 
 /**
@@ -632,11 +620,11 @@ export declare function dxDrawMaterialSectionLine3D(
     flipUV: boolean,
     material: Element,
     width: number,
-    color: number,
-    postGUI: boolean,
-    faceTowardX: number,
-    faceTowardY: number,
-    faceTowardZ: number
+    color?: number,
+    postGUI?: boolean,
+    faceTowardX?: number,
+    faceTowardY?: number,
+    faceTowardZ?: number
 ): boolean;
 
 /**
@@ -656,34 +644,11 @@ export declare function dxDrawMaterialSectionLine3D(
     vsize: number,
     material: Element,
     width: number,
-    color: number,
-    postGUI: boolean,
-    faceTowardX: number,
-    faceTowardY: number,
-    faceTowardZ: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
- * @noSelf
- */
-export declare function dxDrawMaterialSectionLine3D(
-    startX: number,
-    startY: number,
-    startZ: number,
-    endX: number,
-    endY: number,
-    endZ: number,
-    u: number,
-    v: number,
-    usize: number,
-    vsize: number,
-    flipUV: boolean,
-    material: Element,
-    width: number,
-    faceTowardX: number,
-    faceTowardY: number,
-    faceTowardZ: number
+    color?: number,
+    postGUI?: boolean,
+    faceTowardX?: number,
+    faceTowardY?: number,
+    faceTowardZ?: number
 ): boolean;
 
 /**
@@ -809,43 +774,22 @@ export declare function dxDrawText(
     text: string,
     leftX: number,
     topY: number,
-    rightX: number,
-    bottomY: number,
-    color: number,
-    scaleXY: number,
-    scaleY: number,
-    font: any,
-    alignX: string,
-    alignY: string,
-    clip: boolean,
-    wordBreak: boolean,
-    postGUI: boolean,
-    colorCoded: boolean,
-    subPixelPositioning: boolean,
-    fRotation: number,
-    fRotationCenterX: number,
-    fRotationCenterY: number
-): boolean;
-
-/**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawText Wiki, dxDrawText }
- * @noSelf
- */
-export declare function dxDrawText(
-    text: string,
-    leftX: number,
-    topY: number,
-    font: any,
-    alignX: string,
-    alignY: string,
-    clip: boolean,
-    wordBreak: boolean,
-    postGUI: boolean,
-    colorCoded: boolean,
-    subPixelPositioning: boolean,
-    fRotation: number,
-    fRotationCenterX: number,
-    fRotationCenterY: number
+    rightX?: number,
+    bottomY?: number,
+    color?: number,
+    scaleXY?: number,
+    scaleY?: number,
+    font?: any,
+    alignX?: string,
+    alignY?: string,
+    clip?: boolean,
+    wordBreak?: boolean,
+    postGUI?: boolean,
+    colorCoded?: boolean,
+    subPixelPositioning?: boolean,
+    fRotation?: number,
+    fRotationCenterX?: number,
+    fRotationCenterY?: number
 ): boolean;
 
 /**
@@ -1029,7 +973,7 @@ export declare function dxGetStatus(): LuaTable;
 export declare function dxGetTextSize(
     text: string,
     width?: number,
-    scaleX?: number,
+    scaleXY?: number,
     scaleY?: number,
     font?: any,
     wordBreak?: boolean,

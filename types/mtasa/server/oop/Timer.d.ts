@@ -27,11 +27,20 @@ import {
     RadarArea,
     Water,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /** @customConstructor Timer */
-export class Timer {
+export class Timer<
+    CallbackType extends TimerCallbackFunction = TimerCallbackFunction
+> {
     /**
      * This function checks if a variable is a timer.
      */
@@ -104,9 +113,9 @@ export class Timer {
      * invalid or the timer could not be set.
      */
     constructor(
-        theFunction: HandleFunction,
+        theFunction: CallbackType,
         timeInterval: number,
         timesToExecute: number,
-        ...varargs: any[]
+        ...arguments: Parameters<CallbackType>
     );
 }

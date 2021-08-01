@@ -27,15 +27,48 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /** @customConstructor Player */
 export class Player extends Ped {
     /**
-     * This function gets the current team a player is on.
+     * This function returns the specified players account object.
      */
-    team: Team;
+    account: Account;
+
+    /**
+     * Returns the interior of the local camera (independent of the interior of the local
+     * player).
+     */
+    cameraInterior: number;
+
+    /**
+     * This function gets the position of the camera and the position of the point it is facing.
+     */
+    cameraMatrix: LuaMultiReturn<[
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number
+    ]>;
+
+    /**
+     * This function returns an element that corresponds to the current target of the specified
+     * players camera (i.e. what it is following).
+     */
+    cameraTarget: Element;
 
     /**
      * This function is used to forcefully show a players radar map.
@@ -146,20 +179,125 @@ export class Player extends Ped {
     voiceIgnoreFrom: boolean;
 
     /**
-     * This function returns the specified players account object.
+     * This function gets the current team a player is on.
      */
-    account: Account;
+    team: Team;
+
+    /**
+     * This function returns the specified players account object.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerAccount Wiki, getPlayerAccount }
+     * @return returns the players account object, or false if the player passed to the function is
+     * invalid.
+     */
+    getAccount(): Account;
+
+    /**
+     * This functions logs the given player in to the given account. You need to provide the
+     * password needed to log into that account.
+     * @see {@link https://wiki.multitheftauto.com/wiki/LogIn Wiki, logIn }
+     * @param theAccount The account to log the player into
+     * @param thePassword The password needed to sign into this account
+     * @return returns true if the player was successfully logged into the given account. returns false
+     * or nil if the log in failed for some reason, ie. the player was already logged in to some
+     * account (use logout first), if the account was already in use or if it failed for some
+     * other reason.
+     */
+    logIn(
+        theAccount: Account,
+        thePassword: string
+    ): boolean;
+
+    /**
+     * This function logs the given player out of his current account.
+     * @see {@link https://wiki.multitheftauto.com/wiki/LogOut Wiki, logOut }
+     * @return returns true if the player was successfully logged out, false or nil if it failed for
+     * some reason, ie. the player was never logged in.
+     */
+    logOut(): boolean;
+
+    /**
+     * This function will ban the specified player by either IP, serial or username
+     * This function will ban the specified player from the server by IP.
+     * @see {@link https://wiki.multitheftauto.com/wiki/BanPlayer Wiki, banPlayer }
+     * @param IP Will player be banned by IP?
+     * @param Username Will player be banned by username?
+     * @param Serial Will player be banned by serial?
+     * @param responsibleElement The element that is responsible for banning the player. This can be a player or the root
+     * (getRootElement()) (Maximum 30 characters if using a string).
+     * @param reason The reason the player will be banned from the server.
+     * @param seconds The amount of seconds the player will be banned from the server for. This can be 0 for an
+     * infinite amount of time.
+     * @return returns a ban object if banned successfully, or false if unsuccessful.
+     */
+    ban(
+        IP?: boolean,
+        Username?: boolean,
+        Serial?: boolean,
+        responsiblePlayer?: Player | string,
+        reason?: string,
+        seconds?: number
+    ): Ban;
+
+    /**
+     * This function will kick the specified player from the server.
+     * @see {@link https://wiki.multitheftauto.com/wiki/KickPlayer Wiki, kickPlayer }
+     * @param responsiblePlayer The player that is responsible for the event. Note: If left out as in the second syntax,
+     * responsible player for the kick will be Console (Maximum 30 characters if using a string).
+     * @param reason The reason for the kick. (Maximum 64 characters before 1.5.8, Maximum 128 characters
+     * after 1.5.8)
+     * @return returns true if the player was kicked succesfully, false if invalid arguments are
+     * specified.
+     */
+    kick(
+        responsiblePlayer?: Player | string,
+        reason?: string
+    ): boolean;
+
+    /**
+     * This function plays a frontend sound for the specified player.
+     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
+     * @param sound a whole int specifying the sound id to play. Valid values are:
+     */
+    playSoundFrontEnd(
+        sound: number
+    ): boolean;
+
+    /**
+     * This function will fade a players camera to a color or back to normal over a specified
+     * time period. This will also affect the sound volume for the player (50% faded = 50%
+     * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
+     * outs in a row, but for serverside scripts you must use one then the other.
+     * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
+     * @param fadeIn Should the camera be faded in or out? Pass true to fade the camera in, false to fade it
+     * out to a color.
+     * @param timeToFade The number of seconds it should take to fade.
+     * @param red The amount of red in the color that the camera fades out to (0 - 255). Not required for
+     * fading in.
+     * @param green The amount of green in the color that the camera fades out to (0 - 255). Not required for
+     * fading in.
+     * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
+     * fading in.
+     */
+    fadeCamera(
+        fadeIn: boolean,
+        timeToFade?: number,
+        red?: number,
+        green?: number,
+        blue?: number
+    ): boolean;
 
     /**
      * Returns the interior of the local camera (independent of the interior of the local
      * player).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
      */
-    cameraInterior: number;
+    getCameraInterior(): number;
 
     /**
      * This function gets the position of the camera and the position of the point it is facing.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraMatrix Wiki, getCameraMatrix }
      */
-    cameraMatrix: LuaMultiReturn<[
+    getCameraMatrix(): LuaMultiReturn<[
         number,
         number,
         number,
@@ -173,37 +311,91 @@ export class Player extends Ped {
     /**
      * This function returns an element that corresponds to the current target of the specified
      * players camera (i.e. what it is following).
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraTarget Wiki, getCameraTarget }
      */
-    cameraTarget: Element;
+    getCameraTarget(): Element;
 
     /**
-     * This function gets the current team a player is on.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
-     * @return returns a team element representing the team the player is on, false if the player is not
-     * part of a team.
+     * Sets the interior of the local camera. Only the interior of the camera is changed, the
+     * local player stays in the interior he was in.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
+     * @param interior the interior to place the camera in.
      */
-    getTeam(): Team;
-
-    /**
-     * This function adds a player to an existing team. The player will automatically be removed
-     * from his current team if hes on one.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
-     * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
-     * team.
-     * @return returns true if the player was successfully added to the specified team or removed from
-     * his previous one, false otherwise.
-     */
-    setTeam(
-        theTeam: Team
+    setCameraInterior(
+        interior: number
     ): boolean;
 
     /**
-     * This function plays a frontend sound for the specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
-     * @param sound a whole int specifying the sound id to play. Valid values are:
+     * This function sets the cameras position and direction. The first three arguments are the
+     * point at which the camera lies, the last three are the point the camera faces (or the
+     * point it looks at).
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraMatrix Wiki, setCameraMatrix }
+     * @param positionX The x coordinate of the cameras position.
+     * @param positionY The y coordinate of the cameras position.
+     * @param positionZ The z coordinate of the cameras position.
+     * @param {{New feature/item|3.0141|1.4.1|7005|Instead of six coordinates, or two vectors, a Matrix can be supplied.}}
+     * @param lookAtX The x coordinate of the point the camera faces.
+     * @param lookAtY The y coordinate of the point the camera faces.
+     * @param lookAtZ The z coordinate of the point the camera faces.
+     * @param roll The camera roll angle, -180 to 180. A value of 0 means the camera sits straight, positive
+     * values will turn it counter-clockwise and negative values will turn it clockwise. -180 or
+     * 180 means the camera is upside down.
+     * @param fov the field of view angle, 0.01 to 180. The higher this value is, the more you will be able
+     * to see what is to your sides.
      */
-    playSoundFrontEnd(
-        sound: number
+    setCameraMatrix(
+        positionX: number,
+        positionY: number,
+        positionZ: number,
+        lookAtX?: number,
+        lookAtY?: number,
+        lookAtZ?: number,
+        roll?: number,
+        fov?: number
+    ): boolean;
+
+    /**
+     * This function allows you to set a players camera to follow other elements instead.
+     * Currently supported element type is:
+     * *Players
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
+     * @param target The player who you want the camera to follow. If none is specified, the camera will
+     * target the player.
+     */
+    setCameraTarget(
+        target?: Player
+    ): boolean;
+
+    /**
+     * This function triggers an event previously registered on a client. This is the primary
+     * means of passing information between the server and the client. Clients have a similar
+     * triggerServerEvent function that can do the reverse. You can treat this function as if it
+     * was an asynchronous function call, using triggerServerEvent to pass back any returned
+     * information if necessary.
+     * Almost any data types can be passed as expected, including elements and complex nested
+     * tables. Non-element MTA data types like xmlNodes or resource pointers will not be able to
+     * be passed as they do not necessarily have a valid representation on the client.
+     * Events are sent reliably, so clients will receive them, but there may be (but shouldnt
+     * be) a significant delay before they are received. You should take this into account when
+     * using them.
+     * Keep in mind the bandwidth issues when using events - dont pass a large list of arguments
+     * unless you really need to. It is marginally more efficient to pass one large event than
+     * two smaller ones.
+     * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
+     * @param name The name of the event to trigger client side. You should register this event with
+     * addEvent and add at least one event handler using addEventHandler.
+     * @param sourceElement The element that is the Event system#Event handlers|source of the event.
+     * @param arguments... A list of arguments to trigger with the event. You can pass any lua data type (except
+     * functions). You can also pass elements.
+     * @return returns true if the event trigger has been sent, false if invalid arguments were
+     * specified.
+     */
+    triggerEvent<
+        CallbackType extends GenericEventHandler = GenericEventHandler
+    >(
+        name: CallbackType["name"],
+        sourceElement: Element,
+        ...args: Parameters<CallbackType["function"]>
     ): boolean;
 
     /**
@@ -717,206 +909,23 @@ export class Player extends Ped {
     ): boolean;
 
     /**
-     * This function will ban the specified player by either IP, serial or username
-     * This function will ban the specified player from the server by IP.
-     * @see {@link https://wiki.multitheftauto.com/wiki/BanPlayer Wiki, banPlayer }
-     * @param IP Will player be banned by IP?
-     * @param Username Will player be banned by username?
-     * @param Serial Will player be banned by serial?
-     * @param responsibleElement The element that is responsible for banning the player. This can be a player or the root
-     * (getRootElement()) (Maximum 30 characters if using a string).
-     * @param reason The reason the player will be banned from the server.
-     * @param seconds The amount of seconds the player will be banned from the server for. This can be 0 for an
-     * infinite amount of time.
-     * @return returns a ban object if banned successfully, or false if unsuccessful.
+     * This function gets the current team a player is on.
+     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
+     * @return returns a team element representing the team the player is on, false if the player is not
+     * part of a team.
      */
-    ban(
-        IP?: boolean,
-        Username?: boolean,
-        Serial?: boolean,
-        responsiblePlayer?: Player | string,
-        reason?: string,
-        seconds?: number
-    ): Ban;
+    getTeam(): Team;
 
     /**
-     * This function will kick the specified player from the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/KickPlayer Wiki, kickPlayer }
-     * @param responsiblePlayer The player that is responsible for the event. Note: If left out as in the second syntax,
-     * responsible player for the kick will be Console (Maximum 30 characters if using a string).
-     * @param reason The reason for the kick. (Maximum 64 characters before 1.5.8, Maximum 128 characters
-     * after 1.5.8)
-     * @return returns true if the player was kicked succesfully, false if invalid arguments are
-     * specified.
+     * This function adds a player to an existing team. The player will automatically be removed
+     * from his current team if hes on one.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
+     * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
+     * team.
+     * @return returns true if the player was successfully added to the specified team or removed from
+     * his previous one, false otherwise.
      */
-    kick(
-        responsiblePlayer?: Player | string,
-        reason?: string
-    ): boolean;
-
-    /**
-     * This function returns the specified players account object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerAccount Wiki, getPlayerAccount }
-     * @return returns the players account object, or false if the player passed to the function is
-     * invalid.
-     */
-    getAccount(): Account;
-
-    /**
-     * This functions logs the given player in to the given account. You need to provide the
-     * password needed to log into that account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/LogIn Wiki, logIn }
-     * @param theAccount The account to log the player into
-     * @param thePassword The password needed to sign into this account
-     * @return returns true if the player was successfully logged into the given account. returns false
-     * or nil if the log in failed for some reason, ie. the player was already logged in to some
-     * account (use logout first), if the account was already in use or if it failed for some
-     * other reason.
-     */
-    logIn(
-        theAccount: Account,
-        thePassword: string
-    ): boolean;
-
-    /**
-     * This function logs the given player out of his current account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/LogOut Wiki, logOut }
-     * @return returns true if the player was successfully logged out, false or nil if it failed for
-     * some reason, ie. the player was never logged in.
-     */
-    logOut(): boolean;
-
-    /**
-     * This function will fade a players camera to a color or back to normal over a specified
-     * time period. This will also affect the sound volume for the player (50% faded = 50%
-     * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
-     * outs in a row, but for serverside scripts you must use one then the other.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
-     * @param fadeIn Should the camera be faded in or out? Pass true to fade the camera in, false to fade it
-     * out to a color.
-     * @param timeToFade The number of seconds it should take to fade.
-     * @param red The amount of red in the color that the camera fades out to (0 - 255). Not required for
-     * fading in.
-     * @param green The amount of green in the color that the camera fades out to (0 - 255). Not required for
-     * fading in.
-     * @param blue The amount of blue in the color that the camera fades out to (0 - 255). Not required for
-     * fading in.
-     */
-    fadeCamera(
-        fadeIn: boolean,
-        timeToFade?: number,
-        red?: number,
-        green?: number,
-        blue?: number
-    ): boolean;
-
-    /**
-     * Returns the interior of the local camera (independent of the interior of the local
-     * player).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
-     */
-    getCameraInterior(): number;
-
-    /**
-     * This function gets the position of the camera and the position of the point it is facing.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraMatrix Wiki, getCameraMatrix }
-     */
-    getCameraMatrix(): LuaMultiReturn<[
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-    ]>;
-
-    /**
-     * This function returns an element that corresponds to the current target of the specified
-     * players camera (i.e. what it is following).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraTarget Wiki, getCameraTarget }
-     */
-    getCameraTarget(): Element;
-
-    /**
-     * Sets the interior of the local camera. Only the interior of the camera is changed, the
-     * local player stays in the interior he was in.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
-     * @param interior the interior to place the camera in.
-     */
-    setCameraInterior(
-        interior: number
-    ): boolean;
-
-    /**
-     * This function sets the cameras position and direction. The first three arguments are the
-     * point at which the camera lies, the last three are the point the camera faces (or the
-     * point it looks at).
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraMatrix Wiki, setCameraMatrix }
-     * @param positionX The x coordinate of the cameras position.
-     * @param positionY The y coordinate of the cameras position.
-     * @param positionZ The z coordinate of the cameras position.
-     * @param {{New feature/item|3.0141|1.4.1|7005|Instead of six coordinates, or two vectors, a Matrix can be supplied.}}
-     * @param lookAtX The x coordinate of the point the camera faces.
-     * @param lookAtY The y coordinate of the point the camera faces.
-     * @param lookAtZ The z coordinate of the point the camera faces.
-     * @param roll The camera roll angle, -180 to 180. A value of 0 means the camera sits straight, positive
-     * values will turn it counter-clockwise and negative values will turn it clockwise. -180 or
-     * 180 means the camera is upside down.
-     * @param fov the field of view angle, 0.01 to 180. The higher this value is, the more you will be able
-     * to see what is to your sides.
-     */
-    setCameraMatrix(
-        positionX: number,
-        positionY: number,
-        positionZ: number,
-        lookAtX?: number,
-        lookAtY?: number,
-        lookAtZ?: number,
-        roll?: number,
-        fov?: number
-    ): boolean;
-
-    /**
-     * This function allows you to set a players camera to follow other elements instead.
-     * Currently supported element type is:
-     * *Players
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
-     * @param target The player who you want the camera to follow. If none is specified, the camera will
-     * target the player.
-     */
-    setCameraTarget(
-        target?: Player
-    ): boolean;
-
-    /**
-     * This function triggers an event previously registered on a client. This is the primary
-     * means of passing information between the server and the client. Clients have a similar
-     * triggerServerEvent function that can do the reverse. You can treat this function as if it
-     * was an asynchronous function call, using triggerServerEvent to pass back any returned
-     * information if necessary.
-     * Almost any data types can be passed as expected, including elements and complex nested
-     * tables. Non-element MTA data types like xmlNodes or resource pointers will not be able to
-     * be passed as they do not necessarily have a valid representation on the client.
-     * Events are sent reliably, so clients will receive them, but there may be (but shouldnt
-     * be) a significant delay before they are received. You should take this into account when
-     * using them.
-     * Keep in mind the bandwidth issues when using events - dont pass a large list of arguments
-     * unless you really need to. It is marginally more efficient to pass one large event than
-     * two smaller ones.
-     * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
-     * @param name The name of the event to trigger client side. You should register this event with
-     * addEvent and add at least one event handler using addEventHandler.
-     * @param sourceElement The element that is the Event system#Event handlers|source of the event.
-     * @param arguments... A list of arguments to trigger with the event. You can pass any lua data type (except
-     * functions). You can also pass elements.
-     * @return returns true if the event trigger has been sent, false if invalid arguments were
-     * specified.
-     */
-    triggerEvent(
-        name: string,
-        sourceElement: Element,
-        ...varargs: any[]
+    setTeam(
+        theTeam: Team
     ): boolean;
 }

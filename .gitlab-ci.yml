@@ -1,14 +1,13 @@
 stages:
-  - test
+    - test
 
 test:
-  image: node:12.18.1-buster-slim
+    image: node:12.18.1-buster-slim
 
-  stage: test
+    stage: test
 
-  before_script:
-    - npm i --save-dev
+    before_script:
+        - npm i --save-dev
 
-  script:
-    - npm run test
-
+    script:
+        - npm run test

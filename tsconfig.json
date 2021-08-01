@@ -1,18 +1,25 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "lib": [
-            "es6"
-        ],
+        "lib": ["es6"],
         "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "baseUrl": ".",
-        "typeRoots": [
-            "types"
-        ],
+        "outDir": "lua",
+        "typeRoots": ["types"],
         "noEmit": true,
         "forceConsistentCasingInFileNames": true
+    },
+    "tstl": {
+        // MTASA Lua Language version is 5.1
+        "luaTarget": "5.1",
+        // No "self" in global functions
+        "noImplicitSelf": true,
+        // Will not put 'require' into compiled files
+        "luaLibImport": "none",
+        // Provides debug.traceback function
+        "sourceMapTraceback": true
     }
 }

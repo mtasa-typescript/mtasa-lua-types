@@ -44,7 +44,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /** @customConstructor Vehicle */
@@ -1410,6 +1417,19 @@ export class Vehicle extends Element {
      */
     setEngineState(
         engineState: boolean
+    ): boolean;
+
+    /**
+     * This function changes the explodable state of a vehicles fuel tank, which toggles the
+     * ability to blow the vehicle up by shooting the tank. This function will have no effect on
+     * vehicles with tanks that cannot be shot in single player.
+     * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleFuelTankExplodable Wiki, setVehicleFuelTankExplodable }
+     * @param explodable : A boolean value representing whether or not the fuel tank will be explodable.
+     * @return returns true if the vehicles fuel tank explodable state was successfully changed, false
+     * otherwise.
+     */
+    setFuelTankExplodable(
+        explodable: boolean
     ): boolean;
 
     /**

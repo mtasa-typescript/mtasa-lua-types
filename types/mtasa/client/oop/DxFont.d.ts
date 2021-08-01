@@ -45,7 +45,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /** @customConstructor DxFont */
@@ -105,7 +112,7 @@ export class DxFont {
      */
     getSize(
         width?: number,
-        scaleX?: number,
+        scaleXY?: number,
         scaleY?: number,
         font?: any,
         wordBreak?: boolean,

@@ -1,3 +1,4 @@
 import * as mtasa from './mtasa';
+import * as event from './event';
 
-export { mtasa };
+export { mtasa, event };

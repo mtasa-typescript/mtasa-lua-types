@@ -28,7 +28,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /**
@@ -62,7 +69,7 @@ import {
  */
 export declare function addCommandHandler(
     commandName: string,
-    handlerFunction: HandleFunction,
+    handlerFunction: CommandHandler,
     restricted?: boolean,
     caseSensitive?: boolean
 ): boolean;
@@ -86,12 +93,15 @@ export declare function addCommandHandler(
  * @param arguments The optional arguments you specified when calling bindKey (see below).
  * @noSelf
  */
-export declare function bindKey(
+export declare function bindKey<
+    CallbackType extends BindKeyCallback = BindKeyCallback,
+    AdditionalArgs extends any[] = []
+>(
     thePlayer: Player,
-    key: string,
-    keyState: string,
-    handlerFunction: HandleFunction,
-    ...varargs: any[]
+    key: ControlName | KeyName,
+    keyState: KeyState,
+    handlerFunction: CallbackType,
+    ...arguments: AdditionalArgs
 ): boolean;
 
 /**
@@ -248,7 +258,7 @@ export declare function isKeyBound(
  */
 export declare function removeCommandHandler(
     commandName: string,
-    handler?: HandleFunction
+    handler?: CommandHandler
 ): boolean;
 
 /**

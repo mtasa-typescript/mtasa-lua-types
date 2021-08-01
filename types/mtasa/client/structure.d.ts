@@ -41,6 +41,22 @@ export { Projectile } from './oop/Projectile';
 export { EngineTXD } from './oop/EngineTXD';
 export { EngineDFF } from './oop/EngineDFF';
 export { EngineCOL } from './oop/EngineCOL';
-export { FetchRemoteCallback } from '../shared/utils/callback';
 
-export type HandleFunction = any;
+export { FetchRemoteCallback } from '../shared/utils/callback';
+export { GenericEventHandler } from '../shared/utils/event';
+
+export {
+    CommandHandler,
+    BindKeyCallback
+} from './utils/callback';
+
+export {
+    HandleFunction,
+    TimerCallbackFunction,
+} from '../shared/structure';
+
+export {
+    ControlName,
+    KeyName,
+    KeyState,
+} from '../shared/utils/misc';

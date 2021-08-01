@@ -45,7 +45,14 @@ import {
     Water,
     Timer,
     HandleFunction,
-    FetchRemoteCallback
+    TimerCallbackFunction,
+    FetchRemoteCallback,
+    GenericEventHandler,
+    CommandHandler,
+    BindKeyCallback,
+    ControlName,
+    KeyName,
+    KeyState
 } from '../structure';
 
 /**
@@ -159,7 +166,9 @@ export declare function call(
  * or abortremoterequest|abortremoterequest
  * @noSelf
  */
-export declare function fetchRemote(
+export declare function fetchRemote<
+    AdditionalArgs extends any[] = []
+>(
     URL: string,
     queueName: string,
     connectionAttempts: number,
@@ -167,19 +176,21 @@ export declare function fetchRemote(
     callbackFunction: FetchRemoteCallback,
     postData?: string,
     postIsBinary?: boolean,
-    ...varargs: any[]
+    ...arguments: AdditionalArgs
 ): boolean;
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
  * @noSelf
  */
-export declare function fetchRemote(
+export declare function fetchRemote<
+    AdditionalArgs extends any[] = []
+>(
     URL: string,
     callbackFunction: FetchRemoteCallback,
     postData?: string,
     postIsBinary?: boolean,
-    ...varargs: any[]
+    ...arguments: AdditionalArgs
 ): boolean;
 
 /**
