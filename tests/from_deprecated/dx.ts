@@ -16,19 +16,91 @@ const drawImageSection: boolean = mtasa.dxDrawImageSection(
 const drawLine: boolean = mtasa.dxDrawLine(3, 4, 1, 0, 0xffffffff);
 const drawLine3D: boolean = mtasa.dxDrawLine3D(-100, -120, -150, 540, 541, 542);
 
-// TODO: complete tests for deprecated module
-/*
-const drawRectangle: boolean = mtasa.dxDrawRectangle();
-const drawText: boolean = mtasa.dxDrawText();
-const getFontHeight: number = mtasa.dxGetFontHeight();
-const getTextWidth: number = mtasa.dxGetTextWidth();
-const createFont: mtasa.Element = mtasa.dxCreateFont();
-const createTexture1: mtasa.DxTexture = mtasa.dxCreateTexture();
-const createTexture2: mtasa.DxTexture = mtasa.dxCreateTexture();
-const createTexture3: mtasa.DxTexture = mtasa.dxCreateTexture();
-const createShader: [mtasa.Element, string] = mtasa.dxCreateShader();
-const createRenderTarget: mtasa.Element = mtasa.dxCreateRenderTarget();
-const createScreenSource: mtasa.Element = mtasa.dxCreateScreenSource();
-const getMaterialSize: [number, number, number?] = mtasa.dxGetMaterialSize();
-const setShaderValue: boolean = mtasa.dxSetShaderValue();
-*/
+const drawRectangle1: boolean = mtasa.dxDrawRectangle(
+    0,
+    1,
+    3,
+    4,
+    0xffffffff,
+    false,
+    true,
+);
+const drawRectangle2: boolean = mtasa.dxDrawRectangle(
+    0,
+    1,
+    3,
+    4,
+    0xffffffff,
+    false,
+);
+const drawRectangle3: boolean = mtasa.dxDrawRectangle(0, 1, 3, 4);
+
+const drawText: boolean = mtasa.dxDrawText(
+    'text',
+    10,
+    11,
+    0,
+    1,
+    0xffffffff,
+    12,
+    1,
+    'Times New Roman',
+);
+
+const getFontHeight1: number = mtasa.dxGetFontHeight();
+
+const getFontHeight2: number = mtasa.dxGetFontHeight(10, 'Times New Roman');
+
+const getTextWidth1: number = mtasa.dxGetTextWidth('Some text');
+
+const getTextWidth2: number = mtasa.dxGetTextWidth(
+    'Some text',
+    10,
+    'Times New Roman',
+);
+
+const createFont: mtasa.Element = mtasa.dxCreateFont('filepath', 10);
+
+//
+// const createTexture1: mtasa.DxTexture = mtasa.dxCreateTexture(
+//     'filepath',
+//     'argb',
+//     true,
+// );
+//
+// const createTexture2: mtasa.DxTexture = mtasa.dxCreateTexture(
+//     100,
+//     120,
+//     'rgb',
+//     false,
+// );
+//
+// const createTexture3: mtasa.DxTexture = mtasa.dxCreateTexture(
+//     'pixel binary info',
+//     'rgb',
+//     false,
+// );
+
+const createShader: [mtasa.Element, string] = mtasa.dxCreateShader(
+    'filepath',
+    1,
+    1000,
+);
+
+const createRenderTarget: mtasa.Element = mtasa.dxCreateRenderTarget(
+    20,
+    20,
+    true,
+);
+
+const createScreenSource: mtasa.Element = mtasa.dxCreateScreenSource(500, 500);
+
+const getMaterialSize: [number, number, number?] = mtasa.dxGetMaterialSize(
+    mtasa.getElementByID('elementId'),
+);
+
+const setShaderValue: boolean = mtasa.dxSetShaderValue(
+    mtasa.getElementByID('elementId'),
+    'parameterName',
+    100,
+);
