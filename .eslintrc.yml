@@ -1,0 +1,26 @@
+env:
+    browser: true
+    es2021: true
+extends:
+    - 'eslint:recommended'
+    - 'plugin:@typescript-eslint/recommended'
+parser: '@typescript-eslint/parser'
+parserOptions:
+    ecmaVersion: 12
+    sourceType: module
+plugins:
+    - '@typescript-eslint'
+rules:
+    # Because there are the types
+    '@typescript-eslint/no-unused-vars': off
+
+    # Check `mixed` type in mtasa wiki
+    '@typescript-eslint/no-explicit-any': off
+    '@typescript-eslint/explicit-module-boundary-types': off
+
+    # Sometimes there are static new methods
+    '@typescript-eslint/no-misused-new': off
+
+ignorePatterns:
+    - types/mtasa/deprecated
+    - __local.ts
