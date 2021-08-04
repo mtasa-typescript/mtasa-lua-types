@@ -61,7 +61,6 @@ const getTextWidth2: number = mtasa.dxGetTextWidth(
 
 const createFont: mtasa.Element = mtasa.dxCreateFont('filepath', 10);
 
-//
 // const createTexture1: mtasa.DxTexture = mtasa.dxCreateTexture(
 //     'filepath',
 //     'argb',
