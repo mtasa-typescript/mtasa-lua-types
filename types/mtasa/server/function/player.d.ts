@@ -40,7 +40,7 @@ import {
 
 /**
  * This function is used to forcefully show a players radar map.
- * @see {@link https://wiki.multitheftauto.com/wiki/ForcePlayerMap Wiki, forcePlayerMap }
+ * @see https://wiki.multitheftauto.com/wiki/ForcePlayerMap
  * @param thePlayer : A player object referencing the specified player
  * @param forceOn : A boolean value representing whether or not the players radar map will be forced on
  * @noSelf
@@ -53,7 +53,7 @@ export declare function forcePlayerMap(
 /**
  * This function returns a table of all the alive players on the server. Opposite function
  * of getDeadPlayers.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetAlivePlayers Wiki, getAlivePlayers }
+ * @see https://wiki.multitheftauto.com/wiki/GetAlivePlayers
  * @return returns a table of all the alive players.
  * @noSelf
  */
@@ -61,7 +61,7 @@ export declare function getAlivePlayers(): LuaTable;
 
 /**
  * This function returns a table of all currently dead players on the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetDeadPlayers Wiki, getDeadPlayers }
+ * @see https://wiki.multitheftauto.com/wiki/GetDeadPlayers
  * @return returns a table of all the dead players.
  * @noSelf
  */
@@ -70,7 +70,7 @@ export declare function getDeadPlayers(): LuaTable;
 /**
  * This function returns anti-cheat info for a player. The info returned by this function
  * can change over time, so use the server event onPlayerACInfo instead.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerACInfo Wiki, getPlayerACInfo }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerACInfo
  * @param thePlayer The player whose anti-cheat info you want to check.
  * @return returns a table with the following entries:
  * * detectedac: a string containing a comma separated list of anti-cheat_guide|anti-cheat
@@ -88,7 +88,7 @@ export declare function getPlayerACInfo(
 ): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerAnnounceValue Wiki, getPlayerAnnounceValue }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerAnnounceValue
  * @param thePlayer This is the Player whos value you want to retrieve.
  * @param key The name of the key.
  * @return this function returns a string containing the requested value if a valid key was
@@ -102,7 +102,7 @@ export declare function getPlayerAnnounceValue(
 
 /**
  * This function allows you to check the current blur level of a specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerBlurLevel Wiki, getPlayerBlurLevel }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerBlurLevel
  * @param thePlayer The player whose blur level you want to check.
  * @return returns the players blur level if successful, false if an invalid player was given.
  * @noSelf
@@ -113,7 +113,7 @@ export declare function getPlayerBlurLevel(
 
 /**
  * This function returns the number of players currently connected to the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerCount Wiki, getPlayerCount }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerCount
  * @return returns the number of players connected to the server as an int.
  * @noSelf
  */
@@ -122,7 +122,7 @@ export declare function getPlayerCount(): number;
 /**
  * This function returns a player element for the player with the name passed to the
  * function.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerFromName Wiki, getPlayerFromName }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerFromName
  * @param playerName : A string containing the name of the player you want to reference
  * @return returns a player element for the player with the nickname provided. if there is no player
  * with that name, false is returned.
@@ -135,7 +135,7 @@ export declare function getPlayerFromName(
 /**
  * This function gets the amount of time in milliseconds that a players position has not
  * changed.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerIdleTime Wiki, getPlayerIdleTime }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerIdleTime
  * @param thePlayer : The player you wish to get the idle time of.
  * @return returns the amount of time in milliseconds that a player has been idle, false otherwise.
  * @noSelf
@@ -146,7 +146,7 @@ export declare function getPlayerIdleTime(
 
 /**
  * This function returns a string containing the IP address of the player.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerIP Wiki, getPlayerIP }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerIP
  * @param thePlayer The player element you want to get the IP of.
  * @return returns a string containing the requested playerss ip, or false if the player passed to
  * the function is invalid.
@@ -158,7 +158,7 @@ export declare function getPlayerIP(
 
 /**
  * Returns the amount of money a player currently has.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerMoney Wiki, getPlayerMoney }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerMoney
  * @param thePlayer The player you wish the retrieve the amount of money from.
  * @return returns an integer with the amount of money the specified player has, false if the player
  * is invalid.
@@ -170,7 +170,7 @@ export declare function getPlayerMoney(
 
 /**
  * This function returns a string containing the name of the specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerName Wiki, getPlayerName }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerName
  * @param thePlayer the player you want to get the name of
  * @return returns a string containing the requested players name, or false if the player passed to
  * the function is invalid.
@@ -183,7 +183,7 @@ export declare function getPlayerName(
 /**
  * This function gets the current color of a players name tag as RGB values. These are in
  * the range 0-255.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagColor Wiki, getPlayerNametagColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerNametagColor
  * @param thePlayer The player whose name tag RGB color values you wish to retrieve.
  * @return returns red, green and blue values if an existent player was specified, false otherwise.
  * @noSelf
@@ -198,7 +198,7 @@ export declare function getPlayerNametagColor(
 
 /**
  * This will allow you to retrieve the name tag a player is currently using.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagText Wiki, getPlayerNametagText }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerNametagText
  * @param thePlayer The person whose name tag you want to retrieve
  * @return returns a string with the nametag text, false if the player is invalid.
  * @noSelf
@@ -211,7 +211,7 @@ export declare function getPlayerNametagText(
  * This function returns the ping of a specified player. The ping is the number of
  * milliseconds that data takes to travel from the players client to the server or vice
  * versa.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerPing Wiki, getPlayerPing }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerPing
  * @param thePlayer : The player whose ping you want to determine.
  * @return returns the ping as an int, or false if the player is invalid.
  * @noSelf
@@ -222,7 +222,7 @@ export declare function getPlayerPing(
 
 /**
  * This will allow you to retrieve the player current debug script level.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerScriptDebugLevel Wiki, getPlayerScriptDebugLevel }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerScriptDebugLevel
  * @param thePlayer The person whose debug script level you want
  * @return returns an int with the player debug script level, false if the player is invalid.
  * @noSelf
@@ -233,7 +233,7 @@ export declare function getPlayerScriptDebugLevel(
 
 /**
  * This function returns the serial for a specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerSerial Wiki, getPlayerSerial }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerSerial
  * @param thePlayer A player object referencing the specified player.
  * @return returns the serial as a string if it was found, false otherwise.
  * @noSelf
@@ -262,7 +262,7 @@ export declare function getPlayerSerial(
  * The fourth number is 9, which means its a release build, (Development and beta builds
  * have lower numbers here)<br>
  * And the fifth and sixth numbers represent the build number.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerVersion Wiki, getPlayerVersion }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerVersion
  * @param thePlayer The player whose client version you wish to get.
  * @return returns a string containing the client version, or false if the player is invalid.
  * @noSelf
@@ -274,7 +274,7 @@ export declare function getPlayerVersion(
 /**
  * This function gets a players current wanted level. The wanted level is indicated by the
  * amount of stars a player has on the GTA HUD.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerWantedLevel Wiki, getPlayerWantedLevel }
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerWantedLevel
  * @param thePlayer The player whose wanted level you wish to get
  * @noSelf
  */
@@ -284,7 +284,7 @@ export declare function getPlayerWantedLevel(
 
 /**
  * This function returns a random player.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRandomPlayer Wiki, getRandomPlayer }
+ * @see https://wiki.multitheftauto.com/wiki/GetRandomPlayer
  * @return returns a random player, false if the server is empty.
  * @noSelf
  */
@@ -293,7 +293,7 @@ export declare function getRandomPlayer(): Player;
 /**
  * This function adds money to a players current money amount.  To set absolute values,
  * setPlayerMoney can be used.<br>
- * @see {@link https://wiki.multitheftauto.com/wiki/GivePlayerMoney Wiki, givePlayerMoney }
+ * @see https://wiki.multitheftauto.com/wiki/GivePlayerMoney
  * @param thePlayer the player you are giving the money to.
  * @param amount a positive integer number specifying the amount of money to give to the player.
  * @noSelf
@@ -305,7 +305,7 @@ export declare function givePlayerMoney(
 
 /**
  * This function checks if the specified players radar map has been forced on or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMapForced Wiki, isPlayerMapForced }
+ * @see https://wiki.multitheftauto.com/wiki/IsPlayerMapForced
  * @param thePlayer A player object referencing the specified player
  * @return returns true if the players radar map is forced on, false otherwise.
  * @noSelf
@@ -316,7 +316,7 @@ export declare function isPlayerMapForced(
 
 /**
  * Use this function to check if a player has been muted.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMuted Wiki, isPlayerMuted }
+ * @see https://wiki.multitheftauto.com/wiki/IsPlayerMuted
  * @param thePlayer The player you are checking.
  * @return returns true if the player is muted and false otherwise.
  * @noSelf
@@ -327,7 +327,7 @@ export declare function isPlayerMuted(
 
 /**
  * This function will allow you to determine if a players name tag is currently showing.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerNametagShowing Wiki, isPlayerNametagShowing }
+ * @see https://wiki.multitheftauto.com/wiki/IsPlayerNametagShowing
  * @param thePlayer The player whose current name tag condition you want to check
  * @return returns true if the players name tag is being shown, false otherwise.
  * @noSelf
@@ -340,7 +340,7 @@ export declare function isPlayerNametagShowing(
  * Added to client side.
  * This function allows you to make the server reveal whether or not voice is currently
  * enabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVoiceEnabled Wiki, isVoiceEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsVoiceEnabled
  * @return returns true if the voice is enabled on the server, false otherwise.
  * @noSelf
  */
@@ -348,7 +348,7 @@ export declare function isVoiceEnabled(): boolean;
 
 /**
  * This function redirects the player to a specified server.
- * @see {@link https://wiki.multitheftauto.com/wiki/RedirectPlayer Wiki, redirectPlayer }
+ * @see https://wiki.multitheftauto.com/wiki/RedirectPlayer
  * @param thePlayer The player you want to redirect
  * @param serverIP The IP address (or domain name that resolves to the IP address) of the server you want to
  * redirect the player to. Use an empty string to reconnect to the same server.
@@ -369,7 +369,7 @@ export declare function redirectPlayer(
 /**
  * This function will force the specified player to resend their AC info, triggering the
  * onPlayerACInfo event again.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResendPlayerACInfo Wiki, resendPlayerACInfo }
+ * @see https://wiki.multitheftauto.com/wiki/ResendPlayerACInfo
  * @param thePlayer : A player object referencing the specified player
  * @return returns true if the ac info will be resent, false otherwise.
  * @noSelf
@@ -381,7 +381,7 @@ export declare function resendPlayerACInfo(
 /**
  * This function will force the specified player to resend their mod info, triggering the
  * onPlayerModInfo event again.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResendPlayerModInfo Wiki, resendPlayerModInfo }
+ * @see https://wiki.multitheftauto.com/wiki/ResendPlayerModInfo
  * @param thePlayer : A player object referencing the specified player
  * @return returns true if the mod info will be resent, false otherwise.
  * @noSelf
@@ -396,7 +396,7 @@ export declare function resendPlayerModInfo(
  * As an example this can be used to change the score value which will be shown at
  * https://www.game-state.com/ game-state.coms server list.
  * For server-wide changes you can use setRuleValue!
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerAnnounceValue Wiki, setPlayerAnnounceValue }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerAnnounceValue
  * @param thePlayer The player whos announce value you wish to change.
  * @param key The key which the value will be stored at.
  * @param value The value you wish to store.
@@ -411,7 +411,7 @@ export declare function setPlayerAnnounceValue(
 
 /**
  * Sets the motion blur level on the clients screen. Accepts a value between 0 and 255.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerBlurLevel Wiki, setPlayerBlurLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerBlurLevel
  * @param thePlayer The player whose blur level will be changed.
  * @param level The level to set the blur to (default: 36)
  * @noSelf
@@ -423,7 +423,7 @@ export declare function setPlayerBlurLevel(
 
 /**
  * This function will show or hide a part of the players HUD.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerHudComponentVisible Wiki, setPlayerHudComponentVisible }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerHudComponentVisible
  * @param thePlayer The player element for which you wish to show/hide a HUD component
  * @param component The component you wish to show or hide. Valid values are:
  * @param all All of the following at the same time
@@ -453,7 +453,7 @@ export declare function setPlayerHudComponentVisible(
  * Sets a players money to a certain value, regardless of current player money. It should be
  * noted that setting negative values does not work and in fact gives the player large
  * amounts of money.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerMoney Wiki, setPlayerMoney }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerMoney
  * @param thePlayer Which player to set the money of.
  * @param amount A whole integer specifying the new amount of money the player will have.
  * @param instant If set to true money will be set instantly without counting up/down like in
@@ -468,7 +468,7 @@ export declare function setPlayerMoney(
 
 /**
  * Use this function to mute or unmute the player.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerMuted Wiki, setPlayerMuted }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerMuted
  * @param thePlayer The player you are muting or unmuting.
  * @param state Use true to mute and false to unmute the player.
  * @return returns true if the player was successfully muted or unmuted, false otherwise.
@@ -483,7 +483,7 @@ export declare function setPlayerMuted(
  * This function changes the specified players name. Note that any change made to a players
  * name with this function is not saved in their settings so the name change only lasts till
  * they disconnect.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerName Wiki, setPlayerName }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerName
  * @param thePlayer the player that will have its name set.
  * @param newName the new name to set for the player.
  * @return returns true if the player name was changed succesfully, false if invalid arguments are
@@ -497,7 +497,7 @@ export declare function setPlayerName(
 
 /**
  * This allows you to change the RGB color mixture in the name tags of players.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagColor Wiki, setPlayerNametagColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerNametagColor
  * @param thePlayer The player whose name tag text you wish to change the color of
  * @param r The amount of red you want in the mixture of RGB (0-255 is valid)
  * @param g The amount of green you want in the mixture of RGB (0-255 is valid)
@@ -516,7 +516,7 @@ export declare function setPlayerNametagColor(
 
 /**
  * Use this to define whether the players name tag is visible or invisible.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagShowing Wiki, setPlayerNametagShowing }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerNametagShowing
  * @param thePlayer Define the player whos tag visiblity status you want to change
  * @param showing Use true or false to show/hide the tag
  * @return returns true if successful, false otherwise
@@ -532,7 +532,7 @@ export declare function setPlayerNametagShowing(
  * nickname he chose. This will not change the players actual nickname, it only changes the
  * visible aspect inside the world (you will see his original nickname in the scoreboard and
  * will refer to his original name in scripts).
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagText Wiki, setPlayerNametagText }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerNametagText
  * @param thePlayer The player whose nickname text you wish to change
  * @param text The new nickname text that will be displayed
  * @return returns true if successful, false otherwise.
@@ -545,7 +545,7 @@ export declare function setPlayerNametagText(
 
 /**
  * This will set players debug level, equivalent to Debugging|debugscript <level>.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerScriptDebugLevel Wiki, setPlayerScriptDebugLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerScriptDebugLevel
  * @param thePlayer The player whose debug level you wish to change
  * @param level 0: close debug console, 1: only errors, 2: errors and warnings, 3: errors, warnings and
  * info messages
@@ -559,7 +559,7 @@ export declare function setPlayerScriptDebugLevel(
 
 /**
  * This function allows you to change who can hear the voice of a player.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerVoiceBroadcastTo Wiki, setPlayerVoiceBroadcastTo }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerVoiceBroadcastTo
  * @param thePlayer The player you wish to change
  * @param broadcastTo Element or table of elements who should hear the voice from this player
  * @return returns true if the value was set successfully, false otherwise.
@@ -572,7 +572,7 @@ export declare function setPlayerVoiceBroadcastTo(
 
 /**
  * This function allows you to mute voices for a player.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerVoiceIgnoreFrom Wiki, setPlayerVoiceIgnoreFrom }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerVoiceIgnoreFrom
  * @param thePlayer The player you wish to change
  * @param ignoreFrom Element or table of elements which the player should not hear voices from. Use nil if no
  * one should be ignored.
@@ -587,7 +587,7 @@ export declare function setPlayerVoiceIgnoreFrom(
 /**
  * This function is used to set a players wanted level. The wanted level is indicated by the
  * amount of stars a player has on the GTA HUD.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerWantedLevel Wiki, setPlayerWantedLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetPlayerWantedLevel
  * @param thePlayer The player whose wanted level is to be set
  * @param stars An integer from 0 to 6 representing the wanted level
  * @return returns true if the wanted level was set successfully, false if any of the arguments were
@@ -601,7 +601,7 @@ export declare function setPlayerWantedLevel(
 
 /**
  * This function spawns the player at an arbitary point on the map.<br>
- * @see {@link https://wiki.multitheftauto.com/wiki/SpawnPlayer Wiki, spawnPlayer }
+ * @see https://wiki.multitheftauto.com/wiki/SpawnPlayer
  * @param thePlayer The player you want to spawn.
  * @param x The x co-ordinate to spawn the player at.
  * @param y The y co-ordinate to spawn the player at.
@@ -628,7 +628,7 @@ export declare function spawnPlayer(
 
 /**
  * This function subtracts money from a players current money amount.
- * @see {@link https://wiki.multitheftauto.com/wiki/TakePlayerMoney Wiki, takePlayerMoney }
+ * @see https://wiki.multitheftauto.com/wiki/TakePlayerMoney
  * @param thePlayer the player you are taking the money from.
  * @param amount an integer number specifying the amount of money to take from the player.
  * @noSelf
@@ -644,7 +644,7 @@ export declare function takePlayerMoney(
  * that are not flagged as post GUI. The image specifically excludes the chat box and all
  * GUI (including the client console). The result is received with the event
  * onPlayerScreenShot.
- * @see {@link https://wiki.multitheftauto.com/wiki/TakePlayerScreenShot Wiki, takePlayerScreenShot }
+ * @see https://wiki.multitheftauto.com/wiki/TakePlayerScreenShot
  * @param thePlayer the player to get the screen capture from.
  * @param width the width of the capture image.
  * @param height the height of the capture image.

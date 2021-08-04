@@ -85,7 +85,7 @@ import {
  * *Due to a limitation in GTA, unexpected attach rotations may occur if all rotation
  * offsets are non-zero. (i.e. Try to ensure at least one of xRotOffset, yRotOffset or
  * zRotOffset is zero).}}
- * @see {@link https://wiki.multitheftauto.com/wiki/AttachElements Wiki, attachElements }
+ * @see https://wiki.multitheftauto.com/wiki/AttachElements
  * @param theElement The element to be attached.
  * @param theAttachToElement The element to attach the first to.
  * @param xPosOffset The x offset, if you want the elements to be a certain distance from one another (default
@@ -115,7 +115,7 @@ export declare function attachElements(
  * function is for creating custom elements, such as a Flag or a Base.
  * Elements created using this function are placed in the element tree with their parent as
  * the dynamic map element.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateElement Wiki, createElement }
+ * @see https://wiki.multitheftauto.com/wiki/CreateElement
  * @param elementType The type of element being created.
  * @param elementID The ID of the element being created.
  * @return returns the element if it was successfully created. returns false if the arguments are
@@ -137,7 +137,7 @@ export declare function createElement(
  * destroyed, such as resource root elements.
  * Players are not the only elements that cannot be deleted. This list also includes remote
  * clients and console elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/DestroyElement Wiki, destroyElement }
+ * @see https://wiki.multitheftauto.com/wiki/DestroyElement
  * @param elementToDestroy The element you wish to destroy.
  * @return returns true if the element was destroyed successfully, false if either the element
  * passed to it was invalid or it could not be destroyed for some other reason (for example,
@@ -150,7 +150,7 @@ export declare function destroyElement(
 
 /**
  * This function detaches attached elements from one another.
- * @see {@link https://wiki.multitheftauto.com/wiki/DetachElements Wiki, detachElements }
+ * @see https://wiki.multitheftauto.com/wiki/DetachElements
  * @param theElement The element to be detached (the child)
  * @param theAttachToElement The element you wish to detach from, will detach from the attached element if this isnt
  * specified.
@@ -164,7 +164,7 @@ export declare function detachElements(
 
 /**
  * This function returns a table of all the elements attached to the specified element
- * @see {@link https://wiki.multitheftauto.com/wiki/GetAttachedElements Wiki, getAttachedElements }
+ * @see https://wiki.multitheftauto.com/wiki/GetAttachedElements
  * @param theElement : The element which you require the information from.
  * @return returns a table of all the elements attached to the specified element.
  * @noSelf
@@ -176,7 +176,7 @@ export declare function getAttachedElements(
 /**
  * This function returns the alpha (transparency) value for the specified element. This can
  * be a player, ped, object, vehicle or Element/Weapon|weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAlpha Wiki, getElementAlpha }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementAlpha
  * @param theElement The element whose alpha you want to retrieve.
  * @return returns an integer (0-255; 0 = transparent) indicating the elements alpha, or false if
  * invalid arguments were passed.
@@ -187,7 +187,7 @@ export declare function getElementAlpha(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAngularVelocity Wiki, getElementAngularVelocity }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementAngularVelocity
  * @param theElement The element to retrieve the angular velocity from. Can be either a player, ped, object,
  * vehicle or a Element/Weapon|custom weapon. Server side supports only vehicles currently.
  * @return returns three floats describing the x, y and z rotation
@@ -204,7 +204,7 @@ export declare function getElementAngularVelocity(
 /**
  * This function returns the offsets of an element that has been attached to another element
  * using attachElements.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAttachedOffsets Wiki, getElementAttachedOffsets }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementAttachedOffsets
  * @param theElement The attached element.
  * @return returns 6 float|floats, of which the first 3 indicate the position offset (x, y, z), and
  * the last 3 indicate the rotation offset (x, y, z), if successful. false otherwise.
@@ -223,7 +223,7 @@ export declare function getElementAttachedOffsets(
 
 /**
  * This function determines the element that the specified element is attached to.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementAttachedTo Wiki, getElementAttachedTo }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementAttachedTo
  * @param theElement The element you require the information for.
  * @return returns the element that the chosen element is attached to, or false if the element isnt
  * attached to another element.
@@ -236,7 +236,7 @@ export declare function getElementAttachedTo(
 /**
  * * Element/Player|Player
  * * Element/Ped|Ped
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementBoneMatrix Wiki, getElementBoneMatrix }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementBoneMatrix
  * @param theElement the element to get the bone matrix on.
  * @param bone the ID of the bone to get the matrix of. See Bone IDs
  * @return returns a multi-dimensional array (which can be transformed into a proper matrix class
@@ -252,7 +252,7 @@ export declare function getElementBoneMatrix(
 /**
  * * Element/Player|Player
  * * Element/Ped|Ped
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementBonePosition Wiki, getElementBonePosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementBonePosition
  * @param theElement the element to get the bone position on.
  * @param bone the ID of the bone to get the position of. See Bone IDs
  * @return returns the x, y, z world position of the bone.
@@ -270,7 +270,7 @@ export declare function getElementBonePosition(
 /**
  * * Element/Player|Player
  * * Element/Ped|Ped
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementBoneRotation Wiki, getElementBoneRotation }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementBoneRotation
  * @param theElement the element to get the bone rotation on.
  * @param bone the ID of the bone to get the rotation of. See Bone IDs
  * @return returns the yaw, pitch, roll rotation values.
@@ -290,7 +290,7 @@ export declare function getElementBoneRotation(
  * It should be noted that the values returned are relative to the position of the element,
  * and as such if you wish to get world coordinates for drawing, etc., you should retrieve
  * the position of the element and add the returned values onto that.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementBoundingBox Wiki, getElementBoundingBox }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementBoundingBox
  * @param theElement the element whose bounding box we want to get.
  * @return *returns min x, min y, min z, max x, max y, max z if the passed element is valid and
  * streamed in, false otherwise.
@@ -311,7 +311,7 @@ export declare function getElementBoundingBox(
  * This function returns an element from the specified ID. If more than one element with the
  * same ID exists, only the first one in the order it appears in the XML tree will be
  * returned by this function.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementByID Wiki, getElementByID }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementByID
  * @param id The ID of the element as it appears in the XML file or as set by setElementID.
  * @param index If there are two or more elements of the same ID it will return the element with the
  * specified index starting at 0.
@@ -326,7 +326,7 @@ export declare function getElementByID(
 /**
  * This function returns one of the child elements of a given parent element. The child
  * element is selected by its index (0 for the first child, 1 for the second and so on).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChild Wiki, getElementChild }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementChild
  * @param parent the element above the one to be returned in the hierarchy.
  * @param index the elements index (0 for the first element, 1 for the second, etc).
  * @return returns the requested element if it exists, or false if it doesnt.
@@ -341,7 +341,7 @@ export declare function getElementChild(
  * This function is used to retrieve a list of the child elements of a given parent element.
  * Note that it will only return direct children and not elements that are further down the
  * element tree.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChildren Wiki, getElementChildren }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementChildren
  * @param parent Supply this argument with the parent of the children you want returned.
  * @param theType The type of element you want a list of. This is the same as the tag name in the .map
  * file, so this can be used with a custom element type if desired. Built in types are:
@@ -373,7 +373,7 @@ export declare function getElementChildren(
 /**
  * This function returns the number of children an element has. Note that only the direct
  * children are counted and not elements that are further down the element tree.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementChildrenCount Wiki, getElementChildrenCount }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementChildrenCount
  * @param parent the parent element
  * @return returns an int with the number of child elements, or false if the parent element does not
  * exist.
@@ -387,7 +387,7 @@ export declare function getElementChildrenCount(
  * This function indicates if a specific element is set to have collisions disabled. An
  * element without collisions does not interact with the physical environment and remains
  * static.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementCollisionsEnabled Wiki, getElementCollisionsEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementCollisionsEnabled
  * @param theElement The element for which you want to check whether collisions are enabled
  * @return returns true if the collisions are enabled, false otherwise.
  * @noSelf
@@ -399,7 +399,7 @@ export declare function getElementCollisionsEnabled(
 /**
  * Some elements have an associated colshape, for example Marker and Pickup. This function
  * is used to get the associated colshape.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementColShape Wiki, getElementColShape }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementColShape
  * @param theElement The element you want to get the colshape of
  * @return returns colshape of the element, false if not or an invalid argument was passed to the
  * function.
@@ -411,7 +411,7 @@ export declare function getElementColShape(
 
 /**
  * This function retrieves element data attached to an element under a certain key.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementData Wiki, getElementData }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementData
  * @param theElement This is the element with data you want to retrieve.
  * @param key The name of the element data entry you want to retrieve. (Maximum 31 characters.)
  * @param inherit - toggles whether or not the function should go up the hierarchy to find the requested
@@ -430,7 +430,7 @@ export declare function getElementData(
 /**
  * This function allows you to retrieve the dimension of any element. The dimension
  * determines what/who the element is visible to.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDimension Wiki, getElementDimension }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementDimension
  * @param theElement The element in which youd like to retrieve the dimension of.
  * @return returns an integer for the dimension if theelement is valid, false otherwise.
  * @noSelf
@@ -443,7 +443,7 @@ export declare function getElementDimension(
  * This function is used to retrieve the distance between a elements centre of mass to the
  * base of the model. This can be used to calculate the position the element has to be set
  * to, to have it on ground level.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementDistanceFromCentreOfMassToBaseOfModel Wiki, getElementDistanceFromCentreOfMassToBaseOfModel }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementDistanceFromCentreOfMassToBaseOfModel
  * @return returns a float with the distance, or false if the element is invalid.
  * @noSelf
  */
@@ -454,7 +454,7 @@ export declare function getElementDistanceFromCentreOfMassToBaseOfModel(
 /**
  * This function returns the current health for the specified element. This can be a player,
  * a ped, a vehicle, or an object.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementHealth Wiki, getElementHealth }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementHealth
  * @param theElement The player or vehicle whose health you want to check.
  * @return returns a float indicating the elements health, or false if invalid arguments were passed.
  * @noSelf
@@ -466,7 +466,7 @@ export declare function getElementHealth(
 /**
  * This function gets the ID of an element. This is the id attribute of the element and is a
  * string, NOT a number like a model ID, weapons ID or similar.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementID Wiki, getElementID }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementID
  * @param theElement the element from which to retrieve the ID.
  * @return this returns a string containing the element id. it will return an empty string if it has
  * no id. it will return false if the element is invalid.
@@ -479,7 +479,7 @@ export declare function getElementID(
 /**
  * This function allows you to retrieve the interior of any element. An interior is the
  * current loaded place, 0 being outside.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementInterior Wiki, getElementInterior }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementInterior
  * @param theElement The element of which youd like to retrieve the interior
  * @return returns an int for the interior if theelement is valid, false otherwise.
  * @noSelf
@@ -493,7 +493,7 @@ export declare function getElementInterior(
  * multiplied to a point will give you the point transformed. It is most useful for matrix
  * calculations such as calculating offsets. For further information, please refer to a
  * tutorial of matrices in computer graphics programming.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementMatrix Wiki, getElementMatrix }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementMatrix
  * @param theElement The element which you wish to retrieve the matrix for.
  * @param legacy Set to false to return correctly setup matrix (i.e. Last column in the first 3 rows set
  * to zero).
@@ -510,7 +510,7 @@ export declare function getElementMatrix(
 /**
  * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
  * an object model or a vehicle model.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementModel Wiki, getElementModel }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementModel
  * @param theElement the element to retrieve the model ID of.
  * @return returns the model id if successful, false otherwise.
  * * for players/peds: a gtasa player model (skin) id. see character skins.
@@ -524,7 +524,7 @@ export declare function getElementModel(
 
 /**
  * This function is used to determine the parent of an element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementParent Wiki, getElementParent }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementParent
  * @param theElement The child of the parent element you want returned.
  * @return this returns the parent as an element. it returns false if theelement is invalid, or is
  * the root node.
@@ -545,7 +545,7 @@ export declare function getElementParent(
  * * Element/Collision shape|Collision shapes
  * * Element/Blip|Blips
  * * Element/Radar area|Radar areas
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementPosition Wiki, getElementPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementPosition
  * @param theElement The element which youd like to retrieve the location of
  * @return returns three floats indicating the position of the element, x, y and z respectively.
  * @noSelf
@@ -561,7 +561,7 @@ export declare function getElementPosition(
 /**
  * This function gets the radius of an element. Normally, sphere or circle-shaped elements
  * tend to return a more accurate and expected radius than others with another shapes.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementRadius Wiki, getElementRadius }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementRadius
  * @param theElement The element to get the radius of. It can be any entity type, such as:
  * @param player|Players .
  * @param ped|Peds .
@@ -576,7 +576,7 @@ export declare function getElementRadius(
 
 /**
  * Retrieve the rotation of elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementRotation Wiki, getElementRotation }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementRotation
  * @param theElement The element whose rotation will be retrieved
  * @param rotOrder A string representing the rotation order desired when returning the
  * http://en.wikipedia.org/wiki/Euler_angles euler angles. If omitted, default value is
@@ -613,7 +613,7 @@ export declare function getElementRotation(
  * the built in types (listed below) or with any custom type used in a .map file. For
  * example, if there is an element of type flag (e.g. <flag />) in the .map file, the using
  * flag as the type argument would find it.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsByType Wiki, getElementsByType }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementsByType
  * @noSelf
  */
 export declare function getElementsByType(
@@ -629,7 +629,7 @@ export declare function getElementsByType(
  * already existing at that location until they first move
  * * This function doesnt verify whether elements are in the same dimension and interior,
  * additional checks could be implemented manually if they are needed
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape Wiki, getElementsWithinColShape }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape
  * @param theShape The colshape you want to get the elements from.
  * @param elemType The type of element you want a list of. This can be any element type, the common ones
  * being:
@@ -655,7 +655,7 @@ export declare function getElementsWithinColShape(
  * * Z argument isnt in use currently, but make your scripts like it is for future
  * compatibility reasons.
  * * This function doesnt work with elements which is created by createElement.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementsWithinRange Wiki, getElementsWithinRange }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinRange
  * @param x the x coordinate at which to retrieve elements
  * @param y the y coordinate at which to retrieve elements
  * @param z the z coordinate at which to retrieve elements
@@ -688,7 +688,7 @@ export declare function getElementsWithinRange(
 
 /**
  * This function is used to retrieve the type of an element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementType Wiki, getElementType }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementType
  * @param theElement The element you wish to get the type of.
  * @return returns a string containing the element type, false if invalid arguments were passed.
  * @noSelf
@@ -701,7 +701,7 @@ export declare function getElementType(
  * This function returns three floats containing the velocity (movement speeds) along the X,
  * Y, and Z axis respectively. This means that velocity values can be positive and negative
  * for each axis.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetElementVelocity Wiki, getElementVelocity }
+ * @see https://wiki.multitheftauto.com/wiki/GetElementVelocity
  * @param theElement : The element you wish to retrieve the velocity of.
  * @return if succesful, returns three floats that represent the elements current velocity along the
  * x, y, and z axis respectively. this function can fail if the element is a player in a
@@ -723,7 +723,7 @@ export declare function getElementVelocity(
 
 /**
  * This function return the low LOD element that an element is associated with.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLowLODElement Wiki, getLowLODElement }
+ * @see https://wiki.multitheftauto.com/wiki/GetLowLODElement
  * @param theElement The element whose low LOD version we want to get.
  * @return returns a low lod element if successful, false otherwise.
  * @noSelf
@@ -738,7 +738,7 @@ export declare function getLowLODElement(
  * destroyed and cannot be destroyed using destroyElement.
  * It is often used to attach handler functions to events triggered for any element, or also
  * to make a scripting function affect all elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRootElement Wiki, getRootElement }
+ * @see https://wiki.multitheftauto.com/wiki/GetRootElement
  * @return returns the root element.
  * @noSelf
  */
@@ -746,7 +746,7 @@ export declare function getRootElement(): Element;
 
 /**
  * This function checks if an element has element data available under a certain key.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/HasElementData Wiki, hasElementData }
+ * @see https://wiki.multitheftauto.com/wiki/HasElementData
  * @param theElement This is the element with data you want to check.
  * @param key The name of the element data entry you want to check for. (Maximum 31 characters.)
  * @param inherit - toggles whether or not the function should go up the hierarchy to find the requested
@@ -763,7 +763,7 @@ export declare function hasElementData(
 
 /**
  * This function checks if a value is an element or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElement Wiki, isElement }
+ * @see https://wiki.multitheftauto.com/wiki/IsElement
  * @param theValue : The value that we want to check.
  * @return returns true if the passed value is an element, false otherwise.
  * @noSelf
@@ -774,7 +774,7 @@ export declare function isElement(
 
 /**
  * This functions checks whether or not an element is attached to another element.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementAttached Wiki, isElementAttached }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementAttached
  * @param theElement The element to check for attachment.
  * @return returns true if the specified element is attached to another element, false if it is not
  * attached or nil if an improper argument was passed.
@@ -786,7 +786,7 @@ export declare function isElementAttached(
 
 /**
  * This functions checks if certain element has call propagation enabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementCallPropagationEnabled Wiki, isElementCallPropagationEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementCallPropagationEnabled
  * @param theElement The element to check
  * @return returns true if the propagation is enabled, false if disabled or invalid arguments have
  * been passed.
@@ -804,7 +804,7 @@ export declare function isElementCallPropagationEnabled(
  * *Ped
  * *Vehicle
  * *Object
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementCollidableWith Wiki, isElementCollidableWith }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementCollidableWith
  * @param theElement The element which colliding you want to get
  * @param withElement The other element which colliding with the first entity you want to get
  * @return returns true if the elements collide with eachother, false otherwise.
@@ -818,7 +818,7 @@ export declare function isElementCollidableWith(
 /**
  * This function checks whether an element is double-sided as set by setElementDoubleSided
  * or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementDoubleSided Wiki, isElementDoubleSided }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementDoubleSided
  * @param theElement The element in which youd like to check the double-sidedness of.
  * @return returns true if the theelement is double-sided, false otherwise.
  * @noSelf
@@ -829,7 +829,7 @@ export declare function isElementDoubleSided(
 
 /**
  * This function checks if element has been frozen.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementFrozen Wiki, isElementFrozen }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementFrozen
  * @param theElement the element whose freeze status we want to check.
  * @return *returns true if the element is frozen, false if it isnt or if invalid arguments were
  * passed.
@@ -841,7 +841,7 @@ export declare function isElementFrozen(
 
 /**
  * This function checks whether an element is submerged in water.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementInWater Wiki, isElementInWater }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementInWater
  * @param theElement : The element to check.
  * @return returns true if the passed element is in water, false if it isnt, or if the element is
  * invalid.
@@ -854,7 +854,7 @@ export declare function isElementInWater(
 /**
  * This function checks whether a clientside element is local to the client (doesnt exist in
  * the server) or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLocal Wiki, isElementLocal }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementLocal
  * @param theElement : The element that we want to check.
  * @return returns true if the passed element is local, false if not or if invalid parameters are
  * passed.
@@ -866,7 +866,7 @@ export declare function isElementLocal(
 
 /**
  * This function reveals if an element is low LOD.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementLowLOD Wiki, isElementLowLOD }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementLowLOD
  * @param theElement The element whose low LOD status we want to get.
  * @return returns true if the element is low lod, false otherwise.
  * @noSelf
@@ -880,7 +880,7 @@ export declare function isElementLowLOD(
  * still in the camera view count as being on screen.
  * This function is particularly useful for detecting if dynamic objects are in destroyed
  * state. Destroyed objects will return false.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementOnScreen Wiki, isElementOnScreen }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementOnScreen
  * @param theElement The element of which you wish to check wether its being rendered on screen.
  * @return returns true if element is on screen, false if not.
  * @noSelf
@@ -892,7 +892,7 @@ export declare function isElementOnScreen(
 /**
  * This function checks whether an element is streamable as set by setElementStreamable or
  * not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementStreamable Wiki, isElementStreamable }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementStreamable
  * @param theElement : The element to check the streamability of.
  * @return returns true if the passed element is streamable like normal, false if this element must
  * always be streamed in.
@@ -909,7 +909,7 @@ export declare function isElementStreamable(
  * DP2 can return true even if this element is not fully streamed in. This can happen during
  * the period when the vehicle/object model is loading while the element is not actually
  * fully created yet.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementStreamedIn Wiki, isElementStreamedIn }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementStreamedIn
  * @param theElement : The element to check whether is streamed in or not.
  * @return returns true if the passed element is currently streamed in, false if it is virtualized.
  * @noSelf
@@ -921,7 +921,7 @@ export declare function isElementStreamedIn(
 /**
  * This function checks whether an element is synced by the local player or not. Accepted
  * elements are ped|peds and vehicle|vehicles.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementSyncer Wiki, isElementSyncer }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementSyncer
  * @param theElement : The element to check.
  * @return returns true if the passed element is synced by the local player, false otherwise.
  * @noSelf
@@ -931,7 +931,7 @@ export declare function isElementSyncer(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWaitingForGroundToLoad Wiki, isElementWaitingForGroundToLoad }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementWaitingForGroundToLoad
  * @param theElement the element to check its frozen waiting for custom map objects to load status. It can be
  * a vehicle, ped or player.
  * @return returns true if the specified element is frozen waiting for collisions of custom map
@@ -949,7 +949,7 @@ export declare function isElementWaitingForGroundToLoad(
  * 1.0.3, this did not function correctly when moving a colshape.
  * Please note that this function doesnt verify whether element is in the same dimension and
  * interior, additional checks could be implemented manually if they are needed.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWithinColShape Wiki, isElementWithinColShape }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementWithinColShape
  * @param theElement The element youre checking.
  * @param theShape The colshape youre checking
  * @return returns true if the element is within the colshape, false otherwise
@@ -962,7 +962,7 @@ export declare function isElementWithinColShape(
 
 /**
  * This function is used to determine if an element is within a marker.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsElementWithinMarker Wiki, isElementWithinMarker }
+ * @see https://wiki.multitheftauto.com/wiki/IsElementWithinMarker
  * @param theElement The element youre checking.
  * @param theMarker The marker youre checking.
  * @return returns true if the element is within the marker, false otherwise
@@ -976,7 +976,7 @@ export declare function isElementWithinMarker(
 /**
  * This function sets the alpha (transparency) value for the specified element. This can be
  * a player, ped, object, vehicle or Element/Weapon|weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAlpha Wiki, setElementAlpha }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementAlpha
  * @param theElement The element whose alpha you want to set.
  * @param alpha The alpha value to set. Values are 0-255, where 255 is fully opaque and 0 is fully
  * transparent.
@@ -990,7 +990,7 @@ export declare function setElementAlpha(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAngularVelocity Wiki, setElementAngularVelocity }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementAngularVelocity
  * @param theElement The element to apply the spin to. Can be either a player, ped, object, vehicle or a
  * Element/Weapon|custom weapon.
  * @param rx velocity around the X axis
@@ -1009,7 +1009,7 @@ export declare function setElementAngularVelocity(
 /**
  * This function updates the offsets of an element that has been attached to another element
  * using attachElements.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementAttachedOffsets Wiki, setElementAttachedOffsets }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementAttachedOffsets
  * @param theElement The attached element.
  * @param xPosOffset The x offset, if you want the elements to be a certain distance from one another (default
  * 0).
@@ -1034,7 +1034,7 @@ export declare function setElementAttachedOffsets(
 /**
  * * Element/Player|Player
  * * Element/Ped|Ped
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementBoneMatrix Wiki, setElementBoneMatrix }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementBoneMatrix
  * @param theElement the element to set the bone matrix on.
  * @param bone the ID of the bone. See Bone IDs
  * @param matrix the MTA matrix to set.
@@ -1050,7 +1050,7 @@ export declare function setElementBoneMatrix(
 /**
  * * Element/Player|Player
  * * Element/Ped|Ped
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementBonePosition Wiki, setElementBonePosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementBonePosition
  * @param theElement the element to set the bone position on.
  * @param bone the ID of the bone to set the position of. See Bone IDs
  * @param x The x coordinate of the destination.
@@ -1070,7 +1070,7 @@ export declare function setElementBonePosition(
 /**
  * * Element/Player|Player
  * * Element/Ped|Ped
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementBoneRotation Wiki, setElementBoneRotation }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementBoneRotation
  * @param theElement the element to set the bone rotation on.
  * @param bone the ID of the bone to set the rotation of. See Bone IDs
  * @param yaw the yaw rotation value.
@@ -1091,7 +1091,7 @@ export declare function setElementBoneRotation(
 /**
  * This function enables/disables call propagation on a certain element. Look at the example
  * for a practical application.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementCallPropagationEnabled Wiki, setElementCallPropagationEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementCallPropagationEnabled
  * @param theElement The element whose propagation behaviour youd like to change
  * @param enabled Whether propagation should be enabled or not
  * @return returns true, if the propagation behaviour has been changed successfully, false otherwise.
@@ -1110,7 +1110,7 @@ export declare function setElementCallPropagationEnabled(
  * *Ped
  * *Vehicle
  * *Object
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementCollidableWith Wiki, setElementCollidableWith }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementCollidableWith
  * @param theElement The element which colliding you want to change
  * @param withElement The other element you wish the first entity to collide with
  * @param enabled A boolean to indicate whether elements should be able to collide with eachother (true) or
@@ -1127,7 +1127,7 @@ export declare function setElementCollidableWith(
 /**
  * This function can disable or enable an elements collisions. An element without collisions
  * does not interact with the physical environment and remains static.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementCollisionsEnabled Wiki, setElementCollisionsEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementCollisionsEnabled
  * @param theElement The element you wish to set the collisions of
  * @param enabled A boolean to indicate whether collisions are enabled (true) or disabled (false)
  * @return returns true if the collisions were set succesfully, false otherwise.
@@ -1150,7 +1150,7 @@ export declare function setElementCollisionsEnabled(
  * like above, and table|tables for storing and retrieving data.
  * Note this mode only works when setting element data serverside. Setting data clientside
  * still sends the update to all clients if synchronize is set to true.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementData Wiki, setElementData }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementData
  * @param theElement The element you wish to attach the data to.
  * @param key The key you wish to store the data under. (Maximum 31 characters.)
  * @param value The value you wish to store. See element data for a list of acceptable datatypes.
@@ -1167,7 +1167,7 @@ export declare function setElementData(
 /**
  * This function allows you to set the dimension of any element. The dimension determines
  * what/who the element is visible to.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementDimension Wiki, setElementDimension }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementDimension
  * @param theElement The element in which youd like to set the dimension of.
  * @param dimension An integer representing the dimension ID. {{New feature/item|3.0154|1.5.3|11199|You can
  * also use -1 to make the element visible in all dimensions (only valid to objects).}}
@@ -1188,7 +1188,7 @@ export declare function setElementDimension(
  * enclosures, using inverted landmasses as large pits or to make cave networks. It can also
  * remove the need to add extra triangles to custom models when trying to make them appear
  * solid from all directions.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementDoubleSided Wiki, setElementDoubleSided }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementDoubleSided
  * @param theElement The element in which youd like to set the double-sidedness of.
  * @param enable Set to true/false to enable/disable double-sidedness.
  * @return returns true if theelement is valid, false otherwise.
@@ -1202,7 +1202,7 @@ export declare function setElementDoubleSided(
 /**
  * This function freezes an element (stops it in its position and disables movement) or
  * unfreezes it.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementFrozen Wiki, setElementFrozen }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementFrozen
  * @param theElement The element whose freeze status we want to change.
  * @param freezeStatus A boolean denoting whether we want to freeze (true) or unfreeze (false) it.
  * @return returns true if the element was frozen, false if it wasnt or if invalid arguments are
@@ -1221,7 +1221,7 @@ export declare function setElementFrozen(
  * *450: white steam 100%, black smoke 50%
  * *250: white steam 0%, black smoke 100%
  * *249: fire with big black smoke
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementHealth Wiki, setElementHealth }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementHealth
  * @param theElement The ped, vehicle or object whose health you want to set.
  * @param newHealth A float indicating the new health to set for the element.
  * @return returns true if the new health was set successfully, or false if invalid arguments were
@@ -1238,7 +1238,7 @@ export declare function setElementHealth(
  * identifying number, to a name.
  * You can only change the ID of an element clientside if that element has been created
  * clientside as well.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementID Wiki, setElementID }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementID
  * @param theElement The element you want to set the ID of.
  * @param name The new ID for theElement.
  * @return this returns true if successful. it will return false if theelement is invalid, or does
@@ -1253,7 +1253,7 @@ export declare function setElementID(
 /**
  * This function allows you to set the interior of any element. An interior is the current
  * loaded place, 0 being outside.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementInterior Wiki, setElementInterior }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementInterior
  * @param theElement The element in which youd like to set the interior of.
  * @param interior The interior you want to set the element to. Valid values are 0 to 255.
  * @param x A floating point number representing the X coordinate on the map.
@@ -1272,7 +1272,7 @@ export declare function setElementInterior(
 
 /**
  * This function sets matrix to element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementMatrix Wiki, setElementMatrix }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementMatrix
  * @param theElement The element which you set matrix
  * @param theMatrix The matrix.
  * @return returns true if the matrix was set succesfully, false otherwise.
@@ -1286,7 +1286,7 @@ export declare function setElementMatrix(
 /**
  * Sets the model of a given element. This allows you to change the model of a player (or
  * ped), a vehicle or an object.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementModel Wiki, setElementModel }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementModel
  * @param theElement the element you want to change.
  * @param model the model ID to set.
  * ** For players/peds: A GTASA player model (skin) ID. See [[Character Skins]].
@@ -1302,7 +1302,7 @@ export declare function setElementModel(
 
 /**
  * This function is used for setting an element as the parent of another element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementParent Wiki, setElementParent }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementParent
  * @param theElement The element that you wish to set the parent of.
  * @param parent The element you wish to be the parent of theElement.
  * @return returns true if both elements are valid, false otherwise.
@@ -1315,7 +1315,7 @@ export declare function setElementParent(
 
 /**
  * This function sets the position of an element to the specified coordinates.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementPosition Wiki, setElementPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementPosition
  * @param theElement A valid element to be moved.
  * @param x The x coordinate of the destination.
  * @param y The y coordinate of the destination.
@@ -1336,7 +1336,7 @@ export declare function setElementPosition(
 /**
  * Sets the rotation of elements according to the world (does not work with players that are
  * on the ground).
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementRotation Wiki, setElementRotation }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementRotation
  * @param theElement The element whose rotation will be set
  * @param rotX The elements rotation around the x axis in degrees
  * @param rotY The elements rotation around the y axis in degrees
@@ -1382,7 +1382,7 @@ export declare function setElementRotation(
  * disappearing objects and unstability when trying to stream in new elements of that type.
  * * In general, if you disable too many elements (of the same type or not) to stream out,
  * GTA will always try to render them, so it can cause a noticeable FPS drop.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementStreamable Wiki, setElementStreamable }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementStreamable
  * @param theElement The element you wish to set the streaming of
  * @param streamable true if this element should stream in/out like normal, false if it should always be
  * streamed in.
@@ -1402,7 +1402,7 @@ export declare function setElementStreamable(
  * * Objects.
  * * Projectiles.
  * Objects and projectiles velocity can only be set clientside.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/SetElementVelocity Wiki, setElementVelocity }
+ * @see https://wiki.multitheftauto.com/wiki/SetElementVelocity
  * @param theElement The element you wish to set the velocity of.
  * @param speedX A floating point value determining the speed along the X axis.
  * @param speedY A floating point value determining the speed along the Y axis.
@@ -1422,7 +1422,7 @@ export declare function setElementVelocity(
  * This function assigns a low LOD element to an element. The low LOD element is displayed
  * when its associated element is not fully visible. If a low LOD element is assigned to
  * several elements, it will be displayed when any of these elements are not fully visible.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetLowLODElement Wiki, setLowLODElement }
+ * @see https://wiki.multitheftauto.com/wiki/SetLowLODElement
  * @param theElement The element whose low LOD version we want to change.
  * @param lowLODElement A low LOD element to display when the first element is not fully visible.
  * @return returns true if the assignment was successful, false otherwise.
@@ -1439,7 +1439,7 @@ export declare function setLowLODElement(
  * This function must be called after setElementBoneRotation for changes to take effect. It
  * should only be called once per frame, after you are done rotating bones on that element,
  * as it is quite heavy.
- * @see {@link https://wiki.multitheftauto.com/wiki/UpdateElementRpHAnim Wiki, updateElementRpHAnim }
+ * @see https://wiki.multitheftauto.com/wiki/UpdateElementRpHAnim
  * @param theElement the element to update.
  * @return returns true if successful, false otherwise.
  * @noSelf

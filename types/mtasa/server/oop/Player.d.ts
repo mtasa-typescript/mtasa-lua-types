@@ -185,7 +185,7 @@ export class Player extends Ped {
 
     /**
      * This function returns the specified players account object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerAccount Wiki, getPlayerAccount }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerAccount
      * @return returns the players account object, or false if the player passed to the function is
      * invalid.
      */
@@ -194,7 +194,7 @@ export class Player extends Ped {
     /**
      * This functions logs the given player in to the given account. You need to provide the
      * password needed to log into that account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/LogIn Wiki, logIn }
+     * @see https://wiki.multitheftauto.com/wiki/LogIn
      * @param theAccount The account to log the player into
      * @param thePassword The password needed to sign into this account
      * @return returns true if the player was successfully logged into the given account. returns false
@@ -209,7 +209,7 @@ export class Player extends Ped {
 
     /**
      * This function logs the given player out of his current account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/LogOut Wiki, logOut }
+     * @see https://wiki.multitheftauto.com/wiki/LogOut
      * @return returns true if the player was successfully logged out, false or nil if it failed for
      * some reason, ie. the player was never logged in.
      */
@@ -218,7 +218,7 @@ export class Player extends Ped {
     /**
      * This function will ban the specified player by either IP, serial or username
      * This function will ban the specified player from the server by IP.
-     * @see {@link https://wiki.multitheftauto.com/wiki/BanPlayer Wiki, banPlayer }
+     * @see https://wiki.multitheftauto.com/wiki/BanPlayer
      * @param IP Will player be banned by IP?
      * @param Username Will player be banned by username?
      * @param Serial Will player be banned by serial?
@@ -240,7 +240,7 @@ export class Player extends Ped {
 
     /**
      * This function will kick the specified player from the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/KickPlayer Wiki, kickPlayer }
+     * @see https://wiki.multitheftauto.com/wiki/KickPlayer
      * @param responsiblePlayer The player that is responsible for the event. Note: If left out as in the second syntax,
      * responsible player for the kick will be Console (Maximum 30 characters if using a string).
      * @param reason The reason for the kick. (Maximum 64 characters before 1.5.8, Maximum 128 characters
@@ -255,7 +255,7 @@ export class Player extends Ped {
 
     /**
      * This function plays a frontend sound for the specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
+     * @see https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd
      * @param sound a whole int specifying the sound id to play. Valid values are:
      */
     playSoundFrontEnd(
@@ -267,7 +267,7 @@ export class Player extends Ped {
      * time period. This will also affect the sound volume for the player (50% faded = 50%
      * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
      * outs in a row, but for serverside scripts you must use one then the other.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
+     * @see https://wiki.multitheftauto.com/wiki/FadeCamera
      * @param fadeIn Should the camera be faded in or out? Pass true to fade the camera in, false to fade it
      * out to a color.
      * @param timeToFade The number of seconds it should take to fade.
@@ -289,13 +289,13 @@ export class Player extends Ped {
     /**
      * Returns the interior of the local camera (independent of the interior of the local
      * player).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
+     * @see https://wiki.multitheftauto.com/wiki/GetCameraInterior
      */
     getCameraInterior(): number;
 
     /**
      * This function gets the position of the camera and the position of the point it is facing.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraMatrix Wiki, getCameraMatrix }
+     * @see https://wiki.multitheftauto.com/wiki/GetCameraMatrix
      */
     getCameraMatrix(): LuaMultiReturn<[
         number,
@@ -311,14 +311,14 @@ export class Player extends Ped {
     /**
      * This function returns an element that corresponds to the current target of the specified
      * players camera (i.e. what it is following).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraTarget Wiki, getCameraTarget }
+     * @see https://wiki.multitheftauto.com/wiki/GetCameraTarget
      */
     getCameraTarget(): Element;
 
     /**
      * Sets the interior of the local camera. Only the interior of the camera is changed, the
      * local player stays in the interior he was in.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
+     * @see https://wiki.multitheftauto.com/wiki/SetCameraInterior
      * @param interior the interior to place the camera in.
      */
     setCameraInterior(
@@ -329,7 +329,7 @@ export class Player extends Ped {
      * This function sets the cameras position and direction. The first three arguments are the
      * point at which the camera lies, the last three are the point the camera faces (or the
      * point it looks at).
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraMatrix Wiki, setCameraMatrix }
+     * @see https://wiki.multitheftauto.com/wiki/SetCameraMatrix
      * @param positionX The x coordinate of the cameras position.
      * @param positionY The y coordinate of the cameras position.
      * @param positionZ The z coordinate of the cameras position.
@@ -358,7 +358,7 @@ export class Player extends Ped {
      * This function allows you to set a players camera to follow other elements instead.
      * Currently supported element type is:
      * *Players
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
+     * @see https://wiki.multitheftauto.com/wiki/SetCameraTarget
      * @param target The player who you want the camera to follow. If none is specified, the camera will
      * target the player.
      */
@@ -381,7 +381,7 @@ export class Player extends Ped {
      * Keep in mind the bandwidth issues when using events - dont pass a large list of arguments
      * unless you really need to. It is marginally more efficient to pass one large event than
      * two smaller ones.
-     * @see {@link https://wiki.multitheftauto.com/wiki/TriggerClientEvent Wiki, triggerClientEvent }
+     * @see https://wiki.multitheftauto.com/wiki/TriggerClientEvent
      * @param name The name of the event to trigger client side. You should register this event with
      * addEvent and add at least one event handler using addEventHandler.
      * @param sourceElement The element that is the Event system#Event handlers|source of the event.
@@ -408,7 +408,7 @@ export class Player extends Ped {
      * </syntaxhighlight>
      * This will display as: <span style=color:red;>Hello</span> <span
      * style=color:green>World</span>
-     * @see {@link https://wiki.multitheftauto.com/wiki/OutputChatBox Wiki, outputChatBox }
+     * @see https://wiki.multitheftauto.com/wiki/OutputChatBox
      * @param visibleTo Can also be a table of players or team.}}
      * @param r The amount of red in the color of the text. Default value is 231.
      * @param g The amount of green in the color of the text. Default value is 217.
@@ -427,7 +427,7 @@ export class Player extends Ped {
 
     /**
      * This function is used to forcefully show a players radar map.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ForcePlayerMap Wiki, forcePlayerMap }
+     * @see https://wiki.multitheftauto.com/wiki/ForcePlayerMap
      * @param forceOn : A boolean value representing whether or not the players radar map will be forced on
      */
     forceMap(
@@ -437,14 +437,14 @@ export class Player extends Ped {
     /**
      * This function returns a table of all the alive players on the server. Opposite function
      * of getDeadPlayers.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAlivePlayers Wiki, getAlivePlayers }
+     * @see https://wiki.multitheftauto.com/wiki/GetAlivePlayers
      * @return returns a table of all the alive players.
      */
     static getAllAlive(): LuaTable;
 
     /**
      * This function returns a table of all currently dead players on the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetDeadPlayers Wiki, getDeadPlayers }
+     * @see https://wiki.multitheftauto.com/wiki/GetDeadPlayers
      * @return returns a table of all the dead players.
      */
     static getAllDead(): LuaTable;
@@ -452,7 +452,7 @@ export class Player extends Ped {
     /**
      * This function returns anti-cheat info for a player. The info returned by this function
      * can change over time, so use the server event onPlayerACInfo instead.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerACInfo Wiki, getPlayerACInfo }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerACInfo
      * @return returns a table with the following entries:
      * * detectedac: a string containing a comma separated list of anti-cheat_guide|anti-cheat
      * codes the player has triggered.
@@ -466,7 +466,7 @@ export class Player extends Ped {
     getACInfo(): LuaTable;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerAnnounceValue Wiki, getPlayerAnnounceValue }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerAnnounceValue
      * @param key The name of the key.
      * @return this function returns a string containing the requested value if a valid key was
      * specified or false otherwise.
@@ -477,14 +477,14 @@ export class Player extends Ped {
 
     /**
      * This function allows you to check the current blur level of a specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerBlurLevel Wiki, getPlayerBlurLevel }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerBlurLevel
      * @return returns the players blur level if successful, false if an invalid player was given.
      */
     getBlurLevel(): number;
 
     /**
      * This function returns the number of players currently connected to the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerCount Wiki, getPlayerCount }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerCount
      * @return returns the number of players connected to the server as an int.
      */
     static getCount(): number;
@@ -492,7 +492,7 @@ export class Player extends Ped {
     /**
      * This function returns a player element for the player with the name passed to the
      * function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerFromName Wiki, getPlayerFromName }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerFromName
      * @param playerName : A string containing the name of the player you want to reference
      * @return returns a player element for the player with the nickname provided. if there is no player
      * with that name, false is returned.
@@ -504,14 +504,14 @@ export class Player extends Ped {
     /**
      * This function gets the amount of time in milliseconds that a players position has not
      * changed.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerIdleTime Wiki, getPlayerIdleTime }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerIdleTime
      * @return returns the amount of time in milliseconds that a player has been idle, false otherwise.
      */
     getIdleTime(): number;
 
     /**
      * This function returns a string containing the IP address of the player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerIP Wiki, getPlayerIP }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerIP
      * @return returns a string containing the requested playerss ip, or false if the player passed to
      * the function is invalid.
      */
@@ -519,7 +519,7 @@ export class Player extends Ped {
 
     /**
      * Returns the amount of money a player currently has.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerMoney Wiki, getPlayerMoney }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerMoney
      * @return returns an integer with the amount of money the specified player has, false if the player
      * is invalid.
      */
@@ -527,7 +527,7 @@ export class Player extends Ped {
 
     /**
      * This function returns a string containing the name of the specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerName Wiki, getPlayerName }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerName
      * @return returns a string containing the requested players name, or false if the player passed to
      * the function is invalid.
      */
@@ -536,7 +536,7 @@ export class Player extends Ped {
     /**
      * This function gets the current color of a players name tag as RGB values. These are in
      * the range 0-255.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagColor Wiki, getPlayerNametagColor }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerNametagColor
      * @return returns red, green and blue values if an existent player was specified, false otherwise.
      */
     getNametagColor(): LuaMultiReturn<[
@@ -547,7 +547,7 @@ export class Player extends Ped {
 
     /**
      * This will allow you to retrieve the name tag a player is currently using.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerNametagText Wiki, getPlayerNametagText }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerNametagText
      * @return returns a string with the nametag text, false if the player is invalid.
      */
     getNametagText(): string;
@@ -556,21 +556,21 @@ export class Player extends Ped {
      * This function returns the ping of a specified player. The ping is the number of
      * milliseconds that data takes to travel from the players client to the server or vice
      * versa.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerPing Wiki, getPlayerPing }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerPing
      * @return returns the ping as an int, or false if the player is invalid.
      */
     getPing(): number;
 
     /**
      * This will allow you to retrieve the player current debug script level.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerScriptDebugLevel Wiki, getPlayerScriptDebugLevel }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerScriptDebugLevel
      * @return returns an int with the player debug script level, false if the player is invalid.
      */
     getScriptDebugLevel(): number;
 
     /**
      * This function returns the serial for a specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerSerial Wiki, getPlayerSerial }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerSerial
      * @return returns the serial as a string if it was found, false otherwise.
      */
     getSerial(): string;
@@ -595,7 +595,7 @@ export class Player extends Ped {
      * The fourth number is 9, which means its a release build, (Development and beta builds
      * have lower numbers here)<br>
      * And the fifth and sixth numbers represent the build number.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerVersion Wiki, getPlayerVersion }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerVersion
      * @return returns a string containing the client version, or false if the player is invalid.
      */
     getVersion(): string;
@@ -603,13 +603,13 @@ export class Player extends Ped {
     /**
      * This function gets a players current wanted level. The wanted level is indicated by the
      * amount of stars a player has on the GTA HUD.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerWantedLevel Wiki, getPlayerWantedLevel }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerWantedLevel
      */
     getWantedLevel(): number;
 
     /**
      * This function returns a random player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetRandomPlayer Wiki, getRandomPlayer }
+     * @see https://wiki.multitheftauto.com/wiki/GetRandomPlayer
      * @return returns a random player, false if the server is empty.
      */
     static getRandom(): Player;
@@ -617,7 +617,7 @@ export class Player extends Ped {
     /**
      * This function adds money to a players current money amount.  To set absolute values,
      * setPlayerMoney can be used.<br>
-     * @see {@link https://wiki.multitheftauto.com/wiki/GivePlayerMoney Wiki, givePlayerMoney }
+     * @see https://wiki.multitheftauto.com/wiki/GivePlayerMoney
      * @param amount a positive integer number specifying the amount of money to give to the player.
      */
     giveMoney(
@@ -626,21 +626,21 @@ export class Player extends Ped {
 
     /**
      * This function checks if the specified players radar map has been forced on or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMapForced Wiki, isPlayerMapForced }
+     * @see https://wiki.multitheftauto.com/wiki/IsPlayerMapForced
      * @return returns true if the players radar map is forced on, false otherwise.
      */
     isMapForced(): boolean;
 
     /**
      * Use this function to check if a player has been muted.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerMuted Wiki, isPlayerMuted }
+     * @see https://wiki.multitheftauto.com/wiki/IsPlayerMuted
      * @return returns true if the player is muted and false otherwise.
      */
     isMuted(): boolean;
 
     /**
      * This function will allow you to determine if a players name tag is currently showing.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPlayerNametagShowing Wiki, isPlayerNametagShowing }
+     * @see https://wiki.multitheftauto.com/wiki/IsPlayerNametagShowing
      * @return returns true if the players name tag is being shown, false otherwise.
      */
     isNametagShowing(): boolean;
@@ -649,14 +649,14 @@ export class Player extends Ped {
      * Added to client side.
      * This function allows you to make the server reveal whether or not voice is currently
      * enabled.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsVoiceEnabled Wiki, isVoiceEnabled }
+     * @see https://wiki.multitheftauto.com/wiki/IsVoiceEnabled
      * @return returns true if the voice is enabled on the server, false otherwise.
      */
     static isVoiceEnabled(): boolean;
 
     /**
      * This function redirects the player to a specified server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RedirectPlayer Wiki, redirectPlayer }
+     * @see https://wiki.multitheftauto.com/wiki/RedirectPlayer
      * @param serverIP The IP address (or domain name that resolves to the IP address) of the server you want to
      * redirect the player to. Use an empty string to reconnect to the same server.
      * @param serverPort The game port of the server you want to redirect the player to, this is usually 22003.
@@ -674,7 +674,7 @@ export class Player extends Ped {
     /**
      * This function will force the specified player to resend their mod info, triggering the
      * onPlayerModInfo event again.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ResendPlayerModInfo Wiki, resendPlayerModInfo }
+     * @see https://wiki.multitheftauto.com/wiki/ResendPlayerModInfo
      * @return returns true if the mod info will be resent, false otherwise.
      */
     resendModInfo(): boolean;
@@ -685,7 +685,7 @@ export class Player extends Ped {
      * As an example this can be used to change the score value which will be shown at
      * https://www.game-state.com/ game-state.coms server list.
      * For server-wide changes you can use setRuleValue!
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerAnnounceValue Wiki, setPlayerAnnounceValue }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerAnnounceValue
      * @param key The key which the value will be stored at.
      * @param value The value you wish to store.
      * @return returns true if the value was set succesfully, false otherwise.
@@ -697,7 +697,7 @@ export class Player extends Ped {
 
     /**
      * Sets the motion blur level on the clients screen. Accepts a value between 0 and 255.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerBlurLevel Wiki, setPlayerBlurLevel }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerBlurLevel
      * @param level The level to set the blur to (default: 36)
      */
     setBlurLevel(
@@ -706,7 +706,7 @@ export class Player extends Ped {
 
     /**
      * This function will show or hide a part of the players HUD.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerHudComponentVisible Wiki, setPlayerHudComponentVisible }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerHudComponentVisible
      * @param component The component you wish to show or hide. Valid values are:
      * @param all All of the following at the same time
      * @param ammo The display showing how much ammo the player has in their weapon
@@ -733,7 +733,7 @@ export class Player extends Ped {
      * Sets a players money to a certain value, regardless of current player money. It should be
      * noted that setting negative values does not work and in fact gives the player large
      * amounts of money.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerMoney Wiki, setPlayerMoney }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerMoney
      * @param amount A whole integer specifying the new amount of money the player will have.
      * @param instant If set to true money will be set instantly without counting up/down like in
      * singleplayer.}}
@@ -745,7 +745,7 @@ export class Player extends Ped {
 
     /**
      * Use this function to mute or unmute the player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerMuted Wiki, setPlayerMuted }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerMuted
      * @param state Use true to mute and false to unmute the player.
      * @return returns true if the player was successfully muted or unmuted, false otherwise.
      */
@@ -757,7 +757,7 @@ export class Player extends Ped {
      * This function changes the specified players name. Note that any change made to a players
      * name with this function is not saved in their settings so the name change only lasts till
      * they disconnect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerName Wiki, setPlayerName }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerName
      * @param newName the new name to set for the player.
      * @return returns true if the player name was changed succesfully, false if invalid arguments are
      * specified.
@@ -768,7 +768,7 @@ export class Player extends Ped {
 
     /**
      * This allows you to change the RGB color mixture in the name tags of players.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagColor Wiki, setPlayerNametagColor }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerNametagColor
      * @param r The amount of red you want in the mixture of RGB (0-255 is valid)
      * @param g The amount of green you want in the mixture of RGB (0-255 is valid)
      * @param b The amount of blue you want in the mixture of RGB (0-255 is valid)
@@ -784,7 +784,7 @@ export class Player extends Ped {
 
     /**
      * Use this to define whether the players name tag is visible or invisible.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagShowing Wiki, setPlayerNametagShowing }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerNametagShowing
      * @param showing Use true or false to show/hide the tag
      * @return returns true if successful, false otherwise
      */
@@ -797,7 +797,7 @@ export class Player extends Ped {
      * nickname he chose. This will not change the players actual nickname, it only changes the
      * visible aspect inside the world (you will see his original nickname in the scoreboard and
      * will refer to his original name in scripts).
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerNametagText Wiki, setPlayerNametagText }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerNametagText
      * @param text The new nickname text that will be displayed
      * @return returns true if successful, false otherwise.
      */
@@ -807,7 +807,7 @@ export class Player extends Ped {
 
     /**
      * This will set players debug level, equivalent to Debugging|debugscript <level>.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerScriptDebugLevel Wiki, setPlayerScriptDebugLevel }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerScriptDebugLevel
      * @param level 0: close debug console, 1: only errors, 2: errors and warnings, 3: errors, warnings and
      * info messages
      * @return returns true if successful, false otherwise.
@@ -818,7 +818,7 @@ export class Player extends Ped {
 
     /**
      * This function allows you to change who can hear the voice of a player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerVoiceBroadcastTo Wiki, setPlayerVoiceBroadcastTo }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerVoiceBroadcastTo
      * @param broadcastTo Element or table of elements who should hear the voice from this player
      * @return returns true if the value was set successfully, false otherwise.
      */
@@ -828,7 +828,7 @@ export class Player extends Ped {
 
     /**
      * This function allows you to mute voices for a player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerVoiceIgnoreFrom Wiki, setPlayerVoiceIgnoreFrom }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerVoiceIgnoreFrom
      * @param ignoreFrom Element or table of elements which the player should not hear voices from. Use nil if no
      * one should be ignored.
      * @return returns true if the value was set successfully, false otherwise.
@@ -840,7 +840,7 @@ export class Player extends Ped {
     /**
      * This function is used to set a players wanted level. The wanted level is indicated by the
      * amount of stars a player has on the GTA HUD.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerWantedLevel Wiki, setPlayerWantedLevel }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerWantedLevel
      * @param stars An integer from 0 to 6 representing the wanted level
      * @return returns true if the wanted level was set successfully, false if any of the arguments were
      * invalid.
@@ -851,7 +851,7 @@ export class Player extends Ped {
 
     /**
      * This function spawns the player at an arbitary point on the map.<br>
-     * @see {@link https://wiki.multitheftauto.com/wiki/SpawnPlayer Wiki, spawnPlayer }
+     * @see https://wiki.multitheftauto.com/wiki/SpawnPlayer
      * @param x The x co-ordinate to spawn the player at.
      * @param y The y co-ordinate to spawn the player at.
      * @param z The z co-ordinate to spawn the player at.
@@ -875,7 +875,7 @@ export class Player extends Ped {
 
     /**
      * This function subtracts money from a players current money amount.
-     * @see {@link https://wiki.multitheftauto.com/wiki/TakePlayerMoney Wiki, takePlayerMoney }
+     * @see https://wiki.multitheftauto.com/wiki/TakePlayerMoney
      * @param amount an integer number specifying the amount of money to take from the player.
      */
     takeMoney(
@@ -888,7 +888,7 @@ export class Player extends Ped {
      * that are not flagged as post GUI. The image specifically excludes the chat box and all
      * GUI (including the client console). The result is received with the event
      * onPlayerScreenShot.
-     * @see {@link https://wiki.multitheftauto.com/wiki/TakePlayerScreenShot Wiki, takePlayerScreenShot }
+     * @see https://wiki.multitheftauto.com/wiki/TakePlayerScreenShot
      * @param width the width of the capture image.
      * @param height the height of the capture image.
      * @param tag A string to help identify the screen capture. The string is passed to the matching
@@ -910,7 +910,7 @@ export class Player extends Ped {
 
     /**
      * This function gets the current team a player is on.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPlayerTeam Wiki, getPlayerTeam }
+     * @see https://wiki.multitheftauto.com/wiki/GetPlayerTeam
      * @return returns a team element representing the team the player is on, false if the player is not
      * part of a team.
      */
@@ -919,7 +919,7 @@ export class Player extends Ped {
     /**
      * This function adds a player to an existing team. The player will automatically be removed
      * from his current team if hes on one.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPlayerTeam Wiki, setPlayerTeam }
+     * @see https://wiki.multitheftauto.com/wiki/SetPlayerTeam
      * @param theTeam The team you want to add the player to, or nil if you wish to unassign a player from his
      * team.
      * @return returns true if the player was successfully added to the specified team or removed from

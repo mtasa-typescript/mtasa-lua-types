@@ -77,7 +77,7 @@ export class MTASAObject {
 
     /**
      * This function breaks a specific object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/BreakObject Wiki, breakObject }
+     * @see https://wiki.multitheftauto.com/wiki/BreakObject
      * @return * true if the object was successfully broken.
      * * false if the object is not breakable, or a wrong object was given.
      */
@@ -85,7 +85,7 @@ export class MTASAObject {
 
     /**
      * Creates an object element at a given position and rotation.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateObject Wiki, createObject }
+     * @see https://wiki.multitheftauto.com/wiki/CreateObject
      * @param modelId A whole integer specifying the GTA:SA object model ID.
      * @param x A floating point number representing the X coordinate on the map.
      * @param y A floating point number representing the Y coordinate on the map.
@@ -110,7 +110,7 @@ export class MTASAObject {
 
     /**
      * This function returns the mass of a specified object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectMass Wiki, getObjectMass }
+     * @see https://wiki.multitheftauto.com/wiki/GetObjectMass
      * @return * a float representing the mass of the object.
      * * false if invalid arguments were passed.
      * * -1 if object was never streamed in.
@@ -118,7 +118,7 @@ export class MTASAObject {
     getMass(): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectProperty Wiki, getObjectProperty }
+     * @see https://wiki.multitheftauto.com/wiki/GetObjectProperty
      * @param property : the property you want to get the value of:
      * <div style="padding-left:20px">
      * * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
@@ -132,7 +132,7 @@ export class MTASAObject {
 
     /**
      * This function returns the visible size of an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectScale Wiki, getObjectScale }
+     * @see https://wiki.multitheftauto.com/wiki/GetObjectScale
      * @return * three float values indicating the scale of the object on the x, y, and z axis if
      * successful, false otherwise.
      */
@@ -144,7 +144,7 @@ export class MTASAObject {
 
     /**
      * This function checks if an object / model ID is breakable.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsObjectBreakable Wiki, isObjectBreakable }
+     * @see https://wiki.multitheftauto.com/wiki/IsObjectBreakable
      * @param theObject / modelId The object / model ID thats being checked.
      * @return * true if the object is breakable.
      * * false if the object is not breakable.
@@ -154,7 +154,7 @@ export class MTASAObject {
     /**
      * This function will smoothly move an object from its current position to a specified
      * rotation and position.
-     * @see {@link https://wiki.multitheftauto.com/wiki/MoveObject Wiki, moveObject }
+     * @see https://wiki.multitheftauto.com/wiki/MoveObject
      * @param time the time in milliseconds the object will arrive at the destination.
      * @param targetx the X value of the target position
      * @param targety the Y value of the target position
@@ -190,7 +190,7 @@ export class MTASAObject {
 
     /**
      * This function respawns a specific object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RespawnObject Wiki, respawnObject }
+     * @see https://wiki.multitheftauto.com/wiki/RespawnObject
      * @return * true if the object was sucessfully respawned.
      * * false if the object is not breakable, or a wrong object was given.
      */
@@ -198,7 +198,7 @@ export class MTASAObject {
 
     /**
      * This function sets an object to be breakable/unbreakable.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectBreakable Wiki, setObjectBreakable }
+     * @see https://wiki.multitheftauto.com/wiki/SetObjectBreakable
      * @param object the object thats being set.
      * @param breakable a boolean whether the object is breakable (true) or unbreakable (false).
      * @return * true if the object is now breakable.
@@ -211,7 +211,7 @@ export class MTASAObject {
     /**
      * This function sets the mass of a specified object. Changing the mass leads to a different
      * movement behavior for especially dynamic objects.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectMass Wiki, setObjectMass }
+     * @see https://wiki.multitheftauto.com/wiki/SetObjectMass
      * @param mass the new mass.
      * @return * true if the new mass value has been.
      * * false otherwise.
@@ -221,7 +221,7 @@ export class MTASAObject {
     ): boolean;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectProperty Wiki, setObjectProperty }
+     * @see https://wiki.multitheftauto.com/wiki/SetObjectProperty
      * @param property : the property you want to set the value of:
      * @param value : the new value for the property.
      * @return returns true if the property was set successfully, false otherwise.
@@ -233,7 +233,7 @@ export class MTASAObject {
 
     /**
      * This function changes the visible size of an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
+     * @see https://wiki.multitheftauto.com/wiki/SetObjectScale
      * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
      * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
      * @param scaleY : a float containing the new scale on the Y axis
@@ -249,7 +249,7 @@ export class MTASAObject {
 
     /**
      * This will allow you to stop an object that is currently moving.
-     * @see {@link https://wiki.multitheftauto.com/wiki/StopObject Wiki, stopObject }
+     * @see https://wiki.multitheftauto.com/wiki/StopObject
      * @return * true if successful.
      * * false otherwise.
      */
@@ -257,7 +257,7 @@ export class MTASAObject {
 
     /**
      * This function is used to toggle if an object should respawn after it got destroyed
-     * @see {@link https://wiki.multitheftauto.com/wiki/ToggleObjectRespawn Wiki, toggleObjectRespawn }
+     * @see https://wiki.multitheftauto.com/wiki/ToggleObjectRespawn
      * @param respawn : a bool denoting whether we want to enable (true) or disable (false) respawning
      * @return * true when the it was changed successfully.
      * * false otherwise.

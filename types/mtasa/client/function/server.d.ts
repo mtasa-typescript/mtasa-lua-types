@@ -56,7 +56,7 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxVisible Wiki, isTransferBoxVisible }
+ * @see https://wiki.multitheftauto.com/wiki/IsTransferBoxVisible
  * @return on server this returns a boolean, whether the transfer box should be visible during
  * downloads or not.
  * on client this returns a boolean, whether the transfer box should be visible or not at
@@ -66,7 +66,7 @@ import {
 export declare function isTransferBoxVisible(): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible Wiki, setTransferBoxVisible }
+ * @see https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible
  * @param visible The new visibility state.
  * @return returns true if the visibility was set successfully, false otherwise.
  * @noSelf

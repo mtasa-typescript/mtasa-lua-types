@@ -49,7 +49,7 @@ import {
  * You are able to create as many markers as you wish (memory and element limit permitting),
  * but the player will only be able to see the nearest ones up to the limit.
  * <br><br><br><br>
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateMarker Wiki, createMarker }
+ * @see https://wiki.multitheftauto.com/wiki/CreateMarker
  * @param x : A floating point number representing the X coordinate on the map.
  * @param y : A floating point number representing the Y coordinate on the map.
  * @param z : A floating point number representing the Z coordinate on the map.
@@ -83,7 +83,7 @@ export declare function createMarker(
 /**
  * This function returns the color and transparency for a marker element. Not all marker
  * types support transparency.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerColor Wiki, getMarkerColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetMarkerColor
  * @param theMarker : The marker that you wish to retrieve the color of.
  * @return returns four ints corresponding to the amount of red, green, blue and alpha
  * (respectively) of the marker, false if invalid arguments were passed.
@@ -100,7 +100,7 @@ export declare function getMarkerColor(
 
 /**
  * Returns the number of markers that currently exist in the world.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerCount Wiki, getMarkerCount }
+ * @see https://wiki.multitheftauto.com/wiki/GetMarkerCount
  * @return returns the number of markers that currently exist.
  * @noSelf
  */
@@ -108,7 +108,7 @@ export declare function getMarkerCount(): number;
 
 /**
  * This function returns the icon name for a marker.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerIcon Wiki, getMarkerIcon }
+ * @see https://wiki.multitheftauto.com/wiki/GetMarkerIcon
  * @param theMarker : A marker element referencing the specified marker.
  * @return returns false if the marker passed is invalid or a string containing one of the following:
  * * none: no icon
@@ -122,7 +122,7 @@ export declare function getMarkerIcon(
 
 /**
  * This function returns a float containing the size of the specified marker.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerSize Wiki, getMarkerSize }
+ * @see https://wiki.multitheftauto.com/wiki/GetMarkerSize
  * @param myMarker : The marker that you wish to retrieve the size of.
  * @return returns a float containing the size of the specified marker.
  * @noSelf
@@ -136,7 +136,7 @@ export declare function getMarkerSize(
  * points to. This only works for checkpoint markers and ring markers. For checkpoints it
  * returns the position the arrow is pointing to, for ring markers it returns the position
  * the ring is facing. You can set this target with setMarkerTarget.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerTarget Wiki, getMarkerTarget }
+ * @see https://wiki.multitheftauto.com/wiki/GetMarkerTarget
  * @param theMarker The marker you wish to retrieve the target position of.
  * @return returns three floats if a target is set, or false in the first variable and nil in the
  * two others if the marker is invalid or no target is set.
@@ -152,7 +152,7 @@ export declare function getMarkerTarget(
 
 /**
  * This function returns a markers type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetMarkerType Wiki, getMarkerType }
+ * @see https://wiki.multitheftauto.com/wiki/GetMarkerType
  * @param theMarker : A marker element referencing the specified marker.
  * @return * returns one of the following strings:
  * if an invalid marker is specified, false is returned.
@@ -165,7 +165,7 @@ export declare function getMarkerType(
 /**
  * This function sets the color of the specified marker by modifying the values for red,
  * green, blue and alpha.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerColor Wiki, setMarkerColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetMarkerColor
  * @param theMarker The marker that you wish to set the color of.
  * @param r The amount of red in the final color (0 to 255).
  * @param g The amount of green in the final color (0 to 255).
@@ -182,7 +182,7 @@ export declare function setMarkerColor(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerIcon Wiki, setMarkerIcon }
+ * @see https://wiki.multitheftauto.com/wiki/SetMarkerIcon
  * @param theMarker The marker to change the visual style of
  * @param icon A string referring to the type of icon, acceptable values are:
  * @param none : No icon
@@ -202,7 +202,7 @@ export declare function setMarkerIcon(
  * * ring: inside out
  * * checkpoint: disappear
  * * corona: bigger
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerSize Wiki, setMarkerSize }
+ * @see https://wiki.multitheftauto.com/wiki/SetMarkerSize
  * @param theMarker The marker that you wish to set the size of.
  * @param size A float representing new size of the marker.
  * @return returns true if successful, false if failed.
@@ -222,7 +222,7 @@ export declare function setMarkerSize(
  * This function is most useful for setting up markers for races, where each marker points
  * to the next ones position.
  * (This is mostly used in races!)
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerTarget Wiki, setMarkerTarget }
+ * @see https://wiki.multitheftauto.com/wiki/SetMarkerTarget
  * @param theMarker The marker to set the target of
  * @param x The x axis of the coordinate to target the marker at
  * @param y The y axis of the coordinate to target the marker at
@@ -242,7 +242,7 @@ export declare function setMarkerTarget(
  * the game. Its important that you use marker types that users are used to from the single
  * player game. For example, checkpoints are used in races, rings are used for aircraft
  * races, arrows are used for entering buildings etc.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetMarkerType Wiki, setMarkerType }
+ * @see https://wiki.multitheftauto.com/wiki/SetMarkerType
  * @param theMarker : A marker element referencing the specified marker.
  * @param markerType : A string denoting the marker type. Valid values are:
  * @return returns true if the marker type was changed, false if it wasnt or marker values were

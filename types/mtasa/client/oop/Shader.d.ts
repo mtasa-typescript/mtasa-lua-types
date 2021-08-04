@@ -62,7 +62,7 @@ export class Shader extends Material {
      * element with dxDrawImage.
      * Using tessellation allows a shader to manipulate the shape of the rendered image at each
      * sub-division boundary.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
+     * @see https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation
      * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
      * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
      * @return returns true if the shader elements tessellation was successfully changed, false
@@ -76,7 +76,7 @@ export class Shader extends Material {
     /**
      * This function applies a 3D transformation to a shader element when it is drawn with
      * dxDrawImage.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
+     * @see https://wiki.multitheftauto.com/wiki/DxSetShaderTransform
      * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
      * rotate along its width.
      * @param rotationY Rotation angle in degrees around the Y axis (Up,down). This will make the shader rotate
@@ -112,7 +112,7 @@ export class Shader extends Material {
 
     /**
      * This sets a named parameter for a shader element
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
+     * @see https://wiki.multitheftauto.com/wiki/DxSetShaderValue
      * @param parameterName The name of parameter
      * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
      * floats(numbers))
@@ -137,7 +137,7 @@ export class Shader extends Material {
      * cj_ped_extra1. Latest version of
      * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
      * show what is being used.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
+     * @see https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture
      * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
      * be used to apply to more than one texture at a time.
      * @param targetElement The element to restrict applying the shader to. If this is not set the shader will be
@@ -155,7 +155,7 @@ export class Shader extends Material {
 
     /**
      * This function removes a shader from one or more world textures.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture Wiki, engineRemoveShaderFromWorldTexture }
+     * @see https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture
      * @param textureName The name of the world texture to remove the shader from. It should be exactly the same
      * string as used with engineApplyShaderToWorldTexture when the shader was initially applied.
      * @param targetElement The element to remove the shader from. It should be the same element as used with

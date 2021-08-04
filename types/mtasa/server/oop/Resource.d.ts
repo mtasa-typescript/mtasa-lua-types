@@ -98,7 +98,7 @@ export class Resource {
      * * sourceResource - The resource that called the exported function
      * * sourceResourceRoot - The resource root element of the resource which called the
      * exported function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+     * @see https://wiki.multitheftauto.com/wiki/Call
      * @param theFunction This is a string with the name of the function which you want to call.
      * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
      * arguments of can be specified, each being passed to the designated function.
@@ -120,7 +120,7 @@ export class Resource {
 
     /**
      * This function copies a specified resource with a new name.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
+     * @see https://wiki.multitheftauto.com/wiki/CopyResource
      * @param newResourceName the name that the copied resource will receive
      * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
      * gamemodes/amx).
@@ -134,7 +134,7 @@ export class Resource {
     /**
      * This function creates an new, empty resource. This creates a directory matching the name
      * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
+     * @see https://wiki.multitheftauto.com/wiki/CreateResource
      * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
      * do not have spaces or non-ASCII characters in resource names.
      * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
@@ -151,7 +151,7 @@ export class Resource {
     /**
      * This function deletes a resource from the MTA memory and moves it to the
      * /resources-cache/trash/ directory.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
+     * @see https://wiki.multitheftauto.com/wiki/DeleteResource
      * @param resourceName The name of resource to delete.
      * @return returns true if the resource has been deleted successfully, false otherwise.
      */
@@ -162,7 +162,7 @@ export class Resource {
     /**
      * This function is used to retrieve a resource from its name. A resources name is the same
      * as its folder or file archive name on the server (without the extension).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceFromName
      * @param resourceName the name of the resource you wish to get.
      * @return returns the resource with the specified name, or false if no resource of that name
      * exists. note that clientside this will also return false for resources that are in the
@@ -174,7 +174,7 @@ export class Resource {
 
     /**
      * This function retrieves the value of any attribute in a resource info tag.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceInfo
      * @param attribute the name of the attribute we want info about.
      * @return returns a string with the attribute value if it exists, false otherwise.
      */
@@ -184,7 +184,7 @@ export class Resource {
 
     /**
      * This function retrieves the root element of a certain map in a specified resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement
      * @param mapName name of the maps which root element we want to retrieve, file extension is required
      * @return returns an the resources map root element if the map exists and resource specified was
      * valid and active (currently running), false otherwise.
@@ -195,14 +195,14 @@ export class Resource {
 
     /**
      * This function gets the name of the specified resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceName
      * @return returns a string with the resource name in it, or false if the resource does not exist.
      */
     getName(): string;
 
     /**
      * This function returns the organizational file path (e.g. admin) of a resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath Wiki, getResourceOrganizationalPath }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath
      * @return returns the organizational folder name of the resource. it returns empty string if the
      * resource is on root resources folder. it returns false if the resource could not be found.
      */
@@ -216,7 +216,7 @@ export class Resource {
      * (and global events that originate from the root element).
      * Note: every resource has a Predefined_variables_list|predefined global variable called
      * resourceRoot whose value is the root element of that resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceRootElement
      * @return returns an element representing the resources root, false if the specified resource
      * doesnt exist.
      */
@@ -224,14 +224,14 @@ export class Resource {
 
     /**
      * This function retrieves a table of all the resources that exist on the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
+     * @see https://wiki.multitheftauto.com/wiki/GetResources
      * @return returns a table of resources.
      */
     static getAll(): LuaTable;
 
     /**
      * Checks whether a resource is currently archived (running from within a ZIP file).
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceArchived Wiki, isResourceArchived }
+     * @see https://wiki.multitheftauto.com/wiki/IsResourceArchived
      * @param resource the resource to check
      * @return returns true if a resource is archived, false if it is not archived, or nil if there is
      * problem with resource.
@@ -241,14 +241,14 @@ export class Resource {
     /**
      * This will check if a resource is currently protected, as defined in
      * Server_mtaserver.conf#resource|mtaserver.conf.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
+     * @see https://wiki.multitheftauto.com/wiki/IsResourceProtected
      * @return returns true if the resource is protected, false otherwise.
      */
     isProtected(): boolean;
 
     /**
      * This function removes a file from the resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RemoveResourceFile Wiki, removeResourceFile }
+     * @see https://wiki.multitheftauto.com/wiki/RemoveResourceFile
      * @param fileName The filename what you want to delete.
      * @return returns true if file was deleted, otherwise false if the resource is in use or the file
      * doesnt exist.
@@ -259,7 +259,7 @@ export class Resource {
 
     /**
      * This function renames a resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RenameResource Wiki, renameResource }
+     * @see https://wiki.multitheftauto.com/wiki/RenameResource
      * @param newResourceName The name of what the resource should be renamed to.
      * @param organizationalPath If you want to store the new resource inside a category.
      * @return returns true if the resource has been renamed successfully, false otherwise. this could
@@ -284,7 +284,7 @@ export class Resource {
      * an onResourceStop event triggered and the restarted instance will receive an
      * onResourceStart event. Remember that the element and resource variables will be
      * invalidated during the restart, though of course, the resources name will not.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/RestartResource Wiki, restartResource }
+     * @see https://wiki.multitheftauto.com/wiki/RestartResource
      * @param persistent Unused
      * @param configs Reload configs?
      * @param maps Reload maps?
@@ -309,7 +309,7 @@ export class Resource {
 
     /**
      * This function sets the value of any attribute in a resource info tag.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetResourceInfo Wiki, setResourceInfo }
+     * @see https://wiki.multitheftauto.com/wiki/SetResourceInfo
      * @param attribute the name of the attribute that is to be set.
      * @param value the value of this attribute
      * @return returns true if the info was successfully set, false otherwise
@@ -331,7 +331,7 @@ export class Resource {
      * resource before enabling the scripting aspects, though this could produce unreliable
      * results. There is no way for a resource to tell if it is being run with any of these
      * booleans set.
-     * @see {@link https://wiki.multitheftauto.com/wiki/StartResource Wiki, startResource }
+     * @see https://wiki.multitheftauto.com/wiki/StartResource
      * @param persistent A boolean specifying if the resource should continue to run even after the current
      * resource has been stopped or not. If this is true then the resource will run until
      * another resource or user terminates it or the server shuts down. If this is false then
@@ -361,7 +361,7 @@ export class Resource {
 
     /**
      * This function stops a running resource.<br>
-     * @see {@link https://wiki.multitheftauto.com/wiki/StopResource Wiki, stopResource }
+     * @see https://wiki.multitheftauto.com/wiki/StopResource
      * @return returns true if the resource was stopped, false if the stopping failed, or an invalid
      * resource was passed.
      */

@@ -57,7 +57,7 @@ import {
 
 /**
  * This function converts Texture_pixels|pixels from one format to another.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxConvertPixels Wiki, dxConvertPixels }
+ * @see https://wiki.multitheftauto.com/wiki/DxConvertPixels
  * @param pixels The pixels to convert the format of
  * @param newFormat The new format required (plain or png or jpeg)
  * @param quality The quality of the returned pixels if the new format is jpeg
@@ -77,7 +77,7 @@ export declare function dxConvertPixels(
  * creation is not guaranteed, and may fail due to hardware or memory limitations.
  * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
  * zero, failure is guaranteed.)
- * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateFont Wiki, dxCreateFont }
+ * @see https://wiki.multitheftauto.com/wiki/DxCreateFont
  * @param filepath the name of the file containing the font
  * @param size size of the font
  * @param bold flag to indicate if the font should be bold
@@ -107,7 +107,7 @@ export declare function dxCreateFont(
  * guaranteed, and may fail due to hardware or memory limitations.
  * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
  * zero, failure is guaranteed.)
- * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateRenderTarget Wiki, dxCreateRenderTarget }
+ * @see https://wiki.multitheftauto.com/wiki/DxCreateRenderTarget
  * @param width The width of the texture in pixels.
  * @param height The height of the texture in pixels.
  * @param withAlpha The render target will be created with an alpha channel. false will turn images alpha
@@ -129,7 +129,7 @@ export declare function dxCreateRenderTarget(
  * Note that successful screen source creation is not guaranteed, and may fail due to
  * hardware or memory limitations. You should always check to see if this function has
  * returned false.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateScreenSource Wiki, dxCreateScreenSource }
+ * @see https://wiki.multitheftauto.com/wiki/DxCreateScreenSource
  * @param width The width of the texture in pixels.
  * @param height The height of the texture  in pixels.
  * @return returns a texture element if successful, false if invalid arguments were passed to the
@@ -210,7 +210,7 @@ export declare function dxCreateScreenSource(
  * function. You should always check to see if this function has returned false.
  * *string: The name of the technique that will be used.
  * |20688}}
- * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateShader Wiki, dxCreateShader }
+ * @see https://wiki.multitheftauto.com/wiki/DxCreateShader
  * @noSelf
  */
 export declare function dxCreateShader(
@@ -231,7 +231,7 @@ export declare function dxCreateShader(
  * http://nightly.mtasa.com/files/shaders/DxTex.zip DxTex can view and change cubemaps and
  * volume textures. DxTex can also convert standard textures into DXT1/3/5 compressed .dds
  * which should reduce file sizes.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateTexture Wiki, dxCreateTexture }
+ * @see https://wiki.multitheftauto.com/wiki/DxCreateTexture
  * @param filepath The filepath of the image. (.bmp, .dds, .jpg, .png, and .tga images are supported). Image
  * files should ideally have dimensions that are a power of two, to prevent possible
  * blurring.
@@ -274,7 +274,7 @@ export declare function dxCreateTexture(
 
 /**
  * <lowercasetitle/>
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawCircle Wiki, dxDrawCircle }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawCircle
  * @param posX : An integer representing the absolute X position of the circle center, represented by
  * pixels on the screen.
  * @param posY : An integer representing the absolute Y position of the circle center, represented by
@@ -315,7 +315,7 @@ export declare function dxDrawCircle(
  * Image files should ideally have dimensions that are a power of two, to prevent possible
  * blurring.<br/>
  * <b>Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...</b>
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawImage Wiki, dxDrawImage }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawImage
  * @param posX the absolute X coordinate of the top left corner of the image
  * @param posY the absolute Y coordinate of the top left corner of the image
  * @param width the absolute width of the image
@@ -354,7 +354,7 @@ export declare function dxDrawImage(
  * Image files should ideally have dimensions that are a power of two, to prevent possible
  * blurring.<br/>
  * <b>Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...</b>
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawImageSection Wiki, dxDrawImageSection }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawImageSection
  * @param posX the absolute X coordinate of the top left corner of the image
  * @param posY the absolute Y coordinate of the top left corner of the image
  * @param width the absolute width of the image
@@ -399,7 +399,7 @@ export declare function dxDrawImageSection(
 /**
  * This function draws a 2D line across the screen - rendered for one frame.  This should be
  * used in conjunction with onClientRender in order to display continuously.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawLine Wiki, dxDrawLine }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawLine
  * @param startX An integer representing the absolute start X position of the line, represented by pixels
  * on the screen.
  * @param startY An integer representing the absolute start Y position of the line, represented by pixels
@@ -431,7 +431,7 @@ export declare function dxDrawLine(
  * This function draws a 3D line between two points in the 3D world - rendered for one
  * frame.  This should be used in conjunction with onClientRender in order to display
  * continuously.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawLine3D Wiki, dxDrawLine3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawLine3D
  * @param startX The start X position of the 3D line, representing a coordinate in the GTA world.
  * @param startY The start Y position of the 3D line, representing a coordinate in the GTA world.
  * @param startZ The start Z position of the 3D line, representing a coordinate in the GTA world.
@@ -468,7 +468,7 @@ export declare function dxDrawLine3D(
  * appropriate values for faceToward.
  * 3D lines are drawn at a particular place in the Game_Processing_Order|game processing
  * order, so use onClientPreRender for drawing if you are attaching them to world elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D
  * @param startX/Y/Z The start position of the 3D line, representing a coordinate in the GTA world.
  * @param endX/Y/Z The end position of the 3D line, representing a coordinate in the GTA world.
  * @param material A material to draw the line with.
@@ -504,7 +504,7 @@ export declare function dxDrawMaterialLine3D(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D Wiki, dxDrawMaterialLine3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawMaterialLine3D
  * @noSelf
  */
 export declare function dxDrawMaterialLine3D(
@@ -527,7 +527,7 @@ export declare function dxDrawMaterialLine3D(
  * If image file is used, it should ideally have dimensions that are a power of two, to
  * prevent possible blurring.
  * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...}}
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive Wiki, dxDrawMaterialPrimitive }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive
  * @param pType Type of primitive to be drawn.
  * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
  * images are also supported). Image files should ideally have dimensions that are a power
@@ -556,7 +556,7 @@ export declare function dxDrawMaterialPrimitive(
  * If image file is used, it should ideally have dimensions that are a power of two, to
  * prevent possible blurring.
  * Power of two: 2px, 4px, 8px, 16px, 32px, 64px, 128px, 256px, 512px, 1024px...
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive3D Wiki, dxDrawMaterialPrimitive3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawMaterialPrimitive3D
  * @param pType Type of primitive to be drawn.
  * @param image Either a material element or a filepath of the image which is going to be drawn. (.dds
  * images are also supported). Image files should ideally have dimensions that are a power
@@ -585,7 +585,7 @@ export declare function dxDrawMaterialPrimitive3D(
  * The 3D line with a large width value effectively becomes a rectangle, so it it possible
  * to construct basic shapes such as boxes with several large width lines and the
  * appropriate values for faceToward.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D
  * @param startX/Y/Z The start position of the 3D line, representing a coordinate in the GTA world.
  * @param endX/Y/Z The end position of the 3D line, representing a coordinate in the GTA world.
  * @param u the absolute X coordinate of the top left corner of the section
@@ -628,7 +628,7 @@ export declare function dxDrawMaterialSectionLine3D(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D Wiki, dxDrawMaterialSectionLine3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawMaterialSectionLine3D
  * @noSelf
  */
 export declare function dxDrawMaterialSectionLine3D(
@@ -652,7 +652,7 @@ export declare function dxDrawMaterialSectionLine3D(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawPrimitive Wiki, dxDrawPrimitive }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawPrimitive
  * @param pType Type of primitive to be drawn.
  * @param postGUI A bool representing whether the line should be drawn on top of or behind any ingame GUI
  * (rendered by CEGUI).
@@ -672,7 +672,7 @@ export declare function dxDrawPrimitive(
 /**
  * This function draws a 3D primitive in the 3D world - rendered for one frame.  This should
  * be used in conjunction with onClientRender in order to display continuously.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawPrimitive3D Wiki, dxDrawPrimitive3D }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawPrimitive3D
  * @param primitiveType The type of primitive to be drawn. This could be:
  * "pointlist"
  * "linelist"
@@ -708,7 +708,7 @@ export declare function dxDrawPrimitive3D(
 /**
  * This function draws a 2D rectangle across the screen - rendered for one frame. This
  * should be used in conjunction with onClientRender in order to display continuously.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawRectangle Wiki, dxDrawRectangle }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawRectangle
  * @param startX An float representing the absolute origin X position of the rectangle, represented by
  * pixels on the screen.
  * @param startY An float representing the absolute origin Y position of the rectangle, represented by
@@ -738,7 +738,7 @@ export declare function dxDrawRectangle(
  * Draws a string of text on the screen for one frame. In order for the text to stay visible
  * continuously, you need to call this function with the same parameters on each frame
  * update (see onClientRender).
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawText Wiki, dxDrawText }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawText
  * @param text the text to draw
  * @param leftX the absolute X coordinate of the top left corner of the text
  * @param topY the absolute Y coordinate of the top left corner of the text
@@ -796,7 +796,7 @@ export declare function dxDrawText(
  * This function drawn same sphere as /showcol. It provides 4 levels of iterations which
  * mean density of sphere. Adjust radius to iterations to get optimum density of mesh. About
  * 50 spheres with iterations = 4 can cause fps drop.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxDrawWiredSphere Wiki, dxDrawWiredSphere }
+ * @see https://wiki.multitheftauto.com/wiki/DxDrawWiredSphere
  * @param x, y, z A position in world of sphere.
  * @param radius A radius of sphere.
  * @param theColor A color of sphere from tocolor function.
@@ -818,7 +818,7 @@ export declare function dxDrawWiredSphere(
 /**
  * This function returns the current blend mode for the dxDraw functions. The blend mode is
  * set using dxSetBlendMode
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetBlendMode Wiki, dxGetBlendMode }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetBlendMode
  * @return returns the current blend mode, which can be one of:
  * *blend
  * *add
@@ -831,7 +831,7 @@ export declare function dxGetBlendMode(): string;
 /**
  * This function retrieves the theoretical height of a certain piece of text, if it were to
  * be drawn using dxDrawText.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetFontHeight Wiki, dxGetFontHeight }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetFontHeight
  * @param scale The size of the text.
  * @param font Either a custom DX font element or the name of a built-in dx font:
  * @return returns an integer of the height of the text.
@@ -844,7 +844,7 @@ export declare function dxGetFontHeight(
 
 /**
  * This gets the dimensions of the supplied material element.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetMaterialSize Wiki, dxGetMaterialSize }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetMaterialSize
  * @param material The material element whose size is to be gotten
  * @return returns two ints representing the width and height in pixels of the material, or false if
  * an invalid parameter was passed to the function.
@@ -863,7 +863,7 @@ export declare function dxGetMaterialSize(
 /**
  * This function gets the color of a single pixel from Texture_pixels|pixels contained in a
  * string. It only works with plain format pixels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelColor Wiki, dxGetPixelColor }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetPixelColor
  * @param pixels The pixels to use
  * @param x The X coordinate for the pixel
  * @param y The Y coordinate for the pixel
@@ -884,7 +884,7 @@ export declare function dxGetPixelColor(
 
 /**
  * This function returns the format of Texture_pixels|pixels contained in a string.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelsFormat Wiki, dxGetPixelsFormat }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetPixelsFormat
  * @param pixels The pixels to get the format of
  * @return returns the format of the pixels if successful (plain or png or jpeg), false if invalid
  * arguments were passed to the function.
@@ -897,7 +897,7 @@ export declare function dxGetPixelsFormat(
 /**
  * This function gets the dimensions of Texture_pixels|pixels contained in a string. It
  * works with all pixel formats.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetPixelsSize Wiki, dxGetPixelsSize }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetPixelsSize
  * @param pixels The pixels to get the dimensions of
  * @return returns width and height of the pixels if successful, false if invalid arguments were
  * passed to the function.
@@ -912,7 +912,7 @@ export declare function dxGetPixelsSize(
 
 /**
  * This function gets information about various internal datum
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetStatus Wiki, dxGetStatus }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetStatus
  * @return returns a table with the following entries:
  * * testmode : the current dx test mode. see dxsettestmode.
  * *videocardname : the name of the graphics card.
@@ -957,7 +957,7 @@ export declare function dxGetStatus(): LuaTable;
 
 /**
  * NOTE: This function already takes the clients screen resolution into account.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTextSize Wiki, dxGetTextSize }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetTextSize
  * @param text A string representing the text for which you wish to retrieve with width for.
  * @param width The width of the text. Use with wordBreak = true.
  * @param scaleX The scale of the text. Scale can also be inputted as a Vector2.
@@ -989,7 +989,7 @@ export declare function dxGetTextSize(
  * *This function is slow and not something you want to be doing once a frame.
  * *It is slower when reading pixels from a render target or screen source.
  * *And is very slow indeed if the texture format is not  argb .
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetTexturePixels
  * @param texture The texture element to get the pixels from
  * @param surfaceIndex Desired slice to get if the texture is a volume texture, or desired face to get if the
  * texture is a cube map. <nowiki>(Cube map faces: 0=+X 1=-X 2=+Y 3=-Y 4=+Z 5=-Z)</nowiki>
@@ -1013,7 +1013,7 @@ export declare function dxGetTexturePixels(
 ): string;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetTexturePixels
  * @noSelf
  */
 export declare function dxGetTexturePixels(
@@ -1028,7 +1028,7 @@ export declare function dxGetTexturePixels(
  * This function retrieves the theoretical width (in pixels) of a certain piece of text, if
  * it were to be drawn using dxDrawText.
  * NOTE: This function already takes the clients screen resolution into account.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTextWidth Wiki, dxGetTextWidth }
+ * @see https://wiki.multitheftauto.com/wiki/DxGetTextWidth
  * @param text A string representing the text for which you wish to retrieve with width for.
  * @param scale The size of the text.
  * @param font Either a custom DX font element or the name of a built-in dx font:
@@ -1046,7 +1046,7 @@ export declare function dxGetTextWidth(
 
 /**
  * This function gets the current aspect ratio set by dxSetAspectRatioAdjustmentEnabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxIsAspectRatioAdjustmentEnabled Wiki, dxIsAspectRatioAdjustmentEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/DxIsAspectRatioAdjustmentEnabled
  * @return *boolean: returns true when enabled by dxsetaspectratioadjustmentenabled, false otherwise.
  * *float: aspect ratio set by dxsetaspectratioadjustmentenabled
  * @noSelf
@@ -1063,7 +1063,7 @@ export declare function dxIsAspectRatioAdjustmentEnabled(): LuaMultiReturn<[
  * onClientHUDRender. So the function has to be called every frame, just like dxDraws.
  * This is particularly useful for draws that must align with the GTA HUD, for which the
  * sizing and positioning can vary for different aspect ratios.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetAspectRatioAdjustmentEnabled Wiki, dxSetAspectRatioAdjustmentEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetAspectRatioAdjustmentEnabled
  * @param bEnabled : Should the adjustment be enabled or disabled.
  * @param sourceRatio This should be set to the aspect ratio the dxDraws were originally designed in.
  * @return returns true when it was changed successfully, or false otherwise.
@@ -1080,7 +1080,7 @@ export declare function dxSetAspectRatioAdjustmentEnabled(
  * target. As a general guide use modulate_add when drawing text to a render target, and add
  * when drawing the render target to the screen. Dont forget to restore the default blend at
  * the end - See the example below.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetBlendMode Wiki, dxSetBlendMode }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetBlendMode
  * @param blendMode The blend mode to use which can be one of:
  * @param blend The source textures are alpha blended to the screen/render target. This is the default
  * mode for drawing and gives the results we all know and love.
@@ -1098,7 +1098,7 @@ export declare function dxSetBlendMode(
 /**
  * This function sets the color of a single pixel for Texture_pixels|pixels contained in a
  * string. It only works with plain format pixels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetPixelColor Wiki, dxSetPixelColor }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetPixelColor
  * @param pixels The pixels to use
  * @param x The X coordinate for the pixel
  * @param y The Y coordinate for the pixel
@@ -1120,7 +1120,7 @@ export declare function dxSetPixelColor(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetRenderTarget Wiki, dxSetRenderTarget }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetRenderTarget
  * @param renderTarget The render target element whose pixels we want to draw on.
  * @param clear If set to true, the render target will also be cleared.
  * @return returns true if the render target was successfully changed, false otherwise.
@@ -1136,7 +1136,7 @@ export declare function dxSetRenderTarget(
  * element with dxDrawImage.
  * Using tessellation allows a shader to manipulate the shape of the rendered image at each
  * sub-division boundary.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation Wiki, dxSetShaderTessellation }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetShaderTessellation
  * @param theShader The shader element whose tessellation is to be changed
  * @param tessellationX The number of sub-division points along the X axis. Range is 1 to 500.
  * @param tessellationY The number of sub-division points along the Y axis. Range is 1 to 500.
@@ -1153,7 +1153,7 @@ export declare function dxSetShaderTessellation(
 /**
  * This function applies a 3D transformation to a shader element when it is drawn with
  * dxDrawImage.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderTransform Wiki, dxSetShaderTransform }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetShaderTransform
  * @param theShader The shader element whose transformation is to be changed
  * @param rotationX Rotation angle in degrees around the X axis (Left,right). This will make the shader
  * rotate along its width.
@@ -1192,7 +1192,7 @@ export declare function dxSetShaderTransform(
 
 /**
  * This sets a named parameter for a shader element
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetShaderValue Wiki, dxSetShaderValue }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetShaderValue
  * @param theShader The shader element whose parameter is to be changed
  * @param parameterName The name of parameter
  * @param value The value to set, which can be a texture, a bool, a number or a list of numbers(max 16
@@ -1211,7 +1211,7 @@ export declare function dxSetShaderValue(
  * dxCreateShader and dxCreateRenderTarget.
  * Each one of the 3 test modes should be used in turn to help highlight any potential
  * problems.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTestMode Wiki, dxSetTestMode }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetTestMode
  * @param testMode The test mode to be set. It can be one of the following values:
  * @param none Test mode disabled
  * @param no_mem Simulate no free video memory available for MTA.
@@ -1226,7 +1226,7 @@ export declare function dxSetTestMode(
 
 /**
  * This functions allows you to change the edge handling after creating the texture.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetTextureEdge
  * @param theTexture The affected texture
  * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
  * @param border-color If textureEdge is set to border, you are able to define a border color here
@@ -1244,7 +1244,7 @@ export declare function dxSetTextureEdge(
  * * This function is slow and not something you want to be doing once a frame.
  * * It is very slow when setting pixels to a render target or screen source.
  * * And is very slow indeed if the texture format is not argb.
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetTexturePixels
  * @param texture The texture element to set the pixels of
  * @param pixels The plain format pixels to use
  * @param surfaceIndex Desired slice to set if the texture is a volume texture, or desired face to set if the
@@ -1269,7 +1269,7 @@ export declare function dxSetTexturePixels(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+ * @see https://wiki.multitheftauto.com/wiki/DxSetTexturePixels
  * @noSelf
  */
 export declare function dxSetTexturePixels(
@@ -1284,7 +1284,7 @@ export declare function dxSetTexturePixels(
 /**
  * This function updates the contents of a screen source texture with the screen output from
  * GTA
- * @see {@link https://wiki.multitheftauto.com/wiki/DxUpdateScreenSource Wiki, dxUpdateScreenSource }
+ * @see https://wiki.multitheftauto.com/wiki/DxUpdateScreenSource
  * @param screenSource The screen source element whose pixels we want to fill with the screen capture
  * @param resampleNow A bool to indicate if the screen should be captured immediately. The default is false
  * which means the screen from the end of the previous frame is used (better for performance

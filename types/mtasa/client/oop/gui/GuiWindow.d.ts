@@ -70,7 +70,7 @@ export class GuiWindow extends GuiElement {
      * This function is for creating a new GUI window.  This provides a base for other gui
      * elements to be created within.  However, windows do not have a parent and cannot be
      * created in any GUI elements.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateWindow Wiki, guiCreateWindow }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateWindow
      * @param x A float of the 2D x position of the GUI window on a players screen.  This is affected by
      * the relative argument.
      * @param y A float of the 2D y position of the GUI window on a players screen. This is affected by
@@ -95,7 +95,7 @@ export class GuiWindow extends GuiElement {
 
     /**
      * This function allows you to specify whether or not a user can move a GUI window.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowSetMovable Wiki, guiWindowSetMovable }
+     * @see https://wiki.multitheftauto.com/wiki/GuiWindowSetMovable
      * @param status A boolean value indicating whether the window is movable or not.
      * @return returns true if the function is successful, false otherwise.
      */
@@ -105,7 +105,7 @@ export class GuiWindow extends GuiElement {
 
     /**
      * This function enables or disables user resizing of a GUI window.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowSetSizable Wiki, guiWindowSetSizable }
+     * @see https://wiki.multitheftauto.com/wiki/GuiWindowSetSizable
      * @param status A boolean value indicating whether user resizing is to be enabled or disabled.
      * @return returns true if the function is successful, false otherwise.
      */

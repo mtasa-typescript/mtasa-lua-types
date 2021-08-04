@@ -58,7 +58,7 @@ import {
 /**
  * This function creates a pickup element, which is placed in the GTA world and can be
  * picked up to retrieve a health, armour or a weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreatePickup Wiki, createPickup }
+ * @see https://wiki.multitheftauto.com/wiki/CreatePickup
  * @param x : A floating point number representing the X coordinate on the map.
  * @param y : A floating point number representing the Y coordinate on the map.
  * @param z : A floating point number representing the Z coordinate on the map.
@@ -118,7 +118,7 @@ export declare function createPickup(
 
 /**
  * This function retrieves the amount of ammo in a weapon pickup.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupAmmo Wiki, getPickupAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/GetPickupAmmo
  * @param thePickup The pickup in which you wish to retrieve the ammo of
  * @return returns an integer of the amount of ammo in the pickup, false if the pickup element is
  * invalid, 0 if its no weapon pickup.
@@ -130,7 +130,7 @@ export declare function getPickupAmmo(
 
 /**
  * This function retrieves the amount of health or armor given from a pickup.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupAmount Wiki, getPickupAmount }
+ * @see https://wiki.multitheftauto.com/wiki/GetPickupAmount
  * @param thePickup The pickup you wish to retrieve the amount from.
  * @return returns an integer of the amount the pickup is set to, false if its invalid, 0 if its no
  * health or amor pickup.
@@ -142,7 +142,7 @@ export declare function getPickupAmount(
 
 /**
  * This function retrieves the type of a pickup, either a health, armour or weapon pickup.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupType Wiki, getPickupType }
+ * @see https://wiki.multitheftauto.com/wiki/GetPickupType
  * @param thePickup The pickup you wish to retrieve the type of.
  * @return returns false if the pickup is invalid, or an integer of the type of the pickup, which
  * include:
@@ -158,7 +158,7 @@ export declare function getPickupType(
 
 /**
  * This function retrieves the weapon ID of a weapon pickup.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPickupWeapon Wiki, getPickupWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/GetPickupWeapon
  * @param thePickup The pickup of which you wish to retrieve the weapon
  * @return returns the weapons|weapon id of the pickup, or false if the pickup is invalid.
  * @noSelf
@@ -170,7 +170,7 @@ export declare function getPickupWeapon(
 /**
  * This function allows changing the type of a pickup to a Weapon, Armour or Health pickup,
  * and allows you to set the health points or the weapon and ammo that the pickup will give.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPickupType Wiki, setPickupType }
+ * @see https://wiki.multitheftauto.com/wiki/SetPickupType
  * @param thePickup The pickup which you wish to change the settings of
  * @param theType : An integer representing the type of pickup. You can choose from:
  * @param 0 : Health Pickup
@@ -207,7 +207,7 @@ export declare function setPickupType(
 
 /**
  * This function is used to simulate the player using a pickup
- * @see {@link https://wiki.multitheftauto.com/wiki/UsePickup Wiki, usePickup }
+ * @see https://wiki.multitheftauto.com/wiki/UsePickup
  * @param thePickup : The pickup element to be picked up/used.
  * @param thePlayer : The player to use the pickup.
  * @noSelf

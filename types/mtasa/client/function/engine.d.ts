@@ -69,7 +69,7 @@ import {
  * cj_ped_extra1. Latest version of
  * http://wiki.multitheftauto.com/wiki/Shader_examples#Texture_names shader_tex_names will
  * show what is being used.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture Wiki, engineApplyShaderToWorldTexture }
+ * @see https://wiki.multitheftauto.com/wiki/EngineApplyShaderToWorldTexture
  * @param shader The shader which is to be applied
  * @param textureName The name of the world texture to apply the shader to. Wildcard matching e.g. ro?ds* can
  * be used to apply to more than one texture at a time.
@@ -89,7 +89,7 @@ export declare function engineApplyShaderToWorldTexture(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineFreeModel Wiki, engineFreeModel }
+ * @see https://wiki.multitheftauto.com/wiki/EngineFreeModel
  * @param modelID : the model ID you want to have un-assigned.
  * @return returns true if the model was successfully freed, false otherwise.
  * @noSelf
@@ -101,7 +101,7 @@ export declare function engineFreeModel(
 /**
  * This function gets the model ID of an object model from object name. This function is the
  * counterpart of engineGetModelNameFromID.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName
  * @param modelName The model name of the object
  * @return returns an int with the id of the object model, false otherwise.
  * @noSelf
@@ -112,7 +112,7 @@ export declare function engineGetModelIDFromName(
 
 /**
  * This function gets the LOD distance for any object / model ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelLODDistance Wiki, engineGetModelLODDistance }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelLODDistance
  * @param model The model / object ID number you want to get the LOD distance of.
  * @return returns a float representing the lod distance of the model, or false if the model
  * argument is incorrect.
@@ -125,7 +125,7 @@ export declare function engineGetModelLODDistance(
 /**
  * This function gets the model name of an object model from model ID. This function is the
  * counterpart of engineGetModelIDFromName.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID Wiki, engineGetModelNameFromID }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID
  * @param modelID The model ID of the object
  * @return returns a string with the name of the object model, false otherwise.
  * @noSelf
@@ -135,7 +135,7 @@ export declare function engineGetModelNameFromID(
 ): string;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelPhysicalPropertiesGroup Wiki, engineGetModelPhysicalPropertiesGroup }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelPhysicalPropertiesGroup
  * @param modelID : the id of model which you wish to get physical properties group of.
  * @return returns id of physical properties group that requested model uses, in range of 0-160, if
  * the object doesnt have a group assigned, -1 is returned. if passed arguments were wrong,
@@ -149,7 +149,7 @@ export declare function engineGetModelPhysicalPropertiesGroup(
 /**
  * This function returns a table of the world textures which are applied to the specified
  * model.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames
  * @param modelId You can either use the model id or the model name.
  * @return returns a table if this function succeeds, false if it fails for some reason.
  * @noSelf
@@ -159,7 +159,7 @@ export declare function engineGetModelTextureNames(
 ): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextures Wiki, engineGetModelTextures }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelTextures
  * @param model : either the model ID or model name.
  * @param textureNames : Only return textures with specified name(s). You can provide a single string or a table
  * of strings. Wildcard matching e.g. ro?ds* can be used.
@@ -172,7 +172,7 @@ export declare function engineGetModelTextures(
 ): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelVisibleTime Wiki, engineGetModelVisibleTime }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetModelVisibleTime
  * @param modelID : ID of the model
  * @return returns timeon, timeoff
  * @noSelf
@@ -185,7 +185,7 @@ export declare function engineGetModelVisibleTime(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetObjectGroupPhysicalProperty Wiki, engineGetObjectGroupPhysicalProperty }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetObjectGroupPhysicalProperty
  * @param groupID : the id of physical properties group which you wish to get a property from.
  * @param objectgroup-modifiable : the property which you wish to get, as per table below.
  * @return returns the value contained in given property if everything went well, error is raised
@@ -198,7 +198,7 @@ export declare function engineGetObjectGroupPhysicalProperty(
 ): unknown;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetSurfaceProperties Wiki, engineGetSurfaceProperties }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetSurfaceProperties
  * @param surfaceID Material IDs|Material ID from 0 to 178
  * @param property Property name
  * @return returns the current property value. see the table below for possible values.
@@ -212,7 +212,7 @@ export declare function engineGetSurfaceProperties(
 /**
  * This function returns a list of the world textures which are being used to draw the
  * current scene.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames Wiki, engineGetVisibleTextureNames }
+ * @see https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames
  * @param nameFilter Only include textures that match the wildcard string.
  * @param modelId Only include textures that are used by the model id (or model name)
  * @return returns a table of texture names.
@@ -233,7 +233,7 @@ export declare function engineGetVisibleTextureNames(
  * See here for Optimize_Custom_TXD|tips on reducing the size of TXD files.
  * * CJ clothing component textures can be replaced by using the ids listed on Clothing
  * Component IDs|this page
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineImportTXD Wiki, engineImportTXD }
+ * @see https://wiki.multitheftauto.com/wiki/EngineImportTXD
  * @param texture The TXD that was loaded with engineLoadTXD
  * @param model_id The model id to import the TXD into
  * @return returns true if the function executed succesfully, false otherwise.
@@ -252,7 +252,7 @@ export declare function engineImportTXD(
  * calling engineLoadDFF.
  * This is a client side function. Be sure to transfer your COL file by including it in the
  * meta file.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadCOL Wiki, engineLoadCOL }
+ * @see https://wiki.multitheftauto.com/wiki/EngineLoadCOL
  * @param col_file / raw_data The filepath to the COL file you want to load or whole data buffer of the COL file.
  * @return returns a col if the file was loaded, false otherwise.
  * @noSelf
@@ -271,7 +271,7 @@ export declare function engineLoadCOL(
  * The returned DFF element is an element in the element tree, just like vehicles and
  * objects. When the dff is destroyed, ie on resource unload or using destroyElement, any
  * elements that use the DFF, such as vehicles or objects will be reset.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadDFF Wiki, engineLoadDFF }
+ * @see https://wiki.multitheftauto.com/wiki/EngineLoadDFF
  * @param dff_file / raw_data The filepath to the DFF file you want to load or whole data buffer of the DFF file.
  * @return returns a dff element if the dff file loaded, false otherwise.
  * @noSelf
@@ -290,7 +290,7 @@ export declare function engineLoadDFF(
  * EngineReplaceAnimation|engineReplaceAnimation. To unload the IFP file, use
  * DestroyElement|destroyElement, restarting or stopping the resource can also unload the
  * IFP file automatically.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadIFP Wiki, engineLoadIFP }
+ * @see https://wiki.multitheftauto.com/wiki/EngineLoadIFP
  * @param ifp_file / raw_data the filepath|filepath to the IFP file you want to load or whole data buffer of the IFP
  * file.
  * @param custom_block_name the new block name for the IFP file. You cannot use the GTA default Animations|internal
@@ -308,7 +308,7 @@ export declare function engineLoadIFP(
  * dictionary can then be used to provide textures.
  * This is a client side function. Be sure to transfer your TXD file by including it in the
  * meta file.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadTXD Wiki, engineLoadTXD }
+ * @see https://wiki.multitheftauto.com/wiki/EngineLoadTXD
  * @param txd_file / raw_data The filepath to the TXD file you want to load or whole data buffer of the TXD file.
  * @param filteringEnabled Whether to enable texture filtering.
  * @return returns a txd if the file was loaded, false otherwise.
@@ -321,7 +321,7 @@ export declare function engineLoadTXD(
 
 /**
  * This function removes a shader from one or more world textures.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture Wiki, engineRemoveShaderFromWorldTexture }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRemoveShaderFromWorldTexture
  * @param shader The shader which is to be removed
  * @param textureName The name of the world texture to remove the shader from. It should be exactly the same
  * string as used with engineApplyShaderToWorldTexture when the shader was initially applied.
@@ -351,7 +351,7 @@ export declare function engineRemoveShaderFromWorldTexture(
  * but they wont work as intended, for example, FightA_block animation from ped block is a
  * partial animation, you cant replace it properly, only a few animations are partial, rest
  * of them are not, so it shouldnt be a problem.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceAnimation Wiki, engineReplaceAnimation }
+ * @see https://wiki.multitheftauto.com/wiki/EngineReplaceAnimation
  * @param thePed the player or ped you want to replace an animation for.
  * @param InternalBlockName the Animations|internal block name.
  * @param InternalAnimName the Animations|internal animation name inside InternalBlockName.
@@ -372,7 +372,7 @@ export declare function engineReplaceAnimation(
 /**
  * This function replaces the collision file of the given model id to the collision file
  * passed. Use engineLoadCOL to load the collision file first.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceCOL Wiki, engineReplaceCOL }
+ * @see https://wiki.multitheftauto.com/wiki/EngineReplaceCOL
  * @param theCol The collision file to replace with
  * @param modelID The model ID whose collision file you want to replace
  * @return returns true if the collision was successfully replaced, false or nil if the collision
@@ -393,7 +393,7 @@ export declare function engineReplaceCOL(
  * * Default GTA map objects behave inconsistently when using this function on them. If you
  * want to replace models in the original GTA map, use one of the EngineReplaceModel
  * notes|methods shown here.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceModel Wiki, engineReplaceModel }
+ * @see https://wiki.multitheftauto.com/wiki/EngineReplaceModel
  * @param theModel The model to replace the given model ID with
  * @param modelID The model it to replace the model of
  * @param alphaTransparency Set to true if model uses semi-transparent textures, e.g. windows. This will ensure other
@@ -411,7 +411,7 @@ export declare function engineReplaceModel(
 
 /**
  * *before release 1.5.8-20716 this must be ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRequestModel Wiki, engineRequestModel }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRequestModel
  * @param elementType : ped, vehicle and object.
  * @param parentID : The Vehicle IDs|vehicle ID of the vehicle being allocated. (By default this is: 1337 -
  * objects, 400 - vehicles, 7 or PSYCHO for peds)
@@ -427,7 +427,7 @@ export declare function engineRequestModel(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance Wiki, engineResetModelLODDistance }
+ * @see https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance
  * @param model The model / object ID number you want to reset the LOD distance of.
  * @return returns true if the lod distance was reset to default, or false if the model argument is
  * incorrect, or the lod distance hasnt been changed.
@@ -438,7 +438,7 @@ export declare function engineResetModelLODDistance(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetSurfaceProperties Wiki, engineResetSurfaceProperties }
+ * @see https://wiki.multitheftauto.com/wiki/EngineResetSurfaceProperties
  * @param surfaceID Material IDs|Material ID from 0 to 178
  * @return returns true if the function executed succesfully, false otherwise.
  * @noSelf
@@ -457,7 +457,7 @@ export declare function engineResetSurfaceProperties(
  * block are restored.
  * If 3rd parameter (animation name) is provided, then only that specific animation within
  * that specific block is restored.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreAnimation Wiki, engineRestoreAnimation }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRestoreAnimation
  * @param thePed the player or ped you want to restore an animation(s) for.
  * @param InternalBlockName the Animations|internal block name.
  * @param InternalAnimName the Animations|internal animation name inside InternalBlockName.
@@ -473,7 +473,7 @@ export declare function engineRestoreAnimation(
 /**
  * This function restores the original collision model of the given model ID. Reverses the
  * effect of engineReplaceCOL.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreCOL Wiki, engineRestoreCOL }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRestoreCOL
  * @param modelID The ID of the model to restore the model of
  * @return returns true if this function succeeds, false or nil if it fails for some reason.
  * @noSelf
@@ -485,7 +485,7 @@ export declare function engineRestoreCOL(
 /**
  * This function restores the visual DFF model of the given model ID. This restores the
  * result of engineReplaceModel.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreModel Wiki, engineRestoreModel }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRestoreModel
  * @param modelID The model ID to restore the visuals of
  * @return returns true if the model was successfully restored, false or nil if it failed for some
  * reason.
@@ -496,7 +496,7 @@ export declare function engineRestoreModel(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreModelPhysicalPropertiesGroup Wiki, engineRestoreModelPhysicalPropertiesGroup }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRestoreModelPhysicalPropertiesGroup
  * @param modelID : the id of model which you wish to restore original physical properties group of.
  * @return returns true if there were no issues, if passed arguments were invalid an error is raised.
  * @noSelf
@@ -506,7 +506,7 @@ export declare function engineRestoreModelPhysicalPropertiesGroup(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreObjectGroupPhysicalProperties Wiki, engineRestoreObjectGroupPhysicalProperties }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRestoreObjectGroupPhysicalProperties
  * @param groupID : the id of physical properties group which you wish to restore a property of.
  * @param objectgroup-modifiable : the property which you wish to restore, as per table below.
  * @return returns true if everything went well, error is raised otherwise.
@@ -518,7 +518,7 @@ export declare function engineRestoreObjectGroupPhysicalProperties(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestreamWorld Wiki, engineRestreamWorld }
+ * @see https://wiki.multitheftauto.com/wiki/EngineRestreamWorld
  * @return returns true if the world was restreamed successfully, false otherwise.
  * @noSelf
  */
@@ -529,7 +529,7 @@ export declare function engineRestreamWorld(): boolean;
  * loading may reduce the small pauses that occur when a new model is displayed for the
  * first time. However, it can cause the new models to appear slightly later than they might
  * have otherwise.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading Wiki, engineSetAsynchronousLoading }
+ * @see https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading
  * @param enable Set to true/false to enable/disable asynchronous loading. Only works if the clients
  * preferences has Asynchronous Loading set to Auto.
  * @param force If set to true, ignores the clients preferences.
@@ -568,7 +568,7 @@ export declare function engineSetAsynchronousLoading(
  * actual draw distance used is 5 times the setting value. Also, low LOD elements ignore the
  * Video tab draw distance slider. So a setting of 200 will mean a low LOD element will
  * always have a draw distance of 1000 units.
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelLODDistance Wiki, engineSetModelLODDistance }
+ * @see https://wiki.multitheftauto.com/wiki/EngineSetModelLODDistance
  * @param model The model / object ID number you want to change the LOD distance of.
  * @param distance New LOD distance value in San Andreas units.
  * @return returns true if the function executed succesfully, false otherwise.
@@ -580,7 +580,7 @@ export declare function engineSetModelLODDistance(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelPhysicalPropertiesGroup Wiki, engineSetModelPhysicalPropertiesGroup }
+ * @see https://wiki.multitheftauto.com/wiki/EngineSetModelPhysicalPropertiesGroup
  * @param modelID : the id of model which you wish to set physical properties group of.
  * @param groupID : the id of new physical properties group to be used by given model.
  * @return returns true if there were no issues with group change, otherwise an error is raised
@@ -592,7 +592,7 @@ export declare function engineSetModelPhysicalPropertiesGroup(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelVisibleTime Wiki, engineSetModelVisibleTime }
+ * @see https://wiki.multitheftauto.com/wiki/EngineSetModelVisibleTime
  * @param modelID : ID of the model
  * @param timeOn : value between 0 and 24 that states when the model should appear
  * @param timeOff : value between 0 and 24 that states when the model should disappear
@@ -606,7 +606,7 @@ export declare function engineSetModelVisibleTime(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetObjectGroupPhysicalProperty Wiki, engineSetObjectGroupPhysicalProperty }
+ * @see https://wiki.multitheftauto.com/wiki/EngineSetObjectGroupPhysicalProperty
  * @param groupID : the id of physical properties group which you wish to set a property of.
  * @param objectgroup-modifiable : the property which you wish to set, as per table below.
  * @param newValue : new value of the property, with proper type as specified in table below
@@ -620,7 +620,7 @@ export declare function engineSetObjectGroupPhysicalProperty(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetSurfaceProperties Wiki, engineSetSurfaceProperties }
+ * @see https://wiki.multitheftauto.com/wiki/EngineSetSurfaceProperties
  * @param surfaceID Material IDs|Material ID from 0 to 178
  * @param property Property name
  * @param value New value from table below

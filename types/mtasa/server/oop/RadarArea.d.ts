@@ -46,7 +46,7 @@ export class RadarArea extends Element {
 
     /**
      * This function can be used to create custom radar areas on the radar.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateRadarArea Wiki, createRadarArea }
+     * @see https://wiki.multitheftauto.com/wiki/CreateRadarArea
      * @param startPosX A float representing the origin x position of the radar area.
      * @param startPosY A float representing the origin y position of the radar area.
      * @param sizeX A float representing the width of the radar area.
@@ -73,7 +73,7 @@ export class RadarArea extends Element {
 
     /**
      * This function can be used to retrieve the current color of a radararea|radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetRadarAreaColor Wiki, getRadarAreaColor }
+     * @see https://wiki.multitheftauto.com/wiki/GetRadarAreaColor
      * @return returns four integers in rgba format (red, green, blue, alpha), with a maximum value of
      * 255 for each.  alpha decides transparency where 255 is opaque and 0 is transparent.
      * returns false if the radararea is invalid.
@@ -87,7 +87,7 @@ export class RadarArea extends Element {
 
     /**
      * This function is used for getting the X and Y size of an existing radararea|radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetRadarAreaSize Wiki, getRadarAreaSize }
+     * @see https://wiki.multitheftauto.com/wiki/GetRadarAreaSize
      * @return returns two floats indicating the x and y length of the radar area respectively, false if
      * the radar area is invalid.
      */
@@ -98,7 +98,7 @@ export class RadarArea extends Element {
 
     /**
      * This function checks if a 2D position is inside a radararea|radar area or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsInsideRadarArea Wiki, isInsideRadarArea }
+     * @see https://wiki.multitheftauto.com/wiki/IsInsideRadarArea
      * @param posX The X coordinate of the position youre checking.
      * @param posY The Y coordinate of the position youre checking.
      * @return returns true if the position is inside the radar area, false if it isnt or if any
@@ -111,14 +111,14 @@ export class RadarArea extends Element {
 
     /**
      * This function allows detection of whether a radar area is flashing or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing Wiki, isRadarAreaFlashing }
+     * @see https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing
      * @return returns true if the radar area is flashing, false if it is not or if it doesnt exist.
      */
     isFlashing(): boolean;
 
     /**
      * Sets the color of an existing radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaColor Wiki, setRadarAreaColor }
+     * @see https://wiki.multitheftauto.com/wiki/SetRadarAreaColor
      * @param r an integer representing the amount of red in the color (0 for no red, 255 for solid red)
      * @param g an integer representing the amount of green in the color (0 for no green, 255 for solid
      * green)
@@ -137,7 +137,7 @@ export class RadarArea extends Element {
 
     /**
      * This function makes an existing radar area flash in transparency.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaFlashing Wiki, setRadarAreaFlashing }
+     * @see https://wiki.multitheftauto.com/wiki/SetRadarAreaFlashing
      * @param flash a bool indicating whether the radar area should flash (true to flash, false to not flash).
      * @return returns true if the new flash state was successfully set, false if the radar area doesnt
      * exist or invalid arguments were passed.
@@ -148,7 +148,7 @@ export class RadarArea extends Element {
 
     /**
      * This function changes the size of an existing radararea|radar area.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaSize Wiki, setRadarAreaSize }
+     * @see https://wiki.multitheftauto.com/wiki/SetRadarAreaSize
      * @param x the x length of the radar area.
      * @param y the y length of the radar area.
      * @return returns true if the size was set successfully, false if invalid arguments are passed.

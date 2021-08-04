@@ -57,7 +57,7 @@ import {
 
 /**
  * This function is used to set the current clothes on a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddPedClothes Wiki, addPedClothes }
+ * @see https://wiki.multitheftauto.com/wiki/AddPedClothes
  * @param thePed : The ped whose clothes you want to change.
  * @param clothesTexture : A string determining the clothes texture that will be added. See the CJ Clothes|clothes
  * catalog.
@@ -78,7 +78,7 @@ export declare function addPedClothes(
 
 /**
  * This function checks if the given ped can fall off bikes.
- * @see {@link https://wiki.multitheftauto.com/wiki/CanPedBeKnockedOffBike Wiki, canPedBeKnockedOffBike }
+ * @see https://wiki.multitheftauto.com/wiki/CanPedBeKnockedOffBike
  * @param thePed the ped you want to check.
  * @return returns true if the ped can be knocked off bikes, false if he cannot or an invalid
  * element was passed.
@@ -90,7 +90,7 @@ export declare function canPedBeKnockedOffBike(
 
 /**
  * Creates a Ped in the GTA world.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreatePed Wiki, createPed }
+ * @see https://wiki.multitheftauto.com/wiki/CreatePed
  * @param modelid A whole integer specifying the Character_Skins|GTASA skin ID.
  * @param x A floating point number representing the X coordinate on the map.
  * @param y A floating point number representing the Y coordinate on the map.
@@ -109,7 +109,7 @@ export declare function createPed(
 /**
  * This function returns an integer that contains the ammo in a specified peds weapon. See
  * weapon|Weapon Info
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip Wiki, getPedAmmoInClip }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip
  * @param thePed The ped whose ammo you want to check.
  * @param weaponSlot an integer representing the weapon slot (set to the peds currently selected slot if not
  * specified).
@@ -125,7 +125,7 @@ export declare function getPedAmmoInClip(
 /**
  * This function retrieves the analog control state of a ped, as set by
  * setPedAnalogControlState.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedAnalogControlState Wiki, getPedAnalogControlState }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedAnalogControlState
  * @param thePed The ped you wish to retrieve the control state of.
  * @param controlName The control. See control names for a list of possible controls.
  * @param rawValue A bool indicating if it should return the raw player input value (will always return
@@ -163,7 +163,7 @@ export declare function getPedAnalogControlState(
 
 /**
  * Gets the animation of a player or ped that was set using setPedAnimation.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedAnimation Wiki, getPedAnimation }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedAnimation
  * @param thePed the player or ped you want to get the animations|animation of.
  * @return <syntaxhighlight lang=lua>string anim, string block, int time, bool loop, bool
  * updateposition, bool interruptable, bool freezelastframe, int blendtime, bool
@@ -179,7 +179,7 @@ export declare function getPedAnimation(
 
 /**
  * This function returns the current armor of the specified ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedArmor Wiki, getPedArmor }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedArmor
  * @param thePed The ped whose armor you want to check
  * @return a float with the armor, false if an invalid ped was given.
  * @noSelf
@@ -190,7 +190,7 @@ export declare function getPedArmor(
 
 /**
  * Returns the 3D world coordinates of a specific bone of a given ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedBonePosition Wiki, getPedBonePosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedBonePosition
  * @param thePed the ped you want to inspect.
  * @param bone the number of the bone to get the position of.
  * <div style="border: 3px red solid; margin-bottom:3px; padding-left:5px;">
@@ -237,7 +237,7 @@ export declare function getPedBonePosition(
 
 /**
  * This function gets the current camera rotation of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedCameraRotation Wiki, getPedCameraRotation }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedCameraRotation
  * @param thePed the ped to retrieve the camera rotation of.
  * @return returns the camera rotation of the ped in degrees if successful. returns false if an
  * invalid element was passed.
@@ -250,7 +250,7 @@ export declare function getPedCameraRotation(
 /**
  * This function is used to get the current clothes texture and model of a certain type on a
  * ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedClothes Wiki, getPedClothes }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedClothes
  * @param thePed The ped whose clothes you want to retrieve.
  * @param clothesType The type/slot of clothing you want to get.
  * @return this function returns 2 string|strings, the clothes texture and model. the first return
@@ -269,7 +269,7 @@ export declare function getPedClothes(
 /**
  * This function detects the element a ped is standing on. This can be a vehicle or an
  * object.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedContactElement Wiki, getPedContactElement }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedContactElement
  * @param thePed The ped of which you want to get the element he is standing on.
  * @return returns an object or a vehicle if the ped is standing on one, false if he is touching
  * none or an invalid element was passed.
@@ -281,7 +281,7 @@ export declare function getPedContactElement(
 
 /**
  * Checks whether a ped or the localplayer has a certain control pressed.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedControlState Wiki, getPedControlState }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedControlState
  * @param thePed the ped you want to check.
  * @param control the control to get the status of. See control names for a list of valid names.
  * @return returns true if the ped is pressing the specified control, false if not or an invalid
@@ -295,7 +295,7 @@ export declare function getPedControlState(
 
 /**
  * Retrieves the fighting style a player/ped is currently using.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedFightingStyle Wiki, getPedFightingStyle }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedFightingStyle
  * @param thePed the ped whose current fighting style ID you wish to retrieve.
  * @return returns the peds current fighting style as an integer id, false if it fails to retrieve a
  * value.
@@ -307,7 +307,7 @@ export declare function getPedFightingStyle(
 
 /**
  * This function returns the current move state for the specified ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedMoveState Wiki, getPedMoveState }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedMoveState
  * @param thePed The ped whose move state you want to know
  * @return returns a string indicating the peds move state, or false if the ped is not streamed in,
  * the movement type is unknown, the ped is in a vehicle or the ped is invalid.
@@ -319,7 +319,7 @@ export declare function getPedMoveState(
 
 /**
  * This function gets the vehicle that the ped is currently in or is trying to enter, if any.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicle Wiki, getPedOccupiedVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicle
  * @param thePed : The ped whose vehicle youre looking up.
  * @return returns the vehicle that the specified ped is in, or false if the ped is not in a vehicle
  * or is an invalid ped.
@@ -331,7 +331,7 @@ export declare function getPedOccupiedVehicle(
 
 /**
  * This function gets the seat that a specific ped is sitting in in a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicleSeat Wiki, getPedOccupiedVehicleSeat }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicleSeat
  * @param thePed : The ped whose vehicle seat youre looking up.
  * @return * returns an integer containing the number of the seat that the ped is currently in:
  * ** 0: front-left
@@ -347,7 +347,7 @@ export declare function getPedOccupiedVehicleSeat(
 
 /**
  * This function returns the current oxygen level of the specified ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedOxygenLevel Wiki, getPedOxygenLevel }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedOxygenLevel
  * @param thePed The ped whose oxygen level you want to check
  * @return a float with the oxygen level, false if an invalid ped was given.
  * @noSelf
@@ -358,7 +358,7 @@ export declare function getPedOxygenLevel(
 
 /**
  * This function is used to get the name of a specified peds current simplest task.<br>
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedSimplestTask Wiki, getPedSimplestTask }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedSimplestTask
  * @param thePed : The ped whose task you want to retrieve.
  * @return returns a string representing the name of the peds simplest, active task.
  * @noSelf
@@ -369,7 +369,7 @@ export declare function getPedSimplestTask(
 
 /**
  * This function returns the value of the specified statistic of a specific ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedStat Wiki, getPedStat }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedStat
  * @param thePed : The ped whose stat you want to retrieve.
  * @param stat : A whole number determining the stat ID.
  * @return returns the value of the requested statistic.
@@ -382,7 +382,7 @@ export declare function getPedStat(
 
 /**
  * This function is used to get the element a ped is currently targeting.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTarget Wiki, getPedTarget }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedTarget
  * @param thePed The ped whose target you want to retrieve.
  * @return returns the element thats being targeted, or false if there isnt one.
  * this is only effective on physical gta elements, namely:
@@ -399,7 +399,7 @@ export declare function getPedTarget(
 /**
  * This function allows retrieval of where a peds target is blocked. It will only be blocked
  * if there is an obstacle within a peds target range.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTargetCollision Wiki, getPedTargetCollision }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedTargetCollision
  * @param targetingPed This is the ped whose target collision you wish to retrieve
  * @return returns three floats, x,y,z, representing the position where the peds target collides, or
  * false if it was unsuccessful.
@@ -416,7 +416,7 @@ export declare function getPedTargetCollision(
 /**
  * This function allows retrieval of the position where a peds target range ends, when he is
  * aiming with a weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTargetEnd Wiki, getPedTargetEnd }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedTargetEnd
  * @param targetingPed the ped who is targeting whose target end you wish to retrieve
  * @return returns three floats, x,y,z, representing the position where the peds target ends
  * according to his range, or false if it was unsuccessful.
@@ -433,7 +433,7 @@ export declare function getPedTargetEnd(
 /**
  * This function allows retrieval of the position a peds target range begins, when he is
  * aiming with a weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTargetStart Wiki, getPedTargetStart }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedTargetStart
  * @param targetingPed The ped whose target start you wish to retrieve
  * @return returns three floats, x,y,z, representing the position where the peds target starts, or
  * false if it was unsuccessful.
@@ -453,7 +453,7 @@ export declare function getPedTargetStart(
  * getPedSimplestTask will return TASK_SIMPLE_IN_AIR. If you wanted to know specifically if
  * the player has jumped, you would use this function. If you did you will discover that
  * while jumping Primary task 3 is TASK_COMPLEX_JUMP.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTask Wiki, getPedTask }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedTask
  * @param thePed : The ped whose task you want to retrieve.
  * @param priority : A string determining which set of tasks you want to retrieve it from. This must be
  * either primary or secondary.
@@ -491,7 +491,7 @@ export declare function getPedTask(
 /**
  * This function returns an integer that contains the total ammo in a specified peds weapon.
  * See weapon|Weapon Info
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTotalAmmo Wiki, getPedTotalAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedTotalAmmo
  * @param thePed : The ped whose ammo you want to check.
  * @param weaponSlot : an integer representing the weapon slot (set to the peds current slot if not given)
  * @return returns an int containing the total amount of ammo for the specified peds weapon, or 0 if
@@ -505,7 +505,7 @@ export declare function getPedTotalAmmo(
 
 /**
  * Gets the current voice of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedVoice Wiki, getPedVoice }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedVoice
  * @param thePed the ped to get the voice of.
  * @return if successul, returns the current voice type name and the voice name of the ped (see ped
  * voices for possible names). returns false in case of failure.
@@ -519,7 +519,7 @@ export declare function getPedVoice(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWalkingStyle Wiki, getPedWalkingStyle }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedWalkingStyle
  * @param thePed the ped whose walking style to retrieve.
  * @return returns the walking style id if successful, false otherwise. the possible walking styles
  * are as follows:
@@ -531,7 +531,7 @@ export declare function getPedWalkingStyle(
 
 /**
  * This function tells you which weapon type is in a certain weapon|weapon slot of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWeapon Wiki, getPedWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedWeapon
  * @param thePed : the ped you want to get the weapon type from.
  * @param weaponSlot : an integer representing the weapon|weapon slot (set to the peds current slot if not
  * given).
@@ -552,7 +552,7 @@ export declare function getPedWeapon(
  * Returns the world position of the muzzle of the weapon that a ped is currently carrying.
  * The weapon muzzle is the end of the gun barrel where the bullets/rockets/... come out.
  * The position may not be accurate if the ped is off screen.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWeaponMuzzlePosition Wiki, getPedWeaponMuzzlePosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedWeaponMuzzlePosition
  * @param thePed the ped whose weapon muzzle position to retrieve.
  * @return if successful, returns the x/y/z coordinates of the weapon muzzle. returns false
  * otherwise.
@@ -568,7 +568,7 @@ export declare function getPedWeaponMuzzlePosition(
 
 /**
  * This function gets a peds selected weapon slot.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWeaponSlot Wiki, getPedWeaponSlot }
+ * @see https://wiki.multitheftauto.com/wiki/GetPedWeaponSlot
  * @param thePed the ped to get the current weapon slot of.
  * @return returns the selected weapon slot id on success, false otherwise.
  * @noSelf
@@ -579,7 +579,7 @@ export declare function getPedWeaponSlot(
 
 /**
  * This function returns all valid ped models.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetValidPedModels Wiki, getValidPedModels }
+ * @see https://wiki.multitheftauto.com/wiki/GetValidPedModels
  * @return returns a table with all valid ped models.
  * @noSelf
  */
@@ -598,7 +598,7 @@ export declare function getValidPedModels(): LuaTable;
  * *When setting ammo for Weapon|weapons in slot 3,4,5 the ammo is added
  * *When setting ammo for Weapon|weapons in slot 2,6,7,8,9 and the slot weapon is changing,
  * the ammo is replaced
- * @see {@link https://wiki.multitheftauto.com/wiki/GivePedWeapon Wiki, givePedWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/GivePedWeapon
  * @param thePed A ped element.
  * @param weapon A whole number integer that refers to a Weapon ID. Click Weapon|here for a list of
  * possible weapon IDs.
@@ -620,7 +620,7 @@ export declare function givePedWeapon(
  * This function checks if the specified ped is choking (coughing) or not. This happens as a
  * result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray
  * can.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedChoking Wiki, isPedChoking }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedChoking
  * @param thePed : The ped you wish to check
  * @return returns true if the ped is choking, false otherwise.
  * @noSelf
@@ -631,7 +631,7 @@ export declare function isPedChoking(
 
 /**
  * This function checks if the specified ped is dead or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDead Wiki, isPedDead }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedDead
  * @param thePed : the ped you want to check up on.
  * @return returns true if the ped is dead, false otherwise.
  * @noSelf
@@ -642,7 +642,7 @@ export declare function isPedDead(
 
 /**
  * This function checks if the ped is in the driveby state.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDoingGangDriveby Wiki, isPedDoingGangDriveby }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedDoingGangDriveby
  * @param thePed The ped element whose state is to be checked.
  * @return returns true if the driveby state is enabled, false otherwise.
  * @noSelf
@@ -654,7 +654,7 @@ export declare function isPedDoingGangDriveby(
 /**
  * This function checks if the specified ped is carrying out a certain List of player
  * tasks|task.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDoingTask Wiki, isPedDoingTask }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedDoingTask
  * @param thePed : The ped you want to check.
  * @param taskName : A string containing the name of the List of player tasks|task youre checking for.
  * @return returns true if the player is currently doing the task, false otherwise.
@@ -667,7 +667,7 @@ export declare function isPedDoingTask(
 
 /**
  * This function checks if the specified ped is ducked (crouched) or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDucked Wiki, isPedDucked }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedDucked
  * @param thePed : The ped to check.
  * @return returns true if the ped is ducked, false otherwise.
  * @noSelf
@@ -678,7 +678,7 @@ export declare function isPedDucked(
 
 /**
  * This function checks if player feets are bleeding.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedFootBloodEnabled Wiki, isPedFootBloodEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedFootBloodEnabled
  * @param thePlayer The player to give bloody foot prints to.
  * @return returns true if feets are bleeding, false otherwise
  * @noSelf
@@ -689,7 +689,7 @@ export declare function isPedFootBloodEnabled(
 
 /**
  * With this function, you can check if a ped has a head or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedHeadless Wiki, isPedHeadless }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedHeadless
  * @param thePed : The ped to check.
  * @return returns true if the ped is headless, false otherwise.
  * @noSelf
@@ -700,7 +700,7 @@ export declare function isPedHeadless(
 
 /**
  * Checks whether or not a given ped is currently in a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedInVehicle Wiki, isPedInVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedInVehicle
  * @param thePed the ped you want to check.
  * @return returns true if the ped is in a vehicle, false if he is on foot or an invalid element was
  * passed.
@@ -712,7 +712,7 @@ export declare function isPedInVehicle(
 
 /**
  * This function checks if the specified ped is on fire or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedOnFire Wiki, isPedOnFire }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedOnFire
  * @param thePed : The ped to check.
  * @return returns true if the ped is on fire, false otherwise.
  * @noSelf
@@ -724,7 +724,7 @@ export declare function isPedOnFire(
 /**
  * This function is used to determine whether or not a ped is on the ground. This is for
  * on-foot usage only.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedOnGround Wiki, isPedOnGround }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedOnGround
  * @param thePed The ped you are checking.
  * @return returns true if the ped is on foot and on the ground, false otherwise, even if he is in a
  * car that stands still or on object outside world map.
@@ -737,7 +737,7 @@ export declare function isPedOnGround(
 /**
  * This function is used to determine whether or not a ped is currently reloading their
  * weapon. Useful to stop certain quick reload exploits.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedReloadingWeapon Wiki, isPedReloadingWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedReloadingWeapon
  * @param thePed The ped you are checking.
  * @return returns true if the ped is currently reloading a weapon, false otherwise.
  * @noSelf
@@ -749,14 +749,14 @@ export declare function isPedReloadingWeapon(
 /**
  * This function checks whether health target markers are drawn as set by
  * setPedTargetingMarkerEnabled or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedTargetingMarkerEnabled Wiki, isPedTargetingMarkerEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedTargetingMarkerEnabled
  * @return returns true if the health target markers are enabled, false if not.
  * @noSelf
  */
 export declare function isPedTargetingMarkerEnabled(): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsPedWearingJetpack Wiki, isPedWearingJetpack }
+ * @see https://wiki.multitheftauto.com/wiki/IsPedWearingJetpack
  * @param thePed the ped you want to check
  * @return returns true if the ped is carrying a jetpack, false if he is not or an invalid element
  * was passed.
@@ -770,7 +770,7 @@ export declare function isPedWearingJetpack(
  * This function kills the specified ped.
  * From v1.5.3 onwards this function is now available client side. Only works on client side
  * peds.
- * @see {@link https://wiki.multitheftauto.com/wiki/KillPed Wiki, killPed }
+ * @see https://wiki.multitheftauto.com/wiki/KillPed
  * @param thePed The ped to kill
  * @param theKiller The ped responsible for the kill
  * @param weapon The ID of the weapon or Damage Types that should appear to have killed the ped (doesnt
@@ -794,7 +794,7 @@ export declare function killPed(
  * This function is used to remove the current clothes of a certain type on a ped. It will
  * remove them if the clothesTexture and clothesModel arent specified, or if they match the
  * current clothes on that slot.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemovePedClothes Wiki, removePedClothes }
+ * @see https://wiki.multitheftauto.com/wiki/RemovePedClothes
  * @param thePed : The ped you want to remove clothes from.
  * @param clothesType : the clothes slot/type to remove. See the CJ Clothes|clothes catalog.
  * @param clothesTexture : (Server only) A string determining the clothes texture that will be removed. See the CJ
@@ -817,7 +817,7 @@ export declare function removePedClothes(
  * passengers. Note that this removes the ped from the vehicle and puts him in the exact
  * position where the command was initiated.
  * Available client side from 1.3.1 (It will only work with client side vehicles and peds)
- * @see {@link https://wiki.multitheftauto.com/wiki/RemovePedFromVehicle Wiki, removePedFromVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/RemovePedFromVehicle
  * @param thePed The ped you wish to remove from a vehicle
  * @return returns true if the operation was successful, false if the specified ped is not valid or
  * if it isnt in a vehicle.
@@ -830,7 +830,7 @@ export declare function removePedFromVehicle(
 /**
  * This sets the analog control state of a control for the local player.
  * To change the analog controls for a ped, please use setPedAnalogControlState.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetAnalogControlState Wiki, setAnalogControlState }
+ * @see https://wiki.multitheftauto.com/wiki/SetAnalogControlState
  * @param control The control that you want to set the state of. See control names for a list of possible
  * controls.
  * @param state A float between 0 and 1 indicating the amount the control is pressed. If no value is
@@ -854,7 +854,7 @@ export declare function setAnalogControlState(
  * shot.
  * Note: If you wish to make a ped shoot you must use this in conjunction with an equipped
  * weapon and setPedControlState.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAimTarget Wiki, setPedAimTarget }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedAimTarget
  * @param thePed The ped whose target you want to set. Only peds and remote players will work; this
  * function has no effect on the local player.
  * @param x The x coordinate of the aim target point.
@@ -874,7 +874,7 @@ export declare function setPedAimTarget(
  * Sets an analog state of a specified peds control, as if they pressed or released it.
  * This function only works on peds, to change the analog control state for a player, please
  * use setAnalogControlState.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnalogControlState Wiki, setPedAnalogControlState }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedAnalogControlState
  * @param thePed The ped you wish to set the control state of.
  * @param control The control that you want to set the state of. See control names for a list of possible
  * controls.
@@ -891,7 +891,7 @@ export declare function setPedAnalogControlState(
 /**
  * Sets the current Animations|animation of a player or ped. Not specifying the type of
  * animation will automatically cancel the current one.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnimation Wiki, setPedAnimation }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedAnimation
  * @param thePed the player or ped you want to apply an Animations|animation to.
  * @param block the Animations|animation blocks name.
  * @param anim the name of the Animations|animation within the block.
@@ -927,7 +927,7 @@ export declare function setPedAnimation(
 
 /**
  * Sets the current animation progress of a player or ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnimationProgress Wiki, setPedAnimationProgress }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedAnimationProgress
  * @param thePed the player or ped you want to change animation progress.
  * @param anim the animation name currently applied to ped, if not supplied, the animation will stop
  * @param progress current animation progress you want to apply, value from 0.0 to 1.0, if not supplied will
@@ -943,7 +943,7 @@ export declare function setPedAnimationProgress(
 
 /**
  * Sets the speed of a currently running animation for a particular player or ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnimationSpeed Wiki, setPedAnimationSpeed }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedAnimationSpeed
  * @param thePed the player or ped you want to change animation speed of.
  * @param anim the animation name it will affect.
  * @param speed a float containing the speed between 0.0–1.0 you want to apply to the animation. This
@@ -961,7 +961,7 @@ export declare function setPedAnimationSpeed(
 
 /**
  * This function allows you to set the armor value of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedArmor Wiki, setPedArmor }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedArmor
  * @param thePed : the ped whose armor you want to modify.
  * @param armor : the amount of armor you want to set on the ped. Valid values are from 0 to 100.
  * @return returns true if the armor was changed succesfully. returns false if an invalid ped was
@@ -977,7 +977,7 @@ export declare function setPedArmor(
  * This function sets the camera rotation of a ped, e.g. where its camera will look at. Dont
  * confuse this with getCameraMatrix, because that function is designed for fixed (scripted)
  * camera moves.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedCameraRotation Wiki, setPedCameraRotation }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedCameraRotation
  * @param thePed The ped whose camera rotation is to be changed.
  * @param cameraRotation The new direction that the ped will walk if you set their forwards control state. If the
  * ped is the local player, it will also change where his camera is looking at if it isnt
@@ -993,7 +993,7 @@ export declare function setPedCameraRotation(
 /**
  * This function controls if a ped can fall of his bike by accident - namely by banging into
  * a wall.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedCanBeKnockedOffBike Wiki, setPedCanBeKnockedOffBike }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedCanBeKnockedOffBike
  * @param thePed the ped whose knockoffstatus is being changed
  * @param canBeKnockedOffBike true or false
  * @noSelf
@@ -1005,7 +1005,7 @@ export declare function setPedCanBeKnockedOffBike(
 
 /**
  * This function makes a ped or player press or release a certain control.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedControlState Wiki, setPedControlState }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedControlState
  * @param thePed the ped you want to press or release a control.
  * @param control the name of the control of which to change the state. See control names for a list of
  * valid names.
@@ -1021,7 +1021,7 @@ export declare function setPedControlState(
 
 /**
  * This function sets the driveby state of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedDoingGangDriveby Wiki, setPedDoingGangDriveby }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedDoingGangDriveby
  * @param thePed The ped element whose state is to be changed.
  * @param state A boolean value representing the drive-by state, true meaning enabled and false disabled.
  * @return returns true if the driveby state could be changed, false otherwise.
@@ -1052,7 +1052,7 @@ export declare function setPedDoingGangDriveby(
  * seat while the ped is running toward it.
  * ** Exception: If the ped is forced to enter as a passenger and is going to use the front
  * door, the ped can wait if someone is using it to go the driver seat.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedEnterVehicle Wiki, setPedEnterVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedEnterVehicle
  * @param thePed The player or ped to enter the vehicle.
  * **''Note: The player must be the local player.''
  * **''Note: The ped must be synced by the client. Use [[isElementSyncer]] clientside to
@@ -1085,7 +1085,7 @@ export declare function setPedEnterVehicle(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedExitVehicle Wiki, setPedExitVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedExitVehicle
  * @param thePed The player or ped to exit the vehicle.
  * @return returns true if the function was successful, false otherwise.
  * when this function returns true, the client will ask server for permission to exit a
@@ -1106,7 +1106,7 @@ export declare function setPedExitVehicle(
 /**
  * Changes a peds fighting style. Most styles only change the special attack which is done
  * using the Aim and Enter keys.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedFightingStyle Wiki, setPedFightingStyle }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedFightingStyle
  * @param thePed The ped whose fighting style to change.
  * @param style The fighting style ID to apply.
  * @return returns true in case of success, false otherwise.
@@ -1119,7 +1119,7 @@ export declare function setPedFightingStyle(
 
 /**
  * This function makes a players foot prints bloody.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedFootBloodEnabled Wiki, setPedFootBloodEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedFootBloodEnabled
  * @param thePlayer The player to give bloody foot prints to.
  * @param enabled Boolean specifying whether or not to have bloody feet.
  * @return returns true if changing the players bloody feet status worked.
@@ -1132,7 +1132,7 @@ export declare function setPedFootBloodEnabled(
 
 /**
  * With this function, you can set if a ped has a head or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedHeadless Wiki, setPedHeadless }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedHeadless
  * @param thePed : The ped to check.
  * @param headState : head state, use true if you want the ped be headless, use false to give back the head.
  * @return returns true if successful, false otherwise
@@ -1145,7 +1145,7 @@ export declare function setPedHeadless(
 
 /**
  * Makes a ped turn his head and look at a specific world position or element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedLookAt Wiki, setPedLookAt }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedLookAt
  * @param thePed the ped to change the lookat of.
  * @param x the x coordinate of the world position to look at.
  * @param y the y coordinate of the world position to look at.
@@ -1172,7 +1172,7 @@ export declare function setPedLookAt(
 
 /**
  * This function can be used to set a ped on fire or extinguish a fire on it.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedOnFire Wiki, setPedOnFire }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedOnFire
  * @param thePed The ped that we want to set/unset
  * @param isOnFire true to set the ped on fire, false to extinguish any fire on him
  * @return returns true if successful, false otherwise
@@ -1185,7 +1185,7 @@ export declare function setPedOnFire(
 
 /**
  * This function allows you to set the oxygen level of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedOxygenLevel Wiki, setPedOxygenLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedOxygenLevel
  * @param thePed : the ped whose oxygen level you want to modify.
  * @param oxygen : the amount of oxygen you want to set on the ped. Native values are from 0 to 1000. Each
  * of the stamina (22) and underwater stamina (225) Template:Stats|stat maximum adds a bonus
@@ -1205,7 +1205,7 @@ export declare function setPedOxygenLevel(
  * This function allows you to set the value of a specific statistic for a ped. Visual stats
  * (FAT and BODY_MUSCLE) can only be used on the CJ skin, they have no effect on other skins.
  * When this function is used client side, it can only be used on client side created peds.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedStat Wiki, setPedStat }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedStat
  * @param thePed : the ped whose statistic you want to modify.
  * @param stat : the stat ID.
  * @param value : the new value of the stat. It must be between 0 and 1000.
@@ -1222,7 +1222,7 @@ export declare function setPedStat(
 
 /**
  * This function is used to toggle the health target marker on top of all pedestrians.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedTargetingMarkerEnabled Wiki, setPedTargetingMarkerEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedTargetingMarkerEnabled
  * @param enabled A boolean denoting whether we want to enable (true) or disable (false) the markers.
  * @return returns true if the markers were enabled, false if werent or if invalid arguments are
  * passed.
@@ -1234,7 +1234,7 @@ export declare function setPedTargetingMarkerEnabled(
 
 /**
  * Changes the voice of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedVoice Wiki, setPedVoice }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedVoice
  * @param thePed the ped whose voice to change.
  * @param voiceType the voice type. See ped voices for possible types.
  * @param voiceName the voice name within the specified type. See ped voices for possible voices.
@@ -1250,7 +1250,7 @@ export declare function setPedVoice(
 /**
  * Sets the walking style of a ped. A walking style consists of a set of animations that are
  * used for walking, running etc.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedWalkingStyle Wiki, setPedWalkingStyle }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedWalkingStyle
  * @param thePed the ped whose walking style to change.
  * @param style the walking style to set.
  * The possible walking styles are:
@@ -1264,7 +1264,7 @@ export declare function setPedWalkingStyle(
 
 /**
  * This function changes the selected weapon slot of a ped.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetPedWeaponSlot Wiki, setPedWeaponSlot }
+ * @see https://wiki.multitheftauto.com/wiki/SetPedWeaponSlot
  * @param thePed the ped whose weapon slot you want to set. In a clientside script, this cannot be used on
  * remote players.
  * @param weaponSlot the weapon slot to set.
@@ -1280,7 +1280,7 @@ export declare function setPedWeaponSlot(
  * This function is used to warp or force a ped into a vehicle.  There are no animations
  * involved when this happens.
  * Available client side from 1.3.1 (It will only work with client side vehicles and peds)
- * @see {@link https://wiki.multitheftauto.com/wiki/WarpPedIntoVehicle Wiki, warpPedIntoVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/WarpPedIntoVehicle
  * @param thePed The ped which you wish to force inside the vehicle
  * @param theVehicle The vehicle you wish to force the ped into
  * @param seat An integer representing the seat ID.

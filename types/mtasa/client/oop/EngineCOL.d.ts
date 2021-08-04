@@ -64,7 +64,7 @@ export class EngineCOL {
      * calling engineLoadDFF.
      * This is a client side function. Be sure to transfer your COL file by including it in the
      * meta file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadCOL Wiki, engineLoadCOL }
+     * @see https://wiki.multitheftauto.com/wiki/EngineLoadCOL
      * @param col_file / raw_data The filepath to the COL file you want to load or whole data buffer of the COL file.
      * @return returns a col if the file was loaded, false otherwise.
      */
@@ -75,7 +75,7 @@ export class EngineCOL {
     /**
      * This function replaces the collision file of the given model id to the collision file
      * passed. Use engineLoadCOL to load the collision file first.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceCOL Wiki, engineReplaceCOL }
+     * @see https://wiki.multitheftauto.com/wiki/EngineReplaceCOL
      * @param modelID The model ID whose collision file you want to replace
      * @return returns true if the collision was successfully replaced, false or nil if the collision
      * could not be replaced for a reason.

@@ -58,7 +58,7 @@ import {
 export class Material extends Element {
     /**
      * This gets the dimensions of the supplied material element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxGetMaterialSize Wiki, dxGetMaterialSize }
+     * @see https://wiki.multitheftauto.com/wiki/DxGetMaterialSize
      * @return returns two ints representing the width and height in pixels of the material, or false if
      * an invalid parameter was passed to the function.
      * if the material is a volume texture, this function will return three ints representing

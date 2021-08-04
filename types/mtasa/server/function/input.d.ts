@@ -50,7 +50,7 @@ import {
  * the message with a forward slash (/). For server side handlers, the server admin is also
  * able to trigger these directly from the servers console in the same way as they are
  * triggered from a players console.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddCommandHandler Wiki, addCommandHandler }
+ * @see https://wiki.multitheftauto.com/wiki/AddCommandHandler
  * @param commandName This is the name of the command you wish to attach a handler to. This is what must be
  * typed into the console to trigger the function.
  * @param handlerFunction This is the function that you want the command to trigger, which has to be defined before
@@ -77,7 +77,7 @@ export declare function addCommandHandler(
 /**
  * Binds a players key to a handler function or command, which will be called when the key
  * is pressed.
- * @see {@link https://wiki.multitheftauto.com/wiki/BindKey Wiki, bindKey }
+ * @see https://wiki.multitheftauto.com/wiki/BindKey
  * @param thePlayer The player you wish to bind the key of.
  * @param key The key that was pressed
  * @param keyState The state of the key that was pressed, down if it was pressed, up if it was released.
@@ -101,13 +101,13 @@ export declare function bindKey<
     key: ControlName | KeyName,
     keyState: KeyState,
     handlerFunction: CallbackType,
-    ...arguments: AdditionalArgs
+    ...args: AdditionalArgs
 ): boolean;
 
 /**
  * This function will call all the attached functions of an existing console command, for a
  * specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/ExecuteCommandHandler Wiki, executeCommandHandler }
+ * @see https://wiki.multitheftauto.com/wiki/ExecuteCommandHandler
  * @param commandName The name of the command you wish to execute. This is what must be typed into the console
  * to trigger the function.
  * @param thePlayer The player that will be presented as executer of the command to the handler function(s)
@@ -125,7 +125,7 @@ export declare function executeCommandHandler(
 /**
  * This function is used to retrieve a list of all the registered command handlers of a
  * given resource (or of all resources).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCommandHandlers Wiki, getCommandHandlers }
+ * @see https://wiki.multitheftauto.com/wiki/GetCommandHandlers
  * @param theResource The resource from which you wish to retrieve all command handlers. Or leave it empty to
  * retrieve command handlers of all resources.
  * @return returns a table containing all the commands of the given resource or a table with
@@ -145,7 +145,7 @@ export declare function getCommandHandlers(
  * be given incorrectly. As a rule, keys that move or affect the player or their vehicle are
  * most likely to be accurate. For increased accuracy (and also increased bandwidth usage)
  * use bindKey instead to bind a GTA control name to a function.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetControlState Wiki, getControlState }
+ * @see https://wiki.multitheftauto.com/wiki/GetControlState
  * @param thePlayer The player you wish to get the control state of. Do not use this parameter when scripting
  * for client.
  * @param controlName The control that you want to get the state of. See control names for a list of possible
@@ -182,7 +182,7 @@ export declare function getControlState(
 
 /**
  * Gets the functions bound to a key. To bind a function to a key use the bindKey function
- * @see {@link https://wiki.multitheftauto.com/wiki/GetFunctionsBoundToKey Wiki, getFunctionsBoundToKey }
+ * @see https://wiki.multitheftauto.com/wiki/GetFunctionsBoundToKey
  * @param thePlayer The player to get the functions from a key.
  * @param theKey The key you wish to check the functions from.
  * @param keyState A string that has one of the following values:
@@ -199,7 +199,7 @@ export declare function getFunctionsBoundToKey(
 
 /**
  * getKeyBoundToFunction allows retrieval of the first key bound to a function.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetKeyBoundToFunction Wiki, getKeyBoundToFunction }
+ * @see https://wiki.multitheftauto.com/wiki/GetKeyBoundToFunction
  * @param thePlayer The player you are checking the function bound to a key
  * @param theFunction The function in which you would like to check the bound key
  * @return returns a string of the first key the function was bound to.
@@ -212,7 +212,7 @@ export declare function getKeyBoundToFunction(
 
 /**
  * Checks whether a GTA control is enabled or disabled for a certain player.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsControlEnabled Wiki, isControlEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsControlEnabled
  * @param thePlayer The player you wish the control status of.
  * @param control The control you wish to check. See control names for a list of possible controls.
  * @noSelf
@@ -226,7 +226,7 @@ export declare function isControlEnabled(
  * This function can be used to find out if a key has already been bound. If you do not
  * specify a keyState or handler, any instances of key being bound will cause isKeyBound to
  * return true.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsKeyBound Wiki, isKeyBound }
+ * @see https://wiki.multitheftauto.com/wiki/IsKeyBound
  * @param thePlayer The player youre checking.
  * @param key The key youre checking. See Key names for a list of valid key names.
  * @param keyState Is the state of the key when it calls the function, Can be either:
@@ -247,7 +247,7 @@ export declare function isKeyBound(
  * This function removes a command handler, that is one that has been added using
  * addCommandHandler. This function can only remove command handlers that were added by the
  * resource that it is called in.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveCommandHandler Wiki, removeCommandHandler }
+ * @see https://wiki.multitheftauto.com/wiki/RemoveCommandHandler
  * @param commandName the name of the command you wish to remove.
  * @param handler the specific handler function to remove. If not specified, all handler functions for the
  * command (from the calling resource) will be removed. This argument is only available in
@@ -263,7 +263,7 @@ export declare function removeCommandHandler(
 
 /**
  * Sets a state of a specified players control, as if they pressed or released it.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetControlState Wiki, setControlState }
+ * @see https://wiki.multitheftauto.com/wiki/SetControlState
  * @param thePlayer The player you wish to set the control state of.
  * @param control The control that you want to set the state of. See control names for a list of possible
  * controls.
@@ -279,7 +279,7 @@ export declare function setControlState(
 
 /**
  * Enables or disables the use of all GTA controls for a specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToggleAllControls Wiki, toggleAllControls }
+ * @see https://wiki.multitheftauto.com/wiki/ToggleAllControls
  * @param thePlayer The player you wish to toggle the control ability of.
  * @param enabled A boolean value representing whether or not the controls will be usable.
  * @param gtaControls A boolean deciding whether the enabled parameter will affect GTAs internal controls.
@@ -296,7 +296,7 @@ export declare function toggleAllControls(
 
 /**
  * Enables or disables the use of a GTA control for a specific player.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToggleControl Wiki, toggleControl }
+ * @see https://wiki.multitheftauto.com/wiki/ToggleControl
  * @param thePlayer The player you wish to toggle the control ability of.
  * @param control The control that you want to toggle the ability of. See control names for a list of
  * possible controls.
@@ -311,7 +311,7 @@ export declare function toggleControl(
 
 /**
  * Removes an existing key bind from the specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/UnbindKey Wiki, unbindKey }
+ * @see https://wiki.multitheftauto.com/wiki/UnbindKey
  * @param thePlayer The player you wish to unbind the key of.
  * @param key The key you wish to unbind. See Key names for a list of valid key names.
  * @param keyState is optional in Syntax 2.

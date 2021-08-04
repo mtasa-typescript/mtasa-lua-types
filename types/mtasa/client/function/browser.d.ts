@@ -57,7 +57,7 @@ import {
 
 /**
  * This function checks if the browser can return to the previous page.
- * @see {@link https://wiki.multitheftauto.com/wiki/CanBrowserNavigateBack Wiki, canBrowserNavigateBack }
+ * @see https://wiki.multitheftauto.com/wiki/CanBrowserNavigateBack
  * @param webBrowser The browser you want to check for a previous page.
  * @return returns true if the browser can navigate back, false otherwise.
  * @noSelf
@@ -68,7 +68,7 @@ export declare function canBrowserNavigateBack(
 
 /**
  * This function checks if the browser can go to the next page.
- * @see {@link https://wiki.multitheftauto.com/wiki/CanBrowserNavigateForward Wiki, canBrowserNavigateForward }
+ * @see https://wiki.multitheftauto.com/wiki/CanBrowserNavigateForward
  * @param webBrowser The browser you want check for a next page.
  * @return returns true if the browser can go to the next page, false otherwise.
  * @noSelf
@@ -79,7 +79,7 @@ export declare function canBrowserNavigateForward(
 
 /**
  * This function creates a new web Element/Browser|browser element.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateBrowser Wiki, createBrowser }
+ * @see https://wiki.multitheftauto.com/wiki/CreateBrowser
  * @param width The browsers native width. This should be greater than or equal to 1.
  * @param height The browsers native height. This should be greater than or equal to 1.
  * @param isLocal Sets whether the browser can only show local content or content from the internet (see
@@ -99,7 +99,7 @@ export declare function createBrowser(
 /**
  * This function executes a Javascript string to the specified Element/Browser|browser.
  * Works only with local browsers.
- * @see {@link https://wiki.multitheftauto.com/wiki/ExecuteBrowserJavascript Wiki, executeBrowserJavascript }
+ * @see https://wiki.multitheftauto.com/wiki/ExecuteBrowserJavascript
  * @param webBrowser The web browser which will execute the Javascript code
  * @param jsCode The Javascript code string
  * @return returns true if executing javascript is allowed in the current context, false otherwise.
@@ -113,7 +113,7 @@ export declare function executeBrowserJavascript(
 /**
  * This function will attempt to focus the Element/Browser|browser or unfocus all browsers.
  * The browser that is focused will retrieve keyboard input.
- * @see {@link https://wiki.multitheftauto.com/wiki/FocusBrowser Wiki, focusBrowser }
+ * @see https://wiki.multitheftauto.com/wiki/FocusBrowser
  * @param webBrowser The web browser to be focused - if this is nil, it will unfocus all browsers.
  * @return returns true if the browser was focused or if nil was passed, false if it failed to focus
  * or the browser does not exist.
@@ -125,7 +125,7 @@ export declare function focusBrowser(
 
 /**
  * This function gets a given property of a specified browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserProperty Wiki, getBrowserProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GetBrowserProperty
  * @param theBrowser browser element to get the property value of
  * @param key The browser property key. It can be:
  * @param mobile Surfing the web as mobile
@@ -139,7 +139,7 @@ export declare function getBrowserProperty(
 
 /**
  * This function returns a table containing the browser settings.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSettings Wiki, getBrowserSettings }
+ * @see https://wiki.multitheftauto.com/wiki/GetBrowserSettings
  * @return a table having the following keys:
  * * remoteenabled: true if remote websites are enabled, false otherwise
  * * remotejavascript: true if javascript is enabled on remote websites, false otherwise
@@ -152,7 +152,7 @@ export declare function getBrowserSettings(): LuaTable;
 /**
  * This function can be used to retrieve the source code of a website (asynchronously). The
  * size of the source code is limited to 2 MiB (remaining bytes are cut).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserSource Wiki, getBrowserSource }
+ * @see https://wiki.multitheftauto.com/wiki/GetBrowserSource
  * @param webBrowser The browser element you want to get the source of
  * @param callback a callback function with syntax as described below
  * <syntaxhighlight lang="lua">
@@ -168,7 +168,7 @@ export declare function getBrowserSource(
 
 /**
  * This function returns the title of the passed Element/Browser|browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserTitle Wiki, getBrowserTitle }
+ * @see https://wiki.multitheftauto.com/wiki/GetBrowserTitle
  * @param webBrowser The browser
  * @return returns the title as a string. returns false if invalid arguments were passed.
  * @noSelf
@@ -179,7 +179,7 @@ export declare function getBrowserTitle(
 
 /**
  * This function returns the URL of the specified Element/Browser|browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBrowserURL Wiki, getBrowserURL }
+ * @see https://wiki.multitheftauto.com/wiki/GetBrowserURL
  * @param webBrowser The browser
  * @return returns the web browser url.
  * @noSelf
@@ -190,7 +190,7 @@ export declare function getBrowserURL(
 
 /**
  * This function injects a mouse click (state: down).
- * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseDown Wiki, injectBrowserMouseDown }
+ * @see https://wiki.multitheftauto.com/wiki/InjectBrowserMouseDown
  * @param webBrowser The web browser
  * @param mouseButton The mouse button (Possible values: left, middle, right)
  * @return returns true if the click was successfully injected, false otherwise.
@@ -203,7 +203,7 @@ export declare function injectBrowserMouseDown(
 
 /**
  * This function injects a mouse movement.
- * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseMove Wiki, injectBrowserMouseMove }
+ * @see https://wiki.multitheftauto.com/wiki/InjectBrowserMouseMove
  * @param webBrowser The browser which will retrieve the mouse movement
  * @param posX Absolute X screen coordinate
  * @param posY Absolute Y screen coordinate
@@ -218,7 +218,7 @@ export declare function injectBrowserMouseMove(
 
 /**
  * This function injects a mouse click (state: up).
- * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp Wiki, injectBrowserMouseUp }
+ * @see https://wiki.multitheftauto.com/wiki/InjectBrowserMouseUp
  * @param webBrowser The web browser
  * @param mouseButton The mouse button (Possible values: left, middle, right)
  * @return returns true if the click was successfully injected, false otherwise.
@@ -231,7 +231,7 @@ export declare function injectBrowserMouseUp(
 
 /**
  * This function injects mouse wheel events.
- * @see {@link https://wiki.multitheftauto.com/wiki/InjectBrowserMouseWheel Wiki, injectBrowserMouseWheel }
+ * @see https://wiki.multitheftauto.com/wiki/InjectBrowserMouseWheel
  * @param webBrowser The web browser
  * @param verticalScroll : Amount of units you want the browser to scroll along the Y-axe.
  * @param horizontalScroll : Amount of units you want the browser to scroll along the X-axe.
@@ -246,7 +246,7 @@ export declare function injectBrowserMouseWheel(
 
 /**
  * This function checks if the specified URL is blocked from being loaded.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserDomainBlocked Wiki, isBrowserDomainBlocked }
+ * @see https://wiki.multitheftauto.com/wiki/IsBrowserDomainBlocked
  * @param address A website URL
  * @param isURL true if address should be parsed as URL, false otherwise.
  * @return returns false if the url is able to be loaded, true if it is blocked and nil if an
@@ -260,7 +260,7 @@ export declare function isBrowserDomainBlocked(
 
 /**
  * This function checks if a browser is focused.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserFocused Wiki, isBrowserFocused }
+ * @see https://wiki.multitheftauto.com/wiki/IsBrowserFocused
  * @param webBrowser The browser
  * @return returns true if the browser is focused, false otherwise and nil if invalid arguments were
  * passed.
@@ -272,7 +272,7 @@ export declare function isBrowserFocused(
 
 /**
  * This function checks if a browser is currently loading a website.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsBrowserLoading Wiki, isBrowserLoading }
+ * @see https://wiki.multitheftauto.com/wiki/IsBrowserLoading
  * @param webBrowser The browser
  * @return returns true if the browser is loading a website, false otherwise and nil if invalid
  * arguments were passed.
@@ -284,7 +284,7 @@ export declare function isBrowserLoading(
 
 /**
  * This function loads the specified URL.
- * @see {@link https://wiki.multitheftauto.com/wiki/LoadBrowserURL Wiki, loadBrowserURL }
+ * @see https://wiki.multitheftauto.com/wiki/LoadBrowserURL
  * @param webBrowser The Element/Browser|browser element which will load the URL
  * @param url The url you want to load. It can either contain a remote website (http:// prefix) or a
  * website stored within a local resource (http://mta/local/gui.html for example, see
@@ -305,7 +305,7 @@ export declare function loadBrowserURL(
 
 /**
  * Returns the browser to the previous page.
- * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserBack Wiki, navigateBrowserBack }
+ * @see https://wiki.multitheftauto.com/wiki/NavigateBrowserBack
  * @param webBrowser The browser that you want return to the previous page.
  * @return returns true if the browser has returned to the previous page, false otherwise.
  * @noSelf
@@ -316,7 +316,7 @@ export declare function navigateBrowserBack(
 
 /**
  * This function takes the browser to the next page.
- * @see {@link https://wiki.multitheftauto.com/wiki/NavigateBrowserForward Wiki, navigateBrowserForward }
+ * @see https://wiki.multitheftauto.com/wiki/NavigateBrowserForward
  * @param webBrowser The browser that you want to take to the next page.
  * @return returns true if the browser has gone to the next page, false otherwise.
  * @noSelf
@@ -327,7 +327,7 @@ export declare function navigateBrowserForward(
 
 /**
  * This function reloads the current browsers page.
- * @see {@link https://wiki.multitheftauto.com/wiki/ReloadBrowserPage Wiki, reloadBrowserPage }
+ * @see https://wiki.multitheftauto.com/wiki/ReloadBrowserPage
  * @param webBrowser The browser that you want to reload.
  * @return returns true if the browser has reloaded, false otherwise.
  * @noSelf
@@ -338,7 +338,7 @@ export declare function reloadBrowserPage(
 
 /**
  * This function opens a request window in order to accept the requested remote URLs.
- * @see {@link https://wiki.multitheftauto.com/wiki/RequestBrowserDomains Wiki, requestBrowserDomains }
+ * @see https://wiki.multitheftauto.com/wiki/RequestBrowserDomains
  * @param pages A table containing all domains
  * @param parseAsURL true if the passed addresses should be converted from URLs, false otherwise.
  * @param callback A callback function that is called as soon as the result is available
@@ -356,7 +356,7 @@ export declare function requestBrowserDomains(
 
 /**
  * Allows resizing of CEF browsers at runtime.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResizeBrowser Wiki, resizeBrowser }
+ * @see https://wiki.multitheftauto.com/wiki/ResizeBrowser
  * @param webBrowser The browser you want to resize.
  * @param width The new width of the browser.
  * @param height The new height of the browser.
@@ -372,7 +372,7 @@ export declare function resizeBrowser(
 /**
  * This function provides a requestable ajax resource for Lua/Javascript communication for a
  * Element/Browser|browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserAjaxHandler Wiki, setBrowserAjaxHandler }
+ * @see https://wiki.multitheftauto.com/wiki/SetBrowserAjaxHandler
  * @param webBrowser The web browser which will execute the Javascript code
  * @param url The URL endpoint to handle
  * @param handler The function to call if the webBrowser attempts to open the ajax endpoint. If this
@@ -387,7 +387,7 @@ export declare function setBrowserAjaxHandler(
 
 /**
  * This function sets a given property of a specified browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserProperty Wiki, setBrowserProperty }
+ * @see https://wiki.multitheftauto.com/wiki/SetBrowserProperty
  * @param theBrowser The browser element you want to set a property of
  * @param key The browser property key. It can be:
  * @param mobile Surfing the web as mobile
@@ -403,7 +403,7 @@ export declare function setBrowserProperty(
 
 /**
  * This function sets the rendering state of a browser.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused Wiki, setBrowserRenderingPaused }
+ * @see https://wiki.multitheftauto.com/wiki/SetBrowserRenderingPaused
  * @param webBrowser The browser
  * @param paused true to pause rendering, false to continue
  * @return returns true if the state was successfully changed
@@ -417,7 +417,7 @@ export declare function setBrowserRenderingPaused(
 /**
  * This function sets either a specific Element/Browser|browsers volume, or the overall
  * volume for browsers.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserVolume Wiki, setBrowserVolume }
+ * @see https://wiki.multitheftauto.com/wiki/SetBrowserVolume
  * @param volume A float|floating point number representing the desired volume level. Range is from 0.0 to
  * 1.0
  * @param webBrowser A browser element
@@ -429,7 +429,7 @@ export declare function setBrowserVolume(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetBrowserVolume Wiki, setBrowserVolume }
+ * @see https://wiki.multitheftauto.com/wiki/SetBrowserVolume
  * @noSelf
  */
 export declare function setBrowserVolume(
@@ -438,7 +438,7 @@ export declare function setBrowserVolume(
 
 /**
  * This function toggles the visibility of the developer tools pane.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToggleBrowserDevTools Wiki, toggleBrowserDevTools }
+ * @see https://wiki.multitheftauto.com/wiki/ToggleBrowserDevTools
  * @param webBrowser The browser
  * @param visible true to show the tools, false to hide
  * @return returns true if the visibility was successfully toggled, false if an error occurred

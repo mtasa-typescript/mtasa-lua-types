@@ -59,7 +59,7 @@ import {
  * Returns information about how the chatbox looks.
  * These values come from the file called: Chatboxpresets.xml but it depends on what type of
  * preset you currently have, which is chosen from your settings in the Interface tab.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetChatboxLayout Wiki, getChatboxLayout }
+ * @see https://wiki.multitheftauto.com/wiki/GetChatboxLayout
  * @param CVar the name of the property you want returned. Can be the following values:
  * @param chat_font - Returns the chatbox font
  * @param chat_lines - Returns how many lines the chatbox has
@@ -93,7 +93,7 @@ export declare function getChatboxLayout(
 ): boolean | number | LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiBlur Wiki, guiBlur }
+ * @see https://wiki.multitheftauto.com/wiki/GuiBlur
  * @param guiElement the GUI element that you want to defocus
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
@@ -104,7 +104,7 @@ export declare function guiBlur(
 
 /**
  * This function brings a GUI element on top of others.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiBringToFront Wiki, guiBringToFront }
+ * @see https://wiki.multitheftauto.com/wiki/GuiBringToFront
  * @param guiElement the GUI element that you want to move to the front.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
@@ -115,7 +115,7 @@ export declare function guiBringToFront(
 
 /**
  * This function gets a checkboxs selection state.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected Wiki, guiCheckBoxGetSelected }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected
  * @param theCheckbox The checkbox you wish to retrieve the selection state of.
  * @return returns true if the checkbox is selected, false if it is not.
  * @noSelf
@@ -126,7 +126,7 @@ export declare function guiCheckBoxGetSelected(
 
 /**
  * This function selects (ticks) or unselects a checkbox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected Wiki, guiCheckBoxSetSelected }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected
  * @param theCheckbox The GUI element in which you wish to change the selection state of
  * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
  * @return returns true if the checkboxs selection state was successfully set, false otherwise.
@@ -139,7 +139,7 @@ export declare function guiCheckBoxSetSelected(
 
 /**
  * Adds an item to a combobox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxAddItem Wiki, guiComboBoxAddItem }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxAddItem
  * @param comboBox The combobox you want to add a row to
  * @param value The text that the item will contain.
  * @return returns the item id if it has been created, false otherwise.
@@ -152,7 +152,7 @@ export declare function guiComboBoxAddItem(
 
 /**
  * This function removes all the items from a combobox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxClear Wiki, guiComboBoxClear }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxClear
  * @param comboBox The combobox element to be cleared
  * @return returns true if the combobox element is valid and has been cleared successfully, false
  * otherwise.
@@ -163,7 +163,7 @@ export declare function guiComboBoxClear(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxGetItemCount Wiki, guiComboBoxGetItemCount }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxGetItemCount
  * @param comboBox The combo box to get the number of items from.
  * @return returns the number of items if the function is successful, false otherwise.
  * @noSelf
@@ -174,7 +174,7 @@ export declare function guiComboBoxGetItemCount(
 
 /**
  * This function retrieves the text from a specific combobox item.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxGetItemText Wiki, guiComboBoxGetItemText }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxGetItemText
  * @param comboBox The combobox containing the item youre interested in
  * @param itemId The index of the item
  * @return returns the text of the item if the arguments are right, false otherwise.
@@ -187,7 +187,7 @@ export declare function guiComboBoxGetItemText(
 
 /**
  * This function returns the index of the selected combobox item.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxGetSelected Wiki, guiComboBoxGetSelected }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxGetSelected
  * @param comboBox the combobox you want to know the selected item index of
  * @return returns the index of the selected item if the specified combobox is valid and has a
  * selected item, -1 if no item is selected, nil otherwise.
@@ -198,7 +198,7 @@ export declare function guiComboBoxGetSelected(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxIsOpen Wiki, guiComboBoxIsOpen }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxIsOpen
  * @param comboBox The combo box to get the state.
  * @return returns true if combobox is opened, false if combobox is closed, nil otherwise.
  * @noSelf
@@ -209,7 +209,7 @@ export declare function guiComboBoxIsOpen(
 
 /**
  * This function removes an item from a combobox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxRemoveItem Wiki, guiComboBoxRemoveItem }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxRemoveItem
  * @param comboBox The combobox containing the item youre interested in
  * @param itemId The index of the item to remove
  * @return returns true if the item was removes successfully, false otherwise.
@@ -222,7 +222,7 @@ export declare function guiComboBoxRemoveItem(
 
 /**
  * This function changes the text of a combobox item.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxSetItemText Wiki, guiComboBoxSetItemText }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxSetItemText
  * @param comboBox The combobox containing the item youre interested in
  * @param itemId The index of the item
  * @param text The text you want to put in (does NOT accept numbers, use tostring() for that)
@@ -236,7 +236,7 @@ export declare function guiComboBoxSetItemText(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxSetOpen Wiki, guiComboBoxSetOpen }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxSetOpen
  * @param comboBox The combobox to be opened or closed.
  * @param state The state of combobox. true, if the combobox is to be opened. false if the combobox is to
  * be closed.
@@ -250,7 +250,7 @@ export declare function guiComboBoxSetOpen(
 
 /**
  * This function sets the selected item from a combobox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiComboBoxSetSelected Wiki, guiComboBoxSetSelected }
+ * @see https://wiki.multitheftauto.com/wiki/GuiComboBoxSetSelected
  * @param comboBox the combobox you want to select an item from
  * @param itemIndex the item you want to select (item 0 is the first item). If -1 is specified, then the
  * combo box text is set to its caption.
@@ -270,7 +270,7 @@ export declare function guiComboBoxSetSelected(
  * You can learn more about the differences
  * https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=7373
  * 34 here.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateBrowser Wiki, guiCreateBrowser }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateBrowser
  * @param x A float of the 2D x position of the browser on a players screen.  This is affected by the
  * relative argument.
  * @param y A float of the 2D y position of the browser on a players screen. This is affected by the
@@ -306,7 +306,7 @@ export declare function guiCreateBrowser(
 
 /**
  * This function allows creation of a GUI Button, which is a clickable item as part of GUI.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateButton Wiki, guiCreateButton }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateButton
  * @param x A float of the 2D x position of the GUI button on a players screen.  This is affected by
  * the relative argument.
  * @param y A float of the 2D y position of the GUI button on a players screen. This is affected by
@@ -338,7 +338,7 @@ export declare function guiCreateButton(
 
 /**
  * This function creates a Element/GUI/Checkbox|checkbox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateCheckBox Wiki, guiCreateCheckBox }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateCheckBox
  * @param x A float of the 2D x position of the checkbox on a players screen. This is affected by the
  * relative argument.
  * @param y A float of the 2D y position of the checkbox on a players screen. This is affected by the
@@ -374,7 +374,7 @@ export declare function guiCreateCheckBox(
 /**
  * This function creates a combobox GUI element, which you can compare to a gridlist with a
  * dropdown feature.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateComboBox Wiki, guiCreateComboBox }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateComboBox
  * @param x A float of the 2D x position of the GUI combobox on a players screen.  This is affected
  * by the relative argument.
  * @param y A float of the 2D y position of the GUI combobox on a players screen. This is affected by
@@ -410,7 +410,7 @@ export declare function guiCreateComboBox(
  * This function is for creating a new GUI edit box. This is a text box in which the user
  * can input text. Edit boxes only allow a single line of text. If you want to allow
  * multiple lines of text create a memo box using guiCreateMemo.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateEdit Wiki, guiCreateEdit }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateEdit
  * @param x A float of the 2D x position of the GUI edit box on a players screen.  This is affected
  * by the relative argument.
  * @param y A float of the 2D y position of the GUI edit box on a players screen. This is affected by
@@ -445,7 +445,7 @@ export declare function guiCreateEdit(
  * creation is not guaranteed, and may fail due to hardware or memory limitations.
  * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
  * zero, failure is guaranteed.)
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateFont Wiki, guiCreateFont }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateFont
  * @param filepath the name of the file containing the font
  * @param size size of the font
  * @return returns a gui font element if successful, false if invalid arguments were passed to the
@@ -462,7 +462,7 @@ export declare function guiCreateFont(
  * This function creates a grid list GUI element.  These are menus which are designed in
  * lists and can have multiple columns.  A good example of a gridlist element can be found
  * in MTAs settings box, under Controls.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateGridList Wiki, guiCreateGridList }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateGridList
  * @param x A float of the 2D x position of the GUI gridlist on a players screen.  This is affected
  * by the relative argument.
  * @param y A float of the 2D y position of the GUI gridlist on a players screen. This is affected by
@@ -496,7 +496,7 @@ export declare function guiCreateGridList(
  * cannot be edited by the user. If you would like to have a bigger text youd have to change
  * its font because font size is not supported.
  * </td></tr></table>
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateLabel Wiki, guiCreateLabel }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateLabel
  * @param x A float of the 2D x position of the GUI label on a players screen.  This is affected by
  * the relative argument.
  * @param y A float of the 2D y position of the GUI label on a players screen. This is affected by
@@ -529,7 +529,7 @@ export declare function guiCreateLabel(
 /**
  * This function creates a new GUI memo.  This is a multiline edit box in which the user can
  * input text.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateMemo Wiki, guiCreateMemo }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateMemo
  * @param x A float of the 2D x position of the GUI memo on a players screen.  This is affected by
  * the relative argument.
  * @param y A float of the 2D y position of the GUI memo on a players screen. This is affected by the
@@ -561,7 +561,7 @@ export declare function guiCreateMemo(
 
 /**
  * This function creates a Element/GUI/Progress bar|progress bar.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateProgressBar Wiki, guiCreateProgressBar }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateProgressBar
  * @param x A float of the 2D x position of the progress bar on a players screen. This is affected by
  * the relative argument.
  * @param y A float of the 2D y position of the progress bar on a players screen. This is affected by
@@ -590,7 +590,7 @@ export declare function guiCreateProgressBar(
 
 /**
  * This function creates a Element/GUI/Radio button|radio button.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateRadioButton Wiki, guiCreateRadioButton }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateRadioButton
  * @param x A float of the 2D x position of the radio button on a players screen. This is affected by
  * the relative argument.
  * @param y A float of the 2D y position of the radio button on a players screen. This is affected by
@@ -628,7 +628,7 @@ export declare function guiCreateRadioButton(
  * guiScrollPaneSetHorizontalScrollPosition, guiScrollPaneSetVerticalScrollPosition,
  * guiScrollPaneGetHorizontalScrollPosition and guiScrollPaneGetVerticalScrollPosition to
  * read and modify the scrollbars scroll.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateScrollBar Wiki, guiCreateScrollBar }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateScrollBar
  * @param x the 2D x offset of the GUI scrollbar from its parent.  This is affected by the relative
  * argument.
  * @param y the 2D y offset of the GUI scrollbar from its parent. This is affected by the relative
@@ -656,7 +656,7 @@ export declare function guiCreateScrollBar(
 
 /**
  * This creates a GUI scroll pane.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateScrollPane Wiki, guiCreateScrollPane }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateScrollPane
  * @param x the 2D x offset of the GUI scrollpane from its parent. This is affected by the relative
  * argument.
  * @param y the 2D y offset of the GUI scrollpane from its parent. This is affected by the relative
@@ -682,7 +682,7 @@ export declare function guiCreateScrollPane(
 
 /**
  * This function creates a static image using a .png image in the resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateStaticImage Wiki, guiCreateStaticImage }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateStaticImage
  * @param x A float of the 2D x position of the image on a players screen. This is affected by the
  * relative argument.
  * @param y A float of the 2D y position of the image on a players screen. This is affected by the
@@ -715,7 +715,7 @@ export declare function guiCreateStaticImage(
  * This function creates a tab on a pre-existing tab panel. A tab is a button as well as a
  * dimension that can be used to switch between information by clicking on the tabs.  Tabs
  * are sorted on a tab panel in the order that they are created.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateTab Wiki, guiCreateTab }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateTab
  * @param text The caption for the tab
  * @param parent The parent tab panel, as a tab panel element type
  * @return returns a tab element if successful, false otherwise.
@@ -728,7 +728,7 @@ export declare function guiCreateTab(
 
 /**
  * This function creates a Tab Panel, which acts as a template to create Tabs upon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateTabPanel Wiki, guiCreateTabPanel }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateTabPanel
  * @param x A float of the 2D x position of the GUI tab panel on a players screen.  This is affected
  * by the relative argument.
  * @param y A float of the 2D y position of the GUI tab panel on a players screen. This is affected
@@ -759,7 +759,7 @@ export declare function guiCreateTabPanel(
  * This function is for creating a new GUI window.  This provides a base for other gui
  * elements to be created within.  However, windows do not have a parent and cannot be
  * created in any GUI elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateWindow Wiki, guiCreateWindow }
+ * @see https://wiki.multitheftauto.com/wiki/GuiCreateWindow
  * @param x A float of the 2D x position of the GUI window on a players screen.  This is affected by
  * the relative argument.
  * @param y A float of the 2D y position of the GUI window on a players screen. This is affected by
@@ -785,7 +785,7 @@ export declare function guiCreateWindow(
 
 /**
  * This function deletes a tab from a tab panel.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiDeleteTab Wiki, guiDeleteTab }
+ * @see https://wiki.multitheftauto.com/wiki/GuiDeleteTab
  * @param tabToDelete This is an element representing the tab that you want to delete.
  * @param tabPanel This is the guiCreateTabPanel|tab panel parent that the tab is attached to.
  * @return returns true the tab was successfully deleted, false otherwise.
@@ -798,7 +798,7 @@ export declare function guiDeleteTab(
 
 /**
  * This function returns the caret (the text cursor) position within the editbox.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetCaretIndex Wiki, guiEditGetCaretIndex }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditGetCaretIndex
  * @param theElement The edit box you want to get the caret position from
  * @return returns the caret index on success, false otherwise.
  * @noSelf
@@ -808,7 +808,7 @@ export declare function guiEditGetCaretIndex(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength Wiki, guiEditGetMaxLength }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength
  * @param guiEdit The edit box you want to get the maximum text length of.
  * @return returns the maximum text length on success, false otherwise.
  * @noSelf
@@ -818,7 +818,7 @@ export declare function guiEditGetMaxLength(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditIsMasked Wiki, guiEditIsMasked }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditIsMasked
  * @param guiEdit the edit box to check masked flag of.
  * @return returns true if the edit box is masked, false if not, nil if an invalid edit box was
  * provided.
@@ -829,7 +829,7 @@ export declare function guiEditIsMasked(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditIsReadOnly Wiki, guiEditIsReadOnly }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditIsReadOnly
  * @param guiEdit The edit box to check read-only status of.
  * @return returns true if the edit box is read-only, false if not, nil if an invalid edit box was
  * provided.
@@ -842,7 +842,7 @@ export declare function guiEditIsReadOnly(
 /**
  * This function sets the current position of the caret (the text cursor) within the edit
  * box.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetCaretIndex Wiki, guiEditSetCaretIndex }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditSetCaretIndex
  * @param theElement The edit box to be changed.
  * @param index An integer referring to the desired position within the box.
  * @return returns true if the index was successfully set, false otherwise.
@@ -856,7 +856,7 @@ export declare function guiEditSetCaretIndex(
 /**
  * This function sets or removes masking (covering up the text being typed) for password
  * text fields.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMasked Wiki, guiEditSetMasked }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditSetMasked
  * @param theElement The edit box to be changed.
  * @param status A boolean value indicating whether masking is to be enabled or disabled.
  * @return returns true if the function is successful, false otherwise.
@@ -869,7 +869,7 @@ export declare function guiEditSetMasked(
 
 /**
  * This function sets the maximum text length that can be typed into an edit box.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMaxLength Wiki, guiEditSetMaxLength }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditSetMaxLength
  * @param theElement The edit box to be changed.
  * @param length An integer indicating the maximum number of characters that can be typed into the box.
  * @return returns true if the max length was set successfully, false otherwise.
@@ -883,7 +883,7 @@ export declare function guiEditSetMaxLength(
 /**
  * This function allows you to set or remove read-only status for an edit box. If read-only
  * is set to true, the box is not editable.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly Wiki, guiEditSetReadOnly }
+ * @see https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly
  * @param editField The element of the Element/GUI/Edit field|edit field to be modified.
  * @param status A boolean value indicating whether read-only is to be enabled or disabled.
  * @return returns true if edit fields read-only status was changed successfully, false otherwise.
@@ -895,7 +895,7 @@ export declare function guiEditSetReadOnly(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiFocus Wiki, guiFocus }
+ * @see https://wiki.multitheftauto.com/wiki/GuiFocus
  * @param guiElement the GUI element that you want to focus
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
@@ -907,7 +907,7 @@ export declare function guiFocus(
 /**
  * Alpha represents the transparency of a gui element.  This function allows retrieval of a
  * gui elements current alpha.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetAlpha Wiki, guiGetAlpha }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetAlpha
  * @param guiElement The gui element in which you want to retrieve the alpha of.
  * @return this function returns a positive integer in between 0 and 1 of the gui elements current
  * alpha, or false if it could not be retrieved.
@@ -920,7 +920,7 @@ export declare function guiGetAlpha(
 /**
  * This function gets the browser element behind a gui-browser (a browser that has been
  * created via guiCreateBrowser).
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetBrowser Wiki, guiGetBrowser }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetBrowser
  * @param theBrowser The gui-browser
  * @return returns the element/browser|browser element if a correct element/gui-browser|gui-browser
  * has been passed, false otherwise.
@@ -932,7 +932,7 @@ export declare function guiGetBrowser(
 
 /**
  * This function is used to get the type of the current cursor image.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetCursorType Wiki, guiGetCursorType }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetCursorType
  * @return returns a string containing the cursor type:
  * * none            // cursor has no image
  * * arrow           // default cursor
@@ -951,7 +951,7 @@ export declare function guiGetCursorType(): string;
 
 /**
  * This function determines if a GUI element is enabled.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetEnabled Wiki, guiGetEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetEnabled
  * @param guiElement the GUI element to be checked.
  * @return returns true if the element is enabled, false otherwise.
  * @noSelf
@@ -962,7 +962,7 @@ export declare function guiGetEnabled(
 
 /**
  * This function is used to get the current font that is used to draw text in GUI elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetFont Wiki, guiGetFont }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetFont
  * @param guiElement element you wish to get the font of.
  * @return *string a string containing the name of the elements current font, or false if the gui
  * element passed to the function is invalid.
@@ -978,7 +978,7 @@ export declare function guiGetFont(
 
 /**
  * This function checks whether user input is focused on the GUI or the game.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputEnabled Wiki, guiGetInputEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetInputEnabled
  * @return returns true if input is focused on gui, false if its focused on the game.
  * @noSelf
  */
@@ -987,7 +987,7 @@ export declare function guiGetInputEnabled(): boolean;
 /**
  * This function returns the current input mode as set by guiSetInputMode.
  * Default mode is allow_binds.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetInputMode Wiki, guiGetInputMode }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetInputMode
  * @return returns a string defining the current input mode, potential values are:
  * * allow_binds: binds are enabled, hence using a key such as t in an editbox will still
  * activate the chatbox
@@ -1001,7 +1001,7 @@ export declare function guiGetInputMode(): string;
 
 /**
  * This function allows retrieval of a GUI elements current position, relative to its parent.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetPosition Wiki, guiGetPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetPosition
  * @param guiElement The gui element of which you wish to retrieve the position.
  * @param relative A boolean representing whether the position should be relative to the elements parent
  * width, or the number of offset pixels from the parents origin.
@@ -1021,7 +1021,7 @@ export declare function guiGetPosition(
  * This function gets a list of the CEGUI property names and values of a GUI element. To
  * find out what the different properties mean, check out the
  * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperties Wiki, guiGetProperties }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetProperties
  * @param guiElement the GUI element you wish to get the properties of.
  * @return if the function succeeds, the return value is a table. its keys are property names, the
  * corresponding values are the values of the properties (both names and values are always
@@ -1036,7 +1036,7 @@ export declare function guiGetProperties(
  * This function gets the value of a specific CEGUI property of a GUI element. For a list of
  * properties and their meaning, see the
  * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetProperty Wiki, guiGetProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetProperty
  * @param guiElement the GUI element you wish to get a property of.
  * @param property the name of of property you want the value of.
  * @return if the function succeeds, it returns a string with the value of the property. if it
@@ -1050,7 +1050,7 @@ export declare function guiGetProperty(
 
 /**
  * This function retrieves the local screen size according to the resolution they are using.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetScreenSize Wiki, guiGetScreenSize }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetScreenSize
  * @return this returns two floats representing the players screen resolution, width and height.
  * @noSelf
  */
@@ -1062,7 +1062,7 @@ export declare function guiGetScreenSize(): LuaMultiReturn<[
 /**
  * This function returns the currently selected tab in the specified Element/GUI/Tab
  * panel|tab panel.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetSelectedTab Wiki, guiGetSelectedTab }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetSelectedTab
  * @param tabPanel The Element/GUI/Tab panel|tab panel which current tab you want to retrieve.
  * @return returns an element of the element/gui/tab|tab if a tab was selected or nil if no tab was
  * selected. if passed arguments were invalid or something went wrong, the function will
@@ -1075,7 +1075,7 @@ export declare function guiGetSelectedTab(
 
 /**
  * This function gets the size of a GUI element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetSize Wiki, guiGetSize }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetSize
  * @param theElement The GUI element to get size of.
  * @param relative A boolean representing whether the size should be relative to the elements parent width,
  * or an absolute size in pixels.
@@ -1093,7 +1093,7 @@ export declare function guiGetSize(
 /**
  * This function is used to get the text of GUI elements like edit boxes, labels, buttons
  * etc.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetText Wiki, guiGetText }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetText
  * @param guiElement element you wish to get text of.
  * @return returns a string containing the requested elements text, or false if the gui element
  * passed to the function is invalid.
@@ -1105,7 +1105,7 @@ export declare function guiGetText(
 
 /**
  * This function determines if a GUI element is visible.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetVisible Wiki, guiGetVisible }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGetVisible
  * @param guiElement the GUI element to be checked
  * @return returns true if the element is visible, false otherwise.
  * @noSelf
@@ -1116,7 +1116,7 @@ export declare function guiGetVisible(
 
 /**
  * This function is used to create columns in grid lists.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListAddColumn Wiki, guiGridListAddColumn }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListAddColumn
  * @param gridList The grid list you want to add a column to
  * @param title Title of the column
  * @param width Column width, relative to the grid list width
@@ -1135,7 +1135,7 @@ export declare function guiGridListAddColumn(
  * ATTENTION: Without guiGridListSetItemText there is no row added to the grid.
  * Look at the example, first you give the row a name with row = guiGridListAddRow (
  * playerList ), and then you use guiGridListSetItemText. }}
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListAddRow Wiki, guiGridListAddRow }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListAddRow
  * @param gridList The grid list you want to add a row to
  * @param itemText1 The text for the first column item in the row.  Either a string or a number can be passed
  * (use numbers for sorting purposes).
@@ -1155,7 +1155,7 @@ export declare function guiGridListAddRow(
 /**
  * This allows you to automatically size a column to display everything in it correctly,
  * with the most minimal width.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListAutoSizeColumn Wiki, guiGridListAutoSizeColumn }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListAutoSizeColumn
  * @param gridList The Element/GUI/Gridlist|grid list element where the column is located.
  * @param columnIndex The ID of the column you want to be auto-sized.
  * @return returns true if the column was auto-sized, false otherwise.
@@ -1168,7 +1168,7 @@ export declare function guiGridListAutoSizeColumn(
 
 /**
  * This function clears all the data from a grid list.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListClear Wiki, guiGridListClear }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListClear
  * @param gridList The grid list element to be cleared
  * @return returns true if the grid list element is valid and has been cleared successfully, false
  * otherwise.
@@ -1180,7 +1180,7 @@ export declare function guiGridListClear(
 
 /**
  * This allows you to get the count of existing columns in a gridlist.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount Wiki, guiGridListGetColumnCount }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount
  * @param gridList The grid list you want to add a column to
  * @return returns an integer with the amount of columns in the gridlist, false otherwise.
  * @noSelf
@@ -1191,7 +1191,7 @@ export declare function guiGridListGetColumnCount(
 
 /**
  * This function is used to get the column title of a gridlist column.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnTitle Wiki, guiGridListGetColumnTitle }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnTitle
  * @param guiGridlist : The grid list you want to get the column title from
  * @param columnIndex : Column ID
  * @return returns a string containing the column title, or false otherwise.
@@ -1204,7 +1204,7 @@ export declare function guiGridListGetColumnTitle(
 
 /**
  * This allows you to get the width of an existing column in a gridlist.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnWidth Wiki, guiGridListGetColumnWidth }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnWidth
  * @param gridList The grid list you want to add a column to
  * @param columnIndex Column ID of the Get size
  * @param relative A boolean defining whether width measurements will be relative to the Gridlist size, or
@@ -1220,7 +1220,7 @@ export declare function guiGridListGetColumnWidth(
 
 /**
  * This function is used to get the horizontal scroll position from a grid list
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetHorizontalScrollPosition Wiki, guiGridListGetHorizontalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetHorizontalScrollPosition
  * @param guiGridlist : The grid list you want to get the horizontal scroll position from
  * @return returns a integer between 0 and 100 indicating the horizontal scroll position, or false
  * otherwise.
@@ -1232,7 +1232,7 @@ export declare function guiGridListGetHorizontalScrollPosition(
 
 /**
  * This function gets the color of a gridlist item.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetItemColor Wiki, guiGridListGetItemColor }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemColor
  * @param gridList The grid list element
  * @param rowIndex Row ID
  * @param columnIndex Column ID
@@ -1257,7 +1257,7 @@ export declare function guiGridListGetItemColor(
  * an internal string that you can use to hold extra information about the item.<br/>
  * Note: This function will only work after you set the items text using
  * guiGridListSetItemText!
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetItemData Wiki, guiGridListGetItemData }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemData
  * @param gridList the grid list containing the item youre interested in
  * @param rowIndex the row index of the item
  * @param columnIndex the column index of the item
@@ -1273,7 +1273,7 @@ export declare function guiGridListGetItemData(
 
 /**
  * This function retrieves the text from a specific grid list item.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetItemText Wiki, guiGridListGetItemText }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemText
  * @param gridList the gridlist containing the item youre interested in
  * @param rowIndex row id of the item
  * @param columnIndex column id of the item
@@ -1288,7 +1288,7 @@ export declare function guiGridListGetItemText(
 
 /**
  * This function returns the number of rows in a grid list.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetRowCount Wiki, guiGridListGetRowCount }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetRowCount
  * @param gridList The grid list to get the number of rows from.
  * @return returns the number of rows if the function is successful, false otherwise.
  * @noSelf
@@ -1300,7 +1300,7 @@ export declare function guiGridListGetRowCount(
 /**
  * This function returns the amount of options selected in the specified
  * Element/GUI/Gridlist|grid list.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedCount Wiki, guiGridListGetSelectedCount }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedCount
  * @param gridList The Element/GUI/Gridlist|grid list which amount of selected items you want to retrieve.
  * @return returns an integer representing the amount of selected options if everything was
  * successful or false if invalid arguments were passed.
@@ -1313,7 +1313,7 @@ export declare function guiGridListGetSelectedCount(
 /**
  * This function returns the row and column indexes of the selected item in a grid list.
  * First selected row and column is (0, 0).
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItem Wiki, guiGridListGetSelectedItem }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItem
  * @param gridList the grid list you want to know the selected row index of
  * @return returns the row and column indexes of the selected item if the specified grid list is
  * valid and has a selected item, (-1, -1) if no item is selected, false otherwise.
@@ -1331,7 +1331,7 @@ export declare function guiGridListGetSelectedItem(
  * Note that for some reason the column ID is 1 lower than it should be, for example 0 is
  * returned but if you try and get the text for column 0 there is nothing, but column 1 has
  * what you clicked on.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItems Wiki, guiGridListGetSelectedItems }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItems
  * @param gridList The Element/GUI/Gridlist|grid list which selected items you want to retrieve.
  * @return returns a table over the selected items in the element/gui/gridlist|grid list in this
  * format:
@@ -1356,7 +1356,7 @@ export declare function guiGridListGetSelectedItems(
 ): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectionMode Wiki, guiGridListGetSelectionMode }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectionMode
  * @param gridlist The gridlist you want to get the selection mode of.
  * @return returns the id of the current gridlists selection mode.
  * @noSelf
@@ -1367,7 +1367,7 @@ export declare function guiGridListGetSelectionMode(
 
 /**
  * This function is used to get the vertical scroll position from a grid list
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetVerticalScrollPosition Wiki, guiGridListGetVerticalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetVerticalScrollPosition
  * @param guiGridlist : The grid list you want to get the vertical scroll position from
  * @return returns a integer between 0 and 100 indicating the vertical scroll position, or false
  * otherwise.
@@ -1381,7 +1381,7 @@ export declare function guiGridListGetVerticalScrollPosition(
  * This allows you to insert a new row after a specified row, and simultaneously set text.
  * Good for inserting new rows in the middle of existing rows. To insert at the top use -1
  * as row index.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListInsertRowAfter Wiki, guiGridListInsertRowAfter }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListInsertRowAfter
  * @param gridList The grid list you want to add a row to
  * @param rowIndex Row ID of the row you want to insert the new row after.
  * @param itemText1 The text for the first column item in the row.  Either a string or a number can be passed
@@ -1398,7 +1398,7 @@ export declare function guiGridListInsertRowAfter(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListIsSortingEnabled Wiki, guiGridListIsSortingEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListIsSortingEnabled
  * @param guiGridlist The GUI gridlist you wish to check if sorting is enabled or not.
  * @return returns true if sorting is enabled, false otherwise.
  * @noSelf
@@ -1409,7 +1409,7 @@ export declare function guiGridListIsSortingEnabled(
 
 /**
  * This allows you to delete columns that exist in grid lists.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListRemoveColumn Wiki, guiGridListRemoveColumn }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListRemoveColumn
  * @param gridList The grid list you want to remove a column from
  * @param columnIndex Column ID
  * @return returns true if the grid list column was successfully removed, false otherwise.
@@ -1422,7 +1422,7 @@ export declare function guiGridListRemoveColumn(
 
 /**
  * This allows you to delete rows that exist in grid lists.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListRemoveRow Wiki, guiGridListRemoveRow }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListRemoveRow
  * @param gridList The grid list you want to remove a row from
  * @param rowIndex The row ID which you want to remove
  * @return returns true if the grid list row was successfully removed, false otherwise.
@@ -1435,7 +1435,7 @@ export declare function guiGridListRemoveRow(
 
 /**
  * This function is used to change the column title of a gridlist column.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnTitle Wiki, guiGridListSetColumnTitle }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnTitle
  * @param guiGridlist : The grid list you want to change the column title from
  * @param columnIndex : Column ID
  * @param title : The title of the column
@@ -1450,7 +1450,7 @@ export declare function guiGridListSetColumnTitle(
 
 /**
  * This allows you to set the width of an existing column in a gridlist.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnWidth Wiki, guiGridListSetColumnWidth }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnWidth
  * @param gridList The grid list you want to add a column to
  * @param columnIndex Column ID of the size you want to change
  * @param width A float or integer of the width of the column depending on the relative argument.
@@ -1469,7 +1469,7 @@ export declare function guiGridListSetColumnWidth(
 
 /**
  * This function is used to set the horizontal scroll position from a grid list
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetHorizontalScrollPosition Wiki, guiGridListSetHorizontalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetHorizontalScrollPosition
  * @param guiGridlist : The grid list you want to set the horizontal scroll position from
  * @param fPosition : A float representing the horizontal scroll position (0-100)
  * @return returns true if the horizontal scroll position was set, or false otherwise.
@@ -1482,7 +1482,7 @@ export declare function guiGridListSetHorizontalScrollPosition(
 
 /**
  * This function changes the color of a gridlist item.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetItemColor Wiki, guiGridListSetItemColor }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetItemColor
  * @param gridList The grid list element
  * @param rowIndex Row ID
  * @param columnIndex Column ID
@@ -1507,7 +1507,7 @@ export declare function guiGridListSetItemColor(
  * This function sets a Item Data associated to a grid list item.<br/>
  * Note: This function will only work after you set the items text using
  * guiGridListSetItemText!
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetItemData Wiki, guiGridListSetItemData }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetItemData
  * @param gridList A gridlist element of the data you wish to set to
  * @param rowIndex The row of the item you wish to set to
  * @param columnIndex The column of the item you wish to set to
@@ -1526,7 +1526,7 @@ export declare function guiGridListSetItemData(
  * This function changes the text of a gridlist item.
  * Notice: This function doesnt work well with Sorting. If you are using sorting, please use
  * the optional arguments of guiGridListAddRow as much as possible.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetItemText Wiki, guiGridListSetItemText }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetItemText
  * @param gridList The grid list element
  * @param rowIndex Row ID
  * @param columnIndex Column ID
@@ -1547,7 +1547,7 @@ export declare function guiGridListSetItemText(
 
 /**
  * This function allows a gridlists scrollbar to be forced on, or returned to default.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetScrollBars Wiki, guiGridListSetScrollBars }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetScrollBars
  * @param guiGridlist The GUI gridlist you wish to change the state of scrollbars
  * @param horizontalBar A bool where true forces the horizontal scrollbar on, and false returns them to default.
  * @param verticalBar A bool where true forces the verical scrollbar on, and false returns them to default.
@@ -1563,7 +1563,7 @@ export declare function guiGridListSetScrollBars(
 /**
  * This function selects an item from a gridlist. If you wish to deselect whatever item is
  * selected, pass 0 as both the rowIndex and  columnIndex arguments.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectedItem Wiki, guiGridListSetSelectedItem }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectedItem
  * @param gridList the grid list you want to select an item from
  * @param rowIndex the row you want to select (index 0 is the first row)
  * @param columnIndex the column you want to select (index 1 is the first column)
@@ -1583,7 +1583,7 @@ export declare function guiGridListSetSelectedItem(
  * This function sets the selection mode of a gui gridlist.  For example, the MTA server
  * browser selects a whole row, while the Controls dialog selects a single cell. To select
  * multiple items you must be holding down ctrl.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectionMode Wiki, guiGridListSetSelectionMode }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectionMode
  * @param gridlist The gridlist in which you wish to set the selection mode.
  * @param mode The mode of the selection.  Can be the following values:
  * @param 0 Single row selection
@@ -1609,7 +1609,7 @@ export declare function guiGridListSetSelectionMode(
  * achieved by clicking a column header.  Gridlist items will be sorted according to the
  * clicked column.  By default, gridlists have sorting enabled.  This function will allow
  * you to toggle this.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetSortingEnabled Wiki, guiGridListSetSortingEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetSortingEnabled
  * @param guiGridlist The GUI gridlist you wish to toggle the sorting of.
  * @param enabled A boolean representing whether the sorting is enabled, or disabled.
  * @return returns true if sorting was successfully toggled., false otherwise.
@@ -1622,7 +1622,7 @@ export declare function guiGridListSetSortingEnabled(
 
 /**
  * This function is used to set the vertical scroll position from a grid list
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetVerticalScrollPosition Wiki, guiGridListSetVerticalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetVerticalScrollPosition
  * @param guiGridlist : The grid list you want to set the vertical scroll position from
  * @param fPosition : A float representing the vertical scroll position (0-100)
  * @return returns true if the vertical scroll position was set, or false otherwise.
@@ -1635,7 +1635,7 @@ export declare function guiGridListSetVerticalScrollPosition(
 
 /**
  * This function gets the color of a label.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetColor Wiki, guiLabelGetColor }
+ * @see https://wiki.multitheftauto.com/wiki/GuiLabelGetColor
  * @param theLabel The label to get color.
  * @return returns three int values, representing the amount of red, green, blue if successful.
  * false otherwise.
@@ -1651,7 +1651,7 @@ export declare function guiLabelGetColor(
 
 /**
  * This function returns the height of the font currently used in a GUI text label.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetFontHeight Wiki, guiLabelGetFontHeight }
+ * @see https://wiki.multitheftauto.com/wiki/GuiLabelGetFontHeight
  * @param theLabel The text label to get the font height from.
  * @return returns the absolute height of the font currently used in the text label if the function
  * is successful, false otherwise.
@@ -1663,7 +1663,7 @@ export declare function guiLabelGetFontHeight(
 
 /**
  * This function returns the extent, or width, of the current text inside a GUI text label.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetTextExtent Wiki, guiLabelGetTextExtent }
+ * @see https://wiki.multitheftauto.com/wiki/GuiLabelGetTextExtent
  * @param theLabel The text label to get the text extent from.
  * @return returns the absolute width of the current text inside the text label if the function is
  * successful, false otherwise.
@@ -1675,7 +1675,7 @@ export declare function guiLabelGetTextExtent(
 
 /**
  * This function allows you to set the color of a GUI label.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetColor Wiki, guiLabelSetColor }
+ * @see https://wiki.multitheftauto.com/wiki/GuiLabelSetColor
  * @param theElement The label to be changed.
  * @param red An integer specifying the amount of red (0 to 255).
  * @param green An integer specifying the amount of green (0 to 255).
@@ -1692,7 +1692,7 @@ export declare function guiLabelSetColor(
 
 /**
  * This function sets the horizontal alignment of a text label.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetHorizontalAlign Wiki, guiLabelSetHorizontalAlign }
+ * @see https://wiki.multitheftauto.com/wiki/GuiLabelSetHorizontalAlign
  * @param theLabel The text label to set the horizontal alignment on.
  * @param align The alignment type. Valid type strings are:
  * **"left"
@@ -1710,7 +1710,7 @@ export declare function guiLabelSetHorizontalAlign(
 
 /**
  * This function sets the vertical alignment of a text label.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetVerticalAlign Wiki, guiLabelSetVerticalAlign }
+ * @see https://wiki.multitheftauto.com/wiki/GuiLabelSetVerticalAlign
  * @param theLabel The text label to set the vertical alignment on.
  * @param align The alignment type. Valid type strings are:
  * **"top"
@@ -1726,7 +1726,7 @@ export declare function guiLabelSetVerticalAlign(
 
 /**
  * This function returns the caret (the text cursor) position within the memo box.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoGetCaretIndex Wiki, guiMemoGetCaretIndex }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMemoGetCaretIndex
  * @param theElement The memo box you want to get the caret position from
  * @return returns the caret index on success, false otherwise.
  * @noSelf
@@ -1736,7 +1736,7 @@ export declare function guiMemoGetCaretIndex(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoGetVerticalScrollPosition Wiki, guiMemoGetVerticalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMemoGetVerticalScrollPosition
  * @param theMemo : the guiCreateMemo|memo you want to know the vertical scroll position of.
  * @return returns a float ranging between 0 and 100, or false otherwise.
  * @noSelf
@@ -1746,7 +1746,7 @@ export declare function guiMemoGetVerticalScrollPosition(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoIsReadOnly Wiki, guiMemoIsReadOnly }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMemoIsReadOnly
  * @param theMemo The memo to check read-only status of.
  * @return returns true if the memo is read only, false if the memo isnt read only, nil otherwise.
  * @noSelf
@@ -1757,7 +1757,7 @@ export declare function guiMemoIsReadOnly(
 
 /**
  * This function sets the current position of the caret (the text cursor) within the memo.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoSetCaretIndex Wiki, guiMemoSetCaretIndex }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMemoSetCaretIndex
  * @param theMemo The memo edit box where the caret position is to be changed.
  * @param index An integer referring to the desired character position within the box. 0 would be before
  * the first character in the box, 1 before the second, etc.
@@ -1772,7 +1772,7 @@ export declare function guiMemoSetCaretIndex(
 /**
  * This function allows you to set or remove read-only status for a GUI memo. If read-only
  * is set to true, the contents are not editable.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoSetReadOnly Wiki, guiMemoSetReadOnly }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMemoSetReadOnly
  * @param theMemo The memo to change read-only status of.
  * @param status A boolean value indicating whether read-only is to be enabled or disabled.
  * @return returns true if the status was successfully changed, false otherwise.
@@ -1784,7 +1784,7 @@ export declare function guiMemoSetReadOnly(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMemoSetVerticalScrollPosition Wiki, guiMemoSetVerticalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMemoSetVerticalScrollPosition
  * @param theMemo : the guiCreateMemo|memo you want to change the vertical scroll position of.
  * @param position : a float ranging between 0 and 100.
  * @return returns true if the position was set, false otherwise.
@@ -1797,7 +1797,7 @@ export declare function guiMemoSetVerticalScrollPosition(
 
 /**
  * This function moves a GUI element to the very back of all other GUI elements.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiMoveToBack Wiki, guiMoveToBack }
+ * @see https://wiki.multitheftauto.com/wiki/GuiMoveToBack
  * @param guiElement the GUI element that you want to move to the back
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
@@ -1808,7 +1808,7 @@ export declare function guiMoveToBack(
 
 /**
  * This function gets the progress of a progress bar as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiProgressBarGetProgress Wiki, guiProgressBarGetProgress }
+ * @see https://wiki.multitheftauto.com/wiki/GuiProgressBarGetProgress
  * @param theProgressbar : The progressbar you want to check.
  * @return returns a float ranging between 0 and 100.
  * @noSelf
@@ -1819,7 +1819,7 @@ export declare function guiProgressBarGetProgress(
 
 /**
  * This function is used to set the progress of a progressbar as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiProgressBarSetProgress Wiki, guiProgressBarSetProgress }
+ * @see https://wiki.multitheftauto.com/wiki/GuiProgressBarSetProgress
  * @param theProgressbar : The progressbar you want to change the progress of
  * @param progress : a float ranging from 0 - 100
  * @return returns true if the progress was set, false otherwise.
@@ -1832,7 +1832,7 @@ export declare function guiProgressBarSetProgress(
 
 /**
  * This function gets a radio buttons selection state.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiRadioButtonGetSelected Wiki, guiRadioButtonGetSelected }
+ * @see https://wiki.multitheftauto.com/wiki/GuiRadioButtonGetSelected
  * @param guiRadioButton The radio button you wish to retrieve the selection state of.
  * @return returns true if the radio button is selected, false if it is not.
  * @noSelf
@@ -1843,7 +1843,7 @@ export declare function guiRadioButtonGetSelected(
 
 /**
  * This function selects or unselects a radio button.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiRadioButtonSetSelected Wiki, guiRadioButtonSetSelected }
+ * @see https://wiki.multitheftauto.com/wiki/GuiRadioButtonSetSelected
  * @param guiRadioButton The GUI radio button in which you wish to change the selection state of
  * @param state The state of the radio button, where true indicates selected, and false indicates
  * unselected.
@@ -1857,7 +1857,7 @@ export declare function guiRadioButtonSetSelected(
 
 /**
  * This function gets the scroll amount of a scrollbar as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollBarGetScrollPosition Wiki, guiScrollBarGetScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollBarGetScrollPosition
  * @param theScrollBar : The scrollbar you want to check.
  * @return returns a float ranging between 0 and 100, representing the amount the scrollbar has been
  * scrolled.
@@ -1869,7 +1869,7 @@ export declare function guiScrollBarGetScrollPosition(
 
 /**
  * This function is used to set the scroll amount of a scrollbar as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollBarSetScrollPosition Wiki, guiScrollBarSetScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollBarSetScrollPosition
  * @param theScrollBar : The scrollbar you want to change the progress of
  * @param amount : a float ranging from 0 - 100 representing the amount you wish to set the scroll bar.
  * @return returns true if the scroll position was successfully set, false otherwise.
@@ -1882,7 +1882,7 @@ export declare function guiScrollBarSetScrollPosition(
 
 /**
  * This function is used to get the position of a horizontal scroll pane as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneGetHorizontalScrollPosition Wiki, guiScrollPaneGetHorizontalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollPaneGetHorizontalScrollPosition
  * @param horizontalScrollPane : The scroll pane you want to know the position of
  * @return returns a float ranging between 0 and 100, or false otherwise.
  * @noSelf
@@ -1893,7 +1893,7 @@ export declare function guiScrollPaneGetHorizontalScrollPosition(
 
 /**
  * This function is used to get the position of a vertical scroll pane as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneGetVerticalScrollPosition Wiki, guiScrollPaneGetVerticalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollPaneGetVerticalScrollPosition
  * @param verticalScrollPane : The scroll pane you want to know the position of
  * @return returns a float ranging between 0 and 100, or false otherwise.
  * @noSelf
@@ -1904,7 +1904,7 @@ export declare function guiScrollPaneGetVerticalScrollPosition(
 
 /**
  * This function is used to set the position of a horizontal scroll pane as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneSetHorizontalScrollPosition Wiki, guiScrollPaneSetHorizontalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollPaneSetHorizontalScrollPosition
  * @param horizontalScrollPane : The scroll pane you want to change the position of
  * @param position : a float ranging from 0 - 100
  * @return returns true if the position was set, false otherwise.
@@ -1917,7 +1917,7 @@ export declare function guiScrollPaneSetHorizontalScrollPosition(
 
 /**
  * This function allows a scrollpanes scrollbars to be forced on, or returned to default.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneSetScrollBars Wiki, guiScrollPaneSetScrollBars }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollPaneSetScrollBars
  * @param scrollPane the GUI scrollpane element you want to set the scrollbars of.
  * @param horizontal A bool where true forces the horizontal scrollbar on, and false returns them to default.
  * @param vertical A bool where true forces the vertical scrollbar on, and false returns them to default.
@@ -1932,7 +1932,7 @@ export declare function guiScrollPaneSetScrollBars(
 
 /**
  * This function is used to set the position of a vertical scroll pane as a percentage.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiScrollPaneSetVerticalScrollPosition Wiki, guiScrollPaneSetVerticalScrollPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiScrollPaneSetVerticalScrollPosition
  * @param verticalScrollPane : The scroll pane you want to change the position of
  * @param position : a float ranging from 0 - 100
  * @return returns true if the position was set, false otherwise.
@@ -1945,7 +1945,7 @@ export declare function guiScrollPaneSetVerticalScrollPosition(
 
 /**
  * This changes the alpha level (the visibleness/transparency) of a GUI element
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetAlpha Wiki, guiSetAlpha }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetAlpha
  * @param guiElement the GUI element whose visibility is to be changed
  * @param alpha The visibility/transparency of the GUI element. Ranges from 0 (fully transparent) to 1
  * (fully opaque). Default value is 0.80.
@@ -1960,7 +1960,7 @@ export declare function guiSetAlpha(
 /**
  * This function enables/disables a GUI element. A disabled GUI element cant be used, gets a
  * gray aspect and doesnt receive any events.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetEnabled Wiki, guiSetEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetEnabled
  * @param guiElement the GUI element you wish to enable or disable
  * @param enabled the new state
  * @return if the function succeeds it returns true, if it fails it returns false.
@@ -1973,7 +1973,7 @@ export declare function guiSetEnabled(
 
 /**
  * This function sets the font of a GUI_widgets|GUI element to be used when drawing text.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetFont Wiki, guiSetFont }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetFont
  * @param guiElement The GUI element you wish to change the font of
  * @param font Either a custom GUI font element or the name of a built-in GUI font. See Standard GUI
  * Font Names
@@ -1991,7 +1991,7 @@ export declare function guiSetFont(
  * other words, keys such as t and y which activate the chatbox are disabled.
  * guiSetInputMode can be used as an extended version of guiSetInputEnabled since it
  * provides the same functionality with one added feature.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetInputEnabled Wiki, guiSetInputEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetInputEnabled
  * @param enabled true if input should go to GUI, false if it should go to the game.
  * @return returns true if input mode could be changed, false if invalid parameters are passed.
  * @noSelf
@@ -2010,7 +2010,7 @@ export declare function guiSetInputEnabled(
  * chatbox)
  * * only disabled when actually editing an editbox or a memo (binds are always enabled
  * except when an editbox or memo has input focus)
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetInputMode Wiki, guiSetInputMode }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetInputMode
  * @param mode a string representing the desired input mode. Accepted values are:
  * @param allow_binds binds are enabled, hence using a key such as t in an editbox will still activate the
  * chatbox (default)
@@ -2026,7 +2026,7 @@ export declare function guiSetInputMode(
 
 /**
  * This function sets the position of a GUI element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetPosition Wiki, guiSetPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetPosition
  * @param theElement The GUI element to change position for
  * @param x Position over the X axis
  * @param y Position over the Y axis
@@ -2045,7 +2045,7 @@ export declare function guiSetPosition(
  * This function sets the value of a specific CEGUI property of a GUI element. For a list of
  * properties and their meaning, see the
  * http://static.cegui.org.uk/static/WindowsLookProperties.html CEGUI properties page.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetProperty Wiki, guiSetProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetProperty
  * @param guiElement the GUI element you wish to get a property of.
  * @param property the name of of property you want the value of.
  * @param value the new value for the property.
@@ -2061,7 +2061,7 @@ export declare function guiSetProperty(
 /**
  * This function is used to change the currently selected Element/GUI/Tab|tab in a
  * Element/GUI/Tab panel|tab panel.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetSelectedTab Wiki, guiSetSelectedTab }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetSelectedTab
  * @param tabPanel The Element/GUI/Tab panel|tab panel which current tab you want to change.
  * @param theTab The Element/GUI/Tab|tab which will be the new active tab.
  * @return returns true if the selected tab was changed to a new one successfully, false otherwise.
@@ -2075,7 +2075,7 @@ export declare function guiSetSelectedTab(
 /**
  * This function sets the dimensions (size) of a GUI element. It refers to the bounding box
  * size for GUI elements. It does not make GUI elements smaller or larger in appearance.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetSize Wiki, guiSetSize }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetSize
  * @param guiElement the GUI element whose visibility is to be changed
  * @param width The desired width setting for the gui element
  * @param height The desired height setting for the gui element
@@ -2094,7 +2094,7 @@ export declare function guiSetSize(
 
 /**
  * This function sets the text of a GUI element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetText Wiki, guiSetText }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetText
  * @param guiElement The GUI element you wish to change the text of
  * @param text The new text
  * @return returns true if text has been successfully set on the gui element, false otherwise.
@@ -2107,7 +2107,7 @@ export declare function guiSetText(
 
 /**
  * This function changes the visibility state of a GUI element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiSetVisible Wiki, guiSetVisible }
+ * @see https://wiki.multitheftauto.com/wiki/GuiSetVisible
  * @param guiElement the GUI element whose visibility is to be changed
  * @param state the new visibility state
  * @return returns true if the elements visibility could be changed, false otherwise.
@@ -2121,7 +2121,7 @@ export declare function guiSetVisible(
 /**
  * This function gets the native size of image. That means the original size in pixels of
  * the image file.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiStaticImageGetNativeSize Wiki, guiStaticImageGetNativeSize }
+ * @see https://wiki.multitheftauto.com/wiki/GuiStaticImageGetNativeSize
  * @param theImage The static image element to get the original size of.
  * @return returns two integers where first is the width and second the height of the image in
  * pixels, false if the image element was invalid.
@@ -2138,7 +2138,7 @@ export declare function guiStaticImageGetNativeSize(
  * This function allows you to change the image in GUI static image element to another one.
  * Tip: If you set other images as children you will have to use
  * setElementCallPropagationEnabled to only affect the parent image.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage Wiki, guiStaticImageLoadImage }
+ * @see https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage
  * @param theElement The static image element to be changed.
  * @param filename A string specifying the filepath of the image file being loaded in current resource.
  * @return returns true if the the image in the static image element was successfully changed, false
@@ -2151,7 +2151,7 @@ export declare function guiStaticImageLoadImage(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowIsMovable Wiki, guiWindowIsMovable }
+ * @see https://wiki.multitheftauto.com/wiki/GuiWindowIsMovable
  * @param guiWindow the window to check the movable flag of
  * @return returns true if the window is movable, false if not, nil if an invalid window was
  * provided.
@@ -2162,7 +2162,7 @@ export declare function guiWindowIsMovable(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowIsSizable Wiki, guiWindowIsSizable }
+ * @see https://wiki.multitheftauto.com/wiki/GuiWindowIsSizable
  * @param guiWindow the window to check the sizable flag of
  * @return returns true if the window is sizable, false if not, nil if an invalid window was
  * provided.
@@ -2174,7 +2174,7 @@ export declare function guiWindowIsSizable(
 
 /**
  * This function allows you to specify whether or not a user can move a GUI window.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowSetMovable Wiki, guiWindowSetMovable }
+ * @see https://wiki.multitheftauto.com/wiki/GuiWindowSetMovable
  * @param theElement The window to be changed.
  * @param status A boolean value indicating whether the window is movable or not.
  * @return returns true if the function is successful, false otherwise.
@@ -2187,7 +2187,7 @@ export declare function guiWindowSetMovable(
 
 /**
  * This function enables or disables user resizing of a GUI window.
- * @see {@link https://wiki.multitheftauto.com/wiki/GuiWindowSetSizable Wiki, guiWindowSetSizable }
+ * @see https://wiki.multitheftauto.com/wiki/GuiWindowSetSizable
  * @param theElement The window to be changed.
  * @param status A boolean value indicating whether user resizing is to be enabled or disabled.
  * @return returns true if the function is successful, false otherwise.
@@ -2201,7 +2201,7 @@ export declare function guiWindowSetSizable(
 /**
  * This function returns whether the ingame chatbox is being used (accepting chatbox input)
  * or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsChatBoxInputActive Wiki, isChatBoxInputActive }
+ * @see https://wiki.multitheftauto.com/wiki/IsChatBoxInputActive
  * @return returns true if the chatbox is receiving input, false if not active.
  * @noSelf
  */
@@ -2209,7 +2209,7 @@ export declare function isChatBoxInputActive(): boolean;
 
 /**
  * This function returns whether the ingame console window is visible or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsConsoleActive Wiki, isConsoleActive }
+ * @see https://wiki.multitheftauto.com/wiki/IsConsoleActive
  * @return returns true if the console is visible, false if not.
  * @noSelf
  */
@@ -2218,7 +2218,7 @@ export declare function isConsoleActive(): boolean;
 /**
  * This function returns whether the ingame debug window is visible or not. This is the
  * debugwindow visible using the debugscript <level> command.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsDebugViewActive Wiki, isDebugViewActive }
+ * @see https://wiki.multitheftauto.com/wiki/IsDebugViewActive
  * @return returns true if the debug view is visible, false if not.
  * @noSelf
  */
@@ -2226,7 +2226,7 @@ export declare function isDebugViewActive(): boolean;
 
 /**
  * This function returns whether the user is in the mainmenu or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsMainMenuActive Wiki, isMainMenuActive }
+ * @see https://wiki.multitheftauto.com/wiki/IsMainMenuActive
  * @return returns true if the mainmenu is visible, false if not.
  * @noSelf
  */
@@ -2240,7 +2240,7 @@ export declare function isMainMenuActive(): boolean;
  * * Main menu
  * * Transferbox
  * To get the status of the debug view, see isDebugViewActive.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsMTAWindowActive Wiki, isMTAWindowActive }
+ * @see https://wiki.multitheftauto.com/wiki/IsMTAWindowActive
  * @return returns true if the focus is on the mta window, false if it isnt.
  * @noSelf
  */
@@ -2254,7 +2254,7 @@ export declare function isMTAWindowActive(): boolean;
  * downloaded, so a resource cannot use this function to detect if its own files are
  * downloaded. A client-side resource triggers the onClientResourceStart event when the
  * files it requires are downloaded.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTransferBoxActive Wiki, isTransferBoxActive }
+ * @see https://wiki.multitheftauto.com/wiki/IsTransferBoxActive
  * @return returns true if the file transfer box is visible, false if not.
  * @noSelf
  */
@@ -2262,7 +2262,7 @@ export declare function isTransferBoxActive(): boolean;
 
 /**
  * This function enables or disables the debug window.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetDebugViewActive Wiki, setDebugViewActive }
+ * @see https://wiki.multitheftauto.com/wiki/SetDebugViewActive
  * @param enabled true if debug window should be visible, false otherwise.
  * @return returns true, false if invalid parameters are passed.
  * @noSelf

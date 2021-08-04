@@ -63,7 +63,7 @@ export class DxFont {
      * creation is not guaranteed, and may fail due to hardware or memory limitations.
      * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
      * zero, failure is guaranteed.)
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateFont Wiki, dxCreateFont }
+     * @see https://wiki.multitheftauto.com/wiki/DxCreateFont
      * @param filepath the name of the file containing the font
      * @param size size of the font
      * @param bold flag to indicate if the font should be bold
@@ -89,7 +89,7 @@ export class DxFont {
     /**
      * This function retrieves the theoretical height of a certain piece of text, if it were to
      * be drawn using dxDrawText.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxGetFontHeight Wiki, dxGetFontHeight }
+     * @see https://wiki.multitheftauto.com/wiki/DxGetFontHeight
      * @param font Either a custom DX font element or the name of a built-in dx font:
      * @return returns an integer of the height of the text.
      */
@@ -99,7 +99,7 @@ export class DxFont {
 
     /**
      * NOTE: This function already takes the clients screen resolution into account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTextSize Wiki, dxGetTextSize }
+     * @see https://wiki.multitheftauto.com/wiki/DxGetTextSize
      * @param width The width of the text. Use with wordBreak = true.
      * @param scaleX The scale of the text. Scale can also be inputted as a Vector2.
      * @param scaleY The scale of the text.
@@ -126,7 +126,7 @@ export class DxFont {
      * This function retrieves the theoretical width (in pixels) of a certain piece of text, if
      * it were to be drawn using dxDrawText.
      * NOTE: This function already takes the clients screen resolution into account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTextWidth Wiki, dxGetTextWidth }
+     * @see https://wiki.multitheftauto.com/wiki/DxGetTextWidth
      * @param scale The size of the text.
      * @param font Either a custom DX font element or the name of a built-in dx font:
      * @param bColorCoded Should we exclude color codes from the width? (false will include the hex in the length)

@@ -86,7 +86,7 @@ export class Account {
 
     /**
      * This function adds an account to the list of registered accounts of the current server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AddAccount Wiki, addAccount }
+     * @see https://wiki.multitheftauto.com/wiki/AddAccount
      * @param name The name of the account you wish to make, this normally is the players name.
      * @param pass The password to set for this account for future logins.
      * @param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames Bob and bob
@@ -101,7 +101,7 @@ export class Account {
 
     /**
      * This function copies all of the data from one account to another.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CopyAccountData Wiki, copyAccountData }
+     * @see https://wiki.multitheftauto.com/wiki/CopyAccountData
      * @param fromAccount The account you wish to copy the data from.
      * @return returns a true if the accounts were valid, false otherwise.
      */
@@ -111,7 +111,7 @@ export class Account {
 
     /**
      * This function returns an account for a specific user.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccount Wiki, getAccount }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccount
      * @param username The username of the account you want to retrieve
      * @param password The password for the account. If this argument is not specified, you can get the account
      * whatever password it is, otherwise the password must match the accounts.
@@ -130,7 +130,7 @@ export class Account {
      * This function retrieves a string that has been stored using setAccountData. Data stored
      * as account data is persistent across users sessions and maps, unless they are logged into
      * a guest account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountData Wiki, getAccountData }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountData
      * @param key The key under which the data is stored
      * @return returns a string containing the stored data or false if no data was stored under that key.
      */
@@ -140,7 +140,7 @@ export class Account {
 
     /**
      * This function retrieves the ID of an account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountID Wiki, getAccountID }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountID
      * @return returns a int containing the accounts id, false if the account does not exist or an
      * invalid argument was passed to the function.
      */
@@ -148,7 +148,7 @@ export class Account {
 
     /**
      * This function retrieves the IP address of an account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountIP Wiki, getAccountIP }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountIP
      * @return returns a string containing the accounts ip, false if the account does not exist or an
      * invalid argument was passed to the function.
      */
@@ -156,7 +156,7 @@ export class Account {
 
     /**
      * This function retrieves the name of an account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountName Wiki, getAccountName }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountName
      * @return returns a string containing the accounts name, false if the account does not exist or an
      * invalid argument was passed to the function.
      */
@@ -165,7 +165,7 @@ export class Account {
     /**
      * This function returns the player element that is currently using a specified account,
      * i.e. is logged into it. Only one player can use an account at a time.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountPlayer Wiki, getAccountPlayer }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountPlayer
      * @return returns a player element if the account is currently in use, false otherwise.
      */
     getPlayer(): Player;
@@ -173,7 +173,7 @@ export class Account {
     /**
      * This function returns a table over all the accounts that exist in the server internal.db
      * file. (Note: accounts.xml is no longer used after version 1.0.4)
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccounts Wiki, getAccounts }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccounts
      * @return a table over the accounts that exist in the server internal.db file. this table might be
      * empty.
      */
@@ -182,7 +182,7 @@ export class Account {
     /**
      * This function returns a table containing all accounts with specified dataName and value
      * (set with setAccountData).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountsByData Wiki, getAccountsByData }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountsByData
      * @param dataName The name of the data
      * @param value The value the dataName should have
      * @return returns table containing the accounts associated with specified value at dataname.
@@ -196,7 +196,7 @@ export class Account {
     /**
      * This function returns a table containing all accounts that were logged onto from
      * specified IP-address.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountsByIP Wiki, getAccountsByIP }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountsByIP
      * @param ip The IP to get accounts from
      * @return returns table containing the accounts associated with specified ip-address. returns false
      * if invalid arguments were specified.
@@ -209,7 +209,7 @@ export class Account {
      * This function returns a table containing all accounts that were logged onto from
      * specified serial. If the serial is empty string, it will return all accounts that were
      * never logged onto.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountsBySerial Wiki, getAccountsBySerial }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountsBySerial
      * @param serial The serial to get accounts from
      * @return returns table containing the accounts associated with specified serial. returns false if
      * invalid arguments were specified.
@@ -220,7 +220,7 @@ export class Account {
 
     /**
      * This function returns the last serial that logged onto the specified account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAccountSerial Wiki, getAccountSerial }
+     * @see https://wiki.multitheftauto.com/wiki/GetAccountSerial
      * @return returns string containing the serial, the string is empty if the account was never used.
      * returns false if invalid arguments were specified.
      */
@@ -228,7 +228,7 @@ export class Account {
 
     /**
      * This function returns a table containing all the user data for the account provided
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetAllAccountData Wiki, getAllAccountData }
+     * @see https://wiki.multitheftauto.com/wiki/GetAllAccountData
      * @return a table containing all the user data. this table might be empty.
      */
     getAllData(): LuaTable;
@@ -239,14 +239,14 @@ export class Account {
      * quit or login to another account. Data stored in a guest account is not stored after the
      * player has left the server. As a consequence, this function will check if a player is
      * logged in or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsGuestAccount Wiki, isGuestAccount }
+     * @see https://wiki.multitheftauto.com/wiki/IsGuestAccount
      * @return returns true if the account is a guest account, false otherwise.
      */
     isGuest(): boolean;
 
     /**
      * This function is used to delete existing player accounts.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RemoveAccount Wiki, removeAccount }
+     * @see https://wiki.multitheftauto.com/wiki/RemoveAccount
      * @return returns true if account was successfully removed, false if the account does not exist.
      */
     remove(): boolean;
@@ -257,7 +257,7 @@ export class Account {
      * unless they are logged into a guest account. Even if logged into a guest account, account
      * data can be useful as a way to store a reference to your own account system, though its
      * persistence is equivalent to that of using setElementData on the players element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetAccountData Wiki, setAccountData }
+     * @see https://wiki.multitheftauto.com/wiki/SetAccountData
      * @param key The key under which you wish to store the data
      * @param value The value you wish to store. Set to false to remove the data. NOTE: you cannot store
      * tables as values, but you can use toJSON strings.
@@ -270,7 +270,7 @@ export class Account {
 
     /**
      * This function sets the name of an account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetAccountName Wiki, setAccountName }
+     * @see https://wiki.multitheftauto.com/wiki/SetAccountName
      * @param name The new name.
      * @param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames Bob and bob
      * will refer to different accounts)
@@ -283,7 +283,7 @@ export class Account {
 
     /**
      * This function sets the password of the specified account.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetAccountPassword Wiki, setAccountPassword }
+     * @see https://wiki.multitheftauto.com/wiki/SetAccountPassword
      * @param password the password
      * @return returns true if the password was set correctly, false otherwise.
      */

@@ -83,7 +83,7 @@ export class GuiLabel extends GuiElement {
      * cannot be edited by the user. If you would like to have a bigger text youd have to change
      * its font because font size is not supported.
      * </td></tr></table>
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateLabel Wiki, guiCreateLabel }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateLabel
      * @param x A float of the 2D x position of the GUI label on a players screen.  This is affected by
      * the relative argument.
      * @param y A float of the 2D y position of the GUI label on a players screen. This is affected by
@@ -114,7 +114,7 @@ export class GuiLabel extends GuiElement {
 
     /**
      * This function gets the color of a label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetColor Wiki, guiLabelGetColor }
+     * @see https://wiki.multitheftauto.com/wiki/GuiLabelGetColor
      * @return returns three int values, representing the amount of red, green, blue if successful.
      * false otherwise.
      */
@@ -126,7 +126,7 @@ export class GuiLabel extends GuiElement {
 
     /**
      * This function returns the height of the font currently used in a GUI text label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetFontHeight Wiki, guiLabelGetFontHeight }
+     * @see https://wiki.multitheftauto.com/wiki/GuiLabelGetFontHeight
      * @return returns the absolute height of the font currently used in the text label if the function
      * is successful, false otherwise.
      */
@@ -134,7 +134,7 @@ export class GuiLabel extends GuiElement {
 
     /**
      * This function returns the extent, or width, of the current text inside a GUI text label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelGetTextExtent Wiki, guiLabelGetTextExtent }
+     * @see https://wiki.multitheftauto.com/wiki/GuiLabelGetTextExtent
      * @return returns the absolute width of the current text inside the text label if the function is
      * successful, false otherwise.
      */
@@ -142,7 +142,7 @@ export class GuiLabel extends GuiElement {
 
     /**
      * This function allows you to set the color of a GUI label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetColor Wiki, guiLabelSetColor }
+     * @see https://wiki.multitheftauto.com/wiki/GuiLabelSetColor
      * @param red An integer specifying the amount of red (0 to 255).
      * @param green An integer specifying the amount of green (0 to 255).
      * @param blue An integer specifying the amount of blue (0 to 255).
@@ -156,7 +156,7 @@ export class GuiLabel extends GuiElement {
 
     /**
      * This function sets the horizontal alignment of a text label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetHorizontalAlign Wiki, guiLabelSetHorizontalAlign }
+     * @see https://wiki.multitheftauto.com/wiki/GuiLabelSetHorizontalAlign
      * @param align The alignment type. Valid type strings are:
      * **"left"
      * **"center"
@@ -171,7 +171,7 @@ export class GuiLabel extends GuiElement {
 
     /**
      * This function sets the vertical alignment of a text label.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiLabelSetVerticalAlign Wiki, guiLabelSetVerticalAlign }
+     * @see https://wiki.multitheftauto.com/wiki/GuiLabelSetVerticalAlign
      * @param align The alignment type. Valid type strings are:
      * **"top"
      * **"center"

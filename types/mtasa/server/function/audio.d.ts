@@ -40,7 +40,7 @@ import {
 
 /**
  * This function plays a frontend sound for the specified player.
- * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
+ * @see https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd
  * @param thePlayer the player you want the sound to play for.
  * @param sound a whole int specifying the sound id to play. Valid values are:
  * @noSelf

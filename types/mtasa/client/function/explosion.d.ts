@@ -58,7 +58,7 @@ import {
 /**
  * Creates an explosion of a certain type at a specified point in the world. If creator is
  * specified, the explosion will occur only in its dimension.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateExplosion Wiki, createExplosion }
+ * @see https://wiki.multitheftauto.com/wiki/CreateExplosion
  * @param x a float value that specifies the X world coordinate where the explosion is created at.
  * @param y a float value that specifies the Y world coordinate where the explosion is created at.
  * @param z a float value that specifies the Z world coordinate where the explosion is created at.

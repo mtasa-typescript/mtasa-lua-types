@@ -40,7 +40,7 @@ import {
 
 /**
  * This function returns all the currently loaded modules of the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLoadedModules Wiki, getLoadedModules }
+ * @see https://wiki.multitheftauto.com/wiki/GetLoadedModules
  * @return returns a table of all the currently loaded modules. if no modules are loaded, the table
  * will be empty.
  * @noSelf
@@ -49,7 +49,7 @@ export declare function getLoadedModules(): LuaTable;
 
 /**
  * This function returns information about the specified Modules|module.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetModuleInfo Wiki, getModuleInfo }
+ * @see https://wiki.multitheftauto.com/wiki/GetModuleInfo
  * @param moduleName A string containing the module you wish to get information of e.g. hashing.dll
  * @return returns a table containing information about module. these keys are present in the table:
  * *version: module version in format x.xx

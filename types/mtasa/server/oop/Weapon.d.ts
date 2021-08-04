@@ -43,7 +43,7 @@ export class Weapon extends Element {
     /**
      * This function gets a weapon property of the specified Element/Weapon|custom weapon
      * (clientside only) or specified Weapons|player-held weapon (both client and server).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponProperty
      * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
      * @param weaponSkill Either: pro, std or poor
      * @param property The property you want to get the value of:

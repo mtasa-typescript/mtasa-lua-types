@@ -40,7 +40,7 @@ import {
 
 /**
  * This function is used to determine whether or not a players cursor is showing.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsCursorShowing Wiki, isCursorShowing }
+ * @see https://wiki.multitheftauto.com/wiki/IsCursorShowing
  * @param thePlayer The player you want to get cursor state of.
  * @return returns true if the players cursor is showing, false if it isnt or if invalid parameters
  * were passed.
@@ -52,7 +52,7 @@ export declare function isCursorShowing(
 
 /**
  * This function is used to show or hide a players cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/ShowCursor Wiki, showCursor }
+ * @see https://wiki.multitheftauto.com/wiki/ShowCursor
  * @param thePlayer The player you want to show or hide the cursor of.
  * @param show A boolean value determining whether to show (true) or hide (false) the cursor.
  * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.

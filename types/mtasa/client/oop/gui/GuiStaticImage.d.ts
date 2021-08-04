@@ -66,7 +66,7 @@ export class GuiStaticImage extends GuiElement {
 
     /**
      * This function creates a static image using a .png image in the resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateStaticImage Wiki, guiCreateStaticImage }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateStaticImage
      * @param x A float of the 2D x position of the image on a players screen. This is affected by the
      * relative argument.
      * @param y A float of the 2D y position of the image on a players screen. This is affected by the
@@ -98,7 +98,7 @@ export class GuiStaticImage extends GuiElement {
      * This function allows you to change the image in GUI static image element to another one.
      * Tip: If you set other images as children you will have to use
      * setElementCallPropagationEnabled to only affect the parent image.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage Wiki, guiStaticImageLoadImage }
+     * @see https://wiki.multitheftauto.com/wiki/GuiStaticImageLoadImage
      * @param filename A string specifying the filepath of the image file being loaded in current resource.
      * @return returns true if the the image in the static image element was successfully changed, false
      * otherwise.

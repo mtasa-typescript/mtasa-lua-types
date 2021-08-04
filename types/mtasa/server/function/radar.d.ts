@@ -40,7 +40,7 @@ import {
 
 /**
  * This function can be used to create custom radar areas on the radar.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateRadarArea Wiki, createRadarArea }
+ * @see https://wiki.multitheftauto.com/wiki/CreateRadarArea
  * @param startPosX A float representing the origin x position of the radar area.
  * @param startPosY A float representing the origin y position of the radar area.
  * @param sizeX A float representing the width of the radar area.
@@ -68,7 +68,7 @@ export declare function createRadarArea(
 
 /**
  * This function can be used to retrieve the current color of a radararea|radar area.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRadarAreaColor Wiki, getRadarAreaColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetRadarAreaColor
  * @param theRadararea The radararea|radar area you wish to retrieve the colour of.
  * @return returns four integers in rgba format (red, green, blue, alpha), with a maximum value of
  * 255 for each.  alpha decides transparency where 255 is opaque and 0 is transparent.
@@ -86,7 +86,7 @@ export declare function getRadarAreaColor(
 
 /**
  * This function is used for getting the X and Y size of an existing radararea|radar area.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRadarAreaSize Wiki, getRadarAreaSize }
+ * @see https://wiki.multitheftauto.com/wiki/GetRadarAreaSize
  * @param theRadararea The radararea|radar area element whose size you wish to get.
  * @return returns two floats indicating the x and y length of the radar area respectively, false if
  * the radar area is invalid.
@@ -101,7 +101,7 @@ export declare function getRadarAreaSize(
 
 /**
  * This function checks if a 2D position is inside a radararea|radar area or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsInsideRadarArea Wiki, isInsideRadarArea }
+ * @see https://wiki.multitheftauto.com/wiki/IsInsideRadarArea
  * @param theArea The radararea|radar area youre checking the position against.
  * @param posX The X coordinate of the position youre checking.
  * @param posY The Y coordinate of the position youre checking.
@@ -117,7 +117,7 @@ export declare function isInsideRadarArea(
 
 /**
  * This function allows detection of whether a radar area is flashing or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing Wiki, isRadarAreaFlashing }
+ * @see https://wiki.multitheftauto.com/wiki/IsRadarAreaFlashing
  * @param theRadararea The radar area you wish to check the state of flashing
  * @return returns true if the radar area is flashing, false if it is not or if it doesnt exist.
  * @noSelf
@@ -128,7 +128,7 @@ export declare function isRadarAreaFlashing(
 
 /**
  * Sets the color of an existing radar area.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaColor Wiki, setRadarAreaColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetRadarAreaColor
  * @param theRadarArea the radararea element whose color you wish to set.
  * @param r an integer representing the amount of red in the color (0 for no red, 255 for solid red)
  * @param g an integer representing the amount of green in the color (0 for no green, 255 for solid
@@ -150,7 +150,7 @@ export declare function setRadarAreaColor(
 
 /**
  * This function makes an existing radar area flash in transparency.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaFlashing Wiki, setRadarAreaFlashing }
+ * @see https://wiki.multitheftauto.com/wiki/SetRadarAreaFlashing
  * @param theRadarArea the radararea element we want to change flashing state of.
  * @param flash a bool indicating whether the radar area should flash (true to flash, false to not flash).
  * @return returns true if the new flash state was successfully set, false if the radar area doesnt
@@ -164,7 +164,7 @@ export declare function setRadarAreaFlashing(
 
 /**
  * This function changes the size of an existing radararea|radar area.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetRadarAreaSize Wiki, setRadarAreaSize }
+ * @see https://wiki.multitheftauto.com/wiki/SetRadarAreaSize
  * @param theRadararea the radararea element whose size is to be changed.
  * @param x the x length of the radar area.
  * @param y the y length of the radar area.

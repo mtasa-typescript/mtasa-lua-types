@@ -18,5 +18,5 @@ export type FetchRemoteCallback<AdditionalArgs extends any[] = []> = (
     this: void,
     responseData: string,
     error: number,
-    ...arguments: AdditionalArgs
+    ...args: AdditionalArgs
 ) => void;

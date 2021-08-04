@@ -56,7 +56,7 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/ClearChatBox Wiki, clearChatBox }
+ * @see https://wiki.multitheftauto.com/wiki/ClearChatBox
  * @return returns true if the players chat was cleared successfully, false otherwise.
  * @noSelf
  */
@@ -64,7 +64,7 @@ export declare function clearChatBox(): boolean;
 
 /**
  * This function checks if players chat is visible.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsChatVisible Wiki, isChatVisible }
+ * @see https://wiki.multitheftauto.com/wiki/IsChatVisible
  * @return returns true if the chat is visible, false otherwise.
  * @noSelf
  */
@@ -80,7 +80,7 @@ export declare function isChatVisible(): boolean;
  * </syntaxhighlight>
  * This will display as: <span style=color:red;>Hello</span> <span
  * style=color:green>World</span>
- * @see {@link https://wiki.multitheftauto.com/wiki/OutputChatBox Wiki, outputChatBox }
+ * @see https://wiki.multitheftauto.com/wiki/OutputChatBox
  * @param text The text string that you wish to send to the chat window. If more than 256 characters it
  * will not be showed in chat.
  * @param r The amount of red in the color of the text. Default value is 231.
@@ -102,7 +102,7 @@ export declare function outputChatBox(
 /**
  * This outputs the specified text string to the console window (accessed with F8 or ~ key).
  * It can be specified as a message to certain player(s) or all players.
- * @see {@link https://wiki.multitheftauto.com/wiki/OutputConsole Wiki, outputConsole }
+ * @see https://wiki.multitheftauto.com/wiki/OutputConsole
  * @param text The text string that you wish to send to the console window
  * @noSelf
  */
@@ -114,7 +114,7 @@ export declare function outputConsole(
  * This function outputs scripting debug messages, which can be read by enabling the debug
  * textbox. The debug display level can then be set so that info or warning messages get
  * filtered out.
- * @see {@link https://wiki.multitheftauto.com/wiki/OutputDebugString Wiki, outputDebugString }
+ * @see https://wiki.multitheftauto.com/wiki/OutputDebugString
  * @param text the text to be output to the debug box.
  * @param level the debug message level. Possible values are:
  * @param 0 Custom message
@@ -139,7 +139,7 @@ export declare function outputDebugString(
 
 /**
  * This function is used to show or hide the players chat.
- * @see {@link https://wiki.multitheftauto.com/wiki/ShowChat Wiki, showChat }
+ * @see https://wiki.multitheftauto.com/wiki/ShowChat
  * @param show A boolean value determining whether to show (true) or hide (false) the chat.
  * @param inputBlocked A boolean value determining whether chat input is blocked/hidden, regardless of chat
  * visibility. If unset, this will keep the default behaviour prior to r20898 (true when

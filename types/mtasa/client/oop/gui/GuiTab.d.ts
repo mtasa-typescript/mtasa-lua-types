@@ -61,7 +61,7 @@ export class GuiTab extends GuiElement {
      * This function creates a tab on a pre-existing tab panel. A tab is a button as well as a
      * dimension that can be used to switch between information by clicking on the tabs.  Tabs
      * are sorted on a tab panel in the order that they are created.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateTab Wiki, guiCreateTab }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateTab
      * @param text The caption for the tab
      * @param parent The parent tab panel, as a tab panel element type
      * @return returns a tab element if successful, false otherwise.
@@ -73,7 +73,7 @@ export class GuiTab extends GuiElement {
 
     /**
      * This function deletes a tab from a tab panel.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiDeleteTab Wiki, guiDeleteTab }
+     * @see https://wiki.multitheftauto.com/wiki/GuiDeleteTab
      * @param tabPanel This is the guiCreateTabPanel|tab panel parent that the tab is attached to.
      * @return returns true the tab was successfully deleted, false otherwise.
      */

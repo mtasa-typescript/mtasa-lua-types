@@ -40,7 +40,7 @@ import {
 
 /**
  * Aborts a FetchRemote|fetchRemote or CallRemote|callRemote request.
- * @see {@link https://wiki.multitheftauto.com/wiki/AbortRemoteRequest Wiki, abortRemoteRequest }
+ * @see https://wiki.multitheftauto.com/wiki/AbortRemoteRequest
  * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
  * GetRemoteRequests|getRemoteRequests
  * @return returns true on success, false when invalid request was provided
@@ -52,7 +52,7 @@ export declare function abortRemoteRequest(
 
 /**
  * This function adds a new empty config file to an existing resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddResourceConfig Wiki, addResourceConfig }
+ * @see https://wiki.multitheftauto.com/wiki/AddResourceConfig
  * @param filePath The filepath of the file to be created in the following format: :resourceName/path.
  * resourceName is the name of the resource the file is in, and path is the path from the
  * root directory of the resource to the file.
@@ -73,7 +73,7 @@ export declare function addResourceConfig(
 
 /**
  * This function adds a new empty mapfile to an existing resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddResourceMap Wiki, addResourceMap }
+ * @see https://wiki.multitheftauto.com/wiki/AddResourceMap
  * @param filePath The filepath of the resource map in the following format: :resourceName/path.
  * resourceName is the name of the resource the map file will be in, and path is the path
  * from the root directory of the resource to the file.
@@ -123,7 +123,7 @@ export declare function addResourceMap(
  * * sourceResource - The resource that called the exported function
  * * sourceResourceRoot - The resource root element of the resource which called the
  * exported function.
- * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+ * @see https://wiki.multitheftauto.com/wiki/Call
  * @param theResource This is a resource pointer which refers to the resource you are calling a function from.
  * @param theFunction This is a string with the name of the function which you want to call.
  * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
@@ -163,7 +163,7 @@ export declare function call(
  * containing the error reason will be passed to the callback function. The reason for
  * failure will be similar to errors found with websites - file not found, server not found
  * and timeouts.
- * @see {@link https://wiki.multitheftauto.com/wiki/CallRemote Wiki, callRemote }
+ * @see https://wiki.multitheftauto.com/wiki/CallRemote
  * @param host This is a host name - including the HTTP port - of the server you wish to connect to.
  * @param resourceName This is a name of the resource that contains the exported function you want to call.
  * @param functionName This is a string with the name of the function which you want to call.
@@ -202,7 +202,7 @@ export declare function callRemote(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/CallRemote Wiki, callRemote }
+ * @see https://wiki.multitheftauto.com/wiki/CallRemote
  * @noSelf
  */
 export declare function callRemote(
@@ -215,7 +215,7 @@ export declare function callRemote(
 
 /**
  * This function copies a specified resource with a new name.
- * @see {@link https://wiki.multitheftauto.com/wiki/CopyResource Wiki, copyResource }
+ * @see https://wiki.multitheftauto.com/wiki/CopyResource
  * @param theResource the resource which is going to be copied
  * @param newResourceName the name that the copied resource will receive
  * @param organizationalDir : A string containing the path where the resource should be copied to (e.g.
@@ -232,7 +232,7 @@ export declare function copyResource(
 /**
  * This function creates an new, empty resource. This creates a directory matching the name
  * you specify on disk, then creates an empty meta.xml file with a <meta> element in it.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateResource Wiki, createResource }
+ * @see https://wiki.multitheftauto.com/wiki/CreateResource
  * @param resourceName The name of the new resource. This should be a valid file name. Its recommended that you
  * do not have spaces or non-ASCII characters in resource names.
  * @param organizationalDir : A string containing the path where the resource should be created (e.g. gamemodes/amx).
@@ -250,7 +250,7 @@ export declare function createResource(
 /**
  * This function deletes a resource from the MTA memory and moves it to the
  * /resources-cache/trash/ directory.
- * @see {@link https://wiki.multitheftauto.com/wiki/DeleteResource Wiki, deleteResource }
+ * @see https://wiki.multitheftauto.com/wiki/DeleteResource
  * @param resourceName The name of resource to delete.
  * @return returns true if the resource has been deleted successfully, false otherwise.
  * @noSelf
@@ -269,7 +269,7 @@ export declare function deleteResource(
  * and timeouts.
  * If you are using fetchRemote to connect to a PHP script, you can use
  * file_get_contents(php://input) to read the postData sent from this function.
- * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
+ * @see https://wiki.multitheftauto.com/wiki/FetchRemote
  * @param URL A full URL in the format <nowiki>http://hostname/path/file.ext</nowiki>. A port can be
  * specified with a colon followed by a port number appended to the hostname.
  * @param callbackFunction This is the function that should receive the data returned from the remote server. The
@@ -313,11 +313,11 @@ export declare function fetchRemote<
     callbackFunction: FetchRemoteCallback,
     postData?: string,
     postIsBinary?: boolean,
-    ...arguments: AdditionalArgs
+    ...args: AdditionalArgs
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/FetchRemote Wiki, fetchRemote }
+ * @see https://wiki.multitheftauto.com/wiki/FetchRemote
  * @noSelf
  */
 export declare function fetchRemote<
@@ -327,12 +327,12 @@ export declare function fetchRemote<
     callbackFunction: FetchRemoteCallback,
     postData?: string,
     postIsBinary?: boolean,
-    ...arguments: AdditionalArgs
+    ...args: AdditionalArgs
 ): boolean;
 
 /**
  * Gets informations of an FetchRemote|fetchRemote or CallRemote|callRemote request info.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequestInfo Wiki, getRemoteRequestInfo }
+ * @see https://wiki.multitheftauto.com/wiki/GetRemoteRequestInfo
  * @param theRequest : returned from FetchRemote|fetchRemote, CallRemote|callRemote or
  * GetRemoteRequests|getRemoteRequests
  * @return returns a table when valid, false otherwise
@@ -364,7 +364,7 @@ export declare function getRemoteRequestInfo(
 
 /**
  * Gets all FetchRemote|fetchRemote and CallRemote|callRemote requests currently running.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRemoteRequests Wiki, getRemoteRequests }
+ * @see https://wiki.multitheftauto.com/wiki/GetRemoteRequests
  * @param theResource : the resource to get all requests from
  * @return returns a table with all requests, false if an invalid resource was provided
  * @noSelf
@@ -376,7 +376,7 @@ export declare function getRemoteRequests(
 /**
  * This function retrieves the ACL request section from the meta.xml file of the given
  * resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceACLRequests Wiki, getResourceACLRequests }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceACLRequests
  * @param theResource the resource to get the ACL requests for.
  * @return returns a table with the acl requests for the given resource, or false if the resource is
  * not valid. a valid resource with no acl requests will return an empty table.
@@ -390,7 +390,7 @@ export declare function getResourceACLRequests(
  * This function is used to return the root node of a configuration file. Config files must
  * be predefined in a resources Meta.xml|meta file.  An alternative way to load XML files is
  * to use xmlLoadFile.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceConfig Wiki, getResourceConfig }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceConfig
  * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
  * name of the resource the file is in, and path is the path from the root directory of the
  * resource to the file.
@@ -410,7 +410,7 @@ export declare function getResourceConfig(
  * This function retrieves the dynamic element root of a specified resource. The dynamic
  * element root is the parent of elements that are created by scripts (e.g. with
  * createObject) unless they specify a different parent.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot Wiki, getResourceDynamicElementRoot }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot
  * @param theResource the resource of which dynamic element root we want.
  * @return returns an element of the resources dynamic element root if the resource specified was
  * valid and active (currently running), false otherwise.
@@ -423,7 +423,7 @@ export declare function getResourceDynamicElementRoot(
 /**
  * Returns a table containing the names of the functions that a resource exports. It will
  * return the exports of the current resource if there is no argument passed in.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions Wiki, getResourceExportedFunctions }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions
  * @param theResource the resource of which you want to know the call|exported functions.
  * @return returns a table of function names if successful, false otherwise.
  * @noSelf
@@ -435,7 +435,7 @@ export declare function getResourceExportedFunctions(
 /**
  * This function is used to retrieve a resource from its name. A resources name is the same
  * as its folder or file archive name on the server (without the extension).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceFromName
  * @param resourceName the name of the resource you wish to get.
  * @return returns the resource with the specified name, or false if no resource of that name
  * exists. note that clientside this will also return false for resources that are in the
@@ -448,7 +448,7 @@ export declare function getResourceFromName(
 
 /**
  * This function retrieves the value of any attribute in a resource info tag.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceInfo Wiki, getResourceInfo }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceInfo
  * @param theResource the resource we are getting the info from.
  * @param attribute the name of the attribute we want info about.
  * @return returns a string with the attribute value if it exists, false otherwise.
@@ -461,7 +461,7 @@ export declare function getResourceInfo(
 
 /**
  * Used to check the last starting time and date of a resource
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLastStartTime Wiki, getResourceLastStartTime }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceLastStartTime
  * @param theResource The resource of which youd like to check the last starting time.
  * @return if successful, returns the unix timestamp when the resource was last started, or the
  * string never if the resource has not been started yet, otherwise false. use in
@@ -475,7 +475,7 @@ export declare function getResourceLastStartTime(
 
 /**
  * This function retrieves the reason why a resource failed to start.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLoadFailureReason Wiki, getResourceLoadFailureReason }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceLoadFailureReason
  * @param theResource The resource you wish to check.
  * @return if the resource failed to load, returns a string with the failure reason in it. if it
  * loaded successfully, returns an empty string. returns false if the resource doesnt exist.
@@ -487,7 +487,7 @@ export declare function getResourceLoadFailureReason(
 
 /**
  * Gets the date and time at which a resource was last loaded in the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceLoadTime Wiki, getResourceLoadTime }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceLoadTime
  * @param res the resource you want to know the load time of.
  * @return if successful, returns the unix timestamp when the resource was loaded, otherwise false.
  * use in conjunction with getrealtime in order to retrieve detailed information.
@@ -503,7 +503,7 @@ export declare function getResourceLoadTime(
 
 /**
  * This function retrieves the root element of a certain map in a specified resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement Wiki, getResourceMapRootElement }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceMapRootElement
  * @param theResource the resource where the map is located
  * @param mapName name of the maps which root element we want to retrieve, file extension is required
  * @return returns an the resources map root element if the map exists and resource specified was
@@ -517,7 +517,7 @@ export declare function getResourceMapRootElement(
 
 /**
  * This function gets the name of the specified resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceName
  * @param res The resource you wish to get the name of.
  * @return returns a string with the resource name in it, or false if the resource does not exist.
  * @noSelf
@@ -528,7 +528,7 @@ export declare function getResourceName(
 
 /**
  * This function returns the organizational file path (e.g. admin) of a resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath Wiki, getResourceOrganizationalPath }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceOrganizationalPath
  * @param theResource the resource of which you want to know the organizational path
  * @return returns the organizational folder name of the resource. it returns empty string if the
  * resource is on root resources folder. it returns false if the resource could not be found.
@@ -546,7 +546,7 @@ export declare function getResourceOrganizationalPath(
  * (and global events that originate from the root element).
  * Note: every resource has a Predefined_variables_list|predefined global variable called
  * resourceRoot whose value is the root element of that resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceRootElement
  * @param theResource the resource whose root element we are getting. If not specified, assumes the current
  * resource. (the resource returned from getThisResource)
  * @return returns an element representing the resources root, false if the specified resource
@@ -559,7 +559,7 @@ export declare function getResourceRootElement(
 
 /**
  * This function retrieves a table of all the resources that exist on the server.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResources Wiki, getResources }
+ * @see https://wiki.multitheftauto.com/wiki/GetResources
  * @return returns a table of resources.
  * @noSelf
  */
@@ -567,7 +567,7 @@ export declare function getResources(): LuaTable;
 
 /**
  * This function returns the state of a given resource
- * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceState Wiki, getResourceState }
+ * @see https://wiki.multitheftauto.com/wiki/GetResourceState
  * @param theResource The resource you wish to get the state of.
  * @return if successful returns a string with the resource state in it, false otherwise.
  * the state can be one of:
@@ -584,7 +584,7 @@ export declare function getResourceState(
 
 /**
  * This function retrieves the resource from which the function call was made.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetThisResource Wiki, getThisResource }
+ * @see https://wiki.multitheftauto.com/wiki/GetThisResource
  * @return returns the resource in which the current script is.
  * @noSelf
  */
@@ -592,7 +592,7 @@ export declare function getThisResource(): Resource;
 
 /**
  * Checks whether a resource is currently archived (running from within a ZIP file).
- * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceArchived Wiki, isResourceArchived }
+ * @see https://wiki.multitheftauto.com/wiki/IsResourceArchived
  * @param resource the resource to check
  * @return returns true if a resource is archived, false if it is not archived, or nil if there is
  * problem with resource.
@@ -605,7 +605,7 @@ export declare function isResourceArchived(
 /**
  * This will check if a resource is currently protected, as defined in
  * Server_mtaserver.conf#resource|mtaserver.conf.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsResourceProtected Wiki, isResourceProtected }
+ * @see https://wiki.multitheftauto.com/wiki/IsResourceProtected
  * @param theResource the resource to check
  * @return returns true if the resource is protected, false otherwise.
  * @noSelf
@@ -616,7 +616,7 @@ export declare function isResourceProtected(
 
 /**
  * This function finds new resources and checks for changes to the current ones.
- * @see {@link https://wiki.multitheftauto.com/wiki/RefreshResources Wiki, refreshResources }
+ * @see https://wiki.multitheftauto.com/wiki/RefreshResources
  * @param refreshAll : If true MTA will check for changes in all resources. If false, MTA will only check for
  * new resources and try to reload resources with errors
  * @param targetResource : If set, the refresh is restricted to the supplied resource only
@@ -632,7 +632,7 @@ export declare function refreshResources(
 
 /**
  * This function removes a file from the resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveResourceFile Wiki, removeResourceFile }
+ * @see https://wiki.multitheftauto.com/wiki/RemoveResourceFile
  * @param theResource The resource element.
  * @param fileName The filename what you want to delete.
  * @return returns true if file was deleted, otherwise false if the resource is in use or the file
@@ -646,7 +646,7 @@ export declare function removeResourceFile(
 
 /**
  * This function renames a resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/RenameResource Wiki, renameResource }
+ * @see https://wiki.multitheftauto.com/wiki/RenameResource
  * @param theResource The name of resource or the resource you want to rename.
  * @param newResourceName The name of what the resource should be renamed to.
  * @param organizationalPath If you want to store the new resource inside a category.
@@ -674,7 +674,7 @@ export declare function renameResource(
  * an onResourceStop event triggered and the restarted instance will receive an
  * onResourceStart event. Remember that the element and resource variables will be
  * invalidated during the restart, though of course, the resources name will not.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/RestartResource Wiki, restartResource }
+ * @see https://wiki.multitheftauto.com/wiki/RestartResource
  * @param theResource the resource you want to restart.
  * @param persistent Unused
  * @param configs Reload configs?
@@ -702,7 +702,7 @@ export declare function restartResource(
 
 /**
  * This function sets the value of any attribute in a resource info tag.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetResourceInfo Wiki, setResourceInfo }
+ * @see https://wiki.multitheftauto.com/wiki/SetResourceInfo
  * @param theResource the resource we are setting info to.
  * @param attribute the name of the attribute that is to be set.
  * @param value the value of this attribute
@@ -727,7 +727,7 @@ export declare function setResourceInfo(
  * resource before enabling the scripting aspects, though this could produce unreliable
  * results. There is no way for a resource to tell if it is being run with any of these
  * booleans set.
- * @see {@link https://wiki.multitheftauto.com/wiki/StartResource Wiki, startResource }
+ * @see https://wiki.multitheftauto.com/wiki/StartResource
  * @param resourceToStart The resource that should be started.
  * @param persistent A boolean specifying if the resource should continue to run even after the current
  * resource has been stopped or not. If this is true then the resource will run until
@@ -760,7 +760,7 @@ export declare function startResource(
 
 /**
  * This function stops a running resource.<br>
- * @see {@link https://wiki.multitheftauto.com/wiki/StopResource Wiki, stopResource }
+ * @see https://wiki.multitheftauto.com/wiki/StopResource
  * @param theResource the resource that should be stopped.
  * @return returns true if the resource was stopped, false if the stopping failed, or an invalid
  * resource was passed.
@@ -772,7 +772,7 @@ export declare function stopResource(
 
 /**
  * This function changes the access for one ACL request of the given resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/UpdateResourceACLRequest Wiki, updateResourceACLRequest }
+ * @see https://wiki.multitheftauto.com/wiki/UpdateResourceACLRequest
  * @param theResource the resource to set the ACL request for.
  * @param rightName a string with the name of the right to set the access for. This has to match an existing
  * ACL request.

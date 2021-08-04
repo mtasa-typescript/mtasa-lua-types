@@ -70,7 +70,7 @@ export class GuiBrowser extends GuiElement {
      * You can learn more about the differences
      * https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=7373
      * 34 here.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateBrowser Wiki, guiCreateBrowser }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateBrowser
      * @param x A float of the 2D x position of the browser on a players screen.  This is affected by the
      * relative argument.
      * @param y A float of the 2D y position of the browser on a players screen. This is affected by the
@@ -106,7 +106,7 @@ export class GuiBrowser extends GuiElement {
     /**
      * This function gets the browser element behind a gui-browser (a browser that has been
      * created via guiCreateBrowser).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetBrowser Wiki, guiGetBrowser }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGetBrowser
      * @return returns the element/browser|browser element if a correct element/gui-browser|gui-browser
      * has been passed, false otherwise.
      */

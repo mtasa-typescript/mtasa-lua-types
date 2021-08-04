@@ -46,7 +46,7 @@ import {
  * You are able to give the water a shallow water effect, which practically changes the
  * water invisible to the eye. However, all elements still work the same way as without the
  * shallow effect - allowing swimming, diving, vehicles to sink, etc.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateWater Wiki, createWater }
+ * @see https://wiki.multitheftauto.com/wiki/CreateWater
  * @param x1, y1, z1 position of bottom left (south-west) corner.
  * @param x2, y2, z2 position of bottom right (south-east) corner.
  * @param x3, y3, z3 position of top left (north-west) corner.
@@ -76,7 +76,7 @@ export declare function createWater(
 /**
  * This function returns the water color of the GTA world.
  * Note: The server can only return the water color, if it has actually been set by script.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterColor Wiki, getWaterColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetWaterColor
  * @return returns 4 int|ints, indicating the color of the water. (rgba)
  * @noSelf
  */
@@ -90,7 +90,7 @@ export declare function getWaterColor(): LuaMultiReturn<[
 /**
  * Gets the world position of a vertex (i.e. corner) of a water area. Each water area is
  * either a triangle or quad (rectangle) so each has 3 or 4 corners.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWaterVertexPosition Wiki, getWaterVertexPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetWaterVertexPosition
  * @param theWater the water element to get the vertex of
  * @param vertexIndex the index of the vertex whose position to get. Values range from 1 to 4 for a water quad,
  * or 1 to 3 for a triangle.
@@ -108,7 +108,7 @@ export declare function getWaterVertexPosition(
 
 /**
  * This function returns the current wave height.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWaveHeight Wiki, getWaveHeight }
+ * @see https://wiki.multitheftauto.com/wiki/GetWaveHeight
  * @return returns the height as a float, false otherwise.
  * @noSelf
  */
@@ -116,7 +116,7 @@ export declare function getWaveHeight(): number;
 
 /**
  * This function reset the water color of the GTA world to default.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterColor Wiki, resetWaterColor }
+ * @see https://wiki.multitheftauto.com/wiki/ResetWaterColor
  * @return returns true if water color was reset correctly, false otherwise.
  * @noSelf
  */
@@ -125,7 +125,7 @@ export declare function resetWaterColor(): boolean;
 /**
  * This function resets the water of the GTA world back to its default level. water|Water
  * elements are not affected.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetWaterLevel Wiki, resetWaterLevel }
+ * @see https://wiki.multitheftauto.com/wiki/ResetWaterLevel
  * @return returns true if water level was reset correctly, false otherwise.
  * @noSelf
  */
@@ -133,7 +133,7 @@ export declare function resetWaterLevel(): boolean;
 
 /**
  * This function changes the water color of the GTA world.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterColor Wiki, setWaterColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetWaterColor
  * @param red The red value of the water, from 0 to 255.
  * @param green The green value of the water, from 0 to 255.
  * @param blue The blue value of the water, from 0 to 255.
@@ -150,7 +150,7 @@ export declare function setWaterColor(
 
 /**
  * Sets the height of some or all the water in the game world.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterLevel Wiki, setWaterLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetWaterLevel
  * @param level the new Z coordinate of the water surface. All water in the game world is set to this
  * height.
  * @param theWater the water element to change.
@@ -170,7 +170,7 @@ export declare function setWaterLevel(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterLevel Wiki, setWaterLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetWaterLevel
  * @noSelf
  */
 export declare function setWaterLevel(
@@ -179,7 +179,7 @@ export declare function setWaterLevel(
 
 /**
  * Sets the world position of a corner point of a water area.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWaterVertexPosition Wiki, setWaterVertexPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetWaterVertexPosition
  * @param theWater the water element of which to change a vertex.
  * @param vertexIndex the index of the vertex to move. Values range from 1 to 4 for water quads, and 1 to 3 for
  * triangles.
@@ -199,7 +199,7 @@ export declare function setWaterVertexPosition(
 
 /**
  * This function sets the wave height to the desired value, the default is 0.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWaveHeight Wiki, setWaveHeight }
+ * @see https://wiki.multitheftauto.com/wiki/SetWaveHeight
  * @param height A float between 0 and 100.
  * @return returns a boolean value true or false that tells you if it was successful or not.
  * @noSelf

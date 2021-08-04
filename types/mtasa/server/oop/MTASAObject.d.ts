@@ -50,7 +50,7 @@ export class MTASAObject {
 
     /**
      * Creates an object element at a given position and rotation.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateObject Wiki, createObject }
+     * @see https://wiki.multitheftauto.com/wiki/CreateObject
      * @param modelId A whole integer specifying the GTA:SA object model ID.
      * @param x A floating point number representing the X coordinate on the map.
      * @param y A floating point number representing the Y coordinate on the map.
@@ -75,7 +75,7 @@ export class MTASAObject {
 
     /**
      * This function returns the visible size of an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetObjectScale Wiki, getObjectScale }
+     * @see https://wiki.multitheftauto.com/wiki/GetObjectScale
      * @return * three float values indicating the scale of the object on the x, y, and z axis if
      * successful, false otherwise.
      */
@@ -88,7 +88,7 @@ export class MTASAObject {
     /**
      * This function will smoothly move an object from its current position to a specified
      * rotation and position.
-     * @see {@link https://wiki.multitheftauto.com/wiki/MoveObject Wiki, moveObject }
+     * @see https://wiki.multitheftauto.com/wiki/MoveObject
      * @param time the time in milliseconds the object will arrive at the destination.
      * @param targetx the X value of the target position
      * @param targety the Y value of the target position
@@ -124,7 +124,7 @@ export class MTASAObject {
 
     /**
      * This function changes the visible size of an object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetObjectScale Wiki, setObjectScale }
+     * @see https://wiki.multitheftauto.com/wiki/SetObjectScale
      * @param scale : a float containing the new scale. 1.0 is the standard scale, with 0.5 being half the
      * size and 2.0 being twice the size. If the scaleY is set, this will be scaleX.
      * @param scaleY : a float containing the new scale on the Y axis
@@ -140,7 +140,7 @@ export class MTASAObject {
 
     /**
      * This will allow you to stop an object that is currently moving.
-     * @see {@link https://wiki.multitheftauto.com/wiki/StopObject Wiki, stopObject }
+     * @see https://wiki.multitheftauto.com/wiki/StopObject
      * @return * true if successful.
      * * false otherwise.
      */

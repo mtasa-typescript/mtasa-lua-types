@@ -57,7 +57,7 @@ import {
 
 /**
  * This function is used to get alpha (transparency) from the clients cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCursorAlpha Wiki, getCursorAlpha }
+ * @see https://wiki.multitheftauto.com/wiki/GetCursorAlpha
  * @return returns a int, 0-255, where 255 is fully opaque and 0 is fully transparent.
  * @noSelf
  */
@@ -68,7 +68,7 @@ export declare function getCursorAlpha(): number;
  * reasons, the world position returned is always 300 units away. If you want the exact
  * world point (similar to onClientClick), use processLineOfSight between the camera
  * position and the worldX/Y/Z result of this function. (See example below)
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCursorPosition Wiki, getCursorPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetCursorPosition
  * @return returns 5 values: cursorx, cursory, worldx, worldy, worldz. the first two values are the
  * 2d relative screen coordinates of the cursor: cursorx goes from 0 (left side of the
  * screen) to 1 (right side), cursory goes from 0 (top) to 1 (bottom). the 3 values that
@@ -86,7 +86,7 @@ export declare function getCursorPosition(): LuaMultiReturn<[
 
 /**
  * This function is used to determine whether or not a players cursor is showing.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsCursorShowing Wiki, isCursorShowing }
+ * @see https://wiki.multitheftauto.com/wiki/IsCursorShowing
  * @return returns true if the players cursor is showing, false if it isnt.
  * @noSelf
  */
@@ -94,7 +94,7 @@ export declare function isCursorShowing(): boolean;
 
 /**
  * This function is used to change alpha (transparency) from the clients cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCursorAlpha Wiki, setCursorAlpha }
+ * @see https://wiki.multitheftauto.com/wiki/SetCursorAlpha
  * @param alpha : The alpha value to set. Value can be 0-255, where 255 is fully opaque and 0 is fully
  * transparent.
  * @return returns true if the new alpha value was set, or false otherwise.
@@ -106,7 +106,7 @@ export declare function setCursorAlpha(
 
 /**
  * This function sets the current position of the mouse cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCursorPosition Wiki, setCursorPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetCursorPosition
  * @param cursorX Position over the X axis
  * @param cursorY Position over the Y axis
  * @return returns true if the position has been successfully set, false otherwise.
@@ -119,7 +119,7 @@ export declare function setCursorPosition(
 
 /**
  * This function is used to show or hide a players cursor.
- * @see {@link https://wiki.multitheftauto.com/wiki/ShowCursor Wiki, showCursor }
+ * @see https://wiki.multitheftauto.com/wiki/ShowCursor
  * @param show A boolean value determining whether to show (true) or hide (false) the cursor.
  * @param toggleControls A boolean value determining whether to disable controls whilst the cursor is showing.
  * true implies controls are disabled, false implies controls remain enabled.

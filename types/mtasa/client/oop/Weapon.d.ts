@@ -92,7 +92,7 @@ export class Weapon extends Element {
     /**
      * Creates a Element/Weapon|custom weapon that can fire bullets. Do not confuse this with
      * player held weapons.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateWeapon Wiki, createWeapon }
+     * @see https://wiki.multitheftauto.com/wiki/CreateWeapon
      * @param theType The weapon type which can be:
      * @param x The x position to create the weapon.
      * @param y The y position to create the weapon.
@@ -109,7 +109,7 @@ export class Weapon extends Element {
 
     /**
      * Fires one shot from a Element/Weapon|custom weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FireWeapon Wiki, fireWeapon }
+     * @see https://wiki.multitheftauto.com/wiki/FireWeapon
      * @return returns true if the shot weapon is valid and therefore the shot was fired, false
      * otherwise.
      */
@@ -117,7 +117,7 @@ export class Weapon extends Element {
 
     /**
      * This function gets the total ammo a Element/Weapon|custom weapon has.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponAmmo Wiki, getWeaponAmmo }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponAmmo
      * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
      * error occured.
      */
@@ -126,7 +126,7 @@ export class Weapon extends Element {
     /**
      * This function gets the amount of ammo left in a Element/Weapon|custom weapons
      * magazine/clip.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponClipAmmo Wiki, getWeaponClipAmmo }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponClipAmmo
      * @return returns the amount of ammo in the element/weapon|custom weapons clip, false if an error
      * occured.
      */
@@ -134,14 +134,14 @@ export class Weapon extends Element {
 
     /**
      * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate
      * @return returns an integer with the firing rate of the custom weapon, false otherwise.
      */
     getFiringRate(): number;
 
     /**
      * This function gets the flags of a Element/Weapon|custom weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFlags Wiki, getWeaponFlags }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponFlags
      * @param theFlag the weapon flag to get:
      * @param disable_model : makes the weapon and muzzle effect invisible or not.
      * @param flags : returns the flags used to get where the gun shoots at. These flags are (by order):
@@ -169,7 +169,7 @@ export class Weapon extends Element {
      * This function gets the owner of a Element/Weapon|custom weapon. Weapon ownership system
      * was, however, disabled, so this function always returns false. Please refer to
      * setWeaponOwner for details.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponOwner Wiki, getWeaponOwner }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponOwner
      * @return this function was intended to return the player which owns the element/weapon|custom
      * weapon, and false if an error occured. however, at the moment it always returns false.
      */
@@ -177,7 +177,7 @@ export class Weapon extends Element {
 
     /**
      * This function gets the state of a Element/Weapon|custom weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponState Wiki, getWeaponState }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponState
      * @return * a string if the element/weapon|weapon is valid, indicating the weapon state, which can
      * be:
      * ** reloading: the weapon is reloading.
@@ -190,7 +190,7 @@ export class Weapon extends Element {
 
     /**
      * This functions gets the target of a Element/Weapon|custom weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponTarget Wiki, getWeaponTarget }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponTarget
      * @return * returns the target of the element/weapon|custom weapon, which can be:
      * **nil if the weapon is in rotation based targeting.
      * **3 float|floats if the weapon is firing at a fixed point.
@@ -201,14 +201,14 @@ export class Weapon extends Element {
 
     /**
      * This function resets the firing rate of a Element/Weapon|custom weapon to the default one.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ResetWeaponFiringRate Wiki, resetWeaponFiringRate }
+     * @see https://wiki.multitheftauto.com/wiki/ResetWeaponFiringRate
      * @return returns true on success, false otherwise.
      */
     resetFiringRate(): boolean;
 
     /**
      * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
+     * @see https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo
      * @param clipAmmo The amount of ammo in the clip.
      * @return this function returns true if the arguments are valid and the weapon clip ammo could be
      * changed; false otherwise.
@@ -220,7 +220,7 @@ export class Weapon extends Element {
     /**
      * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
      * firing state.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
+     * @see https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate
      * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
      * quicker the Element/Weapon|custom weapon will shoot.
      * @return returns true on success, false otherwise.
@@ -232,7 +232,7 @@ export class Weapon extends Element {
     /**
      * This function sets a Element/Weapon|custom weapon flags, used to change how it behaves or
      * finds a possible target to shoot.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFlags Wiki, setWeaponFlags }
+     * @see https://wiki.multitheftauto.com/wiki/SetWeaponFlags
      * @param theFlag the weapon flag to change (all of them can be true or false):
      * @param disable_model : makes the weapon and muzzle effect invisible or not.
      * @param flags : configures the flags used to get where the gun shoots at. They are based on
@@ -261,7 +261,7 @@ export class Weapon extends Element {
 
     /**
      * This function sets a Element/Weapon|custom weapons state.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponState Wiki, setWeaponState }
+     * @see https://wiki.multitheftauto.com/wiki/SetWeaponState
      * @param theState : the state you wish to set:
      * @param reloading : makes the weapon reload.
      * @param firing : makes the weapon constantly fire its target (unless any shooting blocking flags are
@@ -276,7 +276,7 @@ export class Weapon extends Element {
     /**
      * This function gets a weapon property of the specified Element/Weapon|custom weapon
      * (clientside only) or specified Weapons|player-held weapon (both client and server).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+     * @see https://wiki.multitheftauto.com/wiki/GetWeaponProperty
      * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
      * @param weaponSkill Either: pro, std or poor
      * @param property The property you want to get the value of:
@@ -317,7 +317,7 @@ export class Weapon extends Element {
      * * theValue: The value to set the property to.
      * Returns true if the property was set.
      * </section>
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
+     * @see https://wiki.multitheftauto.com/wiki/SetWeaponProperty
      * @param strProperty the property to edit:
      * @param theValue The value to set the property to.
      * @return returns true if the property was set.

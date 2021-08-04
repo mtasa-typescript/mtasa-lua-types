@@ -60,7 +60,7 @@ import {
  * debugging scripts as it may degrade script performance.
  * Debug hooks are not recursive, so functions and events triggered inside the hook callback
  * will not be traced.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddDebugHook Wiki, addDebugHook }
+ * @see https://wiki.multitheftauto.com/wiki/AddDebugHook
  * @param hookType The type of hook to add. This can be:
  * ** preEvent
  * ** postEvent
@@ -86,7 +86,7 @@ export declare function addDebugHook(
 /**
  * This function returns the decrypted data from https://en.wikipedia.org/wiki/Base64 base64
  * representation of the encrypted block
- * @see {@link https://wiki.multitheftauto.com/wiki/Base64Decode Wiki, base64Decode }
+ * @see https://wiki.multitheftauto.com/wiki/Base64Decode
  * @param data The block of data you want to decrypt
  * @return returns the decrypted data from https://en.wikipedia.org/wiki/base64 base64
  * representation of the encrypted block if the decryption process was successfully
@@ -100,7 +100,7 @@ export declare function base64Decode(
 /**
  * This function returns the https://en.wikipedia.org/wiki/Base64 base64 representation of
  * the encoded block of data
- * @see {@link https://wiki.multitheftauto.com/wiki/Base64Encode Wiki, base64Encode }
+ * @see https://wiki.multitheftauto.com/wiki/Base64Encode
  * @param data The block of data you want to encode
  * @return returns the https://en.wikipedia.org/wiki/base64 base64 representation of the encoded
  * data if the encoding process was successfully completed, false otherwise.
@@ -114,7 +114,7 @@ export declare function base64Encode(
  * This function performs a bitwise AND-conjunction on two or more (unsigned) 32-bit
  * Int|integers. See http://en.wikipedia.org/wiki/Bitwise_operation#AND Bitwise operation
  * for more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitAnd Wiki, bitAnd }
+ * @see https://wiki.multitheftauto.com/wiki/BitAnd
  * @param varN The value you want to perform an AND-conjunction on
  * @return returns the conjuncted value.
  * @noSelf
@@ -132,7 +132,7 @@ export declare function bitAnd(
  * the left, thus preserving the sign of the operand.
  * See https://en.wikipedia.org/wiki/Bitwise_operation#Arithmetic_shift Bitwise operation
  * for more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitArShift Wiki, bitArShift }
+ * @see https://wiki.multitheftauto.com/wiki/BitArShift
  * @param value The value you want to perform the arithmetic shift on.
  * @param n The amount of positions to shift the value by.
  * @return returns the arithmetic shifted value as integer.
@@ -146,7 +146,7 @@ export declare function bitArShift(
 /**
  * This function returns the unsigned number formed by the bits field to field + width - 1
  * (range: 0-31).
- * @see {@link https://wiki.multitheftauto.com/wiki/BitExtract Wiki, bitExtract }
+ * @see https://wiki.multitheftauto.com/wiki/BitExtract
  * @param var The value
  * @param field The field number
  * @param width Number of bits to extract
@@ -164,7 +164,7 @@ export declare function bitExtract(
  * n positions.
  * See https://en.wikipedia.org/wiki/Bitwise_operation#Rotate_no_carry Bitwise operation for
  * more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitLRotate Wiki, bitLRotate }
+ * @see https://wiki.multitheftauto.com/wiki/BitLRotate
  * @param value The value you want to perform the rotation on.
  * @param n The amount of positions to rotate the value by.
  * @return returns the circular left-rotated value as integer.
@@ -180,7 +180,7 @@ export declare function bitLRotate(
  * In a logical shift, zeros are shifted in to replace the discarded bits.
  * See https://en.wikipedia.org/wiki/Bitwise_operation#Logical_shift Bitwise operation for
  * more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitLShift Wiki, bitLShift }
+ * @see https://wiki.multitheftauto.com/wiki/BitLShift
  * @param value The value you want to perform the shift on.
  * @param n The amount of positions to shift the value by.
  * @return returns the logical left shifted value as integer.
@@ -194,7 +194,7 @@ export declare function bitLShift(
 /**
  * This function performs a bitwise NOT on an (unsigned) 32-bit Int|integer. See
  * http://en.wikipedia.org/wiki/Bitwise_operation#NOT Bitwise operation for more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitNot Wiki, bitNot }
+ * @see https://wiki.multitheftauto.com/wiki/BitNot
  * @param var The value you want to perform a bitwise NOT on
  * @return returns the value on which the operation has been performed.
  * @noSelf
@@ -207,7 +207,7 @@ export declare function bitNot(
  * This function performs a bitwise OR-conjunction on two or more (unsigned) 32-bit
  * Int|integers. See http://en.wikipedia.org/wiki/Bitwise_operation#OR Bitwise operation for
  * more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitOr Wiki, bitOr }
+ * @see https://wiki.multitheftauto.com/wiki/BitOr
  * @param varN The value you want to perform an OR-conjunction on
  * @return returns the conjuncted value.
  * @noSelf
@@ -221,7 +221,7 @@ export declare function bitOr(
 /**
  * This function returns the unsigned number formed by var value with replacement specified
  * at bits field to field + width - 1
- * @see {@link https://wiki.multitheftauto.com/wiki/BitReplace Wiki, bitReplace }
+ * @see https://wiki.multitheftauto.com/wiki/BitReplace
  * @param var The value
  * @param replaceValue The replaceValue
  * @param field The field number
@@ -241,7 +241,7 @@ export declare function bitReplace(
  * n positions.
  * See https://en.wikipedia.org/wiki/Bitwise_operation#Rotate_no_carry Bitwise operation for
  * more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitRRotate Wiki, bitRRotate }
+ * @see https://wiki.multitheftauto.com/wiki/BitRRotate
  * @param value The value you want to perform the rotation on.
  * @param n The amount of positions to rotate the value by.
  * @return returns the circular right-rotated value as integer.
@@ -257,7 +257,7 @@ export declare function bitRRotate(
  * positions. In a logical shift, zeros are shifted in to replace the discarded bits.
  * See https://en.wikipedia.org/wiki/Bitwise_operation#Logical_shift Bitwise operation for
  * more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitRShift Wiki, bitRShift }
+ * @see https://wiki.multitheftauto.com/wiki/BitRShift
  * @param value The value you want to perform the shift on.
  * @param n The amount of positions to shift the value by.
  * @return returns the logical right shifted value as integer.
@@ -272,7 +272,7 @@ export declare function bitRShift(
  * This function performs an AND-conjunction on two or more (unsigned) 32-bit Int|integers
  * and checks, whether the conjuncted value is zero or not. See
  * http://en.wikipedia.org/wiki/Bitwise_operation#AND Bitwise operation for more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitTest Wiki, bitTest }
+ * @see https://wiki.multitheftauto.com/wiki/BitTest
  * @param varN The value you want to perform the operation on (see above)
  * @return returns true if the conjuncted value is not zero, false otherwise. if a bad argument was
  * passed to bittest, youll get nil.
@@ -288,7 +288,7 @@ export declare function bitTest(
  * This function performs a bitwise XOR-conjunction (exclusive OR) on two or more (unsigned)
  * 32-bit Int|integers. See http://en.wikipedia.org/wiki/Bitwise_operation#XOR Bitwise
  * operation for more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/BitXor Wiki, bitXor }
+ * @see https://wiki.multitheftauto.com/wiki/BitXor
  * @param varN The value you want to perform a XOR-conjunction on
  * @return returns the conjuncted value.
  * @noSelf
@@ -301,7 +301,7 @@ export declare function bitXor(
 
 /**
  * This functions creates a notification ballon on the desktop.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateTrayNotification Wiki, createTrayNotification }
+ * @see https://wiki.multitheftauto.com/wiki/CreateTrayNotification
  * @param notificationText The text to send in the notification.
  * @param iconType The notification icon type. Possible values are: default (the MTA icon), info, warning,
  * error
@@ -321,7 +321,7 @@ export declare function createTrayNotification(
  * by fetchRemote. This function only works, if development mode is enabled by
  * setDevelopmentMode and can be utilised to build a debugger that communicates via HTTP
  * requests with the editor/IDE.
- * @see {@link https://wiki.multitheftauto.com/wiki/DebugSleep Wiki, debugSleep }
+ * @see https://wiki.multitheftauto.com/wiki/DebugSleep
  * @param sleep : An integer value in milliseconds.
  * @return returns true if the development mode is enabled and arguments are correct, false
  * otherwise.
@@ -334,7 +334,7 @@ export declare function debugSleep(
 /**
  * This function decodes an encoded string using the specified algorithm. The counterpart of
  * this function is encodeString.
- * @see {@link https://wiki.multitheftauto.com/wiki/DecodeString Wiki, decodeString }
+ * @see https://wiki.multitheftauto.com/wiki/DecodeString
  * @param algorithm The algorithm to use.
  * @param input The input to decode.
  * @param options A table with options and other neccessary data for the algorithm, as detailed below.
@@ -353,7 +353,7 @@ export declare function decodeString(
 
 /**
  * This function will take a reference and returns its Lua element.
- * @see {@link https://wiki.multitheftauto.com/wiki/Deref Wiki, deref }
+ * @see https://wiki.multitheftauto.com/wiki/Deref
  * @param reference The valid reference, which you want to dereference
  * @return returns mixed if the reference were valid. returns false if the reference were invalid.
  * @noSelf
@@ -368,7 +368,7 @@ export declare function deref(
  * matches, the file will not be downloaded again but onClientFileDownloadComplete will
  * still run. The file should also be included in the resource meta.xml with the download
  * attribute set to false, see meta.xml for more details.
- * @see {@link https://wiki.multitheftauto.com/wiki/DownloadFile Wiki, downloadFile }
+ * @see https://wiki.multitheftauto.com/wiki/DownloadFile
  * @param fileName : A string referencing the name of the file to download
  * @return returns true if file download has been queued, false otherwise.
  * @noSelf
@@ -380,7 +380,7 @@ export declare function downloadFile(
 /**
  * This function encodes a string using the specified algorithm. The counterpart of this
  * function is decodeString.
- * @see {@link https://wiki.multitheftauto.com/wiki/EncodeString Wiki, encodeString }
+ * @see https://wiki.multitheftauto.com/wiki/EncodeString
  * @param algorithm The algorithm to use.
  * @param input The input to encode.
  * @param options A table with options and other neccessary data for the algorithm, as detailed below.
@@ -411,7 +411,7 @@ export declare function encodeString(
 /**
  * This function parses a JSON formatted string into variables. You can use toJSON to encode
  * variables into a JSON string that can be read by this function.
- * @see {@link https://wiki.multitheftauto.com/wiki/FromJSON Wiki, fromJSON }
+ * @see https://wiki.multitheftauto.com/wiki/FromJSON
  * @param json A JSON formatted string
  * @return returns variables read from the json string.
  * note: indices of a json object such as 1: cat are being returned as string, not as
@@ -426,7 +426,7 @@ export declare function fromJSON(
  * This function will extract Red, Green, Blue and Alpha values from a hex string you
  * provide it. These strings follow the same format as used in HTML, with addition of the
  * Alpha values.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColorFromString Wiki, getColorFromString }
+ * @see https://wiki.multitheftauto.com/wiki/GetColorFromString
  * @param theColor A string containing a valid color code.
  * :Valid strings are:
  * @param #RRGGBB : Colors specified, Alpha assumed to be 255.
@@ -457,7 +457,7 @@ export declare function getColorFromString(
 /**
  * This function is used to get the development mode of the client. For more information see
  * setDevelopmentMode
- * @see {@link https://wiki.multitheftauto.com/wiki/GetDevelopmentMode Wiki, getDevelopmentMode }
+ * @see https://wiki.multitheftauto.com/wiki/GetDevelopmentMode
  * @return returns true if the development mode is on, false if off.
  * @noSelf
  */
@@ -466,7 +466,7 @@ export declare function getDevelopmentMode(): boolean;
 /**
  * This function returns the distance between two 2 dimensional points using the pythagorean
  * theorem.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetDistanceBetweenPoints2D Wiki, getDistanceBetweenPoints2D }
+ * @see https://wiki.multitheftauto.com/wiki/GetDistanceBetweenPoints2D
  * @param x1 : The X position of the first point
  * @param y1 : The Y position of the first point
  * @param x2 : The X position of the second point
@@ -485,7 +485,7 @@ export declare function getDistanceBetweenPoints2D(
 /**
  * This function returns the distance between two 3 dimensional points using the pythagorean
  * theorem.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetDistanceBetweenPoints3D Wiki, getDistanceBetweenPoints3D }
+ * @see https://wiki.multitheftauto.com/wiki/GetDistanceBetweenPoints3D
  * @param x1 : The X position of the first point
  * @param y1 : The Y position of the first point
  * @param z1 : The Z position of the first point
@@ -510,7 +510,7 @@ export declare function getDistanceBetweenPoints3D(
  * in your custom interpolation) given a progress and an Easing|easing function.
  * In most cases, either moveObject or interpolateBetween can do the job. getEasingValue is
  * only provided in case you want to do your own custom interpolation based on easing.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetEasingValue Wiki, getEasingValue }
+ * @see https://wiki.multitheftauto.com/wiki/GetEasingValue
  * @param fProgress float between 0 and 1 indicating the interpolation progress (0 at the beginning of the
  * interpolation, 1 at the end).
  * @param strEasingType the Easing|easing function to use for the interpolation
@@ -535,7 +535,7 @@ export declare function getEasingValue(
 /**
  * This function retrieves the maximum http://en.wikipedia.org/wiki/Frame_rate FPS (Frames
  * per second) that players on the server can run their game at.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetFPSLimit Wiki, getFPSLimit }
+ * @see https://wiki.multitheftauto.com/wiki/GetFPSLimit
  * @return returns an integer between 25 and 100 of the maximum fps that players can run their game
  * at.
  * @noSelf
@@ -543,7 +543,7 @@ export declare function getEasingValue(
 export declare function getFPSLimit(): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetKeyboardLayout Wiki, getKeyboardLayout }
+ * @see https://wiki.multitheftauto.com/wiki/GetKeyboardLayout
  * @return returns a table with keyboard layout properties:
  * {| class=wikitable style=cellpadding: 10px;
  * |-
@@ -570,7 +570,7 @@ export declare function getKeyboardLayout(): LuaTable;
 
 /**
  * This function gets the players localization setting as set in the MTA client.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLocalization Wiki, getLocalization }
+ * @see https://wiki.multitheftauto.com/wiki/GetLocalization
  * @return returns a table with the following entries:
  * *code : the language code (eg. en_us for english (united states) or ar for arabic).
  * *name : the name of the language (eg. english (united states) or arabic).
@@ -580,7 +580,7 @@ export declare function getLocalization(): LuaTable;
 
 /**
  * This function returns network status information.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetNetworkStats Wiki, getNetworkStats }
+ * @see https://wiki.multitheftauto.com/wiki/GetNetworkStats
  * @noSelf
  */
 export declare function getNetworkStats(): LuaTable;
@@ -588,7 +588,7 @@ export declare function getNetworkStats(): LuaTable;
 /**
  * This function returns a table containing network usage information about inbound and
  * outbound packets.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetNetworkUsageData Wiki, getNetworkUsageData }
+ * @see https://wiki.multitheftauto.com/wiki/GetNetworkUsageData
  * @return returns a table with two fields: in and out. each of these contain a table with two
  * fields: bits and count. each of these contain a table with 256 numeric fields ranging
  * from 0 to 255, containing the appropriate network usage data for such packet id.
@@ -598,7 +598,7 @@ export declare function getNetworkUsageData(): LuaTable;
 
 /**
  * This function returns performance information.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetPerformanceStats Wiki, getPerformanceStats }
+ * @see https://wiki.multitheftauto.com/wiki/GetPerformanceStats
  * @param category Performance statistics category. If empty string is given, list of all categories is
  * returned.See categories for more information.
  * @param options Category specific , separated options. All categories supports h option for help.
@@ -620,7 +620,7 @@ export declare function getPerformanceStats(
  * This function gets the server or client (if used client sided it returns time as set on
  * clients computer) real time and returns it in a table. If you want to get the in-game
  * time (shown on GTAs clock) use getTime.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetRealTime Wiki, getRealTime }
+ * @see https://wiki.multitheftauto.com/wiki/GetRealTime
  * @param seconds A count in seconds from the year 1970.  Useful for storing points in time, or for
  * retrieving time information for getBanTime. The valid range of this argument is 0 to
  * 32,000,000,000
@@ -685,7 +685,7 @@ export declare function getRealTime(
  * By comparing two values of getTickCount, you can determine how much time has passed (in
  * milliseconds) between two events. This could be used to determine how efficient your code
  * is, or to time how long a player takes to complete a task.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTickCount Wiki, getTickCount }
+ * @see https://wiki.multitheftauto.com/wiki/GetTickCount
  * @return returns an integer containing the number of milliseconds since the system the server is
  * running on started. this has the potential to wrap-around.
  * @noSelf
@@ -694,7 +694,7 @@ export declare function getTickCount(): number;
 
 /**
  * This function is for getting the details of a running timer.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTimerDetails Wiki, getTimerDetails }
+ * @see https://wiki.multitheftauto.com/wiki/GetTimerDetails
  * @param theTimer A timer element.
  * @return * integer one represents the time left in miliseconds (1000th of a second) of the current
  * time left in the loop.
@@ -717,7 +717,7 @@ export declare function getTimerDetails(
  * This function returns a table of all active timers that the resource that calls it has
  * created. Alternatively, only the timers with a remaining time less than or equal to a
  * certain value can be retrieved.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTimers Wiki, getTimers }
+ * @see https://wiki.multitheftauto.com/wiki/GetTimers
  * @param theTime The maximum time left (in milliseconds) on the timers you wish to retrieve.
  * @return returns a table of all the active timers.
  * @noSelf
@@ -729,7 +729,7 @@ export declare function getTimers(
 /**
  * This function splits a string using the given separating character and returns one
  * specified substring.
- * @see {@link https://wiki.multitheftauto.com/wiki/Gettok Wiki, gettok }
+ * @see https://wiki.multitheftauto.com/wiki/Gettok
  * @param text the string that should be split.
  * @param tokenNumber which token should be returned (1 for the first, 2 for the second, and so on).
  * @param separatingCharacter the ASCII|ASCII number representing the character you want to use to separate the tokens.
@@ -745,7 +745,7 @@ export declare function gettok(
 ): string;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetUserdataType Wiki, getUserdataType }
+ * @see https://wiki.multitheftauto.com/wiki/GetUserdataType
  * @param value : A userdata value to get the type of. Userdata types can be:
  * @param Shared
  * @param resource-data : a Resource|resource pointer.
@@ -778,7 +778,7 @@ export declare function getUserdataType(
 
 /**
  * This function gives you various version information about MTA and the operating system.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVersion Wiki, getVersion }
+ * @see https://wiki.multitheftauto.com/wiki/GetVersion
  * @return returns a table with version information. specifically these keys are present in the
  * table:
  * *number: the mta server or client version (depending where the function was called) in
@@ -803,7 +803,7 @@ export declare function getVersion(): LuaTable;
 
 /**
  * This function returns a hash of the specified string in the specified algorithm.
- * @see {@link https://wiki.multitheftauto.com/wiki/Hash Wiki, hash }
+ * @see https://wiki.multitheftauto.com/wiki/Hash
  * @param algorithm : A string which must be one of these: md5, sha1, sha224, sha256, sha384, sha512
  * @param dataToHash : A string of the data to hash.
  * @return returns the hash of the data, false if an invalid argument was used.
@@ -817,7 +817,7 @@ export declare function hash(
 /**
  * This function returns human-readable representations of tables and MTA datatypes as a
  * string.
- * @see {@link https://wiki.multitheftauto.com/wiki/Inspect Wiki, inspect }
+ * @see https://wiki.multitheftauto.com/wiki/Inspect
  * @param var A variable of any datatype.
  * @param options A table of options. It is not mandatory, but when it is provided, it must be a table. For
  * a list of options, see the https://github.com/kikito/inspect.lua#options Inspects GitHub
@@ -836,7 +836,7 @@ export declare function inspect(
  * interpolation or any other Easing|easing function.
  * It can also be used to interpolate 2D vectors or scalars by only setting some of the x,
  * y, z values and putting 0 to the others.
- * @see {@link https://wiki.multitheftauto.com/wiki/InterpolateBetween Wiki, interpolateBetween }
+ * @see https://wiki.multitheftauto.com/wiki/InterpolateBetween
  * @param x1, y1, z1 3D coordinates of source vector/value
  * @param x2, y2, z2 3D coordinates of target vector/value
  * @param fProgress float between 0 and 1 indicating the interpolation progress (0 at the beginning of the
@@ -877,7 +877,7 @@ export declare function interpolateBetween(
  * to outputDebugString, but outputs useful information for any variable type, and does not
  * require use of Luas tostring.  This includes information about element types, and table
  * structures.  It is especially useful for quick debug tasks.
- * @see {@link https://wiki.multitheftauto.com/wiki/Iprint Wiki, iprint }
+ * @see https://wiki.multitheftauto.com/wiki/Iprint
  * @param var1 A variable of any type to print intelligent information for.
  * @param var2+ Another variable to be output.  An unlimited number of arguments can be supplied
  * @return always returns nil.
@@ -891,7 +891,7 @@ export declare function iprint(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsOOPEnabled Wiki, isOOPEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsOOPEnabled
  * @return returns true or false if oop is enabled or not. returns nil if an error arised.
  * @noSelf
  */
@@ -899,7 +899,7 @@ export declare function isOOPEnabled(): boolean;
 
 /**
  * This function checks if a variable is a timer.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTimer Wiki, isTimer }
+ * @see https://wiki.multitheftauto.com/wiki/IsTimer
  * @param theTimer : The variable that we want to check.
  * @return returns true if the passed value is a timer, false otherwise.
  * @noSelf
@@ -911,7 +911,7 @@ export declare function isTimer(
 /**
  * This function returns a boolean value whether the client has enabled tray notifications
  * in his settings or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTrayNotificationEnabled Wiki, isTrayNotificationEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/IsTrayNotificationEnabled
  * @return returns true if the tray notifications are enabled in the settings, false otherwise.
  * @noSelf
  */
@@ -919,7 +919,7 @@ export declare function isTrayNotificationEnabled(): boolean;
 
 /**
  * This function allows you to kill/halt existing timers.
- * @see {@link https://wiki.multitheftauto.com/wiki/KillTimer Wiki, killTimer }
+ * @see https://wiki.multitheftauto.com/wiki/KillTimer
  * @param theTimer The timer you wish to halt.
  * @return returns true if the timer was successfully killed, false if no such timer existed.
  * @noSelf
@@ -931,7 +931,7 @@ export declare function killTimer(
 /**
  * Calculates the MD5 hash of the specified string and returns its hexadecimal
  * representation.
- * @see {@link https://wiki.multitheftauto.com/wiki/Md5 Wiki, md5 }
+ * @see https://wiki.multitheftauto.com/wiki/Md5
  * @param str the string to hash.
  * @return returns the md5 hash of the input string if successful, false otherwise.
  * @noSelf
@@ -942,7 +942,7 @@ export declare function md5(
 
 /**
  * This function creates a new password hash using a specified hashing algorithm.
- * @see {@link https://wiki.multitheftauto.com/wiki/PasswordHash Wiki, passwordHash }
+ * @see https://wiki.multitheftauto.com/wiki/PasswordHash
  * @param password The password to hash.
  * @param algorithm The algorithm to use:
  * @param bcrypt : use the bcrypt hashing algorithm. Hash length: 60 characters. <span
@@ -965,7 +965,7 @@ export declare function passwordHash(
 
 /**
  * This function verifies whether a password matches a password hash.
- * @see {@link https://wiki.multitheftauto.com/wiki/PasswordVerify Wiki, passwordVerify }
+ * @see https://wiki.multitheftauto.com/wiki/PasswordVerify
  * @param password The password to check.
  * @param hash A supported hash (see passwordHash). <span style=color:red>Note that only the prefix $2y$
  * is supported for type bcrypt (older prefixes can cause security issues).</span>
@@ -990,7 +990,7 @@ export declare function passwordVerify(
 /**
  * This function stops at the first occurrence of the pattern in the input string and
  * returns the result of the search.
- * @see {@link https://wiki.multitheftauto.com/wiki/PregFind Wiki, pregFind }
+ * @see https://wiki.multitheftauto.com/wiki/PregFind
  * @param subject The input string
  * @param pattern The pattern string to search for in the input string.
  * @param flags Conjuncted value that contains flags ( 1 - ignorecase, 2 - multiline, 4 - dotall, 8 -
@@ -1007,7 +1007,7 @@ export declare function pregFind(
 
 /**
  * This function returns all matches.
- * @see {@link https://wiki.multitheftauto.com/wiki/PregMatch Wiki, pregMatch }
+ * @see https://wiki.multitheftauto.com/wiki/PregMatch
  * @param base The base string for replace.
  * @param pattern The pattern for match in base string.
  * @param flags Conjuncted value that contains flags ( 1 - ignorecase, 2 - multiline, 4 - dotall, 8 -
@@ -1027,7 +1027,7 @@ export declare function pregMatch(
 /**
  * This function performs a regular expression search and replace and returns the replaced
  * string.
- * @see {@link https://wiki.multitheftauto.com/wiki/PregReplace Wiki, pregReplace }
+ * @see https://wiki.multitheftauto.com/wiki/PregReplace
  * @param subject The input string.
  * @param pattern The pattern string to search for in the input string.
  * @param replacement The replacement string to replace all matches within the input string.
@@ -1046,7 +1046,7 @@ export declare function pregReplace(
 
 /**
  * This function will create a reference to the given argument.
- * @see {@link https://wiki.multitheftauto.com/wiki/Ref Wiki, ref }
+ * @see https://wiki.multitheftauto.com/wiki/Ref
  * @param objectToReference The Lua element, which you want to reference
  * @return returns an int if the reference were successfully created. returns false if the parameter
  * were invalid.
@@ -1058,7 +1058,7 @@ export declare function ref(
 
 /**
  * This function removes hooks added by addDebugHook
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveDebugHook Wiki, removeDebugHook }
+ * @see https://wiki.multitheftauto.com/wiki/RemoveDebugHook
  * @param hookType The type of hook to remove. This can be:
  * ** preEvent
  * ** postEvent
@@ -1077,7 +1077,7 @@ export declare function removeDebugHook(
  * This function allows you to reset the elapsed time in existing timers to zero. The
  * function does not reset the times to execute count on timers which have a limited amout
  * of repetitions.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetTimer Wiki, resetTimer }
+ * @see https://wiki.multitheftauto.com/wiki/ResetTimer
  * @param theTimer The timer whose elapsed time you wish to reset.
  * @return returns true if the timer was successfully reset, false otherwise.
  * @noSelf
@@ -1088,7 +1088,7 @@ export declare function resetTimer(
 
 /**
  * This function sets the players clipboard text (what appears when you paste with CTRL + V)
- * @see {@link https://wiki.multitheftauto.com/wiki/SetClipboard Wiki, setClipboard }
+ * @see https://wiki.multitheftauto.com/wiki/SetClipboard
  * @param theText The new text to be in the players clipboard when the player pastes with CTRL + V.
  * @return returns true if the text in the clip board was set correctly.
  * @noSelf
@@ -1106,7 +1106,7 @@ export declare function setClipboard(
  * output window.
  * Shared development mode functions:
  * * debugSleep: Sets the freeze time for the client/server.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetDevelopmentMode Wiki, setDevelopmentMode }
+ * @see https://wiki.multitheftauto.com/wiki/SetDevelopmentMode
  * @param enable : A boolean to indicate whether development mode is on (true) or off (false)
  * @param enableWeb : A boolean to indicate whether browser debug messages will be filtered (false) or not
  * (true)
@@ -1121,7 +1121,7 @@ export declare function setDevelopmentMode(
 /**
  * This function sets the maximum http://en.wikipedia.org/wiki/Frame_rate FPS (Frames per
  * second) that players on the server can run their game at.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetFPSLimit Wiki, setFPSLimit }
+ * @see https://wiki.multitheftauto.com/wiki/SetFPSLimit
  * @param fpsLimit An integer value representing the maximum FPS. This value may be between 25 and 100 FPS.
  * You can also pass 0 or false, in which case the FPS limit will be the one set in the
  * client settings (by default, 100 FPS and the client fps limit should also be manually
@@ -1148,7 +1148,7 @@ export declare function setFPSLimit(
  * same frame, as the difference in time between the two timers (10ms) is less than half the
  * length of the frame (33ms). As with most timers provided by other languages, you shouldnt
  * rely on the timer triggering at an exact point in the future.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTimer Wiki, setTimer }
+ * @see https://wiki.multitheftauto.com/wiki/SetTimer
  * @param theFunction The function you wish the timer to call.
  * @param timeInterval The number of milliseconds that should elapse before the function is called. (the minimum
  * is 50 (0 on 1.5.6 r16715); 1000 milliseconds = 1 second)
@@ -1167,11 +1167,11 @@ export declare function setTimer<
     theFunction: CallbackType,
     timeInterval: number,
     timesToExecute: number,
-    ...arguments: Parameters<CallbackType>
+    ...args: Parameters<CallbackType>
 ): Timer;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWindowFlashing Wiki, setWindowFlashing }
+ * @see https://wiki.multitheftauto.com/wiki/SetWindowFlashing
  * @param shouldFlash whether the window should flash
  * @param count the number of times the window should flash, defaults to 10 times
  * @return returns false if:
@@ -1191,7 +1191,7 @@ export declare function setWindowFlashing(
  * * This function returns an uppercase string, so make sure you string.upper() anything
  * else you are checking against that has been sha256d elsewhere.}}
  * Calculates the sha256 hash of the specified string.
- * @see {@link https://wiki.multitheftauto.com/wiki/Sha256 Wiki, sha256 }
+ * @see https://wiki.multitheftauto.com/wiki/Sha256
  * @param str the string to hash.
  * @return returns the sha256 hash of the input string if successful, false otherwise.
  * @noSelf
@@ -1208,7 +1208,7 @@ export declare function sha256(
  * Note: You can use the function gettok to retrieve a single token from the string at a
  * specific index. This may be faster for one-off lookups, but considerably slower if you
  * are going to check each token in a long string.
- * @see {@link https://wiki.multitheftauto.com/wiki/Split Wiki, split }
+ * @see https://wiki.multitheftauto.com/wiki/Split
  * @param stringToSplit The string you wish to split into parts.
  * @param separatingChar A string of the character you want to split, or the ASCII|ASCII number representing the
  * character you want to use to split.
@@ -1225,7 +1225,7 @@ export declare function split(
  * This function decrypts given https://en.wikipedia.org/wiki/Base64 base64 representation
  * of encrypted data using the https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm Tiny
  * Encryption Algorithm.
- * @see {@link https://wiki.multitheftauto.com/wiki/TeaDecode Wiki, teaDecode }
+ * @see https://wiki.multitheftauto.com/wiki/TeaDecode
  * @param data The block of data you want to decrypt
  * @param key The key that should be used for decryption (Only first 16 characters are used)
  * @return returns string containing the decrypted data if the decryption process was successfully
@@ -1241,7 +1241,7 @@ export declare function teaDecode(
  * This functions performs the https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm Tiny
  * Encryption Algorithm on the given string and returns the
  * https://en.wikipedia.org/wiki/Base64 base64 representation of the encrypted string.
- * @see {@link https://wiki.multitheftauto.com/wiki/TeaEncode Wiki, teaEncode }
+ * @see https://wiki.multitheftauto.com/wiki/TeaEncode
  * @param text The string you want to encrypt. (See second example if you want to encode binary data)
  * @param key The key that should be used for encryption (Only first 16 characters are used)
  * @return returns the https://en.wikipedia.org/wiki/base64 base64 representation of the encrypted
@@ -1255,7 +1255,7 @@ export declare function teaEncode(
 
 /**
  * This function retrieves the hex number of a specified color, useful for the dx functions.
- * @see {@link https://wiki.multitheftauto.com/wiki/Tocolor Wiki, tocolor }
+ * @see https://wiki.multitheftauto.com/wiki/Tocolor
  * @param red The amount of http://en.wikipedia.org/wiki/RGBA_color_space red in the color (0-255).
  * @param green The amount of http://en.wikipedia.org/wiki/RGBA_color_space green in the color (0-255).
  * @param blue The amount of http://en.wikipedia.org/wiki/RGBA_color_space blue in the color (0-255).
@@ -1273,7 +1273,7 @@ export declare function tocolor(
 /**
  * This function converts a single value (preferably a Lua table) into a JSON encoded
  * string. You can use this to store the data and then load it again using fromJSON.
- * @see {@link https://wiki.multitheftauto.com/wiki/ToJSON Wiki, toJSON }
+ * @see https://wiki.multitheftauto.com/wiki/ToJSON
  * @param var An argument of any type. Arguments that are elements will be stored as element IDs that
  * are liable to change between sessions. As such, do not save elements across sessions as
  * you will get unpredictable results.
@@ -1293,7 +1293,7 @@ export declare function toJSON(
 
 /**
  * The function returns the string of the specified UTF code.
- * @see {@link https://wiki.multitheftauto.com/wiki/UtfChar Wiki, utfChar }
+ * @see https://wiki.multitheftauto.com/wiki/UtfChar
  * @param characterCode The UTF code, to get the string of.
  * @return returns a string if the function was successful, false otherwise.
  * @noSelf
@@ -1304,7 +1304,7 @@ export declare function utfChar(
 
 /**
  * The function returns the UTF codes of the given string.
- * @see {@link https://wiki.multitheftauto.com/wiki/UtfCode Wiki, utfCode }
+ * @see https://wiki.multitheftauto.com/wiki/UtfCode
  * @param theString The string to get the UTF code of.
  * @return returns an int if the function was successful, false otherwise.
  * @noSelf
@@ -1315,7 +1315,7 @@ export declare function utfCode(
 
 /**
  * The function gets the real length of a string, in characters.
- * @see {@link https://wiki.multitheftauto.com/wiki/UtfLen Wiki, utfLen }
+ * @see https://wiki.multitheftauto.com/wiki/UtfLen
  * @param theString The string to get the length of.
  * @return returns an int if the function was successful, false otherwise.
  * @noSelf
@@ -1326,7 +1326,7 @@ export declare function utfLen(
 
 /**
  * The function returns the byte position at specified character position.
- * @see {@link https://wiki.multitheftauto.com/wiki/UtfSeek Wiki, utfSeek }
+ * @see https://wiki.multitheftauto.com/wiki/UtfSeek
  * @param theString The string.
  * @param position An int with the specified charachter position.
  * @return returns an int if the function was successful, false otherwise.
@@ -1339,7 +1339,7 @@ export declare function utfSeek(
 
 /**
  * The function returns a sub string, from the specified positions on a character.
- * @see {@link https://wiki.multitheftauto.com/wiki/UtfSub Wiki, utfSub }
+ * @see https://wiki.multitheftauto.com/wiki/UtfSub
  * @param theString The string.
  * @param Start An int with the start position.
  * @param End An int with the end position.

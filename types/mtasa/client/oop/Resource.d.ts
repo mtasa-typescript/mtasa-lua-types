@@ -104,7 +104,7 @@ export class Resource {
      * * sourceResource - The resource that called the exported function
      * * sourceResourceRoot - The resource root element of the resource which called the
      * exported function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/Call Wiki, call }
+     * @see https://wiki.multitheftauto.com/wiki/Call
      * @param theFunction This is a string with the name of the function which you want to call.
      * @param arguments Any arguments you may want to pass to the function when it is called. Any number of
      * arguments of can be specified, each being passed to the designated function.
@@ -127,7 +127,7 @@ export class Resource {
     /**
      * This function is used to retrieve a resource from its name. A resources name is the same
      * as its folder or file archive name on the server (without the extension).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceFromName Wiki, getResourceFromName }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceFromName
      * @param resourceName the name of the resource you wish to get.
      * @return returns the resource with the specified name, or false if no resource of that name
      * exists. note that clientside this will also return false for resources that are in the
@@ -139,7 +139,7 @@ export class Resource {
 
     /**
      * This function gets the name of the specified resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceName Wiki, getResourceName }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceName
      * @return returns a string with the resource name in it, or false if the resource does not exist.
      */
     getName(): string;
@@ -152,7 +152,7 @@ export class Resource {
      * (and global events that originate from the root element).
      * Note: every resource has a Predefined_variables_list|predefined global variable called
      * resourceRoot whose value is the root element of that resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetResourceRootElement Wiki, getResourceRootElement }
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceRootElement
      * @return returns an element representing the resources root, false if the specified resource
      * doesnt exist.
      */

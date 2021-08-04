@@ -64,14 +64,14 @@ export class GuiCheckbox extends GuiElement {
 
     /**
      * This function gets a checkboxs selection state.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected Wiki, guiCheckBoxGetSelected }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCheckBoxGetSelected
      * @return returns true if the checkbox is selected, false if it is not.
      */
     getSelected(): boolean;
 
     /**
      * This function selects (ticks) or unselects a checkbox.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected Wiki, guiCheckBoxSetSelected }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCheckBoxSetSelected
      * @param state The state of the checkbox, where true indicates selected, and false indicates unselected.
      * @return returns true if the checkboxs selection state was successfully set, false otherwise.
      */
@@ -81,7 +81,7 @@ export class GuiCheckbox extends GuiElement {
 
     /**
      * This function creates a Element/GUI/Checkbox|checkbox.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateCheckBox Wiki, guiCreateCheckBox }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateCheckBox
      * @param x A float of the 2D x position of the checkbox on a players screen. This is affected by the
      * relative argument.
      * @param y A float of the 2D y position of the checkbox on a players screen. This is affected by the

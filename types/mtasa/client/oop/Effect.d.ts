@@ -68,7 +68,7 @@ export class Effect extends Element {
 
     /**
      * Creates an Element/Effect|effect on specified position.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreateEffect Wiki, createEffect }
+     * @see https://wiki.multitheftauto.com/wiki/CreateEffect
      * @param name A string contains Element/Effect#Effects_list|effect name.
      * @param x A floating point number representing the X coordinate on the map.
      * @param y A floating point number representing the Y coordinate on the map.
@@ -95,7 +95,7 @@ export class Effect extends Element {
 
     /**
      * Creates a blood splatter particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddBlood Wiki, fxAddBlood }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddBlood
      * @param posX, posY, posZ the world coordinates where the effect originates.
      * @param dirX, dirY, dirZ a direction vector indicating where the blood flies to.
      * @param count the number of flying droplets to create.
@@ -115,7 +115,7 @@ export class Effect extends Element {
     /**
      * Creates a bullet impact particle effect, consisting of a small smoke cloud and a number
      * of sparks.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddBulletImpact Wiki, fxAddBulletImpact }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddBulletImpact
      * @param posX, posY, posZ the world coordinates where the effect originates.
      * @param dirX, dirY, dirZ a vector indicating the direction of the effect.
      * @param smokeSize the size of the smoke cloud.
@@ -138,7 +138,7 @@ export class Effect extends Element {
     /**
      * This function creates a bullet splash particle effect, normally created when shooting
      * into water.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddBulletSplash Wiki, fxAddBulletSplash }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddBulletSplash
      * @param posX A float representing the x position of the splash
      * @param posY A float representing the y position of the splash
      * @param posZ A float representing the z position of the splash
@@ -152,7 +152,7 @@ export class Effect extends Element {
 
     /**
      * Creates a debris particle effect (e.g. bits that fly off a car when ramming a wall).
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddDebris Wiki, fxAddDebris }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddDebris
      * @param posX, posY, posZ the world coordinates where the debris originates.
      * @param colorR, colorG, colorB, colorA the color and alpha (transparency) of the debris effect.
      * @param scale the size of the chunks.
@@ -174,7 +174,7 @@ export class Effect extends Element {
     /**
      * This function creates a foot splash particle effect, normally created when walking into
      * water.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddFootSplash Wiki, fxAddFootSplash }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddFootSplash
      * @param posX A float representing the x position of the splash
      * @param posY A float representing the y position of the splash
      * @param posZ A float representing the z position of the splash
@@ -188,7 +188,7 @@ export class Effect extends Element {
 
     /**
      * This function creates a glass particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddGlass Wiki, fxAddGlass }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddGlass
      * @param posX A float representing the x position of the glass
      * @param posY A float representing the y position of the glass
      * @param posZ A float representing the z position of the glass
@@ -211,7 +211,7 @@ export class Effect extends Element {
 
     /**
      * This function creates a gunshot particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddGunshot Wiki, fxAddGunshot }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddGunshot
      * @param posX, posY, posZ the world coordinates where the effect originates.
      * @param dirX, dirY, dirZ a direction vector indicating where the bullet is fired.
      * @param includeSparks A bool representing whether the particle effect will generate sparks.
@@ -229,7 +229,7 @@ export class Effect extends Element {
 
     /**
      * Creates a punch impact particle effect (a small dust cloud).
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddPunchImpact Wiki, fxAddPunchImpact }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddPunchImpact
      * @param posX, posY, posZ the world coordinates where the effect originates.
      * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
      * @return returns a true if the operation was successful, false otherwise.
@@ -245,7 +245,7 @@ export class Effect extends Element {
 
     /**
      * Creates a number of sparks originating from a point or along a line.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddSparks Wiki, fxAddSparks }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddSparks
      * @param posX, posY, posZ the world coordinates where the sparks originate.
      * @param dirX, dirY, dirZ a direction vector indicating where the sparks fly to. The longer this vector is, the
      * faster the sparks fly.
@@ -281,7 +281,7 @@ export class Effect extends Element {
 
     /**
      * This function creates a tank firing particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddTankFire Wiki, fxAddTankFire }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddTankFire
      * @param posX, posY, posZ the world coordinates where the effect originates.
      * @param dirX, dirY, dirZ a direction vector indicating where the tank fire is directed to.
      * @return returns a true if the operation was successful, false otherwise.
@@ -297,7 +297,7 @@ export class Effect extends Element {
 
     /**
      * Creates a tyre burst particle effect (a small white smoke puff).
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddTyreBurst Wiki, fxAddTyreBurst }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddTyreBurst
      * @param posX, posY, posZ the world coordinates where the puff originates.
      * @param dirX, dirY, dirZ a vector indicating the movement direction of the effect.
      * @return returns a true if the operation was successful, false otherwise.
@@ -313,7 +313,7 @@ export class Effect extends Element {
 
     /**
      * This function creates a water hydrant particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddWaterHydrant Wiki, fxAddWaterHydrant }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddWaterHydrant
      * @param posX A float representing the x position of the hydrant
      * @param posY A float representing the y position of the hydrant
      * @param posZ A float representing the z position of the hydrant
@@ -327,7 +327,7 @@ export class Effect extends Element {
 
     /**
      * This function creates a water splash particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddWaterSplash Wiki, fxAddWaterSplash }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddWaterSplash
      * @param posX A float representing the x position of the splash
      * @param posY A float representing the y position of the splash
      * @param posZ A float representing the z position of the splash
@@ -341,7 +341,7 @@ export class Effect extends Element {
 
     /**
      * Creates a wood splinter particle effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/FxAddWood Wiki, fxAddWood }
+     * @see https://wiki.multitheftauto.com/wiki/FxAddWood
      * @param posX, posY, posZ the world coordinates where the effect originates.
      * @param dirX, dirY, dirZ a direction vector indicating where the wood splinters fly to.
      * @param count the number of splinters to create.
@@ -361,13 +361,13 @@ export class Effect extends Element {
 
     /**
      * This function gets the density of certain effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetEffectDensity Wiki, getEffectDensity }
+     * @see https://wiki.multitheftauto.com/wiki/GetEffectDensity
      */
     getDensity(): number;
 
     /**
      * This function gets the speed of a specified effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetEffectSpeed Wiki, getEffectSpeed }
+     * @see https://wiki.multitheftauto.com/wiki/GetEffectSpeed
      * @return returns float containing the effects speed, false if invalid arguments were specified.
      */
     getSpeed(): number;
@@ -375,7 +375,7 @@ export class Effect extends Element {
     /**
      * This function sets the density of a specified effect.
      * The limit is 1 for Low, 1.5 for Medium, and 2 for High/Very high.|true}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetEffectDensity Wiki, setEffectDensity }
+     * @see https://wiki.multitheftauto.com/wiki/SetEffectDensity
      * @param density The level of density (from 0 to 2).
      * @return returns true if the density was succesfully changed, false otherwise.
      */
@@ -385,7 +385,7 @@ export class Effect extends Element {
 
     /**
      * This function sets the speed of a specified effect.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetEffectSpeed Wiki, setEffectSpeed }
+     * @see https://wiki.multitheftauto.com/wiki/SetEffectSpeed
      * @param speed The speed to set.
      * @return returns true if the effect speed was succesfuly changed, false otherwise.
      */

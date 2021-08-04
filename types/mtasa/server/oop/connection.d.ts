@@ -43,7 +43,7 @@ export class connection {
     /**
      * This function opens a connection to a database and returns an element that can be used
      * with dbQuery. To disconnect use destroyElement.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DbConnect Wiki, dbConnect }
+     * @see https://wiki.multitheftauto.com/wiki/DbConnect
      * @param databaseType The type of database. This can be either sqlite or mysql
      * @param host : Host address e.g. host=127.0.0.1
      * @param dbname : Name of the database to use e.g. dbname=test
@@ -95,7 +95,7 @@ export class connection {
     /**
      * This function executes a database query using the supplied connection. No result is
      * returned.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DbExec Wiki, dbExec }
+     * @see https://wiki.multitheftauto.com/wiki/DbExec
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
      * make sure they are of the correct type. Also, the number of parameters passed must be
@@ -116,7 +116,7 @@ export class connection {
      * returns the query string instead of processing the query. This allows you to safely build
      * complex query strings from component parts and help prevent (one class of) SQL
      * injection.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/DbPrepareString Wiki, dbPrepareString }
+     * @see https://wiki.multitheftauto.com/wiki/DbPrepareString
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
      * make sure they are of the correct type. Also, the number of parameters passed must be
@@ -134,7 +134,7 @@ export class connection {
     /**
      * This function starts a database query using the supplied connection. Use the returned
      * query handle with dbPoll to get the result, or dbFree if you dont want the result.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DbQuery Wiki, dbQuery }
+     * @see https://wiki.multitheftauto.com/wiki/DbQuery
      * @param databaseConnection A database connection element previously returned from dbConnect
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
      * @param callbackArguments An optional table containing extra arguments to be sent to the callback function.

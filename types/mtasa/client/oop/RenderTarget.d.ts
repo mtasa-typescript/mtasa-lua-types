@@ -58,7 +58,7 @@ import {
 /** @customConstructor RenderTarget */
 export class RenderTarget {
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetRenderTarget Wiki, dxSetRenderTarget }
+     * @see https://wiki.multitheftauto.com/wiki/DxSetRenderTarget
      * @param clear If set to true, the render target will also be cleared.
      * @return returns true if the render target was successfully changed, false otherwise.
      */

@@ -57,7 +57,7 @@ import {
 
 /**
  * Closes a file handle obtained by fileCreate or fileOpen.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileClose Wiki, fileClose }
+ * @see https://wiki.multitheftauto.com/wiki/FileClose
  * @param theFile The file handle to close.
  * @return returns true if successful, false otherwise.
  * @noSelf
@@ -69,7 +69,7 @@ export declare function fileClose(
 /**
  * This function copies a file.{{Note|The file functions should not be used to implement
  * configuration files. It is encouraged to use the XML functions for this instead.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/FileCopy Wiki, fileCopy }
+ * @see https://wiki.multitheftauto.com/wiki/FileCopy
  * @param filePath : The path of the file you want to copy.
  * @param copyToFilePath : Where to copy the specified file to.
  * @param overwrite : If set to true it will overwrite a file that already exists at copyToFilePath.
@@ -85,7 +85,7 @@ export declare function fileCopy(
 /**
  * Creates a new file in a directory of a resource. If there already exists a file with the
  * specified name, it is overwritten with an empty file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileCreate Wiki, fileCreate }
+ * @see https://wiki.multitheftauto.com/wiki/FileCreate
  * @param filePath The filepath of the file to be created in the following format: :resourceName/path.
  * resourceName is the name of the resource the file is in, and path is the path from the
  * root directory of the resource to the file.
@@ -104,7 +104,7 @@ export declare function fileCreate(
 
 /**
  * Deletes the specified file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileDelete Wiki, fileDelete }
+ * @see https://wiki.multitheftauto.com/wiki/FileDelete
  * @param filePath The filepath of the file to delete in the following format: :resourceName/path.
  * resourceName is the name of the resource the file is in, and path is the path from the
  * root directory of the resource to the file.
@@ -122,7 +122,7 @@ export declare function fileDelete(
 
 /**
  * This functions checks whether a specified file exists inside a resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileExists Wiki, fileExists }
+ * @see https://wiki.multitheftauto.com/wiki/FileExists
  * @param filePath The filepath of the file, whose existence is going to be checked, in the following
  * format: :resourceName/path. resourceName is the name of the resource the file is checked
  * to be in, and path is the path from the root directory of the resource to the file.
@@ -146,7 +146,7 @@ export declare function fileExists(
  * right now without closing the file. This is useful for log files that might want to be
  * read while the resource is still executing. fileFlush can be called after each log entry
  * is written. Without this, the file may appear empty or outdated to the user.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileFlush Wiki, fileFlush }
+ * @see https://wiki.multitheftauto.com/wiki/FileFlush
  * @param theFile The file handle of the file you wish to flush.
  * @return returns true if succeeded, false in case of failure (e.g. the file handle is invalid).
  * @noSelf
@@ -157,7 +157,7 @@ export declare function fileFlush(
 
 /**
  * This function retrieves the path of the given file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPath Wiki, fileGetPath }
+ * @see https://wiki.multitheftauto.com/wiki/FileGetPath
  * @param theFile The file you want to get the path.
  * @return returns a string representing the file path, false if invalid file was provided.
  * @noSelf
@@ -168,7 +168,7 @@ export declare function fileGetPath(
 
 /**
  * Returns the current read/write position in the given file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileGetPos Wiki, fileGetPos }
+ * @see https://wiki.multitheftauto.com/wiki/FileGetPos
  * @param theFile the file handle you wish to get the position of.
  * @return returns the file position if successful, or false if an error occured (e.g. an invalid
  * handle was passed).
@@ -180,7 +180,7 @@ export declare function fileGetPos(
 
 /**
  * Returns the total size in bytes of the given file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileGetSize Wiki, fileGetSize }
+ * @see https://wiki.multitheftauto.com/wiki/FileGetSize
  * @param theFile the file handle you wish to get the size of.
  * @return returns the file size if successful, or false if an error occured (e.g. an invalid file
  * handle was passed).
@@ -192,7 +192,7 @@ export declare function fileGetSize(
 
 /**
  * Checks if the file position is at the end of the file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileIsEOF Wiki, fileIsEOF }
+ * @see https://wiki.multitheftauto.com/wiki/FileIsEOF
  * @param theFile A handle to the file you wish to check.
  * @return returns true if the file position of the specified file is at the end of the file, false
  * otherwise.
@@ -204,7 +204,7 @@ export declare function fileIsEOF(
 
 /**
  * Opens an existing file for reading and writing.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileOpen Wiki, fileOpen }
+ * @see https://wiki.multitheftauto.com/wiki/FileOpen
  * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
  * name of the resource the file is in, and path is the path from the root directory of the
  * resource to the file.
@@ -227,7 +227,7 @@ export declare function fileOpen(
 /**
  * Reads the specified number of bytes from the given file starting at its current
  * read/write position, and returns them as a string.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileRead Wiki, fileRead }
+ * @see https://wiki.multitheftauto.com/wiki/FileRead
  * @param theFile A handle to the file you wish to read from. Use fileOpen to obtain this handle.
  * @param count The number of bytes you wish to read.
  * @return returns the bytes that were read in a string. note that this string might not contain as
@@ -241,7 +241,7 @@ export declare function fileRead(
 
 /**
  * Renames the specified file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileRename Wiki, fileRename }
+ * @see https://wiki.multitheftauto.com/wiki/FileRename
  * @param filePath The filepath of the source file in the following format: :resourceName/path. resourceName
  * is the name of the resource the file is in, and path is the path from the root directory
  * of the resource to the file. If the file is in the current resource, only the file path
@@ -257,7 +257,7 @@ export declare function fileRename(
 
 /**
  * Sets the current read/write position in the file.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileSetPos Wiki, fileSetPos }
+ * @see https://wiki.multitheftauto.com/wiki/FileSetPos
  * @param theFile The file handle of which you want to change the read/write position.
  * @param offset The new position. This is the number of bytes from the beginning of the file. If this
  * value is larger than the file size, it is limited to 52,428,800 bytes (50 MB).
@@ -274,7 +274,7 @@ export declare function fileSetPos(
 /**
  * Writes one or more strings to a given file, starting at the current read/write position.
  * Advances the position over the number of bytes that were written.
- * @see {@link https://wiki.multitheftauto.com/wiki/FileWrite Wiki, fileWrite }
+ * @see https://wiki.multitheftauto.com/wiki/FileWrite
  * @param theFile A handle to the file you wish to write to. The file must have been opened with write
  * access, i.e. the file handle must be a result of fileCreate or fileOpen with the readonly
  * parameter set to false.

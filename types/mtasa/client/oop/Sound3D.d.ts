@@ -68,7 +68,7 @@ export class Sound3D {
      * (i.e. weapon fire), it is recommend that you convert your audio file to a one channel
      * (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how
      * often the effect can be played e.g. once every 50ms.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySound3D Wiki, playSound3D }
+     * @see https://wiki.multitheftauto.com/wiki/PlaySound3D
      * @param soundPath Can also be raw sound data.
      * |20460}}
      * @param soundURL the URL (http://, https:// or ftp://) of the sound file you want to play. (In this

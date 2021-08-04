@@ -56,7 +56,7 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateSearchLight Wiki, createSearchLight }
+ * @see https://wiki.multitheftauto.com/wiki/CreateSearchLight
  * @param startX : the X coordinate where the searchlight light cone will start.
  * @param startY : the Y coordinate where the searchlight light cone will start.
  * @param startZ : the Z coordinate where the searchlight light cone will start.
@@ -85,7 +85,7 @@ export declare function createSearchLight(
 
 /**
  * This function gets the end position of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSearchLightEndPosition Wiki, getSearchLightEndPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetSearchLightEndPosition
  * @param theSearchLight : the searchlight to get the position where the searchlights light cone ends.
  * @return if the specified searchlight element is valid, this function will return three float,
  * which are the three coordinates of searchlights end position. if not, it will return
@@ -102,7 +102,7 @@ export declare function getSearchLightEndPosition(
 
 /**
  * This function gets the end radius of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSearchLightEndRadius Wiki, getSearchLightEndRadius }
+ * @see https://wiki.multitheftauto.com/wiki/GetSearchLightEndRadius
  * @param theSearchLight : the searchlight to get the radius of the searchlights light cone in its end.
  * @return if the specified searchlight element is valid, this function will return one float, which
  * is the searchlights end radius. if not, it will return false plus an error message.
@@ -114,7 +114,7 @@ export declare function getSearchLightEndRadius(
 
 /**
  * This function gets the start position of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSearchLightStartPosition Wiki, getSearchLightStartPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetSearchLightStartPosition
  * @param theSearchLight : the searchlight to get the position where the searchlights light cone starts.
  * @return if the specified searchlight element is valid, this function will return three float,
  * which are the three coordinates of searchlights start position. if not, it will return
@@ -131,7 +131,7 @@ export declare function getSearchLightStartPosition(
 
 /**
  * This function gets the start radius of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSearchLightStartRadius Wiki, getSearchLightStartRadius }
+ * @see https://wiki.multitheftauto.com/wiki/GetSearchLightStartRadius
  * @param theSearchLight : the searchlight to get the radius of the searchlights light cone in its beginning.
  * @return if the specified searchlight element is valid, this function will return one float, which
  * is the searchlights start radius. if not, it will return false plus an error message.
@@ -142,7 +142,7 @@ export declare function getSearchLightStartRadius(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition Wiki, setSearchLightEndPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetSearchLightEndPosition
  * @param theSearchLight : the searchlight to modify the property of.
  * @param endX : the X coordinate where the searchlight light cone will end.
  * @param endY : the Y coordinate where the searchlight light cone will end.
@@ -160,7 +160,7 @@ export declare function setSearchLightEndPosition(
 
 /**
  * This function sets the end radius of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightEndRadius Wiki, setSearchLightEndRadius }
+ * @see https://wiki.multitheftauto.com/wiki/SetSearchLightEndRadius
  * @param theSearchLight : the searchlight to modify the property of.
  * @param endRadius : the radius of the searchlights light cone in its end.
  * @return if every argument is correct, this function returns true. if not, it will return false
@@ -174,7 +174,7 @@ export declare function setSearchLightEndRadius(
 
 /**
  * This function sets the start position of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightStartPosition Wiki, setSearchLightStartPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetSearchLightStartPosition
  * @param theSearchLight : the searchlight to modify the property of.
  * @param startX : the X coordinate where the searchlight light cone will start.
  * @param startY : the Y coordinate where the searchlight light cone will start.
@@ -192,7 +192,7 @@ export declare function setSearchLightStartPosition(
 
 /**
  * This function sets the start radius of a Element/Searchlight|searchlight element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetSearchLightStartRadius Wiki, setSearchLightStartRadius }
+ * @see https://wiki.multitheftauto.com/wiki/SetSearchLightStartRadius
  * @param theSearchLight : the searchlight to modify the property of.
  * @param startRadius : the radius of the searchlights light cone in its beginning.
  * @return if every argument is correct, this function returns true. if not, it will return false

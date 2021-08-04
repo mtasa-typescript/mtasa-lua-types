@@ -58,7 +58,7 @@ import {
 /**
  * Creates a Element/Weapon|custom weapon that can fire bullets. Do not confuse this with
  * player held weapons.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateWeapon Wiki, createWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/CreateWeapon
  * @param theType The weapon type which can be:
  * @param x The x position to create the weapon.
  * @param y The y position to create the weapon.
@@ -76,7 +76,7 @@ export declare function createWeapon(
 
 /**
  * Fires one shot from a Element/Weapon|custom weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/FireWeapon Wiki, fireWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/FireWeapon
  * @param theWeapon The weapon to be fired.
  * @return returns true if the shot weapon is valid and therefore the shot was fired, false
  * otherwise.
@@ -88,7 +88,7 @@ export declare function fireWeapon(
 
 /**
  * This function gets the total ammo a Element/Weapon|custom weapon has.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponAmmo Wiki, getWeaponAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponAmmo
  * @param theWeapon : The weapon to get the ammo of.
  * @return returns an int|integer containing how many ammo left has the weapon. returns false if an
  * error occured.
@@ -101,7 +101,7 @@ export declare function getWeaponAmmo(
 /**
  * This function gets the amount of ammo left in a Element/Weapon|custom weapons
  * magazine/clip.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponClipAmmo Wiki, getWeaponClipAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponClipAmmo
  * @param theWeapon the weapon to get the clip ammo of.
  * @return returns the amount of ammo in the element/weapon|custom weapons clip, false if an error
  * occured.
@@ -113,7 +113,7 @@ export declare function getWeaponClipAmmo(
 
 /**
  * This gets the firing rate to be used when a Element/Weapon|custom weapon opens fire.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate Wiki, getWeaponFiringRate }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponFiringRate
  * @param theWeapon The weapon to modify the firing rate of.
  * @return returns an integer with the firing rate of the custom weapon, false otherwise.
  * @noSelf
@@ -124,7 +124,7 @@ export declare function getWeaponFiringRate(
 
 /**
  * This function gets the flags of a Element/Weapon|custom weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponFlags Wiki, getWeaponFlags }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponFlags
  * @param theWeapon the weapon to get the flag of.
  * @param theFlag the weapon flag to get:
  * @param disable_model : makes the weapon and muzzle effect invisible or not.
@@ -155,7 +155,7 @@ export declare function getWeaponFlags(
  * This function gets the owner of a Element/Weapon|custom weapon. Weapon ownership system
  * was, however, disabled, so this function always returns false. Please refer to
  * setWeaponOwner for details.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponOwner Wiki, getWeaponOwner }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponOwner
  * @param theWeapon The weapon to get the owner of.
  * @return this function was intended to return the player which owns the element/weapon|custom
  * weapon, and false if an error occured. however, at the moment it always returns false.
@@ -167,7 +167,7 @@ export declare function getWeaponOwner(
 
 /**
  * This function gets the state of a Element/Weapon|custom weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponState Wiki, getWeaponState }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponState
  * @param theWeapon the Element/Weapon|weapon to get the state of.
  * @return * a string if the element/weapon|weapon is valid, indicating the weapon state, which can
  * be:
@@ -184,7 +184,7 @@ export declare function getWeaponState(
 
 /**
  * This functions gets the target of a Element/Weapon|custom weapon.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponTarget Wiki, getWeaponTarget }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponTarget
  * @param theWeapon The weapon to get the target of.
  * @return * returns the target of the element/weapon|custom weapon, which can be:
  * **nil if the weapon is in rotation based targeting.
@@ -199,7 +199,7 @@ export declare function getWeaponTarget(
 
 /**
  * This function resets the firing rate of a Element/Weapon|custom weapon to the default one.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetWeaponFiringRate Wiki, resetWeaponFiringRate }
+ * @see https://wiki.multitheftauto.com/wiki/ResetWeaponFiringRate
  * @param theWeapon the weapon to reset the firing rate of.
  * @return returns true on success, false otherwise.
  * @noSelf
@@ -210,7 +210,7 @@ export declare function resetWeaponFiringRate(
 
 /**
  * This function sets the ammo left in a Element/Weapon|custom weapons magazine/clip.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo Wiki, setWeaponClipAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponClipAmmo
  * @param theWeapon The Element/Weapon|weapon to set the clip ammo of.
  * @param clipAmmo The amount of ammo in the clip.
  * @return this function returns true if the arguments are valid and the weapon clip ammo could be
@@ -225,7 +225,7 @@ export declare function setWeaponClipAmmo(
 /**
  * This function sets the firing rate to be used when a Element/Weapon|custom weapon is in
  * firing state.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate Wiki, setWeaponFiringRate }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponFiringRate
  * @param theWeapon The weapon to modify the firing rate of.
  * @param firingRate The weapon firing rate. It seems to be a kind of frecuency value, so the lower the
  * quicker the Element/Weapon|custom weapon will shoot.
@@ -240,7 +240,7 @@ export declare function setWeaponFiringRate(
 /**
  * This function sets a Element/Weapon|custom weapon flags, used to change how it behaves or
  * finds a possible target to shoot.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponFlags Wiki, setWeaponFlags }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponFlags
  * @param theWeapon the Element/Weapon|weapon element to set the flag of.
  * @param theFlag the weapon flag to change (all of them can be true or false):
  * @param disable_model : makes the weapon and muzzle effect invisible or not.
@@ -272,7 +272,7 @@ export declare function setWeaponFlags(
 
 /**
  * This function sets a Element/Weapon|custom weapons state.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponState Wiki, setWeaponState }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponState
  * @param theWeapon : the weapon you wish to set the state of.
  * @param theState : the state you wish to set:
  * @param reloading : makes the weapon reload.
@@ -290,7 +290,7 @@ export declare function setWeaponState(
 /**
  * This function sets the target of a Element/Weapon|custom weapon. There are 3 different
  * targeting modes, which are explained below.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponTarget Wiki, setWeaponTarget }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponTarget
  * @param theWeapon The weapon to clear the target of.
  * @param theTarget The element to shoot at. It can be a player, ped, vehicle or object.
  * @param theComponent The component of the target to shoot at. This argument is only relevant when used in the
@@ -344,7 +344,7 @@ export declare function setWeaponTarget(
 /**
  * This function gets the original weapon property of the specified weapons specified weapon
  * type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetOriginalWeaponProperty Wiki, getOriginalWeaponProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GetOriginalWeaponProperty
  * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
  * @param weaponSkill Either: pro, std or poor
  * @param property The property you want to get the value of:
@@ -363,7 +363,7 @@ export declare function getOriginalWeaponProperty(
 
 /**
  * This function allows you to identify the weapon slot that a weapon belongs to.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSlotFromWeapon Wiki, getSlotFromWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/GetSlotFromWeapon
  * @param weaponid Weapon to find the weapon slot of.
  * @return returns an integer representing the given weapon ids associated weapon slot, false if the
  * id was invalid.
@@ -375,7 +375,7 @@ export declare function getSlotFromWeapon(
 
 /**
  * This function will obtain the ID of a particular weapon from its name.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName Wiki, getWeaponIDFromName }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName
  * @param name A string containing the name of the weapon. Names can be: (Case is ignored)
  * @return returns an int if the name matches that of a weapon, false otherwise.
  * @noSelf
@@ -386,7 +386,7 @@ export declare function getWeaponIDFromName(
 
 /**
  * This function allows you to retrieve the name of a weapon from an ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponNameFromID Wiki, getWeaponNameFromID }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponNameFromID
  * @param id The ID you wish to retrieve the name of
  * @return returns a string of the name of the weapon or death type, false otherwise. names will be
  * like these: (ignoring case)
@@ -399,7 +399,7 @@ export declare function getWeaponNameFromID(
 /**
  * This function gets a weapon property of the specified Element/Weapon|custom weapon
  * (clientside only) or specified Weapons|player-held weapon (both client and server).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponProperty
  * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
  * @param weaponSkill Either: pro, std or poor
  * @param property The property you want to get the value of:
@@ -420,7 +420,7 @@ export declare function getWeaponProperty(
  * <section name=setWeaponAmmo class=server show=true>
  * Sets the ammo to a certain amount for a specified weapon (if they already have it),
  * regardless of current ammo.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponAmmo Wiki, setWeaponAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponAmmo
  * @param thePlayer A player object referencing the specified player
  * @param weapon A whole number integer that refers to a weapon ID.
  * @param totalAmmo A whole number integer serving as the total ammo amount for the given weapon (including
@@ -463,7 +463,7 @@ export declare function setWeaponAmmo(
  * * theValue: The value to set the property to.
  * Returns true if the property was set.
  * </section>
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponProperty
  * @param theWeapon the weapon to change the property of.
  * @param strProperty the property to edit:
  * @param theValue The value to set the property to.

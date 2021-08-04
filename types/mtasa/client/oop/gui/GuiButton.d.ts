@@ -59,7 +59,7 @@ import {
 export class GuiButton {
     /**
      * This function allows creation of a GUI Button, which is a clickable item as part of GUI.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateButton Wiki, guiCreateButton }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateButton
      * @param x A float of the 2D x position of the GUI button on a players screen.  This is affected by
      * the relative argument.
      * @param y A float of the 2D y position of the GUI button on a players screen. This is affected by

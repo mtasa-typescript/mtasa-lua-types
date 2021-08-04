@@ -57,7 +57,7 @@ import {
 
 /**
  * This function is used to get the name of a body part on a player.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetBodyPartName Wiki, getBodyPartName }
+ * @see https://wiki.multitheftauto.com/wiki/GetBodyPartName
  * @param bodyPartID : An integer representing the body part ID you wish to retrieve the name of.
  * @return this function returns a string containing the body part name if the id is valid, false
  * otherwise.
@@ -71,7 +71,7 @@ export declare function getBodyPartName(
  * This function is used to get the texture and model of clothes by the clothes type and
  * index.
  * (Scans through the list of clothes for the specific type).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetClothesByTypeIndex Wiki, getClothesByTypeIndex }
+ * @see https://wiki.multitheftauto.com/wiki/GetClothesByTypeIndex
  * @param clothesType : An integer representing the clothes slot/type to scan through.
  * @param clothesIndex : An integer representing the index (0 based) set of clothes in the list you wish to
  * retrieve. Each type has a different number of valid indexes.
@@ -89,7 +89,7 @@ export declare function getClothesByTypeIndex(
 
 /**
  * This function is used to get the name of a certain clothes type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetClothesTypeName Wiki, getClothesTypeName }
+ * @see https://wiki.multitheftauto.com/wiki/GetClothesTypeName
  * @param clothesType : An integer determining the type of clothes you want to get the clothes of.
  * @return this function returns a string (the name of the clothes type) if found, false otherwise.
  * @noSelf
@@ -101,7 +101,7 @@ export declare function getClothesTypeName(
 /**
  * This function is used to get the clothes type and index from the texture and model.
  * (Scans through the list of clothes for the specific type).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTypeIndexFromClothes Wiki, getTypeIndexFromClothes }
+ * @see https://wiki.multitheftauto.com/wiki/GetTypeIndexFromClothes
  * @param clothesTexture : A string determining the clothes texture that you wish to retrieve the type and index
  * from. See the CJ Clothes|clothes catalog.
  * @param clothesModel : A string determining the corresponding clothes model that you wish to retrieve the type

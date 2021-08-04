@@ -43,7 +43,7 @@ import {
  * time period. This will also affect the sound volume for the player (50% faded = 50%
  * volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade
  * outs in a row, but for serverside scripts you must use one then the other.
- * @see {@link https://wiki.multitheftauto.com/wiki/FadeCamera Wiki, fadeCamera }
+ * @see https://wiki.multitheftauto.com/wiki/FadeCamera
  * @param thePlayer The player whose camera you wish to fade.
  * @param fadeIn Should the camera be faded in or out? Pass true to fade the camera in, false to fade it
  * out to a color.
@@ -68,7 +68,7 @@ export declare function fadeCamera(
 /**
  * Returns the interior of the local camera (independent of the interior of the local
  * player).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraInterior Wiki, getCameraInterior }
+ * @see https://wiki.multitheftauto.com/wiki/GetCameraInterior
  * @param thePlayer : The player whose camera interior you want to get.
  * @noSelf
  */
@@ -78,7 +78,7 @@ export declare function getCameraInterior(
 
 /**
  * This function gets the position of the camera and the position of the point it is facing.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraMatrix Wiki, getCameraMatrix }
+ * @see https://wiki.multitheftauto.com/wiki/GetCameraMatrix
  * @param thePlayer The player whose camera matrix is to be returned.
  * @noSelf
  */
@@ -98,7 +98,7 @@ export declare function getCameraMatrix(
 /**
  * This function returns an element that corresponds to the current target of the specified
  * players camera (i.e. what it is following).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetCameraTarget Wiki, getCameraTarget }
+ * @see https://wiki.multitheftauto.com/wiki/GetCameraTarget
  * @param thePlayer The player whose camera you wish to receive the target of.
  * @noSelf
  */
@@ -109,7 +109,7 @@ export declare function getCameraTarget(
 /**
  * Sets the interior of the local camera. Only the interior of the camera is changed, the
  * local player stays in the interior he was in.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraInterior Wiki, setCameraInterior }
+ * @see https://wiki.multitheftauto.com/wiki/SetCameraInterior
  * @param thePlayer the player whose camera interior will be set.
  * @param interior the interior to place the camera in.
  * @noSelf
@@ -123,7 +123,7 @@ export declare function setCameraInterior(
  * This function sets the cameras position and direction. The first three arguments are the
  * point at which the camera lies, the last three are the point the camera faces (or the
  * point it looks at).
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraMatrix Wiki, setCameraMatrix }
+ * @see https://wiki.multitheftauto.com/wiki/SetCameraMatrix
  * @param thePlayer The player whose camera is to be changed.
  * @param positionX The x coordinate of the cameras position.
  * @param positionY The y coordinate of the cameras position.
@@ -155,7 +155,7 @@ export declare function setCameraMatrix(
  * This function allows you to set a players camera to follow other elements instead.
  * Currently supported element type is:
  * *Players
- * @see {@link https://wiki.multitheftauto.com/wiki/SetCameraTarget Wiki, setCameraTarget }
+ * @see https://wiki.multitheftauto.com/wiki/SetCameraTarget
  * @param thePlayer The player whose camera you wish to modify.
  * @param target The player who you want the camera to follow. If none is specified, the camera will
  * target the player.

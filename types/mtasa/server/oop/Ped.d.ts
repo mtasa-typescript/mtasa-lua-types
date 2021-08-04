@@ -135,7 +135,7 @@ export class Ped extends Element {
 
     /**
      * This function is used to set the current clothes on a ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AddPedClothes Wiki, addPedClothes }
+     * @see https://wiki.multitheftauto.com/wiki/AddPedClothes
      * @param clothesTexture : A string determining the clothes texture that will be added. See the CJ Clothes|clothes
      * catalog.
      * @param clothesModel : A string determining the clothes model that will be added. See the CJ Clothes|clothes
@@ -154,7 +154,7 @@ export class Ped extends Element {
     /**
      * This function returns an integer that contains the ammo in a specified peds weapon. See
      * weapon|Weapon Info
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip Wiki, getPedAmmoInClip }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip
      * @param weaponSlot an integer representing the weapon slot (set to the peds currently selected slot if not
      * specified).
      * @return returns an int containing the amount of ammo in the specified peds currently selected or
@@ -166,7 +166,7 @@ export class Ped extends Element {
 
     /**
      * This function returns the current armor of the specified ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedArmor Wiki, getPedArmor }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedArmor
      * @return a float with the armor, false if an invalid ped was given.
      */
     getArmor(): number;
@@ -174,7 +174,7 @@ export class Ped extends Element {
     /**
      * This function is used to get the current clothes texture and model of a certain type on a
      * ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedClothes Wiki, getPedClothes }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedClothes
      * @param clothesType The type/slot of clothing you want to get.
      * @return this function returns 2 string|strings, the clothes texture and model. the first return
      * value will be false if this players clothes type is empty or an invalid player was
@@ -190,7 +190,7 @@ export class Ped extends Element {
     /**
      * This function detects the element a ped is standing on. This can be a vehicle or an
      * object.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedContactElement Wiki, getPedContactElement }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedContactElement
      * @return returns an object or a vehicle if the ped is standing on one, false if he is touching
      * none or an invalid element was passed.
      */
@@ -198,7 +198,7 @@ export class Ped extends Element {
 
     /**
      * Retrieves the fighting style a player/ped is currently using.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedFightingStyle Wiki, getPedFightingStyle }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedFightingStyle
      * @return returns the peds current fighting style as an integer id, false if it fails to retrieve a
      * value.
      */
@@ -207,7 +207,7 @@ export class Ped extends Element {
     /**
      * This function returns the current gravity for the specified ped. The default gravity is
      * 0.008.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedGravity Wiki, getPedGravity }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedGravity
      * @return returns a float indicating the peds gravity, or false if the ped is invalid. default
      * value is 0.008.
      */
@@ -215,7 +215,7 @@ export class Ped extends Element {
 
     /**
      * This function gets the vehicle that the ped is currently in or is trying to enter, if any.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicle Wiki, getPedOccupiedVehicle }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicle
      * @return returns the vehicle that the specified ped is in, or false if the ped is not in a vehicle
      * or is an invalid ped.
      */
@@ -223,7 +223,7 @@ export class Ped extends Element {
 
     /**
      * This function gets the seat that a specific ped is sitting in in a vehicle.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicleSeat Wiki, getPedOccupiedVehicleSeat }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedOccupiedVehicleSeat
      * @return * returns an integer containing the number of the seat that the ped is currently in:
      * ** 0: front-left
      * ** 1: front-right
@@ -235,7 +235,7 @@ export class Ped extends Element {
 
     /**
      * This function returns the value of the specified statistic of a specific ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedStat Wiki, getPedStat }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedStat
      * @param stat : A whole number determining the stat ID.
      * @return returns the value of the requested statistic.
      */
@@ -245,7 +245,7 @@ export class Ped extends Element {
 
     /**
      * This function is used to get the element a ped is currently targeting.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTarget Wiki, getPedTarget }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedTarget
      * @return returns the element thats being targeted, or false if there isnt one.
      * this is only effective on physical gta elements, namely:
      * * players
@@ -258,7 +258,7 @@ export class Ped extends Element {
     /**
      * This function returns an integer that contains the total ammo in a specified peds weapon.
      * See weapon|Weapon Info
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedTotalAmmo Wiki, getPedTotalAmmo }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedTotalAmmo
      * @param weaponSlot : an integer representing the weapon slot (set to the peds current slot if not given)
      * @return returns an int containing the total amount of ammo for the specified peds weapon, or 0 if
      * the ped specified is invalid.
@@ -268,7 +268,7 @@ export class Ped extends Element {
     ): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWalkingStyle Wiki, getPedWalkingStyle }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedWalkingStyle
      * @return returns the walking style id if successful, false otherwise. the possible walking styles
      * are as follows:
      */
@@ -276,7 +276,7 @@ export class Ped extends Element {
 
     /**
      * This function tells you which weapon type is in a certain weapon|weapon slot of a ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWeapon Wiki, getPedWeapon }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedWeapon
      * @param weaponSlot : an integer representing the weapon|weapon slot (set to the peds current slot if not
      * given).
      * @return returns an int indicating the type of the weapon the ped has in the specified slot. if
@@ -292,7 +292,7 @@ export class Ped extends Element {
 
     /**
      * This function gets a peds selected weapon slot.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetPedWeaponSlot Wiki, getPedWeaponSlot }
+     * @see https://wiki.multitheftauto.com/wiki/GetPedWeaponSlot
      * @return returns the selected weapon slot id on success, false otherwise.
      */
     getWeaponSlot(): number;
@@ -301,35 +301,35 @@ export class Ped extends Element {
      * This function checks if the specified ped is choking (coughing) or not. This happens as a
      * result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray
      * can.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedChoking Wiki, isPedChoking }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedChoking
      * @return returns true if the ped is choking, false otherwise.
      */
     isChoking(): boolean;
 
     /**
      * This function checks if the specified ped is dead or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDead Wiki, isPedDead }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedDead
      * @return returns true if the ped is dead, false otherwise.
      */
     isDead(): boolean;
 
     /**
      * This function checks if the ped is in the driveby state.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDoingGangDriveby Wiki, isPedDoingGangDriveby }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedDoingGangDriveby
      * @return returns true if the driveby state is enabled, false otherwise.
      */
     isDoingGangDriveby(): boolean;
 
     /**
      * This function checks if the specified ped is ducked (crouched) or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedDucked Wiki, isPedDucked }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedDucked
      * @return returns true if the ped is ducked, false otherwise.
      */
     isDucked(): boolean;
 
     /**
      * Checks whether or not a given ped is currently in a vehicle.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedInVehicle Wiki, isPedInVehicle }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedInVehicle
      * @return returns true if the ped is in a vehicle, false if he is on foot or an invalid element was
      * passed.
      */
@@ -337,7 +337,7 @@ export class Ped extends Element {
 
     /**
      * This function checks if the specified ped is on fire or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedOnFire Wiki, isPedOnFire }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedOnFire
      * @return returns true if the ped is on fire, false otherwise.
      */
     isOnFire(): boolean;
@@ -345,14 +345,14 @@ export class Ped extends Element {
     /**
      * This function is used to determine whether or not a ped is on the ground. This is for
      * on-foot usage only.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedOnGround Wiki, isPedOnGround }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedOnGround
      * @return returns true if the ped is on foot and on the ground, false otherwise, even if he is in a
      * car that stands still or on object outside world map.
      */
     isOnGround(): boolean;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsPedWearingJetpack Wiki, isPedWearingJetpack }
+     * @see https://wiki.multitheftauto.com/wiki/IsPedWearingJetpack
      * @return returns true if the ped is carrying a jetpack, false if he is not or an invalid element
      * was passed.
      */
@@ -362,7 +362,7 @@ export class Ped extends Element {
      * This function kills the specified ped.
      * From v1.5.3 onwards this function is now available client side. Only works on client side
      * peds.
-     * @see {@link https://wiki.multitheftauto.com/wiki/KillPed Wiki, killPed }
+     * @see https://wiki.multitheftauto.com/wiki/KillPed
      * @param theKiller The ped responsible for the kill
      * @param weapon The ID of the weapon or Damage Types that should appear to have killed the ped (doesnt
      * affect how they die)
@@ -381,7 +381,7 @@ export class Ped extends Element {
 
     /**
      * This function makes a pedestrian reload their weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ReloadPedWeapon Wiki, reloadPedWeapon }
+     * @see https://wiki.multitheftauto.com/wiki/ReloadPedWeapon
      * @return returns true if the pedestrian was made to reload, or false if invalid arguments were
      * passed or that pedestrian has a weapon which cannot be reloaded.
      * note: this will fail but return true if
@@ -398,7 +398,7 @@ export class Ped extends Element {
      * This function is used to remove the current clothes of a certain type on a ped. It will
      * remove them if the clothesTexture and clothesModel arent specified, or if they match the
      * current clothes on that slot.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RemovePedClothes Wiki, removePedClothes }
+     * @see https://wiki.multitheftauto.com/wiki/RemovePedClothes
      * @param clothesType : the clothes slot/type to remove. See the CJ Clothes|clothes catalog.
      * @param clothesTexture : (Server only) A string determining the clothes texture that will be removed. See the CJ
      * Clothes|clothes catalog.
@@ -418,7 +418,7 @@ export class Ped extends Element {
      * passengers. Note that this removes the ped from the vehicle and puts him in the exact
      * position where the command was initiated.
      * Available client side from 1.3.1 (It will only work with client side vehicles and peds)
-     * @see {@link https://wiki.multitheftauto.com/wiki/RemovePedFromVehicle Wiki, removePedFromVehicle }
+     * @see https://wiki.multitheftauto.com/wiki/RemovePedFromVehicle
      * @return returns true if the operation was successful, false if the specified ped is not valid or
      * if it isnt in a vehicle.
      */
@@ -427,7 +427,7 @@ export class Ped extends Element {
     /**
      * Sets the current Animations|animation of a player or ped. Not specifying the type of
      * animation will automatically cancel the current one.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnimation Wiki, setPedAnimation }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedAnimation
      * @param block the Animations|animation blocks name.
      * @param anim the name of the Animations|animation within the block.
      * @param time how long the animation will run for in milliseconds.
@@ -460,7 +460,7 @@ export class Ped extends Element {
 
     /**
      * Sets the current animation progress of a player or ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnimationProgress Wiki, setPedAnimationProgress }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedAnimationProgress
      * @param anim the animation name currently applied to ped, if not supplied, the animation will stop
      * @param progress current animation progress you want to apply, value from 0.0 to 1.0, if not supplied will
      * default to 0.0
@@ -473,7 +473,7 @@ export class Ped extends Element {
 
     /**
      * Sets the speed of a currently running animation for a particular player or ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedAnimationSpeed Wiki, setPedAnimationSpeed }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedAnimationSpeed
      * @param anim the animation name it will affect.
      * @param speed a float containing the speed between 0.0–1.0 you want to apply to the animation. This
      * limitation may be adjusted in the future, so do not provide speeds outside this boundary.
@@ -488,7 +488,7 @@ export class Ped extends Element {
 
     /**
      * This function allows you to set the armor value of a ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedArmor Wiki, setPedArmor }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedArmor
      * @param armor : the amount of armor you want to set on the ped. Valid values are from 0 to 100.
      * @return returns true if the armor was changed succesfully. returns false if an invalid ped was
      * specified, or the armor value specified is out of acceptable range.
@@ -501,7 +501,7 @@ export class Ped extends Element {
      * This function can be used to force the ped to do the choking (coughing) animation until
      * he respawns or toggled off using this function. The animation can not be cancelled by a
      * player its applied to, and he will not loose health.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedChoking Wiki, setPedChoking }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedChoking
      * @param choking true to make the ped choke, false to no longer force his choking animation
      * @return returns true if successful, false otherwise (e.g. player handle is invalid)
      */
@@ -511,7 +511,7 @@ export class Ped extends Element {
 
     /**
      * This function sets the gravity level of a ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedGravity Wiki, setPedGravity }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedGravity
      * @param level : The level of gravity (default is 0.008).
      * @return returns true if the gravity was successfully set, false otherwise
      */
@@ -521,7 +521,7 @@ export class Ped extends Element {
 
     /**
      * With this function, you can set if a ped has a head or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedHeadless Wiki, setPedHeadless }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedHeadless
      * @param headState : head state, use true if you want the ped be headless, use false to give back the head.
      * @return returns true if successful, false otherwise
      */
@@ -531,7 +531,7 @@ export class Ped extends Element {
 
     /**
      * This function can be used to set a ped on fire or extinguish a fire on it.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedOnFire Wiki, setPedOnFire }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedOnFire
      * @param isOnFire true to set the ped on fire, false to extinguish any fire on him
      * @return returns true if successful, false otherwise
      */
@@ -542,7 +542,7 @@ export class Ped extends Element {
     /**
      * Sets the walking style of a ped. A walking style consists of a set of animations that are
      * used for walking, running etc.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedWalkingStyle Wiki, setPedWalkingStyle }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedWalkingStyle
      * @param style the walking style to set.
      * The possible walking styles are:
      * @return returns true if successful, false otherwise.
@@ -553,7 +553,7 @@ export class Ped extends Element {
 
     /**
      * This function changes the selected weapon slot of a ped.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedWeaponSlot Wiki, setPedWeaponSlot }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedWeaponSlot
      * @param weaponSlot the weapon slot to set.
      * @return returns true if successful in setting the peds equipped weapon slot, false otherwise.
      */
@@ -568,7 +568,7 @@ export class Ped extends Element {
      * jetpack every second or so until isPedWearingJetpack returns true. Alternatively, you can
      * force the ped into a safe position (e.g. standing on the ground) before giving the
      * jetpack, or use a pickup to handle it.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetPedWearingJetpack Wiki, setPedWearingJetpack }
+     * @see https://wiki.multitheftauto.com/wiki/SetPedWearingJetpack
      * @param state A boolean representing whether to give or take the jetpack.
      * @return returns true if a jetpack was successfully set for the ped, false if setting it failed.
      */
@@ -580,7 +580,7 @@ export class Ped extends Element {
      * This function is used to warp or force a ped into a vehicle.  There are no animations
      * involved when this happens.
      * Available client side from 1.3.1 (It will only work with client side vehicles and peds)
-     * @see {@link https://wiki.multitheftauto.com/wiki/WarpPedIntoVehicle Wiki, warpPedIntoVehicle }
+     * @see https://wiki.multitheftauto.com/wiki/WarpPedIntoVehicle
      * @param theVehicle The vehicle you wish to force the ped into
      * @param seat An integer representing the seat ID.
      * @param 0 Front-left

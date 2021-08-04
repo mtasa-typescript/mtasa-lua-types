@@ -62,7 +62,7 @@ import {
  * does).
  * * Two or more lights will apply illumination effects to everything (excluding objects)
  * that is in range of, at least, two of them.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateLight Wiki, createLight }
+ * @see https://wiki.multitheftauto.com/wiki/CreateLight
  * @param lightType An integer representing the type of light to create.
  * @param posX A floating point number representing the X coordinate on the map.
  * @param posY A floating point number representing the Y coordinate on the map.
@@ -98,7 +98,7 @@ export declare function createLight(
 
 /**
  * This function returns the color for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLightColor Wiki, getLightColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetLightColor
  * @param theLight The Element/Light|light that you wish to retrieve the color of.
  * @return returns three ints corresponding to the amount of red, green and blue (respectively) of
  * the light, false if invalid arguments were passed.
@@ -114,7 +114,7 @@ export declare function getLightColor(
 
 /**
  * This function returns the direction for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLightDirection Wiki, getLightDirection }
+ * @see https://wiki.multitheftauto.com/wiki/GetLightDirection
  * @param theLight The Element/Light|light that you wish to retrieve the direction of.
  * @return returns three ints corresponding to the x, y and z coordinates (respectively) of the
  * light direction, false if invalid arguments were passed.
@@ -130,7 +130,7 @@ export declare function getLightDirection(
 
 /**
  * This function returns the radius for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLightRadius Wiki, getLightRadius }
+ * @see https://wiki.multitheftauto.com/wiki/GetLightRadius
  * @param theLight The Element/Light|light that you wish to retrieve the radius of.
  * @return returns a float containing the radius of the specified light, false if invalid arguments
  * were passed.
@@ -142,7 +142,7 @@ export declare function getLightRadius(
 
 /**
  * This function returns the type for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLightType Wiki, getLightType }
+ * @see https://wiki.multitheftauto.com/wiki/GetLightType
  * @param theLight The Element/Light|light that you wish to retrieve the type of.
  * @return returns an int containing the type of the specified light, false if invalid arguments
  * were passed.
@@ -154,7 +154,7 @@ export declare function getLightType(
 
 /**
  * This function sets the color for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetLightColor Wiki, setLightColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetLightColor
  * @param theLight The Element/Light|light that you wish to set the color of.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
@@ -168,7 +168,7 @@ export declare function setLightColor(
 
 /**
  * This function sets the direction for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetLightDirection Wiki, setLightDirection }
+ * @see https://wiki.multitheftauto.com/wiki/SetLightDirection
  * @param theLight The Element/Light|light that you wish to set the direction of.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
@@ -182,7 +182,7 @@ export declare function setLightDirection(
 
 /**
  * This function sets the radius for a Element/Light|light element.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetLightRadius Wiki, setLightRadius }
+ * @see https://wiki.multitheftauto.com/wiki/SetLightRadius
  * @param theLight The Element/Light|light that you wish to set the radius of.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf

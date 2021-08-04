@@ -86,7 +86,7 @@ export class XmlNode {
      * This function copies all contents of a certain node in a XML document to a new document
      * file, so the copied node becomes the new files root node.
      * The new file will not be saved to file system until xmlSaveFile() is called
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlCopyFile Wiki, xmlCopyFile }
+     * @see https://wiki.multitheftauto.com/wiki/XmlCopyFile
      * @param newFilePath the path of the file that is to be created, in the following format: :resourceName/path.
      * resourceName is the name of the resource the file is in, and path is the path from the
      * root directory of the resource to the file.
@@ -104,7 +104,7 @@ export class XmlNode {
 
     /**
      * This function creates a new child node under an XML node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlCreateChild Wiki, xmlCreateChild }
+     * @see https://wiki.multitheftauto.com/wiki/XmlCreateChild
      * @param tagName the type of the child node that will be created.
      * @return returns the created xmlnode if successful, false otherwise.
      */
@@ -114,14 +114,14 @@ export class XmlNode {
 
     /**
      * This function destroys a XML node from the XML node tree.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlDestroyNode Wiki, xmlDestroyNode }
+     * @see https://wiki.multitheftauto.com/wiki/XmlDestroyNode
      * @return returns true if the xml node was successfully destroyed, false otherwise.
      */
     destroy(): boolean;
 
     /**
      * This function returns a named child node of an XML node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlFindChild Wiki, xmlFindChild }
+     * @see https://wiki.multitheftauto.com/wiki/XmlFindChild
      * @param tagName : This is the name of the child node you wish to find (case-sensitive).
      * @param index : This is the 0-based index of the node you wish to find. For example, to find the 5th
      * subnode with a particular name, you would use 4 as the index value. To find the first
@@ -135,7 +135,7 @@ export class XmlNode {
 
     /**
      * This function is used to return an attribute of a node in a configuration file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetAttribute Wiki, xmlNodeGetAttribute }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeGetAttribute
      * @param name The name of the attribute.
      * @return returns the attribute in string form or false, if the attribute is not defined.
      */
@@ -145,7 +145,7 @@ export class XmlNode {
 
     /**
      * Returns all the attributes of a specific XML node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetAttributes Wiki, xmlNodeGetAttributes }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeGetAttributes
      * @return if successful, returns a table with as keys the names of the attributes and as values the
      * corresponding attribute values. if the node has no attributes, returns an empty table. in
      * case of failure, returns false.
@@ -154,7 +154,7 @@ export class XmlNode {
 
     /**
      * This function returns all children of a particular XML node, or a particular child node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetChildren Wiki, xmlNodeGetChildren }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeGetChildren
      * @param index If you only want to retrieve one particular child node, specify its (0-based) index here.
      * For example if you only want the first node, specify 0; the fifth node has index 4, etc.
      * @return if index isnt specified, returns a table containing all child nodes. if index is
@@ -167,14 +167,14 @@ export class XmlNode {
 
     /**
      * Gets the tag name of the specified XML node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetName Wiki, xmlNodeGetName }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeGetName
      * @return returns the tag name of the node if successful, false otherwise.
      */
     getName(): string;
 
     /**
      * Returns the parent node of an xml node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetParent Wiki, xmlNodeGetParent }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeGetParent
      * @return returns the parent node of the specified node if successful. returns false if the
      * specified node is the root node or an invalid node was passed.
      */
@@ -183,7 +183,7 @@ export class XmlNode {
     /**
      * This function is made to be able to read tag values in XML files (eg.
      * <something>anything</something>).
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeGetValue Wiki, xmlNodeGetValue }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeGetValue
      * @return returns the value of the node as a string if it was received successfully, false
      * otherwise.
      */
@@ -191,7 +191,7 @@ export class XmlNode {
 
     /**
      * This function is used to edit an attribute of a node in a configuration file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetAttribute Wiki, xmlNodeSetAttribute }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeSetAttribute
      * @param name The name of the attribute.
      * @param value The value which you wish to change the attribute to. (Note: nil will delete the attribute)
      * @return returns true if the attribute was set successfully, false if the node and/or attribute do
@@ -204,7 +204,7 @@ export class XmlNode {
 
     /**
      * Sets the tag name of the specified XML node.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetName Wiki, xmlNodeSetName }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeSetName
      * @param name the new tag name to set.
      * @return returns true if successful, false otherwise.
      */
@@ -215,7 +215,7 @@ export class XmlNode {
     /**
      * This function is made to be able to assign values to tags in XML files (eg.
      * <something>anything</something>).
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlNodeSetValue Wiki, xmlNodeSetValue }
+     * @see https://wiki.multitheftauto.com/wiki/XmlNodeSetValue
      * @param value The string value you want the node to have.
      * @param setCDATA A boolean indicating if you want the value to be enclosed inside CDATA tags.
      * @return returns true if value was successfully set, false otherwise.
@@ -227,14 +227,14 @@ export class XmlNode {
 
     /**
      * This function saves a loaded XML file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlSaveFile Wiki, xmlSaveFile }
+     * @see https://wiki.multitheftauto.com/wiki/XmlSaveFile
      * @return returns true if save was successful, false if the xml file does not exist.
      */
     saveFile(): boolean;
 
     /**
      * Unloads an XML document from memory.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlUnloadFile Wiki, xmlUnloadFile }
+     * @see https://wiki.multitheftauto.com/wiki/XmlUnloadFile
      * @return returns true if the document was unloaded successfully, false otherwise.
      */
     unload(): boolean;

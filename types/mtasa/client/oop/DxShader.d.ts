@@ -126,7 +126,7 @@ export class DxShader {
      * function. You should always check to see if this function has returned false.
      * *string: The name of the technique that will be used.
      * |20688}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateShader Wiki, dxCreateShader }
+     * @see https://wiki.multitheftauto.com/wiki/DxCreateShader
      */
     constructor(
         filepath: string | string,

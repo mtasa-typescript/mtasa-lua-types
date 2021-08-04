@@ -16,7 +16,7 @@ import { ControlName, KeyName, KeyState } from '../../shared/utils/misc';
 export type CommandHandler = (
     this: void,
     commandName: string,
-    ...arguments: string[]
+    ...args: string[]
 ) => void;
 
 /**
@@ -31,5 +31,5 @@ export type BindKeyCallback<AdditionalArgsType extends any[] = []> = (
     this: void,
     key: KeyName | ControlName,
     keyState: KeyState,
-    ...arguments: AdditionalArgsType,
+    ...args: AdditionalArgsType,
 ) => void;

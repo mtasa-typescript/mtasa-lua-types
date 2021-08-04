@@ -41,7 +41,7 @@ import {
 /**
  * This function gets the original weapon property of the specified weapons specified weapon
  * type.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetOriginalWeaponProperty Wiki, getOriginalWeaponProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GetOriginalWeaponProperty
  * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
  * @param weaponSkill Either: pro, std or poor
  * @param property The property you want to get the value of:
@@ -60,7 +60,7 @@ export declare function getOriginalWeaponProperty(
 
 /**
  * This function allows you to identify the weapon slot that a weapon belongs to.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetSlotFromWeapon Wiki, getSlotFromWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/GetSlotFromWeapon
  * @param weaponid Weapon to find the weapon slot of.
  * @return returns an integer representing the given weapon ids associated weapon slot, false if the
  * id was invalid.
@@ -72,7 +72,7 @@ export declare function getSlotFromWeapon(
 
 /**
  * This function will obtain the ID of a particular weapon from its name.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName Wiki, getWeaponIDFromName }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponIDFromName
  * @param name A string containing the name of the weapon. Names can be: (Case is ignored)
  * @return returns an int if the name matches that of a weapon, false otherwise.
  * @noSelf
@@ -83,7 +83,7 @@ export declare function getWeaponIDFromName(
 
 /**
  * This function allows you to retrieve the name of a weapon from an ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponNameFromID Wiki, getWeaponNameFromID }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponNameFromID
  * @param id The ID you wish to retrieve the name of
  * @return returns a string of the name of the weapon or death type, false otherwise. names will be
  * like these: (ignoring case)
@@ -96,7 +96,7 @@ export declare function getWeaponNameFromID(
 /**
  * This function gets a weapon property of the specified Element/Weapon|custom weapon
  * (clientside only) or specified Weapons|player-held weapon (both client and server).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetWeaponProperty Wiki, getWeaponProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GetWeaponProperty
  * @param weaponID or weaponName The ID or name of the weapon you want to get info of. Names can be:
  * @param weaponSkill Either: pro, std or poor
  * @param property The property you want to get the value of:
@@ -120,7 +120,7 @@ export declare function getWeaponProperty(
  * *When setting ammo for Weapon|weapons in slot 3,4,5, the ammo is added
  * *When setting ammo for Weapon|weapons in slot 2,6,7,8,9 and the slot weapon is changing,
  * the ammo is replaced
- * @see {@link https://wiki.multitheftauto.com/wiki/GiveWeapon Wiki, giveWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/GiveWeapon
  * @param thePlayer A player or ped object referencing the specified player (or ped)
  * @param weapon A whole number integer that refers to a Weapon ID. Click Weapon|here for a list of
  * possible weapon IDs.
@@ -141,7 +141,7 @@ export declare function giveWeapon(
  * <section name=setWeaponAmmo class=server show=true>
  * Sets the ammo to a certain amount for a specified weapon (if they already have it),
  * regardless of current ammo.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponAmmo Wiki, setWeaponAmmo }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponAmmo
  * @param thePlayer A player object referencing the specified player
  * @param weapon A whole number integer that refers to a weapon ID.
  * @param totalAmmo A whole number integer serving as the total ammo amount for the given weapon (including
@@ -184,7 +184,7 @@ export declare function setWeaponAmmo(
  * * theValue: The value to set the property to.
  * Returns true if the property was set.
  * </section>
- * @see {@link https://wiki.multitheftauto.com/wiki/SetWeaponProperty Wiki, setWeaponProperty }
+ * @see https://wiki.multitheftauto.com/wiki/SetWeaponProperty
  * @param weaponID The ID or name of the Weapons|weapon you want to set a property of. Names can be:
  * @param weaponSkill Either: pro, std or poor. The player must have this skill level set to have the effect.
  * @param property The property you want to set the value of:
@@ -204,7 +204,7 @@ export declare function setWeaponProperty(
 
 /**
  * This function removes every weapons from a specified ped, rendering it unarmed.
- * @see {@link https://wiki.multitheftauto.com/wiki/TakeAllWeapons Wiki, takeAllWeapons }
+ * @see https://wiki.multitheftauto.com/wiki/TakeAllWeapons
  * @param thePed : A ped element referencing the specified ped
  * @return returns true if the function succeeded, false otherwise.
  * @noSelf
@@ -215,7 +215,7 @@ export declare function takeAllWeapons(
 
 /**
  * This function removes a specified weapon or ammo from a certain players inventory.
- * @see {@link https://wiki.multitheftauto.com/wiki/TakeWeapon Wiki, takeWeapon }
+ * @see https://wiki.multitheftauto.com/wiki/TakeWeapon
  * @param thePlayer : A player object referencing the specified player.
  * @param weaponId : An integer that refers to a weapon that you wish to remove.
  * @param ammo : If used, this amount of ammo will be taken instead and the weapon will not be removed.

@@ -60,7 +60,7 @@ export class XML {
     /**
      * This function creates a new XML document, which can later be saved to a file by using
      * xmlSaveFile. This function will overwrite the file specified if it already exists.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlCreateFile Wiki, xmlCreateFile }
+     * @see https://wiki.multitheftauto.com/wiki/XmlCreateFile
      * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
      * name of the resource the file will be in, and path is the path from the root directory of
      * the resource to the file.
@@ -82,7 +82,7 @@ export class XML {
      * This function provides an alternative way to load XML files to getResourceConfig.
      * This function loads an XML file and returns the node by specifying a specific file path,
      * while getResourceConfig allows for loading an XML file from a resource.
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadFile Wiki, xmlLoadFile }
+     * @see https://wiki.multitheftauto.com/wiki/XmlLoadFile
      * @param filePath The filepath of the file in the following format: :resourceName/path. resourceName is the
      * name of the resource the file is in, and path is the path from the root directory of the
      * resource to the file.
@@ -102,7 +102,7 @@ export class XML {
     ): XmlNode;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/XmlLoadString Wiki, xmlLoadString }
+     * @see https://wiki.multitheftauto.com/wiki/XmlLoadString
      * @param xmlString A string containing XML data
      * @return returns the root xmlnode object of an xml string if successful, or false otherwise
      * (invalid xml string).

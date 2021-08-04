@@ -63,7 +63,7 @@ export class DxTexture {
      * http://nightly.mtasa.com/files/shaders/DxTex.zip DxTex can view and change cubemaps and
      * volume textures. DxTex can also convert standard textures into DXT1/3/5 compressed .dds
      * which should reduce file sizes.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateTexture Wiki, dxCreateTexture }
+     * @see https://wiki.multitheftauto.com/wiki/DxCreateTexture
      * @param filepath The filepath of the image. (.bmp, .dds, .jpg, .png, and .tga images are supported). Image
      * files should ideally have dimensions that are a power of two, to prevent possible
      * blurring.
@@ -109,7 +109,7 @@ export class DxTexture {
      * *This function is slow and not something you want to be doing once a frame.
      * *It is slower when reading pixels from a render target or screen source.
      * *And is very slow indeed if the texture format is not  argb .
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxGetTexturePixels Wiki, dxGetTexturePixels }
+     * @see https://wiki.multitheftauto.com/wiki/DxGetTexturePixels
      * @param texture The texture element to get the pixels from
      * @param x Rectangle left position
      * @param y Rectangle top position
@@ -128,7 +128,7 @@ export class DxTexture {
 
     /**
      * This functions allows you to change the edge handling after creating the texture.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTextureEdge Wiki, dxSetTextureEdge }
+     * @see https://wiki.multitheftauto.com/wiki/DxSetTextureEdge
      * @param textureEdge The texture edge mode. Available modes are wrap, mirror, clamp, border, mirror-once
      * @param border-color If textureEdge is set to border, you are able to define a border color here
      */
@@ -143,7 +143,7 @@ export class DxTexture {
      * * This function is slow and not something you want to be doing once a frame.
      * * It is very slow when setting pixels to a render target or screen source.
      * * And is very slow indeed if the texture format is not argb.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxSetTexturePixels Wiki, dxSetTexturePixels }
+     * @see https://wiki.multitheftauto.com/wiki/DxSetTexturePixels
      * @param texture The texture element to set the pixels of
      * @param pixels The plain format pixels to use
      * @param x Rectangle left position

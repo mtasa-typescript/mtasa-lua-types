@@ -58,7 +58,7 @@ import {
 /**
  * This function allows you to register a custom event. Custom events function exactly like
  * the built-in events. See event system for more information on the event system.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddEvent Wiki, addEvent }
+ * @see https://wiki.multitheftauto.com/wiki/AddEvent
  * @param eventName The name of the event you wish to create.
  * @param allowRemoteTrigger A boolean specifying whether this event can be called remotely using triggerClientEvent /
  * triggerServerEvent or not.
@@ -93,7 +93,7 @@ export declare function addEvent(
  * have propagated up or down the tree.
  * The order in which event handlers are triggered is undefined, you should not rely on one
  * event handler being executed before another.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddEventHandler Wiki, addEventHandler }
+ * @see https://wiki.multitheftauto.com/wiki/AddEventHandler
  * @param eventName The name of the event you want to attach the handler function to. Note: The maximum
  * allowed length is 100 ASCII characters (that is, English letters and numerals)```
  * @param attachedTo The element you wish to attach the handler to. The handler will only be called when the
@@ -140,14 +140,14 @@ export declare function addEventHandler<
  * The use of cancelEvent outside of an event handler has no effect.
  * If you implement your own custom events and want to handle them being cancelled, you
  * should call wasEventCancelled to check after your call to triggerEvent.
- * @see {@link https://wiki.multitheftauto.com/wiki/CancelEvent Wiki, cancelEvent }
+ * @see https://wiki.multitheftauto.com/wiki/CancelEvent
  * @noSelf
  */
 export declare function cancelEvent(): boolean;
 
 /**
  * Stops a latent event from completing
- * @see {@link https://wiki.multitheftauto.com/wiki/CancelLatentEvent Wiki, cancelLatentEvent }
+ * @see https://wiki.multitheftauto.com/wiki/CancelLatentEvent
  * @param handle A handle previous got from getLatentEventHandles.
  * @noSelf
  */
@@ -158,7 +158,7 @@ export declare function cancelLatentEvent(
 /**
  * This function gets the attached functions from the event and attached element from
  * current lua script.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetEventHandlers Wiki, getEventHandlers }
+ * @see https://wiki.multitheftauto.com/wiki/GetEventHandlers
  * @param eventName The name of the event. For example ( onPlayerWasted ).
  * @param attachedTo The element attached to.
  * @return returns table with attached functions, empty table otherwise.
@@ -173,14 +173,14 @@ export declare function getEventHandlers(
  * Gets the currently queued latent events. The last one in the table is always the latest
  * event queued. Each returned handle can be used with getLatentEventStatus or
  * cancelLatentEvent
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventHandles Wiki, getLatentEventHandles }
+ * @see https://wiki.multitheftauto.com/wiki/GetLatentEventHandles
  * @noSelf
  */
 export declare function getLatentEventHandles(): LuaTable;
 
 /**
  * Gets the status of one queued latent event.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetLatentEventStatus Wiki, getLatentEventStatus }
+ * @see https://wiki.multitheftauto.com/wiki/GetLatentEventStatus
  * @param handle A handle previous got from getLatentEventHandles.
  * @noSelf
  */
@@ -192,7 +192,7 @@ export declare function getLatentEventStatus(
  * This functions removes a handler function from an event, so that the function is not
  * called anymore when the event is triggered. See event system for more information on how
  * the event system works.
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveEventHandler Wiki, removeEventHandler }
+ * @see https://wiki.multitheftauto.com/wiki/RemoveEventHandler
  * @param eventName The name of the event you want to detach the handler function from.
  * @param attachedTo The element the handler was attached to.
  * @param functionVar The handler function that was attached.
@@ -219,7 +219,7 @@ export declare function removeEventHandler<
  * being able to be captured. Similarly, if you have onPlayerKill as an event you trigger,
  * canceling it would either be expected to prevent the player being killed from dying or at
  * least prevent the player from getting a score for it.
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerEvent Wiki, triggerEvent }
+ * @see https://wiki.multitheftauto.com/wiki/TriggerEvent
  * @param eventName The name of the event you wish to trigger
  * @param baseElement The element you wish to trigger the event on. See event system for information on how
  * this works.
@@ -246,7 +246,7 @@ export declare function triggerEvent<
  * This function is the same as triggerServerEvent except the transmission rate of the data
  * contained in the arguments can be limited and other network traffic is not blocked while
  * the data is being transferred.
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentServerEvent Wiki, triggerLatentServerEvent }
+ * @see https://wiki.multitheftauto.com/wiki/TriggerLatentServerEvent
  * @param event The name of the event to trigger server-side. You should register this event with
  * addEvent and add at least one event handler using addEventHandler.
  * @param theElement The element that is the Event system#Event handlers|source of the event. This could be
@@ -271,7 +271,7 @@ export declare function triggerLatentServerEvent<
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerLatentServerEvent Wiki, triggerLatentServerEvent }
+ * @see https://wiki.multitheftauto.com/wiki/TriggerLatentServerEvent
  * @noSelf
  */
 export declare function triggerLatentServerEvent<
@@ -298,7 +298,7 @@ export declare function triggerLatentServerEvent<
  * Keep in mind the bandwidth issues when using events - dont pass a large list of arguments
  * unless you really need to. It is marginally more efficient to pass one large event than
  * two smaller ones.
- * @see {@link https://wiki.multitheftauto.com/wiki/TriggerServerEvent Wiki, triggerServerEvent }
+ * @see https://wiki.multitheftauto.com/wiki/TriggerServerEvent
  * @param event The name of the event to trigger server-side. You should register this event with
  * addEvent and add at least one event handler using addEventHandler.
  * @param theElement The element that is the Event system#Event handlers|source of the event.
@@ -322,7 +322,7 @@ export declare function triggerServerEvent<
  * Events can be cancelled using cancelEvent, this indicates that the resource which
  * triggered the event should do whatever it can to reverse any changes made by whatever
  * caused the event. See triggerEvent for a more detailed explanation of this.
- * @see {@link https://wiki.multitheftauto.com/wiki/WasEventCancelled Wiki, wasEventCancelled }
+ * @see https://wiki.multitheftauto.com/wiki/WasEventCancelled
  * @return returns true if the event was cancelled, false if it wasnt or doesnt exist.
  * @noSelf
  */

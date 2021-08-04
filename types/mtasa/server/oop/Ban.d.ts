@@ -78,7 +78,7 @@ export class Ban {
 
     /**
      * This function will add a ban for the specified IP/username/serial to the server.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AddBan Wiki, addBan }
+     * @see https://wiki.multitheftauto.com/wiki/AddBan
      * @param IP The IP to be banned. If you dont want to ban by IP, set this to nil.
      * '''or'''
      * @param Username The http://community.mtasa.com/ MTA Community username to be banned (now obsolete). If
@@ -106,7 +106,7 @@ export class Ban {
     /**
      * This function will return the responsible admin (nickname of the admin) of the specified
      * ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBanAdmin Wiki, getBanAdmin }
+     * @see https://wiki.multitheftauto.com/wiki/GetBanAdmin
      * @return returns a string of the admin if everything was successful, false if invalid arguments
      * are specified if there was no admin specified for the ban.
      */
@@ -114,7 +114,7 @@ export class Ban {
 
     /**
      * This function will return the IP of the specified ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBanIP Wiki, getBanIP }
+     * @see https://wiki.multitheftauto.com/wiki/GetBanIP
      * @return returns a string of the ip if everything was successful, false if invalid arguments are
      * specified if there was no ip specified for the ban.
      */
@@ -123,7 +123,7 @@ export class Ban {
     /**
      * This function will return the nickname (nickname that the player had when he was banned)
      * of the specified ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBanNick Wiki, getBanNick }
+     * @see https://wiki.multitheftauto.com/wiki/GetBanNick
      * @return returns a string of the nickname if everything was successfull, false if invalid
      * arguments are specified if there was no nickname specified for the ban element.
      */
@@ -131,7 +131,7 @@ export class Ban {
 
     /**
      * This function will return the ban reason of the specified ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBanReason Wiki, getBanReason }
+     * @see https://wiki.multitheftauto.com/wiki/GetBanReason
      * @return returns a string of the reason if everything was successful, false if invalid arguments
      * are specified if there was no reason specified for the ban.
      */
@@ -140,14 +140,14 @@ export class Ban {
     /**
      * This function will return a table containing all the bans present in the servers
      * banlist.xml.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBans Wiki, getBans }
+     * @see https://wiki.multitheftauto.com/wiki/GetBans
      * @return returns a table containing all the bans.
      */
     static getList(): LuaTable;
 
     /**
      * This function will return the serial of the specified ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBanSerial Wiki, getBanSerial }
+     * @see https://wiki.multitheftauto.com/wiki/GetBanSerial
      * @return returns a string of the serial if everything was successful, false if invalid arguments
      * are specified or if there was no serial specified for the ban.
      */
@@ -155,7 +155,7 @@ export class Ban {
 
     /**
      * This function will return the time the specified ban was created, in seconds.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetBanTime Wiki, getBanTime }
+     * @see https://wiki.multitheftauto.com/wiki/GetBanTime
      * @return * returns an integer of the banning time in the format of seconds from the year 1970.
      * use in conjunction with getrealtime in order to retrieve detailed information.
      * * returns false if invalid arguments were specified or if there was no banning time
@@ -165,7 +165,7 @@ export class Ban {
 
     /**
      * This function will return the unbanning time of the specified ban in seconds.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetUnbanTime Wiki, getUnbanTime }
+     * @see https://wiki.multitheftauto.com/wiki/GetUnbanTime
      * @return * returns an integer of the unbanning time in the format of seconds from the year 1970.
      * use in conjunction with getrealtime in order to retrieve detailed information.
      * * returns false if invalid arguments are specified or if there was no unbanning time
@@ -175,14 +175,14 @@ export class Ban {
 
     /**
      * This function will reload the server ban list file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ReloadBans Wiki, reloadBans }
+     * @see https://wiki.multitheftauto.com/wiki/ReloadBans
      * @return returns true if the ban list was reloaded successfully, false otherwise.
      */
     static reload(): boolean;
 
     /**
      * This function will remove a specific ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/RemoveBan Wiki, removeBan }
+     * @see https://wiki.multitheftauto.com/wiki/RemoveBan
      * @param responsibleElement The element that is responsible for removing the ban element. This can be a player or the
      * root (getRootElement()).
      * @return returns true if the ban was removed succesfully, false if invalid arguments are specified.
@@ -193,7 +193,7 @@ export class Ban {
 
     /**
      * This function sets a new admin for a ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetBanAdmin Wiki, setBanAdmin }
+     * @see https://wiki.multitheftauto.com/wiki/SetBanAdmin
      * @param theAdmin The new admin.
      * @return returns true if changed, false otherwise.
      */
@@ -202,7 +202,7 @@ export class Ban {
     ): boolean;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetBanNick Wiki, setBanNick }
+     * @see https://wiki.multitheftauto.com/wiki/SetBanNick
      * @param theNick A string representing the nick you want to set the ban to.
      * @return returns true if changed, false otherwise.
      */
@@ -212,7 +212,7 @@ export class Ban {
 
     /**
      * This function sets the reason for the specified ban.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetBanReason Wiki, setBanReason }
+     * @see https://wiki.multitheftauto.com/wiki/SetBanReason
      * @param theReason the new reason (max 60 characters).
      * @return returns true if the new reason was set successfully, false otherwise.
      */
@@ -223,7 +223,7 @@ export class Ban {
     /**
      * This function sets a new unban time of a given ban using unix timestamp (seconds since
      * Jan 01 1970).
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetUnbanTime Wiki, setUnbanTime }
+     * @see https://wiki.multitheftauto.com/wiki/SetUnbanTime
      * @param theTime the new unban time
      * @return returns true if changed successfully, false otherwise.
      */

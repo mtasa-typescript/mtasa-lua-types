@@ -113,13 +113,13 @@ export class Sound extends Element {
     /**
      * This function gets the beats per minute of a specific sound element.
      * setTimer to do this.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundBPM Wiki, getSoundBPM }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundBPM
      * @return returns the beats per minute of the given sound.
      */
     getBPM(): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundBufferLength Wiki, getSoundBufferLength }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundBufferLength
      * @return * a float value indicating the buffer playback length of the sound in seconds.
      * * false if the sound is not a stream.
      * * nil if the sound is invalid.
@@ -128,7 +128,7 @@ export class Sound extends Element {
 
     /**
      * Returns the states of all effects of a sound.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundEffects Wiki, getSoundEffects }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundEffects
      * @return returns a table with the effect names as the keys, and their states as the values if
      * successful. otherwise, it returns false.
      * sound effect names:
@@ -146,7 +146,7 @@ export class Sound extends Element {
      * Visualiser
      * just type startmusic mystreamurl in your console and it will play on the cinema billboard
      * near A51 If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundFFTData Wiki, getSoundFFTData }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundFFTData
      * @param iSamples allowed samples are 256, 512, 1024, 2048, 4096, 8192 and 16384.
      * @param iBands post processing option allows you to split the samples into the desired amount of bands
      * or bars so if you only need 5 bars this saves a lot of cpu power compared to trying to do
@@ -164,7 +164,7 @@ export class Sound extends Element {
     /**
      * This function is used to return the playback length of the specified sound element.
      * If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundLength Wiki, getSoundLength }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundLength
      * @return returns an float value indicating the playback length of the sound element in seconds.
      */
     getLength(): number;
@@ -172,7 +172,7 @@ export class Sound extends Element {
     /**
      * This function gets the left/right level from a sound element.
      * If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundLevelData Wiki, getSoundLevelData }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundLevelData
      * @return returns a two integers in range from 0 to 32768.
      */
     getLevelData(): LuaMultiReturn<[
@@ -182,7 +182,7 @@ export class Sound extends Element {
 
     /**
      * Gets a custom sound max distance at which the sound stops.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundMaxDistance Wiki, getSoundMaxDistance }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundMaxDistance
      * @return returns an integer of the max distance, false if invalid arguments where passed.
      */
     getMaxDistance(): number;
@@ -191,7 +191,7 @@ export class Sound extends Element {
      * Used to get the meta tags attached to a sound. These provide information about the sound,
      * for instance the title or the artist.
      * *This function does not work on remote WAV files
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundMetaTags Wiki, getSoundMetaTags }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundMetaTags
      * @param format a filter string to get a specific meta tag.
      * @return returns a table, but only a string if format is given, with all data available (keys are
      * listed below) for the sound if successful, false otherwise. if any data is unavailable
@@ -203,14 +203,14 @@ export class Sound extends Element {
 
     /**
      * Gets a custom sound Minimum distance at which the sound stops getting louder.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundMinDistance Wiki, getSoundMinDistance }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundMinDistance
      * @return returns an integer of the minimum distance, false if invalid arguements where passed.
      */
     getMinDistance(): number;
 
     /**
      * This function is used to get the pan level of the specified sound element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundPan Wiki, getSoundPan }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundPan
      * @return returns float value with range from -1.0 (left) to 1.0 (right), false otherwise.
      */
     getPan(): number;
@@ -218,14 +218,14 @@ export class Sound extends Element {
     /**
      * This function is used to return the current seek position of the specified sound element.
      * If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundPosition Wiki, getSoundPosition }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundPosition
      * @return returns a float value indicating the seek position of the sound element in seconds.
      */
     getPlaybackPosition(): number;
 
     /**
      * This function gets the properties of a specific sound.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundProperties Wiki, getSoundProperties }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundProperties
      * @return this function returns 3 float|floats and a boolean value:
      * the first float is the sounds http://en.wikipedia.org/wiki/sampling_rate sample rate, the
      * second one the sounds http://en.wikipedia.org/wiki/tempo tempo, and the third one the
@@ -241,7 +241,7 @@ export class Sound extends Element {
 
     /**
      * This function is used to return the playback speed of the specified sound element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundSpeed Wiki, getSoundSpeed }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundSpeed
      * @return returns an float value indicating the playback speed of the sound element. default sound
      * playback speed is 1.0.
      */
@@ -250,7 +250,7 @@ export class Sound extends Element {
     /**
      * This function is used to return the volume level of the specified sound element.
      * If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundVolume Wiki, getSoundVolume }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundVolume
      * @return returns a float representing the volume level of the sound element, false if invalid
      * arguments were passed.
      */
@@ -261,7 +261,7 @@ export class Sound extends Element {
      * representing the current audio frame as a wave.
      * This allows things like visualisations.
      * If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetSoundWaveData Wiki, getSoundWaveData }
+     * @see https://wiki.multitheftauto.com/wiki/GetSoundWaveData
      * @param iSamples allowed samples are 256, 512, 1024, 2048, 4096, 8192 and 16384.
      * @return returns a table of isamples floats representing the current audio frame waveform.
      * returns false if the sound is not playing yet or hasnt buffered in the
@@ -272,14 +272,14 @@ export class Sound extends Element {
     ): LuaTable;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsSoundLooped Wiki, isSoundLooped }
+     * @see https://wiki.multitheftauto.com/wiki/IsSoundLooped
      * @return returns true if the sound element is seted to loop, false otherwise.
      */
     isLooped(): boolean;
 
     /**
      * This function checks whether panning is enabled in a sound element or not.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsSoundPanningEnabled Wiki, isSoundPanningEnabled }
+     * @see https://wiki.multitheftauto.com/wiki/IsSoundPanningEnabled
      * @return returns true if the sound is valid and it has panning enabled, false if it does not or is
      * not valid.
      */
@@ -288,7 +288,7 @@ export class Sound extends Element {
     /**
      * This function is used to return the current pause state of the specified sound element.
      * If the element is a player, this function will use the players voice.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsSoundPaused Wiki, isSoundPaused }
+     * @see https://wiki.multitheftauto.com/wiki/IsSoundPaused
      * @return returns true if the sound element is paused, false if unpaused or invalid arguments were
      * passed.
      */
@@ -304,7 +304,7 @@ export class Sound extends Element {
      * weapon fire), it is recommend that you convert your audio file to a one channel (mono)
      * WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the
      * effect can be played e.g. once every 50ms.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySound Wiki, playSound }
+     * @see https://wiki.multitheftauto.com/wiki/PlaySound
      * @param soundPath Can also be raw sound data.
      * |20460}}
      * @param looped a boolean representing whether the sound will be looped. To loop the sound, use true.
@@ -322,7 +322,7 @@ export class Sound extends Element {
 
     /**
      * This function plays a frontend sound for the specified player.
-     * @see {@link https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd Wiki, playSoundFrontEnd }
+     * @see https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd
      * @param sound a whole int specifying the sound id to play. Valid values are:
      */
     static playFrontEnd(
@@ -332,7 +332,7 @@ export class Sound extends Element {
     /**
      * Used to enable or disable specific sound effects.
      * Use a player element to control a players voice with this function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundEffectEnabled Wiki, setSoundEffectEnabled }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundEffectEnabled
      * @param sound a sound element or a player element which will affect the Resource:Voice|voice broadcast.
      * @param effectName the effect you want to enable or disable
      * @param bEnable true if you want to enable the effect, false if you want to disable it.
@@ -344,7 +344,7 @@ export class Sound extends Element {
     ): boolean;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundLooped Wiki, setSoundLooped }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundLooped
      * @param bool A boolean representing whether the sound will be looped.
      * @return returns true if the sound element loop was successfully changed, false otherwise.
      * <syntaxhighlight lang=lua>
@@ -360,7 +360,7 @@ export class Sound extends Element {
 
     /**
      * Sets a custom sound max distance at which the sound stops.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundMaxDistance Wiki, setSoundMaxDistance }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundMaxDistance
      * @param distance the default value for this is 20
      * @return returns a true if the max distance was set, false otherwise.
      */
@@ -370,7 +370,7 @@ export class Sound extends Element {
 
     /**
      * Sets a custom sound Minimum distance at which the sound stops getting louder.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundMinDistance Wiki, setSoundMinDistance }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundMinDistance
      * @param distance an integer representing the distance the sound stops getting louder. the default value
      * for this is 5
      * @return returns a true if the minimum distance was set, false otherwise.
@@ -381,7 +381,7 @@ export class Sound extends Element {
 
     /**
      * This function is used to change the pan level of the specified sound element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundPan Wiki, setSoundPan }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundPan
      * @param pan A float|floating point number representing the desired pan level. Range is from -1.0
      * (left) to 1.0 (right)
      * @return returns true if the sound element pan was successfully changed, false otherwise.
@@ -393,7 +393,7 @@ export class Sound extends Element {
     /**
      * This function toggles the panning of a sound (hearing it closer to the left or right side
      * of the speakers due to the camera position). By default a sound has its panning enabled.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundPanningEnabled Wiki, setSoundPanningEnabled }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundPanningEnabled
      * @param enable true to enable the panning, false otherwise.
      * @return returns true if the sound is valid and good arguments were passed, false if not.
      * if the sound is not 3d, this function will return true as well, but issoundpanningenabled
@@ -407,7 +407,7 @@ export class Sound extends Element {
      * This function is used to either pause or unpause the playback of the specified sound
      * element.
      * Use a player element to control a players voice with this function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundPaused Wiki, setSoundPaused }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundPaused
      * @param paused a boolean value representing whether the sound should be paused or not. To pause the
      * sound, use true.
      * @return returns true if the sound element was successfully paused, false otherwise.
@@ -421,7 +421,7 @@ export class Sound extends Element {
      * Use a player element to control a players voice with this function.
      * *To set position of a remote audio file you have to pause it first, then set the position
      * and then unpause it.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundPosition Wiki, setSoundPosition }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundPosition
      * @param pos a float value representing the new seek position of the sound element in seconds.
      * @return returns true if the sound elements seek position was successfully changed, false
      * otherwise.
@@ -432,7 +432,7 @@ export class Sound extends Element {
 
     /**
      * This function edits the properties of a specific sound.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundProperties Wiki, setSoundProperties }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundProperties
      * @param fSampleRate a float that defines the new sounds http://en.wikipedia.org/wiki/Sampling_rate sample rate
      * @param fTempo a float that defines the new sound http://en.wikipedia.org/wiki/Tempo tempo
      * @param fPitch a float that defines the new sound http://en.wikipedia.org/wiki/Pitch_%28music%29 pitch
@@ -448,7 +448,7 @@ export class Sound extends Element {
 
     /**
      * This function can be used to change the playback speed of the specified sound element.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundSpeed Wiki, setSoundSpeed }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundSpeed
      * @param speed a floating point number representing the desired sound playback speed.
      * @return returns true if the sound element playback speed was successfully changed, false
      * otherwise.
@@ -460,7 +460,7 @@ export class Sound extends Element {
     /**
      * This function is used to change the volume level of the specified sound element.
      * Use a player element to control a players voice with this function.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetSoundVolume Wiki, setSoundVolume }
+     * @see https://wiki.multitheftauto.com/wiki/SetSoundVolume
      * @param theSound The sound element which volume you want to modify or a player element which voice volume
      * you want to modify.
      * @param volume A floating point number representing the desired volume level. Range is from 0.0 to 1.0.
@@ -473,7 +473,7 @@ export class Sound extends Element {
 
     /**
      * Stops the sound playback for specified sound element. The sound element is also destroyed.
-     * @see {@link https://wiki.multitheftauto.com/wiki/StopSound Wiki, stopSound }
+     * @see https://wiki.multitheftauto.com/wiki/StopSound
      * @return returns true if the sound was successfully stopped, false otherwise.
      */
     stop(): boolean;

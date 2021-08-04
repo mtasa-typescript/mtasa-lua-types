@@ -56,7 +56,7 @@ import {
 } from '../structure';
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/AddColPolygonPoint Wiki, addColPolygonPoint }
+ * @see https://wiki.multitheftauto.com/wiki/AddColPolygonPoint
  * @param shape The colshape polygon you wish add a point to.
  * @param fX The X position of the new bound point.
  * @param fY The Y position of the new bound point.
@@ -78,7 +78,7 @@ export declare function addColPolygonPoint(
  * This function creates a collision circle. This is a shape that has a position and a
  * radius and infinite height that you can use to detect a players presence. Events will be
  * triggered when a player enters or leaves it.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateColCircle Wiki, createColCircle }
+ * @see https://wiki.multitheftauto.com/wiki/CreateColCircle
  * @param fX The collision circles center points X axis position
  * @param fY The collision circles center points Y axis position
  * @param radius The radius of the collision circle. Can not be smaller than 0.1
@@ -96,7 +96,7 @@ export declare function createColCircle(
  * This function creates a collision cuboid. This is a shape that has a position, width,
  * depth and height. See http://en.wikipedia.org/wiki/Cuboid Wikipedia for a definition of a
  * cuboid. The XYZ of the col starts at the southwest bottom corner of the shape.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateColCuboid Wiki, createColCuboid }
+ * @see https://wiki.multitheftauto.com/wiki/CreateColCuboid
  * @param fX The X position of the collision cuboids western side
  * @param fY The Y position of the collision cuboids southern side
  * @param fZ The Z position of the collision cuboids lowest side
@@ -122,7 +122,7 @@ export declare function createColCuboid(
  * of the colshape bounds, so can set anywhere in the game world, however for performance,
  * place it as close to the centre of the polygon as you can. It should be noted this shape
  * is 2D. There should be at least 3 bound points set.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateColPolygon Wiki, createColPolygon }
+ * @see https://wiki.multitheftauto.com/wiki/CreateColPolygon
  * @param fCenterX The X position of the collision polygons position - the position that will be returned
  * from getElementPosition.
  * @param fCenterY The Y position of the collision polygons position - the position that will be returned
@@ -154,7 +154,7 @@ export declare function createColPolygon(
  * This function creates a collision rectangle. This is a shape that has a position and a
  * width and a depth. See http://en.wikipedia.org/wiki/Rectangle Rectangle for a definition
  * of a rectangle. XY marks on the south west corner of the colshape.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateColRectangle Wiki, createColRectangle }
+ * @see https://wiki.multitheftauto.com/wiki/CreateColRectangle
  * @param fX The X position of the collision rectangles west side
  * @param fY The Y position of the collision rectangles south side
  * @param fWidth The collision rectangles width
@@ -173,7 +173,7 @@ export declare function createColRectangle(
 /**
  * This function creates a collision sphere. This is a shape that has a position and a
  * radius. See http://en.wikipedia.org/wiki/Sphere Wikipedia for a definition of a sphere.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateColSphere Wiki, createColSphere }
+ * @see https://wiki.multitheftauto.com/wiki/CreateColSphere
  * @param fX The collision spheres center points X axis position
  * @param fY The collision spheres center points Y axis position
  * @param fZ The collision spheres center points Z axis position
@@ -195,7 +195,7 @@ export declare function createColSphere(
  * for a definition of a tube. A tube is similar to a colcircle, except that it has a
  * limited height, this means you can limit the distance above the position defined by (fX,
  * fY, fZ) that the collision is detected.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateColTube Wiki, createColTube }
+ * @see https://wiki.multitheftauto.com/wiki/CreateColTube
  * @param fX The position of the base of the tubes center on the X axis
  * @param fY The position of the base of the tubes center on the Y axis
  * @param fZ The position of the base of the tubes center on the Z axis
@@ -215,7 +215,7 @@ export declare function createColTube(
 
 /**
  * By default, a colshape polygon is infinitely tall.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColPolygonHeight Wiki, getColPolygonHeight }
+ * @see https://wiki.multitheftauto.com/wiki/GetColPolygonHeight
  * @param shape The colshape polygon
  * @return returns two floats, indicating the floor and ceiling of the colshape height, false if
  * invalid arguments were passed.
@@ -229,7 +229,7 @@ export declare function getColPolygonHeight(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColPolygonPointPosition Wiki, getColPolygonPointPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetColPolygonPointPosition
  * @param shape The colshape polygon you wish to change.
  * @param index The index of the point you wish to retrieve. The points are indexed in order, with 1
  * being the first bound point.
@@ -246,7 +246,7 @@ export declare function getColPolygonPointPosition(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColPolygonPoints Wiki, getColPolygonPoints }
+ * @see https://wiki.multitheftauto.com/wiki/GetColPolygonPoints
  * @param shape The colshape polygon you wish to get the points of.
  * @return returns a table of coordinates, each coordinate being a table containing the x and y
  * position of a bound point, false if invalid arguments were passed.
@@ -257,7 +257,7 @@ export declare function getColPolygonPoints(
 ): LuaTable;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColShapeRadius Wiki, getColShapeRadius }
+ * @see https://wiki.multitheftauto.com/wiki/GetColShapeRadius
  * @param shape The colshape you wish to get the radius of.
  * @return returns a float containing the radius of the colshape, false if an invalid colshape was
  * passed.
@@ -268,7 +268,7 @@ export declare function getColShapeRadius(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColShapeSize Wiki, getColShapeSize }
+ * @see https://wiki.multitheftauto.com/wiki/GetColShapeSize
  * @param shape The colshape you wish to get the size of.
  * @return returns up to 3 floats depending on the colshape type (see below), false if invalid
  * arguments were passed.
@@ -286,7 +286,7 @@ export declare function getColShapeSize(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetColShapeType Wiki, getColShapeType }
+ * @see https://wiki.multitheftauto.com/wiki/GetColShapeType
  * @param shape The colshape you wish to get the type of.
  * @return returns false if invalid arguments were passed, or an integer of the type of the
  * colshape, which include:
@@ -303,7 +303,7 @@ export declare function getColShapeType(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsInsideColShape Wiki, isInsideColShape }
+ * @see https://wiki.multitheftauto.com/wiki/IsInsideColShape
  * @param theShape The colshape youre checking the position against.
  * @param posX The X coordinate of the position youre checking.
  * @param posY The Y coordinate of the position youre checking.
@@ -320,7 +320,7 @@ export declare function isInsideColShape(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveColPolygonPoint Wiki, removeColPolygonPoint }
+ * @see https://wiki.multitheftauto.com/wiki/RemoveColPolygonPoint
  * @param shape The colshape polygon you wish to remove a point from.
  * @param index The index of the point you wish to remove. The points are indexed in order, with 1 being
  * the first bound point. You cant remove the last 3 points.
@@ -334,7 +334,7 @@ export declare function removeColPolygonPoint(
 
 /**
  * By default, a colshape polygon is infinitely tall.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/SetColPolygonHeight Wiki, setColPolygonHeight }
+ * @see https://wiki.multitheftauto.com/wiki/SetColPolygonHeight
  * @param shape The colshape polygon
  * @param floor The polygon floor (lowest Z coordinate). Parse false to reset this value to 0.
  * @param ceil The polygon ceiling (highest Z coordinate). Parse false to reset this value to infinitely
@@ -349,7 +349,7 @@ export declare function setColPolygonHeight(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetColPolygonPointPosition Wiki, setColPolygonPointPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetColPolygonPointPosition
  * @param shape The colshape polygon you wish to change.
  * @param index The index of the point you wish to change. The points are indexed in order, with 1 being
  * the first bound point.
@@ -366,7 +366,7 @@ export declare function setColPolygonPointPosition(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetColShapeRadius Wiki, setColShapeRadius }
+ * @see https://wiki.multitheftauto.com/wiki/SetColShapeRadius
  * @param shape The colshape you wish to change the radius of.
  * @param radius The radius you want to set.
  * @return returns true if the radius was changed, or false if invalid arguments were passed.
@@ -378,7 +378,7 @@ export declare function setColShapeRadius(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetColShapeSize Wiki, setColShapeSize }
+ * @see https://wiki.multitheftauto.com/wiki/SetColShapeSize
  * @param shape The colshape you wish to change the size of.
  * @param width The collision rectangles width.
  * @param depth The collision cuboids depth.

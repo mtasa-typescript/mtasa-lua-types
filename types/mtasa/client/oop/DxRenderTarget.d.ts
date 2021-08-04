@@ -63,7 +63,7 @@ export class DxRenderTarget {
      * guaranteed, and may fail due to hardware or memory limitations.
      * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
      * zero, failure is guaranteed.)
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateRenderTarget Wiki, dxCreateRenderTarget }
+     * @see https://wiki.multitheftauto.com/wiki/DxCreateRenderTarget
      * @param width The width of the texture in pixels.
      * @param height The height of the texture in pixels.
      * @param withAlpha The render target will be created with an alpha channel. false will turn images alpha

@@ -40,7 +40,7 @@ import {
 
 /**
  * This function can be used to detonate a players satchels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DetonateSatchels Wiki, detonateSatchels }
+ * @see https://wiki.multitheftauto.com/wiki/DetonateSatchels
  * @noSelf
  */
 export declare function detonateSatchels(

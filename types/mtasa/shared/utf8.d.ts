@@ -1,4 +1,3 @@
-/// <reference types="typescript-to-lua/language-extensions" />
 /** @noSelfInFile */
 
 import { iterator } from './structure';

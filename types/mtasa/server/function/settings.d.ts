@@ -41,7 +41,7 @@ import {
 /**
  * This function gets a settings value, or a group of settings values, from the settings
  * system|settings registry.
- * @see {@link https://wiki.multitheftauto.com/wiki/Get Wiki, get }
+ * @see https://wiki.multitheftauto.com/wiki/Get
  * @return returns the value of the setting if a single setting was specified and found, or a table
  * (in associative-array form) containing:
  * *the list of global setting name/value pairs if . is passed as a setting name,
@@ -63,7 +63,7 @@ export declare function get(
  * the settings.xml that override the resources defaults, but that the defaults can still be
  * retrieved if need be. As a general principle, resources should not be designed so that
  * the admin is required to modify them, they should be black boxes.
- * @see {@link https://wiki.multitheftauto.com/wiki/Set Wiki, set }
+ * @see https://wiki.multitheftauto.com/wiki/Set
  * @param settingName The name of the setting you want to set. See settings system#Setting names|setting names
  * for information on settings names.
  * @param value The value to set the setting to. This can be any Lua data type, except for functions,

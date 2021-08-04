@@ -66,7 +66,7 @@ export class EngineTXD {
      * See here for Optimize_Custom_TXD|tips on reducing the size of TXD files.
      * * CJ clothing component textures can be replaced by using the ids listed on Clothing
      * Component IDs|this page
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineImportTXD Wiki, engineImportTXD }
+     * @see https://wiki.multitheftauto.com/wiki/EngineImportTXD
      * @param model_id The model id to import the TXD into
      * @return returns true if the function executed succesfully, false otherwise.
      */
@@ -79,7 +79,7 @@ export class EngineTXD {
      * dictionary can then be used to provide textures.
      * This is a client side function. Be sure to transfer your TXD file by including it in the
      * meta file.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadTXD Wiki, engineLoadTXD }
+     * @see https://wiki.multitheftauto.com/wiki/EngineLoadTXD
      * @param txd_file / raw_data The filepath to the TXD file you want to load or whole data buffer of the TXD file.
      * @param filteringEnabled Whether to enable texture filtering.
      * @return returns a txd if the file was loaded, false otherwise.

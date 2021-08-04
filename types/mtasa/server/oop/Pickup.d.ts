@@ -42,7 +42,7 @@ export class Pickup extends Element {
     /**
      * This function creates a pickup element, which is placed in the GTA world and can be
      * picked up to retrieve a health, armour or a weapon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/CreatePickup Wiki, createPickup }
+     * @see https://wiki.multitheftauto.com/wiki/CreatePickup
      * @param x : A floating point number representing the X coordinate on the map.
      * @param y : A floating point number representing the Y coordinate on the map.
      * @param z : A floating point number representing the Z coordinate on the map.

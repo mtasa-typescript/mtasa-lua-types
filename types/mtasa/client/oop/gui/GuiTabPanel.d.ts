@@ -65,7 +65,7 @@ export class GuiTabPanel extends GuiElement {
 
     /**
      * This function creates a Tab Panel, which acts as a template to create Tabs upon.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateTabPanel Wiki, guiCreateTabPanel }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateTabPanel
      * @param x A float of the 2D x position of the GUI tab panel on a players screen.  This is affected
      * by the relative argument.
      * @param y A float of the 2D y position of the GUI tab panel on a players screen. This is affected
@@ -94,7 +94,7 @@ export class GuiTabPanel extends GuiElement {
     /**
      * This function returns the currently selected tab in the specified Element/GUI/Tab
      * panel|tab panel.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGetSelectedTab Wiki, guiGetSelectedTab }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGetSelectedTab
      * @return returns an element of the element/gui/tab|tab if a tab was selected or nil if no tab was
      * selected. if passed arguments were invalid or something went wrong, the function will
      * return false.

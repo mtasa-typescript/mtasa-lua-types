@@ -65,7 +65,7 @@ export class Timer<
 
     /**
      * This function is for getting the details of a running timer.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GetTimerDetails Wiki, getTimerDetails }
+     * @see https://wiki.multitheftauto.com/wiki/GetTimerDetails
      * @return * integer one represents the time left in miliseconds (1000th of a second) of the current
      * time left in the loop.
      * * integer two represents the amount of times the timer has left to execute.
@@ -82,14 +82,14 @@ export class Timer<
 
     /**
      * This function checks if a variable is a timer.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsTimer Wiki, isTimer }
+     * @see https://wiki.multitheftauto.com/wiki/IsTimer
      * @return returns true if the passed value is a timer, false otherwise.
      */
     isValid(): boolean;
 
     /**
      * This function allows you to kill/halt existing timers.
-     * @see {@link https://wiki.multitheftauto.com/wiki/KillTimer Wiki, killTimer }
+     * @see https://wiki.multitheftauto.com/wiki/KillTimer
      * @return returns true if the timer was successfully killed, false if no such timer existed.
      */
     destroy(): boolean;
@@ -98,7 +98,7 @@ export class Timer<
      * This function allows you to reset the elapsed time in existing timers to zero. The
      * function does not reset the times to execute count on timers which have a limited amout
      * of repetitions.
-     * @see {@link https://wiki.multitheftauto.com/wiki/ResetTimer Wiki, resetTimer }
+     * @see https://wiki.multitheftauto.com/wiki/ResetTimer
      * @return returns true if the timer was successfully reset, false otherwise.
      */
     reset(): boolean;
@@ -117,7 +117,7 @@ export class Timer<
      * same frame, as the difference in time between the two timers (10ms) is less than half the
      * length of the frame (33ms). As with most timers provided by other languages, you shouldnt
      * rely on the timer triggering at an exact point in the future.
-     * @see {@link https://wiki.multitheftauto.com/wiki/SetTimer Wiki, setTimer }
+     * @see https://wiki.multitheftauto.com/wiki/SetTimer
      * @param theFunction The function you wish the timer to call.
      * @param timeInterval The number of milliseconds that should elapse before the function is called. (the minimum
      * is 50 (0 on 1.5.6 r16715); 1000 milliseconds = 1 second)
@@ -133,6 +133,6 @@ export class Timer<
         theFunction: CallbackType,
         timeInterval: number,
         timesToExecute: number,
-        ...arguments: Parameters<CallbackType>
+        ...args: Parameters<CallbackType>
     );
 }

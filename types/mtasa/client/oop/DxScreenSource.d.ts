@@ -63,7 +63,7 @@ export class DxScreenSource {
      * Note that successful screen source creation is not guaranteed, and may fail due to
      * hardware or memory limitations. You should always check to see if this function has
      * returned false.
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxCreateScreenSource Wiki, dxCreateScreenSource }
+     * @see https://wiki.multitheftauto.com/wiki/DxCreateScreenSource
      * @param width The width of the texture in pixels.
      * @param height The height of the texture  in pixels.
      * @return returns a texture element if successful, false if invalid arguments were passed to the
@@ -77,7 +77,7 @@ export class DxScreenSource {
     /**
      * This function updates the contents of a screen source texture with the screen output from
      * GTA
-     * @see {@link https://wiki.multitheftauto.com/wiki/DxUpdateScreenSource Wiki, dxUpdateScreenSource }
+     * @see https://wiki.multitheftauto.com/wiki/DxUpdateScreenSource
      * @param resampleNow A bool to indicate if the screen should be captured immediately. The default is false
      * which means the screen from the end of the previous frame is used (better for performance
      * and consistency). Use true for layering fullscreen effects.

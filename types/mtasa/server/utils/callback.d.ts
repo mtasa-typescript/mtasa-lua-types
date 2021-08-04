@@ -18,7 +18,7 @@ export type CommandHandler = (
     this: void,
     playerSource: Player,
     commandName: string,
-    ...arguments: string[]
+    ...args: string[]
 ) => void;
 
 /**
@@ -35,5 +35,5 @@ export type BindKeyCallback<AdditionalArgsType extends any[] = []> = (
     keyPresser: Player,
     key: KeyName | ControlName,
     keyState: KeyState,
-    ...arguments: AdditionalArgsType,
+    ...args: AdditionalArgsType,
 ) => void;

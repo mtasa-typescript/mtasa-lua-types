@@ -59,7 +59,7 @@ import {
  * Creates a patch of fire that will spread a bit and die out after a while. Because its a
  * client side only function, other players wont see it, so custom events or custom objects
  * will be needed to make a fire visible to some players.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateFire Wiki, createFire }
+ * @see https://wiki.multitheftauto.com/wiki/CreateFire
  * @param x, y, z the coordinates when the initial patch of fire will be created.
  * @param size a float value indicating the size of the initial patch of fire. It will also make the
  * fire to stay alive more or less time.
@@ -75,7 +75,7 @@ export declare function createFire(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/ExtinguishFire Wiki, extinguishFire }
+ * @see https://wiki.multitheftauto.com/wiki/ExtinguishFire
  * @param x, y, z the coordinates at which any fire will be extinguished.
  * @param radius a float value indicating the radius in which to extinguish fire.
  * @return returns true if successful, false otherwise.

@@ -66,7 +66,7 @@ export class EngineDFF {
      * The returned DFF element is an element in the element tree, just like vehicles and
      * objects. When the dff is destroyed, ie on resource unload or using destroyElement, any
      * elements that use the DFF, such as vehicles or objects will be reset.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineLoadDFF Wiki, engineLoadDFF }
+     * @see https://wiki.multitheftauto.com/wiki/EngineLoadDFF
      * @param dff_file / raw_data The filepath to the DFF file you want to load or whole data buffer of the DFF file.
      * @return returns a dff element if the dff file loaded, false otherwise.
      */
@@ -83,7 +83,7 @@ export class EngineDFF {
      * * Default GTA map objects behave inconsistently when using this function on them. If you
      * want to replace models in the original GTA map, use one of the EngineReplaceModel
      * notes|methods shown here.}}
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineReplaceModel Wiki, engineReplaceModel }
+     * @see https://wiki.multitheftauto.com/wiki/EngineReplaceModel
      * @param modelID The model it to replace the model of
      * @param alphaTransparency Set to true if model uses semi-transparent textures, e.g. windows. This will ensure other
      * objects behind the semi-transparent textures are rendered correctly. (Can slightly impact

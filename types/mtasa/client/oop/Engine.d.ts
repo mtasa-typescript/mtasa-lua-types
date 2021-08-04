@@ -60,7 +60,7 @@ export class Engine {
     /**
      * This function gets the model ID of an object model from object name. This function is the
      * counterpart of engineGetModelNameFromID.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName Wiki, engineGetModelIDFromName }
+     * @see https://wiki.multitheftauto.com/wiki/EngineGetModelIDFromName
      * @param modelName The model name of the object
      * @return returns an int with the id of the object model, false otherwise.
      */
@@ -70,7 +70,7 @@ export class Engine {
 
     /**
      * This function gets the LOD distance for any object / model ID.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelLODDistance Wiki, engineGetModelLODDistance }
+     * @see https://wiki.multitheftauto.com/wiki/EngineGetModelLODDistance
      * @param model The model / object ID number you want to get the LOD distance of.
      * @return returns a float representing the lod distance of the model, or false if the model
      * argument is incorrect.
@@ -82,7 +82,7 @@ export class Engine {
     /**
      * This function gets the model name of an object model from model ID. This function is the
      * counterpart of engineGetModelIDFromName.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID Wiki, engineGetModelNameFromID }
+     * @see https://wiki.multitheftauto.com/wiki/EngineGetModelNameFromID
      * @param modelID The model ID of the object
      * @return returns a string with the name of the object model, false otherwise.
      */
@@ -93,7 +93,7 @@ export class Engine {
     /**
      * This function returns a table of the world textures which are applied to the specified
      * model.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames Wiki, engineGetModelTextureNames }
+     * @see https://wiki.multitheftauto.com/wiki/EngineGetModelTextureNames
      * @param modelId You can either use the model id or the model name.
      * @return returns a table if this function succeeds, false if it fails for some reason.
      */
@@ -104,7 +104,7 @@ export class Engine {
     /**
      * This function returns a list of the world textures which are being used to draw the
      * current scene.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames Wiki, engineGetVisibleTextureNames }
+     * @see https://wiki.multitheftauto.com/wiki/EngineGetVisibleTextureNames
      * @param nameFilter Only include textures that match the wildcard string.
      * @param modelId Only include textures that are used by the model id (or model name)
      * @return returns a table of texture names.
@@ -115,7 +115,7 @@ export class Engine {
     ): LuaTable;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance Wiki, engineResetModelLODDistance }
+     * @see https://wiki.multitheftauto.com/wiki/EngineResetModelLODDistance
      * @param model The model / object ID number you want to reset the LOD distance of.
      * @return returns true if the lod distance was reset to default, or false if the model argument is
      * incorrect, or the lod distance hasnt been changed.
@@ -127,7 +127,7 @@ export class Engine {
     /**
      * This function restores the original collision model of the given model ID. Reverses the
      * effect of engineReplaceCOL.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreCOL Wiki, engineRestoreCOL }
+     * @see https://wiki.multitheftauto.com/wiki/EngineRestoreCOL
      * @param modelID The ID of the model to restore the model of
      * @return returns true if this function succeeds, false or nil if it fails for some reason.
      */
@@ -138,7 +138,7 @@ export class Engine {
     /**
      * This function restores the visual DFF model of the given model ID. This restores the
      * result of engineReplaceModel.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineRestoreModel Wiki, engineRestoreModel }
+     * @see https://wiki.multitheftauto.com/wiki/EngineRestoreModel
      * @param modelID The model ID to restore the visuals of
      * @return returns true if the model was successfully restored, false or nil if it failed for some
      * reason.
@@ -152,7 +152,7 @@ export class Engine {
      * loading may reduce the small pauses that occur when a new model is displayed for the
      * first time. However, it can cause the new models to appear slightly later than they might
      * have otherwise.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading Wiki, engineSetAsynchronousLoading }
+     * @see https://wiki.multitheftauto.com/wiki/EngineSetAsynchronousLoading
      * @param enable Set to true/false to enable/disable asynchronous loading. Only works if the clients
      * preferences has Asynchronous Loading set to Auto.
      * @param force If set to true, ignores the clients preferences.
@@ -190,7 +190,7 @@ export class Engine {
      * actual draw distance used is 5 times the setting value. Also, low LOD elements ignore the
      * Video tab draw distance slider. So a setting of 200 will mean a low LOD element will
      * always have a draw distance of 1000 units.
-     * @see {@link https://wiki.multitheftauto.com/wiki/EngineSetModelLODDistance Wiki, engineSetModelLODDistance }
+     * @see https://wiki.multitheftauto.com/wiki/EngineSetModelLODDistance
      * @param model The model / object ID number you want to change the LOD distance of.
      * @param distance New LOD distance value in San Andreas units.
      * @return returns true if the function executed succesfully, false otherwise.

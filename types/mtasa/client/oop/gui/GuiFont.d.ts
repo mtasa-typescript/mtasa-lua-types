@@ -62,7 +62,7 @@ export class GuiFont {
      * creation is not guaranteed, and may fail due to hardware or memory limitations.
      * To see if creation is likely to fail, use dxGetStatus. (When VideoMemoryFreeForMTA is
      * zero, failure is guaranteed.)
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateFont Wiki, guiCreateFont }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateFont
      * @param filepath the name of the file containing the font
      * @param size size of the font
      * @return returns a gui font element if successful, false if invalid arguments were passed to the

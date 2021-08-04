@@ -81,7 +81,7 @@ export class GuiEdit extends GuiElement {
      * This function is for creating a new GUI edit box. This is a text box in which the user
      * can input text. Edit boxes only allow a single line of text. If you want to allow
      * multiple lines of text create a memo box using guiCreateMemo.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateEdit Wiki, guiCreateEdit }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateEdit
      * @param x A float of the 2D x position of the GUI edit box on a players screen.  This is affected
      * by the relative argument.
      * @param y A float of the 2D y position of the GUI edit box on a players screen. This is affected by
@@ -112,13 +112,13 @@ export class GuiEdit extends GuiElement {
 
     /**
      * This function returns the caret (the text cursor) position within the editbox.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetCaretIndex Wiki, guiEditGetCaretIndex }
+     * @see https://wiki.multitheftauto.com/wiki/GuiEditGetCaretIndex
      * @return returns the caret index on success, false otherwise.
      */
     getCaretIndex(): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength Wiki, guiEditGetMaxLength }
+     * @see https://wiki.multitheftauto.com/wiki/GuiEditGetMaxLength
      * @return returns the maximum text length on success, false otherwise.
      */
     getMaxLength(): number;
@@ -126,7 +126,7 @@ export class GuiEdit extends GuiElement {
     /**
      * This function sets the current position of the caret (the text cursor) within the edit
      * box.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetCaretIndex Wiki, guiEditSetCaretIndex }
+     * @see https://wiki.multitheftauto.com/wiki/GuiEditSetCaretIndex
      * @param index An integer referring to the desired position within the box.
      * @return returns true if the index was successfully set, false otherwise.
      */
@@ -137,7 +137,7 @@ export class GuiEdit extends GuiElement {
     /**
      * This function sets or removes masking (covering up the text being typed) for password
      * text fields.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMasked Wiki, guiEditSetMasked }
+     * @see https://wiki.multitheftauto.com/wiki/GuiEditSetMasked
      * @param status A boolean value indicating whether masking is to be enabled or disabled.
      * @return returns true if the function is successful, false otherwise.
      */
@@ -147,7 +147,7 @@ export class GuiEdit extends GuiElement {
 
     /**
      * This function sets the maximum text length that can be typed into an edit box.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetMaxLength Wiki, guiEditSetMaxLength }
+     * @see https://wiki.multitheftauto.com/wiki/GuiEditSetMaxLength
      * @param theElement The edit box to be changed.
      * @param length An integer indicating the maximum number of characters that can be typed into the box.
      * @return returns true if the max length was set successfully, false otherwise.
@@ -159,7 +159,7 @@ export class GuiEdit extends GuiElement {
     /**
      * This function allows you to set or remove read-only status for an edit box. If read-only
      * is set to true, the box is not editable.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly Wiki, guiEditSetReadOnly }
+     * @see https://wiki.multitheftauto.com/wiki/GuiEditSetReadOnly
      * @param status A boolean value indicating whether read-only is to be enabled or disabled.
      * @return returns true if edit fields read-only status was changed successfully, false otherwise.
      */

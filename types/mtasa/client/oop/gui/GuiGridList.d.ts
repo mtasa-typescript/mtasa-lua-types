@@ -103,7 +103,7 @@ export class GuiGridList extends GuiElement {
      * This function creates a grid list GUI element.  These are menus which are designed in
      * lists and can have multiple columns.  A good example of a gridlist element can be found
      * in MTAs settings box, under Controls.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiCreateGridList Wiki, guiCreateGridList }
+     * @see https://wiki.multitheftauto.com/wiki/GuiCreateGridList
      * @param x A float of the 2D x position of the GUI gridlist on a players screen.  This is affected
      * by the relative argument.
      * @param y A float of the 2D y position of the GUI gridlist on a players screen. This is affected by
@@ -132,7 +132,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function is used to create columns in grid lists.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListAddColumn Wiki, guiGridListAddColumn }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListAddColumn
      * @param title Title of the column
      * @param width Column width, relative to the grid list width
      * @return returns the column id if it was created, false otherwise.
@@ -148,7 +148,7 @@ export class GuiGridList extends GuiElement {
      * ATTENTION: Without guiGridListSetItemText there is no row added to the grid.
      * Look at the example, first you give the row a name with row = guiGridListAddRow (
      * playerList ), and then you use guiGridListSetItemText. }}
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListAddRow Wiki, guiGridListAddRow }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListAddRow
      * @param itemText1 The text for the first column item in the row.  Either a string or a number can be passed
      * (use numbers for sorting purposes).
      * @param itemText2 The text for the second column item in the row.  Either a string or a number can be
@@ -165,7 +165,7 @@ export class GuiGridList extends GuiElement {
     /**
      * This allows you to automatically size a column to display everything in it correctly,
      * with the most minimal width.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListAutoSizeColumn Wiki, guiGridListAutoSizeColumn }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListAutoSizeColumn
      * @param columnIndex The ID of the column you want to be auto-sized.
      * @return returns true if the column was auto-sized, false otherwise.
      */
@@ -175,7 +175,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function clears all the data from a grid list.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListClear Wiki, guiGridListClear }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListClear
      * @return returns true if the grid list element is valid and has been cleared successfully, false
      * otherwise.
      */
@@ -183,14 +183,14 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This allows you to get the count of existing columns in a gridlist.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount Wiki, guiGridListGetColumnCount }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount
      * @return returns an integer with the amount of columns in the gridlist, false otherwise.
      */
     getColumnCount(): number;
 
     /**
      * This function is used to get the column title of a gridlist column.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnTitle Wiki, guiGridListGetColumnTitle }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnTitle
      * @param columnIndex : Column ID
      * @return returns a string containing the column title, or false otherwise.
      */
@@ -200,7 +200,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This allows you to get the width of an existing column in a gridlist.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnWidth Wiki, guiGridListGetColumnWidth }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnWidth
      * @param columnIndex Column ID of the Get size
      * @param relative A boolean defining whether width measurements will be relative to the Gridlist size, or
      * absolute pixels.
@@ -213,7 +213,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function is used to get the horizontal scroll position from a grid list
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetHorizontalScrollPosition Wiki, guiGridListGetHorizontalScrollPosition }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetHorizontalScrollPosition
      * @return returns a integer between 0 and 100 indicating the horizontal scroll position, or false
      * otherwise.
      */
@@ -221,7 +221,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function gets the color of a gridlist item.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetItemColor Wiki, guiGridListGetItemColor }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemColor
      * @param rowIndex Row ID
      * @param columnIndex Column ID
      * @return returns four int values, representing the amount of red, green, blue and alpha if
@@ -243,7 +243,7 @@ export class GuiGridList extends GuiElement {
      * an internal string that you can use to hold extra information about the item.<br/>
      * Note: This function will only work after you set the items text using
      * guiGridListSetItemText!
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetItemData Wiki, guiGridListGetItemData }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemData
      * @param rowIndex the row index of the item
      * @param columnIndex the column index of the item
      * @return returns the item data of the specified item if succesful, false if one of the arguments
@@ -256,7 +256,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function retrieves the text from a specific grid list item.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetItemText Wiki, guiGridListGetItemText }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemText
      * @param rowIndex row id of the item
      * @param columnIndex column id of the item
      * @return returns the text of the item if the arguments are right, false otherwise.
@@ -268,7 +268,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function returns the number of rows in a grid list.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetRowCount Wiki, guiGridListGetRowCount }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetRowCount
      * @return returns the number of rows if the function is successful, false otherwise.
      */
     getRowCount(): number;
@@ -276,7 +276,7 @@ export class GuiGridList extends GuiElement {
     /**
      * This function returns the amount of options selected in the specified
      * Element/GUI/Gridlist|grid list.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedCount Wiki, guiGridListGetSelectedCount }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedCount
      * @return returns an integer representing the amount of selected options if everything was
      * successful or false if invalid arguments were passed.
      */
@@ -285,7 +285,7 @@ export class GuiGridList extends GuiElement {
     /**
      * This function returns the row and column indexes of the selected item in a grid list.
      * First selected row and column is (0, 0).
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItem Wiki, guiGridListGetSelectedItem }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItem
      * @return returns the row and column indexes of the selected item if the specified grid list is
      * valid and has a selected item, (-1, -1) if no item is selected, false otherwise.
      */
@@ -299,7 +299,7 @@ export class GuiGridList extends GuiElement {
      * Note that for some reason the column ID is 1 lower than it should be, for example 0 is
      * returned but if you try and get the text for column 0 there is nothing, but column 1 has
      * what you clicked on.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItems Wiki, guiGridListGetSelectedItems }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectedItems
      * @return returns a table over the selected items in the element/gui/gridlist|grid list in this
      * format:
      * <syntaxhighlight lang=lua>
@@ -320,14 +320,14 @@ export class GuiGridList extends GuiElement {
     getSelectedItems(): LuaTable;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectionMode Wiki, guiGridListGetSelectionMode }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetSelectionMode
      * @return returns the id of the current gridlists selection mode.
      */
     getSelectionMode(): number;
 
     /**
      * This function is used to get the vertical scroll position from a grid list
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListGetVerticalScrollPosition Wiki, guiGridListGetVerticalScrollPosition }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetVerticalScrollPosition
      * @return returns a integer between 0 and 100 indicating the vertical scroll position, or false
      * otherwise.
      */
@@ -337,7 +337,7 @@ export class GuiGridList extends GuiElement {
      * This allows you to insert a new row after a specified row, and simultaneously set text.
      * Good for inserting new rows in the middle of existing rows. To insert at the top use -1
      * as row index.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListInsertRowAfter Wiki, guiGridListInsertRowAfter }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListInsertRowAfter
      * @param rowIndex Row ID of the row you want to insert the new row after.
      * @param itemText1 The text for the first column item in the row.  Either a string or a number can be passed
      * (use numbers for sorting purposes).
@@ -351,14 +351,14 @@ export class GuiGridList extends GuiElement {
     ): number;
 
     /**
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListIsSortingEnabled Wiki, guiGridListIsSortingEnabled }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListIsSortingEnabled
      * @return returns true if sorting is enabled, false otherwise.
      */
     isSortingEnabled(): boolean;
 
     /**
      * This allows you to delete columns that exist in grid lists.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListRemoveColumn Wiki, guiGridListRemoveColumn }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListRemoveColumn
      * @param columnIndex Column ID
      * @return returns true if the grid list column was successfully removed, false otherwise.
      */
@@ -368,7 +368,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This allows you to delete rows that exist in grid lists.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListRemoveRow Wiki, guiGridListRemoveRow }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListRemoveRow
      * @param rowIndex The row ID which you want to remove
      * @return returns true if the grid list row was successfully removed, false otherwise.
      */
@@ -378,7 +378,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function is used to change the column title of a gridlist column.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnTitle Wiki, guiGridListSetColumnTitle }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnTitle
      * @param columnIndex : Column ID
      * @param title : The title of the column
      * @return returns true if the new title was set, or false otherwise.
@@ -390,7 +390,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This allows you to set the width of an existing column in a gridlist.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnWidth Wiki, guiGridListSetColumnWidth }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetColumnWidth
      * @param columnIndex Column ID of the size you want to change
      * @param width A float or integer of the width of the column depending on the relative argument.
      * @param relative A boolean defining whether width measurements will be relative to the Gridlist size, or
@@ -406,7 +406,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function is used to set the horizontal scroll position from a grid list
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetHorizontalScrollPosition Wiki, guiGridListSetHorizontalScrollPosition }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetHorizontalScrollPosition
      * @param fPosition : A float representing the horizontal scroll position (0-100)
      * @return returns true if the horizontal scroll position was set, or false otherwise.
      */
@@ -416,7 +416,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function changes the color of a gridlist item.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetItemColor Wiki, guiGridListSetItemColor }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetItemColor
      * @param rowIndex Row ID
      * @param columnIndex Column ID
      * @param red The amount of red in the color (0-255)
@@ -438,7 +438,7 @@ export class GuiGridList extends GuiElement {
      * This function sets a Item Data associated to a grid list item.<br/>
      * Note: This function will only work after you set the items text using
      * guiGridListSetItemText!
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetItemData Wiki, guiGridListSetItemData }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetItemData
      * @param rowIndex The row of the item you wish to set to
      * @param columnIndex The column of the item you wish to set to
      * @param data The data you wish to set to the item.
@@ -454,7 +454,7 @@ export class GuiGridList extends GuiElement {
      * This function changes the text of a gridlist item.
      * Notice: This function doesnt work well with Sorting. If you are using sorting, please use
      * the optional arguments of guiGridListAddRow as much as possible.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetItemText Wiki, guiGridListSetItemText }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetItemText
      * @param rowIndex Row ID
      * @param columnIndex Column ID
      * @param text The text you want to put in (does NOT accept numbers, use tostring() for that)
@@ -472,7 +472,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function allows a gridlists scrollbar to be forced on, or returned to default.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetScrollBars Wiki, guiGridListSetScrollBars }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetScrollBars
      * @param horizontalBar A bool where true forces the horizontal scrollbar on, and false returns them to default.
      * @param verticalBar A bool where true forces the verical scrollbar on, and false returns them to default.
      * @return returns true if the scrollbars were successfully set, false otherwise.
@@ -485,7 +485,7 @@ export class GuiGridList extends GuiElement {
     /**
      * This function selects an item from a gridlist. If you wish to deselect whatever item is
      * selected, pass 0 as both the rowIndex and  columnIndex arguments.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectedItem Wiki, guiGridListSetSelectedItem }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectedItem
      * @param rowIndex the row you want to select (index 0 is the first row)
      * @param columnIndex the column you want to select (index 1 is the first column)
      * @param bReset set to false for multiple selections
@@ -502,7 +502,7 @@ export class GuiGridList extends GuiElement {
      * This function sets the selection mode of a gui gridlist.  For example, the MTA server
      * browser selects a whole row, while the Controls dialog selects a single cell. To select
      * multiple items you must be holding down ctrl.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectionMode Wiki, guiGridListSetSelectionMode }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetSelectionMode
      * @param mode The mode of the selection.  Can be the following values:
      * @param 0 Single row selection
      * @param 1 Multiple row selection
@@ -525,7 +525,7 @@ export class GuiGridList extends GuiElement {
      * achieved by clicking a column header.  Gridlist items will be sorted according to the
      * clicked column.  By default, gridlists have sorting enabled.  This function will allow
      * you to toggle this.
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetSortingEnabled Wiki, guiGridListSetSortingEnabled }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetSortingEnabled
      * @param enabled A boolean representing whether the sorting is enabled, or disabled.
      * @return returns true if sorting was successfully toggled., false otherwise.
      */
@@ -535,7 +535,7 @@ export class GuiGridList extends GuiElement {
 
     /**
      * This function is used to set the vertical scroll position from a grid list
-     * @see {@link https://wiki.multitheftauto.com/wiki/GuiGridListSetVerticalScrollPosition Wiki, guiGridListSetVerticalScrollPosition }
+     * @see https://wiki.multitheftauto.com/wiki/GuiGridListSetVerticalScrollPosition
      * @param fPosition : A float representing the vertical scroll position (0-100)
      * @return returns true if the vertical scroll position was set, or false otherwise.
      */

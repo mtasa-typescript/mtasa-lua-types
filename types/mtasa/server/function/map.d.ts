@@ -41,7 +41,7 @@ import {
 /**
  * This function is intended to load data from a loaded XML file into the element tree. This
  * could be used for loading an external map, or part of another map.
- * @see {@link https://wiki.multitheftauto.com/wiki/LoadMapData Wiki, loadMapData }
+ * @see https://wiki.multitheftauto.com/wiki/LoadMapData
  * @param node The node that you wish to load into the element tree.
  * @param parent The node you wish to be the parent of the new map data.
  * @return returns an element object that corresponds to the root of the new data added, i.e. an
@@ -58,7 +58,7 @@ export declare function loadMapData(
  * This function is used to reset the state of a player.  It is intended to restore a player
  * to his default state as if he had just joined the server, without any scripts affecting
  * him.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetMapInfo Wiki, resetMapInfo }
+ * @see https://wiki.multitheftauto.com/wiki/ResetMapInfo
  * @param thePlayer The specific player you wish to restore the state of.  Not specifying this will result in
  * all players map info being reset.
  * @return returns true if the map info was reset successfully, otherwise false.
@@ -71,7 +71,7 @@ export declare function resetMapInfo(
 /**
  * This converts a set of elements in the element tree into XML. This is a format that can
  * then be loaded as a map file. Each element represents a single XML node.
- * @see {@link https://wiki.multitheftauto.com/wiki/SaveMapData Wiki, saveMapData }
+ * @see https://wiki.multitheftauto.com/wiki/SaveMapData
  * @param node : An existing node that should contain the contents of baseElement
  * @param baseElement : The first element to output to the XML tree. This element and all its children (and
  * their children, etc) will be output.

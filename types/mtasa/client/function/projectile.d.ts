@@ -60,7 +60,7 @@ import {
  * *Model argument is not synchronized between clients. Clients differs from local player
  * see always standard projectile model.
  * *Target argument can only be defined as a player or another projectile.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateProjectile Wiki, createProjectile }
+ * @see https://wiki.multitheftauto.com/wiki/CreateProjectile
  * @param creator The element representing creator of the projectile. In case you want the projectile to be
  * synced for everybody creator must be the local player or his vehicle.
  * @param weaponType int representing the projectile weaponType (characteristics). Valid IDs are:
@@ -95,14 +95,14 @@ export declare function createProjectile(
 
 /**
  * This function can be used to detonate a players satchels.
- * @see {@link https://wiki.multitheftauto.com/wiki/DetonateSatchels Wiki, detonateSatchels }
+ * @see https://wiki.multitheftauto.com/wiki/DetonateSatchels
  * @noSelf
  */
 export declare function detonateSatchels(): boolean;
 
 /**
  * Get the time left before a projectile detonates.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCounter Wiki, getProjectileCounter }
+ * @see https://wiki.multitheftauto.com/wiki/GetProjectileCounter
  * @param projectile : the projectile to get the timer of.
  * @return returns the the time in milliseconds to detonation which depending on the projectile type
  * will do different things:
@@ -118,7 +118,7 @@ export declare function getProjectileCounter(
 
 /**
  * This function returns the creator of the specified projectile.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileCreator Wiki, getProjectileCreator }
+ * @see https://wiki.multitheftauto.com/wiki/GetProjectileCreator
  * @param theProjectile The projectiles| projectile element which creator you want to retrieve.
  * @return returns the element which created the projectile if successful, false otherwise.
  * @noSelf
@@ -129,7 +129,7 @@ export declare function getProjectileCreator(
 
 /**
  * This function returns the force of the specified projectile.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileForce Wiki, getProjectileForce }
+ * @see https://wiki.multitheftauto.com/wiki/GetProjectileForce
  * @param theProjectile The projectiles| projectile element which force you want to retrieve.
  * @return returns a float if successful, false otherwise.
  * @noSelf
@@ -140,7 +140,7 @@ export declare function getProjectileForce(
 
 /**
  * This function returns the target of the specified projectile.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileTarget Wiki, getProjectileTarget }
+ * @see https://wiki.multitheftauto.com/wiki/GetProjectileTarget
  * @param theProjectile The projectiles| projectile element which target you want to retrieve.
  * @return returns the element which is the projectiles target if the projectile is valid and can
  * have a target (like a heat-seeking rocket), false otherwise.
@@ -152,7 +152,7 @@ export declare function getProjectileTarget(
 
 /**
  * This function returns the type of the specified projectile.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetProjectileType Wiki, getProjectileType }
+ * @see https://wiki.multitheftauto.com/wiki/GetProjectileType
  * @param theProjectile The Element/Projectile|projectile element which type you want to retrieve.
  * @return returns an integer over the type of the projectile or false if invalid arguments were
  * passed.
@@ -169,7 +169,7 @@ export declare function getProjectileType(
  * * Teargas may be a duration timer
  * * Satchels restart (we currently assume it doesnt cause an effect)
  * * Molotov will explode with search ground level when it hits 0
- * @see {@link https://wiki.multitheftauto.com/wiki/SetProjectileCounter Wiki, setProjectileCounter }
+ * @see https://wiki.multitheftauto.com/wiki/SetProjectileCounter
  * @param projectile The projectile to edit the timer of.
  * @param timeToDetonate The time in milliseconds to detonation.
  * @return returns true on success, false otherwise.

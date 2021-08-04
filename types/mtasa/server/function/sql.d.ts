@@ -41,7 +41,7 @@ import {
 /**
  * This function opens a connection to a database and returns an element that can be used
  * with dbQuery. To disconnect use destroyElement.
- * @see {@link https://wiki.multitheftauto.com/wiki/DbConnect Wiki, dbConnect }
+ * @see https://wiki.multitheftauto.com/wiki/DbConnect
  * @param databaseType The type of database. This can be either sqlite or mysql
  * @param host : Host address e.g. host=127.0.0.1
  * @param dbname : Name of the database to use e.g. dbname=test
@@ -94,7 +94,7 @@ export declare function dbConnect(
 /**
  * This function executes a database query using the supplied connection. No result is
  * returned.
- * @see {@link https://wiki.multitheftauto.com/wiki/DbExec Wiki, dbExec }
+ * @see https://wiki.multitheftauto.com/wiki/DbExec
  * @param databaseConnection A database connection element previously returned from dbConnect
  * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
  * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
@@ -116,7 +116,7 @@ export declare function dbExec(
 /**
  * This function frees a database query handle. dbFree only needs to be used if a result has
  * not been obtained with dbPoll
- * @see {@link https://wiki.multitheftauto.com/wiki/DbFree Wiki, dbFree }
+ * @see https://wiki.multitheftauto.com/wiki/DbFree
  * @param queryHandle A query handle previously returned from dbQuery
  * @return returns true if the handle was successfully freed, false otherwise.
  * @noSelf
@@ -127,7 +127,7 @@ export declare function dbFree(
 
 /**
  * This function checks the progress of a database query.
- * @see {@link https://wiki.multitheftauto.com/wiki/DbPoll Wiki, dbPoll }
+ * @see https://wiki.multitheftauto.com/wiki/DbPoll
  * @param queryHandle A query handle previously returned from dbQuery
  * @param timeout How many milliseconds to wait for a result. Use 0 for an instant response (which may
  * return nil). Use -1 to wait until a result is ready. Note: A wait here will freeze the
@@ -171,7 +171,7 @@ export declare function dbPoll(
  * returns the query string instead of processing the query. This allows you to safely build
  * complex query strings from component parts and help prevent (one class of) SQL
  * injection.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/DbPrepareString Wiki, dbPrepareString }
+ * @see https://wiki.multitheftauto.com/wiki/DbPrepareString
  * @param databaseConnection A database connection element previously returned from dbConnect
  * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
  * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
@@ -192,7 +192,7 @@ export declare function dbPrepareString(
 /**
  * This function starts a database query using the supplied connection. Use the returned
  * query handle with dbPoll to get the result, or dbFree if you dont want the result.
- * @see {@link https://wiki.multitheftauto.com/wiki/DbQuery Wiki, dbQuery }
+ * @see https://wiki.multitheftauto.com/wiki/DbQuery
  * @param databaseConnection A database connection element previously returned from dbConnect
  * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
  * @param callbackFunction An optional function to be called when a result is ready. The function will only be
@@ -217,7 +217,7 @@ export declare function dbQuery(
 ): HandleFunction;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/DbQuery Wiki, dbQuery }
+ * @see https://wiki.multitheftauto.com/wiki/DbQuery
  * @noSelf
  */
 export declare function dbQuery(
@@ -230,7 +230,7 @@ export declare function dbQuery(
 /**
  * This function executes an arbitrary SQL query and returns the result rows if there are
  * any. It allows parameter binding for security (SQL injection is rendered impossible).
- * @see {@link https://wiki.multitheftauto.com/wiki/ExecuteSQLQuery Wiki, executeSQLQuery }
+ * @see https://wiki.multitheftauto.com/wiki/ExecuteSQLQuery
  * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?.
  * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
  * make sure they are of the correct type. Also, the number of parameters passed must be

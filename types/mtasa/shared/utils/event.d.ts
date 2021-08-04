@@ -1,4 +1,4 @@
 export interface GenericEventHandler {
     name: string;
-    function: (...args: any[]) => void;
+    function: (this: void, ...args: any[]) => void;
 }

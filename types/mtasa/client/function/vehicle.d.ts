@@ -57,7 +57,7 @@ import {
 
 /**
  * This function adds an upgrade to a vehicle, e.g. nitrous, hydraulics.
- * @see {@link https://wiki.multitheftauto.com/wiki/AddVehicleUpgrade Wiki, addVehicleUpgrade }
+ * @see https://wiki.multitheftauto.com/wiki/AddVehicleUpgrade
  * @param theVehicle : The element representing the vehicle you wish to add the upgrade to.
  * @param upgrade : The id of the upgrade you wish to add: 1000 to 1193 (see Vehicle Upgrades) or all to
  * add all upgrades.
@@ -77,7 +77,7 @@ export declare function addVehicleUpgrade(
  * the lights were turned on by natural causes.
  * * Unless setVehicleOverrideLights is used, vehicles always automatically disable their
  * lights at 06:25 and enable them at 20:26.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/AreVehicleLightsOn Wiki, areVehicleLightsOn }
+ * @see https://wiki.multitheftauto.com/wiki/AreVehicleLightsOn
  * @param theVehicle : the vehicle you wish to retrieve the lights state of.
  * @return returns true if the lights are on, false otherwise.
  * @noSelf
@@ -88,7 +88,7 @@ export declare function areVehicleLightsOn(
 
 /**
  * This function attaches a trailer type vehicle to a trailer-towing-type vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/AttachTrailerToVehicle Wiki, attachTrailerToVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/AttachTrailerToVehicle
  * @param theVehicle : the vehicle you wish to attach a trailer to.
  * @param theTrailer : the trailer you wish to be attached.
  * @return returns true if the vehicles were successfully attached, false otherwise.
@@ -102,7 +102,7 @@ export declare function attachTrailerToVehicle(
 /**
  * This function will blow up a vehicle. This will cause an explosion and will kill the
  * driver and any passengers inside it.
- * @see {@link https://wiki.multitheftauto.com/wiki/BlowVehicle Wiki, blowVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/BlowVehicle
  * @param vehicleToBlow the vehicle that you wish to blow up.
  * @noSelf
  */
@@ -117,7 +117,7 @@ export declare function blowVehicle(
  * above the ground. You can find the exact height using the client side function
  * getElementDistanceFromCentreOfMassToBaseOfModel, or you can estimate it yourself and just
  * spawn the vehicle so it drops to the ground.
- * @see {@link https://wiki.multitheftauto.com/wiki/CreateVehicle Wiki, createVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/CreateVehicle
  * @param model : The Vehicle IDs|vehicle ID of the vehicle being created.
  * @param x : A floating point number representing the X coordinate on the map.
  * @param y : A floating point number representing the Y coordinate on the map.
@@ -151,7 +151,7 @@ export declare function createVehicle(
 
 /**
  * This function detaches an already attached trailer from a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/DetachTrailerFromVehicle Wiki, detachTrailerFromVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/DetachTrailerFromVehicle
  * @param theVehicle : The vehicle you wish to detach a trailer from.
  * @param theTrailer : The trailer you wish to be detached.
  * @return returns true if the vehicles were successfully detached, false otherwise.
@@ -165,7 +165,7 @@ export declare function detachTrailerFromVehicle(
 /**
  * This function will set a vehicles health to full and fix its damage model. If you wish to
  * only change the vehicles health, without affecting its damage model, use setElementHealth.
- * @see {@link https://wiki.multitheftauto.com/wiki/FixVehicle Wiki, fixVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/FixVehicle
  * @param theVehicle the vehicle you wish to fix
  * @return returns true if the vehicle was fixed, false if thevehicle is invalid.
  * @noSelf
@@ -176,7 +176,7 @@ export declare function fixVehicle(
 
 /**
  * This function gets the state of the helicopter blades collisions on the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetHeliBladeCollisionsEnabled Wiki, getHeliBladeCollisionsEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/GetHeliBladeCollisionsEnabled
  * @param theVehicle The vehicle that will be checked.
  * @return returns true if the collisions are enabled for specified vehicle, false if the collisions
  * arent enabled for the specified vehicle, if the vehicle is not a helicopter or if invalid
@@ -189,7 +189,7 @@ export declare function getHeliBladeCollisionsEnabled(
 
 /**
  * Retrieves the speed at which the rotor of a helicopter rotates.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetHelicopterRotorSpeed Wiki, getHelicopterRotorSpeed }
+ * @see https://wiki.multitheftauto.com/wiki/GetHelicopterRotorSpeed
  * @param heli the helicopter element to get the rotor speed of.
  * @return returns the rotor speed if successful. this is 0 when the helicopter is parked, and about
  * 0.2 when it is fully spun up. it can be negative if the rotor rotates counter-clockwise.
@@ -205,7 +205,7 @@ export declare function getHelicopterRotorSpeed(
  * This function returns a table of the original vehicle handling. Use getVehicleHandling if
  * you wish to get the current handling of a vehicle, or getModelHandling for a specific
  * vehicle model.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetOriginalHandling Wiki, getOriginalHandling }
+ * @see https://wiki.multitheftauto.com/wiki/GetOriginalHandling
  * @param modelID The vehicle ID you wish to get the original handling from.
  * @return returns a table containing all the handling data, false otherwise. here a list of valid
  * table properties and what they return:
@@ -217,7 +217,7 @@ export declare function getOriginalHandling(
 
 /**
  * Gets the direction in which a train is driving (clockwise or counterclockwise).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainDirection Wiki, getTrainDirection }
+ * @see https://wiki.multitheftauto.com/wiki/GetTrainDirection
  * @param train the train of which to get the driving direction.
  * @return returns true if the train is driving clockwise on the train track, false if it is going
  * counterclockwise or a failure occured.
@@ -229,7 +229,7 @@ export declare function getTrainDirection(
 
 /**
  * Gets the position the train is currently on the track
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainPosition Wiki, getTrainPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetTrainPosition
  * @param train the train to get the position of
  * @return returns a float that represents how along the track it is, false if there is problem with
  * train element.
@@ -241,7 +241,7 @@ export declare function getTrainPosition(
 
 /**
  * Gets the speed at which a train is traveling on the rails.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainSpeed Wiki, getTrainSpeed }
+ * @see https://wiki.multitheftauto.com/wiki/GetTrainSpeed
  * @param train the train of which to retrieve the speed.
  * @return returns the trains speed if successful, false otherwise.
  * @noSelf
@@ -252,7 +252,7 @@ export declare function getTrainSpeed(
 
 /**
  * Gets the track of a train
- * @see {@link https://wiki.multitheftauto.com/wiki/GetTrainTrack Wiki, getTrainTrack }
+ * @see https://wiki.multitheftauto.com/wiki/GetTrainTrack
  * @param train the train of which to get the track.
  * @return returns an integer (whole number) that represents the train track, false if there is
  * problem with train element.
@@ -265,7 +265,7 @@ export declare function getTrainTrack(
 /**
  * Use this to get the value of a vehicles adjustable property. This property relates to
  * movable parts of a model, for example hydra jets or dump truck tray.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleAdjustableProperty Wiki, getVehicleAdjustableProperty }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleAdjustableProperty
  * @param theVehicle The vehicle you want to get the adjustable property of.
  * @return returns a value from 0 upwards representing adjustment. 0 is default position. maximum
  * varies per vehicle, for example hydra horizontal flight is 5000, while dump truck tray
@@ -279,7 +279,7 @@ export declare function getVehicleAdjustableProperty(
 /**
  * This function returns the color of the specified vehicle. A vehicle can have up to four
  * colors.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleColor Wiki, getVehicleColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleColor
  * @param theVehicle The vehicle that you wish to get the color of.
  * @param bRGB A boolean specifying whether to return RGB values. A setting of false will result in the
  * function returning color ids instead.
@@ -313,7 +313,7 @@ export declare function getVehicleColor(
 /**
  * This function returns a table of all the compatible upgrades (or all for a specified
  * slot, optionally) for a specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleCompatibleUpgrades Wiki, getVehicleCompatibleUpgrades }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleCompatibleUpgrades
  * @param theVehicle the vehicle you wish to retrieve the list of compatible upgrades of.
  * @param slot the upgrade slot number for which youre getting the list (from 0 to 16). Compatible
  * upgrades for all slots are listed if this is not specified.
@@ -328,7 +328,7 @@ export declare function getVehicleCompatibleUpgrades(
 
 /**
  * This function gets the component position of a vehicle. The vehicle must be streamed in.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentPosition Wiki, getVehicleComponentPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleComponentPosition
  * @param theVehicle The vehicle you wish to get component position of.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -352,7 +352,7 @@ export declare function getVehicleComponentPosition(
 
 /**
  * This function gets the component rotation of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentRotation Wiki, getVehicleComponentRotation }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleComponentRotation
  * @param theVehicle The vehicle you wish to get component rotation of.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -376,7 +376,7 @@ export declare function getVehicleComponentRotation(
 
 /**
  * This function gets a table of the components currently on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponents Wiki, getVehicleComponents }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleComponents
  * @param theVehicle The vehicle you wish to get the Vehicle_Components|components of.
  * @return returns a table containing the name of the component as the key and visibility flag of
  * that component as the value
@@ -388,7 +388,7 @@ export declare function getVehicleComponents(
 
 /**
  * This function gets the component scale of a vehicle.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentScale Wiki, getVehicleComponentScale }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleComponentScale
  * @param theVehicle The vehicle you wish to get component scale of.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -412,7 +412,7 @@ export declare function getVehicleComponentScale(
 
 /**
  * This function get component visibility for vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleComponentVisible Wiki, getVehicleComponentVisible }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleComponentVisible
  * @param theVehicle The vehicle you wish to get component visibility of.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -427,7 +427,7 @@ export declare function getVehicleComponentVisible(
 /**
  * This function is used to get the player in control of the specified vehicle which
  * includes somebody who is trying to enter the drivers seat.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleController Wiki, getVehicleController }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleController
  * @param theVehicle the vehicle you want to get the controller of.
  * @return returns a player object, if there isnt a driver, it will search the trailer chain for the
  * front driver, false otherwise.
@@ -439,7 +439,7 @@ export declare function getVehicleController(
 
 /**
  * Gets the specified vehicles current gear.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleCurrentGear Wiki, getVehicleCurrentGear }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleCurrentGear
  * @param theVehicle the vehicle to get the gear of
  * @return returns the gear if successful, false otherwise.
  * @noSelf
@@ -451,7 +451,7 @@ export declare function getVehicleCurrentGear(
 /**
  * This function tells you how open a door is (the open ratio). Doors include boots/trunks
  * and bonnets on vehicles that have them.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDoorOpenRatio Wiki, getVehicleDoorOpenRatio }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleDoorOpenRatio
  * @param theVehicle The vehicle that you wish to get the door open ratio of.
  * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
  * (rear right)
@@ -466,7 +466,7 @@ export declare function getVehicleDoorOpenRatio(
 
 /**
  * This function returns the current state of the specifed door on the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDoorState Wiki, getVehicleDoorState }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleDoorState
  * @param theVehicle the vehicle you want to get the door status of.
  * @param door a whole number representing which door to get the status of. Valid values are:
  * @param 0 Hood
@@ -490,7 +490,7 @@ export declare function getVehicleDoorState(
 
 /**
  * This function returns the position of the dummy for the given vehicle.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleDummyPosition Wiki, getVehicleDummyPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleDummyPosition
  * @param theVehicle The vehicle you want to get the dummy positions from
  * @param dummy The dummy whose position you want to get
  * @return returns three floats indicating the position x, y and z of the vehicles dummy. it returns
@@ -524,7 +524,7 @@ export declare function getVehicleDummyPosition(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleEngineState Wiki, getVehicleEngineState }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleEngineState
  * @param theVehicle : the vehicle you wish to get the engine state of.
  * @return returns true if the vehicles engine is started, false otherwise.
  * @noSelf
@@ -536,7 +536,7 @@ export declare function getVehicleEngineState(
 /**
  * Retrieves the current gravity vector of a vehicle. This is the direction in which the
  * vehicle falls, also the cameras of any passengers will be rotated to match it.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleGravity Wiki, getVehicleGravity }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleGravity
  * @param theVehicle the vehicle to retrieve the gravity vector of.
  * @return returns the x, y and z components of the gravity vector if successful, false otherwise.
  * @noSelf
@@ -551,7 +551,7 @@ export declare function getVehicleGravity(
 
 /**
  * This function returns a table of the current vehicle handling data.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleHandling Wiki, getVehicleHandling }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleHandling
  * @param theVehicle the vehicle you wish to get the handling data of.
  * @return returns a table containing all the handling data, false otherwise. heres a list of valid
  * table properties and what they return:
@@ -563,7 +563,7 @@ export declare function getVehicleHandling(
 
 /**
  * This function will get the headlight color of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleHeadLightColor Wiki, getVehicleHeadLightColor }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleHeadLightColor
  * @param theVehicle The vehicle that you wish to set the headlight color of.
  * @return returns three integers for the red, green and blue of the headlight color for the
  * specified vehicle, false if an invalid vehicle was specified.
@@ -580,7 +580,7 @@ export declare function getVehicleHeadLightColor(
 /**
  * This function is used to check whether a vehicles landing gear is down or not. Only
  * planes can be used with this function.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleLandingGearDown Wiki, getVehicleLandingGearDown }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleLandingGearDown
  * @param theVehicle the vehicle of which you wish to check the landing gear state.
  * @return returns true if landing gear is down, false if the landing gear is up.<br />
  * returns nil if the vehicle has no landing gear, or is invalid.
@@ -592,7 +592,7 @@ export declare function getVehicleLandingGearDown(
 
 /**
  * This function returns the current state of the specified light on the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleLightState Wiki, getVehicleLightState }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleLightState
  * @param theVehicle the vehicle that you wish to know the light state of.
  * @param light A whole number determining the individual light:
  * @param 0 Front left
@@ -610,7 +610,7 @@ export declare function getVehicleLightState(
 /**
  * This function returns the maximum number of passengers that a specified vehicle can hold.
  * Only passenger seats are counted, the driver seat is excluded.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleMaxPassengers Wiki, getVehicleMaxPassengers }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleMaxPassengers
  * @param theVehicle the vehicle that you wish to know the maximum capacity of.
  * OR
  * @param modelID the model id that you wish to know the maximum capacity of.
@@ -623,7 +623,7 @@ export declare function getVehicleMaxPassengers(
 
 /**
  * This function gets the default position of the dummies contained in a vehicle model.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelDummyDefaultPosition Wiki, getVehicleModelDummyDefaultPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelDummyDefaultPosition
  * @param modelID : The model ID which you want to apply the change to
  * @param dummy : The dummy whose position you want to get
  * @return returns three floats indicating the default position x, y and z of the given dummy. it
@@ -641,7 +641,7 @@ export declare function getVehicleModelDummyDefaultPosition(
 
 /**
  * This function gets position of the dummies contained in a vehicle model.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelDummyPosition Wiki, getVehicleModelDummyPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelDummyPosition
  * @param modelID : The model ID which you want to apply the change to
  * @param dummy : The dummy whose position you want to get
  * @return returns three floats indicating the position x, y and z of given dummy. it returns false
@@ -659,7 +659,7 @@ export declare function getVehicleModelDummyPosition(
 
 /**
  * This function returns the position of the exhaust fumes the vehicle model emits.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelExhaustFumesPosition Wiki, getVehicleModelExhaustFumesPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelExhaustFumesPosition
  * @param modelID : The vehicle model ID.
  * @return returns the position of the exhaust fumes if everything went fine or false otherwise.
  * @noSelf
@@ -674,7 +674,7 @@ export declare function getVehicleModelExhaustFumesPosition(
 
 /**
  * This function retrieves the model ID of a vehicle as an integer value from its name.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelFromName Wiki, getVehicleModelFromName }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelFromName
  * @param name A string containing the name of the vehicle.
  * @return returns an integer if the name exists, false otherwise.
  * if you use this function on vehicles with shared names, such as police, it will return
@@ -686,7 +686,7 @@ export declare function getVehicleModelFromName(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleModelWheelSize Wiki, getVehicleModelWheelSize }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelWheelSize
  * @param vehicleModel : The Vehicle IDs|vehicle model ID.
  * @param wheelGroup : The group of wheels of the vehicle model to retrieve their size value. If not
  * specified, it defaults to all_wheels. The following values are supported:
@@ -706,7 +706,7 @@ export declare function getVehicleModelWheelSize(
 
 /**
  * This function returns a string containing the name of the vehicle
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleName Wiki, getVehicleName }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleName
  * @param theVehicle the vehicle you want to get the name of.
  * @return returns a string containing the requested vehicles name, or false if the vehicle passed
  * to the function is invalid.
@@ -718,7 +718,7 @@ export declare function getVehicleName(
 
 /**
  * Gets the name of a vehicle by its model ID.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleNameFromModel Wiki, getVehicleNameFromModel }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleNameFromModel
  * @param model This is the vehicle model ID. See vehicle IDs to see what values will return names.
  * @return returns the name of the vehicle if the model id was valid, false otherwise.
  * @noSelf
@@ -729,7 +729,7 @@ export declare function getVehicleNameFromModel(
 
 /**
  * This function gets the nitro count of the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleNitroCount Wiki, getVehicleNitroCount }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleNitroCount
  * @param theVehicle The vehicle which you want to get a nitro count.
  * @return returns an integer determining the amount of nitro counts of the vehicle, false if there
  * is no nitro in the vehicle.
@@ -741,7 +741,7 @@ export declare function getVehicleNitroCount(
 
 /**
  * This function gets the nitro level of the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleNitroLevel Wiki, getVehicleNitroLevel }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleNitroLevel
  * @param theVehicle The vehicle, which you want to get a nitro level.
  * @return returns a float determining the nitro level (ranges from 0.0001 to 1.0) of the vehicle,
  * false if there is no nitro in the vehicle.
@@ -753,7 +753,7 @@ export declare function getVehicleNitroLevel(
 
 /**
  * This function gets the player sitting/trying to enter the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupant Wiki, getVehicleOccupant }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleOccupant
  * @param theVehicle the vehicle of which you wish to retrieve the driver or a passenger.
  * @param seat the seat where the player is sitting (0 for driver, 1+ for passengers).
  * @return returns the player sitting in the vehicle, or false if the seat is unoccupied or doesnt
@@ -767,7 +767,7 @@ export declare function getVehicleOccupant(
 
 /**
  * This function gets all peds sitting in the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOccupants Wiki, getVehicleOccupants }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleOccupants
  * @param theVehicle the vehicle of which you wish to retrieve the occupants.
  * @return returns a table with seat id as an index and the occupant as an element like this:
  * tableseat = occupant
@@ -796,7 +796,7 @@ export declare function getVehicleOccupants(
 /**
  * This function is used to find out the current state of the override-lights setting of a
  * vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleOverrideLights Wiki, getVehicleOverrideLights }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleOverrideLights
  * @param theVehicle : the vehicle you wish to retrieve the override lights setting of.
  * @return returns an integer value: 0 (no override), 1 (force off) or 2 (force on).
  * @noSelf
@@ -807,7 +807,7 @@ export declare function getVehicleOverrideLights(
 
 /**
  * This function gets the current paintjob on the specified vehicle. <br />
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePaintjob Wiki, getVehiclePaintjob }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehiclePaintjob
  * @param theVehicle : the vehicle you wish to get the paintjob of.
  * @return returns an integer representing the current paintjob on the vehicle. <br />
  * * 0: the first paintjob
@@ -823,7 +823,7 @@ export declare function getVehiclePaintjob(
 /**
  * This function returns the current state of a specifed panel on the vehicle. A vehicle can
  * have up to 7 panels.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePanelState Wiki, getVehiclePanelState }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehiclePanelState
  * @param theVehicle the vehicle that you wish to know the panel state of.
  * @param panel an integer specifying the panel you want to know the state of. Not every vehicle has
  * every panel. Possible values are:
@@ -845,7 +845,7 @@ export declare function getVehiclePanelState(
 
 /**
  * This function is used to retrieve the text on the number plate of a specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehiclePlateText Wiki, getVehiclePlateText }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehiclePlateText
  * @param theVehicle the vehicle that you wish to retrieve the plate text from.
  * @return returns a string that corresponds to the plate on the text, false if a bad argument was
  * passed or if it is not a vehicle. every vehicle (including planes, boats, etc.) has a
@@ -858,7 +858,7 @@ export declare function getVehiclePlateText(
 
 /**
  * This function get the parameters of a vehicles siren.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirenParams Wiki, getVehicleSirenParams }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleSirenParams
  * @param theVehicle The vehicle to get the siren parameters of
  * @return returns a table with the siren count, siren type and a sub table for the four flags.
  * false otherwise.
@@ -879,7 +879,7 @@ export declare function getVehicleSirenParams(
 
 /**
  * This function gets the properties of a vehicles sirens.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirens Wiki, getVehicleSirens }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleSirens
  * @param theVehicle The vehicle to get siren information of.
  * @return if the vehicle is invalid, it returns false. otherwise, returns a table with sub tables
  * containing the properties of each siren point in the following manner:
@@ -901,7 +901,7 @@ export declare function getVehicleSirens(
 
 /**
  * This function returns whether the sirens are turned on for the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleSirensOn Wiki, getVehicleSirensOn }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleSirensOn
  * @param theVehicle The vehicle that will be checked.
  * @return returns true if the sirens are turned on for the specified vehicle, false if the sirens
  * are turned off for the specified vehicle, if the vehicle doesnt have sirens or if invalid
@@ -914,7 +914,7 @@ export declare function getVehicleSirensOn(
 
 /**
  * This function is used to get the vehicle being towed by another.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowedByVehicle Wiki, getVehicleTowedByVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleTowedByVehicle
  * @param theVehicle : The vehicle you wish to get the towed vehicle from.
  * @return returns the vehicle that thevehicle is towing, false if it isnt towing a vehicle.
  * @noSelf
@@ -925,7 +925,7 @@ export declare function getVehicleTowedByVehicle(
 
 /**
  * This function is used to get the vehicle that is towing another.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTowingVehicle Wiki, getVehicleTowingVehicle }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleTowingVehicle
  * @param theVehicle : the vehicle being towed.
  * @return * the vehicle that thevehicle is being towed by.
  * * false if it isnt being towed.
@@ -938,7 +938,7 @@ export declare function getVehicleTowingVehicle(
 /**
  * This function gets the position of a vehicles turret, if it has one. Vehicles with
  * turrets include firetrucks and tanks.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleTurretPosition Wiki, getVehicleTurretPosition }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleTurretPosition
  * @param turretVehicle : The vehicle whose turret position you want to retrieve. This should be a vehicle with a
  * turret.
  * @return returns two floats for the x (horizontal) and y (vertical) axis rotation respectively.
@@ -955,7 +955,7 @@ export declare function getVehicleTurretPosition(
 
 /**
  * This function retrieves the type of a vehicle (such as if it is a car or a boat).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleType Wiki, getVehicleType }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleType
  * @param vehicle The vehicle element to get the type of.
  * '''OR'''
  * @param modelID A vehicle model ID
@@ -969,7 +969,7 @@ export declare function getVehicleType(
 ): string;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot Wiki, getVehicleUpgradeOnSlot }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot
  * @param theVehicle : The vehicle whose upgrade you want to retrieve.
  * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
  * @return returns an integer with the upgrade on the slot if correct arguments were passed, false
@@ -983,7 +983,7 @@ export declare function getVehicleUpgradeOnSlot(
 
 /**
  * This function returns a table of all the upgrades on a specifed vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgrades Wiki, getVehicleUpgrades }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleUpgrades
  * @param theVehicle The vehicle you wish to retrieve the upgrades of.
  * @return returns a table of all the upgrades on each slot of a vehicle, which may be empty, or
  * false if a valid vehicle is not passed.
@@ -995,7 +995,7 @@ export declare function getVehicleUpgrades(
 
 /**
  * This function returns the name of an upgrade slot name (e.g. roof, spoiler).
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeSlotName Wiki, getVehicleUpgradeSlotName }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeSlotName
  * @param slot/upgrade the slot ID or corresponding upgrade ID of which you want the name.
  * @return returns a string with the slot name if a valid slot or upgrade id was given, false
  * otherwise.
@@ -1009,7 +1009,7 @@ export declare function getVehicleUpgradeSlotName(
  * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
  * different for example the labelling on trucks or the contents of a pick-up truck and the
  * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleVariant Wiki, getVehicleVariant }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleVariant
  * @param theVehicle A handle to the vehicle that you want to get the variant of.
  * @return on success:
  * * int: an integer for the first vehicle variant see vehicle variants
@@ -1026,7 +1026,7 @@ export declare function getVehicleVariant(
 ]>;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelFrictionState Wiki, getVehicleWheelFrictionState }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleWheelFrictionState
  * @param theVehicle The vehicle that you wish to get the wheel friction state.
  * @param wheel The wheel you want to check. (0: front left, 1: rear left, 2: front right, 3: rear right)
  * @return returns a int indicating the wheel friction state. this value can be:
@@ -1042,7 +1042,7 @@ export declare function getVehicleWheelFrictionState(
 ): number;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelScale Wiki, getVehicleWheelScale }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleWheelScale
  * @param theVehicle : The vehicle to get its wheel scale of.
  * @return returns the wheel scale of the specified vehicle as a decimal number, or an error if the
  * vehicle is invalid. for more information about the returned number, see
@@ -1057,7 +1057,7 @@ export declare function getVehicleWheelScale(
  * This function returns the current states of all the wheels on the vehicle.
  * No vehicles have more than 4 wheels, if they appear to they will be duplicating other
  * wheels.
- * @see {@link https://wiki.multitheftauto.com/wiki/GetVehicleWheelStates Wiki, getVehicleWheelStates }
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleWheelStates
  * @param theVehicle A handle to the vehicle that you wish to know the wheel states of.
  * @return returns 4 ints indicating the states of the wheels (front left, rear left, front right,
  * rear right). these values can be:
@@ -1079,7 +1079,7 @@ export declare function getVehicleWheelStates(
 /**
  * This function checks if a Element/Vehicle|train is a chain engine (moves the rest of the
  * chains carriages) or not.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTrainChainEngine Wiki, isTrainChainEngine }
+ * @see https://wiki.multitheftauto.com/wiki/IsTrainChainEngine
  * @param theTrain a Element/Vehicle|train to check if its a chain engine or not.
  * @return * true if a element/vehicle|train was passed to the function and if its a chain engine.
  * * false otherwise.
@@ -1091,7 +1091,7 @@ export declare function isTrainChainEngine(
 
 /**
  * This function will check if a train or tram is derailable.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTrainDerailable Wiki, isTrainDerailable }
+ * @see https://wiki.multitheftauto.com/wiki/IsTrainDerailable
  * @param vehicleToCheck The vehicle you wish to check.
  * @return returns true if the train is derailable, false otherwise.
  * @noSelf
@@ -1102,7 +1102,7 @@ export declare function isTrainDerailable(
 
 /**
  * This function will check if a train or tram is derailed.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsTrainDerailed Wiki, isTrainDerailed }
+ * @see https://wiki.multitheftauto.com/wiki/IsTrainDerailed
  * @param vehicleToCheck the vehicle that you wish to check is derailed.
  * @return returns true if the train is derailed, false if the train is still on the rails
  * @noSelf
@@ -1113,7 +1113,7 @@ export declare function isTrainDerailed(
 
 /**
  * This function allows you to determine whether a vehicle is blown or still intact.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleBlown Wiki, isVehicleBlown }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleBlown
  * @param theVehicle The vehicle that you want to obtain the blown status of.
  * @return returns true if the vehicle specified has blown up, false if it is still intact or the
  * vehicle specified is invalid.
@@ -1125,7 +1125,7 @@ export declare function isVehicleBlown(
 
 /**
  * This function checks if a vehicle is damage proof (set with setVehicleDamageProof).
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleDamageProof Wiki, isVehicleDamageProof }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleDamageProof
  * @param theVehicle the vehicle whose invincibility status we want to check.
  * @return returns true if the vehicle is damage proof, false if it isnt or if invalid arguments
  * were passed.
@@ -1137,7 +1137,7 @@ export declare function isVehicleDamageProof(
 
 /**
  * This will tell you if a vehicles petrol tank is explodable.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleFuelTankExplodable Wiki, isVehicleFuelTankExplodable }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleFuelTankExplodable
  * @param theVehicle The vehicle that you want to obtain the fuel tank status of.
  * @return returns true if the specified vehicle is valid and its fuel tank is explodable, false
  * otherwise.
@@ -1149,7 +1149,7 @@ export declare function isVehicleFuelTankExplodable(
 
 /**
  * This will tell you if a vehicle is locked.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleLocked Wiki, isVehicleLocked }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleLocked
  * @param theVehicle The vehicle that you want to obtain the locked status of.
  * @return returns true if the vehicle specified is locked, false if is unlocked or the vehicle
  * specified is invalid.
@@ -1161,7 +1161,7 @@ export declare function isVehicleLocked(
 
 /**
  * This function checks if nitro is activated on the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleNitroActivated Wiki, isVehicleNitroActivated }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleNitroActivated
  * @param theVehicle The vehicle, which you want to check for an activation.
  * @return returns true if the nitro is currently activated on the vehicle, false otherwise.
  * @noSelf
@@ -1172,7 +1172,7 @@ export declare function isVehicleNitroActivated(
 
 /**
  * This function checks if nitro is recharging on the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleNitroRecharging Wiki, isVehicleNitroRecharging }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleNitroRecharging
  * @param theVehicle The vehicle, which you want to check for recharging.
  * @return returns true if the nitro is currently recharging on the vehicle, false otherwise.
  * @noSelf
@@ -1183,7 +1183,7 @@ export declare function isVehicleNitroRecharging(
 
 /**
  * Checks to see if a vehicle has contact with the ground.
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleOnGround Wiki, isVehicleOnGround }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleOnGround
  * @param theVehicle The vehicle you wish to check.
  * @return returns true if vehicle is on the ground, false if it is not.
  * @noSelf
@@ -1194,7 +1194,7 @@ export declare function isVehicleOnGround(
 
 /**
  * This function will get the taxi light state of a taxi (vehicle IDs 420 and 438)
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleTaxiLightOn Wiki, isVehicleTaxiLightOn }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleTaxiLightOn
  * @param taxi The vehicle element of the taxi that you wish to get the light state of.
  * @return returns true if the light is on, false otherwise.
  * @noSelf
@@ -1206,7 +1206,7 @@ export declare function isVehicleTaxiLightOn(
 /**
  * This function returns a boolean whether the vehicles wheel is on ground (true) or in air
  * (false).
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleWheelOnGround Wiki, isVehicleWheelOnGround }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleWheelOnGround
  * @param theVehicle The vehicle, which you want to check.
  * @param wheel The wheel name or number, see list below:
  * ** <code>"front_left"</code> or 0
@@ -1222,7 +1222,7 @@ export declare function isVehicleWheelOnGround(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/IsVehicleWindowOpen Wiki, isVehicleWindowOpen }
+ * @see https://wiki.multitheftauto.com/wiki/IsVehicleWindowOpen
  * @param theVehicle The vehicle that you wish to get the window state.
  * @param window An int|integer representing a vehicle window. It can be:
  * @param 0 motorbike shield
@@ -1241,7 +1241,7 @@ export declare function isVehicleWindowOpen(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/RemoveVehicleUpgrade Wiki, removeVehicleUpgrade }
+ * @see https://wiki.multitheftauto.com/wiki/RemoveVehicleUpgrade
  * @param theVehicle : The element representing the vehicle you wish to remove the upgrade from
  * @param upgrade : The ID of the upgrade you wish to remove.
  * @return returns true if the upgrade was successfully removed from the vehicle, otherwise false.
@@ -1254,7 +1254,7 @@ export declare function removeVehicleUpgrade(
 
 /**
  * This function reset to default component position for vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleComponentPosition Wiki, resetVehicleComponentPosition }
+ * @see https://wiki.multitheftauto.com/wiki/ResetVehicleComponentPosition
  * @param theVehicle The vehicle you wish to reset component position.
  * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish
  * to modify)
@@ -1268,7 +1268,7 @@ export declare function resetVehicleComponentPosition(
 
 /**
  * This function reset to default component rotation for vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleComponentRotation Wiki, resetVehicleComponentRotation }
+ * @see https://wiki.multitheftauto.com/wiki/ResetVehicleComponentRotation
  * @param theVehicle The vehicle you wish to reset component rotation.
  * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish
  * to modify)
@@ -1282,7 +1282,7 @@ export declare function resetVehicleComponentRotation(
 
 /**
  * This function reset to default component scale for vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleComponentScale Wiki, resetVehicleComponentScale }
+ * @see https://wiki.multitheftauto.com/wiki/ResetVehicleComponentScale
  * @param theVehicle The vehicle you wish to reset component scale.
  * @param theComponent A vehicle component (this is the frame name from the model file of the component you wish
  * to modify)
@@ -1297,7 +1297,7 @@ export declare function resetVehicleComponentScale(
 /**
  * This function resets the vehicle dependent dummy positions to the vehicles current model
  * dummy positions.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/ResetVehicleDummyPositions Wiki, resetVehicleDummyPositions }
+ * @see https://wiki.multitheftauto.com/wiki/ResetVehicleDummyPositions
  * @param theVehicle The vehicle to reset
  * @return returns true for success, false otherwise.
  * @noSelf
@@ -1309,7 +1309,7 @@ export declare function resetVehicleDummyPositions(
 /**
  * This function changes the state of the helicopter blades collisions on the specified
  * vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetHeliBladeCollisionsEnabled Wiki, setHeliBladeCollisionsEnabled }
+ * @see https://wiki.multitheftauto.com/wiki/SetHeliBladeCollisionsEnabled
  * @param theVehicle The helicopter that will have the blades collisions set.
  * @param collisions The state of the helicopter blades collisions.
  * @return returns true if the collisions are set for the specified vehicle, false if the collisions
@@ -1324,7 +1324,7 @@ export declare function setHeliBladeCollisionsEnabled(
 
 /**
  * Sets the rotor speed of a helicopter.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetHelicopterRotorSpeed Wiki, setHelicopterRotorSpeed }
+ * @see https://wiki.multitheftauto.com/wiki/SetHelicopterRotorSpeed
  * @param heli the helicopter to adjust the rotor of.
  * @param speed the new rotor speed. Usual values are 0 if the helicopter stands still, or 0.2 if the
  * rotor is fully spun up. Higher values than normal will not affect the helicopters
@@ -1341,7 +1341,7 @@ export declare function setHelicopterRotorSpeed(
 /**
  * This function will set a train or tram as derailable. This is, if it can derail when it
  * goes above the maximum speed.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDerailable Wiki, setTrainDerailable }
+ * @see https://wiki.multitheftauto.com/wiki/SetTrainDerailable
  * @param derailableVehicle The vehicle that you wish to set derailable.
  * @param derailable whether the train or tram is derailable. True as derailable, False as non-derailable.
  * @return returns true if the state was successfully set, false otherwise.
@@ -1354,7 +1354,7 @@ export declare function setTrainDerailable(
 
 /**
  * This function will set a train or tram as derailed.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDerailed Wiki, setTrainDerailed }
+ * @see https://wiki.multitheftauto.com/wiki/SetTrainDerailed
  * @param vehicleToDerail The vehicle that you wish to derail.
  * @param derailed whether the train is derailed.
  * @return returns true if the state was successfully set
@@ -1368,7 +1368,7 @@ export declare function setTrainDerailed(
 /**
  * Sets the direction in which a train or tram drives over the rails (clockwise or
  * counterclockwise).
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainDirection Wiki, setTrainDirection }
+ * @see https://wiki.multitheftauto.com/wiki/SetTrainDirection
  * @param train the train whose direction to change.
  * @param clockwise if true, will make the train go clockwise. If false, makes it go counterclockwise.
  * @return returns true if successful, false otherwise.
@@ -1381,7 +1381,7 @@ export declare function setTrainDirection(
 
 /**
  * Sets the position the train is currently on the track
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainPosition Wiki, setTrainPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetTrainPosition
  * @param train the train of which to set the track
  * @param position the position along the track (0 - 18107 a complete way round)
  * @return returns true if the train position was set, false otherwise.
@@ -1394,7 +1394,7 @@ export declare function setTrainPosition(
 
 /**
  * Sets the on-track speed of a train.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainSpeed Wiki, setTrainSpeed }
+ * @see https://wiki.multitheftauto.com/wiki/SetTrainSpeed
  * @param train the train whose speed to change.
  * @param speed the new on-track speed of the train. A positive value will make it go clockwise, a
  * negative value counter clockwise.
@@ -1408,7 +1408,7 @@ export declare function setTrainSpeed(
 
 /**
  * Sets the track of a train
- * @see {@link https://wiki.multitheftauto.com/wiki/SetTrainTrack Wiki, setTrainTrack }
+ * @see https://wiki.multitheftauto.com/wiki/SetTrainTrack
  * @param train the train of which to set the track
  * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
  * @return returns true if the track was set to the train, false otherwise.
@@ -1423,7 +1423,7 @@ export declare function setTrainTrack(
  * This function is used for adjusting the movable parts of a model, for example hydra jets
  * or dump truck tray.
  * This function only works on vehicles with adjustable properties.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleAdjustableProperty Wiki, setVehicleAdjustableProperty }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleAdjustableProperty
  * @param theVehicle : The vehicle you wish to change the adjustable property of.
  * @param value : A value from 0 between ?. (Set the adjustable value between 0 and N. 0 is the default
  * value. It is possible to force the setting beyond default maximum, for example setting
@@ -1461,7 +1461,7 @@ export declare function setVehicleAdjustableProperty(
  * color for the vehicle
  * *r4, g4, b4: Three integers indicating the red, green and blue components of the fourth
  * color for the vehicle
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleColor Wiki, setVehicleColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleColor
  * @return returns true if vehicles color was set, false if an invalid vehicle or invalid colors
  * were specified.
  * @noSelf
@@ -1484,7 +1484,7 @@ export declare function setVehicleColor(
 
 /**
  * This function sets the component position of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentPosition Wiki, setVehicleComponentPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleComponentPosition
  * @param theVehicle The vehicle you wish to set component position.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -1510,7 +1510,7 @@ export declare function setVehicleComponentPosition(
 
 /**
  * This function sets the component rotation of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentRotation Wiki, setVehicleComponentRotation }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleComponentRotation
  * @param theVehicle The vehicle you wish to set component rotation of.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -1536,7 +1536,7 @@ export declare function setVehicleComponentRotation(
 
 /**
  * This function sets the component scale of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentScale Wiki, setVehicleComponentScale }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleComponentScale
  * @param theVehicle The vehicle you wish to set component scale.
  * @param theComponent A Vehicle_Components|vehicle component (this is the frame name from the model file of the
  * component you wish to modify)
@@ -1562,7 +1562,7 @@ export declare function setVehicleComponentScale(
 
 /**
  * This function sets component visibility for vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleComponentVisible Wiki, setVehicleComponentVisible }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleComponentVisible
  * @param theVehicle The vehicle you wish to set component visibility of.
  * @param theComponent A Vehicle_Components|vehicle component (this is the components frame name (also called
  * dummy) from the vehicle models DFF file of which you want to manipulate components)
@@ -1579,7 +1579,7 @@ export declare function setVehicleComponentVisible(
 /**
  * This functions makes a vehicle damage proof, so it wont take damage from bullets, hits,
  * explosions or fire. A damage proofs vehicle health can still be changed via script.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDamageProof Wiki, setVehicleDamageProof }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleDamageProof
  * @param theVehicle The vehicle you wish to make damage proof.
  * @param damageProof true is damage proof, false is damageable.
  * @return returns true if the vehicle was set damage proof succesfully, false if the arguments are
@@ -1593,7 +1593,7 @@ export declare function setVehicleDamageProof(
 
 /**
  * This function sets the dirt level on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDirtLevel Wiki, setVehicleDirtLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleDirtLevel
  * @param theVehicle The vehicle that you want to set the dirt level from
  * @param dirtLevel The dirt level
  * @return returns true if the dirt level was set on the vehicle, false if the dirt level was not
@@ -1608,7 +1608,7 @@ export declare function setVehicleDirtLevel(
 /**
  * This function sets how much a vehicles door is open. Doors include the boot/trunk and the
  * bonnet of the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorOpenRatio Wiki, setVehicleDoorOpenRatio }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleDoorOpenRatio
  * @param theVehicle The vehicle that you wish to change the door open ratio of.
  * @param door A whole number, 0 (hood), 1 (trunk), 2 (front left), 3 (front right), 4 (rear left), 5
  * (rear right)
@@ -1628,7 +1628,7 @@ export declare function setVehicleDoorOpenRatio(
 
 /**
  * This function sets the state of the specified door on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorState Wiki, setVehicleDoorState }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleDoorState
  * @param theVehicle The vehicle that you wish to change the door state of.
  * @param door An integer representing which door to set the state of. Valid values are:
  * @param 0 Shut, intact (aka Closed, undamaged)
@@ -1653,7 +1653,7 @@ export declare function setVehicleDoorState(
  * This function makes a vehicles doors undamageable, so they wont fall off when theyre hit.
  * Note that the vehicle has to be locked using setVehicleLocked for this setting to have
  * any effect.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDoorsUndamageable Wiki, setVehicleDoorsUndamageable }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleDoorsUndamageable
  * @param theVehicle The vehicle of which you wish to set the car door damageability.
  * @param state A boolean denoting whether the vehicles doors are undamageable (true) or damageable
  * (false).
@@ -1668,7 +1668,7 @@ export declare function setVehicleDoorsUndamageable(
 
 /**
  * This function sets the position of the dummy for the given vehicle.}}
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleDummyPosition Wiki, setVehicleDummyPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleDummyPosition
  * @param theVehicle The vehicle you want to set the dummy position for
  * @param dummy The dummy whose position you want to set
  * @param x , y, z The new dummy position
@@ -1687,7 +1687,7 @@ export declare function setVehicleDummyPosition(
  * This function turns a vehicles engine on or off. Note that the engine will always be
  * turned on when someone enters the driver seat, unless you override that behaviour with
  * scripts.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleEngineState Wiki, setVehicleEngineState }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleEngineState
  * @param theVehicle : The vehicle you wish to change the engine state of.
  * @param engineState : A boolean value representing whether the engine will be turned on (true) or off (false).
  * @return returns true if the vehicles engine state was successfully changed, false otherwise.
@@ -1702,7 +1702,7 @@ export declare function setVehicleEngineState(
  * This function changes the explodable state of a vehicles fuel tank, which toggles the
  * ability to blow the vehicle up by shooting the tank. This function will have no effect on
  * vehicles with tanks that cannot be shot in single player.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleFuelTankExplodable Wiki, setVehicleFuelTankExplodable }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleFuelTankExplodable
  * @param theVehicle : The vehicle you wish to change the fuel tank explodable state of.
  * @param explodable : A boolean value representing whether or not the fuel tank will be explodable.
  * @return returns true if the vehicles fuel tank explodable state was successfully changed, false
@@ -1718,7 +1718,7 @@ export declare function setVehicleFuelTankExplodable(
  * Sets the gravity vector of a vehicle. The vehicle will fall in this direction, and the
  * camera of any occupants will also be rotated to match it. Can be used for e.g. driving on
  * walls or upside down on ceilings.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleGravity Wiki, setVehicleGravity }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleGravity
  * @param theVehicle the vehicle of which to change the gravity.
  * @param x, y, z the components of the new gravity vector. If this vector has length 1, the strength of
  * the gravity will be same as the global gravity for other entities. If it is 2, it will be
@@ -1735,7 +1735,7 @@ export declare function setVehicleGravity(
 
 /**
  * This function is used to change the handling data of a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleHandling Wiki, setVehicleHandling }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleHandling
  * @param theVehicle The vehicle you wish to set the handling of.
  * @param property The property you wish to set the handling of the vehicle to.
  * @param value The value of the property you wish to set the handling of the vehicle to.
@@ -1752,7 +1752,7 @@ export declare function setVehicleHandling(
 /**
  * This function will set the headlight color of a vehicle. valid Red Green and Blue
  * arguments range from 0-255
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleHeadLightColor Wiki, setVehicleHeadLightColor }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleHeadLightColor
  * @param theVehicle The vehicle that you wish to set the headlight color of.
  * @param red An integer indicating the amount of red for the vehicles headlights
  * @param green An integer indicating the amount of green for the vehicles headlights
@@ -1770,7 +1770,7 @@ export declare function setVehicleHeadLightColor(
 
 /**
  * This function is used to set the landing gear state of certain vehicles.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLandingGearDown Wiki, setVehicleLandingGearDown }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleLandingGearDown
  * @param theVehicle The vehicle of which you wish to set the landing gear state.
  * @param gearState A bool representing the state of the landing gear.  true represents a collapsed landing
  * gear, while false represents a disabled landing gear.
@@ -1784,7 +1784,7 @@ export declare function setVehicleLandingGearDown(
 
 /**
  * This function sets the state of the light on the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLightState Wiki, setVehicleLightState }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleLightState
  * @param theVehicle A handle to the vehicle that you wish to change the light state of.
  * @param light A whole number determining the individual light:
  * @param 0 Front left
@@ -1808,7 +1808,7 @@ export declare function setVehicleLightState(
 /**
  * This function can be used to set the vehicles doors to be locked or unlocked.  Locking a
  * vehicle restricts access to the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleLocked Wiki, setVehicleLocked }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleLocked
  * @param theVehicle The vehicle which you wish to change the lock status of
  * @param locked Boolean for the status you wish to set. Set true to lock, false to unlock
  * @return returns true if the operation was successful, false otherwise.
@@ -1822,7 +1822,7 @@ export declare function setVehicleLocked(
 /**
  * This function sets the position of the dummies contained in a vehicle model. Use
  * setVehicleComponentPosition to adjust the vehicle component positions.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleModelDummyPosition Wiki, setVehicleModelDummyPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleModelDummyPosition
  * @param modelID : The model ID which you want to apply the change to
  * @param dummy : The dummy whose position you want to change
  * @param posX , posY, posZ: The desired position
@@ -1840,7 +1840,7 @@ export declare function setVehicleModelDummyPosition(
 /**
  * This function sets the position of the exhaust fumes the vehicle model emits. Use
  * setVehicleComponentPosition to adjust the exhaust position.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleModelExhaustFumesPosition Wiki, setVehicleModelExhaustFumesPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleModelExhaustFumesPosition
  * @param modelID : The model ID which you want to apply the change to
  * @param posX , posY, posZ: The desired position
  * @return returns true if everything went fine, false otherwise.
@@ -1854,7 +1854,7 @@ export declare function setVehicleModelExhaustFumesPosition(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleModelWheelSize Wiki, setVehicleModelWheelSize }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleModelWheelSize
  * @param vehicleModel : The Vehicle IDs|vehicle model ID.
  * @param wheelGroup : The group of wheels of the vehicle model that will have its size set by this function.
  * The following values are supported:
@@ -1878,7 +1878,7 @@ export declare function setVehicleModelWheelSize(
 /**
  * This function activates or deactivates the nitro on the specified vehicle, like if a
  * player pressed the button for activating nitro.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleNitroActivated Wiki, setVehicleNitroActivated }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleNitroActivated
  * @param theVehicle The vehicle to activate or deactivate the nitro on.
  * @param state true if you want to activate the nitro, false if you want to disable it.
  * @return returns true if the nitro activation state was modified successfully, false otherwise.
@@ -1891,7 +1891,7 @@ export declare function setVehicleNitroActivated(
 
 /**
  * This function sets how many times a player can activate the nitro on a specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleNitroCount Wiki, setVehicleNitroCount }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleNitroCount
  * @param theVehicle : the vehicle which you want to modify how many times a player can use its nitro.
  * @param count : how many times should the player be able to use the nitro of this vehicle (from 0-100
  * times; 0 means that it cant be used and 101 means that it can be used infinite times).
@@ -1905,7 +1905,7 @@ export declare function setVehicleNitroCount(
 
 /**
  * This function sets the nitro level of the vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleNitroLevel Wiki, setVehicleNitroLevel }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleNitroLevel
  * @param theVehicle The vehicle, which you want to set.
  * @param level Nitro level you want to set (ranges from 0.0001 to 1.0).
  * @return returns true if the nitro level was set successfully to the vehicle, false otherwise.
@@ -1918,7 +1918,7 @@ export declare function setVehicleNitroLevel(
 
 /**
  * This function changes the light overriding setting on a vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleOverrideLights Wiki, setVehicleOverrideLights }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleOverrideLights
  * @param theVehicle : The vehicle you wish to change the override lights setting of.
  * @param value : A whole number representing the state of the lights:
  * @param 0 : No override, lights are set to default.
@@ -1935,7 +1935,7 @@ export declare function setVehicleOverrideLights(
 /**
  * This function changes the paintjob on the specified vehicle. <br/>
  * See Paintjob|paintjob for list of supported vehicles.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePaintjob Wiki, setVehiclePaintjob }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehiclePaintjob
  * @param theVehicle : The vehicle you wish to change the paintjob of.
  * @param value : A whole number representing the new paintjob id. Ranges from 0 up to 3.
  * @return returns true if the vehicles paintjob was changed. otherwise false.
@@ -1950,7 +1950,7 @@ export declare function setVehiclePaintjob(
  * This function allows you to change the state of one of the six panels vehicles can have.
  * When executed on the server-side resources, the damage will be synched for all players,
  * whereas the change is only client-side if the function is used in a client resource.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePanelState Wiki, setVehiclePanelState }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehiclePanelState
  * @param theVehicle The vehicle you would like to modify the panel of.
  * @param panelID An ID specifying the part of the vehicle. Possible values are:
  * @param Cars
@@ -1978,7 +1978,7 @@ export declare function setVehiclePanelState(
 /**
  * This function can be used to set the numberplate text of a car.
  * It now also changes the numberplate text of any vehicle that has visual numberplates.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehiclePlateText Wiki, setVehiclePlateText }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehiclePlateText
  * @param theVehicle the vehicle whose numberplate you want to change.
  * @param numberplate a string that will go on the number plate of the car (max 8 characters).
  * @return returns true if the numberplate was changed successfully, or false if invalid arguments
@@ -1992,7 +1992,7 @@ export declare function setVehiclePlateText(
 
 /**
  * This function changes the properties of a vehicles siren point.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirens Wiki, setVehicleSirens }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleSirens
  * @param theVehicle The vehicle to modify
  * @param sirenPoint The siren point to modify
  * @param posX The x position of this siren point from the center of the vehicle
@@ -2021,7 +2021,7 @@ export declare function setVehicleSirens(
 
 /**
  * This function changes the state of the sirens on the specified vehicle.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleSirensOn Wiki, setVehicleSirensOn }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleSirensOn
  * @param theVehicle The vehicle that will have the sirens set
  * @param sirensOn The state to set the sirens to
  * @return returns true if the sirens are set for the specified vehicle, false if the sirens cant be
@@ -2036,7 +2036,7 @@ export declare function setVehicleSirensOn(
 
 /**
  * This function will set the taxi light on in a taxi (vehicle IDs 420 and 438)
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTaxiLightOn Wiki, setVehicleTaxiLightOn }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleTaxiLightOn
  * @param taxi The vehicle element of the taxi that you wish to turn the light on.
  * @param LightState whether the light is on. True for on, False for off.
  * @return returns true if the state was successfully set, false otherwise.
@@ -2051,7 +2051,7 @@ export declare function setVehicleTaxiLightOn(
  * This function sets the position of a vehicles turret, if it has one. This can be used to
  * influence the turrets rotation, so it doesnt follow the camera. Vehicles with turrets
  * include firetrucks and tanks.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleTurretPosition Wiki, setVehicleTurretPosition }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleTurretPosition
  * @param turretVehicle : The vehicle whose turret position you want to retrieve. This should be a vehicle with a
  * turret.
  * @param positionX : The horizontal position of the turret. In radians
@@ -2070,7 +2070,7 @@ export declare function setVehicleTurretPosition(
  * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
  * different for example the labelling on trucks or the contents of a pick-up truck and the
  * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleVariant Wiki, setVehicleVariant }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleVariant
  * @param theVehicle A handle to the vehicle that you want to get the variant of.
  * @param variant1 : An integer for the first variant see Vehicle variants
  * @param variant2 : An integer for the second variant see Vehicle variants
@@ -2088,7 +2088,7 @@ export declare function setVehicleVariant(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWheelScale Wiki, setVehicleWheelScale }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleWheelScale
  * @param theVehicle : The vehicle whose wheel scale you wish to modify.
  * @param wheelScale : The wheel scale value to set.
  * @return returns true if the wheel scale has been set successfully, or an error if some parameter
@@ -2104,7 +2104,7 @@ export declare function setVehicleWheelScale(
  * This function sets the state of wheels on the vehicle.
  * Internally, no vehicles have more than 4 wheels. If they appear to, they will be
  * duplicating other wheels.
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWheelStates Wiki, setVehicleWheelStates }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleWheelStates
  * @param theVehicle A handle to the vehicle that you wish to change the wheel states of.
  * @param frontLeft A whole number representing the wheel state (-1 for no change)
  * @param rearLeft A whole number representing the wheel state (-1 for no change)
@@ -2122,7 +2122,7 @@ export declare function setVehicleWheelStates(
 ): boolean;
 
 /**
- * @see {@link https://wiki.multitheftauto.com/wiki/SetVehicleWindowOpen Wiki, setVehicleWindowOpen }
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleWindowOpen
  * @param theVehicle The vehicle that you wish to change the window state.
  * @param window An integer representing window.
  * @param 0 motorbike shield

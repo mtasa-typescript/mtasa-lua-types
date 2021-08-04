@@ -58,7 +58,7 @@ export class ACLGroup {
     /**
      * This function creates a group in the ACL. An ACL group can contain objects like players
      * and resources. They specify who has access to the ACLs in this group.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclCreateGroup Wiki, aclCreateGroup }
+     * @see https://wiki.multitheftauto.com/wiki/AclCreateGroup
      * @param groupName The name of the group to create
      * @return returns the pointer to the created aclgroup if successful. returns false if failed.
      */
@@ -69,7 +69,7 @@ export class ACLGroup {
     /**
      * This function destroys the given ACL group. The destroyed ACL group will no longer be
      * valid.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclDestroyGroup Wiki, aclDestroyGroup }
+     * @see https://wiki.multitheftauto.com/wiki/AclDestroyGroup
      * @return returns true if the acl group was successfully deleted, false if it could not be deleted
      * for some reason (ie. invalid argument).
      */
@@ -78,7 +78,7 @@ export class ACLGroup {
     /**
      * This function is used to get the ACL group with the given name. If you need most of the
      * groups you should consider using aclGroupList instead to get a table containing them all.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGetGroup Wiki, aclGetGroup }
+     * @see https://wiki.multitheftauto.com/wiki/AclGetGroup
      * @param groupName The name to get the ACL group from
      * @return returns the acl group if it could be found. returns false/nil if it did not exist or
      * failed for some reason.
@@ -92,7 +92,7 @@ export class ACLGroup {
      * players in the given ACL group have access to whats specified in the given ACL. The
      * rights for something in the different ACLs in a group are OR-ed together, which means if
      * one ACL gives access to something, this ACL group will have access to that.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupAddACL Wiki, aclGroupAddACL }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupAddACL
      * @param theACL The ACL to add to the group
      * @return returns true if the acl could be successfully added to the acl group, false/nil if either
      * of the elements are invalid, the acl is already in that group or if something else goes
@@ -110,7 +110,7 @@ export class ACLGroup {
      * resource.<resourcename>
      * Objects are specified as strings. The ACL groups work for the user accounts and the
      * resources that are specified in them.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupAddObject Wiki, aclGroupAddObject }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupAddObject
      * @param theObjectName The object string to add to the given ACL.
      * @return returns true if the object was successfully added to the acl, false if it already existed
      * in the list.
@@ -121,7 +121,7 @@ export class ACLGroup {
 
     /**
      * This function is used to get the name of the given ACL group.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupGetName Wiki, aclGroupGetName }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupGetName
      * @return returns the name of the given acl group as a string if successful, otherwise false or nil
      * if the aclgroup is invalid or it fails for some other reason.
      */
@@ -129,7 +129,7 @@ export class ACLGroup {
 
     /**
      * This function returns a table of all the ACL groups.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupList Wiki, aclGroupList }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupList
      * @return returns a table of all the acl groups if successful, returns an empty table if no acl
      * groups exist. false/nil can be returned if this function fails for some other reason.
      */
@@ -137,7 +137,7 @@ export class ACLGroup {
 
     /**
      * This function returns a table over all the ACLs that exist in a given ACL group.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupListACL Wiki, aclGroupListACL }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupListACL
      * @return returns a table of the acl elements in the given acl group. this table might be empty.
      * returns false or nil if thegroup is invalid or it fails for some other reason.
      */
@@ -146,7 +146,7 @@ export class ACLGroup {
     /**
      * This function returns a table over all the objects that exist in a given ACL group. These
      * are objects like players and resources.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupListObjects Wiki, aclGroupListObjects }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupListObjects
      * @return returns a table of strings in the given acl group. this table might be empty. returns
      * false or nil if thegroup is invalid or it fails for some other reason.
      */
@@ -154,7 +154,7 @@ export class ACLGroup {
 
     /**
      * This function removes the given ACL from the given ACL group.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupRemoveACL Wiki, aclGroupRemoveACL }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupRemoveACL
      * @param theACL The ACL to remove from the given group
      * @return returns true if the acl was successfully removed from the acl group, false/nil if it
      * could not be removed for some reason, ie. either of the elements were invalid.
@@ -166,7 +166,7 @@ export class ACLGroup {
     /**
      * This function removes the given object from the given ACL group. The object can be a
      * resource or a player. See aclGroupAddObject for more details.
-     * @see {@link https://wiki.multitheftauto.com/wiki/AclGroupRemoveObject Wiki, aclGroupRemoveObject }
+     * @see https://wiki.multitheftauto.com/wiki/AclGroupRemoveObject
      * @param theObjectString The object to remove from the ACL group
      * @return returns true if the object existed in the acl and could be remoevd, false if it could not
      * be removed for some reason, ie. it did not exist in the given acl group.
@@ -177,7 +177,7 @@ export class ACLGroup {
 
     /**
      * This function is used to determine if an object is in a group.
-     * @see {@link https://wiki.multitheftauto.com/wiki/IsObjectInACLGroup Wiki, isObjectInACLGroup }
+     * @see https://wiki.multitheftauto.com/wiki/IsObjectInACLGroup
      * @param theGroup the ACL group pointer of the group from which the object should be found.
      * @return returns true if the object is in the specified group, false otherwise.
      */
