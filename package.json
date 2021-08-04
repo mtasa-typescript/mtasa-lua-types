@@ -5,11 +5,11 @@
     "homepage": "https://github.com/mtasa-typescript/mtasa-lua-types",
     "bugs": "https://github.com/mtasa-typescript/mtasa-lua-types/issues",
     "scripts": {
-        "build": "echo No buildable content",
-        "test": "dtslint .",
-        "tstl": "tstl",
+        "build": "tstl",
+        "eslint": "eslint --max-warnings=0 .",
         "prettier": "prettier --check .",
-        "prettier-fix": "prettier --write ."
+        "prettier-fix": "prettier --write .",
+        "test": "npm run prettier && npm run eslint && npm run build"
     },
     "repository": {
         "type": "git",
@@ -41,8 +41,9 @@
         "typescript-to-lua": "^0.41.0"
     },
     "devDependencies": {
-        "dtslint": "^4.0.7",
-        "prettier": "^2.2.1",
-        "ssri": "^8.0.1"
+        "@typescript-eslint/eslint-plugin": "^4.29.0",
+        "@typescript-eslint/parser": "^4.29.0",
+        "eslint": "^7.32.0",
+        "prettier": "^2.2.1"
     }
 }
