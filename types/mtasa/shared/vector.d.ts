@@ -48,6 +48,14 @@ export class Vector4 {
     getSquaredLength(): number;
 
     getLength(): number;
+
+    // Operations
+
+    add: LuaAdditionMethod<Vector4, Vector4>;
+    sub: LuaSubtractionMethod<Vector4, Vector4>;
+    neg: LuaNegationMethod<Vector4>;
+    mul: LuaMultiplicationMethod <number, Vector4>;
+    div: LuaDivisionMethod <number, Vector4>;
 }
 
 /** @customConstructor Vector3 */
@@ -98,6 +106,14 @@ export class Vector3 {
     getSquaredLength(): number;
 
     getLength(): number;
+
+    // Operations
+
+    add: LuaAdditionMethod<Vector3, Vector3>;
+    sub: LuaSubtractionMethod<Vector3, Vector3>;
+    neg: LuaNegationMethod<Vector3>;
+    mul: LuaMultiplicationMethod <number, Vector3>;
+    div: LuaDivisionMethod <number, Vector3>;
 }
 
 /** @customConstructor Vector2 */
@@ -134,4 +150,12 @@ export class Vector2 {
     getSquaredLength(): number;
 
     getLength(): number;
+
+    // Operations
+
+    add: LuaAdditionMethod<Vector2, Vector2>;
+    sub: LuaSubtractionMethod<Vector2, Vector2>;
+    neg: LuaNegationMethod<Vector2>;
+    mul: LuaMultiplicationMethod <number, Vector2>;
+    div: LuaDivisionMethod <number, Vector2>;
 }
