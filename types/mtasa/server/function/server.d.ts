@@ -154,10 +154,12 @@ export declare function setTransferBoxVisible(
  * This function shuts down the server.
  * Make sure your server ACL setup has function.shutdown object protected.
  * @see https://wiki.multitheftauto.com/wiki/Shutdown
- * @param reason the reason why the server has been shut down.
+ * @param reason the reason why the server has been shutdown.
+ * @param exitCode the server application exit code to be returned on shutdown.
+ * |20915}}
  * @return returns false if it was not possible to shut down the server.
  * @noSelf
  */
 export declare function shutdown(
-    reason: string
+    reason?: string
 ): boolean;

@@ -163,3 +163,17 @@ export interface OnClientVehicleStartExit extends GenericEventHandler {
         door: number
     ) => void;
 }
+
+export interface OnClientVehicleWeaponHit extends GenericEventHandler {
+    name: EventNames.OnClientVehicleWeaponHit;
+    function: (
+        this: void,
+        weaponType: number,
+        hitElement: Element,
+        hitX: number,
+        hitY: number,
+        hitZ: number,
+        model: number,
+        materialID: number
+    ) => void;
+}

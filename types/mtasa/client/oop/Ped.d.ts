@@ -108,6 +108,10 @@ export class Ped extends Element {
     weaponSlot: number;
 
     /**
+     */
+    bleeding: boolean;
+
+    /**
      * This function checks if the specified ped is choking (coughing) or not. This happens as a
      * result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray
      * can.
@@ -457,6 +461,12 @@ export class Ped extends Element {
     getWeaponSlot(): number;
 
     /**
+     * @see https://wiki.multitheftauto.com/wiki/IsPedBleeding
+     * @return returns true if the player or ped is bleeding, false otherwise.
+     */
+    isBleeding(): boolean;
+
+    /**
      * This function checks if the specified ped is choking (coughing) or not. This happens as a
      * result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray
      * can.
@@ -647,6 +657,15 @@ export class Ped extends Element {
      */
     setArmor(
         armor: number
+    ): boolean;
+
+    /**
+     * @see https://wiki.multitheftauto.com/wiki/SetPedBleeding
+     * @param bleeding boolean specifying whether the player or ped is bleeding or not.
+     * @return returns true if the bleeding state was successfully set, error is raised otherwise.
+     */
+    setBleeding(
+        bleeding: boolean
     ): boolean;
 
     /**

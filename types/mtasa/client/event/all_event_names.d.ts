@@ -123,5 +123,6 @@ export const enum EventNames {
     OnClientVehicleRespawn = "onClientVehicleRespawn",
     OnClientVehicleStartEnter = "onClientVehicleStartEnter",
     OnClientVehicleStartExit = "onClientVehicleStartExit",
+    OnClientVehicleWeaponHit = "onClientVehicleWeaponHit",
     OnClientWeaponFire = "onClientWeaponFire",
 }

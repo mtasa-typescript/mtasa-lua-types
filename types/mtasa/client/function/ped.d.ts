@@ -130,29 +130,8 @@ export declare function getPedAmmoInClip(
  * @param controlName The control. See control names for a list of possible controls.
  * @param rawValue A bool indicating if it should return the raw player input value (will always return
  * script value for non-player peds).
- * @return returns a float between 0 ( full release ) and 1 ( full push ) indicating the amount the
+ * @return returns a float between 0 (full release) and 1 (full push) indicating the amount the
  * control is pushed.
- * <section name=client-side example class=client show=true>
- * <syntaxhighlight lang=lua>
- * x, y, z = getelementposition(localplayer)
- * rotx, roty, rotz = getelementrotation(localplayer)
- * cj = createped(0, x, y, z)
- * cj2 = createped(0, x, y, z)
- * copcar = createvehicle(597, x, y+5, z+2)
- * copcar2 = createvehicle(597, x+2, y+10, z+4)
- * warppedintovehicle(cj2, copcar2, 0)
- * warppedintovehicle(cj, copcar, 0)
- * function ongetcjanalogcontrolstate()
- * setpedanalogcontrolstate(cj, accelerate, 0.90)
- * if getpedanalogcontrolstate(cj, accelerate, 0.90) then
- * setpedanalogcontrolstate(cj2, brake_reverse, 0.90)
- * end
- * end
- * addeventhandler(onclientrender, getrootelement(), ongetcjanalogcontrolstate)
- * </syntaxhighlight>
- * </section>
- * <br /><br />
- * * this example was created by hydra.
  * @noSelf
  */
 export declare function getPedAnalogControlState(
@@ -617,6 +596,16 @@ export declare function givePedWeapon(
 ): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/IsPedBleeding
+ * @param thePed the player or ped whose bleeding effect state you want to get.
+ * @return returns true if the player or ped is bleeding, false otherwise.
+ * @noSelf
+ */
+export declare function isPedBleeding(
+    thePed: Ped
+): boolean;
+
+/**
  * This function checks if the specified ped is choking (coughing) or not. This happens as a
  * result of weapons that produce smoke - smoke grenades, fire extinguisher and the spray
  * can.
@@ -974,6 +963,18 @@ export declare function setPedArmor(
 ): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/SetPedBleeding
+ * @param thePed the player or ped whose bleeding effect you want to set of.
+ * @param bleeding boolean specifying whether the player or ped is bleeding or not.
+ * @return returns true if the bleeding state was successfully set, error is raised otherwise.
+ * @noSelf
+ */
+export declare function setPedBleeding(
+    thePed: Ped,
+    bleeding: boolean
+): boolean;
+
+/**
  * This function sets the camera rotation of a ped, e.g. where its camera will look at. Dont
  * confuse this with getCameraMatrix, because that function is designed for fixed (scripted)
  * camera moves.
@@ -1118,11 +1119,11 @@ export declare function setPedFightingStyle(
 ): boolean;
 
 /**
- * This function makes a players foot prints bloody.
+ * This function makes a ped|peds footprints bloody.
  * @see https://wiki.multitheftauto.com/wiki/SetPedFootBloodEnabled
- * @param thePlayer The player to give bloody foot prints to.
- * @param enabled Boolean specifying whether or not to have bloody feet.
- * @return returns true if changing the players bloody feet status worked.
+ * @param thePlayer the ped to give bloody footprints to.
+ * @param enabled boolean specifying whether or not to have bloody feet.
+ * @return returns true if changing the peds bloody feet status worked.
  * @noSelf
  */
 export declare function setPedFootBloodEnabled(

@@ -57,6 +57,19 @@ import {
 /** @customConstructor Resource */
 export class Resource {
     /**
+     * This function retrieves the dynamic element root of a specified resource. The dynamic
+     * element root is the parent of elements that are created by scripts (e.g. with
+     * createObject) unless they specify a different parent.
+     */
+    dynamicElementRoot: Element;
+
+    /**
+     * Returns a table containing the names of the functions that a resource exports. It will
+     * return the exports of the current resource if there is no argument passed in.
+     */
+    exportedFunctions: LuaTable;
+
+    /**
      * This function gets the name of the specified resource.
      */
     name: string;
@@ -125,6 +138,24 @@ export class Resource {
     ]>;
 
     /**
+     * This function retrieves the dynamic element root of a specified resource. The dynamic
+     * element root is the parent of elements that are created by scripts (e.g. with
+     * createObject) unless they specify a different parent.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot
+     * @return returns an element of the resources dynamic element root if the resource specified was
+     * valid and active (currently running), false otherwise.
+     */
+    getDynamicElementRoot(): Element;
+
+    /**
+     * Returns a table containing the names of the functions that a resource exports. It will
+     * return the exports of the current resource if there is no argument passed in.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions
+     * @return returns a table of function names if successful, false otherwise.
+     */
+    getExportedFunctions(): LuaTable;
+
+    /**
      * This function is used to retrieve a resource from its name. A resources name is the same
      * as its folder or file archive name on the server (without the extension).
      * @see https://wiki.multitheftauto.com/wiki/GetResourceFromName
@@ -157,4 +188,11 @@ export class Resource {
      * doesnt exist.
      */
     getRootElement(): Element;
+
+    /**
+     * This function retrieves the resource from which the function call was made.
+     * @see https://wiki.multitheftauto.com/wiki/GetThisResource
+     * @return returns the resource in which the current script is.
+     */
+    static getThis(): Resource;
 }

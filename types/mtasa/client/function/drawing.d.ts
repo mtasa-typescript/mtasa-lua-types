@@ -914,27 +914,27 @@ export declare function dxGetPixelsSize(
  * This function gets information about various internal datum
  * @see https://wiki.multitheftauto.com/wiki/DxGetStatus
  * @return returns a table with the following entries:
- * * testmode : the current dx test mode. see dxsettestmode.
- * *videocardname : the name of the graphics card.
- * *videocardram : the installed memory in mb of the graphics card.
- * *videocardpsversion : the maximum pixel shader version of the graphics card.
+ * *testmode: the current dx test mode. see dxsettestmode.
+ * *videocardname: the name of the graphics card.
+ * *videocardram: the installed memory in mb of the graphics card.
+ * *videocardpsversion: the maximum pixel shader version of the graphics card.
  * *videocardmaxanisotropy: the maximum anisotropic filtering available. (0-4 which
  * respectively mean: off,2x,4x,8x,16x)
  * *videocardnumrendertargets: the maximum number of simultaneous render targets a shader
  * can use.
- * *videomemoryfreeformta : the amount of memory in mb available for mta to use. when this
+ * *videomemoryfreeformta: the amount of memory in mb available for mta to use. when this
  * gets to zero, guicreatefont, dxcreatefont and dxcreaterendertarget will fail.
- * *videomemoryusedbyfonts : the amount of graphic memory in mb used by custom fonts.
- * *videomemoryusedbytextures : the amount of graphic memory in mb used by textures.
- * *videomemoryusedbyrendertargets : the amount of graphic memory in mb used by render
+ * *videomemoryusedbyfonts: the amount of graphic memory in mb used by custom fonts.
+ * *videomemoryusedbytextures: the amount of graphic memory in mb used by textures.
+ * *videomemoryusedbyrendertargets: the amount of graphic memory in mb used by render
  * targets.
- * *settingwindowed : the windowed setting. (true/false)
- * *settingfullscreenstyle : display style when in full screen mode. (0-2 which respectively
+ * *settingwindowed: the windowed setting. (true/false)
+ * *settingfullscreenstyle: display style when in full screen mode. (0-2 which respectively
  * mean: standard, borderless window, borderless keep res)
- * *settingfxquality : the fx quality. (0-3)
- * *settingdrawdistance : the draw distance setting. (0-100)
- * *settingvolumetricshadows : the volumetric shadows setting. (true/false)
- * *settingstreamingvideomemoryforgta : the usable graphics memory setting. (64-256)
+ * *settingfxquality: the fx quality. (0-3)
+ * *settingdrawdistance: the draw distance setting. (0-100)
+ * *settingvolumetricshadows: the volumetric shadows setting. (true/false)
+ * *settingstreamingvideomemoryforgta: the usable graphics memory setting. (64-256)
  * *settinganisotropicfiltering: the anisotropic filtering setting. (0-4 which respectively
  * mean: off,2x,4x,8x,16x)
  * *settingantialiasing: the anti-aliasing setting. (0-3 which respectively mean:
@@ -942,15 +942,16 @@ export declare function dxGetPixelsSize(
  * *settingheathaze: the heat haze setting. (true/false)
  * *settinggrasseffect: the grass effect setting. (true/false)
  * *setting32bitcolor: the color depth of the screen. (false is 16bit, true is 32bit)
- * *settinghudmatchaspectratio: the hud match aspect ratio setting (true/false)
- * *settingaspectratio: the aspect ratio setting (auto, 4:3, 16:10, 16:9)
- * *settingfov: the fov setting
- * *settinghighdetailvehicles: high detail vehicles setting (true/false).
- * *settinghighdetailpeds: high detail peds setting (true/false).
- * *allowscreenupload : the allows screen uploads setting. (true/false)
+ * *settinghudmatchaspectratio: the hud match aspect ratio setting. (true/false)
+ * *settingaspectratio: the aspect ratio setting. (auto, 4:3, 16:10, 16:9)
+ * *settingfov: the fov setting.
+ * *settinghighdetailvehicles: high detail vehicles setting. (true/false)
+ * *settinghighdetailpeds: high detail peds setting. (true/false)
+ * *allowscreenupload: the allows screen uploads setting. (true/false)
  * *depthbufferformat: the format of the shader readable depth buffer, or unknown if not
- * available
- * *usingdepthbuffer: true if the depth buffer is used, false otherwise
+ * available.
+ * *totalphysicalmemory: the amount of total physical memory in mb.
+ * *usingdepthbuffer: true if the depth buffer is used, false otherwise.
  * @noSelf
  */
 export declare function dxGetStatus(): LuaTable;

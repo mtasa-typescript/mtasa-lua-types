@@ -63,6 +63,13 @@ import {
 export declare function clearChatBox(): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/ClearDebugBox
+ * @return always returns true.
+ * @noSelf
+ */
+export declare function clearDebugBox(): boolean;
+
+/**
  * This function checks if players chat is visible.
  * @see https://wiki.multitheftauto.com/wiki/IsChatVisible
  * @return returns true if the chat is visible, false otherwise.

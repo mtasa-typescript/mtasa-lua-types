@@ -76,6 +76,10 @@ export class MTASAObject {
     breakable: boolean;
 
     /**
+     */
+    moving: boolean;
+
+    /**
      * This function breaks a specific object.
      * @see https://wiki.multitheftauto.com/wiki/BreakObject
      * @return * true if the object was successfully broken.
@@ -150,6 +154,13 @@ export class MTASAObject {
      * * false if the object is not breakable.
      */
     isBreakable(): boolean;
+
+    /**
+     * @see https://wiki.multitheftauto.com/wiki/IsObjectMoving
+     * @return * true if the object is moving.
+     * * false if the object is not moving.
+     */
+    isMoving(): boolean;
 
     /**
      * This function will smoothly move an object from its current position to a specified
@@ -262,7 +273,7 @@ export class MTASAObject {
      * @return * true when the it was changed successfully.
      * * false otherwise.
      */
-    toggleObjectRespawn(
+    toggleRespawn(
         respawn: boolean
     ): boolean;
 }

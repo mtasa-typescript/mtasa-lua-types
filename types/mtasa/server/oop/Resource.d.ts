@@ -40,9 +40,48 @@ import {
 /** @customConstructor Resource */
 export class Resource {
     /**
+     * This function retrieves the ACL request section from the meta.xml file of the given
+     * resource.
+     */
+    aclRequests: LuaTable;
+
+    /**
+     * This function retrieves the dynamic element root of a specified resource. The dynamic
+     * element root is the parent of elements that are created by scripts (e.g. with
+     * createObject) unless they specify a different parent.
+     */
+    dynamicElementRoot: Element;
+
+    /**
+     * Returns a table containing the names of the functions that a resource exports. It will
+     * return the exports of the current resource if there is no argument passed in.
+     */
+    exportedFunctions: LuaTable;
+
+    /**
+     * Used to check the last starting time and date of a resource
+     */
+    lastStartTime: number;
+
+    /**
+     * This function retrieves the reason why a resource failed to start.
+     */
+    loadFailureReason: string;
+
+    /**
+     * Gets the date and time at which a resource was last loaded in the server.
+     */
+    loadTime: number;
+
+    /**
      * This function gets the name of the specified resource.
      */
     name: string;
+
+    /**
+     * This function returns the organizational file path (e.g. admin) of a resource.
+     */
+    organizationalPath: string;
 
     /**
      * This function retrieves a resources root element. The resources root element is the
@@ -160,6 +199,33 @@ export class Resource {
     ): boolean;
 
     /**
+     * This function retrieves the ACL request section from the meta.xml file of the given
+     * resource.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceACLRequests
+     * @return returns a table with the acl requests for the given resource, or false if the resource is
+     * not valid. a valid resource with no acl requests will return an empty table.
+     */
+    getACLRequests(): LuaTable;
+
+    /**
+     * This function retrieves the dynamic element root of a specified resource. The dynamic
+     * element root is the parent of elements that are created by scripts (e.g. with
+     * createObject) unless they specify a different parent.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceDynamicElementRoot
+     * @return returns an element of the resources dynamic element root if the resource specified was
+     * valid and active (currently running), false otherwise.
+     */
+    getDynamicElementRoot(): Element;
+
+    /**
+     * Returns a table containing the names of the functions that a resource exports. It will
+     * return the exports of the current resource if there is no argument passed in.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceExportedFunctions
+     * @return returns a table of function names if successful, false otherwise.
+     */
+    getExportedFunctions(): LuaTable;
+
+    /**
      * This function is used to retrieve a resource from its name. A resources name is the same
      * as its folder or file archive name on the server (without the extension).
      * @see https://wiki.multitheftauto.com/wiki/GetResourceFromName
@@ -181,6 +247,36 @@ export class Resource {
     getInfo(
         attribute: string
     ): string;
+
+    /**
+     * Used to check the last starting time and date of a resource
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceLastStartTime
+     * @return if successful, returns the unix timestamp when the resource was last started, or the
+     * string never if the resource has not been started yet, otherwise false. use in
+     * conjunction with getrealtime in order to retrieve detailed information.
+     * returns a string with the time and date, or false if the resource does not exist.
+     */
+    getLastStartTime(): number;
+
+    /**
+     * This function retrieves the reason why a resource failed to start.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceLoadFailureReason
+     * @return if the resource failed to load, returns a string with the failure reason in it. if it
+     * loaded successfully, returns an empty string. returns false if the resource doesnt exist.
+     */
+    getLoadFailureReason(): string;
+
+    /**
+     * Gets the date and time at which a resource was last loaded in the server.
+     * @see https://wiki.multitheftauto.com/wiki/GetResourceLoadTime
+     * @return if successful, returns the unix timestamp when the resource was loaded, otherwise false.
+     * use in conjunction with getrealtime in order to retrieve detailed information.
+     * if successful, returns a string with the date and time that the resource was last loaded
+     * into memory (for example when the server started, or when the resource was changed and
+     * reloaded). returns false on failure.
+     * an example string is fri mar 28 13:51:04 2008.
+     */
+    getLoadTime(): number;
 
     /**
      * This function retrieves the root element of a certain map in a specified resource.
@@ -228,6 +324,13 @@ export class Resource {
      * @return returns a table of resources.
      */
     static getAll(): LuaTable;
+
+    /**
+     * This function retrieves the resource from which the function call was made.
+     * @see https://wiki.multitheftauto.com/wiki/GetThisResource
+     * @return returns the resource in which the current script is.
+     */
+    static getThis(): Resource;
 
     /**
      * Checks whether a resource is currently archived (running from within a ZIP file).

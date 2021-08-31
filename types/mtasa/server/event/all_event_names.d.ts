@@ -18,6 +18,7 @@ export const enum EventNames {
     OnElementStopSync = "onElementStopSync",
     OnMarkerHit = "onMarkerHit",
     OnMarkerLeave = "onMarkerLeave",
+    OnPedDamage = "onPedDamage",
     OnPedVehicleEnter = "onPedVehicleEnter",
     OnPedVehicleExit = "onPedVehicleExit",
     OnPedWasted = "onPedWasted",

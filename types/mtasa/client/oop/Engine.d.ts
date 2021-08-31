@@ -98,7 +98,7 @@ export class Engine {
      * @return returns a table if this function succeeds, false if it fails for some reason.
      */
     static getModelTextureNames(
-        modelId: string
+        modelId?: string
     ): LuaTable;
 
     /**

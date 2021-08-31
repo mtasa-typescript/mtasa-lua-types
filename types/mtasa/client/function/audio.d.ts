@@ -89,7 +89,6 @@ export declare function getSFXStatus(
 
 /**
  * This function gets the beats per minute of a specific sound element.
- * setTimer to do this.}}
  * @see https://wiki.multitheftauto.com/wiki/GetSoundBPM
  * @param sound a sound element that is created using playSound or playSound3D
  * @return returns the beats per minute of the given sound.
@@ -112,6 +111,19 @@ export declare function getSoundBufferLength(
 ): number;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/GetSoundEffectParameters
+ * @param sound : the sound element.
+ * @param effectName : the name of the effect whose parameters you want to retrieve.
+ * @return returns a table with the parameter names as the keys, and their values. if the specified
+ * effect name is not valid, an error is raised.
+ * @noSelf
+ */
+export declare function getSoundEffectParameters(
+    sound: Element,
+    effectName: string
+): LuaTable;
+
+/**
  * Returns the states of all effects of a sound.
  * @see https://wiki.multitheftauto.com/wiki/GetSoundEffects
  * @param sound a sound element.
@@ -128,13 +140,13 @@ export declare function getSoundEffects(
  * This function gets the fast fourier transform data for an audio stream which is a table
  * of floats representing the current audio frame. This allows things like visualisations.
  * A fast fourier transform generates a table of all the frequencies of the current audio
- * frame which starts at the bass end of the spectrum to mids to highs in that order
- * Should you have any problems there is an example resource located on the resource svn
- * here:
+ * frame which starts at the bass end of the spectrum to mids to highs in that order.
+ * Should you have any problems there is an example resource located on the resources
+ * repository:
  * https://github.com/multitheftauto/mtasa-resources/tree/master/%5Bgameplay%5D/visualiser
  * Visualiser
- * just type startmusic mystreamurl in your console and it will play on the cinema billboard
- * near A51 If the element is a player, this function will use the players voice.
+ * Just type startmusic mystreamurl in your console and it will play on the cinema billboard
+ * near A51. If the element is a player, this function will use the players voice.
  * @see https://wiki.multitheftauto.com/wiki/GetSoundFFTData
  * @param sound a sound element that is created using playSound or playSound3D. Streams are also supported
  * @param iSamples allowed samples are 256, 512, 1024, 2048, 4096, 8192 and 16384.
@@ -510,16 +522,26 @@ export declare function setSoundEffectEnabled(
 ): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/SetSoundEffectParameter
+ * @param sound : the sound element.
+ * @param effectName : the name of the effect whose parameter you want to change.
+ * @param effectParam : the parameter #Effects Parameters|name.
+ * @param paramValue : the parameter #Effects Parameters|value.
+ * @return returns true if everything went well, error is raised otherwise.
+ * @noSelf
+ */
+export declare function setSoundEffectParameter(
+    sound: Element,
+    effectName: string,
+    effectParam: string,
+    paramValue: unknown
+): boolean;
+
+/**
  * @see https://wiki.multitheftauto.com/wiki/SetSoundLooped
  * @param theSound The sound element to set the loop.
  * @param bool A boolean representing whether the sound will be looped.
  * @return returns true if the sound element loop was successfully changed, false otherwise.
- * <syntaxhighlight lang=lua>
- * addeventhandler(onclientresourcestart, resourceroot, function()
- * local mysound = playsound(sound.mp3)
- * setsoundlooped(mysound, true)
- * end)
- * </syntaxhighlight>
  * @noSelf
  */
 export declare function setSoundLooped(
@@ -603,8 +625,9 @@ export declare function setSoundPaused(
 /**
  * This function is used to change the seek position of the specified sound element.
  * Use a player element to control a players voice with this function.
- * *To set position of a remote audio file you have to pause it first, then set the position
- * and then unpause it.}}
+ * *To set position of a remote audio file, you must pause the sound within an
+ * onClientSoundStream event after creation, set the sound position and then unpause it
+ * again. The sound can also not be throttled (see playSound arguments)}}
  * @see https://wiki.multitheftauto.com/wiki/SetSoundPosition
  * @param theSound the sound element which seek position you want to modify.
  * @param pos a float value representing the new seek position of the sound element in seconds.

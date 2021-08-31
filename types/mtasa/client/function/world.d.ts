@@ -1292,7 +1292,7 @@ export declare function setTrafficLightState(
  */
 export declare function setVehiclesLODDistance(
     vehiclesDistance: number,
-    trainsAndPlanesDistance: number
+    trainsAndPlanesDistance?: number
 ): boolean;
 
 /**

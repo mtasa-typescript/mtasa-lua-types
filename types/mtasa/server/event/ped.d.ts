@@ -39,6 +39,14 @@ import {
     KeyState
 } from '../structure';
 
+export interface OnPedDamage extends GenericEventHandler {
+    name: EventNames.OnPedDamage;
+    function: (
+        this: void,
+        loss: number
+    ) => void;
+}
+
 export interface OnPedVehicleEnter extends GenericEventHandler {
     name: EventNames.OnPedVehicleEnter;
     function: (

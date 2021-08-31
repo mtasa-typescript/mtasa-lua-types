@@ -182,6 +182,7 @@ export declare function setMarkerColor(
 ): boolean;
 
 /**
+ * This function allows changing the icon of a checkpoint marker.
  * @see https://wiki.multitheftauto.com/wiki/SetMarkerIcon
  * @param theMarker The marker to change the visual style of
  * @param icon A string referring to the type of icon, acceptable values are:

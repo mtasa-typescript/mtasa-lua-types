@@ -155,7 +155,7 @@ export declare function engineGetModelPhysicalPropertiesGroup(
  * @noSelf
  */
 export declare function engineGetModelTextureNames(
-    modelId: string
+    modelId?: string
 ): LuaTable;
 
 /**

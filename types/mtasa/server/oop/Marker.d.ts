@@ -178,6 +178,7 @@ export class Marker extends Element {
     ): boolean;
 
     /**
+     * This function allows changing the icon of a checkpoint marker.
      * @see https://wiki.multitheftauto.com/wiki/SetMarkerIcon
      * @param icon A string referring to the type of icon, acceptable values are:
      * @param none : No icon

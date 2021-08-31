@@ -969,6 +969,9 @@ export declare function getVehicleType(
 ): string;
 
 /**
+ * This function returns the current upgrade id on the specified vehicles upgrade slot
+ * An upgrade slot is a certain type of upgrade (eg: exhaust, spoiler), there are 17 slots
+ * (0 to 16).
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot
  * @param theVehicle : The vehicle whose upgrade you want to retrieve.
  * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
@@ -1241,6 +1244,8 @@ export declare function isVehicleWindowOpen(
 ): boolean;
 
 /**
+ * This function removes an already existing upgrade from the specified vehicle, eg: nos,
+ * hydraulics. Defined in San Andreas\data\maps eh_mods eh_mods.ide.
  * @see https://wiki.multitheftauto.com/wiki/RemoveVehicleUpgrade
  * @param theVehicle : The element representing the vehicle you wish to remove the upgrade from
  * @param upgrade : The ID of the upgrade you wish to remove.

@@ -924,6 +924,9 @@ export class Vehicle extends Element {
     getVehicleType(): string;
 
     /**
+     * This function returns the current upgrade id on the specified vehicles upgrade slot
+     * An upgrade slot is a certain type of upgrade (eg: exhaust, spoiler), there are 17 slots
+     * (0 to 16).
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleUpgradeOnSlot
      * @param slot : The slot id of the upgrade. (Upgrade list ordered by slot number)
      * @return returns an integer with the upgrade on the slot if correct arguments were passed, false

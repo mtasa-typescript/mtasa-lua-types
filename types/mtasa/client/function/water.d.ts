@@ -113,7 +113,8 @@ export declare function getWaterColor(): LuaMultiReturn<[
  * @param z The Z axis position
  * ''or:''
  * @param theWater the water element
- * @param bCheckWaves Include the water levels of waves in the ocean, lakes and ...
+ * @param ignoreDistanceToWaterThreshold If set to false, this function returns false, if the difference between water level
+ * (without waves) and posZ is greater than 3.0
  * @return returns an integer of the water level if the localplayer/position is near the water (-3
  * to 20 on the z coordinate) else false if theres no water near the localplayer/position.
  * @noSelf
@@ -122,7 +123,7 @@ export declare function getWaterLevel(
     posX: number,
     posY: number,
     posZ: number,
-    bCheckWaves?: boolean
+    ignoreDistanceToWaterThreshold?: boolean
 ): number;
 
 /**

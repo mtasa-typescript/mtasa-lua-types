@@ -63,7 +63,8 @@ export interface OnClientChatMessage extends GenericEventHandler {
         text: string,
         r: number,
         g: number,
-        b: number
+        b: number,
+        messageType: number
     ) => void;
 }
 
