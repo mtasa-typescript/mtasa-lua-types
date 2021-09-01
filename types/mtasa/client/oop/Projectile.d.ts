@@ -87,8 +87,6 @@ export class Projectile {
      * see always standard projectile model.
      * *Target argument can only be defined as a player or another projectile.
      * @see https://wiki.multitheftauto.com/wiki/CreateProjectile
-     * @param creator The element representing creator of the projectile. In case you want the projectile to be
-     * synced for everybody creator must be the local player or his vehicle.
      * @param weaponType int representing the projectile weaponType (characteristics). Valid IDs are:
      * @param posX , posY, posZ: float starting coordinates for the projectile. They are coordinates of
      * creator by default.
@@ -102,7 +100,6 @@ export class Projectile {
      * unable to create a projectile (wrong weapon id or projectiles limit was reached).
      */
     constructor(
-        creator: Element,
         weaponType: number,
         posX?: number,
         posY?: number,

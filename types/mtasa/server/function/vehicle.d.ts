@@ -912,7 +912,7 @@ export declare function removeVehicleSirens(
 
 /**
  * This function removes an already existing upgrade from the specified vehicle, eg: nos,
- * hydraulics. Defined in San Andreas\data\maps eh_mods eh_mods.ide.
+ * hydraulics. Defined in San Andreas\data\maps\veh_mods\veh_mods.ide.
  * @see https://wiki.multitheftauto.com/wiki/RemoveVehicleUpgrade
  * @param theVehicle : The element representing the vehicle you wish to remove the upgrade from
  * @param upgrade : The ID of the upgrade you wish to remove.

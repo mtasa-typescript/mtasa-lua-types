@@ -354,6 +354,18 @@ export declare function triggerLatentClientEvent<
 ): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/TriggerLatentClientEvent
+ * @noSelf
+ */
+export declare function triggerLatentClientEvent<
+    CallbackType extends GenericEventHandler = GenericEventHandler
+>(
+    name: CallbackType["name"],
+    theElement: Element,
+    ...args: Parameters<CallbackType["function"]>
+): boolean;
+
+/**
  * This function checks if the last completed event was cancelled. This is mainly useful for
  * custom events created by scripts.
  * Events can be cancelled using cancelEvent, this indicates that the resource which

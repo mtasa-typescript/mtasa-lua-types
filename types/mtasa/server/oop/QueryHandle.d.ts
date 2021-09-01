@@ -44,13 +44,17 @@ export class QueryHandle {
      * This function frees a database query handle. dbFree only needs to be used if a result has
      * not been obtained with dbPoll
      * @see https://wiki.multitheftauto.com/wiki/DbFree
+     * @param queryHandle A query handle previously returned from dbQuery
      * @return returns true if the handle was successfully freed, false otherwise.
      */
-    free(): boolean;
+    free(
+        queryHandle: HandleFunction
+    ): boolean;
 
     /**
      * This function checks the progress of a database query.
      * @see https://wiki.multitheftauto.com/wiki/DbPoll
+     * @param queryHandle A query handle previously returned from dbQuery
      * @param timeout How many milliseconds to wait for a result. Use 0 for an instant response (which may
      * return nil). Use -1 to wait until a result is ready. Note: A wait here will freeze the
      * entire server just like executeSQLQuery
@@ -82,6 +86,7 @@ export class QueryHandle {
      * a subsequent table represents the next row.
      */
     poll(
+        queryHandle: HandleFunction,
         timeout: number,
         multipleResults?: boolean
     ): LuaTable;

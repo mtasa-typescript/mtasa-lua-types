@@ -367,6 +367,15 @@ export class Player extends Ped {
     ): boolean;
 
     /**
+     * @see https://wiki.multitheftauto.com/wiki/TriggerClientEvent
+     */
+    triggerEvent(
+        name: string,
+        sourceElement: Element,
+        ...varargs: any[]
+    ): boolean;
+
+    /**
      * This function triggers an event previously registered on a client. This is the primary
      * means of passing information between the server and the client. Clients have a similar
      * triggerServerEvent function that can do the reverse. You can treat this function as if it
@@ -385,17 +394,20 @@ export class Player extends Ped {
      * @param name The name of the event to trigger client side. You should register this event with
      * addEvent and add at least one event handler using addEventHandler.
      * @param sourceElement The element that is the Event system#Event handlers|source of the event.
+     * @param sendTo The event will be sent to all players that are children of the specified element. By
+     * default this is the root element, and hence the event is sent to all players. If you
+     * specify a single player it will just be sent to that player. This argument can also be a
+     * table of player elements.
      * @param arguments... A list of arguments to trigger with the event. You can pass any lua data type (except
      * functions). You can also pass elements.
      * @return returns true if the event trigger has been sent, false if invalid arguments were
      * specified.
      */
-    triggerEvent<
-        CallbackType extends GenericEventHandler = GenericEventHandler
-    >(
-        name: CallbackType["name"],
+    triggerEvent(
+        sendTo: LuaTable | Element,
+        name: string,
         sourceElement: Element,
-        ...args: Parameters<CallbackType["function"]>
+        ...varargs: any[]
     ): boolean;
 
     /**
@@ -409,6 +421,8 @@ export class Player extends Ped {
      * This will display as: <span style=color:red;>Hello</span> <span
      * style=color:green>World</span>
      * @see https://wiki.multitheftauto.com/wiki/OutputChatBox
+     * @param text The text string that you wish to send to the chat window. If more than 256 characters it
+     * will not be showed in chat.
      * @param visibleTo Can also be a table of players or team.}}
      * @param r The amount of red in the color of the text. Default value is 231.
      * @param g The amount of green in the color of the text. Default value is 217.
@@ -418,6 +432,7 @@ export class Player extends Ped {
      * Default RGB values in this format are: '#E7D9B0'.
      */
     outputChat(
+        text: string,
         visibleTo?: LuaTable | Element,
         r?: number,
         g?: number,

@@ -132,12 +132,14 @@ export class Water extends Element {
     /**
      * This function changes the water color of the GTA world.
      * @see https://wiki.multitheftauto.com/wiki/SetWaterColor
+     * @param red The red value of the water, from 0 to 255.
      * @param green The green value of the water, from 0 to 255.
      * @param blue The blue value of the water, from 0 to 255.
      * @param alpha The alpha (visibility) value of the water, from 0 to 255. Defaults to 200 if not declared.
      * @return returns true if water color was set correctly, false if invalid values were passed.
      */
     setColor(
+        red: number,
         green: number,
         blue: number,
         alpha?: number

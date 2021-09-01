@@ -363,6 +363,7 @@ export class Resource {
     /**
      * This function renames a resource.
      * @see https://wiki.multitheftauto.com/wiki/RenameResource
+     * @param theResource The name of resource or the resource you want to rename.
      * @param newResourceName The name of what the resource should be renamed to.
      * @param organizationalPath If you want to store the new resource inside a category.
      * @return returns true if the resource has been renamed successfully, false otherwise. this could
@@ -372,6 +373,7 @@ export class Resource {
      * started resource or if the resource is not loaded (not known by mta (use /refresh))
      */
     rename(
+        theResource: string | Resource,
         newResourceName: string,
         organizationalPath?: string
     ): boolean;

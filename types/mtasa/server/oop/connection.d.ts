@@ -132,11 +132,24 @@ export class connection {
     ): string;
 
     /**
+     * @see https://wiki.multitheftauto.com/wiki/DbQuery
+     */
+    query(
+        databaseConnection: Element,
+        query: string,
+        param1?: unknown,
+        ...varargs: any[]
+    ): HandleFunction;
+
+    /**
      * This function starts a database query using the supplied connection. Use the returned
      * query handle with dbPoll to get the result, or dbFree if you dont want the result.
      * @see https://wiki.multitheftauto.com/wiki/DbQuery
      * @param databaseConnection A database connection element previously returned from dbConnect
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?
+     * @param callbackFunction An optional function to be called when a result is ready. The function will only be
+     * called if the result has not already been read with dbPoll. The function is called with
+     * the query handle as the first argument.
      * @param callbackArguments An optional table containing extra arguments to be sent to the callback function.
      * @param paramX A variable number of parameters. These must be strings or numbers - it is important to
      * make sure they are of the correct type. Also, the number of parameters passed must be
@@ -146,6 +159,7 @@ export class connection {
      * @return returns a query handle unless the connection is incorrect, in which case it return false.
      */
     query(
+        callbackFunction: HandleFunction,
         callbackArguments: LuaTable,
         databaseConnection: Element,
         query: string,

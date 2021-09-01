@@ -80,7 +80,7 @@ export declare function getLocalPlayer(): Player;
  * @return returns the local blur level.
  * @noSelf
  */
-export declare function getPlayerBlurLevel(): number;
+export declare function getBlurLevel(): number;
 
 /**
  * This function returns a player element for the player with the name passed to the
@@ -261,7 +261,7 @@ export declare function isVoiceEnabled(): boolean;
  * @param level The level to set the blur to (default: 36)
  * @noSelf
  */
-export declare function setPlayerBlurLevel(
+export declare function setBlurLevel(
     level: number
 ): boolean;
 

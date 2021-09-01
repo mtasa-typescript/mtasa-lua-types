@@ -90,16 +90,19 @@ export class DxFont {
      * This function retrieves the theoretical height of a certain piece of text, if it were to
      * be drawn using dxDrawText.
      * @see https://wiki.multitheftauto.com/wiki/DxGetFontHeight
+     * @param scale The size of the text.
      * @param font Either a custom DX font element or the name of a built-in dx font:
      * @return returns an integer of the height of the text.
      */
     getHeight(
+        scale?: number,
         font?: any
     ): number;
 
     /**
      * NOTE: This function already takes the clients screen resolution into account.
      * @see https://wiki.multitheftauto.com/wiki/DxGetTextSize
+     * @param text A string representing the text for which you wish to retrieve with width for.
      * @param width The width of the text. Use with wordBreak = true.
      * @param scaleX The scale of the text. Scale can also be inputted as a Vector2.
      * @param scaleY The scale of the text.
@@ -111,6 +114,7 @@ export class DxFont {
      * @return returns two floats representing the width and height of the text in pixels.
      */
     getSize(
+        text: string,
         width?: number,
         scaleXY?: number,
         scaleY?: number,
@@ -127,6 +131,7 @@ export class DxFont {
      * it were to be drawn using dxDrawText.
      * NOTE: This function already takes the clients screen resolution into account.
      * @see https://wiki.multitheftauto.com/wiki/DxGetTextWidth
+     * @param text A string representing the text for which you wish to retrieve with width for.
      * @param scale The size of the text.
      * @param font Either a custom DX font element or the name of a built-in dx font:
      * @param bColorCoded Should we exclude color codes from the width? (false will include the hex in the length)
@@ -134,6 +139,7 @@ export class DxFont {
      * @return returns the float of the width of the text (in pixels).
      */
     getTextWidth(
+        text: string,
         scale?: number,
         font?: any,
         bColorCoded?: boolean

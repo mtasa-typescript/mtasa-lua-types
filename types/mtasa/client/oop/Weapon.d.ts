@@ -287,6 +287,7 @@ export class Weapon extends Element {
      * bool: false if the passed arguments were invalid
      */
     getProperty(
+        weaponID: number | string,
         weaponSkill: string,
         property: string
     ): number;

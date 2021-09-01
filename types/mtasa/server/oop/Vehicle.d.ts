@@ -703,9 +703,12 @@ export class Vehicle extends Element {
      * This function scans through all the current vehicles and returns the ones matching the
      * given model.
      * @see https://wiki.multitheftauto.com/wiki/GetVehiclesOfType
+     * @param model : The model of vehicles you want.
      * @return returns a table of existing vehicles matching the specified model.
      */
-    getAllOfType(): LuaTable;
+    getAllOfType(
+        model: number
+    ): LuaTable;
 
     /**
      * This function is used to get the vehicle being towed by another.

@@ -104,6 +104,17 @@ export class DxTexture {
     );
 
     /**
+     * @see https://wiki.multitheftauto.com/wiki/DxGetTexturePixels
+     */
+    getPixels(
+        texture: Element,
+        x?: number,
+        y?: number,
+        width?: number,
+        height?: number
+    ): string;
+
+    /**
      * This function fetches the Texture_pixels|pixels from a texture element. It can be used
      * with a standard texture, render target or screen source.
      * *This function is slow and not something you want to be doing once a frame.
@@ -111,6 +122,10 @@ export class DxTexture {
      * *And is very slow indeed if the texture format is not  argb .
      * @see https://wiki.multitheftauto.com/wiki/DxGetTexturePixels
      * @param texture The texture element to get the pixels from
+     * @param surfaceIndex Desired slice to get if the texture is a volume texture, or desired face to get if the
+     * texture is a cube map. <nowiki>(Cube map faces: 0=+X 1=-X 2=+Y 3=-Y 4=+Z 5=-Z)</nowiki>
+     * By default the pixels from the whole texture is returned. To get only a portion of the
+     * texture, define a rectangular area using all four of these optional arguments:
      * @param x Rectangle left position
      * @param y Rectangle top position
      * @param width Rectangle width
@@ -119,6 +134,7 @@ export class DxTexture {
      * passed to the function.
      */
     getPixels(
+        surfaceIndex: number,
         texture: Element,
         x?: number,
         y?: number,
@@ -138,6 +154,18 @@ export class DxTexture {
     ): boolean;
 
     /**
+     * @see https://wiki.multitheftauto.com/wiki/DxSetTexturePixels
+     */
+    setPixels(
+        texture: Element,
+        pixels: string,
+        x?: number,
+        y?: number,
+        width?: number,
+        height?: number
+    ): boolean;
+
+    /**
      * This function sets the Texture_pixels|pixels of a texture element. It can be used with a
      * standard texture, render target or screen source. Only plain format pixels please.
      * * This function is slow and not something you want to be doing once a frame.
@@ -146,6 +174,10 @@ export class DxTexture {
      * @see https://wiki.multitheftauto.com/wiki/DxSetTexturePixels
      * @param texture The texture element to set the pixels of
      * @param pixels The plain format pixels to use
+     * @param surfaceIndex Desired slice to set if the texture is a volume texture, or desired face to set if the
+     * texture is a cube map. <nowiki>(Cube map faces: 0=+X 1=-X 2=+Y 3=-Y 4=+Z 5=-Z)</nowiki>
+     * By default the pixels are set starting at the top left corner of the texture. To set a
+     * different region, define a rectangular area using all four of these optional arguments:
      * @param x Rectangle left position
      * @param y Rectangle top position
      * @param width Rectangle width
@@ -153,6 +185,7 @@ export class DxTexture {
      * @return returns a string if successful, false if invalid arguments were passed to the function.
      */
     setPixels(
+        surfaceIndex: number,
         texture: Element,
         pixels: string,
         x?: number,
