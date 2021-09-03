@@ -61,24 +61,24 @@ const getTextWidth2: number = mtasa.dxGetTextWidth(
 
 const createFont: mtasa.Element = mtasa.dxCreateFont('filepath', 10);
 
-// const createTexture1: mtasa.DxTexture = mtasa.dxCreateTexture(
-//     'filepath',
-//     'argb',
-//     true,
-// );
-//
-// const createTexture2: mtasa.DxTexture = mtasa.dxCreateTexture(
-//     100,
-//     120,
-//     'rgb',
-//     false,
-// );
-//
-// const createTexture3: mtasa.DxTexture = mtasa.dxCreateTexture(
-//     'pixel binary info',
-//     'rgb',
-//     false,
-// );
+const createTexture1: mtasa.DxTexture = mtasa.dxCreateTexture(
+    'filepath',
+    'argb',
+    true,
+);
+
+const createTexture2: mtasa.DxTexture = mtasa.dxCreateTexture(
+    100,
+    120,
+    'rgb',
+    'mirror',
+);
+
+const createTexture3: mtasa.DxTexture = mtasa.dxCreateTexture(
+    'pixel binary info',
+    'rgb',
+    false,
+);
 
 const createShader: [mtasa.Element, string] = mtasa.dxCreateShader(
     'filepath',
