@@ -383,12 +383,12 @@ export declare function hasObjectPermissionTo(
 /**
  * This function is used to determine if an object is in a group.
  * @see https://wiki.multitheftauto.com/wiki/IsObjectInACLGroup
- * @param theObject the name of the object to check. Examples: resource.ctf, user.Jim.
+ * @param theObjectName the name of the object to check. Examples: resource.ctf, user.Jim.
  * @param theGroup the ACL group pointer of the group from which the object should be found.
  * @return returns true if the object is in the specified group, false otherwise.
  * @noSelf
  */
 export declare function isObjectInACLGroup(
-    theObject: string,
+    theObjectName: string,
     theGroup: ACLGroup
 ): boolean;

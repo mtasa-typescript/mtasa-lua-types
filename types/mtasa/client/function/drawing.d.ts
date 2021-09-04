@@ -270,7 +270,22 @@ export declare function dxCreateTexture(
     textureFormat?: string,
     mipmaps?: boolean,
     textureEdge?: string
-): Element;
+): DxTexture;
+
+/**
+ * This function creates a texture element that can be used in the dxDraw functions
+ * @see https://wiki.multitheftauto.com/wiki/DxCreateTexture
+ * @return Returns a texture if successful, false if invalid arguments were passed to the function.
+ * @noSelf
+ */
+export declare function dxCreateTexture(
+    width: number,
+    height: number,
+    textureFormat?: string,
+    textureEdge?: string,
+    textureType?: string,
+    depth?: number
+): DxTexture;
 
 /**
  * <lowercasetitle/>

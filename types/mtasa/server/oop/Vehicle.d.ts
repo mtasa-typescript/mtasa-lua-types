@@ -706,7 +706,7 @@ export class Vehicle extends Element {
      * @param model : The model of vehicles you want.
      * @return returns a table of existing vehicles matching the specified model.
      */
-    getAllOfType(
+    static getAllOfType(
         model: number
     ): LuaTable;
 
