@@ -142,7 +142,7 @@ export class Marker extends Element {
      * @return returns three floats if a target is set, or false in the first variable and nil in the
      * two others if the marker is invalid or no target is set.
      */
-    getTarget(): LuaMultiReturn<[number, number, number]>;
+    getTarget(): Vector3;
 
     /**
      * This function returns a markers type.
@@ -201,7 +201,7 @@ export class Marker extends Element {
      * @param z The z axis of the coordinate to target the marker at
      * @return returns true if target was set, false otherwise.
      */
-    setTarget(x: number, y: number, z: number): boolean;
+    setTarget(vectorized: Vector3): boolean;
 
     /**
      * This function changes a markers type. The type controls how the marker is displayed in

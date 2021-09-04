@@ -10,9 +10,7 @@ import {
 const startMarker = new mtasa.Marker(0, 0, 10, 'checkpoint', 10);
 const stopMarker = new mtasa.Marker(100, 100, 10, 'checkpoint', 10);
 
-startMarker.setTarget(
-    ...(startMarker.getPosition() as [number, number, number]),
-);
+startMarker.setTarget(startMarker.getPosition());
 
 mtasa.addEventHandler<mtasa.Event.OnClientMarkerHit>(
     mtasa.EventNames.OnClientMarkerHit,
