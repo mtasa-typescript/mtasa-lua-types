@@ -37,6 +37,10 @@ import {
     ControlName,
     KeyName,
     KeyState,
+    Vector2,
+    Vector3,
+    Vector4,
+    Matrix,
 } from '../structure';
 
 export interface OnPickupHit extends GenericEventHandler {

@@ -12,7 +12,6 @@ import {
     PrimitiveType,
     DxTexture,
     ObjectGroup,
-    Matrix,
     Browser,
     Light,
     Effect,
@@ -54,6 +53,10 @@ import {
     ControlName,
     KeyName,
     KeyState,
+    Vector2,
+    Vector3,
+    Vector4,
+    Matrix,
 } from '../structure';
 
 export interface OnClientResourceFileDownload extends GenericEventHandler {

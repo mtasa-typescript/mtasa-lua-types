@@ -36,6 +36,10 @@ import {
     ControlName,
     KeyName,
     KeyState,
+    Vector2,
+    Vector3,
+    Vector4,
+    Matrix,
 } from '../structure';
 
 /** @customConstructor connection */

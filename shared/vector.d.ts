@@ -4,6 +4,11 @@ export class Vector4 {
     y: number;
     z: number;
     w: number;
+    add: LuaAdditionMethod<Vector4, Vector4>;
+    sub: LuaSubtractionMethod<Vector4, Vector4>;
+    neg: LuaNegationMethod<Vector4>;
+    mul: LuaMultiplicationMethod<number, Vector4>;
+    div: LuaDivisionMethod<number, Vector4>;
 
     /**
      * Create vector
@@ -25,6 +30,8 @@ export class Vector4 {
      * @param v Another vector
      */
     cross(v: Vector4): Vector4;
+
+    // Operations
 
     /**
      * Calculates the (standard) dot/scalar product of two vectors. If we call that vectors A and B, the dot product
@@ -48,14 +55,6 @@ export class Vector4 {
     getSquaredLength(): number;
 
     getLength(): number;
-
-    // Operations
-
-    add: LuaAdditionMethod<Vector4, Vector4>;
-    sub: LuaSubtractionMethod<Vector4, Vector4>;
-    neg: LuaNegationMethod<Vector4>;
-    mul: LuaMultiplicationMethod<number, Vector4>;
-    div: LuaDivisionMethod<number, Vector4>;
 }
 
 /** @customConstructor Vector3 */
@@ -63,6 +62,11 @@ export class Vector3 {
     x: number;
     y: number;
     z: number;
+    add: LuaAdditionMethod<Vector3, Vector3>;
+    sub: LuaSubtractionMethod<Vector3, Vector3>;
+    neg: LuaNegationMethod<Vector3>;
+    mul: LuaMultiplicationMethod<number, Vector3>;
+    div: LuaDivisionMethod<number, Vector3>;
 
     /**
      * Create vector
@@ -83,6 +87,8 @@ export class Vector3 {
      * @param v Another vector
      */
     cross(v: Vector3): Vector3;
+
+    // Operations
 
     /**
      * Calculates the (standard) dot/scalar product of two vectors. If we call that vectors A and B, the dot product
@@ -106,20 +112,17 @@ export class Vector3 {
     getSquaredLength(): number;
 
     getLength(): number;
-
-    // Operations
-
-    add: LuaAdditionMethod<Vector3, Vector3>;
-    sub: LuaSubtractionMethod<Vector3, Vector3>;
-    neg: LuaNegationMethod<Vector3>;
-    mul: LuaMultiplicationMethod<number, Vector3>;
-    div: LuaDivisionMethod<number, Vector3>;
 }
 
 /** @customConstructor Vector2 */
 export class Vector2 {
     x: number;
     y: number;
+    add: LuaAdditionMethod<Vector2, Vector2>;
+    sub: LuaSubtractionMethod<Vector2, Vector2>;
+    neg: LuaNegationMethod<Vector2>;
+    mul: LuaMultiplicationMethod<number, Vector2>;
+    div: LuaDivisionMethod<number, Vector2>;
 
     /**
      * Create vector
@@ -127,6 +130,8 @@ export class Vector2 {
      * @param y Coordinate Y for the vector
      */
     constructor(x: number, y: number);
+
+    // Operations
 
     /**
      * Calculates the (standard) dot/scalar product of two vectors. If we call that vectors A and B, the dot product
@@ -150,12 +155,55 @@ export class Vector2 {
     getSquaredLength(): number;
 
     getLength(): number;
+}
+
+/** @customConstructor Matrix */
+export class Matrix {
+    add: LuaAdditionMethod<Matrix, Matrix>;
+    sub: LuaSubtractionMethod<Matrix, Matrix>;
+    neg: LuaNegationMethod<Matrix>;
+    mul: LuaMultiplicationMethod<number, Matrix>;
+    div: LuaDivisionMethod<number, Matrix>;
+
+    /**
+     * This is default constructor for the Matrix class and returns a Matrix object
+     * @param position The position vector of the matrix
+     * @param rotation The rotation vector of the matrix
+     */
+    constructor(position: Vector3, rotation: Vector3);
+
+    /**
+     * This is the copy constructor
+     * @param toClone A matrix you want to make a clone of
+     */
+    constructor(toClone: Matrix);
+
+    /**
+     * You can call this method without parameters to initialize a zero matrix
+     */
+    constructor();
+
+    /**
+     * This method transforms a given position vector using the Matrix
+     * @param position The position vector you want to transform
+     */
+    transformPosition(position: Vector3): Vector3;
 
     // Operations
 
-    add: LuaAdditionMethod<Vector2, Vector2>;
-    sub: LuaSubtractionMethod<Vector2, Vector2>;
-    neg: LuaNegationMethod<Vector2>;
-    mul: LuaMultiplicationMethod<number, Vector2>;
-    div: LuaDivisionMethod<number, Vector2>;
+    /**
+     * This method returns the position vector of a given matrix
+     */
+    getPosition(): Vector3;
+
+    /**
+     * This method returns the rotation vector of a given matrix
+     */
+    getRotation(): Vector3;
+
+    getForward(): Vector3;
+
+    getRight(): Vector3;
+
+    getUp(): Vector3;
 }

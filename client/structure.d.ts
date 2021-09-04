@@ -7,7 +7,6 @@ export type PrimitiveType = Userdata;
 export type GuiScrollBar = Userdata;
 export type ObjectGroup = Userdata;
 export type Request = Userdata;
-export type Matrix = any;
 
 export { Player } from './oop/Player';
 export { Blip } from './oop/Blip';
@@ -47,6 +46,13 @@ export { GenericEventHandler } from '../shared/utils/event';
 
 export { CommandHandler, BindKeyCallback } from './utils/callback';
 
-export { HandleFunction, TimerCallbackFunction } from '../shared/structure';
+export {
+    HandleFunction,
+    TimerCallbackFunction,
+    Vector2,
+    Vector3,
+    Vector4,
+    Matrix,
+} from '../shared/structure';
 
 export { ControlName, KeyName, KeyState } from '../shared/utils/misc';
