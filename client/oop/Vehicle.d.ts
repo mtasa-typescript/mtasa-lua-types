@@ -378,7 +378,7 @@ export class Vehicle extends Element {
      * @return returns a float that represents how along the track it is, false if there is problem with
      * train element.
      */
-    getTrainPosition(): number;
+    getTrainPosition(): Vector3;
 
     /**
      * Gets the speed at which a train is traveling on the rails.
@@ -451,10 +451,7 @@ export class Vehicle extends Element {
      * @param world The position is a world position.
      * @return returns three floats indicating the position of the component, x, y and z respectively.
      */
-    getComponentPosition(
-        theComponent: string,
-        base?: string,
-    ): LuaMultiReturn<[number, number, number]>;
+    getComponentPosition(theComponent: string, base?: string): Vector3;
 
     /**
      * This function gets the component rotation of a vehicle.
@@ -468,10 +465,7 @@ export class Vehicle extends Element {
      * @param world : The rotation is a world rotation, relative to the worlds coordinates axes.
      * @return returns three floats indicating the rotation of the component, x, y and z respectively.
      */
-    getComponentRotation(
-        theComponent: string,
-        base?: string,
-    ): LuaMultiReturn<[number, number, number]>;
+    getComponentRotation(theComponent: string, base?: string): Vector3;
 
     /**
      * This function gets a table of the components currently on a vehicle.
@@ -570,7 +564,7 @@ export class Vehicle extends Element {
      * addcommandhandler(getdummy, getdummyposition)
      * </syntaxhighlight>
      */
-    getDummyPosition(dummy: string): LuaMultiReturn<[number, number, number]>;
+    getDummyPosition(dummy: string): Vector3;
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleEngineState
@@ -635,7 +629,7 @@ export class Vehicle extends Element {
     static getVehicleModelDummyDefaultPosition(
         modelID: number,
         dummy: string,
-    ): LuaMultiReturn<[number, number, number]>;
+    ): Vector3;
 
     /**
      * This function gets position of the dummies contained in a vehicle model.
@@ -648,7 +642,7 @@ export class Vehicle extends Element {
     static getVehicleModelDummyPosition(
         modelID: number,
         dummy: string,
-    ): LuaMultiReturn<[number, number, number]>;
+    ): Vector3;
 
     /**
      * This function returns the position of the exhaust fumes the vehicle model emits.
@@ -656,9 +650,7 @@ export class Vehicle extends Element {
      * @param modelID : The vehicle model ID.
      * @return returns the position of the exhaust fumes if everything went fine or false otherwise.
      */
-    static getModelExhaustFumesPosition(
-        modelID: number,
-    ): LuaMultiReturn<[number, number, number]>;
+    static getModelExhaustFumesPosition(modelID: number): Vector3;
 
     /**
      * This function retrieves the model ID of a vehicle as an integer value from its name.
@@ -850,7 +842,7 @@ export class Vehicle extends Element {
      * these values are in radians. the function will return 0, 0 if the vehicle is not a
      * vehicle with a turret.
      */
-    getTurretPosition(): LuaMultiReturn<[number, number]>;
+    getTurretPosition(): Vector3;
 
     /**
      * This function retrieves the type of a vehicle (such as if it is a car or a boat).
@@ -1092,7 +1084,7 @@ export class Vehicle extends Element {
      * @param position the position along the track (0 - 18107 a complete way round)
      * @return returns true if the train position was set, false otherwise.
      */
-    setTrainPosition(position: number): boolean;
+    setTrainPosition(vectorized: Vector3): boolean;
 
     /**
      * Sets the on-track speed of a train.
@@ -1171,9 +1163,7 @@ export class Vehicle extends Element {
      * @return returns true if component position was set successfully, false otherwise.
      */
     setComponentPosition(
-        theComponent: string,
-        posX: number,
-        posY: number,
+        vectorized: Vector3,
         posZ: number,
         base?: string,
     ): boolean;
@@ -1194,9 +1184,7 @@ export class Vehicle extends Element {
      * @return returns true if the component rotation was set successfully, false otherwise.
      */
     setComponentRotation(
-        theComponent: string,
-        rotX: number,
-        rotY: number,
+        vectorized: Vector3,
         rotZ: number,
         base?: string,
     ): boolean;
@@ -1294,7 +1282,7 @@ export class Vehicle extends Element {
      * @param x , y, z The new dummy position
      * @return returns true for success, false otherwise.
      */
-    setDummyPosition(dummy: string, x: number, y: number, z: number): boolean;
+    setDummyPosition(vectorized: Vector3, z: number): boolean;
 
     /**
      * This function turns a vehicles engine on or off. Note that the engine will always be
@@ -1365,9 +1353,7 @@ export class Vehicle extends Element {
      * @return returns true if everything went fine, false otherwise.
      */
     static setVehicleModelDummyPosition(
-        modelID: number,
-        dummy: string,
-        x: number,
+        vectorized: Vector3,
         y: number,
         z: number,
     ): boolean;
@@ -1381,9 +1367,7 @@ export class Vehicle extends Element {
      * @return returns true if everything went fine, false otherwise.
      */
     static setModelExhaustFumesPosition(
-        modelID: number,
-        posX: number,
-        posY: number,
+        vectorized: Vector3,
         posZ: number,
     ): boolean;
 
@@ -1506,7 +1490,7 @@ export class Vehicle extends Element {
      * @return returns a true if a valid vehicle element and valid positions were passed, false
      * otherwise.
      */
-    setTurretPosition(positionX: number, positionY: number): boolean;
+    setTurretPosition(vectorized: Vector3): boolean;
 
     /**
      * This function sets the variant of a specified vehicle. In GTA SA some vehicles are

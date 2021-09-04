@@ -286,9 +286,7 @@ export class Player extends Ped {
      * This function gets the position of the camera and the position of the point it is facing.
      * @see https://wiki.multitheftauto.com/wiki/GetCameraMatrix
      */
-    getCameraMatrix(): LuaMultiReturn<
-        [number, number, number, number, number, number, number, number]
-    >;
+    getCameraMatrix(): Matrix;
 
     /**
      * This function returns an element that corresponds to the current target of the specified
@@ -323,16 +321,7 @@ export class Player extends Ped {
      * @param fov the field of view angle, 0.01 to 180. The higher this value is, the more you will be able
      * to see what is to your sides.
      */
-    setCameraMatrix(
-        positionX: number,
-        positionY: number,
-        positionZ: number,
-        lookAtX?: number,
-        lookAtY?: number,
-        lookAtZ?: number,
-        roll?: number,
-        fov?: number,
-    ): boolean;
+    setCameraMatrix(vectorized: Matrix, roll?: number, fov?: number): boolean;
 
     /**
      * This function allows you to set a players camera to follow other elements instead.

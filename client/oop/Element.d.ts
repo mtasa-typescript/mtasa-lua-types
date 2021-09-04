@@ -119,7 +119,7 @@ export class Element {
      * calculations such as calculating offsets. For further information, please refer to a
      * tutorial of matrices in computer graphics programming.
      */
-    matrix: LuaTable;
+    matrix: Matrix;
 
     /**
      * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
@@ -144,7 +144,7 @@ export class Element {
      * * Element/Blip|Blips
      * * Element/Radar area|Radar areas
      */
-    position: LuaMultiReturn<[number, number, number]>;
+    position: Vector3;
 
     /**
      * This function gets the radius of an element. Normally, sphere or circle-shaped elements
@@ -155,7 +155,7 @@ export class Element {
     /**
      * Retrieve the rotation of elements.
      */
-    rotation: LuaMultiReturn<[number, number, number]>;
+    rotation: Vector3;
 
     /**
      * This function is used to retrieve the type of an element.
@@ -512,7 +512,7 @@ export class Element {
      * using matrix.create method) containing a 4x4 matrix. returns false if the element is not
      * streamed in, and not a vehicle, ped or object.
      */
-    getMatrix(legacy?: boolean): LuaTable;
+    getMatrix(legacy?: boolean): Matrix;
 
     /**
      * Returns the model ID of a given element. This can be a player/ped skin, a pickup model,
@@ -547,7 +547,7 @@ export class Element {
      * @see https://wiki.multitheftauto.com/wiki/GetElementPosition
      * @return returns three floats indicating the position of the element, x, y and z respectively.
      */
-    getPosition(): LuaMultiReturn<[number, number, number]>;
+    getPosition(): Vector3;
 
     /**
      * This function gets the radius of an element. Normally, sphere or circle-shaped elements
@@ -583,7 +583,7 @@ export class Element {
      * (with the rotation order depending on the rotorder argument) if element exists and is a
      * valid element, false if its invalid.
      */
-    getRotation(rotOrder?: string): LuaMultiReturn<[number, number, number]>;
+    getRotation(rotOrder?: string): Vector3;
 
     /**
      * * This function checks if elements are in a box, not in a sphere.
@@ -960,7 +960,7 @@ export class Element {
      * @param theMatrix The matrix.
      * @return returns true if the matrix was set succesfully, false otherwise.
      */
-    setMatrix(theMatrix: LuaTable): boolean;
+    setMatrix(vectorized: Matrix): boolean;
 
     /**
      * Sets the model of a given element. This allows you to change the model of a player (or
@@ -992,7 +992,7 @@ export class Element {
      * preserves the current animation.
      * @return returns true if the function was successful, false otherwise.
      */
-    setPosition(x: number, y: number, z: number, warp?: boolean): boolean;
+    setPosition(vectorized: Vector3, warp?: boolean): boolean;
 
     /**
      * Sets the rotation of elements according to the world (does not work with players that are
@@ -1023,9 +1023,7 @@ export class Element {
      * @return returns true if the element rotation was successfully set and false otherwise.
      */
     setRotation(
-        rotX: number,
-        rotY: number,
-        rotZ: number,
+        vectorized: Vector3,
         rotOrder?: string,
         conformPedRotation?: boolean,
     ): boolean;

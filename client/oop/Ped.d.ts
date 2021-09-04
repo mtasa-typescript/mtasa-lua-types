@@ -256,7 +256,7 @@ export class Ped extends Element {
      * </div>
      * @return returns the x, y, z world position of the bone.
      */
-    getBonePosition(bone: number): LuaMultiReturn<[number, number, number]>;
+    getBonePosition(bone: number): Vector3;
 
     /**
      * This function gets the current camera rotation of a ped.
@@ -264,7 +264,7 @@ export class Ped extends Element {
      * @return returns the camera rotation of the ped in degrees if successful. returns false if an
      * invalid element was passed.
      */
-    getCameraRotation(): number;
+    getCameraRotation(): Vector3;
 
     /**
      * This function is used to get the current clothes texture and model of a certain type on a
@@ -638,7 +638,7 @@ export class Ped extends Element {
      * fixed (i.e. camera target is the local player).
      * @return returns true if the camera rotation was changed, false otherwise.
      */
-    setCameraRotation(cameraRotation: number): boolean;
+    setCameraRotation(vectorized: Vector3): boolean;
 
     /**
      * This function controls if a ped can fall of his bike by accident - namely by banging into

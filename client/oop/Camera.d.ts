@@ -78,9 +78,7 @@ export class Camera extends Element {
     /**
      * This function gets the position of the camera and the position of the point it is facing.
      */
-    static matrix: LuaMultiReturn<
-        [number, number, number, number, number, number, number, number]
-    >;
+    static matrix: Matrix;
 
     /**
      * This function allows you to get the active camera view modes. This indicates at what
@@ -148,9 +146,7 @@ export class Camera extends Element {
      * This function gets the position of the camera and the position of the point it is facing.
      * @see https://wiki.multitheftauto.com/wiki/GetCameraMatrix
      */
-    static getMatrix(): LuaMultiReturn<
-        [number, number, number, number, number, number, number, number]
-    >;
+    static getMatrix(): Matrix;
 
     /**
      * This function allows you to get the active camera view modes. This indicates at what
@@ -223,16 +219,7 @@ export class Camera extends Element {
      * @param fov the field of view angle, 0.01 to 180. The higher this value is, the more you will be able
      * to see what is to your sides.
      */
-    static setMatrix(
-        positionX: number,
-        positionY: number,
-        positionZ: number,
-        lookAtX?: number,
-        lookAtY?: number,
-        lookAtZ?: number,
-        roll?: number,
-        fov?: number,
-    ): boolean;
+    static setMatrix(vectorized: Matrix, roll?: number, fov?: number): boolean;
 
     /**
      * This function allows you to set the camera view modes. This indicates at what distance

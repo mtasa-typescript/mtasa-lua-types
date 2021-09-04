@@ -343,7 +343,7 @@ export class Vehicle extends Element {
      * @return returns a float that represents how along the track it is, false if there is problem with
      * train element.
      */
-    getTrainPosition(): number;
+    getTrainPosition(): Vector3;
 
     /**
      * Gets the speed at which a train is traveling on the rails.
@@ -605,14 +605,14 @@ export class Vehicle extends Element {
      * @return returns three float|floats indicating the respawn coordinates of the vehicle, x, y and z
      * respectively.
      */
-    getRespawnPosition(): LuaMultiReturn<[number, number, number]>;
+    getRespawnPosition(): Vector3;
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleRespawnRotation
      * @return returns three float|floats indicating the respawn rotation of the vehicle, x, y and z
      * respectively.
      */
-    getRespawnRotation(): LuaMultiReturn<[number, number, number]>;
+    getRespawnRotation(): Vector3;
 
     /**
      * This function get the parameters of a vehicles siren.
@@ -690,7 +690,7 @@ export class Vehicle extends Element {
      * these values are in radians. the function will return 0, 0 if the vehicle is not a
      * vehicle with a turret.
      */
-    getTurretPosition(): LuaMultiReturn<[number, number]>;
+    getTurretPosition(): Vector3;
 
     /**
      * This function retrieves the type of a vehicle (such as if it is a car or a boat).
@@ -844,7 +844,7 @@ export class Vehicle extends Element {
      * @param position the position along the track (0 - 18107 a complete way round)
      * @return returns true if the train position was set, false otherwise.
      */
-    setTrainPosition(position: number): boolean;
+    setTrainPosition(vectorized: Vector3): boolean;
 
     /**
      * Sets the on-track speed of a train.
@@ -1094,9 +1094,7 @@ export class Vehicle extends Element {
      * @return returns true if the vehicle was found and edited, false otherwise.
      */
     setRespawnPosition(
-        x: number,
-        y: number,
-        z: number,
+        vectorized: Vector3,
         rx?: number,
         ry?: number,
         rz?: number,
@@ -1110,7 +1108,7 @@ export class Vehicle extends Element {
      * @param rz : A float representing the rotation about the Z axis in degrees.
      * @return returns true if the vehicle respawn rotation was set successfully, false otherwise.
      */
-    setRespawnRotation(rx: number, ry: number, rz: number): boolean;
+    setRespawnRotation(vectorized: Vector3): boolean;
 
     /**
      * This function changes the properties of a vehicles siren point.
@@ -1166,7 +1164,7 @@ export class Vehicle extends Element {
      * @return returns a true if a valid vehicle element and valid positions were passed, false
      * otherwise.
      */
-    setTurretPosition(positionX: number, positionY: number): boolean;
+    setTurretPosition(vectorized: Vector3): boolean;
 
     /**
      * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
