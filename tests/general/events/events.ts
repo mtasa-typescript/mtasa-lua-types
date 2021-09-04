@@ -1,5 +1,5 @@
-import { mtasa } from 'types/mtasa/server';
-import { EventNames } from 'types/mtasa/server/event/all_event_names';
+import { mtasa } from 'server';
+import { EventNames } from 'server/event/all_event_names';
 
 mtasa.addEventHandler<mtasa.Event.OnColShapeHit>(
     EventNames.OnColShapeHit,

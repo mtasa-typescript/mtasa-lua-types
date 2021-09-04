@@ -1,5 +1,5 @@
-import { mtasa } from 'types/mtasa/client';
-import { triggerServerEvent } from '../../../../types/mtasa/client/function/event';
+import { mtasa } from 'client';
+import { triggerServerEvent } from 'client/function/event';
 import {
     CustomEventNames,
     OnClientPlayerFinishResult,

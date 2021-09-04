@@ -1,4 +1,4 @@
-import { mtasa } from 'types/mtasa/server';
+import { mtasa } from 'server';
 import {
     CustomEventNames,
     OnClientPlayerFinishResult,

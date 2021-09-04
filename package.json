@@ -32,7 +32,9 @@
     "types": "./index.d.ts",
     "license": "MIT",
     "files": [
-        "types/**/*",
+        "server/**/*",
+        "client/**/*",
+        "shared/**/*",
         "index.d.ts"
     ],
     "dependencies": {

@@ -1,5 +1,5 @@
-import { mtasa as server } from '../../types/mtasa/server';
-import { mtasa as client } from '../../types/mtasa/client';
+import { mtasa as server } from 'server';
+import { mtasa as client } from 'client';
 
 // Workaround to get some arguments
 const clientElement = 0 as unknown as client.Element;

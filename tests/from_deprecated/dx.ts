@@ -1,4 +1,4 @@
-import { mtasa } from 'types/mtasa/client';
+import { mtasa } from 'client';
 
 const color: number = mtasa.tocolor(13, 14, 15);
 const drawImage: boolean = mtasa.dxDrawImage(0, 0, 128, 326, '');

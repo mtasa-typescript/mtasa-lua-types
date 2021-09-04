@@ -3,8 +3,8 @@
  * With https://github.com/Subtixx/mtasa-typescript
  */
 
-import { mtasa as server } from 'types/mtasa/server';
-import { mtasa as client } from 'types/mtasa/client';
+import { mtasa as server } from 'server';
+import { mtasa as client } from 'client';
 
 const exportsClient: LuaTable = client.exports;
 const exportsServer: LuaTable = server.exports;

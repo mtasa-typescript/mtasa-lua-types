@@ -1,5 +1,5 @@
-import { mtasa as server } from '../../types/mtasa/server';
-import { mtasa as client } from '../../types/mtasa/client';
+import { mtasa as server } from 'server';
+import { mtasa as client } from 'client';
 
 const serverTeam = 0 as unknown as server.Team;
 const clientTeam = 0 as unknown as client.Team;
