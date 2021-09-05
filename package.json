@@ -1,6 +1,6 @@
 {
     "name": "mtasa-lua-types",
-    "version": "0.6.4",
+    "version": "1.0.0-beta.0",
     "description": "TypeScript types definitions for MTASA Lua",
     "homepage": "https://github.com/mtasa-typescript/mtasa-lua-types",
     "bugs": "https://github.com/mtasa-typescript/mtasa-lua-types/issues",

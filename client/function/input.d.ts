@@ -49,6 +49,7 @@ import {
     GenericEventHandler,
     CommandHandler,
     BindKeyCallback,
+    BindKeyCallbackVarArgs,
     ControlName,
     KeyName,
     KeyState,
@@ -103,13 +104,12 @@ export declare function addCommandHandler(
  * @noSelf
  */
 export declare function bindKey<
-    CallbackType extends BindKeyCallback = BindKeyCallback,
-    AdditionalArgs extends any[] = [],
+    CallbackType extends BindKeyCallback<any[]> = BindKeyCallback,
 >(
     key: ControlName | KeyName,
     keyState: KeyState,
     handlerFunction: CallbackType,
-    ...args: AdditionalArgs
+    ...args: BindKeyCallbackVarArgs<CallbackType>
 ): boolean;
 
 /**

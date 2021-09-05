@@ -29,10 +29,14 @@ export { Water } from './oop/Water';
 export { Timer } from './oop/Timer';
 export { XML } from './oop/XML';
 
-export { FetchRemoteCallback } from 'shared/utils/callback';
-export { GenericEventHandler } from 'shared/utils/event';
+export { FetchRemoteCallback } from '../shared/utils/callback';
+export { GenericEventHandler } from '../shared/utils/event';
 
-export { CommandHandler, BindKeyCallback } from './utils/callback';
+export {
+    CommandHandler,
+    BindKeyCallback,
+    BindKeyCallbackVarArgs,
+} from './utils/callback';
 
 export {
     HandleFunction,
@@ -41,6 +45,6 @@ export {
     Vector3,
     Vector4,
     Matrix,
-} from 'shared/structure';
+} from '../shared/structure';
 
-export { ControlName, KeyName, KeyState } from 'shared/utils/misc';
+export { ControlName, KeyName, KeyState } from '../shared/utils/misc';

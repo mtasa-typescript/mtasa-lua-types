@@ -19,6 +19,9 @@ export type CommandHandler = (
     ...args: string[]
 ) => void;
 
+export type BindKeyCallbackVarArgs<F extends BindKeyCallback<any[]>> =
+    F extends (key: any, keyState: any, ...rest: infer R) => any ? R : never;
+
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/BindKey Wiki, bindKey}
  * @param key The key that was pressed

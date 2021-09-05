@@ -32,6 +32,7 @@ import {
     GenericEventHandler,
     CommandHandler,
     BindKeyCallback,
+    BindKeyCallbackVarArgs,
     ControlName,
     KeyName,
     KeyState,

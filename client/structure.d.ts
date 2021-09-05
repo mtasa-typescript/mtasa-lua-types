@@ -44,7 +44,11 @@ export { EngineCOL } from './oop/EngineCOL';
 export { FetchRemoteCallback } from '../shared/utils/callback';
 export { GenericEventHandler } from '../shared/utils/event';
 
-export { CommandHandler, BindKeyCallback } from './utils/callback';
+export {
+    CommandHandler,
+    BindKeyCallback,
+    BindKeyCallbackVarArgs,
+} from './utils/callback';
 
 export {
     HandleFunction,
