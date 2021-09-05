@@ -20,6 +20,79 @@ you can add them into your project manually
 npm install --save-dev mtasa-lua-types
 ```
 
+# 🌟 Features
+
+Examples of type definition features
+
+## ▶ Global Functions
+
+```ts
+import { mtasa } from 'mtasa-lua-types/client'
+
+mtasa.outputChatBox(
+    `Your health: ${mtasa.getElementHealth(
+        mtasa.localPlayer
+    )}`
+)
+```
+
+![](.docs/global_functions.gif)
+
+## ▶ OOP
+
+```ts
+import { mtasa } from 'mtasa-lua-types/server'
+
+const v = new mtasa.Vehicle(411, 10, 11, 12)
+mtasa.Player
+    .getRandom()
+    .warpIntoVehicle(v, 1)
+```
+
+![](.docs/oop.gif)
+
+## ▶ Defined callbacks
+
+```ts
+import { mtasa } from 'mtasa-lua-types/server'
+
+const p = mtasa.Player.getRandom()
+
+mtasa.bindKey(
+    p,
+    '8',
+    'down',
+    function (player, key, state) {
+
+    }
+)
+```
+
+![](.docs/callback.gif)
+
+## ▶ Generics
+
+```ts
+import { mtasa } from 'mtasa-lua-types/server'
+import { BindKeyCallback } from 'mtasa-lua-types/server/structure'
+
+const p = mtasa.Player.getRandom()
+type CallbackFunctionType =
+    BindKeyCallback<[number, string]>;
+
+mtasa.bindKey<CallbackFunctionType>(
+    p,
+    '8',
+    'down',
+    function (player, key, state, num, str) {
+        mtasa.iprint(player, key, state, num, str)
+    },
+    5, 'string'
+)
+```
+
+![](.docs/generic.gif)
+
 # 🛠 How to contribute
 
 If you found incorrect definitions or would like to suggest an idea, you can
