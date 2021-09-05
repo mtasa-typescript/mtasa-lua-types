@@ -348,7 +348,7 @@ export class Ped extends Element {
      * * vehicles
      * * objects
      */
-    getTarget(): Element;
+    getTarget(): Vector3;
 
     /**
      * This function allows retrieval of the position where a peds target range ends, when he is
@@ -357,7 +357,7 @@ export class Ped extends Element {
      * @return returns three floats, x,y,z, representing the position where the peds target ends
      * according to his range, or false if it was unsuccessful.
      */
-    getTargetEnd(): LuaMultiReturn<[number, number, number]>;
+    getTargetEnd(): Vector3;
 
     /**
      * This function is used to get any simple or complex task of a certain type for a ped.

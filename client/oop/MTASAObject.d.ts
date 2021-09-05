@@ -137,7 +137,7 @@ export class MTASAObject {
      * @return * three float values indicating the scale of the object on the x, y, and z axis if
      * successful, false otherwise.
      */
-    getScale(): LuaMultiReturn<[number, number, number]>;
+    getScale(): Vector3;
 
     /**
      * This function checks if an object / model ID is breakable.
@@ -238,7 +238,7 @@ export class MTASAObject {
      * @return * true if the scale was set properly.
      * * false otherwise.
      */
-    setScale(scale: number, scaleY?: number, scaleZ?: number): boolean;
+    setScale(vectorized: Vector3): boolean;
 
     /**
      * This will allow you to stop an object that is currently moving.

@@ -75,7 +75,7 @@ export class Marker extends Element {
      * returns the position the arrow is pointing to, for ring markers it returns the position
      * the ring is facing. You can set this target with setMarkerTarget.
      */
-    target: LuaMultiReturn<[number, number, number]>;
+    target: Vector3;
 
     /**
      * This function returns a markers type.

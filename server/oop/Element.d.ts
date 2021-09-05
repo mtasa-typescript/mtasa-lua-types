@@ -51,7 +51,7 @@ export class Element {
 
     /**
      */
-    angularVelocity: LuaMultiReturn<[number, number, number]>;
+    angularVelocity: Vector3;
 
     /**
      * This function indicates if a specific element is set to have collisions disabled. An
@@ -144,7 +144,7 @@ export class Element {
      * Y, and Z axis respectively. This means that velocity values can be positive and negative
      * for each axis.
      */
-    velocity: LuaMultiReturn<[number, number, number]>;
+    velocity: Vector3;
 
     /**
      * This function return the low LOD element that an element is associated with.
@@ -337,7 +337,7 @@ export class Element {
      * @see https://wiki.multitheftauto.com/wiki/GetElementAngularVelocity
      * @return returns three floats describing the x, y and z rotation
      */
-    getAngularVelocity(): LuaMultiReturn<[number, number, number]>;
+    getAngularVelocity(): Vector3;
 
     /**
      * This function returns the offsets of an element that has been attached to another element
@@ -627,7 +627,7 @@ export class Element {
      * secondhttp://forum.mtasa.com/viewtopic.php?f=91&t=31225. a gta unit is equal to one
      * metrehttp://gta.wikia.com/unit#gta3.2c_gtavc_.26_gtasa.
      */
-    getVelocity(): LuaMultiReturn<[number, number, number]>;
+    getVelocity(): Vector3;
 
     /**
      * This function allows you to retrieve the zone name of an element (eg. Verdant Bluffs or
@@ -783,7 +783,7 @@ export class Element {
      * @param rz velocity around the Z axis
      * @return returns true if it was succesful, false otherwise.
      */
-    setAngularVelocity(rx: number, ry: number, rz: number): boolean;
+    setAngularVelocity(vectorized: Vector3): boolean;
 
     /**
      * This function updates the offsets of an element that has been attached to another element
@@ -1038,7 +1038,7 @@ export class Element {
      * @return returns true if the speed was set successfully, false if a bad element was specified or
      * other bad arguments.
      */
-    setVelocity(speedX: number, speedY: number, speedZ: number): boolean;
+    setVelocity(vectorized: Vector3): boolean;
 
     /**
      * Does the order of setElementVisibleTo calls really not matter? visibility|Visibility

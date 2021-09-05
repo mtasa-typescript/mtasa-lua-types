@@ -113,7 +113,7 @@ export class Searchlight extends Element {
      * which are the three coordinates of searchlights end position. if not, it will return
      * false plus an error message.
      */
-    getEndPosition(): LuaMultiReturn<[number, number, number]>;
+    getEndPosition(): Vector3;
 
     /**
      * This function gets the end radius of a Element/Searchlight|searchlight element.
@@ -130,7 +130,7 @@ export class Searchlight extends Element {
      * which are the three coordinates of searchlights start position. if not, it will return
      * false plus an error message.
      */
-    getStartPosition(): LuaMultiReturn<[number, number, number]>;
+    getStartPosition(): Vector3;
 
     /**
      * This function gets the start radius of a Element/Searchlight|searchlight element.
@@ -148,7 +148,7 @@ export class Searchlight extends Element {
      * @return if every argument is correct, this function returns true. if not, it will return false
      * plus an error message.
      */
-    setEndPosition(endX: number, endY: number, endZ: number): boolean;
+    setEndPosition(vectorized: Vector3): boolean;
 
     /**
      * This function sets the end radius of a Element/Searchlight|searchlight element.
@@ -169,7 +169,7 @@ export class Searchlight extends Element {
      * @return if every argument is correct, this function returns true. if not, it will return false
      * plus an error message.
      */
-    setStartPosition(startX: number, startY: number, startZ: number): boolean;
+    setStartPosition(vectorized: Vector3): boolean;
 
     /**
      * This function sets the start radius of a Element/Searchlight|searchlight element.

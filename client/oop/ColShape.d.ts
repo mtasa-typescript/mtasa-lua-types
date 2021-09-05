@@ -253,7 +253,7 @@ export class ColShape extends Element {
      * *rectangle: width, height.
      * *tube: height.
      */
-    getSize(): LuaMultiReturn<[number, number, number]>;
+    getSize(): number | Vector2 | Vector3;
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/GetColShapeType
@@ -320,7 +320,7 @@ export class ColShape extends Element {
      * @param height The collision tubess height.
      * @return returns true if the size was changed, false if invalid arguments were passed.
      */
-    setSize(width: number, depth: number, height: number): boolean;
+    setSize(vectorized: number | Vector2 | Vector3): boolean;
 
     /**
      * This function is used to retrieve a list of all elements in a colshape, of the specified

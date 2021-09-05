@@ -248,7 +248,7 @@ export class Ped extends Element {
      * * vehicles
      * * objects
      */
-    getTarget(): Element;
+    getTarget(): Vector3;
 
     /**
      * This function returns an integer that contains the total ammo in a specified peds weapon.
