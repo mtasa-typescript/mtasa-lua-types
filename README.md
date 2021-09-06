@@ -105,7 +105,7 @@ If you would like to create a merge request, see the content below.
 If you would like to add or edit function. You should not edit code in this repository.
 A large part of function definitions are being automatically generated via mtasa-wiki-parser.
 
-See the mtasa-wiki-parser ["How to contribute" documentation](https://github.com/mtasa-typescript/mtasa-wiki-parser#connect-dump-repository)
+See the mtasa-wiki-parser ["How to contribute" documentation](https://github.com/mtasa-typescript/mtasa-wiki-parser/tree/develop#-how-to-contribute)
 for more details.
 
 ### ❗ `utf8` functions
