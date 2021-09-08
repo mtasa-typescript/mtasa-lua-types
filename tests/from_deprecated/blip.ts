@@ -3,7 +3,7 @@
  * With https://github.com/Subtixx/mtasa-typescript
  */
 
-import { mtasa } from 'types/mtasa/server';
+import { mtasa } from 'server';
 
 let blip: mtasa.Blip = mtasa.createBlip(
     10,

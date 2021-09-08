@@ -1,5 +1,5 @@
-import { mtasa as server } from '../../types/mtasa/server';
-import { mtasa as client } from '../../types/mtasa/client';
+import { mtasa as server } from 'server';
+import { mtasa as client } from 'client';
 
 const serverVehicle = 0 as unknown as server.Vehicle;
 const clientVehicle = 0 as unknown as client.Vehicle;

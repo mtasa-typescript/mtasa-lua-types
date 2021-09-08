@@ -1,0 +1,49 @@
+import { Player } from '../structure';
+import { ControlName, KeyName, KeyState } from '../../shared/utils/misc';
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/AddCommandHandler Wiki, addCommandHandler}
+ * @param playerSource: The player who triggered the command or the server console.
+ * If not triggered by a player (e.g. by admin) or server console,
+ * this will be false.
+ * @param commandName The name of the command triggered. This is useful if multiple
+ * commands go through one function.
+ * @param arguments Each word after command name in the original
+ * command is passed here in a seperate variable. If there is no value
+ * for an argument, its variable will contain nil. You can deal with a
+ * variable number of arguments using the vararg expression, as shown in
+ * Server Example 2 below.
+ */
+export type CommandHandler = (
+    this: void,
+    playerSource: Player,
+    commandName: string,
+    ...args: string[]
+) => void;
+
+export type BindKeyCallbackVarArgs<F extends BindKeyCallback<any[]>> =
+    F extends (
+        keyPresser: any,
+        key: any,
+        keyState: any,
+        ...rest: infer R
+    ) => any
+        ? R
+        : never;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/BindKey Wiki, bindKey}
+ * @param keyPresser The player who pressed the key
+ * @param key The key that was pressed
+ * @param keyState The state of the key that was pressed,
+ * down if it was pressed, up if it was released.
+ * @param arguments The optional arguments you specified
+ * when calling bindKey (see below).
+ */
+export type BindKeyCallback<AdditionalArgsType extends any[] = []> = (
+    this: void,
+    keyPresser: Player,
+    key: KeyName | ControlName,
+    keyState: KeyState,
+    ...args: AdditionalArgsType
+) => void;

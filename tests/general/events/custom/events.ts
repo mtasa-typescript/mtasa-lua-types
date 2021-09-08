@@ -1,4 +1,4 @@
-import { GenericEventHandler } from 'types/mtasa/shared/utils/event';
+import { GenericEventHandler } from 'shared/utils/event';
 
 export const enum CustomEventNames {
     OnPlayerStart = 'CustomEvent/OnPlayerStart',

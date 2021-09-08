@@ -20,7 +20,3 @@ rules:
 
     # Sometimes there are static new methods
     '@typescript-eslint/no-misused-new': off
-
-ignorePatterns:
-    - types/mtasa/deprecated
-    - __local.ts

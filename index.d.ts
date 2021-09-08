@@ -8,4 +8,9 @@
  * There is a workaround to forceful index packages
  */
 
-import {} from './types/mtasa';
+import {} from './client';
+import {} from './server';
+
+import {} from './shared/utf8';
+import {} from './shared/vector';
+import {} from './shared/structure';

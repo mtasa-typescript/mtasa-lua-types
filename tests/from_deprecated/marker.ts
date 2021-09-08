@@ -1,4 +1,4 @@
-import { mtasa as server } from '../../types/mtasa/server';
+import { mtasa as server } from 'server';
 
 // Workaround to get some arguments
 const serverElement = 0 as unknown as server.Element;

@@ -1,6 +1,5 @@
-import { mtasa as client } from '../../types/mtasa/client';
-import { mtasa as server } from '../../types/mtasa/server';
-import { Pickup } from '../../types/mtasa/deprecated/element';
+import { mtasa as client } from 'client';
+import { mtasa as server } from 'server';
 
 // Workaround to get some arguments
 const clientElement = 0 as unknown as client.Element;
@@ -10,9 +9,17 @@ const clientPickup = 0 as unknown as client.Pickup;
 const serverElement = 0 as unknown as server.Element;
 const serverPickup = 0 as unknown as server.Pickup;
 
-const createPickup1: Pickup = client.createPickup(5, 6, 7, 45, 60, 100, 300);
+const createPickup1: client.Pickup = client.createPickup(
+    5,
+    6,
+    7,
+    45,
+    60,
+    100,
+    300,
+);
 
-const createPickup2: Pickup = client.createPickup(5, 6, 7, 45, 6);
+const createPickup2: client.Pickup = client.createPickup(5, 6, 7, 45, 6);
 
 const getPickupAmmo: number = client.getPickupAmmo(clientPickup);
 
