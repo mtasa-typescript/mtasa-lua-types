@@ -65,8 +65,8 @@ import {
  * will be needed to make a fire visible to some players.
  * @see https://wiki.multitheftauto.com/wiki/CreateFire
  * @param x, y, z the coordinates when the initial patch of fire will be created.
- * @param size a float value indicating the size of the initial patch of fire. It will also make the
- * fire to stay alive more or less time.
+ * @param size a float value indicating the size of the initial patch of fire, this value also affects
+ * the duration of how long the fire remains.
  * @return returns true if successful, false if bad arguments were passed or the limit of active
  * fires was reached. there can be a maximum of 60 active fires.
  * @noSelf

@@ -90,6 +90,7 @@ export * from './oop/Water';
 export * from './oop/Weapon';
 export * from './oop/XML';
 export * from './oop/XmlNode';
+export * from './oop/guiradiobutton';
 
 export { EventNames } from './event/all_event_names';
 import * as Event from './event';
