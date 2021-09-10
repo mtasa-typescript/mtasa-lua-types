@@ -64,6 +64,7 @@ export * from './oop/gui/GuiFont';
 export * from './oop/gui/GuiGridList';
 export * from './oop/gui/GuiLabel';
 export * from './oop/gui/GuiMemo';
+export * from './oop/gui/GuiRadioButton';
 export * from './oop/gui/GuiStaticImage';
 export * from './oop/gui/GuiTab';
 export * from './oop/gui/GuiTabPanel';
@@ -90,7 +91,6 @@ export * from './oop/Water';
 export * from './oop/Weapon';
 export * from './oop/XML';
 export * from './oop/XmlNode';
-export * from './oop/guiradiobutton';
 
 export { EventNames } from './event/all_event_names';
 import * as Event from './event';
