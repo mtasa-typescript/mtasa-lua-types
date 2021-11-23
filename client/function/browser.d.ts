@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -271,6 +272,14 @@ export declare function isBrowserFocused(webBrowser: Browser): boolean;
  * @noSelf
  */
 export declare function isBrowserLoading(webBrowser: Browser): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/IsBrowserRenderingPaused
+ * @param webBrowser The browser element to get the rendering state of.
+ * @return returns true if the browser rendering is paused, false otherwise.
+ * @noSelf
+ */
+export declare function isBrowserRenderingPaused(webBrowser: Browser): boolean;
 
 /**
  * This function loads the specified URL.

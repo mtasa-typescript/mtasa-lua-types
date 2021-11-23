@@ -23,6 +23,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -76,7 +77,6 @@ export class Browser extends Element {
     loading: boolean;
 
     /**
-     * This function sets the rendering state of a browser.
      */
     renderingPaused: boolean;
 
@@ -232,6 +232,12 @@ export class Browser extends Element {
      * arguments were passed.
      */
     isLoading(): boolean;
+
+    /**
+     * @see https://wiki.multitheftauto.com/wiki/IsBrowserRenderingPaused
+     * @return returns true if the browser rendering is paused, false otherwise.
+     */
+    isRenderingPaused(): boolean;
 
     /**
      * This function loads the specified URL.

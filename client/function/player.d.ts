@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -113,6 +114,14 @@ export declare function getPlayerMapBoundingBox(): LuaMultiReturn<
 >;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/GetPlayerMapOpacity
+ * @return returns an integer with a value from 0 to 255, where 0 is fully transparent and 255 is
+ * fully opaque.
+ * @noSelf
+ */
+export declare function getPlayerMapOpacity(): number;
+
+/**
  * Returns the amount of money a player currently has.
  * @see https://wiki.multitheftauto.com/wiki/GetPlayerMoney
  * @return returns an integer with the amount of money the local player has.
@@ -154,7 +163,7 @@ export declare function getPlayerNametagText(thePlayer: Player): string;
 /**
  * This function returns the ping of a specified player. The ping is the number of
  * milliseconds that data takes to travel from the players client to the server or vice
- * versa.
+ * versa. If a player is using a VPN their ping will still be returned correctly.
  * @see https://wiki.multitheftauto.com/wiki/GetPlayerPing
  * @param thePlayer : The player whose ping you want to determine.
  * @return returns the ping as an int, or false if the player is invalid.

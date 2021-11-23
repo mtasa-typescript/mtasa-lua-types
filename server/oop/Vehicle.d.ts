@@ -66,11 +66,6 @@ export class Vehicle extends Element {
     trainSpeed: number;
 
     /**
-     * Gets the track of a train
-     */
-    track: number;
-
-    /**
      * This function returns a table of all the compatible upgrades (or all for a specified
      * slot, optionally) for a specified vehicle.
      */
@@ -352,14 +347,6 @@ export class Vehicle extends Element {
      * @return returns the trains speed if successful, false otherwise.
      */
     getSpeed(): number;
-
-    /**
-     * Gets the track of a train
-     * @see https://wiki.multitheftauto.com/wiki/GetTrainTrack
-     * @return returns an integer (whole number) that represents the train track, false if there is
-     * problem with train element.
-     */
-    getTrack(): number;
 
     /**
      * This function returns the color of the specified vehicle. A vehicle can have up to four
@@ -725,15 +712,12 @@ export class Vehicle extends Element {
     getUpgrades(): LuaTable;
 
     /**
-     * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
-     * different for example the labelling on trucks or the contents of a pick-up truck and the
-     * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+     * This function gets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+     * are different; for example the labelling on trucks or the contents of a pick-up truck and
+     * the varying types of a motor bike. For the default variant list see: Vehicle variants.
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleVariant
-     * @return on success:
-     * * int: an integer for the first vehicle variant see vehicle variants
-     * * int: an integer for the second vehicle variant see vehicle variants
-     * on failure:
-     * * bool: false because the specified vehicle didnt exist
+     * @return returns 2 int containing the vehicle variants, false otherwise (the specified vehicle
+     * doesnt exist).
      */
     getVariant(): LuaMultiReturn<[number, number]>;
 
@@ -855,14 +839,6 @@ export class Vehicle extends Element {
      * @return returns true if successful, false otherwise.
      */
     setSpeed(speed: number): boolean;
-
-    /**
-     * Sets the track of a train
-     * @see https://wiki.multitheftauto.com/wiki/SetTrainTrack
-     * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
-     * @return returns true if the track was set to the train, false otherwise.
-     */
-    setTrack(track: number): boolean;
 
     /**
      * This function will set the color of a vehicle using either a RGB format, or the Vehicle
@@ -1168,17 +1144,14 @@ export class Vehicle extends Element {
     setTurretPosition(vectorized: Vector3): boolean;
 
     /**
-     * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
-     * different for example the labelling on trucks or the contents of a pick-up truck and the
-     * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+     * This function sets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+     * are different; for example the labelling on trucks or the contents of a pick-up truck and
+     * the varying types of a motor bike. For the default variant list see: Vehicle variants.
      * @see https://wiki.multitheftauto.com/wiki/SetVehicleVariant
-     * @param variant1 : An integer for the first variant see Vehicle variants
-     * @param variant2 : An integer for the second variant see Vehicle variants
-     * @return on success:
-     * * bool: returns true as the vehicle variants were successfully set.
-     * on failure:
-     * * bool: false because the specified vehicle didnt exist or specified variants were
-     * invalid.
+     * @param variant1 : An integer for the first variant. See Vehicle variants.
+     * @param variant2 : An integer for the second variant. See Vehicle variants.
+     * @return returns true if the vehicle variants were successfully set, false otherwise (the
+     * specified vehicle doesnt exist or the specified variants are invalid).
      */
     setVariant(variant1?: number, variant2?: number): boolean;
 

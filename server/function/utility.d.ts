@@ -289,7 +289,6 @@ export declare function debugSleep(sleep: number): boolean;
  * @param options A table with options and other necessary data for the algorithm, as detailed below.
  * @param callback providing a callback will run this function asynchronously, the arguments to the callback
  * are the same as the returned values below.
- * |20394}}
  * @return returns the decoded string if successful, false otherwise. if a callback was provided,
  * the decoded string is argument to the callback.
  * @noSelf
@@ -302,7 +301,8 @@ export declare function decodeString(
 ): string;
 
 /**
- * This function will take a reference and returns its Lua element.
+ * This function will take a reference obtained by the ref function and returns its Lua
+ * element.
  * @see https://wiki.multitheftauto.com/wiki/Deref
  * @param reference The valid reference, which you want to dereference
  * @return returns mixed if the reference were valid. returns false if the reference were invalid.
@@ -319,7 +319,6 @@ export declare function deref(reference: number): any;
  * @param options A table with options and other necessary data for the algorithm, as detailed below.
  * @param callback providing a callback will run this function asynchronously, the arguments to the callback
  * are the same as the returned values below.
- * |20394}}
  * @return * tea
  * ** encodedstring: the encoded string if successful, false otherwise. if a callback was
  * provided, true is returned immediately, and the encoded string is passed as an argument
@@ -380,15 +379,6 @@ export declare function fromJSON(json: string): unknown;
 export declare function getColorFromString(
     theColor: string,
 ): LuaMultiReturn<[number, number, number, number]>;
-
-/**
- * This function is used to get the development mode of the client. For more information see
- * setDevelopmentMode
- * @see https://wiki.multitheftauto.com/wiki/GetDevelopmentMode
- * @return returns true if the development mode is on, false if off.
- * @noSelf
- */
-export declare function getDevelopmentMode(): boolean;
 
 /**
  * This function returns the distance between two 2 dimensional points using the pythagorean
@@ -950,27 +940,6 @@ export declare function removeDebugHook(
  * @noSelf
  */
 export declare function resetTimer(theTimer: Timer): boolean;
-
-/**
- * This function is used to set the development mode. Setting development mode allows access
- * to special commands which can assist with script debugging.
- * Client-side development mode commands:
- * * Client_Commands#showcol|showcol: Enables colshapes to be viewed as a wireframe object.
- * * Client_Commands#showsound|showsound: Enables world sound ids to be printed in the debug
- * output window.
- * Shared development mode functions:
- * * debugSleep: Sets the freeze time for the client/server.
- * @see https://wiki.multitheftauto.com/wiki/SetDevelopmentMode
- * @param enable : A boolean to indicate whether development mode is on (true) or off (false)
- * @param enableWeb : A boolean to indicate whether browser debug messages will be filtered (false) or not
- * (true)
- * @return returns true if the mode was set correctly, false otherwise.
- * @noSelf
- */
-export declare function setDevelopmentMode(
-    enable: boolean,
-    enableWeb?: boolean,
-): boolean;
 
 /**
  * This function sets the maximum http://en.wikipedia.org/wiki/Frame_rate FPS (Frames per

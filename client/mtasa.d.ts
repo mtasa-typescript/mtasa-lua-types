@@ -31,6 +31,7 @@ export * from './function/radar';
 export * from './function/resource';
 export * from './function/searchlight';
 export * from './function/server';
+export * from './function/svg';
 export * from './function/team';
 export * from './function/utility';
 export * from './function/vehicle';

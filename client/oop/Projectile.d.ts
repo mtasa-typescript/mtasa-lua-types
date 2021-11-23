@@ -23,6 +23,7 @@ import {
     GuiScrollBar,
     GuiWindow,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,

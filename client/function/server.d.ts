@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -60,6 +61,13 @@ import {
 } from '../structure';
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/IsTransferBoxAlwaysVisible
+ * @return returns a boolean, whether the transfer box should be always visible or not.
+ * @noSelf
+ */
+export declare function isTransferBoxAlwaysVisible(): boolean;
+
+/**
  * @see https://wiki.multitheftauto.com/wiki/IsTransferBoxVisible
  * @return on server this returns a boolean, whether the transfer box should be visible during
  * downloads or not.
@@ -71,7 +79,7 @@ export declare function isTransferBoxVisible(): boolean;
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible
- * @param visible The new visibility state.
+ * @param visible The new transfer box visibility state.
  * @return returns true if the visibility was set successfully, false otherwise.
  * @noSelf
  */

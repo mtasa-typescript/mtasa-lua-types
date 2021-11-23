@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -123,7 +124,7 @@ export class MTASAObject {
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/GetObjectProperty
-     * @param property : the property you want to get the value of:
+     * @param property the property you want to get the value of:
      * <div style="padding-left:20px">
      * * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
      * </div>
@@ -151,8 +152,7 @@ export class MTASAObject {
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/IsObjectMoving
-     * @return * true if the object is moving.
-     * * false if the object is not moving.
+     * @return * returns true if the object is moving, false otherwise.
      */
     isMoving(): boolean;
 
@@ -223,8 +223,8 @@ export class MTASAObject {
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/SetObjectProperty
-     * @param property : the property you want to set the value of:
-     * @param value : the new value for the property.
+     * @param property the property you want to set the value of:
+     * @param value the new value for the property.
      * @return returns true if the property was set successfully, false otherwise.
      */
     setProperty(property: string, value: unknown): boolean;

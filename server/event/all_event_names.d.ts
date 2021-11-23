@@ -61,6 +61,7 @@ export const enum EventNames {
     OnPlayerWasted = 'onPlayerWasted',
     OnPlayerWeaponFire = 'onPlayerWeaponFire',
     OnPlayerWeaponSwitch = 'onPlayerWeaponSwitch',
+    OnPlayerResourceStart = 'onPlayerResourceStart',
     OnResourceLoadStateChange = 'onResourceLoadStateChange',
     OnResourcePreStart = 'onResourcePreStart',
     OnResourceStart = 'onResourceStart',

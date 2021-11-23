@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -72,6 +73,13 @@ export declare function clearChatBox(): boolean;
  * @noSelf
  */
 export declare function clearDebugBox(): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/IsChatInputBlocked
+ * @return returns true if the chat input is blocked, false otherwise.
+ * @noSelf
+ */
+export declare function isChatInputBlocked(): boolean;
 
 /**
  * This function checks if players chat is visible.

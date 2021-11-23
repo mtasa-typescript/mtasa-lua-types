@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -298,13 +299,10 @@ export declare function getPedsLODDistance(): number;
 export declare function getRainLevel(): number;
 
 /**
- * This function gets the Z level of the lowest roof above a point.
- * It is required that the point is near enough to the local player so that its within the
- * area where collision data is loaded.}}
  * @see https://wiki.multitheftauto.com/wiki/GetRoofPosition
- * @param x : A floating point number representing the X world coordinate of the point.
- * @param y : A floating point number representing the Y world coordinate of the point.
- * @param z : A floating point number representing the Z world coordinate of the point.
+ * @param x : A float representing the X world coordinate of the point.
+ * @param y : A float representing the Y world coordinate of the point.
+ * @param z : A float representing the Z world coordinate of the point.
  * @return returns a float with the lowest roof-level z coord if parameters are valid, false if the
  * point you tried to test is outside the loaded world map.
  * @noSelf
@@ -702,7 +700,7 @@ export declare function resetAmbientSounds(): boolean;
 /**
  * Resets the motion blur level on the clients screen to default value (36).
  * @see https://wiki.multitheftauto.com/wiki/ResetBlurLevel
- * @return returns true if the blur level was reset successfully. returns false otherwise.
+ * @return returns true if the blur level was reset successfully, false otherwise.
  * @noSelf
  */
 export declare function resetBlurLevel(): boolean;
@@ -1247,13 +1245,13 @@ export declare function setWindVelocity(
  * This function allows you to disable world sounds. A world sound is a sound effect which
  * has not been caused by playSound or playSound3D.
  * *The values for group and index can be determined by using the client command
- * Client_Commands#showsound|showsound in conjunction with setDevelopmentMode
+ * Client_Commands#showsound|showsound in conjunction with setDevelopmentMode.
  * *This function does not affect sounds which are already playing, such as the wind sound
  * that can only be stopped by entering an interior.
- * * See also: setAmbientSoundEnabled}}
+ * * See also: setAmbientSoundEnabled.}}
  * @see https://wiki.multitheftauto.com/wiki/SetWorldSoundEnabled
- * @param group An int|integer representing the World sound groups|world sound group
- * @param enable Set to false to disable, true to enable
+ * @param group An int|integer representing the World sound groups|world sound group.
+ * @param enable Set to false to disable, true to enable.
  * @param index An int|integer representing an individual sound within the group
  * @param immediate A boolean if set to true will cancel the sound if its already playing. This parameter
  * only works for stopping the sound.

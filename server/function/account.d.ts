@@ -181,10 +181,8 @@ export declare function getAccountsByData(
 ): LuaTable;
 
 /**
- * This function returns a table containing all accounts that were logged onto from
- * specified IP-address.
  * @see https://wiki.multitheftauto.com/wiki/GetAccountsByIP
- * @param ip The IP to get accounts from
+ * @param ip The IP to get accounts from.
  * @return returns table containing the accounts associated with specified ip-address. returns false
  * if invalid arguments were specified.
  * @noSelf

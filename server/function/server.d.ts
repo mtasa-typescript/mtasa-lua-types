@@ -141,7 +141,7 @@ export declare function setServerPassword(thePassword: string): boolean;
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetTransferBoxVisible
- * @param visible The new visibility state.
+ * @param visible The new transfer box visibility state.
  * @return returns true if the visibility was set successfully, false otherwise.
  * @noSelf
  */

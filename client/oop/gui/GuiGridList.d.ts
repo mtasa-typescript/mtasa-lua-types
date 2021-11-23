@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -243,8 +244,8 @@ export class GuiGridList extends GuiElement {
     /**
      * This function retrieves the text from a specific grid list item.
      * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemText
-     * @param rowIndex row id of the item
-     * @param columnIndex column id of the item
+     * @param rowIndex row id of the item (first is 0)
+     * @param columnIndex column id of the item (first is 0)
      * @return returns the text of the item if the arguments are right, false otherwise.
      */
     getItemText(rowIndex: number, columnIndex: number): string;

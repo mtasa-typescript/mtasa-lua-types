@@ -2,7 +2,7 @@
 
 import { FetchRemoteCallback } from '../shared/utils/callback';
 
-export type Userdata = any;
+export type Userdata = unknown;
 export type TextItem = Userdata;
 export type TextDisplay = Userdata;
 export type Pickup = Userdata;

@@ -226,16 +226,6 @@ export declare function getTrainPosition(train: Vehicle): number;
 export declare function getTrainSpeed(train: Vehicle): number;
 
 /**
- * Gets the track of a train
- * @see https://wiki.multitheftauto.com/wiki/GetTrainTrack
- * @param train the train of which to get the track.
- * @return returns an integer (whole number) that represents the train track, false if there is
- * problem with train element.
- * @noSelf
- */
-export declare function getTrainTrack(train: Vehicle): number;
-
-/**
  * This function returns the color of the specified vehicle. A vehicle can have up to four
  * colors.
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleColor
@@ -703,16 +693,13 @@ export declare function getVehicleUpgrades(theVehicle: Vehicle): LuaTable;
 export declare function getVehicleUpgradeSlotName(slot_upgrade: number): string;
 
 /**
- * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
- * different for example the labelling on trucks or the contents of a pick-up truck and the
- * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+ * This function gets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+ * are different; for example the labelling on trucks or the contents of a pick-up truck and
+ * the varying types of a motor bike. For the default variant list see: Vehicle variants.
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleVariant
- * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @return on success:
- * * int: an integer for the first vehicle variant see vehicle variants
- * * int: an integer for the second vehicle variant see vehicle variants
- * on failure:
- * * bool: false because the specified vehicle didnt exist
+ * @param theVehicle The vehicle that you want to get the variant of.
+ * @return returns 2 int containing the vehicle variants, false otherwise (the specified vehicle
+ * doesnt exist).
  * @noSelf
  */
 export declare function getVehicleVariant(
@@ -955,16 +942,6 @@ export declare function setTrainPosition(
 export declare function setTrainSpeed(train: Vehicle, speed: number): boolean;
 
 /**
- * Sets the track of a train
- * @see https://wiki.multitheftauto.com/wiki/SetTrainTrack
- * @param train the train of which to set the track
- * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
- * @return returns true if the track was set to the train, false otherwise.
- * @noSelf
- */
-export declare function setTrainTrack(train: Vehicle, track: number): boolean;
-
-/**
  * This function will set the color of a vehicle using either a RGB format, or the Vehicle
  * Colors|standard San Andreas color IDs. Vehicles can have up to 4 colors, most of the
  * vehicles have 2 colors only.
@@ -1136,6 +1113,8 @@ export declare function setVehicleFuelTankExplodable(
  * @see https://wiki.multitheftauto.com/wiki/SetVehicleHandling
  * @param theVehicle The vehicle you wish to set the handling of.
  * @param property The property you wish to set the handling of the vehicle to.
+ * Additionally, helicopters are not affected by custom handling. The vehicle-on-wheels
+ * handling does not affect planes when they are on the ground either.}}
  * @param value The value of the property you wish to set the handling of the vehicle to.
  * @return returns true if the handling was set successfully, false otherwise. see below a list of
  * valid properties and their required values:
@@ -1437,18 +1416,15 @@ export declare function setVehicleTurretPosition(
 ): boolean;
 
 /**
- * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
- * different for example the labelling on trucks or the contents of a pick-up truck and the
- * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+ * This function sets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+ * are different; for example the labelling on trucks or the contents of a pick-up truck and
+ * the varying types of a motor bike. For the default variant list see: Vehicle variants.
  * @see https://wiki.multitheftauto.com/wiki/SetVehicleVariant
- * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @param variant1 : An integer for the first variant see Vehicle variants
- * @param variant2 : An integer for the second variant see Vehicle variants
- * @return on success:
- * * bool: returns true as the vehicle variants were successfully set.
- * on failure:
- * * bool: false because the specified vehicle didnt exist or specified variants were
- * invalid.
+ * @param theVehicle The vehicle that you want to set the variant.
+ * @param variant1 : An integer for the first variant. See Vehicle variants.
+ * @param variant2 : An integer for the second variant. See Vehicle variants.
+ * @return returns true if the vehicle variants were successfully set, false otherwise (the
+ * specified vehicle doesnt exist or the specified variants are invalid).
  * @noSelf
  */
 export declare function setVehicleVariant(

@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -624,8 +625,8 @@ export class Ped extends Element {
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/SetPedBleeding
-     * @param bleeding boolean specifying whether the player or ped is bleeding or not.
-     * @return returns true if the bleeding state was successfully set, error is raised otherwise.
+     * @param bleeding Boolean specifying whether the player or ped is bleeding or not.
+     * @return returns true if the bleeding state was successfully set, false otherwise.
      */
     setBleeding(bleeding: boolean): boolean;
 

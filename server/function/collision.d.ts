@@ -204,7 +204,7 @@ export declare function createColTube(
 /**
  * By default, a colshape polygon is infinitely tall.}}
  * @see https://wiki.multitheftauto.com/wiki/GetColPolygonHeight
- * @param shape The colshape polygon
+ * @param shape The colshape polygon.
  * @return returns two floats, indicating the floor and ceiling of the colshape height, false if
  * invalid arguments were passed.
  * @noSelf
@@ -307,7 +307,7 @@ export declare function removeColPolygonPoint(
 /**
  * By default, a colshape polygon is infinitely tall.}}
  * @see https://wiki.multitheftauto.com/wiki/SetColPolygonHeight
- * @param shape The colshape polygon
+ * @param shape The colshape polygon.
  * @param floor The polygon floor (lowest Z coordinate). Parse false to reset this value to 0.
  * @param ceil The polygon ceiling (highest Z coordinate). Parse false to reset this value to infinitely
  * tall.

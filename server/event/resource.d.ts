@@ -44,6 +44,11 @@ import {
     Matrix,
 } from '../structure';
 
+export interface OnPlayerResourceStart extends GenericEventHandler {
+    name: EventNames.OnPlayerResourceStart;
+    function: (this: void, loadedResource: Resource) => void;
+}
+
 export interface OnResourceLoadStateChange extends GenericEventHandler {
     name: EventNames.OnResourceLoadStateChange;
     function: (

@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -108,8 +109,8 @@ export declare function getObjectMass(theObject: MTASAObject): number;
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/GetObjectProperty
- * @param theObject : the object you wish to get a property of.
- * @param property : the property you want to get the value of:
+ * @param theObject the object you wish to get a property of.
+ * @param property the property you want to get the value of:
  * <div style="padding-left:20px">
  * * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
  * </div>
@@ -148,9 +149,8 @@ export declare function isObjectBreakable(
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/IsObjectMoving
- * @param theObject The object
- * @return * true if the object is moving.
- * * false if the object is not moving.
+ * @param theObject The object element.
+ * @return * returns true if the object is moving, false otherwise.
  * @noSelf
  */
 export declare function isObjectMoving(theObject: MTASAObject): boolean;
@@ -236,9 +236,9 @@ export declare function setObjectMass(
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetObjectProperty
- * @param theObject : the object you wish to change a property of.
- * @param property : the property you want to set the value of:
- * @param value : the new value for the property.
+ * @param theObject the object you wish to change a property of.
+ * @param property the property you want to set the value of:
+ * @param value the new value for the property.
  * @return returns true if the property was set successfully, false otherwise.
  * @noSelf
  */

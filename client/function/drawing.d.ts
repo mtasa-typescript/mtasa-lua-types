@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -148,7 +149,7 @@ export declare function dxCreateScreenSource(
 /**
  * This function creates a shader element that can be used in the dxDraw functions.
  * Successful shader creation is not guaranteed unless the shader|Effect File contains a
- * fallback technique which will work on every PC in the universe.
+ * fallback technique which will work on every existing PC.
  * <syntaxhighlight lang=lua>
  * element, string dxCreateShader ( string filepath / string raw_data , float priority = 0,
  * float maxDistance = 0, bool layered = false, string elementTypes =
@@ -213,7 +214,6 @@ export declare function dxCreateScreenSource(
  * *element: A shader element if successful, false if invalid arguments were passed to the
  * function. You should always check to see if this function has returned false.
  * *string: The name of the technique that will be used.
- * |20688}}
  * @see https://wiki.multitheftauto.com/wiki/DxCreateShader
  * @noSelf
  */
@@ -491,11 +491,9 @@ export declare function dxDrawLine3D(
  * @param width The width/thickness of the line in GTA world units. (This is 1/75th of the width used in
  * dxDrawLine3D)
  * @param flipUV : A bool representing whether a UV orientation should be flipped.
- * |20862}}
  * @param color An int|integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR =
  * red, GG = green, BB = blue).
  * @param postGUI : A bool representing whether the line should be drawn on top of or behind any ingame GUI.
- * |11998}}
  * @param faceTowardX/Y/Z The position the front of the line should face towards. If this is not set, the camera
  * position is used, so the front of the line faces toward the camera.
  * Returns a ''true'' if the operation was successful, ''false'' otherwise.
@@ -612,7 +610,6 @@ export declare function dxDrawMaterialPrimitive3D(
  * @param width The width/thickness of the line in GTA world units. (This is 1/75th of the width used in
  * dxDrawLine3D)
  * @param flipUV : A bool representing whether a UV orientation should be flipped.
- * |20862}}
  * @param color An integer of the hex color, produced using tocolor or 0xAARRGGBB (AA = alpha, RR = red,
  * GG = green, BB = blue).
  * @param postGUI : A bool representing whether the line should be drawn on top of or behind any ingame GUI.
@@ -783,6 +780,8 @@ export declare function dxDrawRectangle(
  * @param fRotation Rotation
  * @param fRotationCenterX Rotation Origin X
  * @param fRotationCenterY Rotation Origin Y
+ * @param fLineSpacing Distance in pixels between the lines of text, this can be a negative number, works only
+ * when colorCoded is set to true
  * @return returns true if successful, false otherwise.
  * @noSelf
  */
@@ -806,6 +805,7 @@ export declare function dxDrawText(
     fRotation?: number,
     fRotationCenterX?: number,
     fRotationCenterY?: number,
+    fLineSpacing?: number,
 ): boolean;
 
 /**
@@ -910,7 +910,7 @@ export declare function dxGetPixelsSize(
 ): LuaMultiReturn<[number, number]>;
 
 /**
- * This function gets information about various internal datum
+ * This function gets information about various internal datum.
  * @see https://wiki.multitheftauto.com/wiki/DxGetStatus
  * @return returns a table with the following entries:
  * *testmode: the current dx test mode. see dxsettestmode.
@@ -918,7 +918,7 @@ export declare function dxGetPixelsSize(
  * *videocardram: the installed memory in mb of the graphics card.
  * *videocardpsversion: the maximum pixel shader version of the graphics card.
  * *videocardmaxanisotropy: the maximum anisotropic filtering available. (0-4 which
- * respectively mean: off,2x,4x,8x,16x)
+ * respectively mean: off, 2x, 4x, 8x, 16x)
  * *videocardnumrendertargets: the maximum number of simultaneous render targets a shader
  * can use.
  * *videomemoryfreeformta: the amount of memory in mb available for mta to use. when this
@@ -935,9 +935,9 @@ export declare function dxGetPixelsSize(
  * *settingvolumetricshadows: the volumetric shadows setting. (true/false)
  * *settingstreamingvideomemoryforgta: the usable graphics memory setting. (64-256)
  * *settinganisotropicfiltering: the anisotropic filtering setting. (0-4 which respectively
- * mean: off,2x,4x,8x,16x)
- * *settingantialiasing: the anti-aliasing setting. (0-3 which respectively mean:
- * off,1x,2x,3x)
+ * mean: off, 2x, 4x, 8x, 16x)
+ * *settingantialiasing: the anti-aliasing setting. (0-3 which respectively mean: off, 1x,
+ * 2x, 3x)
  * *settingheathaze: the heat haze setting. (true/false)
  * *settinggrasseffect: the grass effect setting. (true/false)
  * *setting32bitcolor: the color depth of the screen. (false is 16bit, true is 32bit)

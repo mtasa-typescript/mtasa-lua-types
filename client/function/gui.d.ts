@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -1214,8 +1215,8 @@ export declare function guiGridListGetItemData(
  * This function retrieves the text from a specific grid list item.
  * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetItemText
  * @param gridList the gridlist containing the item youre interested in
- * @param rowIndex row id of the item
- * @param columnIndex column id of the item
+ * @param rowIndex row id of the item (first is 0)
+ * @param columnIndex column id of the item (first is 0)
  * @return returns the text of the item if the arguments are right, false otherwise.
  * @noSelf
  */

@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -167,12 +168,12 @@ export declare function engineGetModelTextures(
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/EngineGetModelVisibleTime
- * @param modelID : ID of the model
- * @return returns timeon, timeoff
+ * @param modelId : The ID of the model.
+ * @return returns 2 integers, indicating timeon and timeoff.
  * @noSelf
  */
 export declare function engineGetModelVisibleTime(
-    modelID: number,
+    modelId: number,
 ): LuaMultiReturn<[number, number]>;
 
 /**
@@ -397,15 +398,15 @@ export declare function engineReplaceModel(
 ): boolean;
 
 /**
- * *before release 1.5.8-20716 this must be ped.
+ * *Before release 1.5.8 r20716 this must be ped.
  * @see https://wiki.multitheftauto.com/wiki/EngineRequestModel
  * @param elementType : ped, vehicle and object.
- * @param parentID : The Vehicle IDs|vehicle ID of the vehicle being allocated. (By default this is: 1337 -
- * objects, 400 - vehicles, 7 or PSYCHO for peds)
+ * @param parentID : The model ID of the model being allocated. (By default this is: 1337 - objects, 400 -
+ * vehicles, 7 - peds)
  * @return do not rely on the model numbers returned being consistent across multiple clients or
  * multiple runs of resources. there is no guarantee for the order of the numbers or that
  * the same numbers will always correspond to the same element type. any patterns are
- * coincidental
+ * coincidental.
  * @noSelf
  */
 export declare function engineRequestModel(
@@ -572,9 +573,9 @@ export declare function engineSetModelPhysicalPropertiesGroup(
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/EngineSetModelVisibleTime
- * @param modelID : ID of the model
- * @param timeOn : value between 0 and 24 that states when the model should appear
- * @param timeOff : value between 0 and 24 that states when the model should disappear
+ * @param modelID : The ID of the model.
+ * @param timeOn : Value between 0 and 24 that states when the model should appear.
+ * @param timeOff : Value between 0 and 24 that states when the model should disappear.
  * @return returns true if the change was successful, false otherwise.
  * @noSelf
  */
@@ -611,3 +612,18 @@ export declare function engineSetSurfaceProperties(
     property: string,
     value: any,
 ): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/EngineStreamingFreeUpMemory
+ * @param bytes The amount of RAM to be freed up in bytes.
+ * @return * returns true if the function has succeeded, false otherwise.
+ * @noSelf
+ */
+export declare function engineStreamingFreeUpMemory(bytes: number): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/EngineStreamingGetUsedMemory
+ * @return * returns a int containing the amount of memory in bytes.
+ * @noSelf
+ */
+export declare function engineStreamingGetUsedMemory(): number;

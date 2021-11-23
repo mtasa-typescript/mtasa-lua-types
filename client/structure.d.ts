@@ -1,4 +1,4 @@
-export type Userdata = any;
+export type Userdata = unknown;
 export type TextItem = Userdata;
 export type ProgressBar = Userdata;
 export type Gui = Userdata;
@@ -7,6 +7,7 @@ export type PrimitiveType = Userdata;
 export type GuiScrollBar = Userdata;
 export type ObjectGroup = Userdata;
 export type Request = Userdata;
+export type Svg = Userdata;
 
 export { Player } from './oop/Player';
 export { Blip } from './oop/Blip';

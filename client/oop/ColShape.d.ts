@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -68,9 +69,9 @@ export class ColShape extends Element {
      * This function is used to retrieve a list of all elements in a colshape, of the specified
      * type.
      * * For legacy reasons, a colshape created on the client does not collide with elements
-     * already existing at that location until they first move
+     * already existing at that location until they first move.
      * * This function doesnt verify whether elements are in the same dimension and interior,
-     * additional checks could be implemented manually if they are needed
+     * additional checks could be implemented manually if they are needed.
      */
     elementsWithin: LuaTable;
 
@@ -327,9 +328,9 @@ export class ColShape extends Element {
      * This function is used to retrieve a list of all elements in a colshape, of the specified
      * type.
      * * For legacy reasons, a colshape created on the client does not collide with elements
-     * already existing at that location until they first move
+     * already existing at that location until they first move.
      * * This function doesnt verify whether elements are in the same dimension and interior,
-     * additional checks could be implemented manually if they are needed
+     * additional checks could be implemented manually if they are needed.
      * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape
      * @param elemType The type of element you want a list of. This can be any element type, the common ones
      * being:

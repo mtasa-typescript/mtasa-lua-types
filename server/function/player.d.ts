@@ -195,7 +195,7 @@ export declare function getPlayerNametagText(thePlayer: Player): string;
 /**
  * This function returns the ping of a specified player. The ping is the number of
  * milliseconds that data takes to travel from the players client to the server or vice
- * versa.
+ * versa. If a player is using a VPN their ping will still be returned correctly.
  * @see https://wiki.multitheftauto.com/wiki/GetPlayerPing
  * @param thePlayer : The player whose ping you want to determine.
  * @return returns the ping as an int, or false if the player is invalid.

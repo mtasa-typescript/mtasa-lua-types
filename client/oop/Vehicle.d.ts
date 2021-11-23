@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -92,11 +93,6 @@ export class Vehicle extends Element {
      * Gets the speed at which a train is traveling on the rails.
      */
     trainSpeed: number;
-
-    /**
-     * Gets the track of a train
-     */
-    track: number;
 
     /**
      * This function returns a table of all the compatible upgrades (or all for a specified
@@ -389,14 +385,6 @@ export class Vehicle extends Element {
     getSpeed(): number;
 
     /**
-     * Gets the track of a train
-     * @see https://wiki.multitheftauto.com/wiki/GetTrainTrack
-     * @return returns an integer (whole number) that represents the train track, false if there is
-     * problem with train element.
-     */
-    getTrack(): number;
-
-    /**
      * This function returns the color of the specified vehicle. A vehicle can have up to four
      * colors.
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleColor
@@ -542,28 +530,10 @@ export class Vehicle extends Element {
     getDoorState(door: number): number;
 
     /**
-     * This function returns the position of the dummy for the given vehicle.}}
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleDummyPosition
-     * @param dummy The dummy whose position you want to get
-     * @return returns three floats indicating the position x, y and z of the vehicles dummy. it returns
-     * false otherwise.
-     * this is a command to get the position of the players vehicle dummy position specified as
-     * an argument.
-     * <syntaxhighlight lang=lua>
-     * function getdummyposition(cmd, dummy)
-     * if (not dummy) then
-     * return false
-     * end
-     * local veh = getpedoccupiedvehicle(localplayer)
-     * if (not veh) then
-     * outputchatbox(you should be in a vehicle to use this command, 255, 25, 25)
-     * return false
-     * end
-     * local x, y, z = getvehicledummyposition(veh, dummy)
-     * outputchatbox(x: ..x.., y: ..y.., z: ..z, 0, 255, 0)
-     * end
-     * addcommandhandler(getdummy, getdummyposition)
-     * </syntaxhighlight>
+     * @param dummy The dummy whose position you want to get.
+     * @return returns 3 float|floats indicating the position x, y and z of the vehicles dummy. it
+     * returns false otherwise.
      */
     getDummyPosition(dummy: string): Vector3;
 
@@ -620,15 +590,14 @@ export class Vehicle extends Element {
     getMaxPassengers(): number;
 
     /**
-     * This function gets the default position of the dummies contained in a vehicle model.
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelDummyDefaultPosition
-     * @param modelID : The model ID which you want to apply the change to
-     * @param dummy : The dummy whose position you want to get
-     * @return returns three floats indicating the default position x, y and z of the given dummy. it
+     * @param modelId : The model ID which you want to apply the change to.
+     * @param dummy : The dummy whose position you want to get.
+     * @return returns 3 float|floats indicating the default position x, y and z of the given dummy. it
      * returns false otherwise.
      */
     static getVehicleModelDummyDefaultPosition(
-        modelID: number,
+        modelId: number,
         dummy: string,
     ): Vector3;
 
@@ -877,15 +846,12 @@ export class Vehicle extends Element {
     getUpgrades(): LuaTable;
 
     /**
-     * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
-     * different for example the labelling on trucks or the contents of a pick-up truck and the
-     * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+     * This function gets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+     * are different; for example the labelling on trucks or the contents of a pick-up truck and
+     * the varying types of a motor bike. For the default variant list see: Vehicle variants.
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleVariant
-     * @return on success:
-     * * int: an integer for the first vehicle variant see vehicle variants
-     * * int: an integer for the second vehicle variant see vehicle variants
-     * on failure:
-     * * bool: false because the specified vehicle didnt exist
+     * @return returns 2 int containing the vehicle variants, false otherwise (the specified vehicle
+     * doesnt exist).
      */
     getVariant(): LuaMultiReturn<[number, number]>;
 
@@ -1024,10 +990,8 @@ export class Vehicle extends Element {
     resetComponentScale(theComponent: string): boolean;
 
     /**
-     * This function resets the vehicle dependent dummy positions to the vehicles current model
-     * dummy positions.}}
      * @see https://wiki.multitheftauto.com/wiki/ResetVehicleDummyPositions
-     * @return returns true for success, false otherwise.
+     * @return returns true if the dummy positions have been reset, false otherwise.
      */
     resetDummyPositions(): boolean;
 
@@ -1095,14 +1059,6 @@ export class Vehicle extends Element {
      * @return returns true if successful, false otherwise.
      */
     setSpeed(speed: number): boolean;
-
-    /**
-     * Sets the track of a train
-     * @see https://wiki.multitheftauto.com/wiki/SetTrainTrack
-     * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
-     * @return returns true if the track was set to the train, false otherwise.
-     */
-    setTrack(track: number): boolean;
 
     /**
      * This function will set the color of a vehicle using either a RGB format, or the Vehicle
@@ -1277,11 +1233,10 @@ export class Vehicle extends Element {
     setDoorsUndamageable(state: boolean): boolean;
 
     /**
-     * This function sets the position of the dummy for the given vehicle.}}
      * @see https://wiki.multitheftauto.com/wiki/SetVehicleDummyPosition
-     * @param dummy The dummy whose position you want to set
-     * @param x , y, z The new dummy position
-     * @return returns true for success, false otherwise.
+     * @param dummy The dummy whose position you want to set.
+     * @param x , y, z The new dummy position.
+     * @return returns true if the dummy position has been successfully set, false otherwise.
      */
     setDummyPosition(vectorized: Vector3, z: number): boolean;
 
@@ -1494,17 +1449,14 @@ export class Vehicle extends Element {
     setTurretPosition(vectorized: Vector3): boolean;
 
     /**
-     * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
-     * different for example the labelling on trucks or the contents of a pick-up truck and the
-     * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+     * This function sets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+     * are different; for example the labelling on trucks or the contents of a pick-up truck and
+     * the varying types of a motor bike. For the default variant list see: Vehicle variants.
      * @see https://wiki.multitheftauto.com/wiki/SetVehicleVariant
-     * @param variant1 : An integer for the first variant see Vehicle variants
-     * @param variant2 : An integer for the second variant see Vehicle variants
-     * @return on success:
-     * * bool: returns true as the vehicle variants were successfully set.
-     * on failure:
-     * * bool: false because the specified vehicle didnt exist or specified variants were
-     * invalid.
+     * @param variant1 : An integer for the first variant. See Vehicle variants.
+     * @param variant2 : An integer for the second variant. See Vehicle variants.
+     * @return returns true if the vehicle variants were successfully set, false otherwise (the
+     * specified vehicle doesnt exist or the specified variants are invalid).
      */
     setVariant(variant1?: number, variant2?: number): boolean;
 

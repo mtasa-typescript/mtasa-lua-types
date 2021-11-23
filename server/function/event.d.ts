@@ -77,10 +77,13 @@ export declare function addEvent(
  * triggered on the root element is triggered on every element in the tree. An event
  * triggered on any other element is triggered on its ancestors (its parent element and its
  * parents parent etc) and its children, grandchildren and great-grandchildren. You can use
- * the getPropagated argument to specify if you wish your handler to receive events that
- * have propagated up or down the tree.
+ * the propagate argument to specify if you wish your handler to receive events that have
+ * propagated up or down the tree.
  * The order in which event handlers are triggered is undefined, you should not rely on one
  * event handler being executed before another.
+ * Each function closure can only be added once to each event. On the second attempt to add
+ * the function closure to the same event a warning will be emitted to the debug console and
+ * the call to addEventHandler will fail.
  * @see https://wiki.multitheftauto.com/wiki/AddEventHandler
  * @param eventName The name of the event you want to attach the handler function to. Note: The maximum
  * allowed length is 100 ASCII characters (that is, English letters and numerals)```

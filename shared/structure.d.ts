@@ -1,6 +1,6 @@
 // TODO: make something with that
 
-export type iterator = any;
+export type iterator = unknown;
 
 export type HandleFunction = (this: void, ...args: any[]) => any;
 export type TimerCallbackFunction = (this: void, ...args: any[]) => void;

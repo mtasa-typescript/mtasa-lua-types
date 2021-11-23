@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -64,7 +65,7 @@ export class DxShader {
     /**
      * This function creates a shader element that can be used in the dxDraw functions.
      * Successful shader creation is not guaranteed unless the shader|Effect File contains a
-     * fallback technique which will work on every PC in the universe.
+     * fallback technique which will work on every existing PC.
      * <syntaxhighlight lang=lua>
      * element, string dxCreateShader ( string filepath / string raw_data , float priority = 0,
      * float maxDistance = 0, bool layered = false, string elementTypes =
@@ -129,7 +130,6 @@ export class DxShader {
      * *element: A shader element if successful, false if invalid arguments were passed to the
      * function. You should always check to see if this function has returned false.
      * *string: The name of the technique that will be used.
-     * |20688}}
      * @see https://wiki.multitheftauto.com/wiki/DxCreateShader
      */
     constructor(

@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -321,7 +322,6 @@ export declare function debugSleep(sleep: number): boolean;
  * @param options A table with options and other necessary data for the algorithm, as detailed below.
  * @param callback providing a callback will run this function asynchronously, the arguments to the callback
  * are the same as the returned values below.
- * |20394}}
  * @return returns the decoded string if successful, false otherwise. if a callback was provided,
  * the decoded string is argument to the callback.
  * @noSelf
@@ -334,7 +334,8 @@ export declare function decodeString(
 ): string;
 
 /**
- * This function will take a reference and returns its Lua element.
+ * This function will take a reference obtained by the ref function and returns its Lua
+ * element.
  * @see https://wiki.multitheftauto.com/wiki/Deref
  * @param reference The valid reference, which you want to dereference
  * @return returns mixed if the reference were valid. returns false if the reference were invalid.
@@ -364,7 +365,6 @@ export declare function downloadFile(fileName: string): boolean;
  * @param options A table with options and other necessary data for the algorithm, as detailed below.
  * @param callback providing a callback will run this function asynchronously, the arguments to the callback
  * are the same as the returned values below.
- * |20394}}
  * @return * tea
  * ** encodedstring: the encoded string if successful, false otherwise. if a callback was
  * provided, true is returned immediately, and the encoded string is passed as an argument
@@ -849,6 +849,20 @@ export declare function iprint(
 export declare function isOOPEnabled(): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/IsShowCollisionsEnabled
+ * @return * returns true if the collision previews are enabled, false otherwise.
+ * @noSelf
+ */
+export declare function isShowCollisionsEnabled(): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/IsShowSoundEnabled
+ * @return * returns true if world sound ids should be printed in the debug window, false otherwise.
+ * @noSelf
+ */
+export declare function isShowSoundEnabled(): boolean;
+
+/**
  * This function checks if a variable is a timer.
  * @see https://wiki.multitheftauto.com/wiki/IsTimer
  * @param theTimer : The variable that we want to check.
@@ -1135,6 +1149,22 @@ export declare function setWindowFlashing(
  * @noSelf
  */
 export declare function sha256(str: string): string;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/ShowCol
+ * @param state A boolean indicating if the collision previews should be enabled or disabled.
+ * @return * returns true if the function is successful, false otherwise.
+ * @noSelf
+ */
+export declare function showCol(state: boolean): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/ShowSound
+ * @param state A boolean indicating if the world sound IDs should be printed in the debug window or not.
+ * @return * returns true if the function is successful, false otherwise.
+ * @noSelf
+ */
+export declare function showSound(state: boolean): boolean;
 
 /**
  * This function splits a string into substrings. You specify a character that will act as a

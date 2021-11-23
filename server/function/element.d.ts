@@ -546,9 +546,9 @@ export declare function getElementsByType(
  * This function is used to retrieve a list of all elements in a colshape, of the specified
  * type.
  * * For legacy reasons, a colshape created on the client does not collide with elements
- * already existing at that location until they first move
+ * already existing at that location until they first move.
  * * This function doesnt verify whether elements are in the same dimension and interior,
- * additional checks could be implemented manually if they are needed
+ * additional checks could be implemented manually if they are needed.
  * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape
  * @param theShape The colshape you want to get the elements from.
  * @param elemType The type of element you want a list of. This can be any element type, the common ones
@@ -571,22 +571,24 @@ export declare function getElementsWithinColShape(
 ): LuaTable;
 
 /**
+ * This function is used to retrieve a list of all elements of specified type within a range
+ * of 3D coordinates.
  * * This function checks if elements are in a box, not in a sphere.
  * * Z argument isnt in use currently, but make your scripts like it is for future
  * compatibility reasons.
  * * This function doesnt work with elements which is created by createElement.}}
  * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinRange
- * @param x the x coordinate at which to retrieve elements
- * @param y the y coordinate at which to retrieve elements
- * @param z the z coordinate at which to retrieve elements
- * @param range the range at the coordinates in which to retrieve elements
+ * @param x the x coordinate at which to retrieve elements.
+ * @param y the y coordinate at which to retrieve elements.
+ * @param z the z coordinate at which to retrieve elements.
+ * @param range the range at the coordinates in which to retrieve elements.
  * @param elemType The type of element you want a list of. This can be any element type, such as:
- * @param player A player connected to the server
- * @param ped A ped
- * @param vehicle A vehicle
- * @param object An object
- * @param pickup A pickup
- * @param marker A marker
+ * @param player A player connected to the server.
+ * @param ped A ped.
+ * @param vehicle A vehicle.
+ * @param object An object.
+ * @param pickup A pickup.
+ * @param marker A marker.
  * @param interior The interior you want to limit the search to. If not specified, it can return elements in
  * any interior.
  * @param dimension The dimension you want to limit the search to. If not specified, it can return elements

@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -239,16 +240,6 @@ export declare function getTrainPosition(train: Vehicle): number;
 export declare function getTrainSpeed(train: Vehicle): number;
 
 /**
- * Gets the track of a train
- * @see https://wiki.multitheftauto.com/wiki/GetTrainTrack
- * @param train the train of which to get the track.
- * @return returns an integer (whole number) that represents the train track, false if there is
- * problem with train element.
- * @noSelf
- */
-export declare function getTrainTrack(train: Vehicle): number;
-
-/**
  * Use this to get the value of a vehicles adjustable property. This property relates to
  * movable parts of a model, for example hydra jets or dump truck tray.
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleAdjustableProperty
@@ -459,29 +450,11 @@ export declare function getVehicleDoorState(
 ): number;
 
 /**
- * This function returns the position of the dummy for the given vehicle.}}
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleDummyPosition
- * @param theVehicle The vehicle you want to get the dummy positions from
- * @param dummy The dummy whose position you want to get
- * @return returns three floats indicating the position x, y and z of the vehicles dummy. it returns
- * false otherwise.
- * this is a command to get the position of the players vehicle dummy position specified as
- * an argument.
- * <syntaxhighlight lang=lua>
- * function getdummyposition(cmd, dummy)
- * if (not dummy) then
- * return false
- * end
- * local veh = getpedoccupiedvehicle(localplayer)
- * if (not veh) then
- * outputchatbox(you should be in a vehicle to use this command, 255, 25, 25)
- * return false
- * end
- * local x, y, z = getvehicledummyposition(veh, dummy)
- * outputchatbox(x: ..x.., y: ..y.., z: ..z, 0, 255, 0)
- * end
- * addcommandhandler(getdummy, getdummyposition)
- * </syntaxhighlight>
+ * @param theVehicle The vehicle you want to get the dummy positions from.
+ * @param dummy The dummy whose position you want to get.
+ * @return returns 3 float|floats indicating the position x, y and z of the vehicles dummy. it
+ * returns false otherwise.
  * @noSelf
  */
 export declare function getVehicleDummyPosition(
@@ -574,16 +547,15 @@ export declare function getVehicleMaxPassengers(
 ): number;
 
 /**
- * This function gets the default position of the dummies contained in a vehicle model.
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleModelDummyDefaultPosition
- * @param modelID : The model ID which you want to apply the change to
- * @param dummy : The dummy whose position you want to get
- * @return returns three floats indicating the default position x, y and z of the given dummy. it
+ * @param modelId : The model ID which you want to apply the change to.
+ * @param dummy : The dummy whose position you want to get.
+ * @return returns 3 float|floats indicating the default position x, y and z of the given dummy. it
  * returns false otherwise.
  * @noSelf
  */
 export declare function getVehicleModelDummyDefaultPosition(
-    modelID: number,
+    modelId: number,
     dummy: string,
 ): LuaMultiReturn<[number, number, number]>;
 
@@ -912,16 +884,13 @@ export declare function getVehicleUpgrades(theVehicle: Vehicle): LuaTable;
 export declare function getVehicleUpgradeSlotName(slot_upgrade: number): string;
 
 /**
- * This function gets the variant of a specified vehicle. In GTA SA some vehicles are
- * different for example the labelling on trucks or the contents of a pick-up truck and the
- * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+ * This function gets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+ * are different; for example the labelling on trucks or the contents of a pick-up truck and
+ * the varying types of a motor bike. For the default variant list see: Vehicle variants.
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleVariant
- * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @return on success:
- * * int: an integer for the first vehicle variant see vehicle variants
- * * int: an integer for the second vehicle variant see vehicle variants
- * on failure:
- * * bool: false because the specified vehicle didnt exist
+ * @param theVehicle The vehicle that you want to get the variant of.
+ * @return returns 2 int containing the vehicle variants, false otherwise (the specified vehicle
+ * doesnt exist).
  * @noSelf
  */
 export declare function getVehicleVariant(
@@ -1173,11 +1142,9 @@ export declare function resetVehicleComponentScale(
 ): boolean;
 
 /**
- * This function resets the vehicle dependent dummy positions to the vehicles current model
- * dummy positions.}}
  * @see https://wiki.multitheftauto.com/wiki/ResetVehicleDummyPositions
- * @param theVehicle The vehicle to reset
- * @return returns true for success, false otherwise.
+ * @param theVehicle The vehicle to reset the dummy positions.
+ * @return returns true if the dummy positions have been reset, false otherwise.
  * @noSelf
  */
 export declare function resetVehicleDummyPositions(
@@ -1280,16 +1247,6 @@ export declare function setTrainPosition(
  * @noSelf
  */
 export declare function setTrainSpeed(train: Vehicle, speed: number): boolean;
-
-/**
- * Sets the track of a train
- * @see https://wiki.multitheftauto.com/wiki/SetTrainTrack
- * @param train the train of which to set the track
- * @param track the track where you want to set the train. It can be 0, 1, 2 or 3.
- * @return returns true if the track was set to the train, false otherwise.
- * @noSelf
- */
-export declare function setTrainTrack(train: Vehicle, track: number): boolean;
 
 /**
  * This function is used for adjusting the movable parts of a model, for example hydra jets
@@ -1539,12 +1496,11 @@ export declare function setVehicleDoorsUndamageable(
 ): boolean;
 
 /**
- * This function sets the position of the dummy for the given vehicle.}}
  * @see https://wiki.multitheftauto.com/wiki/SetVehicleDummyPosition
- * @param theVehicle The vehicle you want to set the dummy position for
- * @param dummy The dummy whose position you want to set
- * @param x , y, z The new dummy position
- * @return returns true for success, false otherwise.
+ * @param theVehicle The vehicle you want to set the dummy position for.
+ * @param dummy The dummy whose position you want to set.
+ * @param x , y, z The new dummy position.
+ * @return returns true if the dummy position has been successfully set, false otherwise.
  * @noSelf
  */
 export declare function setVehicleDummyPosition(
@@ -1610,6 +1566,8 @@ export declare function setVehicleGravity(
  * @see https://wiki.multitheftauto.com/wiki/SetVehicleHandling
  * @param theVehicle The vehicle you wish to set the handling of.
  * @param property The property you wish to set the handling of the vehicle to.
+ * Additionally, helicopters are not affected by custom handling. The vehicle-on-wheels
+ * handling does not affect planes when they are on the ground either.}}
  * @param value The value of the property you wish to set the handling of the vehicle to.
  * @return returns true if the handling was set successfully, false otherwise. see below a list of
  * valid properties and their required values:
@@ -1939,18 +1897,15 @@ export declare function setVehicleTurretPosition(
 ): boolean;
 
 /**
- * This function sets the variant of a specified vehicle. In GTA SA some vehicles are
- * different for example the labelling on trucks or the contents of a pick-up truck and the
- * varying types of a motor bike. For the default GTA SA variant list see: Vehicle variants
+ * This function sets the variant of a specified vehicle. In GTA: San Andreas some vehicles
+ * are different; for example the labelling on trucks or the contents of a pick-up truck and
+ * the varying types of a motor bike. For the default variant list see: Vehicle variants.
  * @see https://wiki.multitheftauto.com/wiki/SetVehicleVariant
- * @param theVehicle A handle to the vehicle that you want to get the variant of.
- * @param variant1 : An integer for the first variant see Vehicle variants
- * @param variant2 : An integer for the second variant see Vehicle variants
- * @return on success:
- * * bool: returns true as the vehicle variants were successfully set.
- * on failure:
- * * bool: false because the specified vehicle didnt exist or specified variants were
- * invalid.
+ * @param theVehicle The vehicle that you want to set the variant.
+ * @param variant1 : An integer for the first variant. See Vehicle variants.
+ * @param variant2 : An integer for the second variant. See Vehicle variants.
+ * @return returns true if the vehicle variants were successfully set, false otherwise (the
+ * specified vehicle doesnt exist or the specified variants are invalid).
  * @noSelf
  */
 export declare function setVehicleVariant(

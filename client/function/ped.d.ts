@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -535,7 +536,7 @@ export declare function givePedWeapon(
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/IsPedBleeding
- * @param thePed the player or ped whose bleeding effect state you want to get.
+ * @param thePed The player or ped whose bleeding effect state you want to get.
  * @return returns true if the player or ped is bleeding, false otherwise.
  * @noSelf
  */
@@ -726,17 +727,15 @@ export declare function removePedClothes(
 export declare function removePedFromVehicle(thePed: Ped): boolean;
 
 /**
- * This sets the analog control state of a control for the local player.
- * To change the analog controls for a ped, please use setPedAnalogControlState.
+ * This sets the analog control state of a control for the local player. To change the
+ * analog controls for a ped, please use setPedAnalogControlState.
  * @see https://wiki.multitheftauto.com/wiki/SetAnalogControlState
  * @param control The control that you want to set the state of. See control names for a list of possible
  * controls.
  * @param state A float between 0 and 1 indicating the amount the control is pressed. If no value is
  * provided, the analog control is removed.
- * <noinclude>{{New feature/item|3.0300|1.5.8|20756|
  * *'''forceOverrideNextFrame: ''' A [[bool]] indicating if the player input should force
  * fully overriden for the next frame.
- * }}</noinclude>
  * @return returns true if the control state was successfully set, false otherwise.
  * @noSelf
  */
@@ -870,9 +869,9 @@ export declare function setPedArmor(thePed: Ped, armor: number): boolean;
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetPedBleeding
- * @param thePed the player or ped whose bleeding effect you want to set of.
- * @param bleeding boolean specifying whether the player or ped is bleeding or not.
- * @return returns true if the bleeding state was successfully set, error is raised otherwise.
+ * @param thePed The player or ped whose bleeding effect you want to set of.
+ * @param bleeding Boolean specifying whether the player or ped is bleeding or not.
+ * @return returns true if the bleeding state was successfully set, false otherwise.
  * @noSelf
  */
 export declare function setPedBleeding(thePed: Ped, bleeding: boolean): boolean;
@@ -938,21 +937,19 @@ export declare function setPedDoingGangDriveby(
 
 /**
  * * If forced to enter as a passenger, it doesnt work if all passenger seats are occupied.
- * * If forced to enter as a driver, the ped can take off the vehicles current driver.
- * ** If the drivers door is blocked by something, the ped can use the oposite front door to
- * reach the drivers seat, taking off the passenger which is using the oposite front seat.
- * * If the vehicle is not specified:
- * ** The ped will search a vehicles door within 20 m that can be used to enter the vehicle.
- * ** If the vehicle have a driver, the limit becomes 10 m.
- * * If the vehicle is specified:
- * ** The ped will search the vehicle within 50 m that can be entered. The doors arent taken
- * into account. It means that it doesnt work if the vehicles door is in range but the
- * vehicle itself is not.
- * ** If the vehicle have a driver, the limit becomes 10 m.
- * * The limit becomes 50 m after the ped found the vehicle and started to run toward it.
- * * The ped stops the animation if the distance from vehicle reaches 50 m while the ped is
- * running towards it.
- * * The ped reserves the seat he is trying to use. It means nobody can use the respective
+ * Only the driver seat can be jacked.
+ * * If forced to enter as a driver, the ped can carjack the current driver.
+ * ** If the drivers door is blocked by something, the ped can use the opposite front door
+ * to reach the drivers seat, jacking the passenger in the process.
+ * * If a vehicle is not specified:
+ * ** The ped will search for a vehicle door within 20 m.
+ * ** If the vehicle has a driver, the limit becomes 10 m.
+ * * If a vehicle is specified:
+ * ** The vehicle has to be within 50 m. The doors arent taken into account. It means that
+ * it doesnt work if the vehicles door is in range but the vehicle itself is not.
+ * ** If the vehicle has a driver, the limit becomes 10 m.
+ * * When entering, the ped will run toward a vehicle if it is less than 50 m away.
+ * * The ped reserves the seat he is trying to use. It means nobody can enter the respective
  * seat while the ped is running toward it.
  * ** Exception: If the ped is forced to enter as a passenger and is going to use the front
  * door, the ped can wait if someone is using it to go the driver seat.
@@ -969,14 +966,11 @@ export declare function setPedDoingGangDriveby(
  * @return returns true if the function was successful, false otherwise.
  * when this function returns true, the client will ask server for permission to enter a
  * vehicle. actually entering can still fail in the following cases
- * *the function is used on a ped, but another client is not on version 1.5.8 r20740 or
- * newer.
  * *another player or ped is already entering, exiting or jacking the same vehicle and seat.
  * *movement input or damage can interrupt the task. use getpedtask to monitor what the ped
  * is doing.
  * this function returns false in the following cases
  * *invalid arguments were parsed.
- * *the function is used on a ped, but the server is not on version 1.5.8 r20740 or newer.
  * *time passed since last enter/exit for this ped is less than 1500 ms.
  * *onclientvehiclestartenter was cancelled by a script.
  * *the ped has an active task_primary task. use getpedtask to monitor what the ped is doing.
@@ -993,14 +987,11 @@ export declare function setPedEnterVehicle(
  * @param thePed The player or ped to exit the vehicle.
  * @return returns true if the function was successful, false otherwise.
  * when this function returns true, the client will ask server for permission to exit a
- * vehicle. exiting can still fail in the following cases
- * *the function is used on a ped, but another client is not on version 1.5.8 r20740 or
- * newer.
+ * vehicle.
  * this function returns false in the following cases
  * *invalid arguments were parsed.
- * *the function is used on a ped but the server is not on version 1.5.8 r20740 or newer.
  * *time passed since last enter/exit for this ped is less than 1500 ms.
- * *the ped is getting jacked.
+ * *the ped is already being jacked.
  * @noSelf
  */
 export declare function setPedExitVehicle(thePed: Ped): boolean;
@@ -1099,14 +1090,15 @@ export declare function setPedOxygenLevel(thePed: Ped, oxygen: number): boolean;
  * *Things like infinite run, fire proof CJ, 150 armor have special activation flags. They
  * need a way to be triggered on/off.
  * This function allows you to set the value of a specific statistic for a ped. Visual stats
- * (FAT and BODY_MUSCLE) can only be used on the CJ skin, they have no effect on other skins.
- * When this function is used client side, it can only be used on client side created peds.
+ * (FAT and BODY_MUSCLE) can only be used on the CJ skin, they have no effect on other
+ * skins. When this function is used client-side, it can only be used on client-side created
+ * peds.
  * @see https://wiki.multitheftauto.com/wiki/SetPedStat
  * @param thePed : the ped whose statistic you want to modify.
  * @param stat : the stat ID.
  * @param value : the new value of the stat. It must be between 0 and 1000.
  * @return returns true if the statistic was changed succesfully. returns false if an invalid player
- * is specified, if the stat-id/value is out of acceptable range or if the fat or
+ * is specified, if the stat id/value is out of acceptable range or if the fat or
  * body_muscle stats are used on non-cj players.
  * @noSelf
  */

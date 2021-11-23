@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -219,11 +220,9 @@ export declare function getElementAttachedOffsets(
 export declare function getElementAttachedTo(theElement: Element): Element;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
  * @see https://wiki.multitheftauto.com/wiki/GetElementBoneMatrix
  * @param theElement the element to get the bone matrix on.
- * @param bone the ID of the bone to get the matrix of. See Bone IDs
+ * @param boneId the ID of the bone to get the matrix of. See Bone IDs.
  * @return returns a multi-dimensional array (which can be transformed into a proper matrix class
  * using matrix.create method) containing a 4x4 matrix. returns false if invalid arguments
  * were passed.
@@ -231,35 +230,31 @@ export declare function getElementAttachedTo(theElement: Element): Element;
  */
 export declare function getElementBoneMatrix(
     theElement: Element,
-    bone: number,
+    boneId: number,
 ): LuaTable;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
  * @see https://wiki.multitheftauto.com/wiki/GetElementBonePosition
  * @param theElement the element to get the bone position on.
- * @param bone the ID of the bone to get the position of. See Bone IDs
- * @return returns the x, y, z world position of the bone.
+ * @param boneId the ID of the bone to get the position of. See Bone IDs.
+ * @return returns 3 float|floats, representing the x, y, z world position of the bone.
  * @noSelf
  */
 export declare function getElementBonePosition(
     theElement: Element,
-    bone: number,
+    boneId: number,
 ): LuaMultiReturn<[number, number, number]>;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
  * @see https://wiki.multitheftauto.com/wiki/GetElementBoneRotation
  * @param theElement the element to get the bone rotation on.
- * @param bone the ID of the bone to get the rotation of. See Bone IDs
- * @return returns the yaw, pitch, roll rotation values.
+ * @param boneId the ID of the bone to get the rotation of. See Bone IDs.
+ * @return returns 3 float|floats, representing the yaw, pitch, roll rotation values.
  * @noSelf
  */
 export declare function getElementBoneRotation(
     theElement: Element,
-    bone: number,
+    boneId: number,
 ): LuaMultiReturn<[number, number, number]>;
 
 /**
@@ -567,9 +562,9 @@ export declare function getElementsByType(
  * This function is used to retrieve a list of all elements in a colshape, of the specified
  * type.
  * * For legacy reasons, a colshape created on the client does not collide with elements
- * already existing at that location until they first move
+ * already existing at that location until they first move.
  * * This function doesnt verify whether elements are in the same dimension and interior,
- * additional checks could be implemented manually if they are needed
+ * additional checks could be implemented manually if they are needed.
  * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinColShape
  * @param theShape The colshape you want to get the elements from.
  * @param elemType The type of element you want a list of. This can be any element type, the common ones
@@ -592,22 +587,24 @@ export declare function getElementsWithinColShape(
 ): LuaTable;
 
 /**
+ * This function is used to retrieve a list of all elements of specified type within a range
+ * of 3D coordinates.
  * * This function checks if elements are in a box, not in a sphere.
  * * Z argument isnt in use currently, but make your scripts like it is for future
  * compatibility reasons.
  * * This function doesnt work with elements which is created by createElement.}}
  * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinRange
- * @param x the x coordinate at which to retrieve elements
- * @param y the y coordinate at which to retrieve elements
- * @param z the z coordinate at which to retrieve elements
- * @param range the range at the coordinates in which to retrieve elements
+ * @param x the x coordinate at which to retrieve elements.
+ * @param y the y coordinate at which to retrieve elements.
+ * @param z the z coordinate at which to retrieve elements.
+ * @param range the range at the coordinates in which to retrieve elements.
  * @param elemType The type of element you want a list of. This can be any element type, such as:
- * @param player A player connected to the server
- * @param ped A ped
- * @param vehicle A vehicle
- * @param object An object
- * @param pickup A pickup
- * @param marker A marker
+ * @param player A player connected to the server.
+ * @param ped A ped.
+ * @param vehicle A vehicle.
+ * @param object An object.
+ * @param pickup A pickup.
+ * @param marker A marker.
  * @param interior The interior you want to limit the search to. If not specified, it can return elements in
  * any interior.
  * @param dimension The dimension you want to limit the search to. If not specified, it can return elements
@@ -943,57 +940,55 @@ export declare function setElementAttachedOffsets(
 ): boolean;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
  * @see https://wiki.multitheftauto.com/wiki/SetElementBoneMatrix
  * @param theElement the element to set the bone matrix on.
- * @param bone the ID of the bone. See Bone IDs
- * @param matrix the MTA matrix to set.
+ * @param boneID the ID of the bone. See Bone IDs.
+ * @param X The X coordinate of the matrix.
+ * @param Y The Y coordinate of the matrix.
+ * @param Z The Z coordinate of the matrix.
+ * @param rotationX The X rotation of the matrix.
+ * @param rotationY The Y rotation of the matrix.
+ * @param rotationZ The Z rotation of the matrix.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
  */
 export declare function setElementBoneMatrix(
     theElement: Element,
-    bone: number,
+    boneId: number,
     matrix: Matrix,
 ): boolean;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
  * @see https://wiki.multitheftauto.com/wiki/SetElementBonePosition
- * @param theElement the element to set the bone position on.
- * @param bone the ID of the bone to set the position of. See Bone IDs
- * @param x The x coordinate of the destination.
- * @param y The y coordinate of the destination.
- * @param z The z coordinate of the destination.
+ * @param theElement the Element|element to set the bone position on.
+ * @param boneId the ID of the bone to set the position of. See Bone IDs.
+ * @param x The X coordinate of the destination.
+ * @param y The Y coordinate of the destination.
+ * @param z The Z coordinate of the destination.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
  */
 export declare function setElementBonePosition(
     theElement: Element,
-    bone: number,
+    boneId: number,
     x: number,
     y: number,
     z: number,
 ): boolean;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
  * @see https://wiki.multitheftauto.com/wiki/SetElementBoneRotation
- * @param theElement the element to set the bone rotation on.
- * @param bone the ID of the bone to set the rotation of. See Bone IDs
- * @param yaw the yaw rotation value.
- * @param pitch the pitch rotation value.
- * @param roll the roll rotation value.
+ * @param theElement The element to set the bone rotation on.
+ * @param boneId The ID of the bone to set the rotation of. See Bone IDs.
+ * @param yaw The yaw rotation value.
+ * @param pitch The pitch rotation value.
+ * @param roll The roll rotation value.
  * @return returns true if the function was successful, false otherwise.
- * note: updateelementrphanim must be called after this function to apply bone rotation.
  * @noSelf
  */
 export declare function setElementBoneRotation(
     theElement: Element,
-    bone: number,
+    boneId: number,
     yaw: number,
     pitch: number,
     roll: number,
@@ -1345,13 +1340,8 @@ export declare function setLowLODElement(
 ): boolean;
 
 /**
- * * Element/Player|Player
- * * Element/Ped|Ped
- * This function must be called after setElementBoneRotation for changes to take effect. It
- * should only be called once per frame, after you are done rotating bones on that element,
- * as it is quite heavy.
  * @see https://wiki.multitheftauto.com/wiki/UpdateElementRpHAnim
- * @param theElement the element to update.
+ * @param theElement the element to update the bone animations.
  * @return returns true if successful, false otherwise.
  * @noSelf
  */

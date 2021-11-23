@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Material,
+    Svg,
     Userdata,
     TextItem,
     Pickup,
@@ -108,10 +109,10 @@ export declare function getSoundBufferLength(theSound: Element): number;
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/GetSoundEffectParameters
- * @param sound : the sound element.
- * @param effectName : the name of the effect whose parameters you want to retrieve.
+ * @param sound : The sound element to get the sound effect parameters of.
+ * @param effectName : The name of the effect whose parameters you want to retrieve:
  * @return returns a table with the parameter names as the keys, and their values. if the specified
- * effect name is not valid, an error is raised.
+ * effect name is not valid, false is returned.
  * @noSelf
  */
 export declare function getSoundEffectParameters(
@@ -292,7 +293,7 @@ export declare function getSoundWaveData(
 /**
  * @see https://wiki.multitheftauto.com/wiki/IsSoundLooped
  * @param theSound The sound element which you want to get the loop state.
- * @return returns true if the sound element is seted to loop, false otherwise.
+ * @return returns true if the sound element is looped, false otherwise.
  * @noSelf
  */
 export declare function isSoundLooped(theSound: Element): boolean;
@@ -485,11 +486,11 @@ export declare function setSoundEffectEnabled(
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetSoundEffectParameter
- * @param sound : the sound element.
- * @param effectName : the name of the effect whose parameter you want to change.
- * @param effectParam : the parameter #Effects Parameters|name.
- * @param paramValue : the parameter #Effects Parameters|value.
- * @return returns true if everything went well, error is raised otherwise.
+ * @param sound : The sound element.
+ * @param effectName : The name of the effect whose parameter you want to change:
+ * @param effectParam : The parameter #Effects Parameters|name.
+ * @param paramValue : The parameter #Effects Parameters|value.
+ * @return returns true if effect have been set successfully, false otherwise.
  * @noSelf
  */
 export declare function setSoundEffectParameter(
@@ -503,7 +504,7 @@ export declare function setSoundEffectParameter(
  * @see https://wiki.multitheftauto.com/wiki/SetSoundLooped
  * @param theSound The sound element to set the loop.
  * @param bool A boolean representing whether the sound will be looped.
- * @return returns true if the sound element loop was successfully changed, false otherwise.
+ * @return returns true if the sound element loop state was successfully changed, false otherwise.
  * @noSelf
  */
 export declare function setSoundLooped(

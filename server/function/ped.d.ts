@@ -583,14 +583,15 @@ export declare function setPedOnFire(thePed: Ped, isOnFire: boolean): boolean;
  * *Things like infinite run, fire proof CJ, 150 armor have special activation flags. They
  * need a way to be triggered on/off.
  * This function allows you to set the value of a specific statistic for a ped. Visual stats
- * (FAT and BODY_MUSCLE) can only be used on the CJ skin, they have no effect on other skins.
- * When this function is used client side, it can only be used on client side created peds.
+ * (FAT and BODY_MUSCLE) can only be used on the CJ skin, they have no effect on other
+ * skins. When this function is used client-side, it can only be used on client-side created
+ * peds.
  * @see https://wiki.multitheftauto.com/wiki/SetPedStat
  * @param thePed : the ped whose statistic you want to modify.
  * @param stat : the stat ID.
  * @param value : the new value of the stat. It must be between 0 and 1000.
  * @return returns true if the statistic was changed succesfully. returns false if an invalid player
- * is specified, if the stat-id/value is out of acceptable range or if the fat or
+ * is specified, if the stat id/value is out of acceptable range or if the fat or
  * body_muscle stats are used on non-cj players.
  * @noSelf
  */
