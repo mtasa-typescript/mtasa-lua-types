@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -66,16 +67,15 @@ export class Sound3D {
      * Creates a sound element in the GTA world and plays it immediately after creation for the
      * local player. setElementPosition can be used to move the sound element around after it
      * has been created. Remember to use setElementDimension after creating the sound to play it
-     * outside of dimension 0.<br />
-     * <br />
-     * *The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT and S3M.
+     * outside of dimension 0.
+     * *The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, WEBM, XM, IT and S3M.
      * *For performance reasons, when using playSound3D for effects that will be played lots
      * (i.e. weapon fire), it is recommend that you convert your audio file to a one channel
      * (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how
      * often the effect can be played e.g. once every 50ms.}}
      * @see https://wiki.multitheftauto.com/wiki/PlaySound3D
-     * @param soundPath Can also be raw sound data.
-     * |20460}}
+     * @param soundPath raw data or filepath to the sound file you want to play. (Note: Playing sound files from
+     * other resources requires the target resource to be in the running state)
      * @param soundURL the URL (http://, https:// or ftp://) of the sound file you want to play. (In this
      * version the file does not have to be predefined in the meta.xml)
      * @param x a floating point number representing the X coordinate on the map.

@@ -629,6 +629,18 @@ export declare function getVehicleTowedByVehicle(theVehicle: Vehicle): Vehicle;
 export declare function getVehicleTowingVehicle(theVehicle: Vehicle): Vehicle;
 
 /**
+ * This function is used to retrieve a vehicles turning velocity for each axis.
+ * @see https://wiki.multitheftauto.com/wiki/GetVehicleTurnVelocity
+ * @param theVehicle The vehicle you wish to get the turning velocities of.
+ * @return returns 3 floats that represent the vehicles turning velocity on the x, y and z axis or
+ * false if wrong arguments were passed.
+ * @noSelf
+ */
+export declare function getVehicleTurnVelocity(
+    theVehicle: Vehicle,
+): LuaMultiReturn<[number, number, number]>;
+
+/**
  * This function gets the position of a vehicles turret, if it has one. Vehicles with
  * turrets include firetrucks and tanks.
  * @see https://wiki.multitheftauto.com/wiki/GetVehicleTurretPosition
@@ -943,7 +955,7 @@ export declare function setTrainSpeed(train: Vehicle, speed: number): boolean;
 
 /**
  * This function will set the color of a vehicle using either a RGB format, or the Vehicle
- * Colors|standard San Andreas color IDs. Vehicles can have up to 4 colors, most of the
+ * Colors|standard San Andreas color IDs. Vehicles can have up to 3 colors, most of the
  * vehicles have 2 colors only.
  * <syntaxhighlight lang=lua>
  * bool setVehicleColor(vehicle veh, int r1, int g1, int b1, int r2, int g2, int b2, int r3,
@@ -1114,7 +1126,8 @@ export declare function setVehicleFuelTankExplodable(
  * @param theVehicle The vehicle you wish to set the handling of.
  * @param property The property you wish to set the handling of the vehicle to.
  * Additionally, helicopters are not affected by custom handling. The vehicle-on-wheels
- * handling does not affect planes when they are on the ground either.}}
+ * handling does not affect planes when they are on the ground either. For more information
+ * on this, see [https://github.com/multitheftauto/mtasa-blue/issues/2426 issue 2426]}}
  * @param value The value of the property you wish to set the handling of the vehicle to.
  * @return returns true if the handling was set successfully, false otherwise. see below a list of
  * valid properties and their required values:
@@ -1271,11 +1284,10 @@ export declare function setVehiclePanelState(
 ): boolean;
 
 /**
- * This function can be used to set the numberplate text of a car.
- * It now also changes the numberplate text of any vehicle that has visual numberplates.
+ * This function can be used to set the numberplate text of a vehicle.
  * @see https://wiki.multitheftauto.com/wiki/SetVehiclePlateText
  * @param theVehicle the vehicle whose numberplate you want to change.
- * @param numberplate a string that will go on the number plate of the car (max 8 characters).
+ * @param numberplate a string that will go on the number plate of the vehicle (max 8 characters).
  * @return returns true if the numberplate was changed successfully, or false if invalid arguments
  * were passed
  * @noSelf
@@ -1394,6 +1406,23 @@ export declare function setVehicleSirensOn(
 export declare function setVehicleTaxiLightOn(
     taxi: Vehicle,
     LightState: boolean,
+): boolean;
+
+/**
+ * Sets the angular velocity of a vehicle. Basically applies a spin to it.
+ * @see https://wiki.multitheftauto.com/wiki/SetVehicleTurnVelocity
+ * @param theVehicle The vehicle to apply the spin to.
+ * @param rx velocity around the X axis
+ * @param ry velocity around the Y axis
+ * @param rz velocity around the Z axis
+ * @return returns true if it was succesful, false otherwise.
+ * @noSelf
+ */
+export declare function setVehicleTurnVelocity(
+    theVehicle: Vehicle,
+    rx: number,
+    ry: number,
+    rz: number,
 ): boolean;
 
 /**

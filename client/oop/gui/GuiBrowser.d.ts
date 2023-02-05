@@ -24,6 +24,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -69,9 +70,10 @@ export class GuiBrowser extends GuiElement {
 
     /**
      * This function creates a new CEGUI web Element/Browser|browser element.
-     * <br>The difference between this, and createBrowser is that, this handles inputs
-     * internally, and it can be attached to GUI windows. So this one is more suitable for
-     * custom dx based interfaces.
+     * <br>The difference between this and createBrowser is that this function handles inputs
+     * internally, and it can be attached to GUI windows. So the createBrowser function is more
+     * suitable for custom dx based interfaces, while this one is favorable for CEGUI all-in-all
+     * integration.
      * You can learn more about the differences
      * https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=7373
      * 34 here.

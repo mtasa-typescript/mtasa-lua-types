@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -439,6 +440,16 @@ export declare function getElementID(theElement: Element): string;
 export declare function getElementInterior(theElement: Element): number;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/GetElementLighting
+ * @param theElement The element whose lighting you want to retrieve.
+ * @return returns a float (0.0-0.5; 0 = dark; 0.5 = light) indicating the elements lighting, or
+ * false if invalid arguments were passed. this function will fail if called right after
+ * element creation.
+ * @noSelf
+ */
+export declare function getElementLighting(theElement: Element): number;
+
+/**
  * This function gets an elements transform matrix. This contains 16 float values that
  * multiplied to a point will give you the point transformed. It is most useful for matrix
  * calculations such as calculating offsets. For further information, please refer to a
@@ -589,10 +600,12 @@ export declare function getElementsWithinColShape(
 /**
  * This function is used to retrieve a list of all elements of specified type within a range
  * of 3D coordinates.
- * * This function checks if elements are in a box, not in a sphere.
  * * Z argument isnt in use currently, but make your scripts like it is for future
  * compatibility reasons.
- * * This function doesnt work with elements which is created by createElement.}}
+ * |21438}}
+ * * Z argument is now being taken into consideration when checking for elements.
+ * * This function checks if elements are in a box, not in a sphere.
+ * * This function doesnt work with elements which are created by createElement.
  * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinRange
  * @param x the x coordinate at which to retrieve elements.
  * @param y the y coordinate at which to retrieve elements.
@@ -730,6 +743,7 @@ export declare function isElementCallPropagationEnabled(
  * *Ped
  * *Vehicle
  * *Object
+ * * Element/Weapon|Weapon
  * @see https://wiki.multitheftauto.com/wiki/IsElementCollidableWith
  * @param theElement The element which colliding you want to get
  * @param withElement The other element which colliding with the first entity you want to get
@@ -942,13 +956,8 @@ export declare function setElementAttachedOffsets(
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetElementBoneMatrix
  * @param theElement the element to set the bone matrix on.
- * @param boneID the ID of the bone. See Bone IDs.
- * @param X The X coordinate of the matrix.
- * @param Y The Y coordinate of the matrix.
- * @param Z The Z coordinate of the matrix.
- * @param rotationX The X rotation of the matrix.
- * @param rotationY The Y rotation of the matrix.
- * @param rotationZ The Z rotation of the matrix.
+ * @param boneId the ID of the bone. See Bone IDs.
+ * @param matrix the MTA matrix to set.
  * @return returns true if the function was successful, false otherwise.
  * @noSelf
  */
@@ -961,7 +970,7 @@ export declare function setElementBoneMatrix(
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetElementBonePosition
  * @param theElement the Element|element to set the bone position on.
- * @param boneId the ID of the bone to set the position of. See Bone IDs.
+ * @param bone the ID of the bone to set the position of. See Bone IDs.
  * @param x The X coordinate of the destination.
  * @param y The Y coordinate of the destination.
  * @param z The Z coordinate of the destination.
@@ -970,7 +979,7 @@ export declare function setElementBoneMatrix(
  */
 export declare function setElementBonePosition(
     theElement: Element,
-    boneId: number,
+    bone: number,
     x: number,
     y: number,
     z: number,
@@ -1016,6 +1025,7 @@ export declare function setElementCallPropagationEnabled(
  * *Ped
  * *Vehicle
  * *Object
+ * * Element/Weapon|Weapon
  * @see https://wiki.multitheftauto.com/wiki/SetElementCollidableWith
  * @param theElement The element which colliding you want to change
  * @param withElement The other element you wish the first entity to collide with
@@ -1047,12 +1057,12 @@ export declare function setElementCollisionsEnabled(
 /**
  * This function stores element data under a certain key, attached to an element. Element
  * data set using this is then synced with all clients and the server. The data can contain
- * server created elements, but you should avoid passing data that is not able to be synced
+ * server-created elements, but you should avoid passing data that is not able to be synced
  * such as xmlnodes, acls, aclgroups etc.
  * As element data is synced to all clients, it can generate a lot of network traffic and be
  * heavy on performance. Events are much more efficient for sending data from a client to
  * the server only, or from the server to a specific client. <br/>
- * Usage of element data should be disencouraged where your goal can be achieved with events
+ * Usage of element data should be discouraged where your goal can be achieved with events
  * like above, and table|tables for storing and retrieving data.
  * Note this mode only works when setting element data serverside. Setting data clientside
  * still sends the update to all clients if synchronize is set to true.

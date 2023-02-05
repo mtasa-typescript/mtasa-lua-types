@@ -158,6 +158,11 @@ export class Vehicle extends Element {
     towingVehicle: Vehicle;
 
     /**
+     * This function is used to retrieve a vehicles turning velocity for each axis.
+     */
+    turnVelocity: LuaMultiReturn<[number, number, number]>;
+
+    /**
      * This function gets the position of a vehicles turret, if it has one. Vehicles with
      * turrets include firetrucks and tanks.
      */
@@ -671,6 +676,14 @@ export class Vehicle extends Element {
     getTowingVehicle(): Vehicle;
 
     /**
+     * This function is used to retrieve a vehicles turning velocity for each axis.
+     * @see https://wiki.multitheftauto.com/wiki/GetVehicleTurnVelocity
+     * @return returns 3 floats that represent the vehicles turning velocity on the x, y and z axis or
+     * false if wrong arguments were passed.
+     */
+    getTurnVelocity(): Vector3;
+
+    /**
      * This function gets the position of a vehicles turret, if it has one. Vehicles with
      * turrets include firetrucks and tanks.
      * @see https://wiki.multitheftauto.com/wiki/GetVehicleTurretPosition
@@ -842,7 +855,7 @@ export class Vehicle extends Element {
 
     /**
      * This function will set the color of a vehicle using either a RGB format, or the Vehicle
-     * Colors|standard San Andreas color IDs. Vehicles can have up to 4 colors, most of the
+     * Colors|standard San Andreas color IDs. Vehicles can have up to 3 colors, most of the
      * vehicles have 2 colors only.
      * <syntaxhighlight lang=lua>
      * bool setVehicleColor(vehicle veh, int r1, int g1, int b1, int r2, int g2, int b2, int r3,
@@ -1041,10 +1054,9 @@ export class Vehicle extends Element {
     setPanelState(panelID: number, state: number): boolean;
 
     /**
-     * This function can be used to set the numberplate text of a car.
-     * It now also changes the numberplate text of any vehicle that has visual numberplates.
+     * This function can be used to set the numberplate text of a vehicle.
      * @see https://wiki.multitheftauto.com/wiki/SetVehiclePlateText
-     * @param numberplate a string that will go on the number plate of the car (max 8 characters).
+     * @param numberplate a string that will go on the number plate of the vehicle (max 8 characters).
      * @return returns true if the numberplate was changed successfully, or false if invalid arguments
      * were passed
      */
@@ -1130,6 +1142,16 @@ export class Vehicle extends Element {
      * @return returns true if the state was successfully set, false otherwise.
      */
     setTaxiLightOn(LightState: boolean): boolean;
+
+    /**
+     * Sets the angular velocity of a vehicle. Basically applies a spin to it.
+     * @see https://wiki.multitheftauto.com/wiki/SetVehicleTurnVelocity
+     * @param rx velocity around the X axis
+     * @param ry velocity around the Y axis
+     * @param rz velocity around the Z axis
+     * @return returns true if it was succesful, false otherwise.
+     */
+    setTurnVelocity(vectorized: Vector3): boolean;
 
     /**
      * This function sets the position of a vehicles turret, if it has one. This can be used to

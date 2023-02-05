@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -166,6 +167,20 @@ export class Marker extends Element {
      * if an invalid marker is specified, false is returned.
      */
     getMarkerType(): string;
+
+    /**
+     * @see https://wiki.multitheftauto.com/wiki/IsCoronaReflectionEnabled
+     * @return * returns false is setmarkertype|marker type is not corona.
+     * * returns true if corona reflection is enabled, false otherwise.
+     */
+    isCoronaReflectionEnabled(): boolean;
+
+    /**
+     * @see https://wiki.multitheftauto.com/wiki/SetCoronaReflectionEnabled
+     * @param enabled whenever corona reflection should be visible
+     * @return returns true if setmarkertype|marker type is corona, false otherwise.
+     */
+    setCoronaReflectionEnabled(enabled: boolean): boolean;
 
     /**
      * This function sets the color of the specified marker by modifying the values for red,

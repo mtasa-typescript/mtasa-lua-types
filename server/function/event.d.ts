@@ -86,7 +86,7 @@ export declare function addEvent(
  * the call to addEventHandler will fail.
  * @see https://wiki.multitheftauto.com/wiki/AddEventHandler
  * @param eventName The name of the event you want to attach the handler function to. Note: The maximum
- * allowed length is 100 ASCII characters (that is, English letters and numerals)```
+ * allowed length is 100 ASCII characters (that is, English letters and numerals)
  * @param attachedTo The element you wish to attach the handler to. The handler will only be called when the
  * event it is attached to is triggered for this element, or one of its children. Often,
  * this can be the root element (meaning the handler will be called when the event is

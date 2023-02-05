@@ -98,7 +98,7 @@ export class connection {
     );
 
     /**
-     * This function executes a database query using the supplied connection. No result is
+     * This function executes a database query using the supplied connection. No query result is
      * returned.
      * @see https://wiki.multitheftauto.com/wiki/DbExec
      * @param query An SQL query. Positions where parameter values will be inserted are marked with a ?

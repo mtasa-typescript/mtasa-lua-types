@@ -267,7 +267,7 @@ export declare function getWindVelocity(): LuaMultiReturn<
  * ** Whetstone
  * ** Flint County
  * ** Los Santos
- * @return returns the string of the zone name
+ * @return returns the string of the zone name.
  * @noSelf
  */
 export declare function getZoneName(

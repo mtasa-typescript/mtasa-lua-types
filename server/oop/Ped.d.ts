@@ -157,6 +157,14 @@ export class Ped extends Element {
     ): boolean;
 
     /**
+     * Checks whether or not a ped currently has a jetpack.
+     * @see https://wiki.multitheftauto.com/wiki/DoesPedHaveJetPack
+     * @return returns true if the ped is carrying a jetpack, false if he is not or an invalid element
+     * was passed.
+     */
+    doesHaveJetpack(): boolean;
+
+    /**
      * This function returns an integer that contains the ammo in a specified peds weapon. See
      * weapon|Weapon Info
      * @see https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip

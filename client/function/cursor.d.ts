@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -61,9 +62,9 @@ import {
 } from '../structure';
 
 /**
- * This function is used to get alpha (transparency) from the clients cursor.
+ * This function is used to get the clients cursor alpha (transparency).
  * @see https://wiki.multitheftauto.com/wiki/GetCursorAlpha
- * @return returns a int, 0-255, where 255 is fully opaque and 0 is fully transparent.
+ * @return returns a int between 0 and 255, where 255 is fully opaque and 0 is fully transparent.
  * @noSelf
  */
 export declare function getCursorAlpha(): number;
@@ -75,10 +76,9 @@ export declare function getCursorAlpha(): number;
  * position and the worldX/Y/Z result of this function. (See example below)
  * @see https://wiki.multitheftauto.com/wiki/GetCursorPosition
  * @return returns 5 values: cursorx, cursory, worldx, worldy, worldz. the first two values are the
- * 2d relative screen coordinates of the cursor: cursorx goes from 0 (left side of the
- * screen) to 1 (right side), cursory goes from 0 (top) to 1 (bottom). the 3 values that
- * follow are the 3d world map coordinates that the cursor points at. if the cursor isnt
- * showing, returns false as the first value.
+ * 2d relative screen coordinates of the cursor. the 3 values that follow are the 3d world
+ * map coordinates that the cursor points at. if the cursor isnt showing, returns false as
+ * the first value.
  * @noSelf
  */
 export declare function getCursorPosition(): LuaMultiReturn<

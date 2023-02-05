@@ -573,10 +573,12 @@ export declare function getElementsWithinColShape(
 /**
  * This function is used to retrieve a list of all elements of specified type within a range
  * of 3D coordinates.
- * * This function checks if elements are in a box, not in a sphere.
  * * Z argument isnt in use currently, but make your scripts like it is for future
  * compatibility reasons.
- * * This function doesnt work with elements which is created by createElement.}}
+ * |21438}}
+ * * Z argument is now being taken into consideration when checking for elements.
+ * * This function checks if elements are in a box, not in a sphere.
+ * * This function doesnt work with elements which are created by createElement.
  * @see https://wiki.multitheftauto.com/wiki/GetElementsWithinRange
  * @param x the x coordinate at which to retrieve elements.
  * @param y the y coordinate at which to retrieve elements.
@@ -953,12 +955,12 @@ export declare function setElementCollisionsEnabled(
 /**
  * This function stores element data under a certain key, attached to an element. Element
  * data set using this is then synced with all clients and the server. The data can contain
- * server created elements, but you should avoid passing data that is not able to be synced
+ * server-created elements, but you should avoid passing data that is not able to be synced
  * such as xmlnodes, acls, aclgroups etc.
  * As element data is synced to all clients, it can generate a lot of network traffic and be
  * heavy on performance. Events are much more efficient for sending data from a client to
  * the server only, or from the server to a specific client. <br/>
- * Usage of element data should be disencouraged where your goal can be achieved with events
+ * Usage of element data should be discouraged where your goal can be achieved with events
  * like above, and table|tables for storing and retrieving data.
  * Note this mode only works when setting element data serverside. Setting data clientside
  * still sends the update to all clients if synchronize is set to true.

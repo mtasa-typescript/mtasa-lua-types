@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -292,18 +293,17 @@ export class Sound extends Element {
     isPaused(): boolean;
 
     /**
-     * Creates a sound element and plays it immediately after creation for the local player.<br
-     * />
-     * <br />
-     * *The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT, S3M and PLS (e.g.
-     * Webstream).
+     * Creates a sound element and plays it immediately after creation for the local player.
+     * *The only supported audio formats are MP3, WAV, OGG, FLAC, RIFF, MOD, WEBM, XM, IT, S3M
+     * and PLS (e.g. Webstream).
      * *For performance reasons, when using playSound for effects that will be played lots (i.e.
      * weapon fire), it is recommend that you convert your audio file to a one channel (mono)
      * WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the
      * effect can be played e.g. once every 50ms.}}
      * @see https://wiki.multitheftauto.com/wiki/PlaySound
-     * @param soundPath Can also be raw sound data.
-     * |20460}}
+     * @param soundPath filepath, raw data or URL (http://, https:// or ftp://) of the sound file you want to
+     * play. (Note: Playing sound files from other resources requires the target resource to be
+     * in the running state)
      * @param looped a boolean representing whether the sound will be looped. To loop the sound, use true.
      * Loop is not available for streaming sounds, only for sound files.
      * @param throttled a boolean representing whether the sound will be throttled (i.e. given reduced download

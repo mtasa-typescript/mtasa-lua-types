@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -946,6 +947,8 @@ export declare function dxGetPixelsSize(
  * *settingfov: the fov setting.
  * *settinghighdetailvehicles: high detail vehicles setting. (true/false)
  * *settinghighdetailpeds: high detail peds setting. (true/false)
+ * *settingcoronareflections: corona rain reflections setting. (true/false)
+ * *settingdynamicpedshadows: dynamic ped shadows setting. (true/false)
  * *allowscreenupload: the allows screen uploads setting. (true/false)
  * *depthbufferformat: the format of the shader readable depth buffer, or unknown if not
  * available.

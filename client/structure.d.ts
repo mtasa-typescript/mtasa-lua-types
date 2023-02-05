@@ -49,6 +49,7 @@ export {
     CommandHandler,
     BindKeyCallback,
     BindKeyCallbackVarArgs,
+    SvgCallback,
 } from './utils/callback';
 
 export {

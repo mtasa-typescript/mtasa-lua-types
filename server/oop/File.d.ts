@@ -45,6 +45,11 @@ import {
 /** @customConstructor File */
 export class File {
     /**
+     * This function retrieves the path of the given file.
+     */
+    path: string;
+
+    /**
      * Returns the current read/write position in the given file.
      */
     pos: number;
@@ -140,6 +145,13 @@ export class File {
      * @return returns true if succeeded, false in case of failure (e.g. the file handle is invalid).
      */
     flush(): boolean;
+
+    /**
+     * This function retrieves the path of the given file.
+     * @see https://wiki.multitheftauto.com/wiki/FileGetPath
+     * @return returns a string representing the file path, false if invalid file was provided.
+     */
+    getPath(): string;
 
     /**
      * Returns the current read/write position in the given file.

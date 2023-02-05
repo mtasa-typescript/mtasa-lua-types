@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,

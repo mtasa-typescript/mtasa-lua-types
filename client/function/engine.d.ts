@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -378,9 +379,17 @@ export declare function engineReplaceCOL(
  * player|players but not CJ clothing and body parts.
  * To replace weapon models you must use their object IDs, not weapon IDs. There is a weapon
  * model list available at weapons.
+ * * Please note the loading order that is used in the examples as other orders can cause
+ * collisions, textures or the DFF not to load due to technical limitations.
  * * Default GTA map objects behave inconsistently when using this function on them. If you
  * want to replace models in the original GTA map, use one of the EngineReplaceModel
- * notes|methods shown here.}}
+ * notes|methods shown here.
+ * * A raw data DFF element can only be used once, because the underlying memory for the
+ * model is released after replacement.
+ * * If the replacement model is broken and the original model is not loaded/streamed-in at
+ * the time of replacement, this function will succeed and you wont see any error message,
+ * neither when the model replacement fails once the original model starts to
+ * load/stream-in.}}
  * @see https://wiki.multitheftauto.com/wiki/EngineReplaceModel
  * @param theModel The model to replace the given model ID with
  * @param modelID The model it to replace the model of
@@ -398,11 +407,10 @@ export declare function engineReplaceModel(
 ): boolean;
 
 /**
- * *Before release 1.5.8 r20716 this must be ped.
  * @see https://wiki.multitheftauto.com/wiki/EngineRequestModel
- * @param elementType : ped, vehicle and object.
- * @param parentID : The model ID of the model being allocated. (By default this is: 1337 - objects, 400 -
- * vehicles, 7 - peds)
+ * @param elementType : ped, vehicle or object.
+ * @param parentID : The ID of the parent model (by default this is: 1337 - objects, 400 - vehicles, 7 -
+ * peds).
  * @return do not rely on the model numbers returned being consistent across multiple clients or
  * multiple runs of resources. there is no guarantee for the order of the numbers or that
  * the same numbers will always correspond to the same element type. any patterns are

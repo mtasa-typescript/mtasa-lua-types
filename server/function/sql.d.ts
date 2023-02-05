@@ -97,7 +97,7 @@ export declare function dbConnect(
 ): Element;
 
 /**
- * This function executes a database query using the supplied connection. No result is
+ * This function executes a database query using the supplied connection. No query result is
  * returned.
  * @see https://wiki.multitheftauto.com/wiki/DbExec
  * @param databaseConnection A database connection element previously returned from dbConnect

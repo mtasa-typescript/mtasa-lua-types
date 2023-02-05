@@ -121,8 +121,7 @@ export declare function getWeaponProperty(
  * the ammo is replaced
  * @see https://wiki.multitheftauto.com/wiki/GiveWeapon
  * @param thePlayer A player or ped object referencing the specified player (or ped)
- * @param weapon A whole number integer that refers to a Weapon ID. Click Weapon|here for a list of
- * possible weapon IDs.
+ * @param weapon A whole number integer that refers to a Weapon ID.
  * @param ammo A whole number integer serving as the ammo amount for the given weapon.  For weapons that
  * do not require ammo, such as melee, this should be at least 1.
  * @param setAsCurrent A boolean value determining whether or not the weapon will be set as the players current.

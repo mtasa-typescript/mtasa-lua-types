@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -196,6 +197,14 @@ export class Ped extends Element {
     canBeKnockedOffBike(): boolean;
 
     /**
+     * Checks whether or not a ped currently has a jetpack.
+     * @see https://wiki.multitheftauto.com/wiki/DoesPedHaveJetPack
+     * @return returns true if the ped is carrying a jetpack, false if he is not or an invalid element
+     * was passed.
+     */
+    doesHaveJetpack(): boolean;
+
+    /**
      * This function returns an integer that contains the ammo in a specified peds weapon. See
      * weapon|Weapon Info
      * @see https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip
@@ -209,7 +218,7 @@ export class Ped extends Element {
     /**
      * Gets the animation of a player or ped that was set using setPedAnimation.
      * @see https://wiki.multitheftauto.com/wiki/GetPedAnimation
-     * @return <syntaxhighlight lang=lua>string anim, string block, int time, bool loop, bool
+     * @return <syntaxhighlight lang=lua>string block, string anim, int time, bool loop, bool
      * updateposition, bool interruptable, bool freezelastframe, int blendtime, bool
      * restoretaskonanimend</syntaxhighlight>
      */

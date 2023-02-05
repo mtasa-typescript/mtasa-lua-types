@@ -86,6 +86,16 @@ export declare function createPed(
 ): Ped;
 
 /**
+ * Checks whether or not a ped currently has a jetpack.
+ * @see https://wiki.multitheftauto.com/wiki/DoesPedHaveJetPack
+ * @param thePed the ped you want to check
+ * @return returns true if the ped is carrying a jetpack, false if he is not or an invalid element
+ * was passed.
+ * @noSelf
+ */
+export declare function doesPedHaveJetPack(thePed: Ped): boolean;
+
+/**
  * This function returns an integer that contains the ammo in a specified peds weapon. See
  * weapon|Weapon Info
  * @see https://wiki.multitheftauto.com/wiki/GetPedAmmoInClip

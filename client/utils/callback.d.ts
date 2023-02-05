@@ -1,4 +1,5 @@
 import { ControlName, KeyName, KeyState } from '../../shared/utils/misc';
+import { Svg } from '../structure';
 
 /**
  * @see {@link https://wiki.multitheftauto.com/wiki/AddCommandHandler Wiki, addCommandHandler}
@@ -36,3 +37,11 @@ export type BindKeyCallback<AdditionalArgsType extends any[] = []> = (
     keyState: KeyState,
     ...args: AdditionalArgsType
 ) => void;
+
+/**
+ * @see {@link https://wiki.multitheftauto.com/wiki/SvgCreate Wiki, SvgCreate}
+ * @see {@link https://wiki.multitheftauto.com/wiki/SvgSetDocumentXML Wiki, SvgSetDocumentXML}
+ * @see {@link https://wiki.multitheftauto.com/wiki/SvgSetSize Wiki, SvgSetSize}
+ *
+ */
+export type SvgCallback = (this: void, svg: Svg) => void;

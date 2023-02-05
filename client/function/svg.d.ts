@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -61,6 +62,26 @@ import {
 } from '../structure';
 
 /**
+ * Creates an svg from size (blank document), filepath or raw data.
+ * @see https://wiki.multitheftauto.com/wiki/SvgCreate
+ * @param width Desired width, preferably power of two (16, 32, 64 etc.), maximum is 4096
+ * @param height Desired height, preferably power of two (16, 32, 64 etc.), maximum is 4096
+ * @param pathOrRawData A string representing the path to your SVG file, or the raw SVG data
+ * @param callback A callback function which is stored on the SVG and fired every time the SVG texture is
+ * updated (for example, via svgSetDocumentXML).
+ * '''Note:''' See [[svgSetUpdateCallback]] for setting an svg's callback function after it
+ * has been created.
+ * @return * returns an svg if created successfully, false otherwise.
+ * @noSelf
+ */
+export declare function svgCreate(
+    width: number,
+    height: number,
+    pathOrRawData?: string,
+    callback?: SvgCallback,
+): Svg;
+
+/**
  * @see https://wiki.multitheftauto.com/wiki/SvgGetDocumentXML
  * @param svgElement The svg element you want to get the XML document of.
  * @return * returns an xmlnode if successful, false otherwise
@@ -77,3 +98,50 @@ export declare function svgGetDocumentXML(svgElement: Svg): XmlNode;
 export declare function svgGetSize(
     svgElement: Svg,
 ): LuaMultiReturn<[number, number]>;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/SvgSetDocumentXML
+ * @param svgElement The svg element you want to set the XML document of
+ * @param xmlDocument An xmlnode containing the data to be set on the SVG document
+ * @param callback A callback function which is stored on the SVG and fired every time the SVG texture is
+ * updated (for example, via svgSetSize). Note: if present, this will overwrite the current
+ * callback stored on the svg
+ * @return * returns true if successful, false otherwise
+ * @noSelf
+ */
+export declare function svgSetDocumentXML(
+    svgElement: Svg,
+    xmlDocument: XmlNode,
+    callback?: SvgCallback,
+): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/SvgSetSize
+ * @param svgElement The svg element you want to set the size of.
+ * @param width Desired width, preferably power of two (16, 32, 64 etc.), maximum is 4096
+ * @param height Desired height, preferably power of two (16, 32, 64 etc.), maximum is 4096
+ * @param callback A callback function which is stored on the SVG and fired every time the SVG texture is
+ * updated (for example, via svgSetDocumentXML). Note: if present, this will overwrite the
+ * current callback stored on the svg
+ * @return * returns true if successful, false otherwise
+ * @noSelf
+ */
+export declare function svgSetSize(
+    svgElement: Svg,
+    width: number,
+    height: number,
+    callback?: SvgCallback,
+): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/SvgSetUpdateCallback
+ * @param svgElement The svg you want to set the callback function of.
+ * @param callback The callback function to store on the SVG. If false is provided, any existing callback
+ * function will be removed from the SVG.
+ * @return * returns true if successful, false otherwise
+ * @noSelf
+ */
+export declare function svgSetUpdateCallback(
+    svgElement: Svg,
+    callback: SvgCallback | false,
+): boolean;

@@ -24,6 +24,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -61,6 +62,11 @@ import {
 
 /** @customConstructor GuiElement */
 export class GuiElement {
+    /**
+     * Gets the current maximum amount of characters that can be input via chatbox
+     */
+    static chatboxCharacterLimit: number;
+
     /**
      * Alpha represents the transparency of a gui element.  This function allows retrieval of a
      * gui elements current alpha.
@@ -137,6 +143,13 @@ export class GuiElement {
      * This function returns whether the user is in the mainmenu or not.
      */
     static mainMenuActive: boolean;
+
+    /**
+     * Gets the current maximum amount of characters that can be input via chatbox
+     * @see https://wiki.multitheftauto.com/wiki/GetChatboxCharacterLimit
+     * @return returns a number between 0-255, representing the chatbox input character limit
+     */
+    static getChatboxCharacterLimit(): number;
 
     /**
      * @see https://wiki.multitheftauto.com/wiki/GuiBlur
@@ -458,6 +471,14 @@ export class GuiElement {
      * @return returns true if the file transfer box is visible, false if not.
      */
     static isTransferBoxActive(): boolean;
+
+    /**
+     * Sets the maximum amount of characters that can be input via chatbox
+     * @see https://wiki.multitheftauto.com/wiki/SetChatboxCharacterLimit
+     * @param charLimit an integer between 0-255. Passing -1 will reset the character limit (96)
+     * @return returns true if the character limit was set, false otherwise
+     */
+    static setChatboxCharacterLimit(charLimit: number): boolean;
 
     /**
      * This function enables or disables the debug window.

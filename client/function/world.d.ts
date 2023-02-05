@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -119,6 +120,16 @@ export declare function getBirdsEnabled(): boolean;
  * @noSelf
  */
 export declare function getCloudsEnabled(): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/GetCoronaReflectionsEnabled
+ * @return one of the following integers will be returned:
+ * * 0: corona reflections are disabled
+ * * 1: corona reflections are enabled (are visible during rain)
+ * * 2: corona reflections are force enabled (are visible even if there is no rain)
+ * @noSelf
+ */
+export declare function getCoronaReflectionsEnabled(): number;
 
 /**
  * This function will tell you what is the current render distance.
@@ -461,7 +472,7 @@ export declare function getWorldFromScreenPosition(
  * ** Whetstone
  * ** Flint County
  * ** Los Santos
- * @return returns the string of the zone name
+ * @return returns the string of the zone name.
  * @noSelf
  */
 export declare function getZoneName(
@@ -713,6 +724,13 @@ export declare function resetBlurLevel(): boolean;
 export declare function resetColorFilter(): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/ResetCoronaReflectionsEnabled
+ * @return returns true.
+ * @noSelf
+ */
+export declare function resetCoronaReflectionsEnabled(): boolean;
+
+/**
  * This function resets the far clip distance to its default state.
  * @see https://wiki.multitheftauto.com/wiki/ResetFarClipDistance
  * @return returns true if operation was successful, false otherwise.
@@ -929,6 +947,17 @@ export declare function setColorFilter(
 ): boolean;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/SetCoronaReflectionsEnabled
+ * @param enabled
+ * @param 0 : disabled
+ * @param 1 : enabled (will be visible during rain)
+ * @param 2 : force enabled (will be visible even if there is no rain)
+ * @return returns true if passed arguments are correct, false otherwise.
+ * @noSelf
+ */
+export declare function setCoronaReflectionsEnabled(enabled: number): boolean;
+
+/**
  * This function is used to set the distance of render. Areas beyond the specified distance
  * will not be rendered.
  * @see https://wiki.multitheftauto.com/wiki/SetFarClipDistance
@@ -1079,8 +1108,8 @@ export declare function setOcclusionsEnabled(enabled: boolean): boolean;
 
 /**
  * @see https://wiki.multitheftauto.com/wiki/SetPedsLODDistance
- * @param distance the new peds LOD distance. It must be between 0 and 500. (Default for high_detail_peds on
- * is 500, when off, it is 60).
+ * @param distance the new peds LOD distance. This value is clamped to 0 – 500. (Default for
+ * high_detail_peds on is 500, when off, it is 60).
  * @return this function returns true if the argument is valid. returns false otherwise.
  * @noSelf
  */
@@ -1194,6 +1223,7 @@ export declare function setTrafficLightState(state: number): boolean;
  * @see https://wiki.multitheftauto.com/wiki/SetVehiclesLODDistance
  * @param vehiclesDistance general distance used for most vehicles, this value is clamped to 0 – 500
  * @param trainsAndPlanesDistance distance used for trains and planes, this value is clamped to 0 – 500
+ * @return this function returns true if arguments are valid. returns false otherwise.
  * @noSelf
  */
 export declare function setVehiclesLODDistance(
@@ -1280,17 +1310,22 @@ export declare function setWorldSoundEnabled(
  * Enables or disables a special world property.
  * @see https://wiki.multitheftauto.com/wiki/SetWorldSpecialPropertyEnabled
  * @param propname the name of the property to set. Possible values are:
- * @param hovercars - equivalent of the JBGVNB cheat, and allows cars to drive on water.
- * @param aircars - equivalent of the RIPAZHA cheat, and allows cars to fly.
+ * @param hovercars - equivalent of the JBGVNB cheat, and allows cars to drive on water. (default: false)
+ * @param aircars - equivalent of the RIPAZHA cheat, and allows cars to fly. (default: false)
  * @param extrabunny - equivalent of the CJPHONEHOME or JHJOECW cheat, and allows you to bunny hop on bicycles
- * much higher.
- * @param extrajump - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher.
+ * much higher. (default: false)
+ * @param extrajump - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher. (default:
+ * false)
  * @param randomfoliage - toggle randomly generated foliage on the GTA:SA map (default: true)
  * @param snipermoon - toggle the GTA:SA easter egg, which increases the size of the moon every time you shoot
  * it with a sniper rifle (default: false)
  * @param extraairresistance - toggle the vehicle speed limit on cross-country roads (default: true)
  * **{{New feature/item|3.0156|1.5.5|12286|'''underworldwarp''' - toggle warp of peds and
  * vehicles when fall under map (default: true)}}
+ * **{{New feature/item|3.0160|1.5.9|21125|'''vehiclesunglare''' - toggle the vehicle sun
+ * glare effect (default: false) }}
+ * **{{New feature/item|3.0160|1.5.9|21313| '''coronaztest''' - disable big sun lensflare
+ * effect (default: true) }}
  * @param enable whether or not to enable the property.
  * @return returns true if successful, false otherwise.
  * @noSelf

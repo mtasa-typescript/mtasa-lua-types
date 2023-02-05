@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -284,7 +285,7 @@ export declare function bitXor(
 ): number;
 
 /**
- * This functions creates a notification ballon on the desktop.
+ * This function creates a notification balloon on the desktop.
  * @see https://wiki.multitheftauto.com/wiki/CreateTrayNotification
  * @param notificationText The text to send in the notification.
  * @param iconType The notification icon type. Possible values are: default (the MTA icon), info, warning,
@@ -378,6 +379,11 @@ export declare function downloadFile(fileName: string): boolean;
  * by decodestring. if a callback was provided, true is returned immediately, and the iv is
  * passed as an argument to the callback.
  * |20898}}
+ * * rsa
+ * ** encodedstring: the encoded string if successful, false otherwise. if a callback was
+ * provided, true is returned immediately, and the encoded string is passed as an argument
+ * to the callback.
+ * |21055}}
  * @noSelf
  */
 export declare function encodeString(
@@ -398,6 +404,22 @@ export declare function encodeString(
  * @noSelf
  */
 export declare function fromJSON(json: string): unknown;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/GenerateKeyPair
+ * @param algorithm The algorithm to use:
+ * @param RSA : use the RSA public-key algorithm
+ * @param options table with options for the hashing algorithm, as detailed below.
+ * @param callback providing a callback will run this function asynchronously, the arguments to the callback
+ * are the same as the returned values below.
+ * @return returns 2 strings if successful: private key and public key. otherwise returns false
+ * @noSelf
+ */
+export declare function generateKeyPair(
+    algorithm: string,
+    options: LuaTable,
+    callback?: HandleFunction,
+): LuaMultiReturn<[string, string]>;
 
 /**
  * This function will extract Red, Green, Blue and Alpha values from a hex string you
@@ -586,6 +608,28 @@ export declare function getPerformanceStats(
 ): LuaMultiReturn<[LuaTable, LuaTable]>;
 
 /**
+ * @see https://wiki.multitheftauto.com/wiki/GetProcessMemoryStats
+ * @return returns a table if successful, otherwise returns nil
+ * {| class=wikitable style=cellpadding: 10px;
+ * |-
+ * ! property || description
+ * |-
+ * | <code>virtual</code> || total program size
+ * |-
+ * | <code>resident</code> || resident set size (memory in physical space/ram, also known as
+ * working set)
+ * |-
+ * | <code>shared</code> || size of resident shared memory (shared with other processes)
+ * |-
+ * | <code>private</code> || size of resident private memory (only for this process)
+ * |}
+ * note: resident set size should be roughly <code>shared</code> + <code>private</code> from
+ * the table.
+ * @noSelf
+ */
+export declare function getProcessMemoryStats(): LuaTable | null;
+
+/**
  * This function gets the server or client (if used client sided it returns time as set on
  * clients computer) real time and returns it in a table. If you want to get the in-game
  * time (shown on GTAs clock) use getTime.
@@ -718,6 +762,8 @@ export declare function gettok(
  * @param vector3 : a 3D vector, used in the Vector/Vector3|Vector3 class.
  * @param vector4 : a 4D vector, used in the Vector/Vector4|Vector4 class.
  * @param matrix : a matrix, used in the Matrix class.
+ * @param request : a userdata type returned via fetchRemote (since
+ * https://buildinfo.mtasa.com/?Revision=21436&Branch= r21436)
  * @param userdata : a fallback userdata type return value, when no other type could be found for the object.
  * @param Server only
  * @param account : a Account|player account.
@@ -765,12 +811,17 @@ export declare function getVersion(): LuaTable;
 /**
  * This function returns a hash of the specified string in the specified algorithm.
  * @see https://wiki.multitheftauto.com/wiki/Hash
- * @param algorithm : A string which must be one of these: md5, sha1, sha224, sha256, sha384, sha512
+ * @param algorithm : A string which must be one of these: md5, sha1, sha224, sha256, sha384, sha512, hmac
  * @param dataToHash : A string of the data to hash.
+ * @param options : A table with options and other necessary data for the algorithm, as detailed below.
  * @return returns the hash of the data, false if an invalid argument was used.
  * @noSelf
  */
-export declare function hash(algorithm: string, dataToHash: string): string;
+export declare function hash(
+    algorithm: string,
+    dataToHash: string,
+    options?: LuaTable,
+): string;
 
 /**
  * This function returns human-readable representations of tables and MTA datatypes as a
@@ -1075,10 +1126,14 @@ export declare function setDevelopmentMode(
 /**
  * This function sets the maximum http://en.wikipedia.org/wiki/Frame_rate FPS (Frames per
  * second) that players on the server can run their game at.
+ * * When set client side, the actual limit used is the lowest of both the server and client
+ * set values.
+ * * Starting from version https://buildinfo.mtasa.com/?Revision=21313&Branch r21313 and
+ * above fpsLimit range is 25-32767. In older MTA releases it was 25-100.
  * @see https://wiki.multitheftauto.com/wiki/SetFPSLimit
- * @param fpsLimit An integer value representing the maximum FPS. This value may be between 25 and 100 FPS.
- * You can also pass 0 or false, in which case the FPS limit will be the one set in the
- * client settings (by default, 100 FPS and the client fps limit should also be manually
+ * @param fpsLimit An integer value representing the maximum FPS. Refer to the note above for possible
+ * values. You can also pass 0 or false, in which case the FPS limit will be the one set in
+ * the client settings (by default, 100 FPS and the client fps limit should also be manually
  * changed via fps_limit=0 in console or MTA San Andreas 1.5\MTA\config\coreconfig.xml).
  * @return returns true if successful, or false if it was not possible to set the limit or an
  * invalid value was passed.

@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -185,6 +186,17 @@ export class GuiGridList extends GuiElement {
      * This allows you to get the count of existing columns in a gridlist.
      * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount
      * @return returns an integer with the amount of columns in the gridlist, false otherwise.
+     * <syntaxhighlight lang=lua>
+     * -- create the grid list
+     * local list = guicreategridlist(0.80, 0.40, 0.15, 0.35, true)
+     * -- add three columns to the grid list
+     * guigridlistaddcolumn(list, column 1, 0.33)
+     * guigridlistaddcolumn(list, column 2, 0.33)
+     * guigridlistaddcolumn(list, column 3, 0.33)
+     * -- display the number of columns in the grid list in the debug or server console
+     * (/debugscript 3)
+     * print(number of columns:  .. guigridlistgetcolumncount(list))
+     * </syntaxhighlight>
      */
     getColumnCount(): number;
 
@@ -325,7 +337,7 @@ export class GuiGridList extends GuiElement {
      * @param itemText2 The text for the second column item in the row.  Either a string or a number can be
      * passed (use numbers for sorting purposes).
      * @param ... Item text for any other columns
-     * @return returns true if the row was successfully added, false otherwise.
+     * @return returns row id if the row was successfully added, false otherwise.
      */
     insertRowAfter(rowIndex: number): number;
 

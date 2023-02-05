@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -292,7 +293,7 @@ export declare function setWeaponState(
  * @param 2 BONE_PELVIS position.
  * @param 3 BONE_SPINE1 position.
  * @param 255 : center of the ped (position returned by getElementPosition).
- * @param Ped|Peds (players not included; see getPedBonePosition to know where is located each bone):
+ * @param Ped|Peds (players not included; see getPedBonePosition to know where each bone is located):
  * @param 4 BONE_UPPERTORSO position.
  * @param 5 BONE_NECK position.
  * @param 6 BONE_HEAD2 position.

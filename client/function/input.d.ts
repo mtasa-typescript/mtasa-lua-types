@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -231,6 +232,13 @@ export declare function getKeyBoundToFunction(
  * @noSelf
  */
 export declare function getKeyState(keyName: string): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/IsCapsLockEnabled
+ * @return returns true if caps lock is toggled (on), false otherwise.
+ * @noSelf
+ */
+export declare function isCapsLockEnabled(): boolean;
 
 /**
  * Checks whether a GTA control is enabled or disabled for a certain player.

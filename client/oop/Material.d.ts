@@ -24,6 +24,7 @@ import {
     GuiWindow,
     Projectile,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,

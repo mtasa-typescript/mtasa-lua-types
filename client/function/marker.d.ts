@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -165,6 +166,27 @@ export declare function getMarkerTarget(
  * @noSelf
  */
 export declare function getMarkerType(theMarker: Marker): string;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/IsCoronaReflectionEnabled
+ * @param theMarker marker
+ * @return * returns false is setmarkertype|marker type is not corona.
+ * * returns true if corona reflection is enabled, false otherwise.
+ * @noSelf
+ */
+export declare function isCoronaReflectionEnabled(theMarker: Marker): boolean;
+
+/**
+ * @see https://wiki.multitheftauto.com/wiki/SetCoronaReflectionEnabled
+ * @param theMarker the corona marker that you wish set visibility of corona reflection
+ * @param enabled whenever corona reflection should be visible
+ * @return returns true if setmarkertype|marker type is corona, false otherwise.
+ * @noSelf
+ */
+export declare function setCoronaReflectionEnabled(
+    theMarker: Marker,
+    enabled: boolean,
+): boolean;
 
 /**
  * This function sets the color of the specified marker by modifying the values for red,

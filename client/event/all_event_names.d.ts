@@ -60,6 +60,7 @@ export const enum EventNames {
     OnClientFileDownloadComplete = 'onClientFileDownloadComplete',
     OnClientHUDRender = 'onClientHUDRender',
     OnClientMinimize = 'onClientMinimize',
+    OnClientMTAFocusChange = 'onClientMTAFocusChange',
     OnClientPedsProcessed = 'onClientPedsProcessed',
     OnClientPlayerNetworkStatus = 'onClientPlayerNetworkStatus',
     OnClientPreRender = 'onClientPreRender',

@@ -26,6 +26,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -116,6 +117,11 @@ export interface OnClientFileDownloadComplete extends GenericEventHandler {
 export interface OnClientHUDRender extends GenericEventHandler {
     name: EventNames.OnClientHUDRender;
     function: (this: void) => void;
+}
+
+export interface OnClientMTAFocusChange extends GenericEventHandler {
+    name: EventNames.OnClientMTAFocusChange;
+    function: (this: void, windowFocused: boolean) => void;
 }
 
 export interface OnClientMinimize extends GenericEventHandler {

@@ -25,6 +25,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -61,6 +62,14 @@ import {
 } from '../structure';
 
 /**
+ * Gets the current maximum amount of characters that can be input via chatbox
+ * @see https://wiki.multitheftauto.com/wiki/GetChatboxCharacterLimit
+ * @return returns a number between 0-255, representing the chatbox input character limit
+ * @noSelf
+ */
+export declare function getChatboxCharacterLimit(): number;
+
+/**
  * Returns information about how the chatbox looks.
  * These values come from the file called: Chatboxpresets.xml but it depends on what type of
  * preset you currently have, which is chosen from your settings in the Interface tab.
@@ -86,6 +95,8 @@ import {
  * @param chat_line_fade_out - Returns how long takes for text to fade out
  * @param chat_use_cegui - Returns whether CEGUI is used to render the chatbox
  * @param text_scale - Returns text scale
+ * **{{Added feature/item|1.6.0|1.5.9|21160|'''chat_text_outline''' - Returns whether text
+ * black/white outline is used}}
  * @return *4 numbers if the cvar contains color
  * *2 numbers if chat_scale was entered
  * *1 number if any other cvar was specified
@@ -255,9 +266,10 @@ export declare function guiComboBoxSetSelected(
 
 /**
  * This function creates a new CEGUI web Element/Browser|browser element.
- * <br>The difference between this, and createBrowser is that, this handles inputs
- * internally, and it can be attached to GUI windows. So this one is more suitable for
- * custom dx based interfaces.
+ * <br>The difference between this and createBrowser is that this function handles inputs
+ * internally, and it can be attached to GUI windows. So the createBrowser function is more
+ * suitable for custom dx based interfaces, while this one is favorable for CEGUI all-in-all
+ * integration.
  * You can learn more about the differences
  * https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=7373
  * 34 here.
@@ -1130,6 +1142,17 @@ export declare function guiGridListClear(gridList: Element): boolean;
  * @see https://wiki.multitheftauto.com/wiki/GuiGridListGetColumnCount
  * @param gridList The grid list you want to add a column to
  * @return returns an integer with the amount of columns in the gridlist, false otherwise.
+ * <syntaxhighlight lang=lua>
+ * -- create the grid list
+ * local list = guicreategridlist(0.80, 0.40, 0.15, 0.35, true)
+ * -- add three columns to the grid list
+ * guigridlistaddcolumn(list, column 1, 0.33)
+ * guigridlistaddcolumn(list, column 2, 0.33)
+ * guigridlistaddcolumn(list, column 3, 0.33)
+ * -- display the number of columns in the grid list in the debug or server console
+ * (/debugscript 3)
+ * print(number of columns:  .. guigridlistgetcolumncount(list))
+ * </syntaxhighlight>
  * @noSelf
  */
 export declare function guiGridListGetColumnCount(gridList: Element): number;
@@ -1322,7 +1345,7 @@ export declare function guiGridListGetVerticalScrollPosition(
  * @param itemText2 The text for the second column item in the row.  Either a string or a number can be
  * passed (use numbers for sorting purposes).
  * @param ... Item text for any other columns
- * @return returns true if the row was successfully added, false otherwise.
+ * @return returns row id if the row was successfully added, false otherwise.
  * @noSelf
  */
 export declare function guiGridListInsertRowAfter(
@@ -2161,6 +2184,15 @@ export declare function isMTAWindowActive(): boolean;
  * @noSelf
  */
 export declare function isTransferBoxActive(): boolean;
+
+/**
+ * Sets the maximum amount of characters that can be input via chatbox
+ * @see https://wiki.multitheftauto.com/wiki/SetChatboxCharacterLimit
+ * @param charLimit an integer between 0-255. Passing -1 will reset the character limit (96)
+ * @return returns true if the character limit was set, false otherwise
+ * @noSelf
+ */
+export declare function setChatboxCharacterLimit(charLimit: number): boolean;
 
 /**
  * This function enables or disables the debug window.

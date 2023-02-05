@@ -24,6 +24,7 @@ import {
     Projectile,
     Material,
     Svg,
+    SvgCallback,
     Userdata,
     TextItem,
     Pickup,
@@ -83,9 +84,17 @@ export class EngineDFF {
      * player|players but not CJ clothing and body parts.
      * To replace weapon models you must use their object IDs, not weapon IDs. There is a weapon
      * model list available at weapons.
+     * * Please note the loading order that is used in the examples as other orders can cause
+     * collisions, textures or the DFF not to load due to technical limitations.
      * * Default GTA map objects behave inconsistently when using this function on them. If you
      * want to replace models in the original GTA map, use one of the EngineReplaceModel
-     * notes|methods shown here.}}
+     * notes|methods shown here.
+     * * A raw data DFF element can only be used once, because the underlying memory for the
+     * model is released after replacement.
+     * * If the replacement model is broken and the original model is not loaded/streamed-in at
+     * the time of replacement, this function will succeed and you wont see any error message,
+     * neither when the model replacement fails once the original model starts to
+     * load/stream-in.}}
      * @see https://wiki.multitheftauto.com/wiki/EngineReplaceModel
      * @param modelID The model it to replace the model of
      * @param alphaTransparency Set to true if model uses semi-transparent textures, e.g. windows. This will ensure other
